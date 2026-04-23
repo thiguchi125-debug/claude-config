@@ -1,0 +1,35 @@
+{
+  "eval_id": 3,
+  "eval_name": "entrepreneur-interview-suzuki",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "ブログ記事が含まれている",
+      "passed": true,
+      "evidence": "「## はじめに」「## 転機のエピソード」など明確な見出し構造。約1600字の詳細なブログ記事。"
+    },
+    {
+      "text": "3種のSNS投稿が含まれている",
+      "passed": true,
+      "evidence": "5ツイートのTwitterスレッド、Instagramキャプション（13ハッシュタグ）、LinkedIn投稿の3プラットフォーム全て生成。"
+    },
+    {
+      "text": "ショート動画台本が含まれている（シーン分けあり）",
+      "passed": true,
+      "evidence": "6シーン構成、各シーン秒数付き（0〜60秒）のショート動画台本。推奨BGM・編集スタイル含む。"
+    },
+    {
+      "text": "インタビューの印象的な引用が保持されている",
+      "passed": true,
+      "evidence": "「10年後に後悔しないか？」「8割の準備ができたら走り出す」「準備が整ってから」は永遠に来ない、全て明示的に引用・活用。"
+    },
+    {
+      "text": "感情に訴えるストーリーテリングになっている",
+      "passed": true,
+      "evidence": "「気づけば10年が過ぎている」「1年は本当にきつかった」など感情に訴える描写。友人との対話シーンが動画台本でも再現されている。"
+    }
+  ],
+  "pass_count": 5,
+  "total_count": 5,
+  "pass_rate": 1.0
+}

@@ -1,0 +1,45 @@
+{
+  "eval_id": 1,
+  "eval_name": "podcast-transcript-habits",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "ブログ記事が含まれている（見出し構造あり、500字以上）",
+      "passed": true,
+      "evidence": "見出し構造あり。約1000字程度のブログ記事が生成された。"
+    },
+    {
+      "text": "Twitter/Xスレッドが含まれている（複数ツイートあり）",
+      "passed": true,
+      "evidence": "投稿①②③の3ツイートが生成されたが、スレッド形式ではなく個別投稿として書かれている。"
+    },
+    {
+      "text": "Instagramキャプションが含まれている（ハッシュタグあり）",
+      "passed": true,
+      "evidence": "Instagramキャプションに9個のハッシュタグが含まれている。"
+    },
+    {
+      "text": "LinkedIn投稿が含まれている",
+      "passed": false,
+      "evidence": "LinkedIn投稿セクションが存在しない。TwitterとInstagramのみ生成された。"
+    },
+    {
+      "text": "ショート動画台本が含まれている（シーン分けあり）",
+      "passed": true,
+      "evidence": "6シーンの台本が秒数付きで生成されている。"
+    },
+    {
+      "text": "元素材の具体的データが保持されている（「3倍」「60%」など）",
+      "passed": true,
+      "evidence": "「継続率が3倍」「使用時間が60%減」が言及されている。"
+    },
+    {
+      "text": "各プラットフォームでトーンが書き分けられている",
+      "passed": false,
+      "evidence": "LinkedInがないため、ビジネス/プロフェッショナルなトーンの分化が確認できない。TwitterとInstagramの差も最小限。"
+    }
+  ],
+  "pass_count": 5,
+  "total_count": 7,
+  "pass_rate": 0.714
+}

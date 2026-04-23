@@ -1,0 +1,35 @@
+{
+  "eval_id": 2,
+  "eval_name": "study-session-ai-efficiency",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "ブログ記事が含まれている",
+      "passed": true,
+      "evidence": "「実際に効果が出た4つの活用事例」など見出し構造あり。数値データを含む詳細なブログ記事。"
+    },
+    {
+      "text": "3種のSNS投稿（Twitter、Instagram、LinkedIn）が含まれている",
+      "passed": true,
+      "evidence": "X投稿①②、LinkedIn投稿、Instagramキャプションが生成された（TwitterはスレッドではなくX投稿として個別）。"
+    },
+    {
+      "text": "ショート動画台本が含まれている",
+      "passed": false,
+      "evidence": "ショート動画台本セクションが存在しない。ブログとSNS投稿のみ生成された。"
+    },
+    {
+      "text": "元の数値データが保持されている（15分→3分、42%など）",
+      "passed": true,
+      "evidence": "「15分→3分（80%削減）」「42%向上」「4時間→20分（92%削減）」が言及されている。"
+    },
+    {
+      "text": "ビジネス・プロフェッショナルなトーンで書かれている",
+      "passed": true,
+      "evidence": "LinkedInはビジネス向けの丁寧な語調で書かれている。"
+    }
+  ],
+  "pass_count": 4,
+  "total_count": 5,
+  "pass_rate": 0.8
+}

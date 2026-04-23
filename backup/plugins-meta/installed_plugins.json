@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "plugins": {
+    "skill-creator@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown",
+        "version": "unknown",
+        "installedAt": "2026-04-11T11:06:44.242Z",
+        "lastUpdated": "2026-04-11T11:06:44.242Z"
+      }
+    ]
+  }
+}

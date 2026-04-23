@@ -1,0 +1,35 @@
+{
+  "eval_id": 2,
+  "eval_name": "study-session-ai-efficiency",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "ブログ記事が含まれている",
+      "passed": true,
+      "evidence": "「## 数字が語る、4つの改善実例」など明確な見出し構造あり。約1800字の詳細なブログ記事。"
+    },
+    {
+      "text": "3種のSNS投稿（Twitter、Instagram、LinkedIn）が含まれている",
+      "passed": true,
+      "evidence": "5ツイートのTwitterスレッド、Instagramキャプション（15ハッシュタグ）、LinkedIn投稿（600字以上）の3プラットフォーム全て生成。"
+    },
+    {
+      "text": "ショート動画台本が含まれている",
+      "passed": true,
+      "evidence": "6シーン構成、各シーン秒数付き（0〜60秒）のTikTok/Reels/Shorts向け台本。推奨BGMと編集スタイル含む。"
+    },
+    {
+      "text": "元の数値データが保持されている（15分→3分、42%など）",
+      "passed": true,
+      "evidence": "「15分から3分」「バグ検出率が42%向上」「4時間から20分」全ての数値が正確に言及されている。"
+    },
+    {
+      "text": "ビジネス・プロフェッショナルなトーンで書かれている",
+      "passed": true,
+      "evidence": "LinkedIn投稿は「AIとの協働設計」など高度なビジネス言語を使用。Twitterも実務的な数字訴求。"
+    }
+  ],
+  "pass_count": 5,
+  "total_count": 5,
+  "pass_rate": 1.0
+}

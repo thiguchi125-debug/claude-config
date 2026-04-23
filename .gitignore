@@ -1,0 +1,13 @@
+# OS/エディタ
+.DS_Store
+*.swp
+*.swo
+
+# ログ・一時
+*.log
+*.tmp
+backup/**/evals/results/
+
+# 誤って混入しがちな重いもの
+backup/**/node_modules/
+backup/**/.venv/

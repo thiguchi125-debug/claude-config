@@ -1,0 +1,12 @@
+{
+  "eval_id": 3,
+  "eval_name": "entrepreneur-interview-suzuki",
+  "prompt": "起業家インタビュー（鈴木さん）文字起こしからコンテンツ一式を生成",
+  "assertions": [
+    {"id": "has_blog", "text": "ブログ記事が含まれている"},
+    {"id": "has_all_sns", "text": "3種のSNS投稿が含まれている"},
+    {"id": "has_video_script", "text": "ショート動画台本が含まれている（シーン分けあり）"},
+    {"id": "preserves_quotes", "text": "インタビューの印象的な引用が保持されている"},
+    {"id": "emotional_storytelling", "text": "感情に訴えるストーリーテリングになっている"}
+  ]
+}

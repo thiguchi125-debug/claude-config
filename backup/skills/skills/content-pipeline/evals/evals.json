@@ -1,0 +1,114 @@
+{
+  "skill_name": "content-pipeline",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "今日収録したポッドキャストの文字起こしです。これをブログとSNSとショート動画の台本にしてください。\n\n---\n山田：今日は「習慣化の科学」についてお話しします。多くの人が三日坊主で終わってしまう理由って、実は意志力の問題じゃないんです。\n\n田中：えっ、そうなんですか？よく「意志が弱いから続かない」って言いますよね。\n\n山田：そうなんですが、スタンフォード大学の研究によると、習慣が定着するかどうかは「環境設計」がカギなんです。たとえば、毎朝ジムに行きたいなら、前の晩にスポーツウェアを玄関に置いておくだけで、継続率が3倍になるというデータがあります。\n\n田中：へえ！「摩擦を減らす」ってことですね。\n\n山田：まさに。ジェームズ・クリアーの「Atomic Habits」でも同じことが言われていて、行動を起こすまでの「ステップ数」を減らすことが最重要だと。スマホのSNSアプリをホーム画面から消したら使用時間が60%減ったとか、水のボトルを机の上に置いたら自然と水を飲む量が増えたとか。\n\n田中：意識しなくてもいい仕組みを作るっていうことか。今日実践できそうなことってありますか？\n\n山田：今夜、明日やりたい習慣のための「準備」を一つだけしてみてください。読書したいなら本を枕元に。運動したいならウェアを出しておく。それだけです。\n---",
+      "expected_output": "ブログ記事（1500字以上）、Twitter/Xスレッド（3ツイート以上）、Instagramキャプション、LinkedIn投稿、ショート動画台本が生成されること",
+      "files": [],
+      "assertions": [
+        {
+          "id": "has_blog",
+          "text": "ブログ記事が含まれている（見出し構造あり、500字以上）",
+          "check": "output contains a blog section with ## or # headings and is at least 500 characters long"
+        },
+        {
+          "id": "has_twitter_thread",
+          "text": "Twitter/Xスレッドが含まれている（複数ツイートあり）",
+          "check": "output contains a Twitter/X section with multiple tweet-like segments"
+        },
+        {
+          "id": "has_instagram",
+          "text": "Instagramキャプションが含まれている（ハッシュタグあり）",
+          "check": "output contains an Instagram section with hashtags (#)"
+        },
+        {
+          "id": "has_linkedin",
+          "text": "LinkedIn投稿が含まれている",
+          "check": "output contains a LinkedIn section"
+        },
+        {
+          "id": "has_video_script",
+          "text": "ショート動画台本が含まれている（シーン分けあり）",
+          "check": "output contains a video script section with scene markers or time indicators"
+        },
+        {
+          "id": "preserves_key_data",
+          "text": "元素材の具体的データが保持されている（「3倍」「60%」など）",
+          "check": "output mentions specific numbers from source: 3倍 or 60% or Atomic Habits or スタンフォード"
+        },
+        {
+          "id": "platform_tone_diff",
+          "text": "各プラットフォームでトーンが書き分けられている",
+          "check": "LinkedIn section has different professional tone compared to Twitter/Instagram sections"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "先週の社内勉強会でメモしたテキストをコンテンツ化して、ブログとSNSも作ってほしいです。\n\n生成AIを活用した業務効率化の実例：\n- メール返信の自動ドラフト→レビュー時間が1通あたり15分→3分に短縮\n- 会議議事録の自動生成→30分の録音から5分でまとめ完成\n- コードレビューのAI補助→バグ検出率が42%向上\n- 顧客問い合わせの一次回答→対応時間を平均4時間から20分に削減\n\n課題として出た意見：\n- AIの出力をそのまま使うと品質にばらつきがある\n- プロンプトの書き方で結果が大きく変わる（スキルが必要）\n- 機密情報の取り扱いに注意が必要\n- チーム内でのAI活用方針の統一が急務\n\n参加者の感想：「百聞は一見にしかず。実際に使ってみて初めて効果がわかった」「まずは自分の業務の一部だけ試してみようと思う」",
+      "expected_output": "ブログ記事、3種のSNS投稿文、ショート動画台本が生成されること。業務効率化というビジネステーマに合ったトーンで書かれていること",
+      "files": [],
+      "assertions": [
+        {
+          "id": "has_blog",
+          "text": "ブログ記事が含まれている",
+          "check": "output contains a blog section with headings"
+        },
+        {
+          "id": "has_all_sns",
+          "text": "3種のSNS投稿（Twitter、Instagram、LinkedIn）が含まれている",
+          "check": "output contains sections for Twitter/X, Instagram, and LinkedIn"
+        },
+        {
+          "id": "has_video_script",
+          "text": "ショート動画台本が含まれている",
+          "check": "output contains a video script section"
+        },
+        {
+          "id": "preserves_metrics",
+          "text": "元の数値データが保持されている（15分→3分、42%など）",
+          "check": "output mentions specific metrics: 42% or 15分 or 4時間 or 20分"
+        },
+        {
+          "id": "business_tone",
+          "text": "ビジネス・プロフェッショナルなトーンで書かれている",
+          "check": "output uses professional business language appropriate for work context"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "このインタビュー記事の文字起こしからコンテンツパイプラインを実行して。\n\n「起業家・鈴木さんインタビュー」\n\n— 起業するまでの経緯を教えてください。\n\n鈴木：会社員時代に「このままでいいのか」という閉塞感がずっとあって。でも行動できなかったのは、失敗への恐れじゃなく、何をしたいかわからなかったからなんです。転機は友人の言葉で。「何が怖いの？」じゃなくて「10年後に後悔しないか？」って聞かれて。\n\n— その質問が刺さったんですね。\n\n鈴木：はい。10年後の自分に「なんであの時やらなかったんだ」と言われたくなかった。それで副業から始めて、半年で本業の収入を超えたタイミングで独立しました。最初の1年は本当にきつかったけど、あの判断は正しかったと今でも思います。\n\n— 起業志望者にアドバイスするとしたら？\n\n鈴木：「準備が整ってから」は永遠に来ません。8割の準備ができたら走り出す。残り2割は走りながら補う。あと、一人でやろうとしないこと。得意な人に任せることの大切さは、失敗して初めてわかりました。",
+      "expected_output": "感情に訴えるストーリー性のあるブログ、各SNSに最適化された投稿文、視聴者を引き込むショート動画台本が生成されること",
+      "files": [],
+      "assertions": [
+        {
+          "id": "has_blog",
+          "text": "ブログ記事が含まれている",
+          "check": "output contains a blog section with headings"
+        },
+        {
+          "id": "has_all_sns",
+          "text": "3種のSNS投稿が含まれている",
+          "check": "output contains sections for Twitter/X, Instagram, and LinkedIn"
+        },
+        {
+          "id": "has_video_script",
+          "text": "ショート動画台本が含まれている",
+          "check": "output contains a video script section with scene markers"
+        },
+        {
+          "id": "preserves_quotes",
+          "text": "インタビューの印象的な引用が保持されている",
+          "check": "output includes key quotes like 10年後 or 8割 or 準備が整ってから"
+        },
+        {
+          "id": "emotional_storytelling",
+          "text": "感情に訴えるストーリーテリングになっている",
+          "check": "output conveys emotional journey and personal narrative from the interview"
+        }
+      ]
+    }
+  ]
+}

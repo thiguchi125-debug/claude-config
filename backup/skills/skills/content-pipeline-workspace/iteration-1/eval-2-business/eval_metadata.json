@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "study-session-ai-efficiency",
+  "prompt": "社内勉強会メモ（生成AI業務効率化）からコンテンツ一式を生成",
+  "assertions": [
+    {"id": "has_blog", "text": "ブログ記事が含まれている"},
+    {"id": "has_all_sns", "text": "3種のSNS投稿（Twitter、Instagram、LinkedIn）が含まれている"},
+    {"id": "has_video_script", "text": "ショート動画台本が含まれている"},
+    {"id": "preserves_metrics", "text": "元の数値データが保持されている（15分→3分、42%など）"},
+    {"id": "business_tone", "text": "ビジネス・プロフェッショナルなトーンで書かれている"}
+  ]
+}

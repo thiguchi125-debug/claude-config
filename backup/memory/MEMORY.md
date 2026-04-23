@@ -1,0 +1,12 @@
+# Memory Index
+
+- [Obsidianメモ確認](feedback_obsidian_memo.md) — タスク完了・スキル習得・トラブル解決時にObsidianへのメモが必要か確認する
+- [Notion未完了タスク](project_notion_tasks.md) — 再起動後に実行するNotionタスク2件（締切日フィールド追加・コンテンツ移行）
+- [nichijoモバイル版＋PC仕上げモード](project_nichijo_mobile.md) — モバイルで📱付き下書き→PC /nichijo 仕上げモードで深掘り＆上書き仕上げの2段構成
+- [スキルトリガー一覧Notion](reference_skill_triggers.md) — 草川たくや用スキルのトリガーワード早見表をNotionに集約（a0631315配下）
+- [コンテンツパイプライン品質改善](project_content_pipeline_quality.md) — voice-dna.md＋content-editor品質ゲート導入（2026-04-22）。原稿品質低下時はここを参照
+- [声のDNA抽出時の注意](feedback_voice_dna_extraction.md) — サンプル不足時にAI生成物の定型句を真の声として誤認しない運用ルール
+- [タスク・プロジェクトDB構成](project_notion_task_project_db.md) — 2026-04-23再構築。✅日次タスク(b43)／📋継続タスク(814, 旧プロジェクト＆案件)／🗂️プロジェクト(813, 進捗率ロールアップあり)
+- [ブログ記事の深掘り/ノーマル2モード](project_blog_normal_mode.md) — content-pipelineがブログ生成前に必ず2択を確認。ノーマル版=blog-writer-normal（800〜1500字・市民向け）
+- [ブログ冒頭は定型挨拶必須](feedback_blog_opening_greeting.md) — ブログ1行目は必ず「こんにちは、亀山市議会議員の草川たくやです。」で開始
+- [kameyama-researcherエージェント新設](project_kameyama_researcher.md) — 2026-04-23新設。亀山市ローカル調査専任。policy-researcherと並列起動前提。添付資料はknowledge/配下

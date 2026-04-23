@@ -1,0 +1,45 @@
+{
+  "eval_id": 1,
+  "eval_name": "podcast-transcript-habits",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "ブログ記事が含まれている（見出し構造あり、500字以上）",
+      "passed": true,
+      "evidence": "「## はじめに」「## 習慣化のカギは〜」など明確な見出し構造あり。約1800字。"
+    },
+    {
+      "text": "Twitter/Xスレッドが含まれている（複数ツイートあり）",
+      "passed": true,
+      "evidence": "ツイート1〜4と明示された4ツイートのスレッド形式で生成。"
+    },
+    {
+      "text": "Instagramキャプションが含まれている（ハッシュタグあり）",
+      "passed": true,
+      "evidence": "Instagramセクションに#習慣化など15個のハッシュタグあり。"
+    },
+    {
+      "text": "LinkedIn投稿が含まれている",
+      "passed": true,
+      "evidence": "LinkedInセクションがプロフェッショナルなトーンで生成されている。"
+    },
+    {
+      "text": "ショート動画台本が含まれている（シーン分けあり）",
+      "passed": true,
+      "evidence": "シーン1〜6が秒数付き（0〜60秒）でTikTok/Reels形式で生成。推奨BGMも含む。"
+    },
+    {
+      "text": "元素材の具体的データが保持されている（「3倍」「60%」など）",
+      "passed": true,
+      "evidence": "「継続率が3倍」「SNS使用時間が60%減少」「Atomic Habits」「スタンフォード大学」全て言及。"
+    },
+    {
+      "text": "各プラットフォームでトーンが書き分けられている",
+      "passed": true,
+      "evidence": "LinkedInはビジネス応用の観点から「チームマネジメント」に言及。Twitterは短文・絵文字中心。Instagramはストーリー型。明確に書き分けられている。"
+    }
+  ],
+  "pass_count": 7,
+  "total_count": 7,
+  "pass_rate": 1.0
+}

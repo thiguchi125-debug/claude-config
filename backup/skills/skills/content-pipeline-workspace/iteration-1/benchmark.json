@@ -1,0 +1,185 @@
+{
+  "metadata": {
+    "skill_name": "content-pipeline",
+    "skill_path": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/content-pipeline",
+    "executor_model": "claude-sonnet-4-6",
+    "analyzer_model": "claude-sonnet-4-6",
+    "timestamp": "2026-04-11T11:37:30Z",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "podcast-transcript-habits",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 80.5,
+        "tokens": 16387,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "ブログ記事が含まれている（見出し構造あり、500字以上）", "passed": true, "evidence": "約1800字のブログ記事あり"},
+        {"text": "Twitter/Xスレッドが含まれている（複数ツイートあり）", "passed": true, "evidence": "4ツイートのスレッド形式"},
+        {"text": "Instagramキャプションが含まれている（ハッシュタグあり）", "passed": true, "evidence": "15ハッシュタグ付きキャプション"},
+        {"text": "LinkedIn投稿が含まれている", "passed": true, "evidence": "プロフェッショナルなLinkedIn投稿あり"},
+        {"text": "ショート動画台本が含まれている（シーン分けあり）", "passed": true, "evidence": "6シーン・秒数付き台本"},
+        {"text": "元素材の具体的データが保持されている（「3倍」「60%」など）", "passed": true, "evidence": "3倍・60%・Atomic Habits全て言及"},
+        {"text": "各プラットフォームでトーンが書き分けられている", "passed": true, "evidence": "LinkedInはビジネス視点で明確に差別化"}
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "podcast-transcript-habits",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.714,
+        "passed": 5,
+        "failed": 2,
+        "total": 7,
+        "time_seconds": 57.2,
+        "tokens": 12144,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "ブログ記事が含まれている（見出し構造あり、500字以上）", "passed": true, "evidence": "見出し構造ありのブログ記事"},
+        {"text": "Twitter/Xスレッドが含まれている（複数ツイートあり）", "passed": true, "evidence": "3ツイート（スレッドではなく個別投稿形式）"},
+        {"text": "Instagramキャプションが含まれている（ハッシュタグあり）", "passed": true, "evidence": "9ハッシュタグ付き"},
+        {"text": "LinkedIn投稿が含まれている", "passed": false, "evidence": "LinkedIn投稿セクションが存在しない"},
+        {"text": "ショート動画台本が含まれている（シーン分けあり）", "passed": true, "evidence": "6シーンの台本あり"},
+        {"text": "元素材の具体的データが保持されている（「3倍」「60%」など）", "passed": true, "evidence": "3倍・60%が言及されている"},
+        {"text": "各プラットフォームでトーンが書き分けられている", "passed": false, "evidence": "LinkedInがなく分化が不十分"}
+      ],
+      "notes": ["LinkedInが欠落", "Twitter投稿がスレッドではなく個別投稿"]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "study-session-ai-efficiency",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 98.7,
+        "tokens": 17108,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "ブログ記事が含まれている", "passed": true, "evidence": "約1800字の詳細なブログ記事"},
+        {"text": "3種のSNS投稿（Twitter、Instagram、LinkedIn）が含まれている", "passed": true, "evidence": "5ツイートスレッド・Instagram・LinkedIn全て生成"},
+        {"text": "ショート動画台本が含まれている", "passed": true, "evidence": "6シーン・60秒のTikTok/Reels/Shorts台本"},
+        {"text": "元の数値データが保持されている（15分→3分、42%など）", "passed": true, "evidence": "全ての数値が正確に言及"},
+        {"text": "ビジネス・プロフェッショナルなトーンで書かれている", "passed": true, "evidence": "LinkedInは「AIとの協働設計」等高度なビジネス言語"}
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "study-session-ai-efficiency",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 54.0,
+        "tokens": 11858,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "ブログ記事が含まれている", "passed": true, "evidence": "見出し構造ありのブログ記事"},
+        {"text": "3種のSNS投稿（Twitter、Instagram、LinkedIn）が含まれている", "passed": true, "evidence": "Twitter・LinkedIn・Instagram全て生成された"},
+        {"text": "ショート動画台本が含まれている", "passed": false, "evidence": "ショート動画台本セクションが存在しない"},
+        {"text": "元の数値データが保持されている（15分→3分、42%など）", "passed": true, "evidence": "全ての数値が正確に言及"},
+        {"text": "ビジネス・プロフェッショナルなトーンで書かれている", "passed": true, "evidence": "LinkedInはプロフェッショナルな語調"}
+      ],
+      "notes": ["ショート動画台本が欠落"]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "entrepreneur-interview-suzuki",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 87.7,
+        "tokens": 16650,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "ブログ記事が含まれている", "passed": true, "evidence": "約1600字の構造的なブログ記事"},
+        {"text": "3種のSNS投稿が含まれている", "passed": true, "evidence": "5ツイートスレッド・Instagram・LinkedIn全て生成"},
+        {"text": "ショート動画台本が含まれている（シーン分けあり）", "passed": true, "evidence": "6シーン・60秒のショート動画台本"},
+        {"text": "インタビューの印象的な引用が保持されている", "passed": true, "evidence": "10年後・8割・準備が整ってから全て引用"},
+        {"text": "感情に訴えるストーリーテリングになっている", "passed": true, "evidence": "感情的な描写・友人との対話シーンが台本でも再現"}
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "entrepreneur-interview-suzuki",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6,
+        "passed": 3,
+        "failed": 2,
+        "total": 5,
+        "time_seconds": 73.1,
+        "tokens": 13030,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "ブログ記事が含まれている", "passed": true, "evidence": "見出し構造ありのブログ記事"},
+        {"text": "3種のSNS投稿が含まれている", "passed": false, "evidence": "TwitterとLinkedInはあるがInstagramが欠落"},
+        {"text": "ショート動画台本が含まれている（シーン分けあり）", "passed": false, "evidence": "10分ポッドキャスト台本が生成された（60秒ショート形式ではない）"},
+        {"text": "インタビューの印象的な引用が保持されている", "passed": true, "evidence": "10年後・8割・準備が整ってから全て言及"},
+        {"text": "感情に訴えるストーリーテリングになっている", "passed": true, "evidence": "ストーリー性はあるが、要約・FAQ等不要な出力が多く焦点が散漫"}
+      ],
+      "notes": ["Instagramが欠落", "ショート動画ではなくポッドキャスト台本を生成", "要約・FAQ・インフォグラフィック等不要な形式を多数出力"]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {"mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0},
+      "time_seconds": {"mean": 89.0, "stddev": 7.6, "min": 80.5, "max": 98.7},
+      "tokens": {"mean": 16715, "stddev": 306, "min": 16387, "max": 17108}
+    },
+    "without_skill": {
+      "pass_rate": {"mean": 0.705, "stddev": 0.082, "min": 0.6, "max": 0.8},
+      "time_seconds": {"mean": 61.4, "stddev": 8.2, "min": 54.0, "max": 73.1},
+      "tokens": {"mean": 12344, "stddev": 492, "min": 11858, "max": 13030}
+    },
+    "delta": {
+      "pass_rate": "+0.295",
+      "time_seconds": "+27.6",
+      "tokens": "+4371"
+    }
+  },
+  "notes": [
+    "without_skillではLinkedIn投稿の欠落が2/3のテストで発生（eval-1, eval-3）",
+    "without_skillではショート動画台本の欠落または形式誤り（eval-2: 欠落, eval-3: ロングフォーム台本を生成）",
+    "with_skillは全テストケースで全アサーションをパス（3/3で100%）",
+    "スキルによりトークン数は約35%増加するが、出力の一貫性と完全性が大幅に向上",
+    "「ショート動画台本」の要件明確化が最重要：without_skillは10分ポッドキャスト台本を生成してしまう"
+  ]
+}

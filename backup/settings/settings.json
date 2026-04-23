@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch"
+    ]
+  },
+  "enabledPlugins": {
+    "skill-creator@claude-plugins-official": true
+  },
+  "model": "claude-opus-4-7"
+}

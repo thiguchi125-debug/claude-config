@@ -1,0 +1,14 @@
+{
+  "eval_id": 1,
+  "eval_name": "podcast-transcript-habits",
+  "prompt": "ポッドキャスト文字起こし（習慣化の科学）からコンテンツ一式を生成",
+  "assertions": [
+    {"id": "has_blog", "text": "ブログ記事が含まれている（見出し構造あり、500字以上）"},
+    {"id": "has_twitter_thread", "text": "Twitter/Xスレッドが含まれている（複数ツイートあり）"},
+    {"id": "has_instagram", "text": "Instagramキャプションが含まれている（ハッシュタグあり）"},
+    {"id": "has_linkedin", "text": "LinkedIn投稿が含まれている"},
+    {"id": "has_video_script", "text": "ショート動画台本が含まれている（シーン分けあり）"},
+    {"id": "preserves_key_data", "text": "元素材の具体的データが保持されている（「3倍」「60%」など）"},
+    {"id": "platform_tone_diff", "text": "各プラットフォームでトーンが書き分けられている"}
+  ]
+}

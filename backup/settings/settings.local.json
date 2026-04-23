@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude --version)",
+      "Bash(python -m scripts.aggregate_benchmark /Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/content-pipeline-workspace/iteration-1 --skill-name content-pipeline)",
+      "Bash(python3 -m scripts.aggregate_benchmark /Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/content-pipeline-workspace/iteration-1 --skill-name content-pipeline)",
+      "Bash(nohup python3:*)",
+      "Bash(echo \"PID: $!\")",
+      "Read(//usr/local/bin/**)",
+      "Read(//opt/homebrew/**)",
+      "Bash(cp /Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/skill-creator/eval-viewer/generate_review.py /tmp/generate_review_fixed.py)",
+      "Bash(sed -i '' 's/-> dict | None:/-> \"dict | None\":/g; s/benchmark: dict | None = None,/benchmark: \"dict | None\" = None,/g' /tmp/generate_review_fixed.py)",
+      "Bash(python3 /tmp/generate_review_fixed.py /Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/content-pipeline-workspace/iteration-1 --skill-name content-pipeline --benchmark /Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/content-pipeline-workspace/iteration-1/benchmark.json --static /tmp/content-pipeline-review.html)",
+      "Bash(sed -i '' '1s/^/from __future__ import annotations\\\\n/' /tmp/generate_review_fixed.py)",
+      "Bash(cp generate_review.py /tmp/generate_review_fixed.py)",
+      "Bash(open:*)",
+      "mcp__claude_ai_Notion__notion-create-pages",
+      "mcp__claude_ai_Notion__notion-update-page",
+      "mcp__claude_ai_Notion__notion-search",
+      "mcp__claude_ai_Notion__notion-fetch",
+      "WebFetch(domain:www.47news.jp)",
+      "WebFetch(domain:www.mext.go.jp)",
+      "WebFetch(domain:www.city.kameyama.mie.jp)",
+      "WebFetch(domain:www.pref.mie.lg.jp)",
+      "WebFetch(domain:www.kensakusystem.jp)",
+      "WebFetch(domain:go2senkyo.com)",
+      "WebFetch(domain:www.kobe-np.co.jp)",
+      "WebFetch(domain:www.city.osaka.lg.jp)",
+      "WebFetch(domain:www.med.or.jp)",
+      "WebFetch(domain:sakawa-pta.jimdofree.com)",
+      "WebFetch(domain:iwasetakeshi.net)",
+      "WebFetch(domain:www.kusakawa-ouen.info)",
+      "WebFetch(domain:x.com)",
+      "WebFetch(domain:the-issues.jp)",
+      "mcp__claude_ai_Google_Calendar__list_events",
+      "mcp__claude_ai_Gmail__search_threads",
+      "mcp__claude_ai_Notion__notion-query-database-view"
+    ]
+  }
+}

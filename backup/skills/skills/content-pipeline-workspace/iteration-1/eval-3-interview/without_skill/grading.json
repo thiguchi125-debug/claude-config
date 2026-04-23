@@ -1,0 +1,35 @@
+{
+  "eval_id": 3,
+  "eval_name": "entrepreneur-interview-suzuki",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "ブログ記事が含まれている",
+      "passed": true,
+      "evidence": "「## 4. ブログ記事」セクションに見出し構造ありのブログ記事が生成されている。"
+    },
+    {
+      "text": "3種のSNS投稿が含まれている",
+      "passed": false,
+      "evidence": "Twitter/X（3バリエーション）とLinkedIn投稿は生成されたが、Instagramキャプションが存在しない。"
+    },
+    {
+      "text": "ショート動画台本が含まれている（シーン分けあり）",
+      "passed": false,
+      "evidence": "「動画/ポッドキャスト台本」として10分構成のロングフォーム台本が生成された。TikTok/Reels/Shorts向けの60秒ショート動画台本ではない。"
+    },
+    {
+      "text": "インタビューの印象的な引用が保持されている",
+      "passed": true,
+      "evidence": "「10年後に後悔しないか？」「8割の準備ができたら走り出す」「準備が整ってから」全て言及。"
+    },
+    {
+      "text": "感情に訴えるストーリーテリングになっている",
+      "passed": true,
+      "evidence": "ブログ記事にストーリー性あり。ただし要約・FAQ・インフォグラフィックデータなど不要な出力が多数含まれ、焦点が散漫。"
+    }
+  ],
+  "pass_count": 3,
+  "total_count": 5,
+  "pass_rate": 0.6
+}
