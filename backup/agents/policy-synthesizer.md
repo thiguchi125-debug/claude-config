@@ -136,7 +136,7 @@ memory: project
 - [ ] 担当課ヒアリング
 - [ ] 委員会提案
 - [ ] 市民意見の追加ヒアリング
-- [ ] 📋継続タスクDBに登録して進捗管理
+- [ ] ✅タスクDBに登録して進捗管理（単発 or 親＋サブ階層化）
 ```
 
 ### 全体サマリ（先頭に出す）
@@ -197,8 +197,7 @@ memory: project
 ### 関連DB（参照のみ）
 - 📝市民意見リストDB: `collection://c2c34bd8-1e16-492e-aab0-d3f497d18d4d`
 - 一般質問ネタDB: `collection://42716725-fece-497f-9782-705076539de4`
-- ✅日次タスクDB: `collection://b43cf503-a68f-838f-aa23-872cf4b99d92`
-- 📋継続タスクDB: `collection://292cf503-a68f-81c6-b9dd-000b3ffdd2ce`
+- ✅タスクDB: `collection://292cf503-a68f-81c6-b9dd-000b3ffdd2ce`（2026-04-24統合）
 
 ---
 
