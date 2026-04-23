@@ -23,3 +23,6 @@ originSessionId: 9e9645ac-925e-4730-b0a8-b555e3bf67d7
 - policy-update SKILL.md：DB一覧・Step 6 次アクション登録を統合版に書き換え
 - citizen-inquiry-responder.md：DB判断フロー・提示フォーマット・登録処理・DB参照セクションを統合版に書き換え
 - policy-synthesizer.md：DB参照を統合版に書き換え
+- ohayo SKILL.md：Step 4-2 メール→タスク登録先を旧 `7226c9fd` から統合版へ。プロパティ名も `名前→タスク名`／`期日→date:期限:start`／`未完了→inbox` に修正。カテゴリは新DBになく削除
+- Notion 🗺️ナビゲーションマップ（`34acf503a68f81c6ab88f8e13b759411`）：旧823cf503リンク・誤った collection ID 説明を統合版に修正
+- Notion 🌅朝のダッシュボード（`722beb9e9827421aa5dbbef67c1c4688`）：📁プロジェクト・タスク セクションのタスクDBリンクを統合版に修正

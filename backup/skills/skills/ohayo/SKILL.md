@@ -114,14 +114,14 @@ description: 毎朝「おはよう」「おはよ」「morning」「朝のブリ
 
 #### 4-2. 要対応メールをタスクデータベースに追加
 
-広告・ニュースレター以外で対応が必要と判断したメールを `mcp__claude_ai_Notion__notion-create-pages` でタスクとして追加する。
+広告・ニュースレター以外で対応が必要と判断したメールを `mcp__claude_ai_Notion__notion-create-pages` で統合タスクDBに追加する。
 
-- parent: `data_source_id: 7226c9fd-65d0-471e-81dd-6f95b00e793b`
-- 名前: `【メール確認】送信者: 件名`
-- ステータス: `未完了`
+- parent: `data_source_id: 292cf503-a68f-81c6-b9dd-000b3ffdd2ce`
+- タスク名: `【メール確認】送信者: 件名`
+- ステータス: `inbox`
 - 優先度: 内容に応じて `高` / `中` / `低`
-- カテゴリ: 内容に応じて `議会活動` / `SNS・広報` / `地域活動` / `その他`
-- 期日: 今日の日付
+- date:期限:start: 今日の日付（YYYY-MM-DD）
+- date:期限:is_datetime: 0
 
 すでに同じ件名のタスクが存在する場合は追加しない（重複防止）。広告・PR・定期メルマガは追加しない。
 
