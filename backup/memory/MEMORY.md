@@ -12,3 +12,4 @@
 - [kameyama-researcherエージェント新設](project_kameyama_researcher.md) — 2026-04-23新設。亀山市ローカル調査専任。policy-researcherと並列起動前提。添付資料はknowledge/配下
 - [claude-configバックアップ](reference_claude_config_backup.md) — Claude Code CLIの設定・エージェント・スキルをGitHub(thiguchi125-debug/claude-config)へ自動バックアップ。新PC復元はrestore.sh
 - [市民相談→タスク登録連携](feedback_citizen_inquiry_task_registration.md) — citizen-inquiry-responderは次アクションを日次/継続DBにタスク登録候補として提示→同意後登録まで1パスで実行
+- [政策アップデートシステム](project_policy_update_system.md) — 2026-04-23新設。/policy-update＋policy-synthesizer＋🎯政策候補DB（ds:6f1895ac-）＋NotebookLM連携。週次/月次/オンデマンド3モード、承認ワークフロー必須
