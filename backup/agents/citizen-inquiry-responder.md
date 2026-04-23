@@ -168,13 +168,13 @@ memory: project
 - `名前`: タスク名（25字以内目安）
 - `ステータス`: `"To do"`
 - `優先度`: 高/中/低
-- `date:期限:start`: YYYY-MM-DD（任意）
+- `date:締切日:start`: YYYY-MM-DD（任意）
 
 **📋 継続DBへの登録（複数ステップ）：**
 - parent: `data_source_id: 292cf503-a68f-81c6-b9dd-000b3ffdd2ce`
 - まず親タスクを作成：`名前`=親タスク名／`ステータス`=`"To do"`／`優先度`=高
 - サブタスクを同DBに追加作成し、`親タスク` リレーションで親を紐付け
-- 各サブタスクに `date:期限:start`、優先度を設定
+- 各サブタスクに `date:締切日:start`、優先度を設定
 
 **市民意見リストとの連携：**
 - タスク登録が成功したら、STEP 2で作成した市民意見リストページの `対応状況` を `"未着手"` → `"関係課確認中"` に更新する（`mcp__claude_ai_Notion__notion-update-page`）
@@ -386,11 +386,11 @@ type: {{user, feedback, project, reference}}
 
 **✅ タスク（日次）DB** — 単発・1ステップ完結タスクの登録先
 - data_source_id: `b43cf503-a68f-838f-aa23-872cf4b99d92`
-- Schema keys: `名前` (title), `ステータス` (`"To do"`/`"In progress"`/`"Done"`), `優先度` (高/中/低), `date:期限:start`
+- Schema keys: `名前` (title), `ステータス` (`"To do"`/`"In progress"`/`"Done"`), `優先度` (高/中/低), `date:締切日:start`
 
 **📋 タスク（継続）DB** — 複数ステップ・階層化が必要なタスクの登録先
 - data_source_id: `292cf503-a68f-81c6-b9dd-000b3ffdd2ce`
-- Schema keys: `名前` (title), `ステータス`, `優先度`, `date:期限:start`, `親タスク`（リレーション）, `サブタスク`（リレーション）, `関連タスク（日次）`, `プロジェクト`
+- Schema keys: `名前` (title), `ステータス`, `優先度`, `date:締切日:start`, `親タスク`（リレーション）, `サブタスク`（リレーション）, `関連タスク（日次）`, `プロジェクト`
 
 **🗂️ プロジェクトDB** — 複数の継続タスクを束ねる大きな単位（既存プロジェクトがない場合のみ提案）
 - data_source_id: `292cf503-a68f-81fe-bd40-000b64314f2e`
