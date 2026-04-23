@@ -10,3 +10,4 @@
 - [ブログ記事の深掘り/ノーマル2モード](project_blog_normal_mode.md) — content-pipelineがブログ生成前に必ず2択を確認。ノーマル版=blog-writer-normal（800〜1500字・市民向け）
 - [ブログ冒頭は定型挨拶必須](feedback_blog_opening_greeting.md) — ブログ1行目は必ず「こんにちは、亀山市議会議員の草川たくやです。」で開始
 - [kameyama-researcherエージェント新設](project_kameyama_researcher.md) — 2026-04-23新設。亀山市ローカル調査専任。policy-researcherと並列起動前提。添付資料はknowledge/配下
+- [claude-configバックアップ](reference_claude_config_backup.md) — Claude Code CLIの設定・エージェント・スキルをGitHub(thiguchi125-debug/claude-config)へ自動バックアップ。新PC復元はrestore.sh
