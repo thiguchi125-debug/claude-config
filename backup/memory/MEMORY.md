@@ -15,3 +15,4 @@
 - [speech-writerエージェント新設](project_speech_writer_agent.md) — 2026-04-24新設。歴代名演説の修辞知＋voice-dna融合。所信表明/祝辞/弔辞/街頭演説/基調講演の熱情スピーチ専任
 - [印刷物デザイン2エージェント新設](project_print_design_agents.md) — 2026-04-25新設。print-designer（HTML/CSS→PDF）＋photo-curator（草川ZPERSON=18ベストショット選定）。応援カードv7のノウハウを恒久化
 - [デザインリサーチエージェント新設](project_design_inspiration_researcher.md) — 2026-04-25新設。design-inspiration-researcher：政治家広報物事例を8軸分析→草川向け具体CSS仕様化→print-designerへ引き渡し
+- [デザインディレクター新設](project_design_director.md) — 2026-04-25新設。design-director：プロ級昇格専任。design tokens設計＋8原則レビュー＋A/B/Cバリアント。print-designerの上位ロール
