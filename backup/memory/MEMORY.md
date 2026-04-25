@@ -16,4 +16,5 @@
 - [印刷物デザイン2エージェント新設](project_print_design_agents.md) — 2026-04-25新設。print-designer（HTML/CSS→PDF）＋photo-curator（草川ZPERSON=18ベストショット選定）。応援カードv7のノウハウを恒久化
 - [デザインリサーチエージェント新設](project_design_inspiration_researcher.md) — 2026-04-25新設。design-inspiration-researcher：政治家広報物事例を8軸分析→草川向け具体CSS仕様化→print-designerへ引き渡し
 - [デザインディレクター新設](project_design_director.md) — 2026-04-25新設。design-director：プロ級昇格専任。design tokens設計＋8原則レビュー＋A/B/Cバリアント。print-designerの上位ロール
+- [政策アーカイブマイナー新設](project_policy_archive_miner.md) — 2026-04-25新設。policy-archive-miner：草川過去8年発言の議事録/ブログ/SNS横断抽出→テーマ別×時系列×論点別構造化。子育て・教育で試運転完了
 - [ニュースブリーフィングシステム](project_news_briefing_system.md) — 2026-04-25新設。news-briefingスキル＋📰ニュースDB(f2eefc66)＋cron(6:00 JST, trig_01WXgkt4)＋ohayo統合。6カテゴリ×関心6テーマ自動収集
