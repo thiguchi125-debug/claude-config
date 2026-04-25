@@ -19,3 +19,4 @@
 - [政策アーカイブマイナー新設](project_policy_archive_miner.md) — 2026-04-25新設。policy-archive-miner：草川過去8年発言の議事録/ブログ/SNS横断抽出→テーマ別×時系列×論点別構造化。子育て・教育で試運転完了
 - [政策バリデーター新設](project_policy_validator.md) — 2026-04-25新設。policy-validator：EBPM 8軸検証(証拠/比較/費用/法/連続性/voice-dna/KPI/反論)→APPROVE/REVISE/REJECT判定。policy-synthesizer→🎯政策候補DB間のゲート
 - [ニュースブリーフィングシステム](project_news_briefing_system.md) — 2026-04-25新設。news-briefingスキル＋📰ニュースDB(f2eefc66)＋cron(6:00 JST, trig_01WXgkt4)＋ohayo統合。6カテゴリ×関心6テーマ自動収集
+- [カレンダーIDは kusakawa.taku](feedback_calendar_id_kusakawa.md) — 草川の個人カレンダーIDは `kusakawa.taku@gmail.com`（kusagawa は誤り）。2026-04-26朝に予定6件取りこぼした事故あり
