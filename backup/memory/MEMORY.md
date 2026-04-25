@@ -13,3 +13,4 @@
 - [市民相談→タスク登録連携](feedback_citizen_inquiry_task_registration.md) — citizen-inquiry-responderは次アクションを✅タスクDB（単発 or 親＋サブ階層化）へ登録候補として提示→同意後登録まで1パスで実行
 - [政策アップデートシステム](project_policy_update_system.md) — 2026-04-23新設。/policy-update＋policy-synthesizer＋🎯政策候補DB（ds:6f1895ac-）＋NotebookLM連携。週次/月次/オンデマンド3モード、承認ワークフロー必須
 - [speech-writerエージェント新設](project_speech_writer_agent.md) — 2026-04-24新設。歴代名演説の修辞知＋voice-dna融合。所信表明/祝辞/弔辞/街頭演説/基調講演の熱情スピーチ専任
+- [印刷物デザイン2エージェント新設](project_print_design_agents.md) — 2026-04-25新設。print-designer（HTML/CSS→PDF）＋photo-curator（草川ZPERSON=18ベストショット選定）。応援カードv7のノウハウを恒久化
