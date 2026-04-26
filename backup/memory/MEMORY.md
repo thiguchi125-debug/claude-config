@@ -29,3 +29,5 @@
 - [選挙地区戦略エージェント新設](project_electoral_district_strategist.md) — 2026-04-26新設。electoral-district-strategist：4象限分類・街宣ルートROI最適化・当落ライン分析・公選法遵守徹底。2026-10-25選挙準備の定量的頭脳
 - [9地区訪問×4象限統合＋朝ダッシュボード選挙化](project_election_dashboard_integration.md) — 2026-04-26統合。visit_strategy_integration.md＋ohayoスキル選挙ダッシュボード追加＋週次cron(trig_01KfnWW7sA6xGTH3ZX251p5b)。月末ゲートで4象限再評価サイクル
 - [2026市議選歩いて聞く11,447軒](project_2026senkyo_visit.md) — 9地区11,447軒/2026-09-30期限/草川単独/オプションA採用/効率25軒/h死守。Notion(34ecf503...94f0)・スクリプト・Calendar5本登録済
+- [禁止用語リスト](feedback_forbidden_words.md) — 「悉皆」等の難読語は禁止。市民向け平易な日本語に置換（2026-04-27指摘）
+- [Notion update_content の落とし穴](feedback_notion_update_content_pitfalls.md) — 複数セクション一括置換でサイレント失敗・テーブル番号狂い・誤字混入。fetch検証＆固有名詞コピペ徹底
