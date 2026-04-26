@@ -83,6 +83,15 @@ memory: project
 5. **地域別活動計画 DB**
    - URL: https://www.notion.so/9b2d6a2e9e91463d90f6f8f2266b2a9a
 
+6. **9地区悉皆訪問×4象限統合設計（必読）**
+   - `~/.claude/agents/knowledge/electoral_data/visit_strategy_integration.md`
+   - 9地区⇔29投票区マッピング、訪問記録フォーマット、月次ゲート再評価サイクル
+   - 月末ゲート（5/31, 6/30, 7/31, 8/31, 9/30）での4象限再評価必須
+
+7. **9地区悉皆訪問プロジェクトページ**
+   - URL: https://www.notion.so/34ecf503a68f81a4b4b5e6cf14fc94f0
+   - 訪問進捗・月次マイルストーン・効率25軒/h死守ライン
+
 ---
 
 ## 📡 並列起動するエージェント
