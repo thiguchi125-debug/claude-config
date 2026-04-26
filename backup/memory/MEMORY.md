@@ -21,3 +21,4 @@
 - [ニュースブリーフィングシステム](project_news_briefing_system.md) — 2026-04-25新設。news-briefingスキル＋📰ニュースDB(f2eefc66)＋cron(6:00 JST, trig_01WXgkt4)＋ohayo統合。6カテゴリ×関心6テーマ自動収集
 - [カレンダーIDは kusakawa.taku](feedback_calendar_id_kusakawa.md) — 草川の個人カレンダーIDは `kusakawa.taku@gmail.com`（kusagawa は誤り）。2026-04-26朝に予定6件取りこぼした事故あり
 - [community-rally-speakerエージェント新設](project_community_rally_speaker.md) — 2026-04-26新設。自治会総会・地区集会の短尺アジ挨拶専任。speech-writer（式典・長尺）と棲み分け。地区別関係性メモDB(ds:520fe503-)連携
+- [おやすみシステム新設](project_oyasumi_system.md) — 2026-04-26新設。oyasumiスキル＋📔デイリーサマリ親(34ecf503...8182)＋📅週次レポート親(34ecf503...81b0)。完全自動化：1日集約・タスク繰越し・nichijo補完・政策ドラフト・朝ダッシュボード差込。金曜のみ週次レポート
