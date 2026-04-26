@@ -3,6 +3,7 @@
 - [Obsidianメモ確認](feedback_obsidian_memo.md) — タスク完了・スキル習得・トラブル解決時にObsidianへのメモが必要か確認する
 - [nichijoモバイル版＋PC仕上げモード](project_nichijo_mobile.md) — モバイルで📱付き下書き→PC /nichijo 仕上げモードで深掘り＆上書き仕上げの2段構成
 - [スキルトリガー一覧Notion](reference_skill_triggers.md) — 草川たくや用スキルのトリガーワード早見表をNotionに集約（a0631315配下）
+- [エージェントトリガー一覧Notion](reference_agent_triggers.md) — 草川たくや用エージェント18本の発火ワード早見表（a0631315配下、id:34ecf503...818a）
 - [コンテンツパイプライン品質改善](project_content_pipeline_quality.md) — voice-dna.md＋content-editor品質ゲート導入（2026-04-22）。原稿品質低下時はここを参照
 - [声のDNA抽出時の注意](feedback_voice_dna_extraction.md) — サンプル不足時にAI生成物の定型句を真の声として誤認しない運用ルール
 - [タスク・プロジェクトDB構成](project_notion_task_project_db.md) — 2026-04-24日次DB統合。✅タスクDB(292c_c, inbox起点＋親/サブ階層化)／🗂️プロジェクト(292c_fe, 進捗率ロールアップあり)
