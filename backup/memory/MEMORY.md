@@ -33,3 +33,5 @@
 - [禁止用語リスト](feedback_forbidden_words.md) — 「悉皆」等の難読語は禁止。市民向け平易な日本語に置換（2026-04-27指摘）
 - [Notion update_content の落とし穴](feedback_notion_update_content_pitfalls.md) — 複数セクション一括置換でサイレント失敗・テーブル番号狂い・誤字混入。fetch検証＆固有名詞コピペ徹底
 - [content-pipeline配下エージェントのグローバル登録必須](feedback_content_pipeline_agent_registration.md) — blog-writer/blog-writer-normal/notion-saver/kusakawa-voice-analystは~/.claude/agents/に配置必須（2026-04-28対応）
+- [📅ミーティングノートDB＋🏛会議体マスタDB新設](project_meeting_notes_organization_db.md) — 2026-04-27新設。📅DB(ds:26d7848d-)＋🏛マスタ(ds:46414643-)を会議ハブ(a247fd5d)配下に。4分類(議会公務/地域・団体/市民相談/その他)+未分類。既存AIノート112件移行・散在4ページ会議体登録済み
+- [nichijoスキル整理モード追加](project_nichijo_organize_mode.md) — 2026-04-28実装。当日Notion新規ページの自動分類→各DB振り分けR1-R5。仕上げモード時はPart Cとして統合実行(U1-U4が3系統並列)。会議体マスタ自動マッチ4件対応
