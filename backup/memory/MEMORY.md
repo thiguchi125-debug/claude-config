@@ -1,5 +1,6 @@
 # Memory Index
 
+- [ニュースDBクエリの落とし穴](feedback_news_db_query_pitfall.md) — 2026-04-29事故。ohayoでview_url直叩きしないと未検出になる。data_source_url の database/data_source 取り違え注意
 - [iJAMP連携(news-briefing統合)](project_ijamp_integration.md) — 2026-04-27統合。時事通信社iJAMPの5系統配信メールをGmail MCP経由で取得→news-briefingカテゴリ⑦。著作権厳守(ブログSNS転載禁止)
 - [Obsidianメモ確認](feedback_obsidian_memo.md) — タスク完了・スキル習得・トラブル解決時にObsidianへのメモが必要か確認する
 - [nichijoモバイル版＋PC仕上げモード](project_nichijo_mobile.md) — モバイルで📱付き下書き→PC /nichijo 仕上げモードで深掘り＆上書き仕上げの2段構成

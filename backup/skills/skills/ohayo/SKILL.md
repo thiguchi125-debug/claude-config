@@ -33,16 +33,47 @@ description: 毎朝「おはよう」「おはよ」「morning」「朝のブリ
 以下を**並行して**取得する。
 
 #### 3-0. 📰 ニュースDB — 今朝のニュース
-`mcp__claude_ai_Notion__notion-query-database-view` または `notion-search` で本日のニュースを取得する。
 
-- data_source_id: `29e5c1a2-d64d-4822-81fd-0d642c3f07bc`
-- filter: `日付` が今日（YYYY-MM-DD）のもの
-- 取得するプロパティ: `見出し` / `カテゴリ` / `関心テーマ` / `情報源` / `亀山関連度` / `URL` / `議会活用メモ`
+**取得方法（必ずこの順序で実施・分岐を勝手に変えないこと）**：
+
+##### Step A（必須・最初に試す）: notion-query-database-view で Default view を直接叩く
+
+```
+view_url: https://www.notion.so/f2eefc669dd54648bbcdacdc8afa1158?v=9d34f9a4-2bc1-4381-a31b-8f8c8ac719e2
+```
+
+これでニュースDB全件（直近1週間程度）を一発取得できる。`日付` プロパティで本日（YYYY-MM-DD）のものをローカルでフィルタする。**Default view にはフィルタが無いため、全件返ってくる前提で日付フィルタは取得後に適用すること**。
+
+##### Step B（Step A で日付プロパティを絞り込めなかった場合のみ）: notion-search でDB内検索
+
+```
+data_source_url: collection://29e5c1a2-d64d-4822-81fd-0d642c3f07bc
+filters: { "created_date_range": { "start_date": "YYYY-MM-DD", "end_date": "YYYY-MM-DD+1" } }
+query: "."   ← セマンティック検索を空回りさせる空クエリ。`"ニュース"` 等の単語は禁止（見出しに含まれないため0件になる）
+```
+
+##### ⚠️ よくある失敗パターン（過去事故 2026-04-29 踏まえ）
+
+**事故事例（2026-04-29）**：
+- `notion-search query="ニュース"` を叩いたが、ニュース見出しに「ニュース」の語がなく**0件返却**
+- `data_source_url: collection://f2eefc66-fa30-...` は**database top-level ID**であり data source IDではないため `validation_error: Invalid Data Source URL`
+- 結果、cronで本日分8件が正常に収集されていたにも関わらず「未収集」と誤判定
+
+**対策**：
+- Step A の view_url は固定値。**変更しないこと**
+- collection ID を間違えない: ✅`29e5c1a2-d64d-4822-81fd-0d642c3f07bc`（data source）／❌`f2eefc66-fa30-4f57-...`（database top-level、data_source_url には使えない）
+- query パラメータには `"."` または空文字に近いものを使う。**意味のある単語は禁止**
+
+##### 取得後の処理
+
+- `日付` プロパティで本日（YYYY-MM-DD）のものをローカルフィルタ
 - ソート: `亀山関連度` 降順、同順なら `カテゴリ` 順
-- 全件取得（5〜10件想定）
+- 取得するプロパティ: `見出し` / `カテゴリ` / `関心テーマ` / `情報源` / `亀山関連度` / `userDefined:URL` / `議会活用メモ`
+- 全件抽出（5〜10件想定）
 
-**当日のニュースが0件だった場合**（cronが失敗 or まだ早朝で未実行）:
+**当日のニュースが本当に0件だった場合**（Step A・B 両方を試した上で確実に0件と確認できた場合のみ）:
 - news-briefingスキルをライブ実行する代わりに「⚠️ 本日のニュースは未収集です」と表示し、`/news-briefing` で手動実行できる旨を案内する
+- **Step A を試さずに「未収集」と判定するのは禁止**
 - フルブリーフィング処理（WebSearch多用）はohayo内では実行しない（重いため別スキルへ委譲する設計）
 
 #### 3-1. 朝のダッシュボード
