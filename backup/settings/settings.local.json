@@ -47,7 +47,8 @@
       "WebFetch(domain:www.city.izumo.shimane.jp)",
       "WebFetch(domain:www.city.fukui.lg.jp)",
       "WebFetch(domain:www.nies.go.jp)",
-      "Bash(grep -v -E \"\\(\\\\.DS_Store|cache|\\\\.log$\\)\")"
+      "Bash(grep -v -E \"\\(\\\\.DS_Store|cache|\\\\.log$\\)\")",
+      "WebFetch(domain:www.city.ota.tokyo.jp)"
     ]
   }
 }
