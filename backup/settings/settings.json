@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebSearch"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "model": "claude-opus-4-7",
   "hooks": {
@@ -21,5 +22,6 @@
   "enabledPlugins": {
     "skill-creator@claude-plugins-official": true
   },
-  "theme": "auto"
+  "theme": "auto",
+  "skipAutoPermissionPrompt": true
 }
