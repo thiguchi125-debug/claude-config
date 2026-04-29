@@ -36,3 +36,4 @@
 - [content-pipeline配下エージェントのグローバル登録必須](feedback_content_pipeline_agent_registration.md) — blog-writer/blog-writer-normal/notion-saver/kusakawa-voice-analystは~/.claude/agents/に配置必須（2026-04-28対応）
 - [📅ミーティングノートDB＋🏛会議体マスタDB新設](project_meeting_notes_organization_db.md) — 2026-04-27新設。📅DB(ds:26d7848d-)＋🏛マスタ(ds:46414643-)を会議ハブ(a247fd5d)配下に。4分類(議会公務/地域・団体/市民相談/その他)+未分類。既存AIノート112件移行・散在4ページ会議体登録済み
 - [nichijoスキル整理モード追加](project_nichijo_organize_mode.md) — 2026-04-28実装。当日Notion新規ページの自動分類→各DB振り分けR1-R5。仕上げモード時はPart Cとして統合実行(U1-U4が3系統並列)。会議体マスタ自動マッチ4件対応
+- [nichijo＋oyasumiにCalendar連携](project_calendar_integration_nichijo_oyasumi.md) — 2026-04-29実装。当日Calendar(kusakawa.taku@gmail.com)から議員業務KEEP分を自動抽出→日次ログ「📅本日のスケジュール」セクションに反映。nichijo Step1.5新設・oyasumi Step2分岐2-A/2-B
