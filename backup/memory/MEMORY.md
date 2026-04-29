@@ -38,3 +38,4 @@
 - [nichijoスキル整理モード追加](project_nichijo_organize_mode.md) — 2026-04-28実装。当日Notion新規ページの自動分類→各DB振り分けR1-R5。仕上げモード時はPart Cとして統合実行(U1-U4が3系統並列)。会議体マスタ自動マッチ4件対応
 - [nichijo＋oyasumiにCalendar連携](project_calendar_integration_nichijo_oyasumi.md) — 2026-04-29実装。当日Calendar(kusakawa.taku@gmail.com)から議員業務KEEP分を自動抽出→日次ログ「📅本日のスケジュール」セクションに反映。nichijo Step1.5新設・oyasumi Step2分岐2-A/2-B
 - [ブログ／SNS DBのステータス選択肢ミスマッチ](feedback_blog_sns_db_status_options.md) — 2026-04-29発覚。ブログ／SNS管理DBのstatus selectは未着手/進行中/完了のみ。スキル指定の「下書き完成」が無く進行中で代用中
+- [仕上げモードU4後に日次ログ追記必須](feedback_nichijo_finalize_log_append.md) — 2026-04-29発覚。仕上げモード生成物（ブログ・SNS・軌道修正の経緯）が当日活動ログへ自動反映されない仕様の穴。U4後に追記ステップを恒久化
