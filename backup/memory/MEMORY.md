@@ -37,3 +37,4 @@
 - [📅ミーティングノートDB＋🏛会議体マスタDB新設](project_meeting_notes_organization_db.md) — 2026-04-27新設。📅DB(ds:26d7848d-)＋🏛マスタ(ds:46414643-)を会議ハブ(a247fd5d)配下に。4分類(議会公務/地域・団体/市民相談/その他)+未分類。既存AIノート112件移行・散在4ページ会議体登録済み
 - [nichijoスキル整理モード追加](project_nichijo_organize_mode.md) — 2026-04-28実装。当日Notion新規ページの自動分類→各DB振り分けR1-R5。仕上げモード時はPart Cとして統合実行(U1-U4が3系統並列)。会議体マスタ自動マッチ4件対応
 - [nichijo＋oyasumiにCalendar連携](project_calendar_integration_nichijo_oyasumi.md) — 2026-04-29実装。当日Calendar(kusakawa.taku@gmail.com)から議員業務KEEP分を自動抽出→日次ログ「📅本日のスケジュール」セクションに反映。nichijo Step1.5新設・oyasumi Step2分岐2-A/2-B
+- [ブログ／SNS DBのステータス選択肢ミスマッチ](feedback_blog_sns_db_status_options.md) — 2026-04-29発覚。ブログ／SNS管理DBのstatus selectは未着手/進行中/完了のみ。スキル指定の「下書き完成」が無く進行中で代用中
