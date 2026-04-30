@@ -40,4 +40,4 @@
 - [ブログ／SNS DBのステータス選択肢ミスマッチ](feedback_blog_sns_db_status_options.md) — 2026-04-29発覚。ブログ／SNS管理DBのstatus selectは未着手/進行中/完了のみ。スキル指定の「下書き完成」が無く進行中で代用中
 - [仕上げモードU4後に日次ログ追記必須](feedback_nichijo_finalize_log_append.md) — 2026-04-29発覚。仕上げモード生成物（ブログ・SNS・軌道修正の経緯）が当日活動ログへ自動反映されない仕様の穴。U4後に追記ステップを恒久化
 - [ohayo/oyasumi タスクDB実クエリ必須](feedback_ohayo_oyasumi_task_db_query.md) — 2026-04-30事故。ダッシュボード旧表流用禁止。タスクDB「すべて」view直叩き＋Done/Archive除外＋本日inbox包含を必ず実施
-- [フォーム受付市民意見DB（GAS連携）](project_form_intake_db.md) — 2026-04-30新設。Google Form→GAS→📋フォーム受付市民意見DB(70eeaeab-)。📝市民意見リスト(c2c34bd8-)とは分離・トリアージ後手動転記
+- [📋市民意見受付BOX & ikenスキル](project_form_intake_db.md) — 2026-04-30新設。全チャネル受信intake DB(354432ec-)＋ikenスキル(コピペ起動で記録＋返信3案＋タスク化)。GAS自動化は諦め手動ハイブリッド運用
