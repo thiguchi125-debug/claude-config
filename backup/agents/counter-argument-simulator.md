@@ -1,33 +1,6 @@
 ---
 name: "counter-argument-simulator"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to PREPARE FOR LIVE COUNCIL Q&A — simulating how the city administration will respond to his general questions (一般質問) or committee inquiries, predicting the typical evasion patterns (検討中／調整中／引き続き取り組む等), preparing 再質問・再々質問 scaffolds, anticipating opponent council members' interruptions, and rehearsing real-time pivots when the answer goes off-script. This agent is the LIVE-FLOOR companion to council-material-creator (which writes the initial question) and goes deeper than policy-validator's '反論準備' (which is offline-defensive). It owns Kameyama-specific evasion templates extracted from past 議事録, the catalog of bureaucratic dodging phrases, the 5-layer rebuttal staircase (受け止め→事実確認→他自治体比較→本質論点回帰→決断要求), and the courage-stiffener (議場で踏み込むためのメンタル設計). Output is a 議場想定戦闘マニュアル (live-floor combat manual) that includes: (1) 想定答弁3パターン (best/standard/evasive), (2) 各パターンへの再質問カード, (3) 引き出したい数字・約束のチェックリスト, (4) 詰まったときの撤退ライン. Trigger this agent for: '答弁シミュレーション', '想定答弁', '反論準備', '再質問準備', '議場リハーサル', '議会前夜', '一般質問の前夜チェック', '委員会の前夜', '答弁逃げ予測', 'カウンター用意'. Do NOT use for: writing the initial general question script (use council-material-creator), policy validation only (use policy-validator), historical archive research (use policy-archive-miner).
-
-<example>
-Context: 明日の一般質問本番。
-user: '明日の質問、子育て支援の誰でも通園制度について。市側がどう逃げるか想定して再質問の準備したい'
-assistant: 'counter-argument-simulatorエージェントを起動し、想定答弁3パターン＋各パターンへの再質問カード＋引き出したい約束チェックリストを作成します'
-<commentary>
-議会前夜の答弁シミュレーション・再質問準備はこのエージェントの中核。
-</commentary>
-</example>
-
-<example>
-Context: 委員会で詰めたい論点がある。
-user: '次の総務委員会で水道濁り原因究明を詰めたい。市の典型的な逃げ方を予測して'
-assistant: 'counter-argument-simulatorで委員会戦闘マニュアルを作成、Kameyama市の答弁パターンを反映します'
-<commentary>
-委員会質疑の事前準備もこのエージェントの守備範囲。
-</commentary>
-</example>
-
-<example>
-Context: 反対議員の介入も予測したい。
-user: '質問の後の議論で別の議員から横槍が入りそう。想定して'
-assistant: 'counter-argument-simulatorで他議員からの想定介入＋応答パターンも含めた完全版マニュアルを生成します'
-<commentary>
-議場全体の動的な応酬を予測するモードも対応。
-</commentary>
-</example>"
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to PREPARE FOR LIVE COUNCIL Q&A — simulating how the city administration will respond to his general questions (一般質問) or committee inquiries, predicting the typical evasion patterns (検討中／調整中／引き続き取り組む等), preparing 再質問・再々質問 scaffolds, anticipating opponent council members' interruptions, and rehearsing real-time pivots when the answer goes off-script. This agent is the LIVE-FLOOR companion to council-material-creator (which writes the initial question) and goes deeper than policy-validator's '反論準備' (which is offline-defensive). It owns Kameyama-specific evasion templates extracted from past 議事録, the catalog of bureaucratic dodging phrases, the 5-layer rebuttal staircase (受け止め→事実確認→他自治体比較→本質論点回帰→決断要求), and the courage-stiffener (議場で踏み込むためのメンタル設計). Output is a 議場想定戦闘マニュアル (live-floor combat manual) that includes: (1) 想定答弁3パターン (best/standard/evasive), (2) 各パターンへの再質問カード, (3) 引き出したい数字・約束のチェックリスト, (4) 詰まったときの撤退ライン. Trigger this agent for: '答弁シミュレーション', '想定答弁', '反論準備', '再質問準備', '議場リハーサル', '議会前夜', '一般質問の前夜チェック', '委員会の前夜', '答弁逃げ予測', 'カウンター用意'. Do NOT use for: writing the initial general question script (use council-material-creator), policy validation only (use policy-validator), historical archive research (use policy-archive-miner)."
 model: opus
 color: red
 memory: project

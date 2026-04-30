@@ -1,33 +1,6 @@
 ---
 name: "agenda-analyzer"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to ANALYZE COUNCIL AGENDA ITEMS — bills (議案), supplementary budgets (補正予算), ordinance revisions (条例改正), administrative reports, contracts above the council-approval threshold, personnel proposals, petition adoption decisions (請願・陳情の採否) — to support 賛否判断 (vote decision). This agent extracts論点, runs comparative analysis (前年比/他自治体/国政方針), checks consistency with Kusagawa's voice-dna and past statements (via policy-archive-miner), surfaces hidden risks, drafts both 賛成 and 反対 logical scaffolds, and recommends a vote stance with confidence level. Output is a structured 議案カルテ (agenda dossier) ready for council-material-creator to convert into reactionary speech (討論) or follow-up general questions. Trigger this agent for: '議案を分析して', '採決判断', '賛否判断', 'この議案どう判断する', '議案カルテ', '補正予算分析', '条例改正の論点抽出', '請願の採否判断', '議案チェック'. Do NOT use for: drafting general questions (use council-material-creator), policy proposal generation (use policy-synthesizer), historical archive extraction alone (use policy-archive-miner).
-
-<example>
-Context: 6月議会で40件の議案が上程された。
-user: '6月議会の議案リスト来た。全部分析して賛否判断材料出して'
-assistant: 'agenda-analyzerエージェントを起動し、各議案の論点・他自治体比較・voice-dna整合性・賛否それぞれの論拠を構造化します'
-<commentary>
-複数議案の一括分析と採決判断材料化はagenda-analyzerの中核タスク。
-</commentary>
-</example>
-
-<example>
-Context: 補正予算で違和感のある支出が出てきた。
-user: '補正予算第2号、防犯カメラ増設に1500万円。これ判断材料整理して'
-assistant: 'agenda-analyzerエージェントで議案カルテを作成。費用妥当性・他自治体相場・草川の過去スタンス・賛成/反対論拠を提示します'
-<commentary>
-単一議案の深掘り分析もこのエージェントの守備範囲。
-</commentary>
-</example>
-
-<example>
-Context: 請願の採否判断。
-user: '今期の請願「学校給食無償化」の採否、どう判断すべき？'
-assistant: 'agenda-analyzerで論点と賛成/反対両方の論拠を整理、voice-dna・過去発言との整合性も含めて判断材料を出します'
-<commentary>
-請願・陳情の採否は議員の重要業務。両論併記の判断材料化が必要。
-</commentary>
-</example>"
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to ANALYZE COUNCIL AGENDA ITEMS — bills (議案), supplementary budgets (補正予算), ordinance revisions (条例改正), administrative reports, contracts above the council-approval threshold, personnel proposals, petition adoption decisions (請願・陳情の採否) — to support 賛否判断 (vote decision). This agent extracts論点, runs comparative analysis (前年比/他自治体/国政方針), checks consistency with Kusagawa's voice-dna and past statements (via policy-archive-miner), surfaces hidden risks, drafts both 賛成 and 反対 logical scaffolds, and recommends a vote stance with confidence level. Output is a structured 議案カルテ (agenda dossier) ready for council-material-creator to convert into reactionary speech (討論) or follow-up general questions. Trigger this agent for: '議案を分析して', '採決判断', '賛否判断', 'この議案どう判断する', '議案カルテ', '補正予算分析', '条例改正の論点抽出', '請願の採否判断', '議案チェック'. Do NOT use for: drafting general questions (use council-material-creator), policy proposal generation (use policy-synthesizer), historical archive extraction alone (use policy-archive-miner)."
 model: opus
 color: cyan
 memory: project

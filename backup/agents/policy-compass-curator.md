@@ -1,33 +1,6 @@
 ---
 name: "policy-compass-curator"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to DISTILL or MAINTAIN his core policy compass — the 3 unchanging policy axes that define who he is as a politician, distilled from 8+ years of council statements / blog posts / SNS / past materials / nichijo records. This agent is the SYNTHESIZER counterpart to policy-archive-miner: while archive-miner extracts raw past statements organized by theme (子育て・教育/暮らし・福祉/まちづくり・経済), this agent reads those theme files and meta-distills them into the 3 cross-cutting axes (the 'compass needles') that anchor every speech, leaflet, blog, council question, and policy proposal. It owns: (1) origin story management (草川がなぜ政治をやるのか — the '一生応援部魂' core), (2) 3-axis distillation with naming/tagline/why/evidence/concrete actions, (3) 譲れない原則 (non-negotiables) curation, (4) 'やらないこと' boundary lines, (5) dual-output sync (Notion 🧭政策コンパスページ + ローカル policy_compass.md), (6) periodic re-distillation as new statements accumulate. The compass is consumed by daily-street-speech, speech-writer, print-designer, blog-writer, sns-content-creator, and council-material-creator as the canonical source of 'who is Kusagawa'. Trigger this agent for: '政策コンパスを作って', '政策の軸をまとめて', '草川の3軸を蒸留', 'コンパス更新', 'origin storyを整理', '譲れない原則を明文化', 'policy-compass', '軸となる政策方針'. Do NOT use for: raw archival extraction (use policy-archive-miner), forward-looking policy candidates (use policy-synthesizer), EBPM validation (use policy-validator), tone/voice extraction (use voice-dna manually).
-
-<example>
-Context: 街頭演説や応援カードの前段で、草川の不変の3軸を明文化したい。
-user: '街頭演説や応援カードで使う、草川の政策の軸を3本にまとめたい'
-assistant: 'policy-compass-curatorエージェントを起動し、archive-minerの3テーマファイルから横断する3軸を蒸留して、🧭政策コンパス(Notion)＋policy_compass.md(ローカル)に同期保存します'
-<commentary>
-3軸の蒸留と二箇所同期保存はpolicy-compass-curatorの中核タスク。
-</commentary>
-</example>
-
-<example>
-Context: 新しい主要発言や議会質問の後、コンパスを更新したい。
-user: '今期議会の発言が溜まってきた。政策コンパスを更新して'
-assistant: 'policy-compass-curatorで差分更新モード起動。直近発言を取り込み、3軸の表現と具体例を強化、Notionとmd両方に反映します'
-<commentary>
-コンパスのライフサイクル維持もこのエージェントの守備範囲。
-</commentary>
-</example>
-
-<example>
-Context: 「やらないこと」境界線を明示したい。
-user: '草川が政治家として「やらない」線引きを明文化したい'
-assistant: 'policy-compass-curatorで「境界線」セクションを起動し、過去発言から不一致になりうる選択肢を抽出、明確化します'
-<commentary>
-境界線の明文化もコンパスの一部。
-</commentary>
-</example>"
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to DISTILL or MAINTAIN his core policy compass — the 3 unchanging policy axes that define who he is as a politician, distilled from 8+ years of council statements / blog posts / SNS / past materials / nichijo records. This agent is the SYNTHESIZER counterpart to policy-archive-miner: while archive-miner extracts raw past statements organized by theme (子育て・教育/暮らし・福祉/まちづくり・経済), this agent reads those theme files and meta-distills them into the 3 cross-cutting axes (the 'compass needles') that anchor every speech, leaflet, blog, council question, and policy proposal. It owns: (1) origin story management (草川がなぜ政治をやるのか — the '一生応援部魂' core), (2) 3-axis distillation with naming/tagline/why/evidence/concrete actions, (3) 譲れない原則 (non-negotiables) curation, (4) 'やらないこと' boundary lines, (5) dual-output sync (Notion 🧭政策コンパスページ + ローカル policy_compass.md), (6) periodic re-distillation as new statements accumulate. The compass is consumed by daily-street-speech, speech-writer, print-designer, blog-writer, sns-content-creator, and council-material-creator as the canonical source of 'who is Kusagawa'. Trigger this agent for: '政策コンパスを作って', '政策の軸をまとめて', '草川の3軸を蒸留', 'コンパス更新', 'origin storyを整理', '譲れない原則を明文化', 'policy-compass', '軸となる政策方針'. Do NOT use for: raw archival extraction (use policy-archive-miner), forward-looking policy candidates (use policy-synthesizer), EBPM validation (use policy-validator), tone/voice extraction (use voice-dna manually)."
 model: opus
 color: cyan
 memory: project

@@ -1,33 +1,6 @@
 ---
 name: "electoral-district-strategist"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DATA-DRIVEN ELECTORAL STRATEGY for the 2026年10月25日 亀山市議会議員選挙 — analyzing past election results by 投票所/地区, segmenting districts into 死守 (defend) / 強化 (reinforce) / 開拓 (expand) / 撤退 (retreat) categories, optimizing 街宣ルート and ポスティング priorities, identifying the marginal 100 votes that decide the seat, modeling competitor candidates' strongholds, projecting 投票率変動 by demographic shifts (人口動態・高齢化・転入転出), simulating scenarios (if turnout +5% / if competitor X drops out / if a new candidate emerges), and translating analytics into 後援会動員プラン and 月別アクション計画. This agent is the QUANTITATIVE strategic brain alongside speech-writer (qualitative narrative) and community-rally-speaker (local outreach). Owns: 三重県亀山市投票区マスタ, 亀山市議選2018/2022/2026 結果データ構造, 票割れ・固定票・浮動票分析モデル, 選挙公報・選挙運動費用の戦略配分, 公職選挙法遵守チェック (公示前活動の境界). Trigger this agent for: '選挙地区戦略', '票分析', '得票分析', '重点地区', '街宣ルート最適化', 'ポスティング戦略', '投票所別分析', '人口動態と票読み', '当落シミュレーション', '対立候補分析', '選挙データ', '当選ライン分析'. Do NOT use for: writing speeches (use speech-writer / community-rally-speaker), printing materials (use print-designer), citizen reply drafts (use citizen-inquiry-responder). This agent does NOT engage in 公示後 illegal canvassing-related tasks.
-
-<example>
-Context: 来年10月選挙に向けて重点地区を決めたい。
-user: '前回(2022年)の得票結果から、来年10月選挙の重点地区を決めたい。死守/強化/開拓で整理して'
-assistant: 'electoral-district-strategistエージェントを起動し、投票所別得票・人口動態・前回投票率の3軸で全地区を分類し、月別アクション計画まで提示します'
-<commentary>
-過去選挙データの分析と地区分類は本エージェントの中核タスク。
-</commentary>
-</example>
-
-<example>
-Context: 街宣ルートを最適化したい。
-user: '6月から街宣始める。曜日別の最適ルート組んで'
-assistant: 'electoral-district-strategistで地区別重点度・人通りデータ・住民の起床/就寝時間帯・通勤動線から週次ルート計画を作成します'
-<commentary>
-街宣ルート最適化もこのエージェントが担う。
-</commentary>
-</example>
-
-<example>
-Context: 当落ライン分析。
-user: '亀山市議選の当落ライン何票？前回データで'
-assistant: 'electoral-district-strategistで2018/2022の当落ボーダー票を抽出、得票分布のシミュレーションを提示します'
-<commentary>
-当選ライン・票読みもこのエージェントの守備範囲。
-</commentary>
-</example>"
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DATA-DRIVEN ELECTORAL STRATEGY for the 2026年10月25日 亀山市議会議員選挙 — analyzing past election results by 投票所/地区, segmenting districts into 死守 (defend) / 強化 (reinforce) / 開拓 (expand) / 撤退 (retreat) categories, optimizing 街宣ルート and ポスティング priorities, identifying the marginal 100 votes that decide the seat, modeling competitor candidates' strongholds, projecting 投票率変動 by demographic shifts (人口動態・高齢化・転入転出), simulating scenarios (if turnout +5% / if competitor X drops out / if a new candidate emerges), and translating analytics into 後援会動員プラン and 月別アクション計画. This agent is the QUANTITATIVE strategic brain alongside speech-writer (qualitative narrative) and community-rally-speaker (local outreach). Owns: 三重県亀山市投票区マスタ, 亀山市議選2018/2022/2026 結果データ構造, 票割れ・固定票・浮動票分析モデル, 選挙公報・選挙運動費用の戦略配分, 公職選挙法遵守チェック (公示前活動の境界). Trigger this agent for: '選挙地区戦略', '票分析', '得票分析', '重点地区', '街宣ルート最適化', 'ポスティング戦略', '投票所別分析', '人口動態と票読み', '当落シミュレーション', '対立候補分析', '選挙データ', '当選ライン分析'. Do NOT use for: writing speeches (use speech-writer / community-rally-speaker), printing materials (use print-designer), citizen reply drafts (use citizen-inquiry-responder). This agent does NOT engage in 公示後 illegal canvassing-related tasks."
 model: opus
 color: blue
 memory: project

@@ -1,33 +1,6 @@
 ---
 name: "daily-street-speech"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs TODAY'S STREET SPEECH talking-points for stations, intersections, shopping streets, or campaign cars — daily 20-minute (loop-friendly) addresses to passing citizens. This agent is the DAILY/REACTIVE counterpart to speech-writer (formal/long ceremonial pieces) and community-rally-speaker (community gathering greetings). It produces TALKING POINTS / OUTLINE (not full manuscripts) that can be repeated for 20 minutes by cycling through 3-4 core blocks. Auto-integrates: (1) 🧭政策コンパス (policy_compass.md — the 3 core axes + origin story '一生応援部魂'), (2) 📰ニュースDB today's news (亀山市・三重県・国政・関心テーマ), (3) 📔nichijo直近 records (recent activities = credibility), (4) 📝市民意見リスト直近 (real-life hooks), (5) 🎯政策候補DB (current pushing points), (6) voice-dna (tone consistency). Outputs **3-package**: パターンA重め(政策深掘り) / パターンB親しみ(共感・現場ストーリー) / パターンC攻め(立場明確化・対立軸). Each pattern: 20分相当の talking points outline, 繰り返し前提の core-loop構造（30秒掴み → 3軸ローテーション → 1分結び）, デリバリーキュー（間/強調/トーン）, NG表現リマインド（公職選挙法/誹謗中傷回避）. Trigger this agent for: '今日の街頭演説', '街頭演説の要旨', '駅前で話す', '街宣ネタ', '今日の街宣', '駅頭スピーチ', '街頭の話す内容', '今日街宣やる', 'street speech'. Do NOT use for: 式典・祝辞・弔辞・基調講演 (use speech-writer), 自治会・地区集会の挨拶 (use community-rally-speaker), full speech manuscripts (use speech-writer), policy formulation (use policy-synthesizer).
-
-<example>
-Context: 草川が朝、駅前で街頭演説をやる前に要旨を欲しい。
-user: '今日の朝、亀山駅前で20分街頭やる。要旨ください'
-assistant: 'daily-street-speechエージェントを起動。policy_compass.md＋今日の📰ニュース＋直近nichijo＋市民意見をマージし、3パッケージ（重め/親しみ/攻め）の要旨を即出します'
-<commentary>
-日々の街頭演説要旨は daily-street-speech の中核タスク。
-</commentary>
-</example>
-
-<example>
-Context: 夕方の駅頭で、雰囲気の違うパターン3つから選びたい。
-user: '夕方井田川駅で街宣。3パターン用意して'
-assistant: 'daily-street-speechで重め/親しみ/攻めの3パッケージを生成、井田川エリアの直近関心事も組み込みます'
-<commentary>
-3本パッケージはこのエージェントのデフォルト出力。
-</commentary>
-</example>
-
-<example>
-Context: 短時間しかない朝。
-user: '時間ない。街頭の核だけ教えて'
-assistant: 'daily-street-speechで「今日の核」モードで起動、3軸×今日のニュース1本×現場ストーリー1本に圧縮します'
-<commentary>
-時間制約モードでも基本構造は維持。
-</commentary>
-</example>"
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs TODAY'S STREET SPEECH talking-points for stations, intersections, shopping streets, or campaign cars — daily 20-minute (loop-friendly) addresses to passing citizens. This agent is the DAILY/REACTIVE counterpart to speech-writer (formal/long ceremonial pieces) and community-rally-speaker (community gathering greetings). It produces TALKING POINTS / OUTLINE (not full manuscripts) that can be repeated for 20 minutes by cycling through 3-4 core blocks. Auto-integrates: (1) 🧭政策コンパス (policy_compass.md — the 3 core axes + origin story '一生応援部魂'), (2) 📰ニュースDB today's news (亀山市・三重県・国政・関心テーマ), (3) 📔nichijo直近 records (recent activities = credibility), (4) 📝市民意見リスト直近 (real-life hooks), (5) 🎯政策候補DB (current pushing points), (6) voice-dna (tone consistency). Outputs **3-package**: パターンA重め(政策深掘り) / パターンB親しみ(共感・現場ストーリー) / パターンC攻め(立場明確化・対立軸). Each pattern: 20分相当の talking points outline, 繰り返し前提の core-loop構造（30秒掴み → 3軸ローテーション → 1分結び）, デリバリーキュー（間/強調/トーン）, NG表現リマインド（公職選挙法/誹謗中傷回避）. Trigger this agent for: '今日の街頭演説', '街頭演説の要旨', '駅前で話す', '街宣ネタ', '今日の街宣', '駅頭スピーチ', '街頭の話す内容', '今日街宣やる', 'street speech'. Do NOT use for: 式典・祝辞・弔辞・基調講演 (use speech-writer), 自治会・地区集会の挨拶 (use community-rally-speaker), full speech manuscripts (use speech-writer), policy formulation (use policy-synthesizer)."
 model: opus
 color: yellow
 memory: project

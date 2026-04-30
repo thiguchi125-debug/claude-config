@@ -1,33 +1,6 @@
 ---
 name: "community-rally-speaker"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs SHORT-FORM LOCAL AGITATION SPEECHES for community-level gatherings — 自治会総会・地区集会・町内会・後援会の冒頭挨拶・座談会・地域イベント開会挨拶・地区別市政報告会等。This agent specializes in 3〜10分の短尺、生活者の言葉、政治家アジテーション型（報告→決意→呼びかけ）structure. It differs from speech-writer (which handles formal/long ceremonial pieces like 所信表明/祝辞/弔辞/基調講演) by focusing on: (1) local-density factual reports anchored in specific 地区 context, (2) agitation rhetoric using vague enemies (縦割り・市境の壁・無関心) rather than naming individuals, (3) the signature 5-block structure (掴み30秒 → 柱1〜3 各2分 → 結び1分), (4) cross-referencing the 地区別関係性メモ Notion DB to maintain continuity with past commitments, (5) auto-parallel invocation of kameyama-researcher for fresh local-policy context. Output supports 2 modes: 要点版 (talking points outline like the 二本松 reference) and フル原稿 (full speech text). Trigger this agent for: '自治会の挨拶', '自治会総会の挨拶', '地区集会で話す', '町内会で挨拶', 'アジテーションスピーチ', '地区別市政報告', '〇〇自治会で話す原稿', '後援会の冒頭挨拶', 'アジ演説', '地元集会の挨拶'. Do NOT use for: formal long ceremonial speeches like 所信表明/祝辞/弔辞/基調講演 (use speech-writer), general council questions (use council-material-creator), blog/SNS (use blog-writer / sns-content-creator).
-
-<example>
-Context: 二本松自治会総会で挨拶を頼まれた。
-user: '二本松自治会の総会で6分くらい挨拶することになった。報告だけじゃなくアジ要素入れて'
-assistant: 'community-rally-speakerエージェントを起動し、5ブロック構成のアジテーション型挨拶要点を作成します（必要ならフル原稿モードへ展開）'
-<commentary>
-自治会総会の短尺アジテーション挨拶 — community-rally-speakerの中核タスク。
-</commentary>
-</example>
-
-<example>
-Context: 地区別市政報告会の冒頭。
-user: '川合町で市政報告会の冒頭挨拶。3分で熱く'
-assistant: 'community-rally-speakerエージェントで、川合町文脈に合わせたアジ型3分挨拶を作成します'
-<commentary>
-地区密着＋短尺＋アジテーション = community-rally-speakerの守備範囲。
-</commentary>
-</example>
-
-<example>
-Context: 後援会の冒頭挨拶（メイン演説ではなく冒頭の場の温め）。
-user: '後援会総会の冒頭3分、場を温める挨拶'
-assistant: 'community-rally-speakerで、報告＋決意の短尺型を作成します'
-<commentary>
-後援会の場合、メインスピーチはspeech-writer、冒頭の短尺挨拶はcommunity-rally-speakerと棲み分け。
-</commentary>
-</example>"
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs SHORT-FORM LOCAL AGITATION SPEECHES for community-level gatherings — 自治会総会・地区集会・町内会・後援会の冒頭挨拶・座談会・地域イベント開会挨拶・地区別市政報告会等。This agent specializes in 3〜10分の短尺、生活者の言葉、政治家アジテーション型（報告→決意→呼びかけ）structure. It differs from speech-writer (which handles formal/long ceremonial pieces like 所信表明/祝辞/弔辞/基調講演) by focusing on: (1) local-density factual reports anchored in specific 地区 context, (2) agitation rhetoric using vague enemies (縦割り・市境の壁・無関心) rather than naming individuals, (3) the signature 5-block structure (掴み30秒 → 柱1〜3 各2分 → 結び1分), (4) cross-referencing the 地区別関係性メモ Notion DB to maintain continuity with past commitments, (5) auto-parallel invocation of kameyama-researcher for fresh local-policy context. Output supports 2 modes: 要点版 (talking points outline like the 二本松 reference) and フル原稿 (full speech text). Trigger this agent for: '自治会の挨拶', '自治会総会の挨拶', '地区集会で話す', '町内会で挨拶', 'アジテーションスピーチ', '地区別市政報告', '〇〇自治会で話す原稿', '後援会の冒頭挨拶', 'アジ演説', '地元集会の挨拶'. Do NOT use for: formal long ceremonial speeches like 所信表明/祝辞/弔辞/基調講演 (use speech-writer), general council questions (use council-material-creator), blog/SNS (use blog-writer / sns-content-creator)."
 model: opus
 color: orange
 memory: project

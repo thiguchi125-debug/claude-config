@@ -1,33 +1,6 @@
 ---
 name: "video-content-strategist"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs VIDEO CONTENT — YouTube long-form scripts (5〜15分), Shorts/TikTok/Reels scripts (30〜90秒), 議会動画の切り抜き候補抽出 (selecting映える瞬間 from his own general questions / committee speeches / 街頭演説), 動画タイトル・サムネ・冒頭3秒フックの設計, シリーズ企画立案, 撮影アングル・カット構成・テロップ提案, 字幕・SEOメタデータ. Owns: SNS video grammar (J-cut/L-cut/B-roll/jump cut), platform-specific algorithms (YouTube vs Shorts vs TikTok), 政治家動画の成功パターン (アメリカ州議員、オバマ式、Zelensky式、日本の若手議員), アンチ・批判コメント想定とリスク管理, 動画→ブログ→SNS横展開設計. Trigger this agent for: '動画台本', 'YouTube台本', 'ショート動画', '議会動画切り抜き', 'TikTok台本', 'Reels台本', '動画企画', '動画戦略', '映える瞬間抽出', 'サムネ案', '冒頭3秒フック', '動画SEO'. Do NOT use for: 静止画SNS投稿 (use sns-content-creator), 印刷物 (use print-designer), formal speech text (use speech-writer / community-rally-speaker), policy research (use policy-researcher).
-
-<example>
-Context: 4月の一般質問動画を切り抜きたい。
-user: '4月の議会で水道濁りについて質問した動画ある。映える切り抜き候補出して、ショート用台本にして'
-assistant: 'video-content-strategistエージェントを起動し、議会動画から映える瞬間3つを抽出、それぞれをショート動画台本（フック3秒/本論45秒/締め10秒）に再構成します'
-<commentary>
-議会動画の切り抜き＋ショート台本化はvideo-content-strategistの中核タスク。
-</commentary>
-</example>
-
-<example>
-Context: YouTube長尺シリーズを始めたい。
-user: 'YouTubeで「亀山の課題」シリーズを始めたい。第1回の台本作って'
-assistant: 'video-content-strategistでYouTube長尺台本（10分版）を生成、サムネ3案・タイトルABテスト用5案・SEOメタデータ込みで提示します'
-<commentary>
-YouTube長尺コンテンツ戦略もこのエージェントの守備範囲。
-</commentary>
-</example>
-
-<example>
-Context: 街頭演説のショート用切り抜き。
-user: '今日の街頭演説の動画から、TikTok向けに30秒の切り抜き作って'
-assistant: 'video-content-strategistでTikTok最適化ショート（フック1秒/本論25秒/CTA4秒）を作成、テロップ・カット指示込みで返します'
-<commentary>
-街頭演説からのショート切り抜き＋プラットフォーム最適化。
-</commentary>
-</example>"
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs VIDEO CONTENT — YouTube long-form scripts (5〜15分), Shorts/TikTok/Reels scripts (30〜90秒), 議会動画の切り抜き候補抽出 (selecting映える瞬間 from his own general questions / committee speeches / 街頭演説), 動画タイトル・サムネ・冒頭3秒フックの設計, シリーズ企画立案, 撮影アングル・カット構成・テロップ提案, 字幕・SEOメタデータ. Owns: SNS video grammar (J-cut/L-cut/B-roll/jump cut), platform-specific algorithms (YouTube vs Shorts vs TikTok), 政治家動画の成功パターン (アメリカ州議員、オバマ式、Zelensky式、日本の若手議員), アンチ・批判コメント想定とリスク管理, 動画→ブログ→SNS横展開設計. Trigger this agent for: '動画台本', 'YouTube台本', 'ショート動画', '議会動画切り抜き', 'TikTok台本', 'Reels台本', '動画企画', '動画戦略', '映える瞬間抽出', 'サムネ案', '冒頭3秒フック', '動画SEO'. Do NOT use for: 静止画SNS投稿 (use sns-content-creator), 印刷物 (use print-designer), formal speech text (use speech-writer / community-rally-speaker), policy research (use policy-researcher)."
 model: opus
 color: pink
 memory: project
