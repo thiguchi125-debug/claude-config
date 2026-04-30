@@ -42,7 +42,7 @@
 - [仕上げモードU4後に日次ログ追記必須](feedback_nichijo_finalize_log_append.md) — 2026-04-29発覚。仕上げモード生成物（ブログ・SNS・軌道修正の経緯）が当日活動ログへ自動反映されない仕様の穴。U4後に追記ステップを恒久化
 - [ohayo/oyasumi タスクDB実クエリ必須](feedback_ohayo_oyasumi_task_db_query.md) — 2026-04-30事故。ダッシュボード旧表流用禁止。タスクDB「すべて」view直叩き＋Done/Archive除外＋本日inbox包含を必ず実施
 - [📋市民意見受付BOX & ikenスキル](project_form_intake_db.md) — 2026-04-30新設。全チャネル受信intake DB(354432ec-)＋ikenスキル(コピペ起動で記録＋返信3案＋タスク化)。GAS自動化は諦め手動ハイブリッド運用
-- [ai-interview-sns-posterエージェント新設](project_ai_interview_sns_poster.md) — 2026-04-30新設(同日Step 6＋3-tier化)。AIインタビュー要約→Long(IG/FB≤1500)/Medium(Threads≤450)/Short(X≤140)の3バリアント。📋意見BOX＋📣SNS DB(バリアント別3レコード)自動登録。安野/有賀クレジット必須
+- [ai-interview-sns-posterエージェント新設](project_ai_interview_sns_poster.md) — 2026-04-30新設(同日4PF個別最適化に再設計)。AIインタビュー要約→IG(詩性600〜1000)/FB(論理500〜800)/Threads(問いかけ300〜500)/X(断定≤140)の4PF別原稿。📣SNS DBは1PF=1レコード4件自動登録
 - [ai-interview-config-designerエージェント新設](project_ai_interview_config_designer.md) — 2026-04-30新設。政策テーマ→AIインタビュー設定編集8フィールド生成(タイトル/説明/初期挨拶/ナレッジソース/カスタムプロンプト/質問テーマ5本/質問3〜5本)。kameyama_bukatsuベンチマーク。kameyama-researcher＋policy-researcher並列起動必須。同時に📝一般質問ネタDB(42716725-)へ調査中ステータスで自動登録→council-material-creatorと連動するライフサイクル形成（ai-interview-sns-posterの逆処理）
 - [issues返信は記録不要](feedback_issues_response_no_log.md) — 「賛成」「反対」冒頭の意見はissues政策アンケート反応。Notion保存/タスク化/メモ全部省略、返信文3案だけ生成する
 - [📂Drive資料サマリDB & oyasumi/ohayo連携](project_drive_summary_db.md) — 2026-04-30新設。Drive当日更新ファイルをoyasumi自動収集・要約→📂DB(ds:317c4d02-)蓄積→翌朝ohayoで「昨日の新規資料」表示。重複は file_id で除外、上限10件/日、modifiedTime=今日(JST)フィルタ必須
