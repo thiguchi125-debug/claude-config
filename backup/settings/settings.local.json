@@ -48,7 +48,8 @@
       "WebFetch(domain:www.city.fukui.lg.jp)",
       "WebFetch(domain:www.nies.go.jp)",
       "Bash(grep -v -E \"\\(\\\\.DS_Store|cache|\\\\.log$\\)\")",
-      "WebFetch(domain:www.city.ota.tokyo.jp)"
+      "WebFetch(domain:www.city.ota.tokyo.jp)",
+      "Bash(sips -r 90 \"/Users/kusakawatakuya/Desktop/亀山建設労働組合_市政報告_写真候補/07_街頭第1_マイク演説_2022-10-10.jpg\" --out \"/Users/kusakawatakuya/Desktop/亀山建設労働組合_市政報告_写真候補/07_街頭第1_マイク演説_2022-10-10_rotated.jpg\")"
     ]
   }
 }
