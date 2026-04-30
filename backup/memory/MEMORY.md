@@ -43,3 +43,4 @@
 - [📋市民意見受付BOX & ikenスキル](project_form_intake_db.md) — 2026-04-30新設。全チャネル受信intake DB(354432ec-)＋ikenスキル(コピペ起動で記録＋返信3案＋タスク化)。GAS自動化は諦め手動ハイブリッド運用
 - [ai-interview-sns-posterエージェント新設](project_ai_interview_sns_poster.md) — 2026-04-30新設。AIインタビュー(depth interview)要約→Instagram/X/Facebook向け情熱型SNS投稿(5ブロック・空白行レイアウト・事例DB＋WebSearch)。同時に📋市民意見受付BOX(354432ec-)へ自動登録。安野貴博氏／有賀啓介氏クレジット必須
 - [ai-interview-config-designerエージェント新設](project_ai_interview_config_designer.md) — 2026-04-30新設。政策テーマ→AIインタビュー設定編集8フィールド生成(タイトル/説明/初期挨拶/ナレッジソース/カスタムプロンプト/質問テーマ5本/質問3〜5本)。kameyama_bukatsuベンチマーク。kameyama-researcher＋policy-researcher並列起動必須。同時に📝一般質問ネタDB(42716725-)へ調査中ステータスで自動登録→council-material-creatorと連動するライフサイクル形成（ai-interview-sns-posterの逆処理）
+- [issues返信は記録不要](feedback_issues_response_no_log.md) — 「賛成」「反対」冒頭の意見はissues政策アンケート反応。Notion保存/タスク化/メモ全部省略、返信文3案だけ生成する
