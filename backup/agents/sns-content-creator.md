@@ -291,4 +291,22 @@ color: green
 （ショート動画用の台本案 + キャプション + ハッシュタグ）
 ```
 
-出力直後に content-editor エージェントのレビューを受ける前提（content-pipeline Step 3.5 で発動）。
+## ⚠️ 出力後の必須3ゲート（単発呼び出し時も skip 禁止）
+
+content-pipeline 経由なら自動で順序実行されるが、**単発呼び出し（「SNS投稿作って」「Threads用に書いて」等）の場合も呼び出し元（メイン Claude）に対して以下を必ずチェーンするよう明示する**：
+
+1. **content-editor**（5軸品質スコア・媒体ごとに評価）→ pass
+2. **content-fact-checker**（数値・固有名詞・法令を一次情報まで遡って検証・SNS固有の主張を重点）→ APPROVE
+3. **content-risk-reviewer**（公選法・個人情報・名誉毀損等の8軸・媒体別個別評価）→ APPROVE
+
+特にX（短文の断定で誤伝達リスク）・Threads（カジュアル表現で品位リスク）でゲート通過が重要。CRITICAL検出時は該当媒体を即停止。
+
+出力本文の末尾に以下のメタ情報を付与：
+```
+---
+⚠️ 必須3ゲート未通過。以下を順に実行してから保存・投稿してください：
+1. content-editor （媒体別評価）
+2. content-fact-checker
+3. content-risk-reviewer （媒体別評価）
+---
+```

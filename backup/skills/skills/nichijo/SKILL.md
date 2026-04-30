@@ -470,10 +470,17 @@ Agent(subagent_type="kameyama-researcher",
 1. 元ページ本文から活動要旨を抽出
 2. **content-pipeline** Step 1.5（policy-researcher + kameyama-researcher 並列調査）を実行し、亀山市の文脈と他自治体事例を収集
 3. **sns-content-creator** エージェントを起動し、Threads/X/Instagram/Facebook（+ 元々の LINE 文は活かすか再生成）の仕上げ版を生成
-4. `mcp__claude_ai_Notion__notion-update-page` でページを更新：
+4. **【必須3ゲート通過】** 以下を順に実行（CLAUDE.md「発信物の安全ゲート」ルール）：
+   - 4-a. **content-editor**（媒体別品質スコア） → pass
+   - 4-b. **content-fact-checker**（数値・固有名詞・法令の一次情報検証） → APPROVE
+   - 4-c. **content-risk-reviewer**（公選法・個人情報・名誉毀損等の8軸） → APPROVE
+   - HIGH検出時は草川にASK_USERで問いかけ・本人判断後に進む
+   - CRITICAL検出時は即停止し草川に通知（Notionは更新しない）
+5. `mcp__claude_ai_Notion__notion-update-page` でページを更新（**ゲート全通過後のみ**）：
    - 投稿タイトル: `📱` プレフィクスを削除
    - ステータス: `"下書き完成"`
    - ページ本文: 5媒体の仕上げ版で**完全に上書き**
+   - メモ欄: 各ゲートの判定結果（editor:pass/fact:APPROVE/risk:APPROVE）を記録
 
 ### S3-C: ブログ記事下書きの仕上げ
 
@@ -504,11 +511,18 @@ Agent(subagent_type="kameyama-researcher",
 
    どちらもタイトル先頭の `【草川たくや 亀山市】` は維持する（パターンC セリフ引用型の場合はその限りではない）。
 
-5. `mcp__claude_ai_Notion__notion-update-page` でページを更新：
+5. **【必須3ゲート通過】** 以下を順に実行（CLAUDE.md「発信物の安全ゲート」ルール）：
+   - 5-a. **content-editor**（5軸品質スコア・mode引数で深掘り/ノーマル切替） → pass
+   - 5-b. **content-fact-checker**（数値・計画名・条例名・法令を一次情報まで遡って検証） → APPROVE
+   - 5-c. **content-risk-reviewer**（公選法・個人情報・名誉毀損等の8軸） → APPROVE
+   - HIGH検出時は草川にASK_USERで問いかけ・本人判断後に進む
+   - CRITICAL検出時は即停止し草川に通知（Notionは更新しない）
+
+6. `mcp__claude_ai_Notion__notion-update-page` でページを更新（**ゲート全通過後のみ**）：
    - 記事タイトル: `📱` プレフィクスを削除
    - ステータス: `"下書き完成"`
    - ページ本文: 仕上げ版で**完全に上書き**
-   - メモ欄（あれば）: 使用したモード（深掘り/ノーマル）を記録
+   - メモ欄: 使用したモード（深掘り/ノーマル）＋各ゲート判定（editor:pass/fact:APPROVE/risk:APPROVE）を記録
 
 ## S3.5: タスク抽出と登録（確認あり）
 

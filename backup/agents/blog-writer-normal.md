@@ -235,4 +235,22 @@ https://www.threads.com/@kusagawatakuya?igshid=NTc4MTIwNjQ2YQ==
 
 ブログ記事の全文テキスト（タイトルから定型フッターまで）。
 
-出力直後に content-editor エージェントのレビューを受ける前提（content-pipeline Step 2.5 で発動）。content-editor には `mode: normal` を渡すので、レビュー側もノーマル版の基準（ファクト密度ではなく、読みやすさ・問いかけ・親しみやすさ）で採点される。
+## ⚠️ 出力後の必須3ゲート（単発呼び出し時も skip 禁止）
+
+content-pipeline 経由なら自動で順序実行されるが、**単発呼び出し（「市民向けブログ書いて」等）の場合も呼び出し元（メイン Claude）に対して以下を必ずチェーンするよう明示する**：
+
+1. **content-editor**（5軸品質スコア・`mode: normal` 指定で読みやすさ重視採点）→ pass
+2. **content-fact-checker**（数値・固有名詞・法令を一次情報まで遡って検証）→ APPROVE
+3. **content-risk-reviewer**（公選法・個人情報・名誉毀損等の8軸スキャン）→ APPROVE
+
+ノーマル版でもファクト・リスクは同等に検証必須（読みやすくても誤情報・公選法違反はNG）。
+
+出力本文の末尾に以下のメタ情報を付与：
+```
+---
+⚠️ 必須3ゲート未通過。以下を順に実行してから保存・投稿してください：
+1. content-editor (mode: normal)
+2. content-fact-checker
+3. content-risk-reviewer
+---
+```
