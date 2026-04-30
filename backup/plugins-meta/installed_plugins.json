@@ -9,6 +9,79 @@
         "installedAt": "2026-04-11T11:06:44.242Z",
         "lastUpdated": "2026-04-11T11:06:44.242Z"
       }
+    ],
+    "frontend-design@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+        "version": "unknown",
+        "installedAt": "2026-04-30T08:18:12.636Z",
+        "lastUpdated": "2026-04-30T08:18:12.636Z"
+      }
+    ],
+    "playwright@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/playwright/unknown",
+        "version": "unknown",
+        "installedAt": "2026-04-30T08:18:55.495Z",
+        "lastUpdated": "2026-04-30T08:18:55.495Z"
+      }
+    ],
+    "claude-code-setup@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-04-30T08:19:45.207Z",
+        "lastUpdated": "2026-04-30T08:19:45.207Z"
+      }
+    ],
+    "plugin-dev@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/plugin-dev/unknown",
+        "version": "unknown",
+        "installedAt": "2026-04-30T08:21:01.163Z",
+        "lastUpdated": "2026-04-30T08:21:01.163Z"
+      }
+    ],
+    "claude-md-management@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/claude-md-management/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-04-30T08:21:30.208Z",
+        "lastUpdated": "2026-04-30T08:21:30.208Z"
+      }
+    ],
+    "superpowers@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7",
+        "version": "5.0.7",
+        "installedAt": "2026-04-30T08:21:54.198Z",
+        "lastUpdated": "2026-04-30T08:21:54.198Z",
+        "gitCommitSha": "6efe32c9e2dd002d0c394e861e0529675d1ab32e"
+      }
+    ],
+    "security-guidance@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/security-guidance/unknown",
+        "version": "unknown",
+        "installedAt": "2026-04-30T08:22:33.413Z",
+        "lastUpdated": "2026-04-30T08:22:33.413Z"
+      }
+    ],
+    "discord@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/discord/0.0.4",
+        "version": "0.0.4",
+        "installedAt": "2026-04-30T08:23:59.621Z",
+        "lastUpdated": "2026-04-30T08:23:59.621Z"
+      }
     ]
   }
 }
