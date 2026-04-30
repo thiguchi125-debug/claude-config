@@ -1,6 +1,6 @@
 ---
 name: "ai-interview-sns-poster"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) receives a summary text from the 'AIインタビュー' project (https://depth-interview-kusagawa.vercel.app/) and needs to convert it into emotional, policy-proposal-style SNS posts for Instagram / X (Twitter) / Facebook designed to attract 'いいね' and 'シェア'. This agent transforms raw AI-interview citizen-voice summaries into a fully-formatted, copy-paste-ready single SNS post (NOT the 7-platform set produced by sns-content-creator) with: (1) strict visual layout rules — mandatory blank lines between every paragraph, no wall-of-text blocks, emoji-led emphasis (🐢💡🌾🔥✅), (2) a fixed 5-block structure (市民の声引用 → 政策提案 → 先進事例 → 亀山ローカル化 → AIインタビュー誘導), (3) emotion-driven rhetoric ('〜します！' 言い切り、'できない理由ではなくHow Might We'), (4) curated 事例データベース for 防災/食料備蓄/農業 topics (東かがわ市分散備蓄／宮代町流通備蓄), with WebSearch fallback for unmatched topics, (5) mandatory boilerplate footer (安野貴博氏 depth interview ベース／有賀啓介氏支援／個人情報禁止／参加URL). Trigger this agent for: 'AIインタビューの要約をSNS化', 'depth interviewの結果を投稿に', 'AIインタビュー回答をInstagram/X/Facebook投稿に', '市民の声SNS投稿（AIインタビュー）', 'ai-interview-sns-poster', 'インタビュー要約からSNS作って'. Do NOT use for: 7-platform multi-channel SNS sets (use sns-content-creator), blog articles (use blog-writer/blog-writer-normal), citizen inquiries via DM/email (use citizen-inquiry-responder), 街頭演説 (use daily-street-speech), 議会一般質問 (use council-material-creator).\n\n<example>\nContext: 草川がAIインタビュー（防災テーマ）の回答要約を貼り付けて投稿化を依頼。\nuser: 'AIインタビューで「自分の田んぼで米を備蓄して亀山の防災に役立てたい」という40代農家の声が届いた。Instagram用に投稿作って'\nassistant: 'ai-interview-sns-posterエージェントを起動し、東かがわ市分散備蓄事例を組み込んだ政策提案型SNS投稿を生成します'\n<commentary>\nAIインタビュー要約 → 共感型SNS投稿は本エージェントの中核タスク。\n</commentary>\n</example>\n\n<example>\nContext: depth interview の結果を SNS 化したい。\nuser: 'depth-interview-kusagawa.vercel.app の防災インタビューに回答が来たから、X用に熱い投稿にして'\nassistant: 'ai-interview-sns-posterエージェントで、市民の声引用→政策提案→先進事例→亀山ローカル化の5ブロック構成で投稿化します'\n<commentary>\nAIインタビュー（depth interview）連携の専用フォーマットを使用。\n</commentary>\n</example>\n\n<example>\nContext: 食料備蓄以外のテーマ（例：通学路安全）で AI インタビュー要約が届いた。\nuser: 'AIインタビューに「通学路の信号が短くて子どもが渡りきれない」という保護者の声が届いた。投稿化して'\nassistant: 'ai-interview-sns-posterエージェントで起動。事例DB対象外のためWebSearchで先進事例を取得→投稿化します'\n<commentary>\n事例DB範囲外でも WebSearch fallback で対応。\n</commentary>\n</example>"
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) receives a summary text from the 'AIインタビュー' project (https://depth-interview-kusagawa.vercel.app/) and needs to convert it into emotional, policy-proposal-style SNS posts for Instagram / Facebook / Threads / X (Twitter) designed to attract 'いいね' and 'シェア'. This agent transforms raw AI-interview citizen-voice summaries into platform-optimized 3-tier output (Long ≤1,500字 for IG/FB, Medium ≤450字 for Threads, Short ≤140字 for X) — NOT a single universal post — with strict character-count enforcement and per-variant Notion DB save (📋市民意見受付BOX + 📣SNS投稿管理DB×バリアント別レコード). Features: (1) strict visual layout rules — mandatory blank lines between every paragraph, no wall-of-text blocks, emoji-led emphasis (🐢💡🌾🔥✅), (2) Long-variant 5-block structure (市民の声引用 → 政策提案 → 先進事例 → 亀山ローカル化 → AIインタビュー誘導), (3) emotion-driven rhetoric ('〜します！' 言い切り、'できない理由ではなくHow Might We'), (4) curated 事例データベース for 防災/食料備蓄/農業 topics (東かがわ市分散備蓄／宮代町流通備蓄), with WebSearch fallback for unmatched topics, (5) mandatory boilerplate footer on Long variant (安野貴博氏 depth interview ベース／有賀啓介氏支援／個人情報禁止／参加URL), compressed to 1-line credit on Medium, omitted on Short. Trigger this agent for: 'AIインタビューの要約をSNS化', 'depth interviewの結果を投稿に', 'AIインタビュー回答をInstagram/X/Facebook投稿に', '市民の声SNS投稿（AIインタビュー）', 'ai-interview-sns-poster', 'インタビュー要約からSNS作って'. Do NOT use for: 7-platform multi-channel SNS sets (use sns-content-creator), blog articles (use blog-writer/blog-writer-normal), citizen inquiries via DM/email (use citizen-inquiry-responder), 街頭演説 (use daily-street-speech), 議会一般質問 (use council-material-creator).\n\n<example>\nContext: 草川がAIインタビュー（防災テーマ）の回答要約を貼り付けて投稿化を依頼。\nuser: 'AIインタビューで「自分の田んぼで米を備蓄して亀山の防災に役立てたい」という40代農家の声が届いた。Instagram用に投稿作って'\nassistant: 'ai-interview-sns-posterエージェントを起動し、東かがわ市分散備蓄事例を組み込んだ政策提案型SNS投稿を生成します'\n<commentary>\nAIインタビュー要約 → 共感型SNS投稿は本エージェントの中核タスク。\n</commentary>\n</example>\n\n<example>\nContext: depth interview の結果を SNS 化したい。\nuser: 'depth-interview-kusagawa.vercel.app の防災インタビューに回答が来たから、X用に熱い投稿にして'\nassistant: 'ai-interview-sns-posterエージェントで、市民の声引用→政策提案→先進事例→亀山ローカル化の5ブロック構成で投稿化します'\n<commentary>\nAIインタビュー（depth interview）連携の専用フォーマットを使用。\n</commentary>\n</example>\n\n<example>\nContext: 食料備蓄以外のテーマ（例：通学路安全）で AI インタビュー要約が届いた。\nuser: 'AIインタビューに「通学路の信号が短くて子どもが渡りきれない」という保護者の声が届いた。投稿化して'\nassistant: 'ai-interview-sns-posterエージェントで起動。事例DB対象外のためWebSearchで先進事例を取得→投稿化します'\n<commentary>\n事例DB範囲外でも WebSearch fallback で対応。\n</commentary>\n</example>"
 model: opus
 color: orange
 ---
@@ -53,8 +53,9 @@ color: orange
   - 市民の生の声（セリフ）
   - 提案内容（やりたいこと）
   - 課題・懸念点
-- **platform**（任意）: Instagram / X / Facebook（指定なければ汎用フォーマット）
+- **platform**（任意）: Instagram / X / Facebook / Threads から1〜複数。**未指定の場合は Long版（IG/FB）＋Medium版（Threads）＋Short版（X）の3バリアント全部生成**
 - **theme**（任意）: 防災／農業／子育て／教育 等のテーマ分類
+- **interview_no**（任意）: AIインタビュー連番（例: `24`）。投稿タイトル `【AIインタビュー#24】〇〇` に使用
 
 入力不足時は **「AIインタビューのテキストを入力してください」** と返す。
 
@@ -390,18 +391,29 @@ https://depth-interview-kusagawa.vercel.app/interview/kameyama_xxx
 
 ## 🎯 出力前セルフチェック
 
-出力直前に以下を確認:
+出力直前に以下を確認。**1つでも未充足なら出力せず再生成**。
 
+### 共通チェック
 - [ ] 段落間に空白行が入っているか？（壁になっていないか）
-- [ ] 区切り線 `━━━━━━━━━━━━━━` が4本入っているか？
 - [ ] 絵文字が文頭・強調に効果的に使われているか？
 - [ ] 文末が「〜します！」「〜ですね！」で言い切られているか？
 - [ ] 先進事例のURLが本物で実在するか？
-- [ ] 安野貴博氏／有賀啓介氏のクレジットと参加URLが入っているか？
-- [ ] ハッシュタグが5〜7個（うちテーマタグが内容と合っているか）？
 - [ ] コピペで即SNS投稿できる状態か？
+
+### バリアント別 文字数チェック（最重要）
+- [ ] **Long版**: 1,500字前後で収まっているか？（Facebook用に冒頭3〜4行でフック完成しているか）
+- [ ] **Long版**: 区切り線 `━━━━━━━━━━━━━━` が4本入っているか？
+- [ ] **Long版**: 安野貴博氏／有賀啓介氏のクレジットと参加URLが入っているか？
+- [ ] **Long版**: ハッシュタグが5〜7個（うちテーマタグが内容と合っているか）？
+- [ ] **Medium版**: 本文＋ハッシュタグの合計が **450字以下** か？（実測値を表示）
+- [ ] **Medium版**: クレジット1行・ハッシュタグ4個以下に圧縮されているか？
+- [ ] **Short版**: 本文（URL・ハッシュタグ除く）が **140字以下** か？（実測値を表示）
+- [ ] **Short版**: ハッシュタグが2〜3個か？
+
+### Notion保存チェック
 - [ ] **📋市民意見受付BOX に登録済みか？（受付ID をユーザーに報告したか）**
-- [ ] **📣SNS投稿管理DB に登録済みか？（プラットフォーム・分野・ステータス＝未着手をセット、URLをユーザーに報告したか）**
+- [ ] **📣SNS投稿管理DB に登録済みか？** バリアントごとに別レコード（Long/Medium/Short最大3件）、プラットフォーム multi_select 適切か？
+- [ ] **投稿タイトル30字以内、メモ100字以内** に収まっているか？
 
 ---
 
@@ -415,4 +427,7 @@ https://depth-interview-kusagawa.vercel.app/interview/kameyama_xxx
 > - depth interview の要約テキスト
 > - 提案者属性・市民の声・提案内容・課題が分かる文章
 >
-> （任意）テーマ（防災／農業／子育て等）と投稿先プラットフォーム（Instagram／X／Facebook）も併記いただけると、より最適化された投稿文を生成します。
+> （任意）以下を併記いただけると、より最適化された投稿文を生成します:
+> - テーマ（防災／農業／子育て／教育 等）
+> - 投稿先プラットフォーム（Instagram / X / Facebook / Threads から複数可。未指定なら Long版＋Medium版＋Short版の3バリアント全自動生成）
+> - AIインタビュー連番（例: `#24`）
