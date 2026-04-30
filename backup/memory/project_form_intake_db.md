@@ -22,10 +22,18 @@ originSessionId: a0710bec-7974-4709-9b54-efa645d1fe61
 - 既存リストへ移管(checkbox) / フォーム送信ID / 受付ID(CV-N自動採番)
 
 **ikenスキル:**
-- 場所: ~/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/iken/SKILL.md
+- 場所: ~/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/iken/SKILL.md（330行）
 - バックアップ: ~/claude-config/backup/skills/skills/iken/SKILL.md
 - トリガー: 「意見届いた」「意見コピペ」「市民から意見」「フォーム回答届いた」「DMで意見」「LINE意見」等。**「記録」ワード単体は使わない**（nichijo衝突回避）
-- フロー: コピペ受領→経路推定→📋受付BOX保存→返信3案生成（共感型/行動宣言型/コンパクト型）→次アクションをタスクDB登録候補提示→深掘り依頼があればpolicy-researcher呼び出し
+- フロー: コピペ受領→経路推定→📋受付BOX保存→返信3案生成→**「A/B/Cでメール作って」でGmail下書き自動作成**(mcp__claude_ai_Gmail__create_draft)→次アクションをタスクDB登録候補提示→深掘り依頼でpolicy-researcher＋kameyama-researcher並列→🎯政策候補DB(6f1895ac-)登録まで連動
+
+**Gmail下書き作成のTOロジック (Step 4.5):**
+- メアド抽出済み → そのまま
+- LINE/SNS DMのみ → 仮で kusakawa.taku@gmail.com、コピペ案内
+- 連絡先未記入 → 仮で kusakawa.taku@gmail.com、TO修正必須を明示
+- 電話/窓口/手紙/口頭 → Gmail下書き作らず別体裁
+- 件名: 「{相手氏名}様 {テーマ要約}のご提案、ありがとうございます」
+- 末尾は事務所連絡先・SNSハンドル差し込み枠を残す
 
 **2段運用:**
 - 📋受付BOX(354432ec-)= intake、全意見を一旦受け止め
