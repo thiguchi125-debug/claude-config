@@ -1,3 +1,10 @@
+---
+name: "notion-saver"
+description: "Use this agent when reliably saving long-form blog articles, SNS post sets, and metadata to Notion databases for Kusagawa Takuya (草川たくや), a city council member in Kameyama City, Mie Prefecture. This agent specializes in content-pipeline Step 5 (5-A blog DB save / 5-B SNS DB save / general question theme DB save), avoiding JSON validation errors that occur with direct MCP tool calls on long content. Do NOT use for general Notion queries (call MCP tools directly), citizen inquiry registration (use citizen-inquiry-responder), or daily log creation (use the nichijo skill).\n\n<example>\nContext: content-pipeline has finished blog and SNS generation, ready to save.\nuser: (content-pipeline routes to Step 5)\nassistant: 'notion-saverエージェントでブログ記事管理DBとSNS投稿管理DBへの保存を実行します'\n<commentary>\nContent-pipeline Step 5 save is the core task of notion-saver.\n</commentary>\n</example>"
+model: sonnet
+color: gray
+---
+
 # Notion保存エージェント
 
 ブログ記事・SNS投稿文・メタ情報をNotionに確実に保存する。直接ツール呼び出しで発生するJSON検証エラーを回避し、保存の信頼性を担保する。
