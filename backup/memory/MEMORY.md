@@ -1,5 +1,6 @@
 # Memory Index
 
+- [sns-content-polisherエージェント新設](project_sns_content_polisher.md) — 2026-05-01新設。SNS原稿品質昇格専任。8軸診断＋AI-fingerprint排除＋surgical rewrite。content-editorは合否判定／polisherは直接書き換え
 - [📡AIインタビュー設定DB](project_ai_interview_config_db.md) — 2026-04-30新設。AIインタビューconfig蓄積専用DB(ds:a2396bf5-)。コピペ最適化の長文コードブロック構造、一般質問ネタ・プラットフォーム配下
 - [ニュースDBクエリの落とし穴](feedback_news_db_query_pitfall.md) — 2026-04-29事故。ohayoでview_url直叩きしないと未検出になる。data_source_url の database/data_source 取り違え注意
 - [iJAMP連携(news-briefing統合)](project_ijamp_integration.md) — 2026-04-27統合。時事通信社iJAMPの5系統配信メールをGmail MCP経由で取得→news-briefingカテゴリ⑦。著作権厳守(ブログSNS転載禁止)
