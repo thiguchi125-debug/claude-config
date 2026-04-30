@@ -41,3 +41,4 @@
 - [仕上げモードU4後に日次ログ追記必須](feedback_nichijo_finalize_log_append.md) — 2026-04-29発覚。仕上げモード生成物（ブログ・SNS・軌道修正の経緯）が当日活動ログへ自動反映されない仕様の穴。U4後に追記ステップを恒久化
 - [ohayo/oyasumi タスクDB実クエリ必須](feedback_ohayo_oyasumi_task_db_query.md) — 2026-04-30事故。ダッシュボード旧表流用禁止。タスクDB「すべて」view直叩き＋Done/Archive除外＋本日inbox包含を必ず実施
 - [📋市民意見受付BOX & ikenスキル](project_form_intake_db.md) — 2026-04-30新設。全チャネル受信intake DB(354432ec-)＋ikenスキル(コピペ起動で記録＋返信3案＋タスク化)。GAS自動化は諦め手動ハイブリッド運用
+- [ai-interview-sns-posterエージェント新設](project_ai_interview_sns_poster.md) — 2026-04-30新設。AIインタビュー(depth interview)要約→Instagram/X/Facebook向け情熱型SNS投稿(5ブロック・空白行レイアウト・事例DB＋WebSearch)。同時に📋市民意見受付BOX(354432ec-)へ自動登録。安野貴博氏／有賀啓介氏クレジット必須
