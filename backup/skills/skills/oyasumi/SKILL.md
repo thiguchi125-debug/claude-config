@@ -55,6 +55,24 @@ description: 毎晩「おやすみ」「おやすみなさい」「good night」
 - max_results: 20
 - → 件名・送信者・既読/未読を集約
 
+#### 1-E. Google Drive 当日更新ファイル取得
+
+`mcp__claude_ai_Google_Drive__list_recent_files` を **並列** で呼ぶ：
+
+- orderBy: `lastModified`
+- pageSize: `25`
+- excludeContentSnippets: `true`（一覧段階では本文不要）
+
+取得後、**ローカルで以下を必ず実施**：
+
+1. `modifiedTime` が **今日（JST 00:00〜23:59）** の範囲のファイルだけ抽出（タイムゾーン換算注意：DriveはUTC、今日のJST 00:00 = 前日UTC 15:00）
+2. **既登録ID除外**：📂Drive資料サマリDB（data_source_id `317c4d02-ac0a-48c3-9fc5-56029000e64e`）を `notion-query-database-view` で過去7日分取得し、そこに含まれる `ファイルID` プロパティの値とマッチする `id` のファイルはスキップ
+3. 残った新規ファイル群を **新規Drive資料リスト** として保持（後続 Step 5.5 で処理）
+4. 上限：**最大10件**（多すぎる日は modifiedTime 降順で先頭10件）。残りは `処理ステータス=スキップ` で件数だけ集計
+5. 0件なら空のままでOK（後続 Step 5.5 もスキップ）
+
+**注意**：`list_recent_files` は所有・閲覧したすべてのファイルが返る。`viewedByMeTime` のみで modifiedTime が今日でないものは除外（単に今日開いただけのファイルを「新規資料」として誤検出しない）。
+
 #### 1-D. Notion DB群並列取得
 
 以下を **並列** で取得：
