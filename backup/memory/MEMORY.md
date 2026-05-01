@@ -1,5 +1,6 @@
 # Memory Index
 
+- [動画原稿の保存先は📣SNS投稿管理DBで統一](feedback_video_script_save_destination.md) — 2026-05-01新設。video-content-strategist出力（ショート動画/YouTube長尺）は専用DB作らず📣SNS投稿管理DB(78f40f33-)に集約。タイトル先頭🎬＋【ショート動画】/【YouTube長尺】、ステータス進行中、プラットフォームmulti_select(YouTube/TikTok/Instagram等)
 - [AIインタビュー紹介SNSの定型クレジット文必須](feedback_ai_interview_disclaimer.md) — 2026-05-01新設。安野貴博氏（参院議員/AIエンジニア）・有賀啓介氏（コンサルタント）クレジット＋個人情報禁止注意の定型文を4PF全てに必須化。X140字に収まらない場合はスレッド2投目に
 - [タスク→プロジェクト昇格判定](project_task_to_project_promotion.md) — 2026-05-01新設。タスクDB「昇格判定タグ」(A〜E multi_select)・「昇格判定日」、プロジェクトDB「由来」追加。5系統(citizen-inquiry-responder/nichijo整理/nichijo仕上げ/oyasumi/iken)に判定ロジック挿入。基準A〜E/重複判定回避/市民相談単発除外
 - [発信物安全2エージェント新設](project_content_safety_gates.md) — 2026-05-01新設。content-fact-checker(一次情報検証5カテゴリ)＋content-risk-reviewer(8軸：公選法/個人情報/名誉毀損/品位等)。content-pipelineにStep 2.6/2.7/3.6/3.7挿入。HIGH検出時は草川にASK_USER問いかけ
