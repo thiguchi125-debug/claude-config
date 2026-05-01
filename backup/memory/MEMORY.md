@@ -1,5 +1,6 @@
 # Memory Index
 
+- [タスク→プロジェクト昇格判定](project_task_to_project_promotion.md) — 2026-05-01新設。タスクDB「昇格判定タグ」(A〜E multi_select)・「昇格判定日」、プロジェクトDB「由来」追加。5系統(citizen-inquiry-responder/nichijo整理/nichijo仕上げ/oyasumi/iken)に判定ロジック挿入。基準A〜E/重複判定回避/市民相談単発除外
 - [発信物安全2エージェント新設](project_content_safety_gates.md) — 2026-05-01新設。content-fact-checker(一次情報検証5カテゴリ)＋content-risk-reviewer(8軸：公選法/個人情報/名誉毀損/品位等)。content-pipelineにStep 2.6/2.7/3.6/3.7挿入。HIGH検出時は草川にASK_USER問いかけ
 - [公開済アーカイブシステム](project_published_archive_system.md) — 2026-05-01新設。📚公開済アーカイブDB(ds:0ae2d907-)＋scrape.py＋oyasumi月曜分岐＋voice-analyst最優先ソース化。ブログ/YouTube/Threads真の声学習基盤。初回21件投入済
 - [sns-content-polisherエージェント新設](project_sns_content_polisher.md) — 2026-05-01新設。SNS原稿品質昇格専任。8軸診断＋AI-fingerprint排除＋surgical rewrite。content-editorは合否判定／polisherは直接書き換え
