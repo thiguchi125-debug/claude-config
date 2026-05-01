@@ -1,5 +1,6 @@
 # Memory Index
 
+- [short-video-virality-architectエージェント新設](project_short_video_virality_architect.md) — 2026-05-01新設。≤60秒ショート動画バイラル設計専任。フック15分類＋retention engineering＋政治家ショート成功事例(Zelensky/AOC/石丸/安野/米山/玉木/高市)＋公選法ガード。Solo/Polish 2モード。8軸自己診断64点未満は再リビルド。video-content-strategistとはretention科学深掘りで差別化
 - [動画原稿の保存先は📣SNS投稿管理DBで統一](feedback_video_script_save_destination.md) — 2026-05-01新設。video-content-strategist出力（ショート動画/YouTube長尺）は専用DB作らず📣SNS投稿管理DB(78f40f33-)に集約。タイトル先頭🎬＋【ショート動画】/【YouTube長尺】、ステータス進行中、プラットフォームmulti_select(YouTube/TikTok/Instagram等)
 - [AIインタビュー紹介SNSの定型クレジット文必須](feedback_ai_interview_disclaimer.md) — 2026-05-01新設。安野貴博氏（参院議員/AIエンジニア）・有賀啓介氏（コンサルタント）クレジット＋個人情報禁止注意の定型文を4PF全てに必須化。X140字に収まらない場合はスレッド2投目に
 - [タスク→プロジェクト昇格判定](project_task_to_project_promotion.md) — 2026-05-01新設。タスクDB「昇格判定タグ」(A〜E multi_select)・「昇格判定日」、プロジェクトDB「由来」追加。5系統(citizen-inquiry-responder/nichijo整理/nichijo仕上げ/oyasumi/iken)に判定ロジック挿入。基準A〜E/重複判定回避/市民相談単発除外
