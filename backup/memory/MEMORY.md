@@ -1,5 +1,6 @@
 # Memory Index
 
+- [AIインタビュー紹介SNSの定型クレジット文必須](feedback_ai_interview_disclaimer.md) — 2026-05-01新設。安野貴博氏（参院議員/AIエンジニア）・有賀啓介氏（コンサルタント）クレジット＋個人情報禁止注意の定型文を4PF全てに必須化。X140字に収まらない場合はスレッド2投目に
 - [タスク→プロジェクト昇格判定](project_task_to_project_promotion.md) — 2026-05-01新設。タスクDB「昇格判定タグ」(A〜E multi_select)・「昇格判定日」、プロジェクトDB「由来」追加。5系統(citizen-inquiry-responder/nichijo整理/nichijo仕上げ/oyasumi/iken)に判定ロジック挿入。基準A〜E/重複判定回避/市民相談単発除外
 - [発信物安全2エージェント新設](project_content_safety_gates.md) — 2026-05-01新設。content-fact-checker(一次情報検証5カテゴリ)＋content-risk-reviewer(8軸：公選法/個人情報/名誉毀損/品位等)。content-pipelineにStep 2.6/2.7/3.6/3.7挿入。HIGH検出時は草川にASK_USER問いかけ
 - [公開済アーカイブシステム](project_published_archive_system.md) — 2026-05-01新設。📚公開済アーカイブDB(ds:0ae2d907-)＋scrape.py＋oyasumi月曜分岐＋voice-analyst最優先ソース化。ブログ/YouTube/Threads真の声学習基盤。初回21件投入済
