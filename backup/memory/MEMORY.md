@@ -50,4 +50,4 @@
 - [ai-interview-config-designerエージェント新設](project_ai_interview_config_designer.md) — 2026-04-30新設。政策テーマ→AIインタビュー設定編集8フィールド生成(タイトル/説明/初期挨拶/ナレッジソース/カスタムプロンプト/質問テーマ5本/質問3〜5本)。kameyama_bukatsuベンチマーク。kameyama-researcher＋policy-researcher並列起動必須。同時に📝一般質問ネタDB(42716725-)へ調査中ステータスで自動登録→council-material-creatorと連動するライフサイクル形成（ai-interview-sns-posterの逆処理）
 - [issues返信は記録不要](feedback_issues_response_no_log.md) — 「賛成」「反対」冒頭の意見はissues政策アンケート反応。Notion保存/タスク化/メモ全部省略、返信文3案だけ生成する
 - [📂Drive資料サマリDB & oyasumi/ohayo連携](project_drive_summary_db.md) — 2026-04-30新設。Drive当日更新ファイルをoyasumi自動収集・要約→📂DB(ds:317c4d02-)蓄積→翌朝ohayoで「昨日の新規資料」表示。重複は file_id で除外、上限10件/日、modifiedTime=今日(JST)フィルタ必須
-- [Notionリンクは notion:// スキーム必須](feedback_notion_link_deeplink.md) — 2026-05-01指摘。Notion内に貼るNotionリンクは `notion://www.notion.so/...` で出力。`https://www.notion.so/...` だとスマホ/PCともブラウザ経由になりアプリ直起動しない
+- [Notion内部リンクは app.notion.com 形式](feedback_notion_link_deeplink.md) — 2026-05-01指摘＆検証。`notion://`スキームはAPI保存時に剥がされる仕様判明。代替策として `https://app.notion.com/p/<id>` 形式で統一（www.notion.so より iOS/Android アプリへハンドオフが効きやすい）。直近1週間6ページ14リンクを統一済
