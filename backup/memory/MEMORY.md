@@ -1,5 +1,6 @@
 # Memory Index
 
+- [市民意見DB再設計（永続ログ＋タスク抽出モデル）](project_iken_db_redesign.md) — 2026-05-02改訂2回目で確定。旧c2c34bd8を永続マスターに復活＋緊急度/地区/受付ID(IKN-)/関連タスクrelation追加、新354432ecの3件統合転記してアーカイブ化、ikenスキル＋nichijo Step 2.5を c2c34bd8 へ書込先変更。**意見DB=永続ログ／タスクDB=workflow** モデル
 - [タスク管理刷新](project_task_management_renewal.md) — 2026-05-02。3DBの嘘を解消、タスクDB+プロジェクトDB の2DB体制に整理、5+2ビュー追加、壊れたビュー4本📦リネーム、ハブページ刷新。Notion DSLのステータス型フィルタ制約のため、Done/Archive除外フィルタはユーザー手動追加必須
 - [Notion view-DSLのステータス型フィルタ書き込み不可](feedback_notion_dsl_status_filter_limitation.md) — 2026-05-02ハマり。status型プロパティに `=/!=/IN` 効かない、CLEAR FILTERもsimpleFilters消せない。新規作成＋ユーザー手動設定で回避
 - [地域別活動DB廃止＋nichijo振り分け変更](project_notion_overview_map.md) — 2026-05-02追加対応。地域別活動DB(3d08102d-)アーカイブ化、nichijoスキルR4-Hを🗺️地区別関係性メモDB(520fe503-)へ振り分け変更。市政報告会・挨拶回り・地区集会の記録は「直近の場での発言」「過去の約束」フィールドへnichijo自動追記
