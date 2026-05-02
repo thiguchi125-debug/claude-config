@@ -1,5 +1,6 @@
 # Memory Index
 
+- [🏘️自治会別訪問管理DB新設](project_jichikai_db.md) — 2026-05-03。旧9地区進捗DB＋地区別関係性メモDBを廃止統合し自治会単位（JK-{n}）で訪問進捗＋関係性＋市政報告会を一元管理。30フィールド・5ビュー・nichijo Step 2.6を新DBへ書込変更。10地区（南部追加）×N自治会・進捗指標は軒数完了率＋市政報告会開催数
 - [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/3pillars/v0_handoff.md) — 2026-05-03。3本柱用途=F全用途/構造=A 1:1マッピング確定、v0草案完成、Step A（6ドメインexpert並列）が次の一手。新セッションで実行可能。詳細は `~/.claude/agents/knowledge/kusagawa_archive/3pillars/v0_handoff.md`
 - [地域・選挙ページ階層統一](project_election_hub_unification.md) — 2026-05-03。★選挙プロジェクトと地域・選挙ハブの並列を解消。地域・選挙ハブを唯一の親に統一・サブページ6個（歩いて聞く11,447軒/4象限分析/みずきが丘/後援会役員/新年挨拶/地域別活動計画）を配下へ移動・★選挙はshell化（タスクrel保持）
 - [oyasumiにAIミーティング自動振り分け追加](project_oyasumi_meeting_autoorganize.md) — 2026-05-03実装。oyasumi Step 4.5新設：当日AIノート→📅DB自動転記。会議体マッチ確度0.8以上のみ自動紐付け（B案）、未紐付けはohayoで朝レビュー。nichijo整理R1-B/R2/R4-A subset内部呼出（D案）。3DBは重複ではなく親子（🤖→📅→🏛）と確認
