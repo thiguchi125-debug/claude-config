@@ -1,5 +1,6 @@
 # Memory Index
 
+- [👥後援会員DB＋📜公約・実績マッピングDB＋🗺️地域・選挙ハブ](project_koukaikai_kouyaku_db.md) — 2026-05-02新設。後援会員DB(04cc3a1c-)KAI-{n}＋9地区訪問relation／公約DB(4bce7346-)KOY-{n}＋What/Where/How＋政策候補・質問・MTG3rel／地域・選挙ハブ(354cf503...8746)で4DB集約。政活費DB等4件は不要判断
 - [🌐 Notion全体地図（俯瞰ダッシュボード）](project_notion_overview_map.md) — 2026-05-02新設。21DB＋14ハブを1枚俯瞰、重複1件(市民意見リスト旧↔新)・整理3件・未整備6件(後援会員/政活費/議案賛否/公約実績/印刷物/取材依頼)を診断。354cf503-a68f-819e-b6ba-e01ea98259b8。月1見直し
 - [short-video-virality-architectエージェント新設](project_short_video_virality_architect.md) — 2026-05-01新設。≤60秒ショート動画バイラル設計専任。フック15分類＋retention engineering＋政治家ショート成功事例(Zelensky/AOC/石丸/安野/米山/玉木/高市)＋公選法ガード。Solo/Polish 2モード。8軸自己診断64点未満は再リビルド。video-content-strategistとはretention科学深掘りで差別化
 - [動画原稿の保存先は📣SNS投稿管理DBで統一](feedback_video_script_save_destination.md) — 2026-05-01新設。video-content-strategist出力（ショート動画/YouTube長尺）は専用DB作らず📣SNS投稿管理DB(78f40f33-)に集約。タイトル先頭🎬＋【ショート動画】/【YouTube長尺】、ステータス進行中、プラットフォームmulti_select(YouTube/TikTok/Instagram等)

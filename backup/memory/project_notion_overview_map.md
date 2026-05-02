@@ -44,7 +44,20 @@ originSessionId: 9a9e7ee5-7eca-4eb3-ace0-44c9502a7dc3
 ## 改善ロードマップ累計工数
 約4時間45分（優先1〜3だけで2時間15分）
 
+## 2026-05-02 即対応4件 完了
+1. ✅ 市民意見リスト（旧）アーカイブ化 — タイトル変更＋ハブにバナー設置（リレーション保護のため移行ではなく並走→自然消滅方式採用）
+2. ✅ 👥 後援会員DB新設 — `collection://04cc3a1c-f59a-409d-8406-ff4de19eea45` / 親=🗺️地域・選挙ハブ / 9地区訪問DBとリレーション / 会員ID:KAI-{n}
+3. ✅ 🗺️ 地域・選挙ハブ新設 — `354cf503-a68f-81dd-8746-c99879500bb1` / 親=朝のダッシュボード / 4DB集約（既存3DBはmention-pageでリンク・URL保護）
+4. ✅ 📜 公約・実績マッピングDB新設 — `collection://4bce7346-9cef-4382-9099-d60b9acb169d` / 親=政策アップデートハブ / 公約番号:KOY-{n} / What/Where/How構造 / 政策候補・一般質問・ミーティングと3rel
+
+## 未対応（草川判断で見送り）
+- 政務活動費・経費管理DB
+- 議案賛否記録DB
+- 印刷物アーカイブDB
+- 講演・取材依頼DB
+
 ## ハマったポイント
 - Notionテーブルで番号列が偶数のみ残り奇数行が消失するバグ発生
 - 既知問題（feedback_notion_update_content_pitfalls.md）に該当
 - 改善ロードマップは番号付きリスト形式に修正済み
+- 既存DBを新規ページに inline embed する `<database url="..." inline="false">` タグはAPI不可（"Failed to create block"）→ mention-page リンクで代替
