@@ -1,5 +1,6 @@
 # Memory Index
 
+- [会議ハブ刷新（Notion AI Meeting Notes連動）](project_meeting_hub_renewal.md) — 2026-05-02。ミーティングノートDBに6ビュー（カレンダー/時系列/要フォロー/種別ボード/重要会議/未分類棚卸し）＋会議体マスタに2ビュー追加、ハブページ全面リライト。AIミーティング録音→自動文字起こし→要約→AI元ノートURL紐付けの3方法を明記
 - [市民意見DB再設計（永続ログ＋タスク抽出モデル）](project_iken_db_redesign.md) — 2026-05-02改訂2回目で確定。旧c2c34bd8を永続マスターに復活＋緊急度/地区/受付ID(IKN-)/関連タスクrelation追加、新354432ecの3件統合転記してアーカイブ化、ikenスキル＋nichijo Step 2.5を c2c34bd8 へ書込先変更。**意見DB=永続ログ／タスクDB=workflow** モデル
 - [タスク管理刷新](project_task_management_renewal.md) — 2026-05-02。3DBの嘘を解消、タスクDB+プロジェクトDB の2DB体制に整理、5+2ビュー追加、壊れたビュー4本📦リネーム、ハブページ刷新。Notion DSLのステータス型フィルタ制約のため、Done/Archive除外フィルタはユーザー手動追加必須
 - [Notion view-DSLのステータス型フィルタ書き込み不可](feedback_notion_dsl_status_filter_limitation.md) — 2026-05-02ハマり。status型プロパティに `=/!=/IN` 効かない、CLEAR FILTERもsimpleFilters消せない。新規作成＋ユーザー手動設定で回避
