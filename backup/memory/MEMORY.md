@@ -1,5 +1,6 @@
 # Memory Index
 
+- [🌐 Notion全体地図（俯瞰ダッシュボード）](project_notion_overview_map.md) — 2026-05-02新設。21DB＋14ハブを1枚俯瞰、重複1件(市民意見リスト旧↔新)・整理3件・未整備6件(後援会員/政活費/議案賛否/公約実績/印刷物/取材依頼)を診断。354cf503-a68f-819e-b6ba-e01ea98259b8。月1見直し
 - [short-video-virality-architectエージェント新設](project_short_video_virality_architect.md) — 2026-05-01新設。≤60秒ショート動画バイラル設計専任。フック15分類＋retention engineering＋政治家ショート成功事例(Zelensky/AOC/石丸/安野/米山/玉木/高市)＋公選法ガード。Solo/Polish 2モード。8軸自己診断64点未満は再リビルド。video-content-strategistとはretention科学深掘りで差別化
 - [動画原稿の保存先は📣SNS投稿管理DBで統一](feedback_video_script_save_destination.md) — 2026-05-01新設。video-content-strategist出力（ショート動画/YouTube長尺）は専用DB作らず📣SNS投稿管理DB(78f40f33-)に集約。タイトル先頭🎬＋【ショート動画】/【YouTube長尺】、ステータス進行中、プラットフォームmulti_select(YouTube/TikTok/Instagram等)
 - [AIインタビュー紹介SNSの定型クレジット文必須](feedback_ai_interview_disclaimer.md) — 2026-05-01新設。安野貴博氏（参院議員/AIエンジニア）・有賀啓介氏（コンサルタント）クレジット＋個人情報禁止注意の定型文を4PF全てに必須化。X140字に収まらない場合はスレッド2投目に
