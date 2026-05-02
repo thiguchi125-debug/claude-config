@@ -1,5 +1,6 @@
 # Memory Index
 
+- [SNS＋ブログDB統合](project_sns_blog_merge.md) — 2026-05-03。📣SNS投稿管理＋📝ブログ記事管理を投稿管理DB(1bd98deb-)に一本化。プラットフォームに「ブログ」「YouTube Shorts」「Reels」追加・公開URL追加・15件転記・nichijo/oyasumi修正・旧ブログDB(dcdf44af-)アーカイブ
 - [Notion全体地図 v2再整理＋タスク集中マップ](project_notion_overview_map.md) — 2026-05-03。政策候補DB・一般質問ネタDBに「関連タスク」relation追加（DUAL '関連政策候補'/'関連一般質問ネタ'）でタスク集中達成。俯瞰ダッシュボード全面リライト：✅タスク集中マップ中心構成・10ハブ×18稼働DB＋4アーカイブDB体系・古い記述削除
 - [会議ハブ刷新（Notion AI Meeting Notes連動）](project_meeting_hub_renewal.md) — 2026-05-02。ミーティングノートDBに6ビュー（カレンダー/時系列/要フォロー/種別ボード/重要会議/未分類棚卸し）＋会議体マスタに2ビュー追加、ハブページ全面リライト。AIミーティング録音→自動文字起こし→要約→AI元ノートURL紐付けの3方法を明記
 - [市民意見DB再設計（永続ログ＋タスク抽出モデル）](project_iken_db_redesign.md) — 2026-05-02改訂2回目で確定。旧c2c34bd8を永続マスターに復活＋緊急度/地区/受付ID(IKN-)/関連タスクrelation追加、新354432ecの3件統合転記してアーカイブ化、ikenスキル＋nichijo Step 2.5を c2c34bd8 へ書込先変更。**意見DB=永続ログ／タスクDB=workflow** モデル
