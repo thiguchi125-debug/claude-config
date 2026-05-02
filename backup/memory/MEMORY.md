@@ -1,5 +1,7 @@
 # Memory Index
 
+- [タスク管理刷新](project_task_management_renewal.md) — 2026-05-02。3DBの嘘を解消、タスクDB+プロジェクトDB の2DB体制に整理、5+2ビュー追加、壊れたビュー4本📦リネーム、ハブページ刷新。Notion DSLのステータス型フィルタ制約のため、Done/Archive除外フィルタはユーザー手動追加必須
+- [Notion view-DSLのステータス型フィルタ書き込み不可](feedback_notion_dsl_status_filter_limitation.md) — 2026-05-02ハマり。status型プロパティに `=/!=/IN` 効かない、CLEAR FILTERもsimpleFilters消せない。新規作成＋ユーザー手動設定で回避
 - [地域別活動DB廃止＋nichijo振り分け変更](project_notion_overview_map.md) — 2026-05-02追加対応。地域別活動DB(3d08102d-)アーカイブ化、nichijoスキルR4-Hを🗺️地区別関係性メモDB(520fe503-)へ振り分け変更。市政報告会・挨拶回り・地区集会の記録は「直近の場での発言」「過去の約束」フィールドへnichijo自動追記
 - [👥後援会員DB＋📜公約・実績マッピングDB＋🗺️地域・選挙ハブ](project_koukaikai_kouyaku_db.md) — 2026-05-02新設。後援会員DB(04cc3a1c-)KAI-{n}＋9地区訪問relation／公約DB(4bce7346-)KOY-{n}＋What/Where/How＋政策候補・質問・MTG3rel／地域・選挙ハブ(354cf503...8746)で4DB集約。政活費DB等4件は不要判断
 - [🌐 Notion全体地図（俯瞰ダッシュボード）](project_notion_overview_map.md) — 2026-05-02新設。21DB＋14ハブを1枚俯瞰、重複1件(市民意見リスト旧↔新)・整理3件・未整備6件(後援会員/政活費/議案賛否/公約実績/印刷物/取材依頼)を診断。354cf503-a68f-819e-b6ba-e01ea98259b8。月1見直し
