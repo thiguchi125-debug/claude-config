@@ -40,7 +40,7 @@
 - [カレンダーIDは kusakawa.taku](feedback_calendar_id_kusakawa.md) — 草川の個人カレンダーIDは `kusakawa.taku@gmail.com`（kusagawa は誤り）。2026-04-26朝に予定6件取りこぼした事故あり
 - [community-rally-speakerエージェント新設](project_community_rally_speaker.md) — 2026-04-26新設。自治会総会・地区集会の短尺アジ挨拶専任。speech-writer（式典・長尺）と棲み分け。地区別関係性メモDB(ds:520fe503-)連携
 - [おやすみシステム新設](project_oyasumi_system.md) — 2026-04-26新設。oyasumiスキル＋📔デイリーサマリ親(34ecf503...8182)＋📅週次レポート親(34ecf503...81b0)。完全自動化：1日集約・タスク繰越し・nichijo補完・政策ドラフト・朝ダッシュボード差込。金曜のみ週次レポート
-- [政策コンパスシステム](project_policy_compass.md) — 2026-04-26新設。policy-compass-curator＋policy_compass.md＋Notion🧭政策コンパス(34ecf503...84d, 親=政策アップデートハブ)。Origin Story「一生応援部魂で市民を全力応援」確定、3軸はv0で未蒸留
+- [政策コンパスシステム](project_policy_compass.md) — 2026-05-02 v2再蒸留。Origin Story=「声を、チカラに。／私は、あなたの応援団。」(聞き手起点)、3軸=伝える/繋ぐ(暮らしと安心)/希望、voice-dna=声をチカラに/届かないを終わらせる/繋ぐ思いを形にする/亀山の名を刻む。情緒的アジ禁止解除、応援団の構え原則は3軸ラベル昇格で削除。policy-compass-curator＋policy_compass.md＋Notion🧭政策コンパス(34ecf503...84d)
 - [街頭演説エージェント新設](project_daily_street_speech.md) — 2026-04-26新設。daily-street-speech：20分ループ talking points 3パッケージ(重め/親しみ/攻め)。compass+ニュース+nichijo+市民意見+政策候補を毎回統合
 - [議会戦闘・動画系3エージェント新設](project_council_combat_agents.md) — 2026-04-26新設。agenda-analyzer(議案カルテ)/counter-argument-simulator(議場戦闘マニュアル)/video-content-strategist(動画戦略)。議員業務カバレッジ穴埋め最優先3本
 - [選挙地区戦略エージェント新設](project_electoral_district_strategist.md) — 2026-04-26新設。electoral-district-strategist：4象限分類・街宣ルートROI最適化・当落ライン分析・公選法遵守徹底。2026-10-25選挙準備の定量的頭脳
