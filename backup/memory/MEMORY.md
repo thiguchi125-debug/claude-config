@@ -1,5 +1,7 @@
 # Memory Index
 
+- [政策エキスパート11エージェント新設](project_policy_expert_agents_11.md) — 2026-05-03新設。3本柱蒸留前の専門チーム整備。A:ドメイン6本（子育て教育/医療福祉/防災/まちづくり産業/交通インフラ/DX）+ B:パッケージング1本(packaging-strategist) + C:実現性2本(fiscal-simulator/roadmap-designer) + D:対外2本(stakeholder-mapper/comparison-benchmarker)。既存7本と非重複・役割境界明示。voice-dna整合・EBPM必須を全エージェントの判断原則に組込
+- [政策コンパス v2 surgical fix（軸1タグライン）](project_policy_compass.md) — 2026-05-03。「市民の声を、制度の最後の一歩まで伝える」が伝わりにくいため「『届かない』を、終わらせる。」(Theme B)に差し替え。ローカルmd・Notion 3箇所同期済
 - [SNS＋ブログDB統合](project_sns_blog_merge.md) — 2026-05-03。📣SNS投稿管理＋📝ブログ記事管理を投稿管理DB(1bd98deb-)に一本化。プラットフォームに「ブログ」「YouTube Shorts」「Reels」追加・公開URL追加・15件転記・nichijo/oyasumi修正・旧ブログDB(dcdf44af-)アーカイブ
 - [Notion全体地図 v2再整理＋タスク集中マップ](project_notion_overview_map.md) — 2026-05-03。政策候補DB・一般質問ネタDBに「関連タスク」relation追加（DUAL '関連政策候補'/'関連一般質問ネタ'）でタスク集中達成。俯瞰ダッシュボード全面リライト：✅タスク集中マップ中心構成・10ハブ×18稼働DB＋4アーカイブDB体系・古い記述削除
 - [会議ハブ刷新（Notion AI Meeting Notes連動）](project_meeting_hub_renewal.md) — 2026-05-02。ミーティングノートDBに6ビュー（カレンダー/時系列/要フォロー/種別ボード/重要会議/未分類棚卸し）＋会議体マスタに2ビュー追加、ハブページ全面リライト。AIミーティング録音→自動文字起こし→要約→AI元ノートURL紐付けの3方法を明記
