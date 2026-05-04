@@ -1,6 +1,5 @@
 # Memory Index
 
-- [エージェント24本を_archive/へ退避](project_agent_archive_20260504.md) — 2026-05-04トークン節約。45→21本でセッション起動時の説明文ロードを軽量化。news-briefing毎朝6:00 cronも無効化(trig_01WXgkt4)。統廃合は未実施・必要時mvで即復活
 - [街頭演説は選挙文脈を引っ込め政策ネタの中身を厚く](feedback_street_speech_no_election_focus.md) — 2026-05-04。daily-street-speech/speech-writer/community-rally-speakerで投票日・期数・「もう一度」等の選挙アピール語を最小化。代わりに数字・固有名詞・他自治体比較・運用詳細・市民の声・反対論への応答を厚くする。20分ループは2〜4周目も実体ある別ネタで埋める
 - [ブログは市民情報伝達と政策論考を分けて書く](feedback_blog_citizen_first.md) — 2026-05-04の重要反省。モードA(市民情報伝達)とモードB(政策論考)を判定してから書き始める。モードAでは「6月議会で問います」を主役にしない／市民が取る行動を主軸／「届かないをつくらない」基調。blog-writer.md改訂済
 - [自治会DB全経路集約強化](project_jichikai_all_routes.md) — 2026-05-04。自治会DBへの自動追記を「記録」コマンドだけでなく全経路（nichijo整理R4-H/Step 2.6/ikenスキル/citizen-inquiry-responder/SNS/メール/フォーム）に拡大。検出キーワード=48自治会名+22地区名+施設名リスト（旧9地区→48自治会へ大幅拡充）。市民意見DBの関連自治会_意見relationを自動設定→自治会DB側「直近の場での発言」セクションに要約追記
