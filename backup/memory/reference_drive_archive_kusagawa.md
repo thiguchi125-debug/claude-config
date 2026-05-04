@@ -33,22 +33,23 @@ originSessionId: c51d25d3-bac9-4389-a011-c69108f135b0
 | ZZ_ブログSNS全アーカイブ | 1mNHzaHx9CxrDAHyMnq3K5EBqMRrTM4au | ブログ・SNS過去全件 |
 | 99_音声記録 | 1eDFCCgbbTPe3r4GJ-shBaIvPe70ZbTno | 街頭演説・委員会音源等 |
 
-## 3. ローカル整理済みアーカイブ（高速参照層）
-場所: `~/.claude/agents/knowledge/kusagawa_archive/`
-- `transcripts/` 議事録テキスト45件 + `_council_search_index.md`（H30〜R7全47エントリ索引）
-  - **`transcripts/google_drive_kaigiroku/` ★2026-05-04取込：草川パート＋執行部答弁のみ抽出 28件 2.2MB（H30〜R08全期間）**
-- `blog_full/` ブログ全文53件（2021-10〜2026-05）
-- `canva/` 印刷物107件（市政報告レポート1〜39号 + 応援カード/産後ケア/市政報告会）
-  - **`canva/google_drive_reports/` ★2026-05-04取込：市政報告レポート38〜62号＋地区版 42件 360KB**
-- `themes/` テーマ別蒸留11件（子育て教育・防災・福祉・DX・まちづくり経済・環境・観光・議会改革）
-- `3pillars/` 政策3本柱草案
-- `voice-dna.md` / `policy_compass.md` / `MISSION_REPORT.md` / `manuscripts_inventory.md`
-- **`googledrive/_INTAKE_REPORT.md` ★Drive取込の完全レポート（変換ルール・既知の制約・スクリプト所在）**
+## 3. ローカル整理済みアーカイブ（高速参照層・v2構造）
+場所: `~/.claude/agents/knowledge/kusagawa_archive/`（詳細は `INDEX.md`）
+- **`01_council/`** 議会発言テキスト 75件・4.4MB（H30〜R08全期間、`*_kusagawa.txt` は草川パート抽出済）+ `_council_search_index.md`
+- **`02_publications/blog/`** ブログ全文 53件・420KB（2021-10〜2026-05）
+- **`02_publications/reports/`** 市政報告レポート 42件・360KB（38〜62号＋地区版）
+- **`02_publications/leaflets/`** 印刷物 107件・1.1MB（応援カード・チラシ・市政報告レポート1〜39号）
+- **`03_themes/`** テーマ別蒸留 12件（子育て教育・防災・福祉・DX・まちづくり経済・環境・観光・議会改革ほか）
+- **`04_compass/`** 政策コンパス・voice-dna・3本柱・MISSION_REPORT・manuscripts_inventory（12件）
+- **`99_raw/`** ★grep対象外。`_drive_originals/` 原本（254MB）+ `_legacy/` + `_needs_ocr/` + `_scripts/`
+- **`99_raw/_drive_originals/_INTAKE_REPORT.md`** ★Drive取込の完全レポート（変換ルール・既知の制約）
+- **`99_raw/_scripts/_drive_sync.sh`** ★Drive→ローカル同期スクリプト（議会後に実行）
 
 ## 4. 参照ハンドリング規約
-- **第一手は必ずローカル**: `grep -l "<キーワード>" ~/.claude/agents/knowledge/kusagawa_archive/transcripts/*.txt` および `themes/`・`blog_full/`・`canva/` を検索。テキスト化済なので高速・安価。
-- **Drive は補完源**: ローカルに存在しない年度・号数（例: 市政報告レポート40〜62号、R08最新議事録、地区版PDF）が必要な場合のみ Drive MCP `search_files` / `read_file_content` で取得。
-- **ローカル不足発見時**: 取得したDrive資料を `~/Documents/市議会・政策/<年>/` 等に保存し、`canva_to_text.sh` または手動で `kusagawa_archive/` 配下にテキスト化追加。
+- **第一手は必ずローカル**: `grep -l "<キーワード>" ~/.claude/agents/knowledge/kusagawa_archive/{01_council,02_publications/blog,02_publications/reports,02_publications/leaflets}/*.txt` ＋ `03_themes/*.md`。テキスト化済なので高速・安価。
+- **99_raw は grep対象外**: 原本サイロ・容量隔離。検索ノイズを避ける。
+- **Drive は補完源**: ローカルに無い年度・号数が必要な時のみ Drive MCP `read_file_content` で取得。
+- **新規取込**: Drive ブラウザから `99_raw/_drive_originals/` にダウンロード →`bash 99_raw/_scripts/_drive_sync.sh` で自動でテキスト化＆草川パート抽出＆01_council/02_publications/reports/ へ統合。
 - **エージェント連動**: blog-writer / council-material-creator / sns-content-creator / speech-writer / policy-archive-miner / policy-comparison-benchmarker / agenda-analyzer は原稿生成前にローカル grep を実施。
 
 ## 5. How to apply
