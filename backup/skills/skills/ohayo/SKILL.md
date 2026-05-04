@@ -414,51 +414,33 @@ oyasumi Step 4.5 で実行された AIミーティング自動振り分けの結
 → 紐付け方法：📅DB レコードを開いて「会議体」relation で選択 or 新規会議体マスタ登録
 ```
 
-**セクション X-2: 📚 先週のDriveアーカイブ取込（月曜のみ・2026-05-04追加）**
+**セクション X-2: 📚 先週のDriveアーカイブ同期（月曜のみ・2026-05-04追加）**
 
-`weekly-drive-sync` スキルが日曜21時に実行した結果を月曜朝のみ表示。火〜日は省略。
+リモート Routine `weekly-drive-sync-kusagawa`（毎週日曜21時 JST 自動実行）が Notion `📥Drive取込キュー` DB に登録した新規ファイル一覧を月曜朝のみ表示。火〜日は省略。
 
-取得元: `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_sync_state.json`
+取得元: Notion DB `collection://5187247b-f6ea-420a-a80c-154947911f64`
 
-```bash
-STATE=~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_sync_state.json
-python3 -c "
-import json
-from datetime import datetime, timedelta, timezone
-state = json.load(open('$STATE'))
-hist = state.get('history', [])
-# 直近の weekly_sync イベントを探す
-recent = [h for h in hist if h.get('action') == 'weekly_sync']
-if not recent:
-    print('no_recent_sync')
-else:
-    last = recent[-1]
-    pending = state.get('pending_review', [])
-    print(json.dumps({
-        'last_sync': last['ts'],
-        'auto_count': last.get('auto_count', 0),
-        'pending_count': len(pending),
-        'skipped_count': last.get('skipped_count', 0),
-        'pending_titles': [p['title'] for p in pending[:5]],
-    }, ensure_ascii=False))
-"
-```
+`mcp__claude_ai_Notion__notion-fetch` で取得し、状態が「未着手」or「進行中」かつ草川判定が空のレコードを集計。
 
 ```
-## 📚 先週のDriveアーカイブ取込（{YYYY-MM-DD}実行）
-✅ 自動取込: {N}件（議事録・市政報告レポート）
-❓ 確認待ち: {M}件 ←判定が必要
-{i}. {pending_title_1}
-{i}. {pending_title_2}
-...
+## 📚 先週のDriveアーカイブ同期
+✅ 自動分類済: {N}件
+  議事録(01_council): {n_council}件
+  市政報告(02_publications/reports): {n_reports}件
+❓ 未分類（要判定）: {M}件
+{i}. {title} ({mimeType}, {sizeKB}KB) [{親フォルダ}]
+{i}. ...
+（先頭5件まで表示、残りは「他K件」）
 
-→ 確認待ちの判定: `/drive-sync-review` を実行（草川が「全部」「番号指定」「なし」で応答）
-→ 全件詳細: ~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_sync_state.json
+→ 取込判定: 「/drive-sync-review」を実行
+→ 全件: https://www.notion.so/ed2d5e6a96f9401fa204c3431602de41
 ```
 
-0件の場合（auto=0 かつ pending=0）: セクション全体を省略。
-auto>0 かつ pending=0 の場合: 「✅ 自動取込: {N}件（確認待ちなし）」のみ表示。
+0件の場合（pending=0 かつ 直近1週間以内に取込実績なし）: セクション全体を省略。
+全自動分類済（未分類0件）の場合: 「✅ 全件自動分類済（{N}件）／確認待ちなし」のみ表示し /drive-sync-review でまとめて承認実行を促す。
 当日が月曜以外: セクション全体を省略。
+
+**Routine実行失敗時**: Gmail下書きが届いていない & DB更新もない場合、「⚠ 先週の Drive 同期 routine が実行されていない可能性: https://claude.ai/code/routines/trig_016r7yNKRqVubUvCJMTzVZ98 を確認」と注記。
 
 **セクション3: 🔗 進行中プロジェクト**
 
