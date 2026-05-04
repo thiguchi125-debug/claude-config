@@ -414,6 +414,52 @@ oyasumi Step 4.5 で実行された AIミーティング自動振り分けの結
 → 紐付け方法：📅DB レコードを開いて「会議体」relation で選択 or 新規会議体マスタ登録
 ```
 
+**セクション X-2: 📚 先週のDriveアーカイブ取込（月曜のみ・2026-05-04追加）**
+
+`weekly-drive-sync` スキルが日曜21時に実行した結果を月曜朝のみ表示。火〜日は省略。
+
+取得元: `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_sync_state.json`
+
+```bash
+STATE=~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_sync_state.json
+python3 -c "
+import json
+from datetime import datetime, timedelta, timezone
+state = json.load(open('$STATE'))
+hist = state.get('history', [])
+# 直近の weekly_sync イベントを探す
+recent = [h for h in hist if h.get('action') == 'weekly_sync']
+if not recent:
+    print('no_recent_sync')
+else:
+    last = recent[-1]
+    pending = state.get('pending_review', [])
+    print(json.dumps({
+        'last_sync': last['ts'],
+        'auto_count': last.get('auto_count', 0),
+        'pending_count': len(pending),
+        'skipped_count': last.get('skipped_count', 0),
+        'pending_titles': [p['title'] for p in pending[:5]],
+    }, ensure_ascii=False))
+"
+```
+
+```
+## 📚 先週のDriveアーカイブ取込（{YYYY-MM-DD}実行）
+✅ 自動取込: {N}件（議事録・市政報告レポート）
+❓ 確認待ち: {M}件 ←判定が必要
+{i}. {pending_title_1}
+{i}. {pending_title_2}
+...
+
+→ 確認待ちの判定: `/drive-sync-review` を実行（草川が「全部」「番号指定」「なし」で応答）
+→ 全件詳細: ~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_sync_state.json
+```
+
+0件の場合（auto=0 かつ pending=0）: セクション全体を省略。
+auto>0 かつ pending=0 の場合: 「✅ 自動取込: {N}件（確認待ちなし）」のみ表示。
+当日が月曜以外: セクション全体を省略。
+
 **セクション3: 🔗 進行中プロジェクト**
 
 - old_str: ページから取得した `## 🔗 進行中プロジェクト` セクション全体（`→ 全プロジェクト: ...` の行まで含む直前の `##` 行の手前まで）

@@ -1,0 +1,491 @@
+{
+  "schema_version": 1,
+  "last_sync_at": "2026-05-04T14:00:00Z",
+  "auto_imported": [
+    {
+      "title": "R0703kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "R0509kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "kaigirokur0709.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": ".DS_Store",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "r3_12kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "R0603kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "R8.3.18決算委員会（総合計画）_20260318162653.txt",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "kaigiroku0706.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "R0609kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "r0403kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "kaigiroku_r0106.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "kaigiroku_r0112.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "313.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "R8.3.23? 算決算委員会_20260323172950.txt",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "R8.3.23予算決算委員会_20260323172950.txt",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "R0503kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "r0406_kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "kaigiroku_r3_3.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "0409kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "令和８年３月10日.docx",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "kaigiroku_r0109.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "36.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "R0506kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "r2_12t_kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "r2_6t_kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "R0512kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "r3_9kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "r2_9t_kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "r2_3t_kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "0412kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "R0606kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "3012.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "R0612kaigiroku.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "kaigirokuR0712.pdf",
+      "category": "transcripts",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "【1111】市政報告レポート60.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "草川たくやの 昼生ニュース7月号.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "【1222】市政報告レポート61.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "草川一般質問資料.zip",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": ".DS_Store",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート40のコピーのコピー.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "けんろう版市政報告23.12.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート５２.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "【240627】市政報告レポート43.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "草川たくやの 昼生ニュース.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート47.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告号外版2024.1.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート46.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "昼生版市政報告2.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート45.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート41.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政レポート53.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "みずきが丘チラシ.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "草川たくやの 昼生ニュースのコピー.1pdf.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート54.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政レポート51.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政レポート50.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート57.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート号外③.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "【0410】市政報告レポート62.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政レポート49.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政レポート48.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "東部地区市政報告１.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "【0812】市政報告レポート58.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート41のコピー.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "【240522】市政報告レポート42.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告会（御幸）.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "草川たくやの 南部ニュースのコピー.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政レポート50のコピー.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "【けんろう】市政報告レポート43.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート40（防犯カメラ）.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート39.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "草川たくやの 昼生ニュースのコピー.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート38.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "御幸.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "【240522】市政報告レポート42のコピー.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "草川たくやの 菅内ニュース10月号ののコピー.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "市政報告レポート.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "草川たくやの 二本松ニュース10月号ののコピー.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    },
+    {
+      "title": "草川たくやの 南部ニュース.pdf",
+      "category": "reports",
+      "imported_at": "2026-05-04T13:00:00Z",
+      "drive_id": null
+    }
+  ],
+  "pending_review": [],
+  "skipped_files": [],
+  "history": [
+    {
+      "ts": "2026-05-04T14:00:00Z",
+      "action": "initial_setup",
+      "auto_count": 79,
+      "pending_count": 0,
+      "skipped_count": 0
+    }
+  ]
+}
