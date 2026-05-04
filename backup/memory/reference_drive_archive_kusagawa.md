@@ -36,11 +36,14 @@ originSessionId: c51d25d3-bac9-4389-a011-c69108f135b0
 ## 3. ローカル整理済みアーカイブ（高速参照層）
 場所: `~/.claude/agents/knowledge/kusagawa_archive/`
 - `transcripts/` 議事録テキスト45件 + `_council_search_index.md`（H30〜R7全47エントリ索引）
+  - **`transcripts/google_drive_kaigiroku/` ★2026-05-04取込：草川パート＋執行部答弁のみ抽出 28件 2.2MB（H30〜R08全期間）**
 - `blog_full/` ブログ全文53件（2021-10〜2026-05）
 - `canva/` 印刷物107件（市政報告レポート1〜39号 + 応援カード/産後ケア/市政報告会）
+  - **`canva/google_drive_reports/` ★2026-05-04取込：市政報告レポート38〜62号＋地区版 42件 360KB**
 - `themes/` テーマ別蒸留11件（子育て教育・防災・福祉・DX・まちづくり経済・環境・観光・議会改革）
 - `3pillars/` 政策3本柱草案
 - `voice-dna.md` / `policy_compass.md` / `MISSION_REPORT.md` / `manuscripts_inventory.md`
+- **`googledrive/_INTAKE_REPORT.md` ★Drive取込の完全レポート（変換ルール・既知の制約・スクリプト所在）**
 
 ## 4. 参照ハンドリング規約
 - **第一手は必ずローカル**: `grep -l "<キーワード>" ~/.claude/agents/knowledge/kusagawa_archive/transcripts/*.txt` および `themes/`・`blog_full/`・`canva/` を検索。テキスト化済なので高速・安価。
