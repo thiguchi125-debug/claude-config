@@ -1,6 +1,6 @@
 # 草川たくや 知識アーカイブ ルートINDEX
 
-**更新日**: 2026-05-04
+**更新日**: 2026-05-04（Drive一次資料28議事録＋42市政報告レポート 取込完了）
 **目的**: 草川の発言・原稿・印刷物をエージェント（blog-writer/council-material-creator/sns-content-creator/speech-writer/policy-archive-miner等）が参照する横断検索基盤
 
 ## 上流：Drive 一次資料サイロ
@@ -27,13 +27,15 @@
 │   ├── INDEX.md
 │   ├── _council_search_index.md  ★全期間索引47エントリ（H30〜R7）
 │   ├── _needs_ocr/           画像PDFでOCR要（8件）
-│   └── 2019-06_R010531_*.txt 〜 2026-03_R080304_*.txt
+│   ├── 2019-06_R010531_*.txt 〜 2026-03_R080304_*.txt
+│   └── google_drive_kaigiroku/  ★2026-05-04取込・草川パート＋執行部答弁のみ抽出（28件・2.2MB、H30〜R08全期間）
 ├── blog_full/                ブログ全文（53件・約420KB）
 │   └── 2021-10_311522_リニア〜.txt 〜 2026-05_1370223_防災気象情報.txt
 ├── canva/                    印刷物テキスト（107件・1.1MB）★NEW
 │   ├── 2026-05-04_canva_*.txt（応援カード/産後ケア/市政報告会・10件）
 │   ├── 2026-05-04_shisei_*.txt（市政報告レポート1〜39号系・97件）
-│   └── _needs_ocr/  画像PDF・OCR要（16件・市政報告レポート4・5・37他）
+│   ├── _needs_ocr/  画像PDF・OCR要（16件・市政報告レポート4・5・37他）
+│   └── google_drive_reports/  ★2026-05-04取込・市政報告レポート38〜62号＋地区版（42件・360KB）
 ├── themes/                   テーマ別蒸留ノート（11件）
 │   ├── 子育て・教育.md
 │   ├── まちづくり・経済.md
@@ -41,6 +43,9 @@
 ├── 3pillars/                 3本柱草案
 │   ├── v0_handoff.md
 │   └── step_a/
+├── googledrive/              ★2026-05-04取込・原本＋中間テキスト＋抽出スクリプト（_INTAKE_REPORT.md参照）
+│   ├── transcripts/   原本29PDF+1docx+2txt → _text/ → _kusagawa_only/
+│   └── reports/       原本43PDF+1zip → _text/ → canva/google_drive_reports/へ統合済
 └── raw/
     └── council_minutes_excerpts/  議題HTML20セッション
 ```
