@@ -1,65 +1,98 @@
-# 草川たくや アーカイブ INDEX
+# 草川たくや 知識アーカイブ ルートINDEX
 
-policy-archive-miner エージェントが構築・保守する、草川たくや（亀山市議会議員）の過去発言・主張の体系的アーカイブ。
+**更新日**: 2026-05-04
+**目的**: 草川の発言・原稿・印刷物をエージェント（blog-writer/council-material-creator/sns-content-creator/speech-writer/policy-archive-miner等）が参照する横断検索基盤
 
-## 使い方
-- `policy_compass.md` を daily-street-speech / speech-writer / print-designer / blog-writer 等が起動時に必ず参照（最上位の蒸留物）
-- `themes/{テーマ}.md` を policy-synthesizer や print-designer が参照（テーマ別の生発言群）
-- 「更新して」コマンドで差分更新（既存内容は破壊しない）
-- ソースは議事録・ブログ・SNS・nichijo・voice-dna・過去チラシ等を横断
-- raw/ 配下に必要に応じて元データを保存
+---
 
-## 🧭 政策コンパス（最上位の蒸留物）
-- ファイル：[policy_compass.md](policy_compass.md)
-- 状態：**v1（夜間自動蒸留・草川朝レビュー待ち）**
-- Origin Story：「**一生、応援団であり続ける。**」（v0「一生応援部魂で…」を refine）
-- 3軸：
-  - 🧭 軸1（プロセス）「市民の声を、制度の最後の一歩まで運ぶ。」
-  - 🧭 軸2（守る）「命と暮らしの動線を、絶対に守る。」
-  - 🧭 軸3（攻める）「学ぶ亀山から、選ばれる亀山へ。」
-- キュレーター：`policy-compass-curator` エージェント
-- Notion 同期先：[🧭 草川たくや 政策コンパス](https://www.notion.so/34ecf503a68f8117afcaecab391eb84d)（親=🎯政策アップデートハブ配下、v1反映済）
+## ディレクトリ構造
 
-## 🎵 voice-dna（声のDNA・中央化）
-- ファイル：[voice-dna.md](voice-dna.md)
-- 構成：①実態フレーズ（直近43発信実測）／②理想ボキャブラリー（草川指示で美しくrefine）／③避ける表現
-- 理想ボキャブラリー4本：
-  - 「主役は、あなた。私はその背中を押し続ける。」
-  - 「諦めることは、一番の不誠実。」
-  - 「答えが出るまで、ここに立つ。」
-  - 「学ぶ亀山から、選ばれる亀山へ。」
+```
+~/.claude/agents/knowledge/kusagawa_archive/
+├── INDEX.md                  ← このファイル
+├── transcripts/              議会発言テキスト（45件・約2MB）
+│   ├── INDEX.md
+│   ├── _council_search_index.md  ★全期間索引47エントリ（H30〜R7）
+│   ├── _needs_ocr/           画像PDFでOCR要（8件）
+│   └── 2019-06_R010531_*.txt 〜 2026-03_R080304_*.txt
+├── blog_full/                ブログ全文（53件・約420KB）
+│   └── 2021-10_311522_リニア〜.txt 〜 2026-05_1370223_防災気象情報.txt
+├── canva/                    Canva印刷物テキスト（5件）★NEW
+│   └── 2026-05-04_canva_*.txt（応援カード/産後ケア/市政報告会等）
+├── themes/                   テーマ別蒸留ノート（11件）
+│   ├── 子育て・教育.md
+│   ├── まちづくり・経済.md
+│   └── （他・防災/福祉/DX等）
+├── 3pillars/                 3本柱草案
+│   ├── v0_handoff.md
+│   └── step_a/
+└── raw/
+    └── council_minutes_excerpts/  議題HTML20セッション
+```
 
-## テーマファイル一覧
+---
 
-| テーマ | ファイル | 最終更新 | 一貫性スコア | 状態 |
-|---|---|---|---|---|
-| 子育て・教育 | [themes/子育て・教育.md](themes/子育て・教育.md) | 2026-04-25 | A+ | **議事録議題20セッション抽出済**（H30-R7 全期間） |
-| 暮らし・福祉 | [themes/暮らし・福祉.md](themes/暮らし・福祉.md) | 2026-04-25 | A | **完成**：医療・防災・健康都市政策・コロナ・物価高・新型福祉 |
-| まちづくり・経済 | [themes/まちづくり・経済.md](themes/まちづくり・経済.md) | 2026-04-25 | A | **完成**：リニア・コストコ・公共交通・産業構造転換・観光・DX |
-| 防災・安全 | [themes/防災・安全.md](themes/防災・安全.md) | 2026-04-26 | B+ | **v0骨格作成**：消火栓/椋川水害/ため池年次計画/R8防災気象情報/通学路 |
-| 環境・エネルギー | [themes/環境・エネルギー.md](themes/環境・エネルギー.md) | 2026-04-26 | B+ | **v0骨格作成**：太陽光条例（10kW以上許可制）/釧路市比較/分散型エネルギー |
-| 行政DX・透明性 | [themes/行政DX・透明性.md](themes/行政DX・透明性.md) | 2026-04-26 | B+ | **v0骨格作成**：行かない窓口/Kカード統合デジタル地域通貨/施設予約縦割りDX |
-| 文化・観光 | [themes/文化・観光.md](themes/文化・観光.md) | 2026-04-26 | B | **v0骨格作成**：藤まつり/亀山茶機能性/コスモス種まき/かわまちづくり×アーバンスポーツ |
-| 議会改革 | [themes/議会改革.md](themes/議会改革.md) | 2026-04-26 | B | **v0骨格作成**：政策型議会研修/中学生議会/伴走型職員PMジョブ/地域協創PT |
-| 野焼き／生活環境保全 | [themes/noyaki_seikatu_kankyo.md](themes/noyaki_seikatu_kankyo.md) | 2026-04-28 | B（議会未質問・市民相談継続） | **三寺町L3市民相談起点**：1年7ヶ月越し継続案件／6月議会化検討中／太陽光条例・危険木・環境基本計画から論立て流用可能 |
+## 各リソースの使い分け
 
-## raw/ 配下
-- `council_minutes_excerpts/` 議事録本文抜粋（議会会議録検索システム経由）
-- `blog_excerpts/` ブログ本文抜粋
-- `sns_excerpts/` SNS投稿抜粋
-- `leaflets_ocr/` 過去チラシOCR結果
+| ニーズ | 参照先 | 特徴 |
+|---|---|---|
+| 過去の議場発言を引用 | `transcripts/*.txt` | 一次資料（議事録ドラフト・原稿・通告書） |
+| 同テーマの過去ブログを引用 | `blog_full/*.txt` | 公開済全文（2021-10〜2026-05全期間） |
+| 印刷物の文言継承 | `canva/*.txt` | チラシ・応援カード・市政報告会レイアウトの文言 |
+| テーマ別観点まとめ | `themes/*.md` | policy-archive-miner蒸留結果 |
+| 3本柱・コンパス | `3pillars/`, `policy_compass.md` | 政策の軸 |
+| H30〜R7の発言索引 | `transcripts/_council_search_index.md` | 47セッション索引（全文は事務局B案要請） |
 
-## 更新履歴
-- 2026-04-25: アーカイブ初期化、子育て・教育テーマ初回ドラフト作成（policy-archive-miner試運転）
-- 2026-04-25: 亀山市議会会議録検索システム から平成30年〜令和7年 全20セッション議題抽出。子育て・教育.md の時系列進化セクションを完全データで再構築
-- 2026-04-25: **暮らし・福祉、まちづくり・経済の2テーマアーカイブを完成**。応援カードv10向け政策3本柱の知識基盤がフル稼働状態に
-- 2026-04-26: **政策コンパス v0 骨格作成**。policy-compass-curator エージェント新設、Origin Story「一生応援部魂で市民を全力応援したい」を草川指定で確定。3軸蒸留は curator 初回実行で実施予定。daily-street-speech エージェントの基盤としても機能
-- 2026-04-26 夜間: **政策コンパス v1 蒸留＋全データ取込ミッション完遂**。Agent A/B並列起動→17/20セッション質問構造を完全抽出（草川質問構造_全20セッション.md）、Notion全件（ブログ9・SNS34・nichijo15・スピーチ3・議会2セッションフル原稿）取込済、voice-dna.md 中央化＋理想ボキャブラリー refine（草川指示「美しく刺さる表現に」反映）、政策コンパス v1（3軸）をローカル＆Notion両方更新、新5テーマファイル骨格作成（防災・環境・DX・文化観光・議会改革）
-- 2026-04-28: **野焼き／生活環境保全テーマ新設**。三寺町L3市民相談（喘息児健康被害）対応の policy-archive-miner ミッション。重要発見：2024-09-25に同じ相談者から同テーマ相談を既に受領していた（タスクDB「野焼きの注意」、SNS発信のみで完了処理）→ 1年7ヶ月越しの継続フォロー案件として政策優先度S格上げ妥当と判定。議会本会議では H30〜R7 全20セッションで野焼き・PM2.5・喘息・養護教諭の言及ゼロ → 6月議会で初質問化を推奨
+---
 
-## 議事録抽出メモ
-- **対象**: 草川卓也議員（草川たくや）、亀山市議会一般質問
-- **取得方法**: `http://www.kensakusystem.jp/kameyama-s/cgi-bin3/See.exe` のtreedepth POSTで年代切替→QUES.htmlファイル列挙→GetHTML.exeで本文取得
-- **取得済セッション数**: 20（H301129〜R071128）
-- **未取得**: 質疑応答本文（議題タイトルのみ取得）
-- **再現スクリプト**: 必要時 raw/council_minutes_excerpts/ 配下に保存
+## エージェント参照規約
+
+エージェントは原稿生成前に以下を必ず実行：
+
+```bash
+# 同テーマの過去発言を確認
+grep -l "<キーワード>" ~/.claude/agents/knowledge/kusagawa_archive/transcripts/*.txt
+grep -l "<キーワード>" ~/.claude/agents/knowledge/kusagawa_archive/blog_full/*.txt
+
+# テーマ別蒸留ノートを参照
+ls ~/.claude/agents/knowledge/kusagawa_archive/themes/
+```
+
+---
+
+## 更新方法
+
+### 議事録（transcripts/）
+- 新セッション後、PDF/DOCXを `~/Documents/市議会・政策/<年>/` に保存
+- バッチ実行: `bash /tmp/convert_transcripts.sh`（カスタマイズ要）
+
+### ブログ全文（blog_full/）
+- 月次オートで `~/.claude/scripts/published-archive/scrape_full_blog.py` 実行
+- 新規記事ID追加→再実行
+
+### Canva印刷物（canva/）
+- Canvaで「ダウンロード→PDF（標準）」エクスポート
+- `~/.claude/scripts/canva-import/canva_to_text.sh <pdf_path>` 実行
+- 一括: `~/.claude/scripts/canva-import/canva_to_text.sh --batch ~/Downloads/`
+
+### 公開済アーカイブDB（Notion）
+- ohayo月曜分岐 cron で自動増分
+- 全件再取得は `python3 ~/.claude/scripts/published-archive/scrape_full_blog.py`
+
+---
+
+## 既知の穴（連休明け対応）
+
+| 領域 | 穴 | 対応策 |
+|---|---|---|
+| 議事録H30-R6 | 通告書のみ・全文なし | 議会事務局B案請求 |
+| 議事録 R030604/0827/1126 | 議題HTMLのみ | B案請求 |
+| 議事録 R040225〜R050825 | 部分のみ | B案請求 |
+| 議事録 R061129 | 議題HTMLのみ | B案請求 |
+| OCR要PDF（8件） | 画像PDF | brew install tesseract or shortcuts |
+| Threadsスクレイプ | パーサー破損 | Threads UI再調査 |
+| X/Instagram/Facebook | API有償 | CSVエクスポート手動 |
+
+---
+
+**最終更新**: 2026-05-04（Step 1議事録テキスト化／Step 2ブログ全件取得／会議録索引／Canva対応 完了）
