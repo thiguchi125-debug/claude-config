@@ -1,5 +1,7 @@
 # Memory Index
 
+- [草川議会質問アーカイブDrive](reference_drive_archive_kusagawa.md) — 2026-05-04。Drive `1ZEIt8Cq71oYzJ2sJslxuBNI9GlESHYsg`に議事録(H30〜R08年度別)/市政報告レポート38〜62号/委員会記録/公式OneDrive/音声を集約。ローカル `~/.claude/agents/knowledge/kusagawa_archive/` (transcripts45/blog_full53/canva107/themes11)が高速参照層。第一手はローカルgrep→不足時のみDrive MCP。全制作物タスクで常時参照
+- [議事録は草川発言＋市回答のみ抽出](feedback_giji_kusagawa_response_only.md) — 2026-05-04。亀山市議会議事録参照時は草川議員発言と亀山市側答弁(市長/部長等)のペアだけ抽出。他議員パートは読み飛ばす。voice-dna汚染防止＋トークン節約。他議員質問への市答弁を比較材料として引く場合は明示必須
 - [後援会員DB統合](project_koukaikai_db_unification.md) — 2026-05-04。後援会員DB(04cc3a1c-)に役職/打診ステータス/打診担当/打診日/承諾日/自治会relation追加。役員・サポートメンバーページ73名を68名でDB投入完了(地域代表5枠は人物未確定でスキップ)。役員ページはshell化。「役職＋打診ステータス」で一元管理→既任10/承諾済3/打診中9/未着手46
 - [街頭演説の本論は政策分野を意図的に分散](feedback_street_speech_topic_diversity.md) — 2026-05-04。本論4ブロックを子育て系等の同分野に偏らせない／いつもの十八番ネタ(部活動・誰でも通園・野焼き・シャープ跡地)で埋めない／医療福祉/防災/インフラ/交通/DX/地域経済等から分散。組み立て前に5ドメイン以上から候補リストアップ
 - [街頭演説は選挙文脈を引っ込め政策ネタの中身を厚く](feedback_street_speech_no_election_focus.md) — 2026-05-04。daily-street-speech/speech-writer/community-rally-speakerで投票日・期数・「もう一度」等の選挙アピール語を最小化。代わりに数字・固有名詞・他自治体比較・運用詳細・市民の声・反対論への応答を厚くする。20分ループは2〜4周目も実体ある別ネタで埋める

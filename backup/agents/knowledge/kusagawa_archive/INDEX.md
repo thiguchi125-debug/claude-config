@@ -3,6 +3,19 @@
 **更新日**: 2026-05-04
 **目的**: 草川の発言・原稿・印刷物をエージェント（blog-writer/council-material-creator/sns-content-creator/speech-writer/policy-archive-miner等）が参照する横断検索基盤
 
+## 上流：Drive 一次資料サイロ
+- URL: https://drive.google.com/drive/folders/1ZEIt8Cq71oYzJ2sJslxuBNI9GlESHYsg
+- folder_id: `1ZEIt8Cq71oYzJ2sJslxuBNI9GlESHYsg`
+- 構成: H30(2018-12〜)〜R08(2026)年度別議事録／ZZ_市政報告レポート38〜62号＋地区版／ZZ_委員会・地域議事録／ZZ_政策別深掘り／ZZ_議会事務局公式OneDrive／ZZ_ブログSNS全アーカイブ／99_音声記録 全17フォルダ
+- このローカル `kusagawa_archive/` は Drive 一次資料を**テキスト化・索引化した高速参照層**
+- 参照優先順位: **ローカルgrep → 不足時のみ Drive MCP `read_file_content`**
+
+## 議事録参照規約（必須）
+- **草川議員の発言＋亀山市側答弁（市長／副市長／教育長／各部長等）のペアだけ**を抽出して使う
+- 他議員（豊田／伊藤／前田／福沢ほか）の質疑ブロックは読み飛ばす
+- 比較材料として他議員質問への市答弁を引く場合は「他議員〇〇氏が引き出した」と明示必須
+- 詳細: `~/.claude/projects/-Users-kusakawatakuya/memory/feedback_giji_kusagawa_response_only.md`
+
 ---
 
 ## ディレクトリ構造
