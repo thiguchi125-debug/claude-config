@@ -1,5 +1,6 @@
 # Memory Index
 
+- [🎤市政報告会DB新設](project_shisei_houkokukai_db.md) — 2026-05-04。自治会単位の市政報告会を一元管理する専用DB(ds:df08b5ea-)。SHK-{n}採番・19フィールド・5ビュー。nichijo「記録: 市政報告会 〇〇自治会 参加〇人 質問〇件」で自動レコード化。自治会別訪問管理DBとDUAL連携。市政報告会は5月から通年実施（「6月から本格実施」は誤認識）
 - [🏘️自治会別訪問管理DB新設](project_jichikai_db.md) — 2026-05-03。旧9地区進捗DB＋地区別関係性メモDBを廃止統合し自治会単位（JK-{n}）で訪問進捗＋関係性＋市政報告会を一元管理。30フィールド・5ビュー・亀山市公式22地区seed投入済（草川訪問対象10地区/対応外12地区）。nichijo Step 2.6を新DBへ書込変更
 - [自治会48件seed投入完了](project_jichikai_seed_48.md) — 2026-05-03実装完了。10訪問対象地区を48自治会に細分化(井田川南5/井田川北2格上げ/川崎14/神辺7/城東御幸北東各1/東部7/南部4/昼生6)。月別配分:5月8/6月10/7月10/8月16/9月4レコード。井田川北はみずきが丘+ひとみが丘の2自治会のみ訪問対象
 - [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/3pillars/v0_handoff.md) — 2026-05-03。3本柱用途=F全用途/構造=A 1:1マッピング確定、v0草案完成、Step A（6ドメインexpert並列）が次の一手。新セッションで実行可能。詳細は `~/.claude/agents/knowledge/kusagawa_archive/3pillars/v0_handoff.md`
