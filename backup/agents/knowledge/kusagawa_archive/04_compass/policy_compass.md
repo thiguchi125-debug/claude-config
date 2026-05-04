@@ -309,11 +309,11 @@
 
 ## 📚 7. 参照ソース
 
-- ~/.claude/agents/knowledge/kusagawa_archive/themes/子育て・教育.md
-- ~/.claude/agents/knowledge/kusagawa_archive/themes/暮らし・福祉.md
-- ~/.claude/agents/knowledge/kusagawa_archive/themes/まちづくり・経済.md
-- ~/.claude/agents/knowledge/kusagawa_archive/raw/council_minutes_excerpts/草川質問構造_全20セッション.md
-- ~/.claude/agents/knowledge/kusagawa_archive/voice-dna.md
+- ~/.claude/agents/knowledge/kusagawa_archive/03_themes/子育て・教育.md
+- ~/.claude/agents/knowledge/kusagawa_archive/03_themes/暮らし・福祉.md
+- ~/.claude/agents/knowledge/kusagawa_archive/03_themes/まちづくり・経済.md
+- ~/.claude/agents/knowledge/kusagawa_archive/99_raw/_legacy/council_minutes_excerpts/草川質問構造_全20セッション.md
+- ~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md
 - Notion 🧭草川たくや政策コンパス：https://www.notion.so/34ecf503a68f8117afcaecab391eb84d
 
 ---

@@ -86,7 +86,7 @@
 **＋政策研究背景資料 30+件**（同DXフォルダ配下） → ZZ_政策別深掘り資料/DX/ へ別配置
 
 #### R03 フォルダ
-- 議題HTMLは `~/.claude/agents/knowledge/kusagawa_archive/raw/council_minutes_excerpts/R030604/0827/1126_QUES_agenda.html.utf8` 3本のみ
+- 議題HTMLは `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_legacy/council_minutes_excerpts/R030604/0827/1126_QUES_agenda.html.utf8` 3本のみ
 - 当日資料・原稿は議会事務局B案請求対象
 
 #### R04 フォルダ
@@ -222,7 +222,7 @@
 ```
 ~/.claude/scripts/published-archive/output.json — scrape直近25件 (88KB)
 /tmp/scrape_archive.md — md整形版 (85KB)
-~/.claude/agents/knowledge/kusagawa_archive/voice-dna.md — voice-dna抽出済み
+~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md — voice-dna抽出済み
 Notion 📚公開済アーカイブDB (id: 0ae2d907-) — 21件投入済 (前回 ohayo cron 4/30)
 ```
 
@@ -251,7 +251,7 @@ Notion 📚公開済アーカイブDB (id: 0ae2d907-) — 21件投入済 (前回
 
 - **Notion 📚公開済アーカイブDB** (`0ae2d907-d804-49ab-9860-b4b981d34c56`) — 21件投入済（4/30 ohayo月曜分岐 cron 経由）
 - 上記21件＋scrape新10件＝**重複除外後 重複1件、純増10件、計31件のブログ/YouTube/Threads データ**
-- voice-dna.md は `~/.claude/agents/knowledge/kusagawa_archive/voice-dna.md` に既存
+- voice-dna.md は `~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md` に既存
 
 ### 4-C. 完全アーカイブのための残作業（連休明け推奨）
 
@@ -280,7 +280,7 @@ Notion 📚公開済アーカイブDB (id: 0ae2d907-) — 21件投入済 (前回
 
 ## 6. inventory.md 全文
 
-ローカル: `~/.claude/agents/knowledge/kusagawa_archive/manuscripts_inventory.md`
+ローカル: `~/.claude/agents/knowledge/kusagawa_archive/04_compass/manuscripts_inventory.md`
 
 → 別途 Drive 00_INDEX/ に配置（次セッション）
 

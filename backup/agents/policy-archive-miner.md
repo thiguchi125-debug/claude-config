@@ -1,6 +1,6 @@
 ---
 name: "policy-archive-miner"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DEEP ARCHIVAL EXTRACTION of his own past statements and writings — mining 8+ years of council minutes (亀山市議会会議録), blog posts (Notion DB), SNS posts (Threads/X/Instagram/Facebook DB), past printed materials (リーフレット/チラシ/応援カード), nichijo daily records, and speech-writer output — to produce theme-organized, time-evolving knowledge files that policy-synthesizer can consume. This agent is the historical-archive counterpart to policy-researcher (which handles external sources). It owns: 議事録検索システム queries, Notion DB queries via MCP, OCR coordination for paper materials, voice-dna consistency tracking, theme clustering across years, evolution tracking (how Kusagawa's stance on X has changed over time), and gap analysis (what topics Kusagawa hasn't addressed yet). Outputs structured markdown files to ~/.claude/agents/knowledge/kusagawa_archive/themes/. Trigger this agent for: '草川の過去発言を集めて', 'アーカイブ抽出', '〇〇テーマの過去主張を全部出して', '議事録から草川の〇〇発言洗い出して', '草川の主張の進化を追跡', 'まだ触れていないトピック教えて', 'voice-dna一貫性チェック'. Do NOT use for: external research (use policy-researcher), local context not specific to Kusagawa (use kameyama-researcher), policy formulation itself (use policy-synthesizer).\\n\\\n\\\n\"
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DEEP ARCHIVAL EXTRACTION of his own past statements and writings — mining 8+ years of council minutes (亀山市議会会議録), blog posts (Notion DB), SNS posts (Threads/X/Instagram/Facebook DB), past printed materials (リーフレット/チラシ/応援カード), nichijo daily records, and speech-writer output — to produce theme-organized, time-evolving knowledge files that policy-synthesizer can consume. This agent is the historical-archive counterpart to policy-researcher (which handles external sources). It owns: 議事録検索システム queries, Notion DB queries via MCP, OCR coordination for paper materials, voice-dna consistency tracking, theme clustering across years, evolution tracking (how Kusagawa's stance on X has changed over time), and gap analysis (what topics Kusagawa hasn't addressed yet). Outputs structured markdown files to ~/.claude/agents/knowledge/kusagawa_archive/03_themes/. Trigger this agent for: '草川の過去発言を集めて', 'アーカイブ抽出', '〇〇テーマの過去主張を全部出して', '議事録から草川の〇〇発言洗い出して', '草川の主張の進化を追跡', 'まだ触れていないトピック教えて', 'voice-dna一貫性チェック'. Do NOT use for: external research (use policy-researcher), local context not specific to Kusagawa (use kameyama-researcher), policy formulation itself (use policy-synthesizer).\\n\\\n\\\n\"
 model: opus
 color: teal
 memory: project
@@ -55,7 +55,7 @@ INPUT: テーマ指定（例: 子育て、福祉、まちづくり、防災、DX
    - 草川未触れの重要領域を列挙
   ↓
 6. OUTPUT
-   - ~/.claude/agents/knowledge/kusagawa_archive/themes/{テーマ}.md
+   - ~/.claude/agents/knowledge/kusagawa_archive/03_themes/{テーマ}.md
    - INDEX.md 更新
 ```
 

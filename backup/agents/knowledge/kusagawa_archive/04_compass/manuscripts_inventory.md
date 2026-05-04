@@ -18,8 +18,8 @@
 | `~/Desktop/` | 10 | 直近の通告書・議事録・市政報告v3 |
 | `~/Library/CloudStorage/OneDrive-個人用/亀山市議会/` | 868 (うち草川質問関連 63 / 草川専用 11) | **議会事務局公式配布アーカイブ H28〜R7全期間** ← 最重要発見 |
 | `~/Library/Mobile Documents/com~apple~CloudDocs/Downloads/` | 2 | 標準化資料・R7.9月定例会第6日 |
-| `~/.claude/agents/knowledge/kusagawa_archive/raw/council_minutes_excerpts/` | 21 | スクレイプ済み議題HTML H301129〜R071128（草川21セッション） |
-| `~/.claude/agents/knowledge/kusagawa_archive/themes/` | 11 | 政策別2次ノート（前セッションで policy-archive-miner 出力） |
+| `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_legacy/council_minutes_excerpts/` | 21 | スクレイプ済み議題HTML H301129〜R071128（草川21セッション） |
+| `~/.claude/agents/knowledge/kusagawa_archive/03_themes/` | 11 | 政策別2次ノート（前セッションで policy-archive-miner 出力） |
 | Google Drive | 50+ | 既にアップ済の通告書・議会だより・想定答弁・議事録draft |
 | Notion 📚公開済アーカイブDB | (未fetch) | 21件投入済 (`a9d670b3-`) |
 
@@ -127,9 +127,9 @@
 - `~/Documents/市議会・政策/2025年/所管事務概要説明/【参考】令和6年度所管事務概要説明/R6所管事務事業概要書(教育民生委員会).pdf` ＋ `(産業建設委員会).pdf`
 
 ### 2.4 公開済アーカイブ（前セッション成果＝既に整理済）
-- `~/.claude/agents/knowledge/kusagawa_archive/raw/council_minutes_excerpts/` 21ファイル（議題HTMLスクレイプ）
-- `~/.claude/agents/knowledge/kusagawa_archive/themes/` 11ファイル（policy-archive-miner 出力）
-- `~/.claude/agents/knowledge/kusagawa_archive/3pillars/` （v0草案＋handoff）
+- `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_legacy/council_minutes_excerpts/` 21ファイル（議題HTMLスクレイプ）
+- `~/.claude/agents/knowledge/kusagawa_archive/03_themes/` 11ファイル（policy-archive-miner 出力）
+- `~/.claude/agents/knowledge/kusagawa_archive/04_compass/3pillars/` （v0草案＋handoff）
 - Notion 📚公開済アーカイブDB (`a9d670b3acec4f18bb8dabdd651f5fa9`) — 21件投入済 (voice-dna基盤)
 
 ### 2.5 議会だより（質問の二次まとめ）
@@ -166,7 +166,7 @@
 | `亀山中学校のいじめに関して.docx` | 重大事態・未成年関連 | ✅ アップ可 / ❌ 除外 / 🔒 限定共有 |
 | `亀山いじめ問題.pdf` | 同上 | 同上 |
 | `神向谷排水路 議事録(國分和己).pdf` | 自治会長等個人氏名4名 | 同上 |
-| `~/.claude/agents/knowledge/kusagawa_archive/raw/council_minutes_excerpts/2025-06_育休退園改善案_validation_report.md` | 個別事案かも？ | 確認要 |
+| `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_legacy/council_minutes_excerpts/2025-06_育休退園改善案_validation_report.md` | 個別事案かも？ | 確認要 |
 | 議員研修会配下（未精査） | 内部限定資料の可能性 | 個別精査必要 |
 
 → 該当ファイルは **content-risk-reviewer エージェント通過必須**、または草川判断で除外

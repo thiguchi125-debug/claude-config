@@ -68,7 +68,7 @@ memory: project
 INPUT: ユーザー指示（初回 or 更新）
   ↓
 1. SOURCE LOAD（並列）
-   - ~/.claude/agents/knowledge/kusagawa_archive/themes/*.md 全読み込み
+   - ~/.claude/agents/knowledge/kusagawa_archive/03_themes/*.md 全読み込み
    - voice-dna.md 読み込み
    - 既存 policy_compass.md（あれば）読み込み
    - 直近の重要発言（nichijo・ブログDB・SNS DB）必要に応じてMCP取得
@@ -88,7 +88,7 @@ INPUT: ユーザー指示（初回 or 更新）
    - 「やらない」境界線（敵を作らないが立場は明確に）
   ↓
 5. DUAL OUTPUT
-   - ローカル: ~/.claude/agents/knowledge/kusagawa_archive/policy_compass.md（詳細版）
+   - ローカル: ~/.claude/agents/knowledge/kusagawa_archive/04_compass/policy_compass.md（詳細版）
    - Notion: 🧭草川たくや政策コンパスページ（蒸留版・公開可能レベル）
    - 両者の最終更新日を一致させる
   ↓
@@ -159,9 +159,9 @@ INPUT: ユーザー指示（初回 or 更新）
 - YYYY-MM-DD: vN-1 初版
 
 ## 6. 参照ソース
-- ~/.claude/agents/knowledge/kusagawa_archive/themes/子育て・教育.md
-- ~/.claude/agents/knowledge/kusagawa_archive/themes/暮らし・福祉.md
-- ~/.claude/agents/knowledge/kusagawa_archive/themes/まちづくり・経済.md
+- ~/.claude/agents/knowledge/kusagawa_archive/03_themes/子育て・教育.md
+- ~/.claude/agents/knowledge/kusagawa_archive/03_themes/暮らし・福祉.md
+- ~/.claude/agents/knowledge/kusagawa_archive/03_themes/まちづくり・経済.md
 - voice-dna.md
 - Notion MCP（直近発言取込）
 ```

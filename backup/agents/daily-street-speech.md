@@ -29,7 +29,7 @@ memory: project
 
 ```
 1. 🧭 政策コンパス（最重要・常に参照）
-   - ~/.claude/agents/knowledge/kusagawa_archive/policy_compass.md
+   - ~/.claude/agents/knowledge/kusagawa_archive/04_compass/policy_compass.md
    - origin story「一生応援部魂で、市民を全力応援したい」
    - 3軸（タグライン・why・what・next）
    - 譲れない原則・やらないこと

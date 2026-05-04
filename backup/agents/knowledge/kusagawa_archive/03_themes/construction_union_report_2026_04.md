@@ -222,14 +222,14 @@ type: 政策アーカイブ抽出（労組向けカスタム）
 ## 参照ソース
 
 ### 既存アーカイブ
-- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/themes/まちづくり・経済.md`
-- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/themes/防災・安全.md`
-- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/themes/暮らし・福祉.md`
-- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/voice-dna.md`
-- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/policy_compass.md`
+- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/03_themes/まちづくり・経済.md`
+- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/03_themes/防災・安全.md`
+- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/03_themes/暮らし・福祉.md`
+- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md`
+- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/04_compass/policy_compass.md`
 
 ### 議事録（H301129〜R071128 全20セッション）
-- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/raw/council_minutes_excerpts/全議会質問テーマ_草川たくや.md`
+- `/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/99_raw/_legacy/council_minutes_excerpts/全議会質問テーマ_草川たくや.md`
 - 亀山市議会会議録検索システム http://www.kensakusystem.jp/kameyama-s/
 
 ### Notion ブログ・SNS DB（ID参照）

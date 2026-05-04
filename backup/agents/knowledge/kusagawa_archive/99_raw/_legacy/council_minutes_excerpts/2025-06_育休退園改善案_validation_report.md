@@ -159,8 +159,8 @@
 
 ## 参照ソース
 - 草川質問本文: Notion `206cf503-a68f-8040-a4fe-c217cd16a06b`
-- 過去議会質問アーカイブ: `~/.claude/agents/knowledge/kusagawa_archive/raw/council_minutes_excerpts/全議会質問テーマ_草川たくや.md`
-- 子育て・教育テーマファイル: `~/.claude/agents/knowledge/kusagawa_archive/themes/子育て・教育.md`
+- 過去議会質問アーカイブ: `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_legacy/council_minutes_excerpts/全議会質問テーマ_草川たくや.md`
+- 子育て・教育テーマファイル: `~/.claude/agents/knowledge/kusagawa_archive/03_themes/子育て・教育.md`
 - [明石市 育休退園廃止](https://www.city.akashi.lg.jp/kodomo/ikusei_shitsu/ikukyuutaien.html)
 - [豊岡市 育休退園取扱変更](https://www.city.toyooka.lg.jp/kosodate/hoikujoyochien/hoikujo/1030569.html)
 - [大垣市 育児休業に伴う退園取扱](https://www.city.ogaki.lg.jp/0000054025.html)

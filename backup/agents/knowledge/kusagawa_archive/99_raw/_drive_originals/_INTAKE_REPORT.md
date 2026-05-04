@@ -2,7 +2,7 @@
 
 **実施日**: 2026-05-04
 **Drive ルート**: https://drive.google.com/drive/folders/1ZEIt8Cq71oYzJ2sJslxuBNI9GlESHYsg
-**ローカル取り込み元**: `~/.claude/agents/knowledge/kusagawa_archive/googledrive/`
+**ローカル取り込み元**: `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_drive_originals/`
 
 ## 取り込み結果サマリ
 

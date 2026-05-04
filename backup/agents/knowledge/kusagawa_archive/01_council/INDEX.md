@@ -121,14 +121,14 @@
 ### blog-writer / sns-content-creator / speech-writer
 過去の同テーマ発言と整合させたい時：
 ```
-grep -l "<キーワード>" ~/.claude/agents/knowledge/kusagawa_archive/transcripts/*.txt
+grep -l "<キーワード>" ~/.claude/agents/knowledge/kusagawa_archive/01_council/*.txt
 ```
 
 ### council-material-creator
 一般質問ネタ生成時、過去発言の重複・進化を確認：
 ```
-Read ~/.claude/agents/knowledge/kusagawa_archive/transcripts/INDEX.md
-Read ~/.claude/agents/knowledge/kusagawa_archive/transcripts/<該当ファイル>.txt
+Read ~/.claude/agents/knowledge/kusagawa_archive/01_council/INDEX.md
+Read ~/.claude/agents/knowledge/kusagawa_archive/01_council/<該当ファイル>.txt
 ```
 
 ### policy-archive-miner

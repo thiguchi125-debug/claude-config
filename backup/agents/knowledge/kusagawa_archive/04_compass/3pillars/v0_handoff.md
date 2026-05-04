@@ -34,7 +34,7 @@
 ---
 
 ## 政策コンパス v2 整合（必読）
-- 詳細: `~/.claude/agents/knowledge/kusagawa_archive/policy_compass.md`
+- 詳細: `~/.claude/agents/knowledge/kusagawa_archive/04_compass/policy_compass.md`
 - Notion: https://www.notion.so/34ecf503a68f8117afcaecab391eb84d
 
 ### Origin Story
@@ -207,7 +207,7 @@
 
 ```
 3本柱蒸留を再開したい。
-ハンドオフ文書: ~/.claude/agents/knowledge/kusagawa_archive/3pillars/v0_handoff.md
+ハンドオフ文書: ~/.claude/agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md
 を読んで、Step A（6ドメインexpertを並列起動して各柱の施策深掘り）を実行して。
 ```
 

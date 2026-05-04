@@ -1,6 +1,6 @@
 # Memory Index
 
-- [草川議会質問アーカイブDrive](reference_drive_archive_kusagawa.md) — 2026-05-04取込完了。Drive `1ZEIt8Cq71oYzJ2sJslxuBNI9GlESHYsg`から議事録28件(草川パート＋執行部答弁のみ抽出 2.2MB / H30〜R08全期間)を `transcripts/google_drive_kaigiroku/` へ、市政報告レポート42件(38〜62号＋地区版 360KB)を `canva/google_drive_reports/` へ統合済。抽出ルール＝草川議員＋市側答弁ペアのみ・他議員質疑は除去。OCR要は市政レポート51と質問資料zip(PNG4枚)のみ。第一手はローカルgrep。詳細レポートは `googledrive/_INTAKE_REPORT.md`
+- [草川議会質問アーカイブv2構造](reference_drive_archive_kusagawa.md) — 2026-05-04 v2リファクタ完了。番号prefix 5階層に統合（01_council 75/02_publications/{blog 53,reports 42,leaflets 107}/03_themes 12/04_compass 12/99_raw 原本261MB）。学習層6.8MB／grep対象は01〜04のみ。Drive取込分は `01_council/`と`02_publications/reports/`へ吸収済（草川パート＋執行部答弁ペアのみ抽出）。同期スクリプト `99_raw/_scripts/_drive_sync.sh`。詳細は `INDEX.md` と `99_raw/_drive_originals/_INTAKE_REPORT.md`
 - [議事録は草川発言＋市回答のみ抽出](feedback_giji_kusagawa_response_only.md) — 2026-05-04。亀山市議会議事録参照時は草川議員発言と亀山市側答弁(市長/部長等)のペアだけ抽出。他議員パートは読み飛ばす。voice-dna汚染防止＋トークン節約。他議員質問への市答弁を比較材料として引く場合は明示必須
 - [後援会員DB統合](project_koukaikai_db_unification.md) — 2026-05-04。後援会員DB(04cc3a1c-)に役職/打診ステータス/打診担当/打診日/承諾日/自治会relation追加。役員・サポートメンバーページ73名を68名でDB投入完了(地域代表5枠は人物未確定でスキップ)。役員ページはshell化。「役職＋打診ステータス」で一元管理→既任10/承諾済3/打診中9/未着手46
 - [街頭演説の本論は政策分野を意図的に分散](feedback_street_speech_topic_diversity.md) — 2026-05-04。本論4ブロックを子育て系等の同分野に偏らせない／いつもの十八番ネタ(部活動・誰でも通園・野焼き・シャープ跡地)で埋めない／医療福祉/防災/インフラ/交通/DX/地域経済等から分散。組み立て前に5ドメイン以上から候補リストアップ
@@ -10,7 +10,7 @@
 - [🎤市政報告会DB新設](project_shisei_houkokukai_db.md) — 2026-05-04。自治会単位の市政報告会を一元管理する専用DB(ds:df08b5ea-)。SHK-{n}採番・19フィールド・5ビュー。nichijo「記録: 市政報告会 〇〇自治会 参加〇人 質問〇件」で自動レコード化。自治会別訪問管理DBとDUAL連携。市政報告会は5月から通年実施（「6月から本格実施」は誤認識）
 - [🏘️自治会別訪問管理DB新設](project_jichikai_db.md) — 2026-05-03。旧9地区進捗DB＋地区別関係性メモDBを廃止統合し自治会単位（JK-{n}）で訪問進捗＋関係性＋市政報告会を一元管理。30フィールド・5ビュー・亀山市公式22地区seed投入済（草川訪問対象10地区/対応外12地区）。nichijo Step 2.6を新DBへ書込変更
 - [自治会48件seed投入完了](project_jichikai_seed_48.md) — 2026-05-03実装完了。10訪問対象地区を48自治会に細分化(井田川南5/井田川北2格上げ/川崎14/神辺7/城東御幸北東各1/東部7/南部4/昼生6)。月別配分:5月8/6月10/7月10/8月16/9月4レコード。井田川北はみずきが丘+ひとみが丘の2自治会のみ訪問対象
-- [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/3pillars/v0_handoff.md) — 2026-05-03。3本柱用途=F全用途/構造=A 1:1マッピング確定、v0草案完成、Step A（6ドメインexpert並列）が次の一手。新セッションで実行可能。詳細は `~/.claude/agents/knowledge/kusagawa_archive/3pillars/v0_handoff.md`
+- [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — 2026-05-03。3本柱用途=F全用途/構造=A 1:1マッピング確定、v0草案完成、Step A（6ドメインexpert並列）が次の一手。新セッションで実行可能。詳細は `~/.claude/agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md`
 - [地域・選挙ページ階層統一](project_election_hub_unification.md) — 2026-05-03。★選挙プロジェクトと地域・選挙ハブの並列を解消。地域・選挙ハブを唯一の親に統一・サブページ6個（歩いて聞く11,447軒/4象限分析/みずきが丘/後援会役員/新年挨拶/地域別活動計画）を配下へ移動・★選挙はshell化（タスクrel保持）
 - [oyasumiにAIミーティング自動振り分け追加](project_oyasumi_meeting_autoorganize.md) — 2026-05-03実装。oyasumi Step 4.5新設：当日AIノート→📅DB自動転記。会議体マッチ確度0.8以上のみ自動紐付け（B案）、未紐付けはohayoで朝レビュー。nichijo整理R1-B/R2/R4-A subset内部呼出（D案）。3DBは重複ではなく親子（🤖→📅→🏛）と確認
 - [政策エキスパート11エージェント新設](project_policy_expert_agents_11.md) — 2026-05-03新設。3本柱蒸留前の専門チーム整備。A:ドメイン6本（子育て教育/医療福祉/防災/まちづくり産業/交通インフラ/DX）+ B:パッケージング1本(packaging-strategist) + C:実現性2本(fiscal-simulator/roadmap-designer) + D:対外2本(stakeholder-mapper/comparison-benchmarker)。既存7本と非重複・役割境界明示。voice-dna整合・EBPM必須を全エージェントの判断原則に組込
