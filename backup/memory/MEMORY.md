@@ -1,5 +1,6 @@
 # Memory Index
 
+- [週次Drive同期ルーティン構築](project_weekly_drive_sync_routine.md) — 2026-05-04新設。Drive→ローカル取込のハイブリッド半自動化。クラウドRoutine `weekly-drive-sync-kusagawa`(trig_016r7yNKRqVubUvCJMTzVZ98)が毎週日曜21:00 JST→Drive差分検出→自動分類→Notion `📥Drive取込キュー`DB(ed2d5e6a-)登録→Gmail通知。月曜朝ohayoが取込キュー表示→草川`/drive-sync-review`で承認→ローカルClaudeがダウンロード→pdftotext→草川パート抽出→`01_council/`or`02_publications/reports/`配置→Notion状態更新。役割分離: クラウド=メタ管理／ローカル=実体取込
 - [草川議会質問アーカイブv2構造](reference_drive_archive_kusagawa.md) — 2026-05-04 v2リファクタ完了。番号prefix 5階層に統合（01_council 75/02_publications/{blog 53,reports 42,leaflets 107}/03_themes 12/04_compass 12/99_raw 原本261MB）。学習層6.8MB／grep対象は01〜04のみ。Drive取込分は `01_council/`と`02_publications/reports/`へ吸収済（草川パート＋執行部答弁ペアのみ抽出）。同期スクリプト `99_raw/_scripts/_drive_sync.sh`。詳細は `INDEX.md` と `99_raw/_drive_originals/_INTAKE_REPORT.md`
 - [議事録は草川発言＋市回答のみ抽出](feedback_giji_kusagawa_response_only.md) — 2026-05-04。亀山市議会議事録参照時は草川議員発言と亀山市側答弁(市長/部長等)のペアだけ抽出。他議員パートは読み飛ばす。voice-dna汚染防止＋トークン節約。他議員質問への市答弁を比較材料として引く場合は明示必須
 - [後援会員DB統合](project_koukaikai_db_unification.md) — 2026-05-04。後援会員DB(04cc3a1c-)に役職/打診ステータス/打診担当/打診日/承諾日/自治会relation追加。役員・サポートメンバーページ73名を68名でDB投入完了(地域代表5枠は人物未確定でスキップ)。役員ページはshell化。「役職＋打診ステータス」で一元管理→既任10/承諾済3/打診中9/未着手46

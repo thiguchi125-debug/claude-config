@@ -118,11 +118,22 @@ cat ~/.claude/agents/knowledge/kusagawa_archive/04_compass/policy_compass.md
 
 ## 5. 更新方法（Drive→ローカル同期）
 
-### 議会後の取り込み手順
-1. Drive `1ZEIt8Cq71oYzJ2sJslxuBNI9GlESHYsg` 配下の該当年度フォルダに新議事録PDFを置く
-2. ブラウザで Drive を開いて該当ファイルを `99_raw/_drive_originals/transcripts/` にダウンロード
-3. `bash 99_raw/_scripts/_drive_sync.sh` を実行（pdftotext→草川抽出→01_council/に統合）
-4. 必要なら themes/ 配下の関連蒸留ノートを手動更新
+### 標準運用（自動・週次）
+**毎週日曜21:00 JST にリモートRoutine `weekly-drive-sync-kusagawa` (trig_016r7yNKRqVubUvCJMTzVZ98) が自動実行**：
+1. Drive 15フォルダを並列スキャン（modifiedTime差分）
+2. ファイル名パターンで自動分類
+3. Notion `📥Drive取込キュー` DB (ed2d5e6a-96f9-) に登録
+4. Gmail下書きで草川に通知
+
+**月曜朝 ohayo** で「📚 先週のDriveアーカイブ同期」セクションが表示され、確認待ち件数を案内。
+
+**草川は `/drive-sync-review` を起動** → Notion DB から確認待ち取得 → 判定（全部/番号/差戻し/スキップ）→ 承認分のみローカルClaudeがDrive MCPでダウンロード→pdftotext→草川パート抽出→ `01_council/` or `02_publications/reports/` に配置 → Notion状態更新。
+
+### 議会直後など緊急時の手動取り込み手順
+1. 草川がブラウザでDriveに資料を置く
+2. ローカルClaude Codeで `/weekly-drive-sync` 実行（手動実行版）
+3. または Routine手動トリガー: https://claude.ai/code/routines/trig_016r7yNKRqVubUvCJMTzVZ98
+4. その後 `/drive-sync-review` で取込
 
 ### 市政報告レポート追加時
 1. Canva「ダウンロード→PDF」を `99_raw/_drive_originals/reports/` に置く
