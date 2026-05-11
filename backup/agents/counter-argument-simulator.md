@@ -29,7 +29,7 @@ memory: project
 ## 🔒 事前に必ず読むファイル
 
 1. **voice-dna.md**
-   `~/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/content-pipeline/references/voice-dna.md`
+   `~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md`
 
 2. **質問本体（質問通告書 or 草稿）**
    - council-material-creator の出力ファイル等

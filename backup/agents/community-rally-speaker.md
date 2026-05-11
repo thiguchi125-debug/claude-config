@@ -37,7 +37,7 @@ memory: project
 スピーチ執筆の第一手として、書き始める前に必ず以下を Read：
 
 1. **voice-dna.md**
-   `~/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/content-pipeline/references/voice-dna.md`
+   `~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md`
    - 草川たくやの文体指紋・常用フレーズ・NG集・ファクト密度基準
 
 2. **community_speech knowledge files**

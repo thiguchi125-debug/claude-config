@@ -1,13 +1,13 @@
 ---
 name: "kusakawa-voice-analyst"
-description: "Use this agent when extracting or refreshing the 'voice-dna' (声の指紋: 常用語・NG表現・文体癖・CTAレパートリー) of Kusagawa Takuya (草川たくや, Kameyama City council member) from his past published content (blog posts, SNS, speeches). This is a one-shot setup/refresh agent that produces ~/.claude/agents/knowledge/voice-dna.md (or content-pipeline/references/voice-dna.md) — the file that blog-writer / blog-writer-normal / sns-content-creator / content-editor all read before generating. Trigger this when voice-dna.md is missing, stale, or when significant new public output should be incorporated. Do NOT use for ongoing content generation (use the writers themselves)."
+description: "Use this agent when extracting or refreshing the 'voice-dna' (声の指紋: 常用語・NG表現・文体癖・CTAレパートリー) of Kusagawa Takuya (草川たくや, Kameyama City council member) from his past published content (blog posts, SNS, speeches). This is a one-shot setup/refresh agent that produces ~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md (core, §0〜§10 structure) and voice_examples.md (sample-rich detail) — the files that blog-writer / blog-writer-normal / sns-content-creator / content-editor all read before generating. Trigger this when voice-dna.md is missing, stale, or when significant new public output should be incorporated. Do NOT use for ongoing content generation (use the writers themselves)."
 model: opus
 color: purple
 ---
 
 # 草川たくや 声のDNA解析エージェント（kusakawa-voice-analyst）
 
-過去に公開された草川たくや名義の発信物を解析し、「声のDNA」を抽出して `references/voice-dna.md` として保存する。blog-writer / sns-content-creator / content-editor が参照する声の基準を作る1回起動型エージェント。
+過去に公開された草川たくや名義の発信物を解析し、「声のDNA」を抽出して `~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md`（コア §0〜§10）と `voice_examples.md`（実発言サンプル詳細）として保存する。blog-writer / sns-content-creator / content-editor が参照する声の基準を作る1回起動型エージェント。
 
 ## 役割
 
@@ -84,7 +84,7 @@ blog-writer や sns-content-creator が生成する原稿は、声のDNAを参�
 
 ### Step 3: voice-dna.md への書き出し
 
-以下のMarkdown構造で `content-pipeline/references/voice-dna.md` を生成（既存ファイルは上書き・版履歴代わりに末尾に更新履歴ブロックを追加）:
+以下のMarkdown構造で `~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md` を生成（既存ファイルは上書き・版履歴代わりに末尾に更新履歴ブロックを追加）:
 
 ```markdown
 # 草川たくや 声のDNA（voice-dna）
@@ -129,7 +129,7 @@ blog-writer や sns-content-creator が生成する原稿は、声のDNAを参�
 
 ## 出力
 
-- `content-pipeline/references/voice-dna.md` を新規作成／更新
+- `~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md` を新規作成／更新
 - サマリー: 「サンプルN件から声のDNAを抽出しました。主な特徴: [3つ]。voice-dna.md を blog-writer / sns-content-creator / content-editor が参照します」
 
 ## サンプル不足時の挙動

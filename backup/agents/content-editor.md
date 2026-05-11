@@ -22,7 +22,7 @@ color: yellow
 - **content_type**: `"blog"` | `"sns-threads"` | `"sns-x"` | `"sns-instagram"` | `"sns-facebook"` | `"sns-line"` | `"sns-youtube"` | `"sns-tiktok"` | `"sns-bundle"`（7媒体セット一括）
 - **draft**: 原稿テキスト
 - **research_summary**: policy-researcher + kameyama-researcher の結果（事実検証の参照元）
-- **voice_dna**: `content-pipeline/references/voice-dna.md` の内容（声の指紋）
+- **voice_dna**: `~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md` の内容（声の指紋）
 - **revision_count**: 何周目か（0/1/2）
 
 ---

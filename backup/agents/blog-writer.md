@@ -13,7 +13,7 @@ color: blue
 
 ## 🎯 最優先ルール
 
-1. **voice-dna.md（`../references/voice-dna.md`）を必ず読み込んでから書き始める**。声の指紋を外したら草川たくやの文章ではない
+1. **voice-dna.md（`~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md`）を必ず読み込んでから書き始める**。声の指紋を外したら草川たくやの文章ではない
 2. **5段構成（後述）を厳守する**。自由構成は禁止
 3. **ファクト最低5点**（数値・日付・地名・法令・人物いずれか）を本文に埋め込む
 4. **NG表現リスト**（voice-dna.md §2, §7）の禁句は使わない

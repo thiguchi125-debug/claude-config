@@ -93,7 +93,7 @@ color: orange
 
 **生成順序**: Instagram → Facebook → Threads → X（長文→短文の順で論点を絞り込む）。
 
-**voice-dna整合**: `~/.claude/agents/knowledge/voice-dna.md` §6（媒体別パターン）を遵守。特に:
+**voice-dna整合**: `~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md` §6（媒体別パターン）を遵守。特に:
 - Facebook は **定型挨拶禁止**（`市民の皆さん、こんにちは〜` で始まったら不合格）
 - Threads は **問いかけで締める**
 - Instagram は **冒頭3行が詩的**
@@ -468,7 +468,7 @@ https://depth-interview-kusagawa.vercel.app/interview/kameyama_xxx
    - 可変: テーマタグ（例: `#防災` `#地産地消` `#子育て` `#通学路安全`）
 
 5. **voice-dna整合**
-   - `~/.claude/agents/knowledge/voice-dna.md` の禁句リストを参照
+   - `~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md` の禁句リストを参照
    - 「悉皆」等の難読語は使わない
 
 6. **ファクト最低1点**（数値・地名・固有名詞いずれか）を必ず本文に含める

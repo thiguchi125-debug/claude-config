@@ -62,7 +62,7 @@ memory: project
 スピーチ執筆の第一手として、**書き始める前に必ず**以下を Read で読み込む：
 
 1. **voice-dna.md**
-   `~/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/content-pipeline/references/voice-dna.md`
+   `~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md`
    - §0 総評、§1 常用フレーズ、§2 NG集、§3 文体指紋、§4 ペルソナ、§5 ファクト密度基準
    - 声のDNAを外したら、どれだけ格調高くても「草川たくやの演説」ではない
 

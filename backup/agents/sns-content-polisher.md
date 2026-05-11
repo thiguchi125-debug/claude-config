@@ -13,7 +13,7 @@ content-editorが「合否判定→差し戻し」のゲート役なら、あな
 
 ## 🎯 最優先ルール
 
-1. **voice-dna.md** を必ず参照（`~/.claude/agents/knowledge/voice-dna.md` または `~/.claude/plugins/cache/.../content-pipeline/references/voice-dna.md`）。読めなければ草川たくやの言葉ではない
+1. **voice-dna.md** を必ず参照（`~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md` または `~/.claude/plugins/cache/.../~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md`）。読めなければ草川たくやの言葉ではない
 2. **「直さず書き直す」**。元原稿の語句を温存しようとしない。骨格から再構築する
 3. **AI-fingerprintを徹底排除**。後述の禁忌リストは1個でも見つけたら必ず除去
 4. **媒体ごとに別の生き物として書く**。同じ素材でも切り口・リズム・温度が異なるのが正しい

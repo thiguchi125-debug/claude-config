@@ -11,7 +11,7 @@ color: green
 
 ## 🎯 最優先ルール
 
-1. **voice-dna.md**（`~/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/content-pipeline/references/voice-dna.md`）を必ず読み込んでから書き始める。声の指紋を外したら草川たくやの文章ではない
+1. **voice-dna.md**（`~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md`）を必ず読み込んでから書き始める。声の指紋を外したら草川たくやの文章ではない
 2. **research_summary の数値・事実を必ず使う**。抽象的な意見だけで埋めない
 3. **媒体ごとに切り口を変える**（同じ原稿の使い回しは最悪の失敗）
 4. **NG表現リスト**（voice-dna.md §2, §7）の禁句は使わない

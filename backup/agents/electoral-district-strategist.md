@@ -41,7 +41,7 @@ memory: project
 ## 🔒 事前に必ず読むファイル
 
 1. **voice-dna.md**
-   `~/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/content-pipeline/references/voice-dna.md`
+   `~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md`
 
 2. **policy_compass.md**（あれば）
 
