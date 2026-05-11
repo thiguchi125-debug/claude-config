@@ -81,20 +81,25 @@ URL: https://www.notion.so/ed2d5e6a96f9401fa204c3431602de41
 1. Drive MCP `mcp__claude_ai_Google_Drive__download_file_content` でローカル取得
    - PDFなら base64 → ローカル保存
    - Google Docsなら `read_file_content` で text 取得
-2. 配置先に応じてローカル保存：
-   - 議事録: `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_drive_originals/transcripts/<title>` に保存
-   - 市政報告: `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_drive_originals/reports/<title>` に保存
+2. 配置先に応じて `99_raw/_drive_originals/<sub>/` に原本保存：
+   - 議事録 → `transcripts/`
+   - 市政報告 → `reports/`
+   - 印刷物 → `leaflets/`
+   - 政策資料 → `resources/`
+   - 選挙関連 → `election/`
 3. PDFなら `pdftotext -layout` でテキスト化
-4. 議事録なら `_extract_kusagawa.py` または `_extract_committee.py` で草川パート抽出
-5. 命名規則 `YYYY-MM_セッション_種別.txt` でリネーム
-6. 最終配置：
+4. **議事録のみ** `_extract_kusagawa.py` または `_extract_committee.py` で草川パート抽出
+5. 命名規則 `YYYY-MM_<キーワード>.txt` でリネーム（推測可能な場合）
+6. 最終配置（取込先4階層に対応）：
    - 議事録抽出済 → `01_council/`
    - 市政報告 → `02_publications/reports/`
    - 印刷物 → `02_publications/leaflets/`
-   - その他 → 指定先
+   - 政策資料 → `05_resources/`
+   - 選挙関連 → `06_election/`
+   - 草川判定で配置先上書きされた場合 → 該当先
 
 ```bash
-# 一括処理は既存スクリプト再利用
+# 一括処理は既存スクリプト再利用（拡張版）
 bash ~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_drive_sync.sh
 ```
 

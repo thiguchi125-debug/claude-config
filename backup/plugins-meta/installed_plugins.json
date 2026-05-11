@@ -7,7 +7,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown",
         "version": "unknown",
         "installedAt": "2026-04-11T11:06:44.242Z",
-        "lastUpdated": "2026-04-11T11:06:44.242Z"
+        "lastUpdated": "2026-05-11T00:50:32.186Z"
       }
     ],
     "frontend-design@claude-plugins-official": [
@@ -16,7 +16,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:18:12.636Z",
-        "lastUpdated": "2026-04-30T08:18:12.636Z"
+        "lastUpdated": "2026-05-11T00:50:32.189Z"
       }
     ],
     "playwright@claude-plugins-official": [
@@ -25,7 +25,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/playwright/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:18:55.495Z",
-        "lastUpdated": "2026-04-30T08:18:55.495Z"
+        "lastUpdated": "2026-05-11T00:50:32.188Z"
       }
     ],
     "claude-code-setup@claude-plugins-official": [
@@ -43,7 +43,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/plugin-dev/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:21:01.163Z",
-        "lastUpdated": "2026-04-30T08:21:01.163Z"
+        "lastUpdated": "2026-05-11T00:50:32.187Z"
       }
     ],
     "claude-md-management@claude-plugins-official": [
@@ -58,10 +58,10 @@
     "superpowers@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7",
-        "version": "5.0.7",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0",
+        "version": "5.1.0",
         "installedAt": "2026-04-30T08:21:54.198Z",
-        "lastUpdated": "2026-04-30T08:21:54.198Z",
+        "lastUpdated": "2026-05-05T00:40:30.344Z",
         "gitCommitSha": "6efe32c9e2dd002d0c394e861e0529675d1ab32e"
       }
     ],
@@ -71,7 +71,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/security-guidance/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:22:33.413Z",
-        "lastUpdated": "2026-04-30T08:22:33.413Z"
+        "lastUpdated": "2026-05-11T00:50:32.185Z"
       }
     ],
     "discord@claude-plugins-official": [

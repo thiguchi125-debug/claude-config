@@ -1,81 +1,95 @@
 # Memory Index
 
-- [週次Drive同期ルーティン構築](project_weekly_drive_sync_routine.md) — 2026-05-04新設。Drive→ローカル取込のハイブリッド半自動化。クラウドRoutine `weekly-drive-sync-kusagawa`(trig_016r7yNKRqVubUvCJMTzVZ98)が毎週日曜21:00 JST→Drive差分検出→自動分類→Notion `📥Drive取込キュー`DB(ed2d5e6a-)登録→Gmail通知。月曜朝ohayoが取込キュー表示→草川`/drive-sync-review`で承認→ローカルClaudeがダウンロード→pdftotext→草川パート抽出→`01_council/`or`02_publications/reports/`配置→Notion状態更新。役割分離: クラウド=メタ管理／ローカル=実体取込
-- [草川議会質問アーカイブv2構造](reference_drive_archive_kusagawa.md) — 2026-05-04 v2リファクタ完了。番号prefix 5階層に統合（01_council 75/02_publications/{blog 53,reports 42,leaflets 107}/03_themes 12/04_compass 12/99_raw 原本261MB）。学習層6.8MB／grep対象は01〜04のみ。Drive取込分は `01_council/`と`02_publications/reports/`へ吸収済（草川パート＋執行部答弁ペアのみ抽出）。同期スクリプト `99_raw/_scripts/_drive_sync.sh`。詳細は `INDEX.md` と `99_raw/_drive_originals/_INTAKE_REPORT.md`
-- [議事録は草川発言＋市回答のみ抽出](feedback_giji_kusagawa_response_only.md) — 2026-05-04。亀山市議会議事録参照時は草川議員発言と亀山市側答弁(市長/部長等)のペアだけ抽出。他議員パートは読み飛ばす。voice-dna汚染防止＋トークン節約。他議員質問への市答弁を比較材料として引く場合は明示必須
-- [後援会員DB統合](project_koukaikai_db_unification.md) — 2026-05-04。後援会員DB(04cc3a1c-)に役職/打診ステータス/打診担当/打診日/承諾日/自治会relation追加。役員・サポートメンバーページ73名を68名でDB投入完了(地域代表5枠は人物未確定でスキップ)。役員ページはshell化。「役職＋打診ステータス」で一元管理→既任10/承諾済3/打診中9/未着手46
-- [街頭演説の本論は政策分野を意図的に分散](feedback_street_speech_topic_diversity.md) — 2026-05-04。本論4ブロックを子育て系等の同分野に偏らせない／いつもの十八番ネタ(部活動・誰でも通園・野焼き・シャープ跡地)で埋めない／医療福祉/防災/インフラ/交通/DX/地域経済等から分散。組み立て前に5ドメイン以上から候補リストアップ
-- [街頭演説は選挙文脈を引っ込め政策ネタの中身を厚く](feedback_street_speech_no_election_focus.md) — 2026-05-04。daily-street-speech/speech-writer/community-rally-speakerで投票日・期数・「もう一度」等の選挙アピール語を最小化。代わりに数字・固有名詞・他自治体比較・運用詳細・市民の声・反対論への応答を厚くする。20分ループは2〜4周目も実体ある別ネタで埋める
-- [ブログは市民情報伝達と政策論考を分けて書く](feedback_blog_citizen_first.md) — 2026-05-04の重要反省。モードA(市民情報伝達)とモードB(政策論考)を判定してから書き始める。モードAでは「6月議会で問います」を主役にしない／市民が取る行動を主軸／「届かないをつくらない」基調。blog-writer.md改訂済
-- [自治会DB全経路集約強化](project_jichikai_all_routes.md) — 2026-05-04。自治会DBへの自動追記を「記録」コマンドだけでなく全経路（nichijo整理R4-H/Step 2.6/ikenスキル/citizen-inquiry-responder/SNS/メール/フォーム）に拡大。検出キーワード=48自治会名+22地区名+施設名リスト（旧9地区→48自治会へ大幅拡充）。市民意見DBの関連自治会_意見relationを自動設定→自治会DB側「直近の場での発言」セクションに要約追記
-- [🎤市政報告会DB新設](project_shisei_houkokukai_db.md) — 2026-05-04。自治会単位の市政報告会を一元管理する専用DB(ds:df08b5ea-)。SHK-{n}採番・19フィールド・5ビュー。nichijo「記録: 市政報告会 〇〇自治会 参加〇人 質問〇件」で自動レコード化。自治会別訪問管理DBとDUAL連携。市政報告会は5月から通年実施（「6月から本格実施」は誤認識）
-- [🏘️自治会別訪問管理DB新設](project_jichikai_db.md) — 2026-05-03。旧9地区進捗DB＋地区別関係性メモDBを廃止統合し自治会単位（JK-{n}）で訪問進捗＋関係性＋市政報告会を一元管理。30フィールド・5ビュー・亀山市公式22地区seed投入済（草川訪問対象10地区/対応外12地区）。nichijo Step 2.6を新DBへ書込変更
-- [自治会48件seed投入完了](project_jichikai_seed_48.md) — 2026-05-03実装完了。10訪問対象地区を48自治会に細分化(井田川南5/井田川北2格上げ/川崎14/神辺7/城東御幸北東各1/東部7/南部4/昼生6)。月別配分:5月8/6月10/7月10/8月16/9月4レコード。井田川北はみずきが丘+ひとみが丘の2自治会のみ訪問対象
-- [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — 2026-05-03。3本柱用途=F全用途/構造=A 1:1マッピング確定、v0草案完成、Step A（6ドメインexpert並列）が次の一手。新セッションで実行可能。詳細は `~/.claude/agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md`
-- [地域・選挙ページ階層統一](project_election_hub_unification.md) — 2026-05-03。★選挙プロジェクトと地域・選挙ハブの並列を解消。地域・選挙ハブを唯一の親に統一・サブページ6個（歩いて聞く11,447軒/4象限分析/みずきが丘/後援会役員/新年挨拶/地域別活動計画）を配下へ移動・★選挙はshell化（タスクrel保持）
-- [oyasumiにAIミーティング自動振り分け追加](project_oyasumi_meeting_autoorganize.md) — 2026-05-03実装。oyasumi Step 4.5新設：当日AIノート→📅DB自動転記。会議体マッチ確度0.8以上のみ自動紐付け（B案）、未紐付けはohayoで朝レビュー。nichijo整理R1-B/R2/R4-A subset内部呼出（D案）。3DBは重複ではなく親子（🤖→📅→🏛）と確認
-- [政策エキスパート11エージェント新設](project_policy_expert_agents_11.md) — 2026-05-03新設。3本柱蒸留前の専門チーム整備。A:ドメイン6本（子育て教育/医療福祉/防災/まちづくり産業/交通インフラ/DX）+ B:パッケージング1本(packaging-strategist) + C:実現性2本(fiscal-simulator/roadmap-designer) + D:対外2本(stakeholder-mapper/comparison-benchmarker)。既存7本と非重複・役割境界明示。voice-dna整合・EBPM必須を全エージェントの判断原則に組込
-- [政策コンパス v2 surgical fix（軸1タグライン）](project_policy_compass.md) — 2026-05-03。「市民の声を、制度の最後の一歩まで伝える」が伝わりにくいため「『届かない』を、終わらせる。」(Theme B)に差し替え。ローカルmd・Notion 3箇所同期済
-- [SNS＋ブログDB統合](project_sns_blog_merge.md) — 2026-05-03。📣SNS投稿管理＋📝ブログ記事管理を投稿管理DB(1bd98deb-)に一本化。プラットフォームに「ブログ」「YouTube Shorts」「Reels」追加・公開URL追加・15件転記・nichijo/oyasumi修正・旧ブログDB(dcdf44af-)アーカイブ
-- [Notion全体地図 v2再整理＋タスク集中マップ](project_notion_overview_map.md) — 2026-05-03。政策候補DB・一般質問ネタDBに「関連タスク」relation追加（DUAL '関連政策候補'/'関連一般質問ネタ'）でタスク集中達成。俯瞰ダッシュボード全面リライト：✅タスク集中マップ中心構成・10ハブ×18稼働DB＋4アーカイブDB体系・古い記述削除
-- [会議ハブ刷新（Notion AI Meeting Notes連動）](project_meeting_hub_renewal.md) — 2026-05-02。ミーティングノートDBに6ビュー（カレンダー/時系列/要フォロー/種別ボード/重要会議/未分類棚卸し）＋会議体マスタに2ビュー追加、ハブページ全面リライト。AIミーティング録音→自動文字起こし→要約→AI元ノートURL紐付けの3方法を明記
-- [市民意見DB再設計（永続ログ＋タスク抽出モデル）](project_iken_db_redesign.md) — 2026-05-02改訂2回目で確定。旧c2c34bd8を永続マスターに復活＋緊急度/地区/受付ID(IKN-)/関連タスクrelation追加、新354432ecの3件統合転記してアーカイブ化、ikenスキル＋nichijo Step 2.5を c2c34bd8 へ書込先変更。**意見DB=永続ログ／タスクDB=workflow** モデル
-- [タスク管理刷新](project_task_management_renewal.md) — 2026-05-02。3DBの嘘を解消、タスクDB+プロジェクトDB の2DB体制に整理、5+2ビュー追加、壊れたビュー4本📦リネーム、ハブページ刷新。Notion DSLのステータス型フィルタ制約のため、Done/Archive除外フィルタはユーザー手動追加必須
-- [Notion view-DSLのステータス型フィルタ書き込み不可](feedback_notion_dsl_status_filter_limitation.md) — 2026-05-02ハマり。status型プロパティに `=/!=/IN` 効かない、CLEAR FILTERもsimpleFilters消せない。新規作成＋ユーザー手動設定で回避
-- [地域別活動DB廃止＋nichijo振り分け変更](project_notion_overview_map.md) — 2026-05-02追加対応。地域別活動DB(3d08102d-)アーカイブ化、nichijoスキルR4-Hを🗺️地区別関係性メモDB(520fe503-)へ振り分け変更。市政報告会・挨拶回り・地区集会の記録は「直近の場での発言」「過去の約束」フィールドへnichijo自動追記
-- [👥後援会員DB＋📜公約・実績マッピングDB＋🗺️地域・選挙ハブ](project_koukaikai_kouyaku_db.md) — 2026-05-02新設。後援会員DB(04cc3a1c-)KAI-{n}＋9地区訪問relation／公約DB(4bce7346-)KOY-{n}＋What/Where/How＋政策候補・質問・MTG3rel／地域・選挙ハブ(354cf503...8746)で4DB集約。政活費DB等4件は不要判断
-- [🌐 Notion全体地図（俯瞰ダッシュボード）](project_notion_overview_map.md) — 2026-05-02新設。21DB＋14ハブを1枚俯瞰、重複1件(市民意見リスト旧↔新)・整理3件・未整備6件(後援会員/政活費/議案賛否/公約実績/印刷物/取材依頼)を診断。354cf503-a68f-819e-b6ba-e01ea98259b8。月1見直し
-- [short-video-virality-architectエージェント新設](project_short_video_virality_architect.md) — 2026-05-01新設。≤60秒ショート動画バイラル設計専任。フック15分類＋retention engineering＋政治家ショート成功事例(Zelensky/AOC/石丸/安野/米山/玉木/高市)＋公選法ガード。Solo/Polish 2モード。8軸自己診断64点未満は再リビルド。video-content-strategistとはretention科学深掘りで差別化
-- [動画原稿の保存先は📣SNS投稿管理DBで統一](feedback_video_script_save_destination.md) — 2026-05-01新設。video-content-strategist出力（ショート動画/YouTube長尺）は専用DB作らず📣SNS投稿管理DB(78f40f33-)に集約。タイトル先頭🎬＋【ショート動画】/【YouTube長尺】、ステータス進行中、プラットフォームmulti_select(YouTube/TikTok/Instagram等)
-- [AIインタビュー紹介SNSの定型クレジット文必須](feedback_ai_interview_disclaimer.md) — 2026-05-01新設。安野貴博氏（参院議員/AIエンジニア）・有賀啓介氏（コンサルタント）クレジット＋個人情報禁止注意の定型文を4PF全てに必須化。X140字に収まらない場合はスレッド2投目に
-- [タスク→プロジェクト昇格判定](project_task_to_project_promotion.md) — 2026-05-01新設。タスクDB「昇格判定タグ」(A〜E multi_select)・「昇格判定日」、プロジェクトDB「由来」追加。5系統(citizen-inquiry-responder/nichijo整理/nichijo仕上げ/oyasumi/iken)に判定ロジック挿入。基準A〜E/重複判定回避/市民相談単発除外
-- [発信物安全2エージェント新設](project_content_safety_gates.md) — 2026-05-01新設。content-fact-checker(一次情報検証5カテゴリ)＋content-risk-reviewer(8軸：公選法/個人情報/名誉毀損/品位等)。content-pipelineにStep 2.6/2.7/3.6/3.7挿入。HIGH検出時は草川にASK_USER問いかけ
-- [公開済アーカイブシステム](project_published_archive_system.md) — 2026-05-01新設。📚公開済アーカイブDB(ds:0ae2d907-)＋scrape.py＋oyasumi月曜分岐＋voice-analyst最優先ソース化。ブログ/YouTube/Threads真の声学習基盤。初回21件投入済
-- [sns-content-polisherエージェント新設](project_sns_content_polisher.md) — 2026-05-01新設。SNS原稿品質昇格専任。8軸診断＋AI-fingerprint排除＋surgical rewrite。content-editorは合否判定／polisherは直接書き換え
-- [📡AIインタビュー設定DB](project_ai_interview_config_db.md) — 2026-04-30新設。AIインタビューconfig蓄積専用DB(ds:a2396bf5-)。コピペ最適化の長文コードブロック構造、一般質問ネタ・プラットフォーム配下
-- [ニュースDBクエリの落とし穴](feedback_news_db_query_pitfall.md) — 2026-04-29事故。ohayoでview_url直叩きしないと未検出になる。data_source_url の database/data_source 取り違え注意
-- [iJAMP連携(news-briefing統合)](project_ijamp_integration.md) — 2026-04-27統合。時事通信社iJAMPの5系統配信メールをGmail MCP経由で取得→news-briefingカテゴリ⑦。著作権厳守(ブログSNS転載禁止)
-- [Obsidianメモ確認](feedback_obsidian_memo.md) — タスク完了・スキル習得・トラブル解決時にObsidianへのメモが必要か確認する
-- [nichijoモバイル版＋PC仕上げモード](project_nichijo_mobile.md) — モバイルで📱付き下書き→PC /nichijo 仕上げモードで深掘り＆上書き仕上げの2段構成
-- [スキルトリガー一覧Notion](reference_skill_triggers.md) — 草川たくや用スキルのトリガーワード早見表をNotionに集約（a0631315配下）
-- [エージェントトリガー一覧Notion](reference_agent_triggers.md) — 草川たくや用エージェント18本の発火ワード早見表（a0631315配下、id:34ecf503...818a）
-- [コンテンツパイプライン品質改善](project_content_pipeline_quality.md) — voice-dna.md＋content-editor品質ゲート導入（2026-04-22）。原稿品質低下時はここを参照
-- [声のDNA抽出時の注意](feedback_voice_dna_extraction.md) — サンプル不足時にAI生成物の定型句を真の声として誤認しない運用ルール
-- [タスク・プロジェクトDB構成](project_notion_task_project_db.md) — 2026-04-24日次DB統合。✅タスクDB(292c_c, inbox起点＋親/サブ階層化)／🗂️プロジェクト(292c_fe, 進捗率ロールアップあり)
-- [ブログ記事の深掘り/ノーマル2モード](project_blog_normal_mode.md) — content-pipelineがブログ生成前に必ず2択を確認。ノーマル版=blog-writer-normal（800〜1500字・市民向け）
-- [ブログ冒頭は定型挨拶必須](feedback_blog_opening_greeting.md) — ブログ1行目は必ず「こんにちは、亀山市議会議員の草川たくやです。」で開始
-- [kameyama-researcherエージェント新設](project_kameyama_researcher.md) — 2026-04-23新設。亀山市ローカル調査専任。policy-researcherと並列起動前提。添付資料はknowledge/配下
-- [claude-configバックアップ](reference_claude_config_backup.md) — Claude Code CLIの設定・エージェント・スキルをGitHub(thiguchi125-debug/claude-config)へ自動バックアップ。新PC復元はrestore.sh
-- [市民相談→タスク登録連携](feedback_citizen_inquiry_task_registration.md) — citizen-inquiry-responderは次アクションを✅タスクDB（単発 or 親＋サブ階層化）へ登録候補として提示→同意後登録まで1パスで実行
-- [政策アップデートシステム](project_policy_update_system.md) — 2026-04-23新設。/policy-update＋policy-synthesizer＋🎯政策候補DB（ds:6f1895ac-）＋NotebookLM連携。週次/月次/オンデマンド3モード、承認ワークフロー必須
-- [speech-writerエージェント新設](project_speech_writer_agent.md) — 2026-04-24新設。歴代名演説の修辞知＋voice-dna融合。所信表明/祝辞/弔辞/街頭演説/基調講演の熱情スピーチ専任
-- [印刷物デザイン2エージェント新設](project_print_design_agents.md) — 2026-04-25新設。print-designer（HTML/CSS→PDF）＋photo-curator（草川ZPERSON=18ベストショット選定）。応援カードv7のノウハウを恒久化
-- [デザインリサーチエージェント新設](project_design_inspiration_researcher.md) — 2026-04-25新設。design-inspiration-researcher：政治家広報物事例を8軸分析→草川向け具体CSS仕様化→print-designerへ引き渡し
-- [デザインディレクター新設](project_design_director.md) — 2026-04-25新設。design-director：プロ級昇格専任。design tokens設計＋8原則レビュー＋A/B/Cバリアント。print-designerの上位ロール
-- [政策アーカイブマイナー新設](project_policy_archive_miner.md) — 2026-04-25新設。policy-archive-miner：草川過去8年発言の議事録/ブログ/SNS横断抽出→テーマ別×時系列×論点別構造化。子育て・教育で試運転完了
-- [政策バリデーター新設](project_policy_validator.md) — 2026-04-25新設。policy-validator：EBPM 8軸検証(証拠/比較/費用/法/連続性/voice-dna/KPI/反論)→APPROVE/REVISE/REJECT判定。policy-synthesizer→🎯政策候補DB間のゲート
-- [ニュースブリーフィングシステム](project_news_briefing_system.md) — 2026-04-25新設。news-briefingスキル＋📰ニュースDB(f2eefc66)＋cron(6:00 JST, trig_01WXgkt4)＋ohayo統合。6カテゴリ×関心6テーマ自動収集
-- [カレンダーIDは kusakawa.taku](feedback_calendar_id_kusakawa.md) — 草川の個人カレンダーIDは `kusakawa.taku@gmail.com`（kusagawa は誤り）。2026-04-26朝に予定6件取りこぼした事故あり
-- [community-rally-speakerエージェント新設](project_community_rally_speaker.md) — 2026-04-26新設。自治会総会・地区集会の短尺アジ挨拶専任。speech-writer（式典・長尺）と棲み分け。地区別関係性メモDB(ds:520fe503-)連携
-- [おやすみシステム新設](project_oyasumi_system.md) — 2026-04-26新設。oyasumiスキル＋📔デイリーサマリ親(34ecf503...8182)＋📅週次レポート親(34ecf503...81b0)。完全自動化：1日集約・タスク繰越し・nichijo補完・政策ドラフト・朝ダッシュボード差込。金曜のみ週次レポート
-- [政策コンパスシステム](project_policy_compass.md) — 2026-05-02 v2再蒸留。Origin Story=「声を、チカラに。／私は、あなたの応援団。」(聞き手起点)、3軸=伝える/繋ぐ(暮らしと安心)/希望、voice-dna=声をチカラに/届かないを終わらせる/繋ぐ思いを形にする/亀山の名を刻む。情緒的アジ禁止解除、応援団の構え原則は3軸ラベル昇格で削除。policy-compass-curator＋policy_compass.md＋Notion🧭政策コンパス(34ecf503...84d)
-- [街頭演説エージェント新設](project_daily_street_speech.md) — 2026-04-26新設。daily-street-speech：20分ループ talking points 3パッケージ(重め/親しみ/攻め)。compass+ニュース+nichijo+市民意見+政策候補を毎回統合
-- [議会戦闘・動画系3エージェント新設](project_council_combat_agents.md) — 2026-04-26新設。agenda-analyzer(議案カルテ)/counter-argument-simulator(議場戦闘マニュアル)/video-content-strategist(動画戦略)。議員業務カバレッジ穴埋め最優先3本
-- [選挙地区戦略エージェント新設](project_electoral_district_strategist.md) — 2026-04-26新設。electoral-district-strategist：4象限分類・街宣ルートROI最適化・当落ライン分析・公選法遵守徹底。2026-10-25選挙準備の定量的頭脳
-- [9地区訪問×4象限統合＋朝ダッシュボード選挙化](project_election_dashboard_integration.md) — 2026-04-26統合。visit_strategy_integration.md＋ohayoスキル選挙ダッシュボード追加＋週次cron(trig_01KfnWW7sA6xGTH3ZX251p5b)。月末ゲートで4象限再評価サイクル
-- [2026市議選歩いて聞く11,447軒](project_2026senkyo_visit.md) — 9地区11,447軒/2026-09-30期限/草川単独/オプションA採用/効率25軒/h死守。Notion(34ecf503...94f0)・スクリプト・Calendar5本登録済
-- [禁止用語リスト（現在は空）](feedback_forbidden_words.md) — 2026-05-01「悉皆」禁止解除。現在明示的な禁止語なし。一般原則として市民向けは平易な日本語
-- [Notion update_content の落とし穴](feedback_notion_update_content_pitfalls.md) — 複数セクション一括置換でサイレント失敗・テーブル番号狂い・誤字混入。fetch検証＆固有名詞コピペ徹底
-- [content-pipeline配下エージェントのグローバル登録必須](feedback_content_pipeline_agent_registration.md) — blog-writer/blog-writer-normal/notion-saver/kusakawa-voice-analystは~/.claude/agents/に配置必須（2026-04-28対応）
-- [📅ミーティングノートDB＋🏛会議体マスタDB新設](project_meeting_notes_organization_db.md) — 2026-04-27新設。📅DB(ds:26d7848d-)＋🏛マスタ(ds:46414643-)を会議ハブ(a247fd5d)配下に。4分類(議会公務/地域・団体/市民相談/その他)+未分類。既存AIノート112件移行・散在4ページ会議体登録済み
-- [nichijoスキル整理モード追加](project_nichijo_organize_mode.md) — 2026-04-28実装。当日Notion新規ページの自動分類→各DB振り分けR1-R5。仕上げモード時はPart Cとして統合実行(U1-U4が3系統並列)。会議体マスタ自動マッチ4件対応
-- [nichijo＋oyasumiにCalendar連携](project_calendar_integration_nichijo_oyasumi.md) — 2026-04-29実装。当日Calendar(kusakawa.taku@gmail.com)から議員業務KEEP分を自動抽出→日次ログ「📅本日のスケジュール」セクションに反映。nichijo Step1.5新設・oyasumi Step2分岐2-A/2-B
-- [ブログ／SNS DBのステータス選択肢ミスマッチ](feedback_blog_sns_db_status_options.md) — 2026-04-29発覚。ブログ／SNS管理DBのstatus selectは未着手/進行中/完了のみ。スキル指定の「下書き完成」が無く進行中で代用中
-- [仕上げモードU4後に日次ログ追記必須](feedback_nichijo_finalize_log_append.md) — 2026-04-29発覚。仕上げモード生成物（ブログ・SNS・軌道修正の経緯）が当日活動ログへ自動反映されない仕様の穴。U4後に追記ステップを恒久化
-- [ohayo/oyasumi タスクDB実クエリ必須](feedback_ohayo_oyasumi_task_db_query.md) — 2026-04-30事故。ダッシュボード旧表流用禁止。タスクDB「すべて」view直叩き＋Done/Archive除外＋本日inbox包含を必ず実施
-- [📋市民意見受付BOX & ikenスキル](project_form_intake_db.md) — 2026-04-30新設。全チャネル受信intake DB(354432ec-)＋ikenスキル(コピペ起動で記録＋返信3案＋タスク化)。GAS自動化は諦め手動ハイブリッド運用
-- [ai-interview-sns-posterエージェント新設](project_ai_interview_sns_poster.md) — 2026-04-30新設(同日1ページ統合方式に再設計)。AIインタビュー要約→IG(詩性600〜1000)/FB(論理500〜800)/Threads(問いかけ300〜500)/X(断定≤140)の4PF別原稿を1ページにセクション統合。📣SNS DB 1テーマ=1レコード
-- [ai-interview-config-designerエージェント新設](project_ai_interview_config_designer.md) — 2026-04-30新設。政策テーマ→AIインタビュー設定編集8フィールド生成(タイトル/説明/初期挨拶/ナレッジソース/カスタムプロンプト/質問テーマ5本/質問3〜5本)。kameyama_bukatsuベンチマーク。kameyama-researcher＋policy-researcher並列起動必須。同時に📝一般質問ネタDB(42716725-)へ調査中ステータスで自動登録→council-material-creatorと連動するライフサイクル形成（ai-interview-sns-posterの逆処理）
-- [issues返信は記録不要](feedback_issues_response_no_log.md) — 「賛成」「反対」冒頭の意見はissues政策アンケート反応。Notion保存/タスク化/メモ全部省略、返信文3案だけ生成する
-- [📂Drive資料サマリDB & oyasumi/ohayo連携](project_drive_summary_db.md) — 2026-04-30新設。Drive当日更新ファイルをoyasumi自動収集・要約→📂DB(ds:317c4d02-)蓄積→翌朝ohayoで「昨日の新規資料」表示。重複は file_id で除外、上限10件/日、modifiedTime=今日(JST)フィルタ必須
-- [Notion内部リンクは mention-page タグ必須](feedback_notion_link_deeplink.md) — 2026-05-01に3回検証して真の正解判明。普通のmarkdownリンク `[text](url)` はモバイルでブラウザに飛ばされる。**`<mention-page url="https://app.notion.com/p/<id>">タイトル</mention-page>` タグ必須**（仕様書 notion://docs/enhanced-markdown-spec 準拠）。13ページ110リンクを変換済
+> エージェント/スキル/DB の「新設告知」は本体ファイルに統合済みのため index から外し、個別 .md は memory/ 配下に保持（on-demand 参照可）。
+> 直近の進行中案件 / 反復で効くガードルール / 外部参照ポインタ のみここに常駐。
+> 完全な過去ログは `_backup_<日付>/MEMORY.md` を参照。
+
+## 🔄 進行中プロジェクト
+
+- [oyasumi v2 (cron化＋自動展開＋仕上げ統合)](project_oyasumi_v2_cron_autoexpansion.md) — 2026-05-08実装完。routine `trig_01TbZU1pJDecnG4QmZKosz72` 毎晩22時JST。Drive/ミーティング→質問ネタ／タスク自動展開、仕上げA/B/C統合、燃費200K→160〜190K
+- [マイドライブ全件取込v1](project_mydrive_full_intake.md) — 2026-05-05実施中。255件中108件取込済、残147件はsubagent rate limit reset(4pm JST)後resume
+- [oyasumi Step 9 過去ページ漸進棚卸し](project_oyasumi_step9_past_cleanup.md) — 旧情報DB配下を毎晩3件ずつ自動整理、約34日で完了予定
+- [Drive→ローカル同期v2拡張＋議会モード](project_drive_sync_v2.md) — Routine週2回(水日21時JST)、_INBOX_新規投函への投入運用、council-mode-toggleで議会期日次切替
+- [Notion埋没ページ大掃除2026-05-05](project_notion_buried_pages_2026-05-05.md) — Phase 1本文化(90件)レート制限中断中(3am JST復帰)、Phase 2-3は草川判断待ち
+- [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成、次の一手は6ドメインexpert並列起動
+- [親子で米づくり事業の正しい主催表記](project_oyakode_kometukuri.md) — 亀山JC主催・草川がJC理事長時代に企画／2026第2回でJC継続事業化、「個人主催」表記禁止
+- [議会資料管理システム Phase 1〜4](project_council_materials_management.md) — 2026-05-11設計、Drive新規11フォルダ作成完了、草川手動アクション3件保留、Phase 2スクリプト拡張は次回セッション
+
+## 📌 恒久ガードルール（実運用で効く feedback）
+
+- [コンテンツ生成は常時lean fullーagentがデフォルト](feedback_content_generation_default_flow.md) — 主担当agent省略禁止、lean最適化は毎回適用、目標90〜170K
+- [「次の議会で追及」型の表現を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞の組合せ禁止、継続的取り組みは「継続的フォロー」「対話を重ねる」で表現
+- [ブログは市民情報伝達と政策論考を分けて書く](feedback_blog_citizen_first.md) — モードA/B判定後に書き始める
+- [街頭演説は選挙文脈を引っ込め政策の中身を厚く](feedback_street_speech_no_election_focus.md) — 投票日・期数・「もう一度」最小化、数字と運用詳細を厚く
+- [街頭演説の本論は政策分野を意図的に分散](feedback_street_speech_topic_diversity.md) — 5ドメイン以上から候補リストアップ後に組立
+- [issues返信は記録不要](feedback_issues_response_no_log.md) — 「賛成」「反対」冒頭の意見はNotion保存/タスク化省略、返信3案だけ
+- [動画原稿の保存先は📣SNS投稿管理DBで統一](feedback_video_script_save_destination.md) — 専用DB作らず投稿管理DBに集約、タイトル先頭🎬
+- [AIインタビュー紹介SNSの定型クレジット必須](feedback_ai_interview_disclaimer.md) — 安野貴博・有賀啓介クレジット＋個人情報禁止注意を4PFに必須
+- [Notion内部リンクは mention-page タグ必須](feedback_notion_link_deeplink.md) — `<mention-page url="...">タイトル</mention-page>` 形式（普通のmarkdownリンクはモバイルでブラウザに飛ぶ）
+- [Notion update_content の落とし穴](feedback_notion_update_content_pitfalls.md) — 複数セクション一括置換でサイレント失敗、fetch検証＆固有名詞コピペ徹底
+- [Notion update_content の罠 v2](feedback_notion_update_content_pitfalls_v2.md) — timeout後でも実は適用済が多い、即リトライ禁止、fetchキャッシュが古いケースあり（2026-05-10）
+- [Notion view-DSLのステータス型フィルタ書込不可](feedback_notion_dsl_status_filter_limitation.md) — Done/Archive除外フィルタは草川手動追加
+- [ブログ／SNS DBのステータス選択肢](feedback_blog_sns_db_status_options.md) — 未着手/進行中/完了のみ、「下書き完成」無いので進行中で代用
+- [仕上げモードU4後に日次ログ追記必須](feedback_nichijo_finalize_log_append.md) — 仕上げ生成物が日次ログに自動反映されない仕様の穴
+- [ohayo/oyasumi タスクDB実クエリ必須](feedback_ohayo_oyasumi_task_db_query.md) — 旧表流用禁止、view直叩きで本日inbox包含
+- [ohayo トークン効率化方針](feedback_ohayo_token_efficiency.md) — 本文置換省略・チャット集約、filter付きview作成で根本対処
+- [ohayo トークン効率化 v3](feedback_ohayo_token_efficiency_v3.md) — 本朝120K消費の根因分析、timeout後即リトライ禁止／fetch1回限定／本文置換完全停止／目標70〜90K（2026-05-10）
+- [oyasumi トークン効率化方針](feedback_oyasumi_token_efficiency.md) — Drive pageSize10/read1500字/Notion pageSize30、SKILL.md冒頭⚡原則反映済み（2026-05-07）
+- [3DB view_url再設定（SNS／一般質問ネタ／市民意見）](feedback_3db_view_url_correction.md) — page URLのみで?v=不在＋廃止DB参照の二重ミス、2026-05-08確定（oyasumi SKILL.md反映済み）
+- [📣SNS投稿管理DB v2 確定情報](feedback_3db_view_url_correction_v2.md) — data_source_id=1bd98deb-、ステータスは未着手/進行中/完了（「未投稿」は誤記）、2026-05-10再点検
+- [会議体マスタの網羅性不足対策](feedback_meeting_master_coverage.md) — マスタ4件しかなく未紐付発生、単発講演も登録、志事塾追加済、2026-05-10
+- [news-briefing 鮮度チェック必須（Yahoo検索キャッシュ罠）](feedback_news_briefing_freshness_check.md) — Yahoo検索は日付修飾効かず・7日で記事削除、必ずWebFetchで本体実在＋配信日確認してからDB登録（2026-05-08事故）
+- [ohayo に archive grep 連動を組み込み（v2.2）](feedback_ohayo_archive_grep_integration.md) — news-briefing単独だと過去発言連動が抜ける、cron停止時の耐障害性確保のためohayo側に組込（2026-05-08）
+- [1日のルーティンを別ページに独立化](feedback_routine_independent_page.md) — ダッシュボードのチェックボックスリストを「📅 毎日のルーティン（改訂版）」34acf503-に独立化、ohayoは本セクションに一切書込まず燃費数K削減（2026-05-08）
+- [ohayo v2.1 街頭演説／ブログSNSテーマ提案](feedback_ohayo_v21_speech_blog_themes.md) — 🎯フォーカス直後に🎤3案＋📝発信テーマ、提案のみ／本文化は下流／チャット限定／追加fetchゼロ
+- [ニュースDBクエリの落とし穴](feedback_news_db_query_pitfall.md) — view_url直叩きしないと未検出、data_source_url の database/data_source 取り違え注意
+- [ニュースブリーフィングは件数より質](feedback_news_briefing_quality_over_quantity.md) — 5〜7件厳守／過去7日重複排除／国政は俯瞰解説／議会活用メモ3点セット必須（v2 2026-05-06）
+- [声のDNA抽出時の注意](feedback_voice_dna_extraction.md) — サンプル不足時にAI生成物の定型句を真の声として誤認しない
+- [市民相談→タスク登録連携](feedback_citizen_inquiry_task_registration.md) — 次アクションを✅タスクDBへ親＋サブ階層化で登録候補提示
+- [禁止用語リスト（現在は空）](feedback_forbidden_words.md) — 明示的な禁止語なし、市民向けは平易な日本語（一般原則）
+- [content-pipeline配下エージェントのグローバル登録必須](feedback_content_pipeline_agent_registration.md) — blog-writer等は ~/.claude/agents/ 配置必須
+- [Obsidianメモ確認](feedback_obsidian_memo.md) — タスク完了・スキル習得・トラブル解決時に確認
+- [Notion会議ページ→Googleカレンダー登録時は元ページ削除まで自走](feedback_notion_meeting_to_calendar.md) — 「予定入れて」=Calendar登録＋アカウント明示＋元Notion削除依頼まで1パス
+- [議事録は草川発言＋市回答のみ抽出](feedback_giji_kusagawa_response_only.md) — voice-dna汚染防止＋トークン節約（CLAUDE.mdに同主旨記載、詳細はファイル）
+- [他議員の名前は対外発信物に載せない](feedback_no_other_council_members_names.md) — スライド/SNS/ブログ/印刷物等で他議員氏名禁止、汎用表記に置換、内部資料はOK（2026-05-09 草川直接指示）
+- [スライド生成はNotebookLM経由が必須（直接生成禁止）](feedback_slide_generation_via_notebooklm.md) — Marp/Slidev等で直接生成しない、成果物は「ソース束＋プロンプト」の2点セット、NotebookLMがスライド本体を生成（2026-05-09 草川直接指示）
+- [街頭演説は1テーマだけ深く掘る・詩的umbrella禁止](feedback_street_speech_one_theme_only.md) — 「1本」=複数話題の傘でなく1テーマ深掘り
+- [街頭演説は鮮度基軸×蓄積layer構造](feedback_street_speech_recent_base_archive_layer.md) — 今日のホットニュース基軸＋過去archive層を乗せる
+- [架空エピソード・つくり話禁止](feedback_no_fabricated_stories.md) — 「ある中学生が泣いた」型の感情演出は禁止、実体験/一次情報/公式データのみ
+- [アーカイブgrepは話題ワード＋草川独自表現を並列で](feedback_archive_grep_keyword_expansion.md) — 「乗って残す」等の草川語彙を引き忘れない
+- [返信文でのおうむ返し禁止](feedback_no_parroting_in_replies.md) — 相手が書いた事実（日付・年齢・固有エピソード）の反復はAI臭。自分の反応→決意→約束で組み立てる（2026-05-10）
+- [ohayo タスクは「超過＋本日＋今週中」の3ブロック表示が標準](feedback_ohayo_task_3block_display.md) — 本日期限＋超過のみだと中期タスクが朝の視界から消える。3ブロック全件表示・件数絞り込み禁止（2026-05-11）
+- [ohayo は期限なしinboxタスクを構造的に拾えない穴](feedback_ohayo_deadline_null_blindspot.md) — eスポーツサークル等の中期戦略タスクが期限未設定で朝視界外。登録時期限必須化＋月次棚卸し必要（2026-05-11）
+- [タスクの期限は基本3日以内](feedback_task_deadline_3days.md) — ✅タスクDBへの新規登録時、明示指定がなければ`今日+3日`をデフォルト。遠い期限は朝の視界外＋先送りの温床（2026-05-11 草川直接指示）
+- [ohayoのタスク監査シグナル（v2.3）](feedback_ohayo_task_audit_signal.md) — 5指標件数表示＋task-auditスキル誘導。閾値超え時のみ草川手動起動・cron化禁止（2026-05-11）
+- [brainstormingセッションのトークン浪費パターン](feedback_brainstorming_token_efficiency.md) — 同内容md多重生成禁止、design docはPhase 1相当3000字以内、探索はサンプリング段階方式（2026-05-11）
+- [「亀山」のtypo再発防止（亜山・亵山禁止）](feedback_kameyama_kanji_typo_guard.md) — AskUserQuestion等のJSONでunicode escape送信時に「亀」(U+4E80)を「亜」(U+4E9C)「亵」(U+4EB5)に取り違える事故。日本語は直接書く（2026-05-11）
+- [ブログでの自己引用は慎重判断（禁止ではない）](feedback_blog_self_quote_careful.md) — 「私はずっと言ってきた」型は気持ち悪く見えがちだが、自分史記事・実績まとめ等で必要な場面もある。文脈で判断、デフォルトは事実と提案から書く（2026-05-11）
+- [ブログ生成パイプラインのトークン効率化（推定400K→150K化）](feedback_blog_pipeline_token_efficiency.md) — リサーチ2並列デフォルト／字数厳守自動圧縮／草川目視前ゲート起動禁止／フレーズ強制継承禁止／1回保存（2026-05-11）
+
+## 🔗 外部参照ポインタ
+
+- [草川議会質問アーカイブv3構造](reference_drive_archive_kusagawa.md) — 学習層1088件、grep対象は01_council〜06_election
+- [claude-configバックアップ](reference_claude_config_backup.md) — GitHub thiguchi125-debug/claude-config、新PC復元はrestore.sh
+- [スキルトリガー一覧Notion](reference_skill_triggers.md) — 草川用スキル早見表（Notion a0631315配下）
+- [エージェントトリガー一覧Notion](reference_agent_triggers.md) — 草川用エージェント18本の発火ワード早見表
+- [市民の声Googleフォーム3シート＋ETL分類済資産](reference_市民の声情報源.md) — 2021/06〜継続収集359件、6ドメイン分類済（_citizen_voice/配下）、Step A以降の施策発掘の必読源
+- [亀山市コミバス運賃](reference_kameyama_combus_fare.md) — 小中学生以下100円・高校以上200円
+- [亀山市コミバス・のりかめさん収支データ](reference_kameyama_combus_revenue.md) — コミバス運賃521万／委託1億／収支率4.8%（R3）、のりかめさん運賃248万／委託881万（R4）。無料化提案の論拠数字
+- [✅タスクDB クイック登録](reference_task_db_quick_create.md) — data_source_id=292cf503-a68f-81c6-b9dd-000b3ffdd2ce、最小5プロパティでcreate1発、schema fetch不要
+- [自治会・地区別市政報告会スライド作成プレイブック](reference_jichikai_shisei_houkokukai_playbook.md) — 地区別ニュース既存62本確認・一次資料群・03_themes/集約・標準WF・voice-dna辞書（2026-05-09 楠平尾v2セッションから集約）
+
+## 🏛 主要DB／システム参照（呼出時のみ詳細を取りに行く）
+
+- 政策コンパス: project_policy_compass.md — Origin Story「声を、チカラに。」3軸=伝える/繋ぐ/希望
+- 自治会×訪問×市政報告会: project_jichikai_db.md / project_jichikai_seed_48.md / project_shisei_houkokukai_db.md / project_jichikai_all_routes.md
+- 後援会×公約: project_koukaikai_db_unification.md / project_koukaikai_kouyaku_db.md
+- 選挙: project_2026senkyo_visit.md / project_election_dashboard_integration.md / project_election_hub_unification.md
+- Notion全体: project_notion_overview_map.md — 21DB+14ハブ俯瞰、月1見直し
+- 市民意見/タスク: project_iken_db_redesign.md / project_task_management_renewal.md / project_task_to_project_promotion.md / project_form_intake_db.md
+- 会議/Drive資料: project_meeting_hub_renewal.md / project_meeting_notes_organization_db.md / project_drive_summary_db.md / project_oyasumi_meeting_autoorganize.md
+- nichijo/oyasumi/ohayo: project_nichijo_mobile.md / project_nichijo_organize_mode.md / project_oyasumi_system.md / project_calendar_integration_nichijo_oyasumi.md
+- ニュース/政策: project_news_briefing_system.md / project_ijamp_integration.md / project_policy_update_system.md / project_policy_expert_agents_11.md
+- 発信物安全/品質: project_content_safety_gates.md / project_content_pipeline_quality.md / project_published_archive_system.md / project_blog_normal_mode.md
+- AIインタビュー: project_ai_interview_config_db.md / project_ai_interview_config_designer.md / project_ai_interview_sns_poster.md
+- エージェント本体: ~/.claude/agents/ 配下（kameyama-researcher / community-rally-speaker / daily-street-speech / speech-writer / electoral-district-strategist / agenda-analyzer / counter-argument-simulator / video-content-strategist / short-video-virality-architect / sns-content-polisher / policy-archive-miner / policy-validator / design-director / design-inspiration-researcher / print-designer / photo-curator 等）

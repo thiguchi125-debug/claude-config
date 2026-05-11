@@ -6,14 +6,14 @@ originSessionId: c51d25d3-bac9-4389-a011-c69108f135b0
 ---
 # 週次 Drive 同期ルーティン（2026-05-04 構築完了）
 
-## 構造（ハイブリッド方式）
+## 構造（ハイブリッド方式・v2 2026-05-05拡張）
 
 ```
-[毎週日曜21:00 JST]
+[毎週水・日 21:00 JST （議会モード時は毎日）]
         ↓
-[クラウドRoutine: weekly-drive-sync-kusagawa]
-  ├─ Drive 15フォルダ並列スキャン (modifiedTime差分)
-  ├─ ファイル名パターンで自動分類（議事録/市政報告/未分類/スキップ）
+[クラウドRoutine: weekly-drive-sync-kusagawa v2]
+  ├─ Drive 18フォルダ並列スキャン (modifiedTime差分)
+  ├─ ファイル名パターンで6カテゴリ自動分類（議事録/市政報告/印刷物/政策資料/選挙関連/未分類）
   ├─ Notion `📥Drive取込キュー`DB に登録
   └─ Gmail下書きで草川に通知（N件検出・確認待ちM件）
         ↓
