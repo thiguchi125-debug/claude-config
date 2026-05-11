@@ -73,6 +73,7 @@
 - [news-briefing ハルシネーション検証ゲート（v2.5）](feedback_news_briefing_hallucination_guard.md) — 2026-05-12朝に部活動地域移行ニュースで古い記事+捏造を検出、登録前3点検証（URL先タイトル類似度/90日以内/本文整合）を必須化、ohayo側でも表示前URL先確認（2026-05-12）
 - [草川 役職・所属委員会マスタ](feedback_kusagawa_role_committee_master.md) — 教育民生委員会の委員（確定）・委員会内容は普段からブログ発信。発信テーマ提案・原稿生成時に必ず参照、「傍聴」等の立場逸脱表現を排除（2026-05-12）
 - [ohayo 必須セクション実行チェックリスト](feedback_ohayo_section_execution_checklist.md) — §3-4d市民意見フォーム新規回答処理など実行漏れ多発、起動時に内部TodoListで18セクション管理、全件チェック完了するまで出力禁止（2026-05-12）
+- [ohayo v2.5 削除/縮小判断（D1/D2/D5）](feedback_ohayo_v25_streamline.md) — iJAMPチャット停止／§3-6発信テーマ提案トリガー型化／Step4ダッシュボード書込みを「昼間も参照価値あり」3セクション限定、目標85〜95K（2026-05-12）
 
 ## 🔗 外部参照ポインタ
 
