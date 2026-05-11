@@ -72,6 +72,7 @@
 - [ohayo 既発信重複除外チェック（v2.4）](feedback_ohayo_duplication_check.md) — 朝の発信テーマ提案前に投稿管理DB「完了」14日分と突合、既発信は除外or新規角度のみ提案、ショート動画系inbox期限超過は実質完了候補へ分離（2026-05-12）
 - [news-briefing ハルシネーション検証ゲート（v2.5）](feedback_news_briefing_hallucination_guard.md) — 2026-05-12朝に部活動地域移行ニュースで古い記事+捏造を検出、登録前3点検証（URL先タイトル類似度/90日以内/本文整合）を必須化、ohayo側でも表示前URL先確認（2026-05-12）
 - [草川 役職・所属委員会マスタ](feedback_kusagawa_role_committee_master.md) — 教育民生委員会の委員（確定）・委員会内容は普段からブログ発信。発信テーマ提案・原稿生成時に必ず参照、「傍聴」等の立場逸脱表現を排除（2026-05-12）
+- [ohayo 必須セクション実行チェックリスト](feedback_ohayo_section_execution_checklist.md) — §3-4d市民意見フォーム新規回答処理など実行漏れ多発、起動時に内部TodoListで18セクション管理、全件チェック完了するまで出力禁止（2026-05-12）
 
 ## 🔗 外部参照ポインタ
 
