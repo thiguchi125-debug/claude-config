@@ -39,6 +39,7 @@
 - [3DB view_url再設定（SNS／一般質問ネタ／市民意見）](feedback_3db_view_url_correction.md) — page URLのみで?v=不在＋廃止DB参照の二重ミス、2026-05-08確定（oyasumi SKILL.md反映済み）
 - [📣SNS投稿管理DB v2 確定情報](feedback_3db_view_url_correction_v2.md) — data_source_id=1bd98deb-、ステータスは未着手/進行中/完了（「未投稿」は誤記）、2026-05-10再点検
 - [会議体マスタの網羅性不足対策](feedback_meeting_master_coverage.md) — マスタ4件しかなく未紐付発生、単発講演も登録、志事塾追加済、2026-05-10
+- [議会公務の会議資料は📅ミーティングノートDB配下に置く](feedback_council_meeting_db_placement.md) — 議案分析・委員会説明会・所管事務調査は期別議会フォルダではなくミーティングノートDB＋会議体マスタ紐付けが正解、標準プロパティ＆ページテンプレ整備（2026-05-12）
 - [news-briefing 鮮度チェック必須（Yahoo検索キャッシュ罠）](feedback_news_briefing_freshness_check.md) — Yahoo検索は日付修飾効かず・7日で記事削除、必ずWebFetchで本体実在＋配信日確認してからDB登録（2026-05-08事故）
 - [ohayo に archive grep 連動を組み込み（v2.2）](feedback_ohayo_archive_grep_integration.md) — news-briefing単独だと過去発言連動が抜ける、cron停止時の耐障害性確保のためohayo側に組込（2026-05-08）
 - [1日のルーティンを別ページに独立化](feedback_routine_independent_page.md) — ダッシュボードのチェックボックスリストを「📅 毎日のルーティン（改訂版）」34acf503-に独立化、ohayoは本セクションに一切書込まず燃費数K削減（2026-05-08）
