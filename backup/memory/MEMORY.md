@@ -92,6 +92,7 @@
 ## 🏛 主要DB／システム参照（呼出時のみ詳細を取りに行く）
 
 - 政策コンパス: project_policy_compass.md — Origin Story「声を、チカラに。」3軸=伝える/繋ぐ/希望
+- 議会会期ハブDB: feedback_council_session_hub_db.md — 年4ページ・/general-question-prep の中心DB（2026-05-12新設）
 - 自治会×訪問×市政報告会: project_jichikai_db.md / project_jichikai_seed_48.md / project_shisei_houkokukai_db.md / project_jichikai_all_routes.md
 - 後援会×公約: project_koukaikai_db_unification.md / project_koukaikai_kouyaku_db.md
 - 選挙: project_2026senkyo_visit.md / project_election_dashboard_integration.md / project_election_hub_unification.md
