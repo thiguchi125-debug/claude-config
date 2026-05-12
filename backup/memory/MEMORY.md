@@ -75,6 +75,9 @@
 - [草川 役職・所属委員会マスタ](feedback_kusagawa_role_committee_master.md) — 教育民生委員会の委員（確定）・委員会内容は普段からブログ発信。発信テーマ提案・原稿生成時に必ず参照、「傍聴」等の立場逸脱表現を排除（2026-05-12）
 - [ohayo 必須セクション実行チェックリスト](feedback_ohayo_section_execution_checklist.md) — §3-4d市民意見フォーム新規回答処理など実行漏れ多発、起動時に内部TodoListで18セクション管理、全件チェック完了するまで出力禁止（2026-05-12）
 - [ohayo v2.5 削除/縮小判断（D1/D2/D5）](feedback_ohayo_v25_streamline.md) — iJAMPチャット停止／§3-6発信テーマ提案トリガー型化／Step4ダッシュボード書込みを「昼間も参照価値あり」3セクション限定、目標85〜95K（2026-05-12）
+- [「届かないを終わらせる」フレーズは草川非好み](feedback_phrase_todokanai_owaraseru.md) — 軸1タグライン候補だが単発投下で伝わらない、結び/見出し使用禁止、voice-dna.md/policy_compass.md 次回更新時に候補から外す（2026-05-12）
+- [「亀山42% vs 100%」は介護保険分野・子育てではない](feedback_kameyama_42pct_kaigo_not_childcare.md) — 自治体比較数値の誤帰属、子育て・保育・教育文脈で絶対使用禁止、03_themes/子育て・教育.md 内紛れ込みは次回 themes 更新時に介護分野へ移動（2026-05-12）
+- [子育てDX「遅れ」フレームは前面禁止](feedback_kosodate_dx_delay_risky_frame.md) — 亀山子育てDXは他分野より進んでいる側で反論材料になる、運用ピンポイント（現金集金3費目／コドモン26機能／集金回数）に絞る、「制度はある。問題は、運用」フレーミング（2026-05-12）
 
 ## 🔗 外部参照ポインタ
 
