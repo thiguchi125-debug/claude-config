@@ -183,6 +183,8 @@ if abs(src_ratio - frame_ratio) > 0.3:
 | **横並び詰まりすぎ** | 4セル横並びで縦薄い | 2×2グリッドへ |
 | **要素重なり** | 画像枠と文字枠のz-index競合 | position relative + z-index 明示 |
 | **タイトル改行破綻** | 章タイトルが「水道水濁り事案へ\nの対応」 | word-break: keep-all / max-width調整 |
+| **読み仮名の改行破綻** | 「草川たくや くさかわ・<br>たくや」のようにrubyが改行 | font-size拡大時は `white-space: nowrap` を必須セットで適用 |
+| **font-size拡大の連鎖事故** | タイトル26→33pt拡大で横幅オーバー→ruby改行 | font-size変更時は必ず `white-space` と `overflow` の挙動を予測 |
 | **数字埋没** | 重要数字が本文中で素通り | stat-cell グリッドへ抜き出し |
 
 ## Mode-Specific Checks
