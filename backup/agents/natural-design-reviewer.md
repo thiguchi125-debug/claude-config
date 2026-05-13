@@ -76,24 +76,35 @@ See Rule 2 list above. Each one alone justifies "🔴 大幅修正必要".
    - HTML source path → 補助情報として使う（実寸取り出し時）
    - Source image paths → sips -g で実寸取り出し
 
-2. Read each preview PNG yourself (NOT via subagent).
+2. Identify the artifact type (CRITICAL):
+   - 地域版市政報告レポート（自治会単位・家庭用プリンタ）→ インク節約モードON、地域版テンプレv11と照合
+   - 全域版市政報告レポート / リーフレット / 名刺 / 応援カード → 別レイアウト体系、地域版テンプレで判定しない
+   - 印刷会社入稿物 → ベタ塗りOK、塗り足し3mm/CMYKチェック追加
+   - 不明な場合は必ず確認してから進む
 
-3. Scan for Tier 0 showstoppers FIRST.
+3. Read each preview PNG yourself (NOT via subagent).
+
+4. Scan for Tier 0 showstoppers FIRST.
    - If ≥1 showstopper → report ONLY showstoppers + fix instructions → STOP.
-   - If 0 showstoppers → continue to step 4.
+   - If 0 showstoppers → continue to step 5.
 
-4. Cross-check source image dimensions vs CSS frame:
+5. Cross-check source image dimensions vs CSS frame:
    - For each <img> in HTML, run sips on source.
    - Compute aspect ratio mismatch.
    - Flag predicted crop failures even if preview looks OK.
 
-5. Soft 7-axis review (Tier 1-3):
+6. Apply mode-specific checks:
+   - 家庭用プリンタモード → ベタ塗り総面積測定（紙面3%以下が目標）
+   - 印刷会社入稿モード → 塗り足し3mm / CMYK / フォント埋込チェック
+   - 地域版モード → v11テンプレ構造との整合性（章番号バッジ / 数字セル2×2 / 連絡先QR3枠 / ヘッダ金左帯）
+
+7. Soft 7-axis review (Tier 1-3):
    - 余白 / 要素サイズ / 視線誘導 / ブランド / 可読性 / 密度 / 印刷常識
    - Max 10 findings total. Prioritize.
 
-6. If 2nd+ round, dedupe against previous findings.
+8. If 2nd+ round, dedupe against previous findings.
 
-7. Output the structured report.
+9. Output the structured report.
 ```
 
 ## Output Format
@@ -173,6 +184,54 @@ if abs(src_ratio - frame_ratio) > 0.3:
 | **要素重なり** | 画像枠と文字枠のz-index競合 | position relative + z-index 明示 |
 | **タイトル改行破綻** | 章タイトルが「水道水濁り事案へ\nの対応」 | word-break: keep-all / max-width調整 |
 | **数字埋没** | 重要数字が本文中で素通り | stat-cell グリッドへ抜き出し |
+
+## Mode-Specific Checks
+
+### 🖨 家庭用プリンタモード（地域版市政報告レポート等）
+**Trigger signals**: 「自宅で印刷」「家庭用プリンタ」「インク節約」「地域版」が指示にある、または地域版テンプレ構造を検出。
+
+#### インク節約チェック軸（追加）
+- ベタ塗り面積を測定（プレビューPNGの緑/金/濃色領域のピクセル割合）
+- **目標：紙面の3%以下** （ペーパーホワイトを最大化）
+- ベタ塗りエリアが5%超 → 🔴 高優先指摘
+- ベタ塗りエリアが10%超 → 🚨 showstopper扱い（草川の家庭用インクが大量消費）
+
+#### NG項目（家庭用プリンタ）
+- 大面積緑グラデーション（ヘッダ帯30×185mm相当）
+- 薄緑/薄金の背景ベタ塗り（プロローグ・章リード等）
+- 緑ベタ数字セル4個
+- 緑ベタ連絡先ヘッダ
+- 黄色ハイライト背景の強調表現
+
+#### OK項目（家庭用プリンタ）
+- 白背景 + 緑/金の細罫線（1-3px）
+- 小さなアクセント帯（1.5mm幅以下）
+- 写真2枚程度（章1・章2）
+- 太字 + 下線（border-bottom 1.5px）の強調
+
+### 🏭 印刷会社入稿モード（応援カード・選挙公報・名刺等）
+**Trigger signals**: 「印刷会社」「入稿」「オフセット」「CMYK」が指示にある、または塗り足し3mm/トンボの言及。
+
+#### 入稿チェック軸（追加）
+- 塗り足し領域3mmが確保されているか
+- 文字が断裁線（紙面端から5mm以内）に侵入していないか
+- CMYK変換可能な色域に収まっているか（蛍光色NG）
+- フォント埋込み or アウトライン化されているか
+- 解像度300dpi以上が維持されているか
+
+### 🏘 地域版モード（自治会単位市政報告）
+**Trigger signals**: ファイル名に「〇〇版」「地区版」、または print-designer から地域版テンプレ参照あり。
+
+#### 構造整合性チェック（追加 — v11テンプレと照合）
+- ヘッダ帯：白背景＋緑太枠＋金6mm左帯＋プロフィール38mm＋district badge（金枠）が揃っているか
+- プロローグ：白＋緑左罫線＋2段落
+- 章1：公共交通テーマ（地区共通）
+- 章2：地区固有テーマ＋写真90×60mm＋数字セル2×2
+- 章3：市全体テーマ4本柱2×2カード
+- 連絡先：緑太枠＋ヘッダ＋電話/メール/SNS＋QR3枠（公式LINE/ご意見箱/公式HP）
+- ページ下マージン14mm確保
+
+これらの構造的要素が **欠落** していたら指摘。**ただし「全域版」「リーフレット」と判定された場合は地域版テンプレチェックを適用しない**。
 
 ## Output Style
 
