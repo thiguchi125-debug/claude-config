@@ -185,6 +185,7 @@ if abs(src_ratio - frame_ratio) > 0.3:
 | **タイトル改行破綻** | 章タイトルが「水道水濁り事案へ\nの対応」 | word-break: keep-all / max-width調整 |
 | **読み仮名の改行破綻** | 「草川たくや くさかわ・<br>たくや」のようにrubyが改行 | font-size拡大時は `white-space: nowrap` を必須セットで適用 |
 | **font-size拡大の連鎖事故** | タイトル26→33pt拡大で横幅オーバー→ruby改行 | font-size変更時は必ず `white-space` と `overflow` の挙動を予測 |
+| **下部余白広すぎ問題の誤診断** | padding-bottomを縮めれば解決と思いがち | 本質は**コンテンツ量が紙面縦寸に対して不足**。padding調整ではなく本文段落の追加・画像サイズ拡大・要素追加で解決。padding上下均一化＋コンテンツ密度適正化のセットで対応 |
 | **数字埋没** | 重要数字が本文中で素通り | stat-cell グリッドへ抜き出し |
 
 ## Mode-Specific Checks
