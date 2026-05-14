@@ -84,6 +84,7 @@
 - [「届かなくても届く」フレーズは意味不明・前面禁止](feedback_phrase_todokanakutemo_todoku.md) — タイトル/見出し/キャプションでの使用禁止、代替は「申請しなくても、届く」「先回りする行政」等の動作明示型（2026-05-13）
 - [SNSは市民生活のBefore/Afterシーン先行で書く](feedback_sns_citizen_lifescene_first.md) — 事例・数字・固有名詞は冒頭NG、出産後/75歳到達/引っ越し/障害認定/スマホ苦手等の日常シーンで始め、数字は中盤以降の補強材料（2026-05-13）
 - [ohayo停止セクション残骸の自動削除（v2.5-b/c）](feedback_ohayo_stale_display_removal.md) — 書込停止セクションがダッシュボードに古い表示で残る副作用への対策。毎朝Step 4開始時に9セクション分のスイープを実行し空置換削除。タスク詳細は2026-05-13 v2.5-cで削除対象から除外し毎朝3ブロック更新へ復活（2026-05-13 草川直接指示）
+- [印刷物バイナリ素材は案件別サブフォルダで隔離](feedback_publications_binary_storage.md) — 02_publications/{reports,leaflets}/ 直下のtxt-grepフラット構造を汚さず、`<YYYY-MM>_<案件名>/` 配下にPDF/HTML/写真素材を格納、中間版は最終確定後に削除（2026-05-14 Desktop整理から確立）
 
 ## 🔗 外部参照ポインタ
 
