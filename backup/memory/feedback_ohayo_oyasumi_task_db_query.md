@@ -35,3 +35,47 @@ originSessionId: 531fda17-c6fd-481e-9528-1dacd49bdec2
 - `~/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/ohayo/SKILL.md` 3-1b セクション
 - `~/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/oyasumi/SKILL.md` 1-D + Step 3
 - いずれも 2026-04-30 に書き換え済み
+
+---
+
+## 📌 2026-05-15 追加教訓（致命的取りこぼし事故）
+
+2026-05-15朝のohayoで、5/14期限・高優先・inbox の **7件タスクを「期限超過」セクションから漏らした**事故。さらに同タスクが**重複登録14件**になっていた点も検知できず素通り。草川指摘で発覚→修正反映。
+
+### 真因3点（全てohayo §3-1b の盲点）
+
+**真因A: `has_more=true` を無視した**
+- `notion-query-database-view` で「すべて」viewを叩き、`has_more: true` が返ったが追加クエリせずローカルフィルタ実行
+- 結果、視界外のページに居た7件の高優先タスクを漏らした
+
+**真因B: `created_date` を `期限` と誤認した**
+- 5/14付で作成され `期限=5/14` だったタスクを「今朝届いた新規inbox」と誤分類し「今週中（本日新規inbox高優先）」セクションへ降格
+- 正しくは `期限フィールド` を主基準に「期限超過 1日」へ入れるべき
+- created_date は補助情報。「いつ作られたか」≠「いつまでにやるか」
+
+**真因C: 重複検知ロジックなし**
+- 同一タイトル7件×2＝14件の重複登録を flag せず素通り
+- nichijo モバイル下書き同期の二重投入が原因と推定（要根本調査）
+
+### How to apply（次回ohayo §3-1b で必ず実施）
+
+1. **`has_more=true` 時は必ず追加クエリ**：start_cursor を渡して全件取得するか、より絞ったfilter付きviewを叩き直す。打ち切り禁止
+2. **タスク分類は `期限` フィールドが正**：created_date は表示参考のみ。期限フィールドが今日より前 → **必ず「期限超過」へ**（「新規inbox」セクションには絶対に降格させない）
+3. **同タイトル重複を検知**：取得した全タスク配列で `title` のクラスタリングを実施。2件以上同タイトルがあれば「⚠️重複N件・要Archive」マーカー付きで一行表示
+4. **昨日のフォーカス文に出てくるタスク名は必ず実在DB照合**：「DB未照合」と曖昧表現で逃げない
+5. **致命的指摘パターン認識**：草川から「絶対やる」「絶対にやらなあかん」キーワードが出たら、そのテーマで notion-search の徹底再クエリ→100%実在確認
+
+### Archive処理の記録（2026-05-15）
+
+重複7件をArchive実行：
+- 360cf503-a68f-8179-b1f0-da1eede6fa95 (外事の書面duplicate)
+- 360cf503-a68f-819c-bc9a-ecad47a9f746 (三重大応援団あいさつduplicate)
+- 360cf503-a68f-811a-9e2d-ee8f27920903 (リーフレットduplicate)
+- 360cf503-a68f-81b3-bc78-cebf2c762ab7 (太岡寺レポートduplicate)
+- 360cf503-a68f-8170-b905-ef107b99716a (JC報告duplicate)
+- 360cf503-a68f-8122-bf05-e81131afcea9 (動画編集duplicate)
+- 360cf503-a68f-8124-82c1-e0810db7705c (アイリス町請願duplicate)
+
+### 残課題（要別タスク）
+- nichijoモバイル下書き同期スクリプトの**二重投入バグ**根本調査
+- ohayo SKILL.md §3-1b への 5項目（上記）反映
