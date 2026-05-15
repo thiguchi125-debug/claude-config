@@ -86,6 +86,8 @@
 - [ohayo停止セクション残骸の自動削除（v2.5-b/c）](feedback_ohayo_stale_display_removal.md) — 書込停止セクションがダッシュボードに古い表示で残る副作用への対策。毎朝Step 4開始時に9セクション分のスイープを実行し空置換削除。タスク詳細は2026-05-13 v2.5-cで削除対象から除外し毎朝3ブロック更新へ復活（2026-05-13 草川直接指示）
 - [印刷物バイナリ素材は案件別サブフォルダで隔離](feedback_publications_binary_storage.md) — 02_publications/{reports,leaflets}/ 直下のtxt-grepフラット構造を汚さず、`<YYYY-MM>_<案件名>/` 配下にPDF/HTML/写真素材を格納、中間版は最終確定後に削除（2026-05-14 Desktop整理から確立）
 - [印刷物PDFは生成直後に自動open](feedback_auto_open_pdf_after_render.md) — チラシ/市政報告等のPDF更新後はコマンド案内不要、`open <絶対パス>`を即実行してプレビュー.appに表示。HTMLは自動openしない（草川作業用途で邪魔）（2026-05-15 v2作業時に直接指示）
+- [市政報告レポート印刷物制作チェックリスト](feedback_print_publication_checklist.md) — A4両面印刷物のレイアウト規範／タイポグラフィ階層／写真サイズ／章順構成／安全ゲート／全体俯瞰レビューを統合。木下版v22規範踏襲、太岡寺版v1→v19の19回イテレーションから集約、N+1イテレーション予防（2026-05-15）
+- [画像EXIF処理のテクニック](feedback_image_exif_processing.md) — iPhone写真は`sips -r 90`単独だとブラウザ二重回転事故、`PIL ImageOps.exif_transpose`+EXIF strip で確実に正規化。太岡寺版v9太陽光写真向きおかしい指摘から確立（2026-05-15）
 
 ## 🔗 外部参照ポインタ
 
@@ -99,6 +101,7 @@
 - [✅タスクDB クイック登録](reference_task_db_quick_create.md) — data_source_id=292cf503-a68f-81c6-b9dd-000b3ffdd2ce、最小5プロパティでcreate1発、schema fetch不要
 - [自治会・地区別市政報告会スライド作成プレイブック](reference_jichikai_shisei_houkokukai_playbook.md) — 地区別ニュース既存62本確認・一次資料群・03_themes/集約・標準WF・voice-dna辞書（2026-05-09 楠平尾v2セッションから集約）
 - [亀山市議会 一般質問の標準時間](reference_kameyama_general_question_time.md) — 答弁込み45分。原稿・想定答弁・再質問カード時間配分の基準値（2026-05-12）
+- [太岡寺自治会 太陽光要望書（R5.12.12）](reference_taikoji_yobosho_taiyoko.md) — 太岡寺自治会から市長への要望書一次情報、村山竹則会長／太陽光規制条例の早期策定要請。亀山市内でいち早く規制条例の必要性を市長に直接届けた先見事例、今後の太岡寺関連／太陽光関連発信の起点情報（2026-05-15）
 
 ## 🏛 主要DB／システム参照（呼出時のみ詳細を取りに行く）
 
