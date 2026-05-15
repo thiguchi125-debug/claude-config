@@ -85,6 +85,7 @@
 - [SNSは市民生活のBefore/Afterシーン先行で書く](feedback_sns_citizen_lifescene_first.md) — 事例・数字・固有名詞は冒頭NG、出産後/75歳到達/引っ越し/障害認定/スマホ苦手等の日常シーンで始め、数字は中盤以降の補強材料（2026-05-13）
 - [ohayo停止セクション残骸の自動削除（v2.5-b/c）](feedback_ohayo_stale_display_removal.md) — 書込停止セクションがダッシュボードに古い表示で残る副作用への対策。毎朝Step 4開始時に9セクション分のスイープを実行し空置換削除。タスク詳細は2026-05-13 v2.5-cで削除対象から除外し毎朝3ブロック更新へ復活（2026-05-13 草川直接指示）
 - [印刷物バイナリ素材は案件別サブフォルダで隔離](feedback_publications_binary_storage.md) — 02_publications/{reports,leaflets}/ 直下のtxt-grepフラット構造を汚さず、`<YYYY-MM>_<案件名>/` 配下にPDF/HTML/写真素材を格納、中間版は最終確定後に削除（2026-05-14 Desktop整理から確立）
+- [印刷物PDFは生成直後に自動open](feedback_auto_open_pdf_after_render.md) — チラシ/市政報告等のPDF更新後はコマンド案内不要、`open <絶対パス>`を即実行してプレビュー.appに表示。HTMLは自動openしない（草川作業用途で邪魔）（2026-05-15 v2作業時に直接指示）
 
 ## 🔗 外部参照ポインタ
 
