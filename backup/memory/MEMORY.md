@@ -15,6 +15,7 @@
 - [親子で米づくり事業の正しい主催表記](project_oyakode_kometukuri.md) — 亀山JC主催・草川がJC理事長時代に企画／2026第2回でJC継続事業化、「個人主催」表記禁止
 - [議会資料管理システム Phase 1〜4](project_council_materials_management.md) — 2026-05-11設計、Drive新規11フォルダ作成完了、草川手動アクション3件保留、Phase 2スクリプト拡張は次回セッション
 - [Desktopブリーフィング廃止](project_desktop_briefing_deprecation.md) — 2026-05-12 旧launchd版（~/.kameyama-briefing/daily_briefing.py）停止、news-briefing skill＋ohayoに一本化、過去20日HTMLは~/Desktop/_archive_briefing_2026-05-12/へ退避
+- [short-video-create システム新設](project_short_video_create_system.md) — 2026-05-18新設。skill `short-video-create` + agent `nanobanana-prompt-designer` の2層。セリフ→fact-check→risk-review→画像プロンプト→Notion保存を1パス化、サイズ指定忘れ・公選法漏れ・保存先迷子を構造的に防止
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
