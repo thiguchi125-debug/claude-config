@@ -89,6 +89,7 @@
 - [印刷物PDFは生成直後に自動open](feedback_auto_open_pdf_after_render.md) — チラシ/市政報告等のPDF更新後はコマンド案内不要、`open <絶対パス>`を即実行してプレビュー.appに表示。HTMLは自動openしない（草川作業用途で邪魔）（2026-05-15 v2作業時に直接指示）
 - [市政報告レポート印刷物制作チェックリスト](feedback_print_publication_checklist.md) — A4両面印刷物のレイアウト規範／タイポグラフィ階層／写真サイズ／章順構成／安全ゲート／全体俯瞰レビューを統合。木下版v22規範踏襲、太岡寺版v1→v19の19回イテレーションから集約、N+1イテレーション予防（2026-05-15）
 - [画像EXIF処理のテクニック](feedback_image_exif_processing.md) — iPhone写真は`sips -r 90`単独だとブラウザ二重回転事故、`PIL ImageOps.exif_transpose`+EXIF strip で確実に正規化。太岡寺版v9太陽光写真向きおかしい指摘から確立（2026-05-15）
+- [亀山市中学校給食はすでに実施開始済み](feedback_kameyama_chugakko_kyushoku_already_started.md) — 「令和8年度2学期開始予定」「過渡期」フレーミングは古い情報・全面禁止。補食/空腹問題は「給食実施前提でも発生する問題」として論じる（2026-05-19 草川直接訂正）
 
 ## 🔗 外部参照ポインタ
 
