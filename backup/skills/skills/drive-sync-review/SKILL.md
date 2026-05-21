@@ -10,7 +10,34 @@ description: 草川たくや（亀山市議会議員）が Notion `📥Drive取�
 
 ## 設計
 - **クラウド側（Routine）**: Drive差分検出→Notion DB登録→Gmail通知。ローカルアクセス不可。
-- **ローカル側（このスキル）**: Notion DB読み取り→草川承認→Drive MCPでダウンロード→pdftotext→草川パート抽出→`kusagawa_archive/01_council/` or `02_publications/reports/` に配置→Notion状態更新。
+- **ローカル側（このスキル）**: Notion DB読み取り→草川承認→Drive MCPでダウンロード→pdftotext→草川パート抽出→`kusagawa_archive/` 配下に配置→Notion状態更新。
+
+## Drive新構造（2026-05-21〜）
+```
+ROOT (1ZEIt8C...)
+├── _INBOX_council/         ★議会資料の投函口 (1fJjS-auqrG9wKa97BPmksBJCHwFVvd_4)
+│   └── _processed_2026-05/ (1sEFF8xsjWhoWuh52WZ9_8a49-3tw7v8F)
+├── _INBOX_daily/           ★日常資料の投函口（=旧_INBOX_新規投函、草川リネーム後発効）
+│   └── _processed_<YYYY-MM>/
+├── 議会資料アーカイブ/      （=旧「議事録（年度別）」、草川リネーム後発効）
+├── 日常資料アーカイブ/      ★日常資料の最終置き場 (1-rm_sM2296Q0wpUiDxuxJjRDbP4heVjx)
+│   ├── 01_政策素材/   (1ZOrg2z08A5M4OSHzKrxO4BTjR2LVJn5V)
+│   ├── 02_自治会・地区/ (16vYWkszTpBH_DxUL5iLrha_IRxsVPims)
+│   ├── 03_後援会・組織/ (1xnxcxOTypWwLgWdluuNgLQMIjVkuFP4-)
+│   ├── 04_印刷物素材/  (1VBkslIwzMz3dGac1l3UgdvRPPhXhWfCG)
+│   └── 99_その他/      (1m6CKWXCvmqa7gUICwt_vGyDYeboKoKle)
+├── ZZ_市政報告レポート/
+└── ZZ_選挙関連/
+```
+
+## カテゴリ判定ロジック（ファイル名キーワード）
+| カテゴリ | キーワード | Drive配置先 | ローカル配置先 |
+|---|---|---|---|
+| 01_政策素材 | 要望/陳情/提案書/意見書/プレゼン/企画/事業計画/資料 | 日常資料アーカイブ/01_政策素材/ | 05_resources/01_政策素材/ |
+| 02_自治会・地区 | 自治会/組分け/まちづくり/地区/組織図/回覧 | 日常資料アーカイブ/02_自治会・地区/ | 05_resources/02_自治会・地区/ |
+| 03_後援会・組織 | 後援/業界/組合/商工/農協/JC/ライオンズ/ロータリー/会員 | 日常資料アーカイブ/03_後援会・組織/ | 05_resources/03_後援会・組織/ |
+| 04_印刷物素材 | チラシ/リーフレット/市政報告/応援カード/ポスター/名刺/印刷 | 日常資料アーカイブ/04_印刷物素材/ | 99_raw/_drive_originals/print_materials/ |
+| 99_その他 | （上記非該当） | 日常資料アーカイブ/99_その他/ | （草川判断・自動cpスキップ） |
 
 ## トリガー語
 
@@ -92,19 +119,30 @@ URL: https://www.notion.so/ed2d5e6a96f9401fa204c3431602de41
 2. 配置先に応じて `99_raw/_drive_originals/<sub>/` に原本保存：
    - 議事録 → `transcripts/`
    - 市政報告 → `reports/`
-   - 印刷物 → `leaflets/`
-   - 政策資料 → `resources/`
+   - 印刷物 → `print_materials/`（新）
+   - 日常資料（自治会・後援会・政策素材） → `daily/`（新・カテゴリ振分は次ステップ）
    - 選挙関連 → `election/`
 3. PDFなら `pdftotext -layout` でテキスト化
 4. **議事録のみ** `_extract_kusagawa.py` または `_extract_committee.py` で草川パート抽出
 5. 命名規則 `YYYY-MM_<キーワード>.txt` でリネーム（推測可能な場合）
-6. 最終配置（取込先4階層に対応）：
+6. 最終配置：
    - 議事録抽出済 → `01_council/`
    - 市政報告 → `02_publications/reports/`
-   - 印刷物 → `02_publications/leaflets/`
-   - 政策資料 → `05_resources/`
+   - 日常資料 政策素材 → `05_resources/01_政策素材/`
+   - 日常資料 自治会・地区 → `05_resources/02_自治会・地区/`
+   - 日常資料 後援会・組織 → `05_resources/03_後援会・組織/`
+   - 日常資料 印刷物素材 → `99_raw/_drive_originals/print_materials/`
    - 選挙関連 → `06_election/`
    - 草川判定で配置先上書きされた場合 → 該当先
+
+7. **Drive側 元ファイル移動指示**（MCP不可・草川手動）：
+   取込完了後、草川に以下の手動操作を依頼：
+   ```
+   📋 Drive側 手動移動依頼:
+   元ファイル _INBOX_daily/<file> を _INBOX_daily/_processed_2026-05/ にmove
+   （Drive UI: 右クリック → 移動 or ドラッグ）
+   ```
+   将来rclone/OAuth導入時に自動化予定。
 
 ```bash
 # 一括処理は既存スクリプト再利用（拡張版）

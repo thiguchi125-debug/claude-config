@@ -1,16 +1,24 @@
 ---
 name: council-materials-intake
-description: 草川たくや（亀山市議会議員）がSideBooks/議会クラウドからDLしてGoogle Drive `_INBOX_新規投函/_council_pending/` に投函した議会資料（議案書・委員会資料・行政報告・通告書等）を、ローカル `kusagawa_archive/` に取り込んでメタデータ付与＋振分するスキル。トリガー: 「議会資料取り込んで」「議会資料インテーク」「council-materials-intake」「議会資料の取込」「議案書取り込んで」「議会資料同期」等。リモートRoutineが日次/週次で自動同期する裏で、緊急時の即時取込を担う。
+description: 草川たくや（亀山市議会議員）がSideBooks/議会クラウドからDLしてGoogle Drive `_INBOX_council/`（旧 _INBOX_新規投函/_council_pending/、2026-05-21〜ルート直下に格上げ）に投函した議会資料（議案書・委員会資料・行政報告・通告書等）を、ローカル `kusagawa_archive/` に取り込んでメタデータ付与＋振分するスキル。トリガー: 「議会資料取り込んで」「議会資料インテーク」「council-materials-intake」「議会資料の取込」「議案書取り込んで」「議会資料同期」等。リモートRoutineが日次/週次で自動同期する裏で、緊急時の即時取込を担う。
 ---
 
 # 議会資料インテーク
 
 ## 役割
-Drive `_INBOX_新規投函/_council_pending/`（ID: 1Uk2yabgrJCz56KQP1i2AThGTAMGKKh-l）に投函された議会資料PDFを、緊急時に即時で：
+Drive `_INBOX_council/`（ID: 1fJjS-auqrG9wKa97BPmksBJCHwFVvd_4、2026-05-21〜ルート直下に格上げ）に投函された議会資料PDFを、緊急時に即時で：
 1. Drive MCP でDL → ローカル `99_raw/_drive_originals/council_materials/` 配置
 2. `_drive_sync.sh` で pdftotext + メタデータ抽出 + 振分
-3. Drive側も `_council_pending/` から `議事録（年度別）/RXX/MM_定例会/種別/` へ自動振分（copy）
-4. 結果サマリを草川に提示
+3. Drive側も `_INBOX_council/` から `議会資料アーカイブ/RXX/MM_定例会/種別/`（草川リネーム後）へ自動振分（copy）
+4. 元ファイルは `_INBOX_council/_processed_<YYYY-MM>/` へ草川手動move（MCP不可）
+5. 結果サマリを草川に提示
+
+## 旧構造との対応（2026-05-21 移行）
+| 旧 | 新 |
+|---|---|
+| `_INBOX_新規投函/_council_pending/` (1Uk2yabgrJCz56KQP1i2AThGTAMGKKh-l) | `_INBOX_council/` (1fJjS-auqrG9wKa97BPmksBJCHwFVvd_4) ※草川手動格上げ後 |
+| 議事録（年度別）/RXX/MM_定例会/ | 議会資料アーカイブ/RXX/MM_定例会/ ※草川リネーム後 |
+| 草川手動削除 | `_INBOX_council/_processed_<YYYY-MM>/` へ草川手動move |
 
 ## トリガー語
 - 「議会資料取り込んで」「議案書取り込んで」
@@ -20,12 +28,14 @@ Drive `_INBOX_新規投函/_council_pending/`（ID: 1Uk2yabgrJCz56KQP1i2AThGTAMG
 
 ## 実行ステップ
 
-### Step 1: Drive `_council_pending` の中身をリスト
+### Step 1: Drive `_INBOX_council` の中身をリスト
 ```
 mcp__claude_ai_Google_Drive__search_files
-  query: parentId = '1Uk2yabgrJCz56KQP1i2AThGTAMGKKh-l' and mimeType != 'application/vnd.google-apps.folder'
+  query: parentId = '1fJjS-auqrG9wKa97BPmksBJCHwFVvd_4' and mimeType != 'application/vnd.google-apps.folder'
   pageSize: 50
 ```
+※草川による「_council_pending → _INBOX_council 格上げ」が未完の間は、旧パス `parentId = '1Uk2yabgrJCz56KQP1i2AThGTAMGKKh-l'` をフォールバックとして並列クエリ。
+
 README_ここに議会資料を投函.md は除外。0件なら「投函済議会資料なし」と返して終了。
 
 ### Step 2: 各PDFをローカルDL
@@ -61,7 +71,15 @@ mcp__claude_ai_Google_Drive__copy_file
   parentId: <振分先フォルダID>
   title: <元ファイル名>
 ```
-copy成功後、`_council_pending/` 内の原本は草川に手動削除を依頼（または `_council_pending/_processed/` サブを作って移動扱いにする運用）。
+copy成功後、`_INBOX_council/` 内の原本は **草川に Drive UI で `_INBOX_council/_processed_<YYYY-MM>/` へ手動move** を依頼（MCPに move/delete tool が無いため）。
+
+```
+📋 Drive側 手動移動依頼:
+取込済の元ファイル {N}件を _INBOX_council/_processed_2026-05/ にmove
+（Drive UI: 右クリック → 移動 or ドラッグ）
+```
+
+将来 rclone/OAuth導入時に自動化予定。
 
 ### Step 5: サマリ提示
 ```
