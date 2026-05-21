@@ -47,6 +47,7 @@
 - [ohayo に archive grep 連動を組み込み（v2.2）](feedback_ohayo_archive_grep_integration.md) — news-briefing単独だと過去発言連動が抜ける、cron停止時の耐障害性確保のためohayo側に組込（2026-05-08）
 - [1日のルーティンを別ページに独立化](feedback_routine_independent_page.md) — ダッシュボードのチェックボックスリストを「📅 毎日のルーティン（改訂版）」34acf503-に独立化、ohayoは本セクションに一切書込まず燃費数K削減（2026-05-08）
 - [ohayo v2.1 街頭演説／ブログSNSテーマ提案](feedback_ohayo_v21_speech_blog_themes.md) — 🎯フォーカス直後に🎤3案＋📝発信テーマ、提案のみ／本文化は下流／チャット限定／追加fetchゼロ
+- [ohayo→daily-content-generator連結はB（プロンプト型誘導）](feedback_ohayo_daily_content_generator_prompt.md) — テーマ提案トリガー成立時のみ末尾に「💫 フルパッケージ作る？」1行、自動連結禁止、+0K（v2.5-d 2026-05-21）
 - [ニュースDBクエリの落とし穴](feedback_news_db_query_pitfall.md) — view_url直叩きしないと未検出、data_source_url の database/data_source 取り違え注意
 - [ニュースブリーフィングは件数より質](feedback_news_briefing_quality_over_quantity.md) — 5〜7件厳守／過去7日重複排除／国政は俯瞰解説／議会活用メモ3点セット必須（v2 2026-05-06）
 - [声のDNA抽出時の注意](feedback_voice_dna_extraction.md) — サンプル不足時にAI生成物の定型句を真の声として誤認しない
