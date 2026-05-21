@@ -757,6 +757,63 @@ oyasumi が前夜に実行した Step 4.5-8（ミーティング→タスク自�
 
 このセクションは**チャット出力のみ**。ダッシュボード本文には書き込まない（毎朝変わる情報＋草川判断後即更新されるため、ダッシュボード反映コストに見合わない）。
 
+#### 3-8. 📡 policy-radar 承認待ち（2026-05-21新設・クラウドRoutine連動）
+
+policy-radar が**クラウドRoutine 2件で自動実行**しており、その結果（承認待ちドラフト）をここで毎朝サマリ表示する。
+
+**Routine 情報**:
+- `weekly-policy-radar` (trig_01MyKkdatWADfmAdUgB3UDu7) — 毎週日曜23:05 JST → 月曜朝に確認
+- `monthly-policy-radar` (trig_019LPFjUFu9anWC53UFJCavK) — 毎月1日23:08 JST → 2日朝に確認
+
+##### 3-8-1. 承認待ち件数の取得（軽量・毎朝必須）
+
+以下2クエリを並列実行：
+
+1. **🎯政策候補DB** (`6f1895ac-3373-43b8-97d7-7ee4aa2791e0`) → ローカルフィルタ「**承認状態=草川承認待ち**」かつ「トリガー=週次自動 or 月次自動」
+2. **📝一般質問ネタDB** (`42716725-fece-497f-9782-705076539de4`) → ローカルフィルタ「**ネタ名 が 🆕 or 🔄 で始まる**」かつ「**状況=調査中**」（policy-radar Routine 由来マーカー）
+
+軽量実行のため `query_database_view` 経由で取得し、ローカルでフィルタ＆カウント。
+
+##### 3-8-2. 曜日別の表示モード
+
+| 当日 | 表示内容 |
+|---|---|
+| **月曜日** | 「📡 昨夜 weekly-policy-radar 実行 → 承認待ち N件」 |
+| **毎月2日** | 「📡 昨夜 monthly-policy-radar 実行 → 承認待ち N件・Layer4発見 M件」※ Layer4件数は Gmail下書きから取得 |
+| **その他平日・土日** | 「📡 policy-radar 承認待ち累積 N件」（直近未処理分の通知のみ） |
+
+##### 3-8-3. チャット出力フォーマット
+
+```
+## 📡 policy-radar 承認待ち
+
+[曜日別ヘッダー]
+
+- 🎯 政策候補DB: N件（承認状態=草川承認待ち）
+  - 直近3件: 「<政策名>」「<政策名>」「<政策名>」
+- 📝 一般質問ネタDB: M件（🆕/🔄 マーカー付き）
+  - 直近3件: 「<ネタ名>」「<ネタ名>」「<ネタ名>」
+
+【一括処理】Notion で以下 view を開いてバッチ確認:
+- 🎯: https://www.notion.so/6f1895ac337343b897d77ee4aa2791e0?承認状態=草川承認待ち
+- 📝: https://www.notion.so/42716725fece497f9782705076539de4?状況=調査中
+```
+
+##### 3-8-4. Routine 失敗検知
+
+`weekly-policy-radar` / `monthly-policy-radar` の最終実行履歴を確認（推測：Gmail下書きで「【週次policy-radar】」or「【月次policy-radar】」の件名検索）：
+
+- **月曜朝**: Gmail下書きに昨日夜の「【週次policy-radar】」がない → 「⚠️ weekly-policy-radar が実行されていない可能性: https://claude.ai/code/routines/trig_01MyKkdatWADfmAdUgB3UDu7」
+- **毎月2日朝**: Gmail下書きに昨日夜の「【月次policy-radar】」がない → 「⚠️ monthly-policy-radar が実行されていない可能性: https://claude.ai/code/routines/trig_019LPFjUFu9anWC53UFJCavK」
+
+##### 3-8-5. 0件の扱い
+
+承認待ち件数が0件の場合：「📡 policy-radar 承認待ち：なし」と1行のみ表示し後続処理に進む。
+
+##### 3-8-6. ダッシュボード本文には書き込まない（v2燃費方針踏襲）
+
+§3-7と同じ理由でチャット出力のみ。
+
 ### 4. Notionダッシュボードへの自動書き込み
 
 **⚠️ この手順は「毎朝変わる情報」のみ実行する（2026-05-06 v2 更新）。**
