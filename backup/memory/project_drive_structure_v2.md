@@ -94,9 +94,53 @@ ROOT (1ZEIt8Cq71oYzJ2sJslxuBNI9GlESHYsg)
 
 ## スキル＆スクリプト改修済（2026-05-21完了）
 
-- `_drive_sync.sh`: 日常資料処理ブロック追加（pdftotext＋カテゴリ自動振分＋ローカルcp）
-- `drive-sync-review/SKILL.md`: 新構造・カテゴリ判定ロジック・草川手動move指示セクション追加
-- `council-materials-intake/SKILL.md`: 投函口を `_INBOX_council/` に更新、新ID反映、旧ID併用記載
+### スキル統合
+- **drive-sync-review → drive-intake にリネーム＋4モード化**
+- **council-materials-intake は deprecated**（drive-intake へリダイレクト）
+- 4モード: A.即時取込・議会 / B.即時取込・日常 / C.レビュー承認 / D.手動Drive差分
+
+### スクリプト
+- `_drive_sync.sh`: 日常資料処理ブロック＋Drive後処理呼び出し追加
+- `_drive_postprocess.sh`: 新規作成（rclone自動move＋[DONE_<日付>]prefix）
+
+### rclone導入
+- brew install rclone 完了（v1.74.1）
+- ⚠️ **草川作業**: `rclone config` でDrive OAuth設定が必要
+  - remote名: `kusagawa_drive`
+  - type: drive (Google Drive)
+  - scope: drive (full access)
+
+## rclone config 設定手順（草川作業・初回のみ・5分）
+
+ターミナルで以下を実行:
+
+```
+rclone config
+```
+
+対話プロンプトに以下で回答:
+
+| 質問 | 回答 |
+|---|---|
+| Current remotes | `n` (New remote) |
+| name> | `kusagawa_drive` |
+| Storage > | `drive` (Google Drive) ※番号入力 |
+| client_id> | （空Enter） |
+| client_secret> | （空Enter） |
+| scope> | `1` (Full access all files) |
+| service_account_file> | （空Enter） |
+| Edit advanced config? > | `n` |
+| Use auto config? > | `y` |
+| → ブラウザが開く | Googleアカウント `t.higuchi125@gmail.com` でログイン→Drive権限許可 |
+| Configure as Shared Drive? > | `n` |
+| Keep this "kusagawa_drive" remote? > | `y` |
+| Quit config > | `q` |
+
+設定後、動作確認:
+```
+rclone lsd kusagawa_drive:草川議会質問アーカイブ/
+```
+フォルダ一覧が出ればOK。
 
 ## 関連
 - 議論セッション: 2026-05-21

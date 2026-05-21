@@ -1,104 +1,31 @@
 ---
 name: council-materials-intake
-description: 草川たくや（亀山市議会議員）がSideBooks/議会クラウドからDLしてGoogle Drive `_INBOX_council/`（旧 _INBOX_新規投函/_council_pending/、2026-05-21〜ルート直下に格上げ）に投函した議会資料（議案書・委員会資料・行政報告・通告書等）を、ローカル `kusagawa_archive/` に取り込んでメタデータ付与＋振分するスキル。トリガー: 「議会資料取り込んで」「議会資料インテーク」「council-materials-intake」「議会資料の取込」「議案書取り込んで」「議会資料同期」等。リモートRoutineが日次/週次で自動同期する裏で、緊急時の即時取込を担う。
+description: DEPRECATED 2026-05-21 — このスキルは drive-intake に統合されました。「議会資料取り込んで」「議案書取り込んで」「議会資料インテーク」「council-materials-intake」等の旧トリガーは全て drive-intake が継承しています。本フォルダは後方互換のため残置されていますが、実装は drive-intake/SKILL.md を参照してください。
 ---
 
-# 議会資料インテーク
+# council-materials-intake (DEPRECATED)
 
-## 役割
-Drive `_INBOX_council/`（ID: 1fJjS-auqrG9wKa97BPmksBJCHwFVvd_4、2026-05-21〜ルート直下に格上げ）に投函された議会資料PDFを、緊急時に即時で：
-1. Drive MCP でDL → ローカル `99_raw/_drive_originals/council_materials/` 配置
-2. `_drive_sync.sh` で pdftotext + メタデータ抽出 + 振分
-3. Drive側も `_INBOX_council/` から `議会資料アーカイブ/RXX/MM_定例会/種別/`（草川リネーム後）へ自動振分（copy）
-4. 元ファイルは `_INBOX_council/_processed_<YYYY-MM>/` へ草川手動move（MCP不可）
-5. 結果サマリを草川に提示
+⚠️ **このスキルは 2026-05-21 に [drive-intake](../drive-intake/SKILL.md) に統合されました。**
 
-## 旧構造との対応（2026-05-21 移行）
-| 旧 | 新 |
-|---|---|
-| `_INBOX_新規投函/_council_pending/` (1Uk2yabgrJCz56KQP1i2AThGTAMGKKh-l) | `_INBOX_council/` (1fJjS-auqrG9wKa97BPmksBJCHwFVvd_4) ※草川手動格上げ後 |
-| 議事録（年度別）/RXX/MM_定例会/ | 議会資料アーカイブ/RXX/MM_定例会/ ※草川リネーム後 |
-| 草川手動削除 | `_INBOX_council/_processed_<YYYY-MM>/` へ草川手動move |
+## 移行先
 
-## トリガー語
-- 「議会資料取り込んで」「議案書取り込んで」
-- 「議会資料インテーク」「council-materials-intake」
-- 「議会資料の取込」「議会資料同期」
-- 議会前夜・委員会前夜の草川判断起動
-
-## 実行ステップ
-
-### Step 1: Drive `_INBOX_council` の中身をリスト
-```
-mcp__claude_ai_Google_Drive__search_files
-  query: parentId = '1fJjS-auqrG9wKa97BPmksBJCHwFVvd_4' and mimeType != 'application/vnd.google-apps.folder'
-  pageSize: 50
-```
-※草川による「_council_pending → _INBOX_council 格上げ」が未完の間は、旧パス `parentId = '1Uk2yabgrJCz56KQP1i2AThGTAMGKKh-l'` をフォールバックとして並列クエリ。
-
-README_ここに議会資料を投函.md は除外。0件なら「投函済議会資料なし」と返して終了。
-
-### Step 2: 各PDFをローカルDL
-```
-mcp__claude_ai_Google_Drive__download_file_content
-  fileId: <PDF_ID>
-```
-取得した base64 を `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_drive_originals/council_materials/<元ファイル名>` に書き出す。
-
-### Step 3: ローカルスクリプト実行
-```bash
-bash ~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_drive_sync.sh
-```
-pdftotext で `_text/` に txt 変換 → `_extract_gian_metadata.py` でYAMLメタ抽出 → `01_council/RXX-MM_定例会/<種別>/` に配置。`unknown` 判定は `01_council/_needs_classify/` 退避。
-
-### Step 4: Drive 側の振分
-各PDFについて、抽出された議会回次（RXX-MM）と種別から **振分先 Drive フォルダID** を選択：
-
-| 種別 | R08-03 振分先（フォルダID） |
-|---|---|
-| 議案書 | 1-_1Ew1OmCYPOM7lS7ddWty-tG0QI8blV |
-| 委員会資料 | 1TRW2gfX3jWCqguu_LBP_-buf9jHVAaFS |
-| 行政報告 | 139u0DzNQYI6ZQTfulvGOjeWwDXuGoxHe |
-| 議事録 | 1VBAQkbsLMIjesYGzk6Y6v6PnHEY5_Akt |
-| 草川質問 | 1uruyEpOcrjrssiEELllMOtC1P-K0ywTM |
-
-R08-06以降は親フォルダ配下に同名サブを自動 `create_file (mimeType: folder)` で作成。
-
-Drive MCPに `move_file` 機能無いため：
-```
-mcp__claude_ai_Google_Drive__copy_file
-  fileId: <PDF_ID>
-  parentId: <振分先フォルダID>
-  title: <元ファイル名>
-```
-copy成功後、`_INBOX_council/` 内の原本は **草川に Drive UI で `_INBOX_council/_processed_<YYYY-MM>/` へ手動move** を依頼（MCPに move/delete tool が無いため）。
+すべてのトリガー語・実行ステップ・Drive構造定義は drive-intake スキルが継承しています。
 
 ```
-📋 Drive側 手動移動依頼:
-取込済の元ファイル {N}件を _INBOX_council/_processed_2026-05/ にmove
-（Drive UI: 右クリック → 移動 or ドラッグ）
+旧 council-materials-intake  →  drive-intake モードA（即時取込・議会資料）
+旧 drive-sync-review         →  drive-intake モードC（レビュー承認型）/ D（手動差分スキャン）
+旧 weekly-drive-sync         →  drive-intake モードD（2026-05-21に drive-sync-review 経由で統合済み）
 ```
 
-将来 rclone/OAuth導入時に自動化予定。
+## なぜ統合したか
+3スキルとも実態は同じ `_drive_sync.sh` を呼ぶだけで、違いは「起動経路（草川直接投函 vs Notion DB承認 vs クラウドRoutine）」だけだったため、1スキル4モードに集約。草川は「取込」起点さえ覚えれば全モードに辿り着ける。
 
-### Step 5: サマリ提示
-```
-✅ 議会資料インテーク完了
-- 取込: X件
-  - R08-03_定例会/議案書: Y件
-  - R08-03_定例会/委員会資料: Z件
-- 要分類（_needs_classify）: W件 → 草川判定待ち
-- OCR要: V件 → _needs_ocr/ に退避
-- Drive振分: U件copy済 → 草川は _council_pending/ 内の原本を削除可能
-```
+## このフォルダを残している理由
+- 旧トリガー語「council-materials-intake」での参照が他ドキュメントに残るため
+- スキル検索時に「あれ、消えた？」と迷わないため
 
-## 失敗時のフォールバック
-- pdftotext失敗（画像PDF）: `_needs_ocr/` 退避＋OCR要件数を表示
-- 議会回次判定失敗: `_needs_classify/` 退避＋AskUserQuestionで草川に回次入力依頼
-- Drive書込権限エラー: ローカルだけ取込完了、Drive側はsupplemental task登録
+将来的に本フォルダは削除予定。新しい運用は [drive-intake/SKILL.md](../drive-intake/SKILL.md) を参照。
 
-## 関連
-- 設計書: `~/.claude/projects/-Users-kusakawatakuya/specs/2026-05-11-council-materials-management-design.md`
-- 進行PJ: `~/.claude/projects/-Users-kusakawatakuya/memory/project_council_materials_management.md`
-- 既存pipeline: `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_drive_sync.sh`
-- 抽出スクリプト: `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_extract_gian_metadata.py`
+## 関連MEMORY
+- `project_drive_structure_v2.md` — Drive構造v2の設計
+- `project_council_materials_management.md` — 旧議会資料管理システム設計

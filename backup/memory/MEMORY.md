@@ -17,7 +17,7 @@
 - [Desktopブリーフィング廃止](project_desktop_briefing_deprecation.md) — 2026-05-12 旧launchd版（~/.kameyama-briefing/daily_briefing.py）停止、news-briefing skill＋ohayoに一本化、過去20日HTMLは~/Desktop/_archive_briefing_2026-05-12/へ退避
 - [short-video-create システム新設](project_short_video_create_system.md) — 2026-05-18新設。skill `short-video-create` + agent `nanobanana-prompt-designer` の2層。セリフ→fact-check→risk-review→画像プロンプト→Notion保存を1パス化、サイズ指定忘れ・公選法漏れ・保存先迷子を構造的に防止
 - [task-audit初回実施 2026-05-21](project_task_audit_2026-05-21.md) — standardモード+electoral-district-strategist連動・180K消費・**議席安全圏3,644票**発見・**3本柱5/28必達G7化**・5/31月末ゲート向け新規7件追加／反省: 期限再設定の前に完了確認義務（次回task-auditで恒久ガード化）
-- [Drive運用構造v2](project_drive_structure_v2.md) — 2026-05-21設計。投函口2系統(_INBOX_council/_INBOX_daily)＋月別取込済アーカイブ＋日常資料4カテゴリ。Drive新規8フォルダ作成完了・スクリプト/SKILL.md改修済・草川手動Drive UI操作3件保留（リネーム2件＋既存11件振分）
+- [Drive運用構造v2](project_drive_structure_v2.md) — 2026-05-21設計＋統合。投函口2系統(_INBOX_council/_INBOX_daily)＋月別取込済アーカイブ＋日常資料4カテゴリ。**3スキル→drive-intake 1スキル4モード化**（council-materials-intake deprecated）。rclone v1.74.1導入済・自動move＋[DONE_]prefix付与機能実装済。**草川残作業: ①rclone config OAuth設定 ②Drive UI 旧フォルダリネーム2件＋既存INBOX11件振分**
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
