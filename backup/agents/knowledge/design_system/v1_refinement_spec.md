@@ -1,11 +1,13 @@
----
-name: 亀山建設労働組合 市政報告 v1 → v2 Refinement Spec
-description: design-director による v1 のプロ級昇格レビュー。print-designer 向け実装可能な surgical fix list。
+<!--
+タイトル: 亀山建設労働組合 市政報告 v1 → v2 Refinement Spec
+概要: design-director による v1 のプロ級昇格レビュー。print-designer 向け実装可能な surgical fix list。
 type: design-spec
 target_file: /Users/kusakawatakuya/Desktop/亀山建設労働組合_市政報告_v1/index.html
 created: 2026-04-27
 reviewer: design-director
----
+（注: 過去案件の作業メモ。agent loader による自動読込を無効化するため frontmatter を解除。grep可能な参照ファイルとして残置。）
+-->
+
 
 # 亀山建設労働組合 市政報告 v1 → v2 Refinement Spec
 
