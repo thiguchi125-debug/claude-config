@@ -54,18 +54,33 @@ description: 議会期間中（3/6/9/12月の本会議・委員会開催月）�
 
 1. `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_council_mode.json` を読む
 2. 既に `mode = council` なら「すでに議会モードです」と返して終了
-3. RemoteTrigger update で cron変更:
+3. **クラウドRoutine cron変更**:
    ```
-   action: update
-   trigger_id: trig_016r7yNKRqVubUvCJMTzVZ98
-   body: {"cron_expression": "0 12 * * *"}
+   RemoteTrigger update
+     trigger_id: trig_016r7yNKRqVubUvCJMTzVZ98
+     body: {"cron_expression": "0 12 * * *"}
    ```
-4. `_council_mode.json` を更新（mode=council, last_changed_at=now, history追記）
-5. 草川に確認:
+4. **ローカルlaunchd 頻度切替（議会期 4回/日）**:
+   ```bash
+   python3 -c "
+   import plistlib
+   p='/Users/kusakawatakuya/Library/LaunchAgents/com.kusagawa.drive-sync.plist'
+   pl=plistlib.load(open(p,'rb'))
+   pl['StartCalendarInterval']=[
+     {'Hour':7,'Minute':0},{'Hour':13,'Minute':0},
+     {'Hour':19,'Minute':0},{'Hour':22,'Minute':0}
+   ]
+   plistlib.dump(pl,open(p,'wb'))
+   "
+   launchctl unload ~/Library/LaunchAgents/com.kusagawa.drive-sync.plist 2>/dev/null
+   launchctl load ~/Library/LaunchAgents/com.kusagawa.drive-sync.plist
+   ```
+5. `_council_mode.json` を更新（mode=council, last_changed_at=now, history追記）
+6. 草川に確認:
    ```
    ✅ 議会モード ON
-   - cron: 0 12 * * * (毎日21:00 JST)
-   - 次回実行: <next_run_at>
+   - クラウドRoutine: 毎日21:00 JST
+   - ローカルlaunchd: 7,13,19,22時の4回/日
    - 議会終了時は「議会モードoff」と言ってください
    ```
 
@@ -73,16 +88,32 @@ description: 議会期間中（3/6/9/12月の本会議・委員会開催月）�
 
 1. `_council_mode.json` 確認
 2. 既に `mode = normal` なら「すでに通常モードです」と返す
-3. RemoteTrigger update で cron復元:
+3. **クラウドRoutine cron復元**:
    ```
-   body: {"cron_expression": "0 12 * * 0,3"}
+   RemoteTrigger update
+     trigger_id: trig_016r7yNKRqVubUvCJMTzVZ98
+     body: {"cron_expression": "0 12 * * 0,3"}
    ```
-4. `_council_mode.json` を更新（mode=normal, last_changed_at=now）
-5. 草川に確認:
+4. **ローカルlaunchd 頻度復元（通常期 2回/日）**:
+   ```bash
+   python3 -c "
+   import plistlib
+   p='/Users/kusakawatakuya/Library/LaunchAgents/com.kusagawa.drive-sync.plist'
+   pl=plistlib.load(open(p,'rb'))
+   pl['StartCalendarInterval']=[
+     {'Hour':7,'Minute':0},{'Hour':22,'Minute':0}
+   ]
+   plistlib.dump(pl,open(p,'wb'))
+   "
+   launchctl unload ~/Library/LaunchAgents/com.kusagawa.drive-sync.plist 2>/dev/null
+   launchctl load ~/Library/LaunchAgents/com.kusagawa.drive-sync.plist
+   ```
+5. `_council_mode.json` を更新（mode=normal, last_changed_at=now）
+6. 草川に確認:
    ```
    ✅ 議会モード OFF（通常モードに復帰）
-   - cron: 0 12 * * 0,3 (毎週水・日21:00 JST)
-   - 次回実行: <next_run_at>
+   - クラウドRoutine: 水・日21:00 JST
+   - ローカルlaunchd: 7,22時の2回/日
    ```
 
 ### C. 状態確認時

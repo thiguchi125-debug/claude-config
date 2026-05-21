@@ -103,12 +103,61 @@ ROOT (1ZEIt8Cq71oYzJ2sJslxuBNI9GlESHYsg)
 - `_drive_sync.sh`: 日常資料処理ブロック＋Drive後処理呼び出し追加
 - `_drive_postprocess.sh`: 新規作成（rclone自動move＋[DONE_<日付>]prefix）
 
-### rclone導入
+### rclone導入＋完全自動化（2026-05-21追加）
 - brew install rclone 完了（v1.74.1）
-- ⚠️ **草川作業**: `rclone config` でDrive OAuth設定が必要
-  - remote名: `kusagawa_drive`
-  - type: drive (Google Drive)
-  - scope: drive (full access)
+- `_drive_sync.sh` 冒頭にrclone DLステップ追加 → MCP不要で自走可能
+- launchd plist `~/Library/LaunchAgents/com.kusagawa.drive-sync.plist` 作成済
+  - 通常期: 朝7:00・夜22:00の2回/日
+  - 議会期: 7,13,19,22時の4回/日（council-mode-toggleで切替）
+- council-mode-toggle 拡張: クラウドRoutine cron＋ローカルlaunchd plistを同時切替
+
+### トリガー1本化（2026-05-21）
+- メイントリガー: **「ドライブ資料取り込んで」**（一言で4モード自動順次実行）
+- 旧トリガー（「議会資料取り込んで」「取込確認」「Drive差分スキャン」等）は後方互換で全て同じ統合フローを起動
+
+### 完全自動化フロー
+```
+[launchd 毎朝7時・毎晩22時]  ※議会期は4回/日
+  ↓
+_drive_sync.sh
+  ↓
+①rclone copy: _INBOX_council/, _INBOX_daily/ → local
+②pdftotext + メタデータ抽出 + カテゴリ振分
+③ローカル archive 配置（01_council/, 05_resources/01-04, etc.）
+④_drive_postprocess.sh: rclone moveto で Drive側を
+  [DONE_<日付>]_<元名> にリネーム＋_processed_<YYYY-MM>/ にmove
+  ↓
+ログ: _launchd_stdout.log / _launchd_stderr.log
+例外（OCR要・未分類）は朝のohayoブリーフィングで通知
+```
+
+### ⚠️ 草川作業（初回のみ・約15分）
+**① rclone config OAuth設定**（5分）
+```
+rclone config
+→ n (New remote)
+→ name: kusagawa_drive
+→ Storage: drive
+→ scope: 1 (Full access)
+→ ブラウザで t.higuchi125@gmail.com でログイン→許可
+→ Configure as Shared Drive: n
+→ Keep: y
+→ Quit: q
+```
+動作確認: `rclone lsd kusagawa_drive:草川議会質問アーカイブ/`
+
+**② launchd 起動**（1分）
+```
+launchctl load ~/Library/LaunchAgents/com.kusagawa.drive-sync.plist
+launchctl list | grep kusagawa  # 確認: com.kusagawa.drive-sync 表示されればOK
+```
+
+**③ Drive UI 既存整理**（10分）
+- `_INBOX_新規投函` → `_INBOX_daily` リネーム
+- `議事録（年度別）` → `議会資料アーカイブ` リネーム
+- 既存INBOX 11件を `日常資料アーカイブ/<カテゴリ>/` へ振分
+
+3作業完了後は **完全無人運用**（草川は投函してDriveに資料置くだけ）。
 
 ## rclone config 設定手順（草川作業・初回のみ・5分）
 
