@@ -4,31 +4,31 @@
     "skill-creator@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown",
-        "version": "unknown",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/a8f5f1b3c940",
+        "version": "a8f5f1b3c940",
         "installedAt": "2026-04-11T11:06:44.242Z",
-        "lastUpdated": "2026-05-25T11:23:06.522Z",
-        "gitCommitSha": "1b527e2ee74e6dbd198e22cd41701c3b6f47dfec"
+        "lastUpdated": "2026-05-27T00:17:14.289Z",
+        "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
     "frontend-design@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
-        "version": "unknown",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/frontend-design/a8f5f1b3c940",
+        "version": "a8f5f1b3c940",
         "installedAt": "2026-04-30T08:18:12.636Z",
-        "lastUpdated": "2026-05-25T11:23:06.519Z",
-        "gitCommitSha": "1b527e2ee74e6dbd198e22cd41701c3b6f47dfec"
+        "lastUpdated": "2026-05-27T00:17:14.289Z",
+        "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
     "playwright@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/playwright/unknown",
-        "version": "unknown",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/playwright/a8f5f1b3c940",
+        "version": "a8f5f1b3c940",
         "installedAt": "2026-04-30T08:18:55.495Z",
-        "lastUpdated": "2026-05-25T11:23:06.518Z",
-        "gitCommitSha": "1b527e2ee74e6dbd198e22cd41701c3b6f47dfec"
+        "lastUpdated": "2026-05-27T00:17:14.287Z",
+        "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
     "claude-code-setup@claude-plugins-official": [
@@ -43,11 +43,11 @@
     "plugin-dev@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/plugin-dev/unknown",
-        "version": "unknown",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/plugin-dev/a8f5f1b3c940",
+        "version": "a8f5f1b3c940",
         "installedAt": "2026-04-30T08:21:01.163Z",
-        "lastUpdated": "2026-05-25T11:23:06.520Z",
-        "gitCommitSha": "1b527e2ee74e6dbd198e22cd41701c3b6f47dfec"
+        "lastUpdated": "2026-05-27T00:17:14.290Z",
+        "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
     "claude-md-management@claude-plugins-official": [
