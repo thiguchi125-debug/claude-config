@@ -108,13 +108,26 @@ metadata:
 8. ✅ `_drive_sync.sh` `_drive_postprocess.sh` を `kusagawa_archive/99_raw/_scripts/_deprecated_v2_drive_sync_2026-05-28/` に退避
 9. ✅ CLAUDE.md主要リソース欄 更新（v3アクセス手段3つ明記）
 
+## v3.1 追加実装（2026-05-29）
+
+10. ✅ drive-intake skill v3クリーン書き換え（rclone/launchd記述完全削除、カテゴリ判定辞書追加）
+11. ✅ council-mode-toggle skill v3簡素化（launchd plist操作撤回、flag管理＋任意Routine cron切替に）
+12. ✅ `_index/` 処理パイプライン構築（`_build_index.sh`＋launchd nightly 2:30）。初回フルスキャン101 PDF抽出済
+13. ✅ `_INBOX_council/` 残5件配置（議案書2件＋委員会資料1件をR8.3/各サブへ、README＋_processed_は構造として残置）
+14. ✅ **マイドライブ大整理**: 325件＋既存10フォルダ →「草川たくや 議会質問アーカイブ」1個のみに集約
+    - Batch A (議会資料): 45件
+    - Batch B-D (後援会・組織): 78件（亀山JC46/くすのき会5/亀山社中1/飲食業組合2/三重パラ陸協4/消防団1/亀山eスポーツ協会17/JC文化資料2）
+    - Batch E-F (自治会・政策素材): 65件
+    - Batch G-H (市政報告・個人): 35件
+    - 追加分類: 25件
+    - 要判定残: 169件（`日常資料アーカイブ/99_その他/要判定_2026-05-29/`）
+15. ✅ **日次自動パイプライン**: `_auto_intake.sh`（INBOX→キーワード判定→正規配置）＋`_build_index.sh`（pdftotext→_index）を統合した `_daily_drive_pipeline.sh` を launchd `com.kusagawa.daily-drive-pipeline` で毎晩2:30実行
+
 ## TODO（次回以降）
 
-- [ ] drive-intake skill の本体書き換え（rclone/launchd前提を除去、Drive Desktop前提に）
-- [ ] council-mode-toggle skill の動作確認（launchd plist操作部分が壊れている）
-- [ ] `_index/` 処理パイプライン設計（PDF→pdftotext抽出を_index/に蓄積、grep効率化）
-- [ ] `_INBOX_council/` 残5件（所管事務概要・第3次総合計画・予算書・README・_processed_2026-05/）の最終配置
-- [ ] マイドライブ直下321件の整理（草川議会質問アーカイブ外の散乱物）
+- [ ] `要判定_2026-05-29/`169件の分類（草川と1個ずつ確認しながら順次）
+- [ ] `_auto_intake.sh` のキーワード辞書追加学習（新たなテーマ追加時に随時）
+- [ ] ohayo に「昨夜のパイプライン処理結果」セクション追加（_pipeline.log末尾を要約）
 
 ## 関連
 
