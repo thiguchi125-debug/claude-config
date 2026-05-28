@@ -5,7 +5,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-opus-4-7",
+  "model": "claude-opus-4-8",
   "hooks": {
     "Stop": [
       {
