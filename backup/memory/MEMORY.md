@@ -99,6 +99,7 @@
 - [切れ字対策は個別nowrap限定](feedback_kirejiha_individual_nowrap.md) — 固有名詞だけ`<span style="white-space:nowrap">`で囲む。`.parent { word-break:keep-all }` 等の汎用CSS変更禁止（2026選挙リーフレットv3で確立）
 - [lime下線は box-shadow inset で実装](feedback_lime_underline_box_shadow.md) — linear-gradient hard-stop は PDF レンダリングで暗化（オリーブ系）。`background:none; box-shadow:inset 0 -0.28em 0 #c7ff4a;` で純色維持
 - [Chrome PDF出力時の画像最適化必須](feedback_pdf_image_optimization.md) — 4000px級画像は非圧縮埋め込みで80MB級に膨らむ。`sips -Z 1500 -s formatOptions 90` で印刷300dpi目安にリサイズしてからPDF化
+- [ラクスル入稿は裏面ラスタライズ版で](feedback_rakusuru_back_rasterize.md) — Chrome PDF直入稿だと裏面のみ「システムで問題発生」エラー。`pdftoppm -r 400` + `PIL/pypdf` で裏面を400dpi JPEG化→表面と再結合。`<案件名>_rakusuru.pdf` で別保存、入稿はこちらを使う
 - [フォーム回答の属性帰属はoperational contextで判定](feedback_form_response_no_attribution_guess.md) — 「アレルギー・体調・配慮事項」等の主語が書かれない自由回答は運営文脈（誰が食べる／使う／対象か）から自然な主体を選んで即対応、過剰な「念のため確認」は信頼を損なう。お弁当のアレルギー＝食べる主体（お母さま）と即判定（2026-05-19 温泉で産後ケア事故、第1誤=お子さまと断定／第2誤=過剰確認の二重学習）
 - [亀山市中学校給食はすでに実施開始済み](feedback_kameyama_chugakko_kyushoku_already_started.md) — 「令和8年度2学期開始予定」「過渡期」フレーミングは古い情報・全面禁止。補食/空腹問題は「給食実施前提でも発生する問題」として論じる（2026-05-19 草川直接訂正）
 - [中学校給食はSNS/AIインタビュー先行調査後に書く](feedback_kyushoku_sns_research_first.md) — 即時ブログ発信より AIインタビュー設計→市民の声収集→派生発信が良い。5/13📱補食ブログのSNS化は素材揃ってから一体展開（2026-05-21 草川直接指示）

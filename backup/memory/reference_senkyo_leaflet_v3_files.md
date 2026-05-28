@@ -14,7 +14,8 @@ metadata:
 ## 主要ファイル
 
 - `index.html` — メインHTML（A4両面、JSX prototype を静的化したもの）
-- `選挙リーフレット_v3.pdf` — Chrome headless で生成した本番PDF（14MB級、A4 2ページ）
+- `選挙リーフレット_v3.pdf` — Chrome headless で生成した編集確認用PDF（14MB級、A4 2ページ、ベクター）
+- **`選挙リーフレット_v3_rakusuru.pdf`** — **ラクスル入稿用PDF（裏面のみ400dpi JPEG ラスタライズ済み、5.9MB）**。基本的にラクスル入稿はこちらを使う（[[feedback-rakusuru-back-rasterize]]）
 - `assets/` — 画像群（最適化済み）
   - `portrait.png` — 表面メイン portrait
   - `qr-line.png` — LINE QR
@@ -33,7 +34,7 @@ metadata:
   - `project/components/velocity-back.jsx` — 裏面コンポーネント
   - `chats/chat1.md` 〜 `chat4.md` — claude.ai/design でのやり取り履歴
 
-## PDF再生成コマンド
+## PDF再生成コマンド（編集確認用ベクター版）
 
 ```bash
 cd ~/.claude/agents/knowledge/kusagawa_archive/02_publications/leaflets/2026-05_senkyo_leaflet_v3
@@ -45,6 +46,29 @@ cd ~/.claude/agents/knowledge/kusagawa_archive/02_publications/leaflets/2026-05_
   --paper-width=8.27 --paper-height=11.69 \
   --print-to-pdf=選挙リーフレット_v3.pdf \
   "file://$(pwd)/index.html"
+```
+
+## ラクスル入稿用PDF生成コマンド（裏面ラスタライズ版）
+
+詳細手順は [[feedback-rakusuru-back-rasterize]] 参照。
+
+```bash
+cd ~/.claude/agents/knowledge/kusagawa_archive/02_publications/leaflets/2026-05_senkyo_leaflet_v3
+mkdir -p _bake
+pdftoppm -png -r 400 -f 2 -l 2 選挙リーフレット_v3.pdf _bake/back
+python3 <<'PY'
+from PIL import Image
+from pypdf import PdfWriter, PdfReader
+import os
+D = os.getcwd()
+img = Image.open(f"{D}/_bake/back-2.png").convert("RGB")
+img.save(f"{D}/_bake/back-hq.jpg", "JPEG", quality=95, optimize=True, subsampling=0)
+Image.open(f"{D}/_bake/back-hq.jpg").save(f"{D}/_bake/back-raster.pdf", "PDF", resolution=400.0)
+src = PdfReader(f"{D}/選挙リーフレット_v3.pdf")
+back = PdfReader(f"{D}/_bake/back-raster.pdf")
+w = PdfWriter(); w.add_page(src.pages[0]); w.add_page(back.pages[0])
+with open(f"{D}/選挙リーフレット_v3_rakusuru.pdf", "wb") as f: w.write(f)
+PY
 ```
 
 ## PNG プレビュー再生成
