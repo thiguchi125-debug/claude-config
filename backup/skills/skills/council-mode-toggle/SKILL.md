@@ -1,171 +1,137 @@
 ---
 name: council-mode-toggle
-description: 議会期間中（3/6/9/12月の本会議・委員会開催月）にDrive→ローカル同期の頻度を上げるスキル。トリガー: 「議会モードon」「議会モードオン」「議会モード開始」「議会モードoff」「議会モードオフ」「議会モード解除」「議会モード状態」「議会モード確認」など。2026-05-21〜は **2系統を同時切替**: ①ローカルlaunchd `com.kusagawa.drive-sync.plist`（通常=朝7時+夜22時／議会期=7,13,19,22時の4回） ②クラウドRoutine `weekly-drive-sync-kusagawa`（通常=水・日21時JST／議会期=毎日21時JST）。状態は kusagawa_archive/99_raw/_scripts/_council_mode.json に永続化。
+description: 議会期間中（3/6/9/12月の本会議・委員会開催月）であることを宣言する状態フラグ管理スキル。トリガー: 「議会モードon」「議会モードオン」「議会モード開始」「議会モードoff」「議会モードオフ」「議会モード解除」「議会モード状態」「議会モード確認」など。**v3 2026-05-28: Drive Desktop方式へ移行に伴い、launchd plist操作を撤回。Drive→Local同期は常時リアルタイムのため「頻度切替」は不要になった**。本スキルは `_council_mode.json` のflag管理＋クラウドRoutine cronの任意切替に縮小。ohayo/oyasumi/drive-intake等の他スキルがフラグを見て挙動調整する基盤として機能。
 ---
 
-# 議会モード切替スキル
+# 議会モード切替スキル（v3 簡素版）
 
-## 役割
-議会期間中（3/6/9/12月）はDrive差分同期の頻度を上げ、議会後の資料を翌日には学習層に反映できるようにする。通常期は1日2回で十分。
+## v2 → v3 で何が変わったか
 
-2026-05-21〜 ローカルlaunchd（主軸）＋クラウドRoutine（補完）の2系統同時切替に拡張。
+| 観点 | v2（2026-05-21〜2026-05-28） | v3（2026-05-28〜） |
+|---|---|---|
+| ローカルlaunchd plist頻度切替 | 通常2回/日 ↔ 議会期4回/日 | **撤回**（Drive Desktopが常時リアルタイム同期） |
+| クラウドRoutine cron切替 | 通常週2 ↔ 議会期毎日 | 任意（Routineが現存しているなら切替、なくてもOK） |
+| `_council_mode.json` 状態管理 | 主要機能 | **継続**（他スキルが参照するflag） |
+
+## 役割（v3）
+
+「いま議会期間中ですよ」というフラグを管理する。これを見て他スキルが挙動を変える：
+- **drive-intake**: 議会モードON時は `_INBOX_council/` の処理を優先
+- **ohayo**: 議会期は朝ブリーフィングに「議会X日目／本日委員会あり」等を表示
+- **oyasumi**: 議会期は議事録新着を優先サマリ
+- **news-briefing**: 議会期は亀山市政・国政の議会関連ニュースを増量
 
 ## トリガー語
 
 ### ON切替
-- 「議会モードon」「議会モードオン」「議会モード開始」「議会開始」「議会期間入り」
+「議会モードon」「議会モードオン」「議会モード開始」「議会開始」「議会期間入り」
 
 ### OFF切替
-- 「議会モードoff」「議会モードオフ」「議会モード解除」「議会終了」「議会期間終わり」
+「議会モードoff」「議会モードオフ」「議会モード解除」「議会終了」「議会期間終わり」
 
 ### 状態確認
-- 「議会モード状態」「議会モード確認」「いま議会モード？」「routine cron状態」
+「議会モード状態」「議会モード確認」「いま議会モード？」
 
 ---
 
-## 設計
+## 状態ファイル
 
-### モード定義
-
-| モード | cron (UTC) | JST | 頻度 |
-|---|---|---|---|
-| **通常** | クラウド: `0 12 * * 0,3` (水日21時JST) / ローカル: 7,22時 | 週2＋日2回 |
-| **議会モード** | クラウド: `0 12 * * *` (毎日21時JST) / ローカル: 7,13,19,22時 | 日次＋日4回 |
-
-### 状態永続化
 `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_council_mode.json`:
 
 ```json
 {
-  "mode": "normal" or "council",
-  "last_changed_at": "ISO datetime",
-  "current_cron": "0 12 * * 0,3",
+  "mode": "council" | "normal",
+  "last_changed_at": "2026-06-01T09:00:00+09:00",
+  "current_session": "2026.6",
   "history": [
     {"ts": "...", "mode": "council", "trigger": "草川: 議会モードon"}
   ]
 }
 ```
 
+`current_session` は議会期にON切替時に草川に確認（「6月議会で合ってる？」）。
+
 ---
 
 ## 実行ステップ
 
-### A. ON切替時（通常 → 議会モード）
+### A. ON切替時
 
-1. `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_council_mode.json` を読む
-2. 既に `mode = council` なら「すでに議会モードです」と返して終了
-3. **クラウドRoutine cron変更**:
+1. `_council_mode.json` を読む
+2. 既に `mode == "council"` なら「すでに議会モード中（X月議会期）」と返して終了
+3. 草川に当該会期を確認：「2026年X月議会で合ってますか？」（カレンダー上の今月から推定）
+4. `_council_mode.json` を更新:
+   ```json
+   {
+     "mode": "council",
+     "last_changed_at": "<now>",
+     "current_session": "2026.X",
+     "history": [..., {"ts": "<now>", "mode": "council", "trigger": "<trigger>"}]
+   }
+   ```
+5. **（任意）クラウドRoutine cron切替**（Routineが存在するなら）:
    ```
    RemoteTrigger update
-     trigger_id: trig_016r7yNKRqVubUvCJMTzVZ98
-     body: {"cron_expression": "0 12 * * *"}
+     trigger_id: trig_016r7yNKRqVubUvCJMTzVZ98  ※存在する場合のみ
+     body: {"cron_expression": "0 12 * * *"}    毎日21時JST
    ```
-4. **ローカルlaunchd 頻度切替（議会期 4回/日）**:
-   ```bash
-   python3 -c "
-   import plistlib
-   p='/Users/kusakawatakuya/Library/LaunchAgents/com.kusagawa.drive-sync.plist'
-   pl=plistlib.load(open(p,'rb'))
-   pl['StartCalendarInterval']=[
-     {'Hour':7,'Minute':0},{'Hour':13,'Minute':0},
-     {'Hour':19,'Minute':0},{'Hour':22,'Minute':0}
-   ]
-   plistlib.dump(pl,open(p,'wb'))
-   "
-   launchctl unload ~/Library/LaunchAgents/com.kusagawa.drive-sync.plist 2>/dev/null
-   launchctl load ~/Library/LaunchAgents/com.kusagawa.drive-sync.plist
-   ```
-5. `_council_mode.json` を更新（mode=council, last_changed_at=now, history追記）
-6. 草川に確認:
+   ※エラーは無視（Routineが廃止されていてもfail-safe）
+6. 草川に報告:
    ```
    ✅ 議会モード ON
-   - クラウドRoutine: 毎日21:00 JST
-   - ローカルlaunchd: 7,13,19,22時の4回/日
+   会期: 2026.X月議会
+   - フラグ: council=true
+   - 他スキル（ohayo/oyasumi/drive-intake/news-briefing）が議会期挙動に切替
    - 議会終了時は「議会モードoff」と言ってください
    ```
 
-### B. OFF切替時（議会モード → 通常）
+### B. OFF切替時
 
-1. `_council_mode.json` 確認
-2. 既に `mode = normal` なら「すでに通常モードです」と返す
-3. **クラウドRoutine cron復元**:
+1. `_council_mode.json` を読む
+2. 既に `mode == "normal"` なら「すでに通常モード」と返す
+3. `_council_mode.json` を更新（mode=normal、current_session=null）
+4. **（任意）クラウドRoutine cron復元**:
    ```
    RemoteTrigger update
      trigger_id: trig_016r7yNKRqVubUvCJMTzVZ98
-     body: {"cron_expression": "0 12 * * 0,3"}
+     body: {"cron_expression": "0 12 * * 0,3"}   水・日21時JST
    ```
-4. **ローカルlaunchd 頻度復元（通常期 2回/日）**:
-   ```bash
-   python3 -c "
-   import plistlib
-   p='/Users/kusakawatakuya/Library/LaunchAgents/com.kusagawa.drive-sync.plist'
-   pl=plistlib.load(open(p,'rb'))
-   pl['StartCalendarInterval']=[
-     {'Hour':7,'Minute':0},{'Hour':22,'Minute':0}
-   ]
-   plistlib.dump(pl,open(p,'wb'))
-   "
-   launchctl unload ~/Library/LaunchAgents/com.kusagawa.drive-sync.plist 2>/dev/null
-   launchctl load ~/Library/LaunchAgents/com.kusagawa.drive-sync.plist
+5. 草川に報告:
    ```
-5. `_council_mode.json` を更新（mode=normal, last_changed_at=now）
-6. 草川に確認:
-   ```
-   ✅ 議会モード OFF（通常モードに復帰）
-   - クラウドRoutine: 水・日21:00 JST
-   - ローカルlaunchd: 7,22時の2回/日
+   ✅ 議会モード OFF
+   - フラグ: council=false
+   - 他スキルが通常モード挙動に切替
    ```
 
 ### C. 状態確認時
 
-1. `_council_mode.json` 読む
-2. RemoteTrigger get で現状の cron確認
-3. 整合性チェック（jsonとRoutineが一致しているか）
-4. 草川に表示:
-   ```
-   📊 議会モード状態
-   - 現在: {mode}
-   - cron: {current_cron}
-   - 最終切替: {last_changed_at}
-   - 次回実行: {next_run_at}
-   - 切替履歴（直近5件）:
-     1. ...
-   ```
+`_council_mode.json` を読んで現在状態を表示:
+```
+📌 現在: 議会モード（2026.6月議会期）
+   開始: 2026-06-01 09:00
+   経過: 2日目
+   - drive-intake: 議会資料優先処理中
+   - ohayo: 議会期表示モード
+```
 
----
-
-## _council_mode.json 初期化
-
-スキル初回起動時にファイルがなければ作成:
-
-```python
-import json
-from pathlib import Path
-from datetime import datetime, timezone
-
-p = Path("/Users/kusakawatakuya/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_council_mode.json")
-if not p.exists():
-    state = {
-        "mode": "normal",
-        "last_changed_at": datetime.now(timezone.utc).isoformat(),
-        "current_cron": "0 12 * * 0,3",
-        "history": [
-            {"ts": datetime.now(timezone.utc).isoformat(), "mode": "normal", "trigger": "initial_setup"}
-        ]
-    }
-    p.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
+または:
+```
+📌 現在: 通常モード
+   直近の議会モード: 2026.3月議会（〜2026-03-25）
 ```
 
 ---
 
-## 関連リソース
+## v3で撤回した処理（実装しない）
 
-- Routine: `weekly-drive-sync-kusagawa` (trig_016r7yNKRqVubUvCJMTzVZ98)
-- 管理URL: https://claude.ai/code/routines/trig_016r7yNKRqVubUvCJMTzVZ98
-- 状態DB: `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_council_mode.json`
-- 関連スキル: `weekly-drive-sync` / `drive-sync-review` / `ohayo`
+- ❌ `~/Library/LaunchAgents/com.kusagawa.drive-sync.plist` の編集／load／unload
+- ❌ `_drive_sync.sh` の頻度変更
+- ❌ rclone関連の操作
 
-## 自動切替（将来オプション・現状は手動）
-- 議会日程DB or 議事日程APIから「3月議会開始日〜閉会日」「6月議会...」を取得
-- ohayo月初に自動で「明日から議会期に入りますが議会モードonにしますか？」と提案
-- 現状は草川の手動コマンドベース（議会日程に応じて随時）
+これらはplistごと `~/Library/LaunchAgents/_deprecated_2026-05-28/` に退避済。
+Drive Desktop（OS daemon）が常時リアルタイム同期しているため、頻度概念そのものが不要。
+
+## 関連
+- v3アーキ詳細: `~/.claude/projects/-Users-kusakawatakuya/memory/project_drive_structure_v3.md`
+- 連動skill: drive-intake / ohayo / oyasumi / news-briefing
+- 関連DB: 議会会期ハブDB（年4ページ・/general-question-prep で参照）

@@ -1,161 +1,178 @@
 ---
 name: drive-intake
-description: 草川たくや（亀山市議会議員）のDrive→ローカル統合取込スキル。**メイントリガーは「ドライブ資料取り込んで」「Drive取り込んで」「取り込んで」「資料取り込んで」の一言**。**v3 2026-05-28: Google Drive Desktopミラー方式に移行。Drive→Local同期はOS daemonが自動・リアルタイムなので、本スキルの仕事は「_INBOX_council/と_INBOX_daily/の新着→pdftotext→カテゴリ判定→正規配置にmv→Notion登録」に変化**。後方互換: 「議会資料取り込んで」「daily取込」「取込確認」「Drive差分スキャン」「議会資料インテーク」「council-materials-intake」「drive-sync-review」も全て同じ統合フローを起動。
+description: 草川たくや（亀山市議会議員）のDrive→ローカル統合取込スキル。**メイントリガーは「ドライブ資料取り込んで」「Drive取り込んで」「取り込んで」「資料取り込んで」の一言**。Google Drive Desktop（v3 2026-05-28〜）により Drive→Local 同期はOS daemonが自動・リアルタイムで実行するため、本スキルの仕事は **「_INBOX_council/と_INBOX_daily/の新着を見て→pdftotext→カテゴリ判定→正規配置にmv→_indexにキャッシュ→必要ならNotion登録」**。後方互換: 「議会資料取り込んで」「daily取込」「取込確認」「Drive差分スキャン」「議会資料インテーク」「council-materials-intake」「drive-sync-review」も全て同じフローを起動。
 ---
 
-# ⚠️ v3 移行中（2026-05-28〜）：このSKILL.md本体はv2前提のまま未書換
-
-以下の前提読み替えが必要：
-
-| v2 SKILL.md記述 | v3 実機 |
-|---|---|
-| `launchd が _drive_sync.sh を裏で実行` | **不在**（plistは `~/Library/LaunchAgents/_deprecated_2026-05-28/` に退避） |
-| `rclone copy で Drive→Local DL` | **不要**（Drive Desktopが自動ミラー、~30秒遅延） |
-| `rclone moveto で Drive側を _processed_ に整理` | 不可。代わりに `mv ~/.claude/agents/knowledge/kusagawa_archive/_drive/_INBOX_xxx/file ~/.claude/agents/knowledge/kusagawa_archive/_drive/<カテゴリ>/` で行う（symlink経由でDrive側に反映） |
-| Drive側パス`1ZEIt8Cq71oYzJ2sJslxuBNI9GlESHYsg`を直接操作 | **ローカル経由**：`~/.claude/agents/knowledge/kusagawa_archive/_drive/...`（symlink） |
-| Drive構造 `_INBOX_新規投函/` | `_INBOX_daily/` にリネーム済 |
-| Drive構造 `_INBOX_新規投函/_council_pending/` | `_INBOX_council/` に統合済（subfolder廃止） |
-| Drive構造 `議事録（年度別）` | `議会資料アーカイブ` にリネーム済 |
-| 日常資料カテゴリ 4個＋99 | **5個＋99**（05_視察・外部交流 新設） |
-
-詳細仕様は `~/.claude/projects/-Users-kusakawatakuya/memory/project_drive_structure_v3.md` を参照。
-
-**SKILL.md本体の書き換えは未実施・別セッションで対応予定**。当面はこのv3移行ノートを優先、以下v2記述は前提読み替えで利用。
-
----
-
-# Drive 統合取込（drive-intake）
+# Drive 統合取込（drive-intake v3）
 
 ## メイントリガー
 **「ドライブ資料取り込んで」** ／ 「Drive取り込んで」 ／ 「取り込んで」 ／ 「資料取り込んで」
 
-→ 4モード全部を自動順次チェックして必要分だけ取込。草川は一言で済む。
+→ `_INBOX_council/` と `_INBOX_daily/` の両方を見て、新着があれば全部処理。
 
-## 全体フロー（メイントリガー実行時）
+## v3 アーキテクチャ前提（重要）
+
+Google Drive Desktopが**裏で常時稼働**しており、以下は自動：
+- Drive側に投函されたファイルが ~30秒で Mac側にミラーされる
+- Mac側で `mv` した変更が ~30秒で Drive側に反映される
+- iPhone↔Mac は実質リアルタイム同期
+
+このスキルが**まだ手動でやる必要があること**：
+1. 新着ファイルの**カテゴリ判定**（PDFの中身を読んで→ 議会資料か／自治会か／視察か等を判定）
+2. 正規配置への **mv**（_INBOX → 適切なカテゴリフォルダ）
+3. **`_index/` への抽出**（pdftotext で .txt 化、grep高速化のため）
+4. **Notion登録**（📂Drive資料サマリDB／📥Drive取込キューDB等が該当する場合）
+
+## 全体フロー
 
 ```
+[Step 0] symlink 経由でアクセス
+  パス: ~/.claude/agents/knowledge/kusagawa_archive/_drive/
+  実体: ~/Library/CloudStorage/GoogleDrive-t.higuchi125@gmail.com/
+         マイドライブ/草川たくや 議会質問アーカイブ/
+
 [Step 1] _INBOX_council/ をスキャン
-  ├─ 投函あり → 議会資料取込（モードA）
-  └─ なし → スキップ
+  for each 新着PDF/docx in _INBOX_council/:
+    a. pdftotext で先頭3ページ抽出（カテゴリ判定材料）
+    b. ファイル名＋抽出テキストからR<年度>と月（議会期）を推定
+    c. 議会資料アーカイブ/R<年度> (20XX)/<月>_定例会/種別/ に移動
+       - 種別: 議案/議事録/委員会/予算/決算/総合計画/その他
+    d. _index/council/R<年度>/<月>/<file>.txt に抽出キャッシュ保存
+    e. 草川に「移動先 + 推定根拠 + ファイル名」報告（一覧形式）
 
 [Step 2] _INBOX_daily/ をスキャン
-  ├─ 投函あり → 日常資料取込（モードB）
-  └─ なし → スキップ
+  for each 新着ファイル in _INBOX_daily/:
+    a. pdftotext で内容確認
+    b. キーワードマッチで5カテゴリ判定:
+       - 政策素材: 「他自治体」「事例」「計画」「要望」「統計」等
+       - 自治会・地区: 「自治会」「組分け」「地区」「町内会」「<地区名>」
+       - 後援会・組織: 「後援会」「JC」「ライオンズ」「商工会」「<団体名>」
+       - 印刷物素材: 「チラシ」「カード」「報告」「案内」（自分の発信物）
+       - 視察・外部交流: 「視察」「研修」「講演」「会議録」
+       - 99_その他: 上記非該当
+    c. 日常資料アーカイブ/<カテゴリ>/ に移動
+    d. _index/daily/<カテゴリ>/<file>.txt にキャッシュ
+    e. 草川に報告
 
-[Step 3] Notion📥Drive取込キューDB をスキャン
-  ├─ 保留あり → 草川に承認問いかけ（モードC）
-  └─ なし → スキップ
+[Step 3] Notion📥Drive取込キューDB（あれば）チェック
+  保留中エントリがあれば草川承認問いかけ。
 
-[Step 4] Drive側 取込済ファイル整理（rclone）
-  └─ [DONE_<日付>]_<元名> にリネーム＋ _processed_<YYYY-MM>/ にmove
-
-[Step 5] サマリ報告
-  ✅ 議会資料: X件 / 日常資料: Y件 / DB保留: Z件処理
+[Step 4] サマリ報告
+  ✅ 議会資料: X件処理（うち R8.6/03_定例会へY件）
+  ✅ 日常資料: Z件処理（カテゴリ別内訳）
+  ⚠️ カテゴリ判定不能: W件（_INBOX_daily/に残置・草川判断要）
+  📊 _index 累積: 全N件 / 増分M件
 ```
 
 ## 後方互換トリガー（旧スキル統合済）
 
 | 旧トリガー | 統合元 |
 |---|---|
-| 「議会資料取り込んで」「議案書取り込んで」「議会資料インテーク」「council-materials-intake」 | 旧council-materials-intake（モードA相当） |
-| 「日常資料取り込んで」「daily取込」「INBOX_daily取込」 | 新規（モードB相当） |
-| 「取込確認」「Drive取込確認」「pendingレビュー」「ドライブ確認待ち」「/drive-sync-review」 | 旧drive-sync-review モードA（モードC相当） |
-| 「Drive差分スキャン」「routine止まってる」「週次Drive同期手動実行」 | 旧drive-sync-review モードB（モードD相当） |
+| 「議会資料取り込んで」「議案書取り込んで」「議会資料インテーク」「council-materials-intake」 | 旧council-materials-intake |
+| 「日常資料取り込んで」「daily取込」「INBOX_daily取込」 | 新規 |
+| 「取込確認」「Drive取込確認」「pendingレビュー」「ドライブ確認待ち」「/drive-sync-review」 | 旧drive-sync-review |
+| 「Drive差分スキャン」「routine止まってる」「週次Drive同期手動実行」 | 旧drive-sync-review |
 
-これら旧トリガーで起動した場合も**メイントリガーと同じ統合フロー**を実行（特定モードだけに絞らない）。
+すべて同じフローを起動（特定モードに絞らない）。
 
----
-
-## 完全自動運用（launchd）
-
-このスキル手動起動は**緊急時のみ**。通常は macOS launchd が裏で自動実行している:
-
-| モード | 実行頻度 |
-|---|---|
-| 通常期 | 毎朝7:00・毎晩22:00（1日2回） |
-| 議会期 | 毎日 3時間ごと（council-mode-toggleで切替） |
-
-実行内容（無人）:
-```bash
-~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_drive_sync.sh
-```
-スクリプト内部で:
-1. rclone copy で `_INBOX_council/` `_INBOX_daily/` をローカルへDL
-2. pdftotext + メタデータ抽出 + カテゴリ振分
-3. rclone moveto で Drive側を `_processed_<YYYY-MM>/` に整理＋ [DONE_<日付>]_ prefix付与
-4. ログを `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_sync_state.json` に記録
-
-例外（OCR要・未分類）は ohayo の朝ブリーフィングに表示される。
-
----
-
-## Drive構造（2026-05-21〜）
+## Drive構造（v3 確定形）
 
 ```
-ROOT (1ZEIt8Cq71oYzJ2sJslxuBNI9GlESHYsg)
-├── _INBOX_council/          1fJjS-auqrG9wKa97BPmksBJCHwFVvd_4
-│   └── _processed_<YYYY-MM>/  ※launchdが月初に自動作成
-├── _INBOX_daily/            ※草川リネーム後発効
+草川たくや 議会質問アーカイブ/
+├── _INBOX_council/                  投函口（議会資料）
+│   └── _processed_<YYYY-MM>/        取込済の月別退避（pdftotext抽出後のオリジナル）
+├── _INBOX_daily/                    投函口（日常資料）
 │   └── _processed_<YYYY-MM>/
-├── 議会資料アーカイブ/        ※草川リネーム後発効
-└── 日常資料アーカイブ/        1-rm_sM2296Q0wpUiDxuxJjRDbP4heVjx
-    ├── 01_政策素材/      1ZOrg2z08A5M4OSHzKrxO4BTjR2LVJn5V
-    ├── 02_自治会・地区/   16vYWkszTpBH_DxUL5iLrha_IRxsVPims
-    ├── 03_後援会・組織/   1xnxcxOTypWwLgWdluuNgLQMIjVkuFP4-
-    ├── 04_印刷物素材/    1VBkslIwzMz3dGac1l3UgdvRPPhXhWfCG
-    └── 99_その他/        1m6CKWXCvmqa7gUICwt_vGyDYeboKoKle
+├── 議会資料アーカイブ/                ← 議会資料の最終置き場
+│   ├── H30 (2018-12〜2019-2)/ 〜 R07 (2025)/
+│   └── R08 (2026)/
+│       ├── 03_定例会/ 06_定例会/ 09_定例会/ 12_定例会/
+│       └── 委員会・全協（会期外）/
+├── 日常資料アーカイブ/                ← 日常資料の最終置き場（5カテゴリ＋その他）
+│   ├── 01_政策素材/
+│   ├── 02_自治会・地区/
+│   ├── 03_後援会・組織/
+│   ├── 04_印刷物素材/
+│   ├── 05_視察・外部交流/             ← v3新設
+│   └── 99_その他/
+├── 00_INDEX/
+├── ZZ_市政報告レポート/
+└── ZZ_選挙関連/
 ```
 
-## 自動振分ロジック（ファイル名キーワード）
+## _index 構造（ローカル専用・Driveには出ない）
 
-| カテゴリ | キーワード | Drive配置先 | ローカル配置先 |
-|---|---|---|---|
-| 01_政策素材 | 要望/陳情/提案書/意見書/プレゼン/企画/事業計画/資料 | 日常資料アーカイブ/01_政策素材/ | 05_resources/01_政策素材/ |
-| 02_自治会・地区 | 自治会/組分け/まちづくり/地区/組織図/回覧 | 日常資料アーカイブ/02_自治会・地区/ | 05_resources/02_自治会・地区/ |
-| 03_後援会・組織 | 後援/業界/組合/商工/農協/JC/ライオンズ/ロータリー/会員 | 日常資料アーカイブ/03_後援会・組織/ | 05_resources/03_後援会・組織/ |
-| 04_印刷物素材 | チラシ/リーフレット/市政報告/応援カード/ポスター/名刺/印刷 | 日常資料アーカイブ/04_印刷物素材/ | 99_raw/_drive_originals/print_materials/ |
-| 99_その他 | 上記非該当 | 日常資料アーカイブ/99_その他/ | （草川判断・自動cpスキップ） |
-
-議会資料は別ロジック（`_extract_gian_metadata.py`）でRXX-MM_定例会/種別 を抽出。
-
----
-
-## モードC（Notion DB承認）が必要なケース
-
-通常は launchd が完全自動化するため不要。ただし以下では草川承認問いかけが入る:
-
-1. **未分類ファイル**（キーワード非該当・議会回次抽出失敗）
-2. **OCR要**（pdftotext結果が極端に小さい＝画像PDF）
-3. **クラウドRoutine `weekly-drive-sync-kusagawa` がNotion DBに積んだファイル**で、ローカルrclone copyとは別経路のもの
-
-これらは ohayo の朝ブリーフィングで「📋 Drive取込 確認待ち N件」として表示される。草川が「ドライブ資料取り込んで」or「取込確認」と言えば該当フローが起動。
-
-Notion DB:
 ```
-DB ID: ed2d5e6a-96f9-401f-a204-c3431602de41
-data_source_id: 5187247b-f6ea-420a-a80c-154947911f64
-URL: https://www.notion.so/ed2d5e6a96f9401fa204c3431602de41
+~/.claude/agents/knowledge/kusagawa_archive/_index/
+├── council/
+│   ├── R08/
+│   │   ├── 03_定例会/<元filename>.txt
+│   │   └── 06_定例会/<元filename>.txt
+│   └── ...
+├── daily/
+│   ├── 01_政策素材/<元filename>.txt
+│   └── ...
+└── _meta.json    最終インデックス時刻＋処理件数
 ```
 
----
+grep対象として高速化：PDF直接grep（OCR要・遅い）の代わりに `_index/` の.txtをgrep。
 
-## エラー処理
+## カテゴリ判定ヒューリスティクス
 
-- rclone未設定 or remote名不一致 → Drive側整理スキップ、草川手動move依頼メッセージ表示
-- pdftotext失敗（OCR要） → `99_raw/_needs_ocr/<sub>/` 隔離、朝ブリーフィングでフラグ
-- 草川パート抽出が0セッション → `_drive_originals/<sub>/_text/` 残し、DB に「抽出失敗・要手動確認」コメント
-- 議会回次判定失敗 → `_needs_classify/` 退避＋朝ブリーフィングで草川入力依頼
+### 議会資料（_INBOX_council行き）の判定
+- ファイル名に「議案」「議事録」「委員会」「予算書」「決算」「請願」「条例」「計画」
+- 内容に「亀山市議会」「定例会」「議長」「市長」「答弁」「議員」
+- 数字パターン「R[0-9]+」「令和[０-９]+年」で年度推定
+
+### 議会期（3/6/9/12月）判定
+- ファイル名やテキスト中の「R8.3」「2026年3月」等→ 03_定例会
+- 「R8.6」「2026年6月」「6月定例会」→ 06_定例会
+- 「予算」「予算書」「予算決算」→ 通常3月定例会
+- 「決算」（決算審査）→ 通常9月定例会
+- 該当不明→ 委員会・全協（会期外）
+
+### 日常資料カテゴリ判定（キーワード辞書）
+| カテゴリ | キーワード例 |
+|---|---|
+| 01_政策素材 | 計画・要望・他自治体・事例・統計・国の方針・省庁名 |
+| 02_自治会・地区 | 自治会・組分け・地区名（小下/楠平尾/二本松/太岡寺/昼生/関/野登/川崎...）・町内会・まちづくり協議会 |
+| 03_後援会・組織 | 後援会・JC・青年会議所・ライオンズ・商工会・商工会議所・楠の木会・<業界団体名> |
+| 04_印刷物素材 | チラシ・カード・市政報告・リーフレット・ポスター・名刺・応援カード |
+| 05_視察・外部交流 | 視察・研修・講演・全国会議・<他自治体名>視察 |
+| 99_その他 | mixi/その他SNS関連・テンプレート・README・上記非該当 |
+
+複数マッチ時は最も多くマッチしたカテゴリを採用、同点時は ID 小さい方優先。
+
+## 草川への報告フォーマット
+
+```
+✅ 取込完了報告
+
+【議会資料】3件
+  R8.6/03_定例会/ ← R8所管事務事業概要書(教育民生委員会).pdf
+  R8.3/予算/ ← 令和8年度亀山市予算書.pdf
+  R8.3/議案/ ← 資料10_第3次亀山市総合計画前期基本実施計画.pdf
+
+【日常資料】2件
+  01_政策素材/ ← R8-06_中学校給食献立予定表.pdf
+  02_自治会・地区/ ← 小下自治会組分け住宅地図.pdf
+
+⚠️ 判定不能（_INBOX_dailyに残置・要判断）
+  - mixi2.pdf （SNSスクショ？／個人メモ？）
+  - file_2026XXXX.pdf （内容不明）
+
+📊 _index 増分: +5件 / 累積284件
+```
+
+## 実装上の注意
+
+- **Drive操作はsymlink経由のlocal mvで完結**（rclone不要・MCP不要）
+- **mvは原子的**：途中でDrive Desktopがリトライしても破損しない
+- **_INBOX→正規配置の移動は確認なしで実行**：草川の手間を減らすため。誤分類は事後に手動で動かせばよい
+- **CRITICAL判定不能のみ_INBOX残置**：明らかに判定材料不足のものだけ草川判断を求める
+- **本スキルは「投函済みのものを片付ける」専用**：投函そのもの（草川がiPhoneでDriveに入れる）はスキル不要
 
 ## 関連
-- 同期スクリプト本体: `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_drive_sync.sh`
-- Drive後処理: `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_drive_postprocess.sh`（rclone）
-- launchd plist: `~/Library/LaunchAgents/com.kusagawa.drive-sync.plist`
-- 抽出スクリプト: `_extract_kusagawa.py` / `_extract_committee.py` / `_extract_gian_metadata.py` / `_classify.py`
-- Notion DB: https://www.notion.so/ed2d5e6a96f9401fa204c3431602de41
-- 関連skill: council-mode-toggle（launchd頻度切替）
-
-## 旧スキルからの移行（2026-05-21）
-- 旧 `drive-sync-review` → 本スキルに改名統合
-- 旧 `council-materials-intake` → deprecated（フォルダ残置のみ）
-- 旧 `weekly-drive-sync` → 2026-05-21に旧drive-sync-review経由で本スキルへ統合済
-- 旧クラウドRoutine `weekly-drive-sync-kusagawa` → ローカルlaunchdに役割移管予定（クラウドRoutineは継続稼働させて補完）
+- v3アーキ詳細: `~/.claude/projects/-Users-kusakawatakuya/memory/project_drive_structure_v3.md`
+- 旧版（参考）: `project_drive_structure_v2.md`
+- 関連skill: council-mode-toggle（v3で簡素化）／ohayo（_index累積数を朝表示）／oyasumi（夜サマリ）
