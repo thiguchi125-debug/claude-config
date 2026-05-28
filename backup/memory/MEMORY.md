@@ -18,7 +18,7 @@
 - [short-video-create システム新設](project_short_video_create_system.md) — 2026-05-18新設。skill `short-video-create` + agent `nanobanana-prompt-designer` の2層。セリフ→fact-check→risk-review→画像プロンプト→Notion保存を1パス化、サイズ指定忘れ・公選法漏れ・保存先迷子を構造的に防止
 - [task-audit初回実施 2026-05-21](project_task_audit_2026-05-21.md) — standardモード+electoral-district-strategist連動・180K消費・**議席安全圏3,644票**発見・**3本柱5/28必達G7化**・5/31月末ゲート向け新規7件追加／反省: 期限再設定の前に完了確認義務（次回task-auditで恒久ガード化）
 - [task-audit 2026-05-26](project_task_audit_2026-05-26.md) — fullモード×PJ31件1件ずつ確認・180K消費・**PJ昇格5件**(P08/P11/P13/P19/P24)＋タスクDone化2件＋新規タスク3件追加／API制約「進行中ステータス設定不可」再確認・草川手動UIアクション要・P12「8/15本番」要約見直し課題発覚
-- [Drive運用構造v2](project_drive_structure_v2.md) — 2026-05-21設計＋統合。投函口2系統(_INBOX_council/_INBOX_daily)＋月別取込済アーカイブ＋日常資料4カテゴリ。**3スキル→drive-intake 1スキル4モード化**（council-materials-intake deprecated）。rclone v1.74.1導入済・自動move＋[DONE_]prefix付与機能実装済。**草川残作業: ①rclone config OAuth設定 ②Drive UI 旧フォルダリネーム2件＋既存INBOX11件振分**
+- [Drive運用構造v3](project_drive_structure_v3.md) — 2026-05-28実装完了。**Google Drive Desktopミラー方式に全面切替**（v2のrclone/launchd路線は停止＋退避）。投函口2系統（_INBOX_council／_INBOX_daily）＋日常資料5カテゴリ（01_政策素材／02_自治会・地区／03_後援会・組織／04_印刷物素材／**05_視察・外部交流 NEW**／99_その他）。ローカル参照は `~/.claude/agents/knowledge/kusagawa_archive/_drive/`（symlink→ CloudStorage実体）。iPhone↔Mac リアルタイム同期。**次のTODO：drive-intake skill書き換え／council-mode-toggle動作確認／_index処理パイプライン設計**
 - [選挙リーフレットv3 完成](project_senkyo_leaflet_v3_2026.md) — 2026-05制作完了。A4両面・後援会用・公選法「討議資料」マーク込み。3本柱「子育て(5つのゼロ)/防災・福祉/希望(産業+スポーツ拠点)」確定。次回類似制作の出発点 → `~/.claude/agents/knowledge/kusagawa_archive/02_publications/leaflets/2026-05_senkyo_leaflet_v3/`
 
 ## 📌 恒久ガードルール（実運用で効く feedback）

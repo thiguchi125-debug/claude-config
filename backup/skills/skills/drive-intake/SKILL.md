@@ -1,6 +1,27 @@
 ---
 name: drive-intake
-description: 草川たくや（亀山市議会議員）のDrive→ローカル統合取込スキル。**メイントリガーは「ドライブ資料取り込んで」「Drive取り込んで」「取り込んで」「資料取り込んで」の一言**。一言で議会資料/日常資料/Notion保留DBの全モードを自動順次チェック→取込→Drive整理まで実行。完全自動化版はlaunchdが毎朝7時・毎晩22時に裏で `_drive_sync.sh` を自走させるため、本スキル手動起動は緊急時のみ。後方互換: 「議会資料取り込んで」「daily取込」「取込確認」「Drive差分スキャン」「議会資料インテーク」「council-materials-intake」「drive-sync-review」も全て同じ統合フローを起動。
+description: 草川たくや（亀山市議会議員）のDrive→ローカル統合取込スキル。**メイントリガーは「ドライブ資料取り込んで」「Drive取り込んで」「取り込んで」「資料取り込んで」の一言**。**v3 2026-05-28: Google Drive Desktopミラー方式に移行。Drive→Local同期はOS daemonが自動・リアルタイムなので、本スキルの仕事は「_INBOX_council/と_INBOX_daily/の新着→pdftotext→カテゴリ判定→正規配置にmv→Notion登録」に変化**。後方互換: 「議会資料取り込んで」「daily取込」「取込確認」「Drive差分スキャン」「議会資料インテーク」「council-materials-intake」「drive-sync-review」も全て同じ統合フローを起動。
+---
+
+# ⚠️ v3 移行中（2026-05-28〜）：このSKILL.md本体はv2前提のまま未書換
+
+以下の前提読み替えが必要：
+
+| v2 SKILL.md記述 | v3 実機 |
+|---|---|
+| `launchd が _drive_sync.sh を裏で実行` | **不在**（plistは `~/Library/LaunchAgents/_deprecated_2026-05-28/` に退避） |
+| `rclone copy で Drive→Local DL` | **不要**（Drive Desktopが自動ミラー、~30秒遅延） |
+| `rclone moveto で Drive側を _processed_ に整理` | 不可。代わりに `mv ~/.claude/agents/knowledge/kusagawa_archive/_drive/_INBOX_xxx/file ~/.claude/agents/knowledge/kusagawa_archive/_drive/<カテゴリ>/` で行う（symlink経由でDrive側に反映） |
+| Drive側パス`1ZEIt8Cq71oYzJ2sJslxuBNI9GlESHYsg`を直接操作 | **ローカル経由**：`~/.claude/agents/knowledge/kusagawa_archive/_drive/...`（symlink） |
+| Drive構造 `_INBOX_新規投函/` | `_INBOX_daily/` にリネーム済 |
+| Drive構造 `_INBOX_新規投函/_council_pending/` | `_INBOX_council/` に統合済（subfolder廃止） |
+| Drive構造 `議事録（年度別）` | `議会資料アーカイブ` にリネーム済 |
+| 日常資料カテゴリ 4個＋99 | **5個＋99**（05_視察・外部交流 新設） |
+
+詳細仕様は `~/.claude/projects/-Users-kusakawatakuya/memory/project_drive_structure_v3.md` を参照。
+
+**SKILL.md本体の書き換えは未実施・別セッションで対応予定**。当面はこのv3移行ノートを優先、以下v2記述は前提読み替えで利用。
+
 ---
 
 # Drive 統合取込（drive-intake）
