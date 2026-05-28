@@ -19,6 +19,7 @@
 - [task-audit初回実施 2026-05-21](project_task_audit_2026-05-21.md) — standardモード+electoral-district-strategist連動・180K消費・**議席安全圏3,644票**発見・**3本柱5/28必達G7化**・5/31月末ゲート向け新規7件追加／反省: 期限再設定の前に完了確認義務（次回task-auditで恒久ガード化）
 - [task-audit 2026-05-26](project_task_audit_2026-05-26.md) — fullモード×PJ31件1件ずつ確認・180K消費・**PJ昇格5件**(P08/P11/P13/P19/P24)＋タスクDone化2件＋新規タスク3件追加／API制約「進行中ステータス設定不可」再確認・草川手動UIアクション要・P12「8/15本番」要約見直し課題発覚
 - [Drive運用構造v2](project_drive_structure_v2.md) — 2026-05-21設計＋統合。投函口2系統(_INBOX_council/_INBOX_daily)＋月別取込済アーカイブ＋日常資料4カテゴリ。**3スキル→drive-intake 1スキル4モード化**（council-materials-intake deprecated）。rclone v1.74.1導入済・自動move＋[DONE_]prefix付与機能実装済。**草川残作業: ①rclone config OAuth設定 ②Drive UI 旧フォルダリネーム2件＋既存INBOX11件振分**
+- [選挙リーフレットv3 完成](project_senkyo_leaflet_v3_2026.md) — 2026-05制作完了。A4両面・後援会用・公選法「討議資料」マーク込み。3本柱「子育て(5つのゼロ)/防災・福祉/希望(産業+スポーツ拠点)」確定。次回類似制作の出発点 → `~/.claude/agents/knowledge/kusagawa_archive/02_publications/leaflets/2026-05_senkyo_leaflet_v3/`
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
@@ -94,6 +95,10 @@
 - [市政報告レポート印刷物制作チェックリスト](feedback_print_publication_checklist.md) — A4両面印刷物のレイアウト規範／タイポグラフィ階層／写真サイズ／章順構成／安全ゲート／全体俯瞰レビューを統合。木下版v22規範踏襲、太岡寺版v1→v19の19回イテレーションから集約、N+1イテレーション予防（2026-05-15）
 - [画像EXIF処理のテクニック](feedback_image_exif_processing.md) — iPhone写真は`sips -r 90`単独だとブラウザ二重回転事故、`PIL ImageOps.exif_transpose`+EXIF strip で確実に正規化。太岡寺版v9太陽光写真向きおかしい指摘から確立（2026-05-15）
 - [印刷物への Drive PDF図面挿入・LINE QR並列・Page overflow段階圧縮](feedback_print_diagram_qr_layout.md) — ①Drive PDF→base64経由→pdftoppm→PIL clip/rotate ②contact-box flex 2カラム化でLINE QR並列（幅26mm） ③overflow解消の優先順位（写真wrap→infobox圧縮→figure max-width→冗長quote削除→padding微減→コメント短縮）。二本松版v6 2026-05-23制作の6イテレーションから集約
+- [後援会リーフレットデザイン原則](feedback_leaflet_design_principles.md) — 客観確認必須・元装飾尊重・段組勝手追加禁止・色統一(#c7ff4a/#1f5a3a/#0f3d27/#f3efe4)・「規制→適正立地」フレーム転換・「討議資料」公選法対策・写真300dpi最適化（2026選挙リーフレットv3制作から確立）
+- [切れ字対策は個別nowrap限定](feedback_kirejiha_individual_nowrap.md) — 固有名詞だけ`<span style="white-space:nowrap">`で囲む。`.parent { word-break:keep-all }` 等の汎用CSS変更禁止（2026選挙リーフレットv3で確立）
+- [lime下線は box-shadow inset で実装](feedback_lime_underline_box_shadow.md) — linear-gradient hard-stop は PDF レンダリングで暗化（オリーブ系）。`background:none; box-shadow:inset 0 -0.28em 0 #c7ff4a;` で純色維持
+- [Chrome PDF出力時の画像最適化必須](feedback_pdf_image_optimization.md) — 4000px級画像は非圧縮埋め込みで80MB級に膨らむ。`sips -Z 1500 -s formatOptions 90` で印刷300dpi目安にリサイズしてからPDF化
 - [フォーム回答の属性帰属はoperational contextで判定](feedback_form_response_no_attribution_guess.md) — 「アレルギー・体調・配慮事項」等の主語が書かれない自由回答は運営文脈（誰が食べる／使う／対象か）から自然な主体を選んで即対応、過剰な「念のため確認」は信頼を損なう。お弁当のアレルギー＝食べる主体（お母さま）と即判定（2026-05-19 温泉で産後ケア事故、第1誤=お子さまと断定／第2誤=過剰確認の二重学習）
 - [亀山市中学校給食はすでに実施開始済み](feedback_kameyama_chugakko_kyushoku_already_started.md) — 「令和8年度2学期開始予定」「過渡期」フレーミングは古い情報・全面禁止。補食/空腹問題は「給食実施前提でも発生する問題」として論じる（2026-05-19 草川直接訂正）
 - [中学校給食はSNS/AIインタビュー先行調査後に書く](feedback_kyushoku_sns_research_first.md) — 即時ブログ発信より AIインタビュー設計→市民の声収集→派生発信が良い。5/13📱補食ブログのSNS化は素材揃ってから一体展開（2026-05-21 草川直接指示）
@@ -115,6 +120,7 @@
 - [自治会・地区別市政報告会スライド作成プレイブック](reference_jichikai_shisei_houkokukai_playbook.md) — 地区別ニュース既存62本確認・一次資料群・03_themes/集約・標準WF・voice-dna辞書（2026-05-09 楠平尾v2セッションから集約）
 - [亀山市議会 一般質問の標準時間](reference_kameyama_general_question_time.md) — 答弁込み45分。原稿・想定答弁・再質問カード時間配分の基準値（2026-05-12）
 - [太岡寺自治会 太陽光要望書（R5.12.12）](reference_taikoji_yobosho_taiyoko.md) — 太岡寺自治会から市長への要望書一次情報、村山竹則会長／太陽光規制条例の早期策定要請。亀山市内でいち早く規制条例の必要性を市長に直接届けた先見事例、今後の太岡寺関連／太陽光関連発信の起点情報（2026-05-15）
+- [選挙リーフレットv3 ファイル群](reference_senkyo_leaflet_v3_files.md) — 2026選挙リーフレット制作物の入口。HTML/PDF/画像/PDF再生成コマンド/preview生成コマンドまとめ
 
 ## 🏛 主要DB／システム参照（呼出時のみ詳細を取りに行く）
 
