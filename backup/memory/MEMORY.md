@@ -107,6 +107,7 @@
 - [news-briefing v3 重複検出強化（本体未反映・別セッションで草川手動編集要）](feedback_news_briefing_v3_duplicate_detection.md) — 過去30日窓拡張＋3層判定（URL/タイトル類似度85%/テーマキーワード）＋同テーマ続報追記＋国政動向週1件上限。2026-05-26 鈴鹿川・シャープ・上水道・防災気象情報の連続再登録事故対策。plugins cache HARD BLOCKのため草川手動反映要
 - [AIインタビュー由来コンテンツに参加呼びかけ必須](feedback_ai_interview_participation_call_required.md) — SNS/ブログ/スピーチ/動画台本/印刷物 全種類で具体URL https://depth-interview-kusagawa.vercel.app/ ＋呼びかけ対象テーマ別カスタマイズ。「皆さんの声を議会のテーブルに載せます」抽象呼びかけのみは不可（2026-05-25 部活地域移行ブログで草川直接指示）
 - [ohayoにコンテンツ提案を毎朝常時表示（v2.5 D2撤回）](feedback_ohayo_content_proposal_always_show.md) — 街頭演説3案＋ブログ・SNSテーマは毎朝必出力、トリガー型化禁止、燃費目標90〜100Kへ上方修正（2026-05-25 草川指摘）
+- [一般質問テーマ選定の優先序列](feedback_ippan_shitsumon_theme_priority.md) — 地域と約束＞会派協議中＞市民の声起点＞当事者性。6月議会資料(現況報告/議案書)を先読みし議案・報告既出＋3月既出を除外。きれいなフレーム嫌い・危険/老朽/矛盾の切実な声を軸・祝い金は今後も不要・大テーブル見にくい（2026-05-29 会派協議ログから学習）
 
 ## 🔗 外部参照ポインタ
 
