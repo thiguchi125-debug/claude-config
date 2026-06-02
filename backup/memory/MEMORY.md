@@ -64,6 +64,7 @@
 - [Obsidianメモ確認](feedback_obsidian_memo.md) — タスク完了・スキル習得・トラブル解決時に確認
 - [Notion会議ページ→Googleカレンダー登録時は元ページ削除まで自走](feedback_notion_meeting_to_calendar.md) — 「予定入れて」=Calendar登録＋アカウント明示＋元Notion削除依頼まで1パス
 - [議事録は草川発言＋市回答のみ抽出](feedback_giji_kusagawa_response_only.md) — voice-dna汚染防止＋トークン節約（CLAUDE.mdに同主旨記載、詳細はファイル）
+- [5/27子ども医療費SNS/動画パッケージは誤帰属あり](feedback_kodomo_iryohi_sns_misattribution.md) — 2026年3月議会の医療費質疑は草川でなく福沢議員。逐語4点は使用禁止、全国90.5%等は「市の調査」として中立引用可。確定版は drafts/2026-06-03_子ども医療費18歳まで_v3.md（2026-06-03）
 - [他議員の名前は対外発信物に載せない](feedback_no_other_council_members_names.md) — スライド/SNS/ブログ/印刷物等で他議員氏名禁止、汎用表記に置換、内部資料はOK（2026-05-09 草川直接指示）
 - [スライド生成はNotebookLM経由が必須（直接生成禁止）](feedback_slide_generation_via_notebooklm.md) — Marp/Slidev等で直接生成しない、成果物は「ソース束＋プロンプト」の2点セット、NotebookLMがスライド本体を生成（2026-05-09 草川直接指示）
 - [街頭演説は1テーマだけ深く掘る・詩的umbrella禁止](feedback_street_speech_one_theme_only.md) — 「1本」=複数話題の傘でなく1テーマ深掘り
