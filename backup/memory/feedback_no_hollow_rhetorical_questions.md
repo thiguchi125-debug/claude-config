@@ -1,0 +1,24 @@
+---
+name: feedback_no_hollow_rhetorical_questions
+description: 当たり前のことを「〜したこと、ありませんか」等の問いかけ風で飾らない。白々しい。断定文で書く
+metadata: 
+  node_type: memory
+  type: feedback
+  originSessionId: 97a453c2-2c4b-4bb3-93b0-d293fc581677
+---
+
+**誰でも確実にYESになる当たり前の事実を、「〜したこと、ありませんか」「〜気づいたこと、ありませんか」と問いかけ風（修辞疑問）で飾らない。** 当たり前を"発見"っぽく演出するのは白々しく、AI臭が強い。事実は断定文でそのまま書く。
+
+**禁止例（実際に草川NG）:**
+- 「子どもの病院代を、初めて払うことになる——気づいたこと、ありませんか。」← 中学まで無料が高校で自己負担になれば親は確実に気づく。問いかけにする意味がなく白々しい（2026-06-02 子ども医療費18歳動画SNS化）
+- 「〜という時代になりました。感じたこと、ありませんか」型で、明白な事実を問い返す全般
+
+**Why:** 確実にYESの問いかけは情報ゼロで、共感を装った定型句として浮く。草川の声の芯は「数字と事実を直球で」。修辞で水増しすると逆に軽く・嘘くさくなる。
+
+**How to apply:**
+- 事実・当たり前のこと → **断定文**で言い切る（例:「子どもの病院代を、初めて払うことになる。」）
+- 「〜したこと、ありませんか」型の共感フックは、**人によって割れる主観・言葉にしにくい実感**にだけ使う（=確実にYESではないもの）。明白な事実には使わない
+- コメント誘発は、当たり前を問い返すのでなく「あなたのご家庭ではどうですか」等、相手の固有の状況・意見を**実際に聞く**質問にする
+- ※ [[feedback_kusagawa_short_video_script_style]] の共感「したこと、ありませんか」推奨は、この条件（非自明な実感に限る）で上書き解釈する
+
+関連: [[feedback_no_abstract_poetic_phrases]] [[feedback_kusagawa_short_video_script_style]] [[feedback_no_parroting_in_replies]] [[feedback_instagram_no_personal_fiction]] [[feedback_sns_citizen_lifescene_first]]
