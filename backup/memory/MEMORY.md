@@ -6,6 +6,7 @@
 
 ## 🔄 進行中プロジェクト
 
+- [2026年6月議会 一般質問prep（resume手順）](project_ippan_shitsumon_2026-06_resume.md) — 通告書6/2提出済・確定／6中項目×45分設計確定／骨子v2精緻化中。再起動後の作業再開手順・成果物所在・案件固有ガード入り
 - [oyasumi v2 (cron化＋自動展開＋仕上げ統合)](project_oyasumi_v2_cron_autoexpansion.md) — 2026-05-08実装完。routine `trig_01TbZU1pJDecnG4QmZKosz72` 毎晩22時JST。Drive/ミーティング→質問ネタ／タスク自動展開、仕上げA/B/C統合、燃費200K→160〜190K
 - [マイドライブ全件取込v1](project_mydrive_full_intake.md) — 2026-05-05実施中。255件中108件取込済、残147件はsubagent rate limit reset(4pm JST)後resume
 - [oyasumi Step 9 過去ページ漸進棚卸し](project_oyasumi_step9_past_cleanup.md) — 旧情報DB配下を毎晩3件ずつ自動整理、約34日で完了予定
@@ -23,6 +24,7 @@
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
+- [主要エージェントが部分ロードで未登録になる事象](feedback_agent_registry_partial_load.md) — council-material-creator等が.md実在でも起動不可。`Agent type not found`のAvailable一覧で実レジストリ確認／再起動で~/.claude/agents/再走査／回避はgeneral-purposeに該当.mdを読ませ成り代わらせる（2026-06-02観測）
 - [ショート動画は最初からshort-video-virality-architectで作る](feedback_short_video_use_virality_architect_first.md) — 素朴生成の長尺NG、35〜45秒厳守・1動画1メッセージ・冒頭1.5秒フック（2026-05-27 子ども医療費動画90秒超で本人NG）
 - [コンテンツ生成は常時lean fullーagentがデフォルト](feedback_content_generation_default_flow.md) — 主担当agent省略禁止、lean最適化は毎回適用、目標90〜170K
 - [「次の議会で追及」型の表現を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞の組合せ禁止、継続的取り組みは「継続的フォロー」「対話を重ねる」で表現
