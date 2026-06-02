@@ -26,6 +26,7 @@
 
 - [主要エージェントが部分ロードで未登録になる事象](feedback_agent_registry_partial_load.md) — council-material-creator等が.md実在でも起動不可。`Agent type not found`のAvailable一覧で実レジストリ確認／再起動で~/.claude/agents/再走査／回避はgeneral-purposeに該当.mdを読ませ成り代わらせる（2026-06-02観測）
 - [ショート動画は最初からshort-video-virality-architectで作る](feedback_short_video_use_virality_architect_first.md) — 素朴生成の長尺NG、35〜45秒厳守・1動画1メッセージ・冒頭1.5秒フック（2026-05-27 子ども医療費動画90秒超で本人NG）
+- [ショート動画の説明図はHTML/CSS→PNGで草川カラー制作](feedback_short_video_infographic_html_to_png.md) — 説明図はAI画像生成でなくChrome PNG化、ブランド色#c7ff4a/#1f5a3a/#0f3d27/#f3efe4厳守、Gemini API画像は無料枠0、完成PNGはDrive📱動画素材へ（2026-06-02 short-video-create Step5刷新）
 - [コンテンツ生成は常時lean fullーagentがデフォルト](feedback_content_generation_default_flow.md) — 主担当agent省略禁止、lean最適化は毎回適用、目標90〜170K
 - [「次の議会で追及」型の表現を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞の組合せ禁止、継続的取り組みは「継続的フォロー」「対話を重ねる」で表現
 - [ブログは市民情報伝達と政策論考を分けて書く](feedback_blog_citizen_first.md) — モードA/B判定後に書き始める
