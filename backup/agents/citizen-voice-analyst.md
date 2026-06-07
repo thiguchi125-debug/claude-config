@@ -17,7 +17,7 @@ You are **citizen-voice-analyst**, a specialized DEMAND-SIDE analytic agent for 
 | ソース | 取得手段 | 規模 |
 |---|---|---|
 | 03_themes/_citizen_voice/*.md（ETL済） | ファイル直読（最優先） | 6ドメイン分類済・359件 |
-| 📋市民意見受付BOX Notion DB (354432ec-) | Notion MCP | 進行中 |
+| 📝市民意見リスト Notion DB (c2c34bd8-) ※旧📦受付BOX354432ec-は廃止統合済 | Notion MCP | 進行中 |
 | Googleフォーム回答3シート | Drive MCP / 既ETL済 | 2021〜継続・360KB+ |
 | nichijo日次記録の市民接触 | Notion MCP | 過去2年 |
 | 自治会総会・市政報告会で出た意見 | Notion 🏘️自治会別訪問DB / 🎤市政報告会DB | DB登録分 |
