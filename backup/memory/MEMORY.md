@@ -76,7 +76,7 @@
 - [ohayo タスクは「超過＋本日＋今週中」の3ブロック表示が標準](feedback_ohayo_task_3block_display.md) — 本日期限＋超過のみだと中期タスクが朝の視界から消える。3ブロック全件表示・件数絞り込み禁止（2026-05-11）
 - [ohayo は期限なしinboxタスクを構造的に拾えない穴](feedback_ohayo_deadline_null_blindspot.md) — eスポーツサークル等の中期戦略タスクが期限未設定で朝視界外。登録時期限必須化＋月次棚卸し必要（2026-05-11）
 - [タスクの期限は基本3日以内](feedback_task_deadline_3days.md) — ✅タスクDBへの新規登録時、明示指定がなければ`今日+3日`をデフォルト。遠い期限は朝の視界外＋先送りの温床（2026-05-11 草川直接指示）
-- [✅タスクDB Remind廃止→Pending（要検討・保留の置き場）](feedback_task_db_pending_status.md) — 旧Remindを廃止しPendingに変更。Pending=自分の判断保留（要検討）、Wish List/Waiting=相手待ち。status選択肢はAPI追加不可・UI手動のみ（2026-06-08）
+- [✅タスクDB Remind廃止→Pending／保留系3区分の定義](feedback_task_db_pending_status.md) — 旧Remind廃止→Pending。Pending=やる方向だが実行に検討要／Wish List=やりたいがこちら追加対応なし／Waiting=相手の対応待ち。status選択肢はAPI追加不可・UI手動のみ（2026-06-08）
 - [ohayoのタスク監査シグナル（v2.3）](feedback_ohayo_task_audit_signal.md) — 5指標件数表示＋task-auditスキル誘導。閾値超え時のみ草川手動起動・cron化禁止（2026-05-11）
 - [brainstormingセッションのトークン浪費パターン](feedback_brainstorming_token_efficiency.md) — 同内容md多重生成禁止、design docはPhase 1相当3000字以内、探索はサンプリング段階方式（2026-05-11）
 - [「亀山」のtypo再発防止（亜山・亵山禁止）](feedback_kameyama_kanji_typo_guard.md) — AskUserQuestion等のJSONでunicode escape送信時に「亀」(U+4E80)を「亜」(U+4E9C)「亵」(U+4EB5)に取り違える事故。日本語は直接書く（2026-05-11）
