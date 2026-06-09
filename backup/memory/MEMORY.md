@@ -14,6 +14,7 @@
 - [Notion埋没ページ大掃除2026-05-05](project_notion_buried_pages_2026-05-05.md) — Phase 1本文化(90件)レート制限中断中(3am JST復帰)、Phase 2-3は草川判断待ち
 - [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成、次の一手は6ドメインexpert並列起動
 - [親子で米づくり事業の正しい主催表記](project_oyakode_kometukuri.md) — 亀山JC主催・草川がJC理事長時代に企画／2026第2回でJC継続事業化、「個人主催」表記禁止
+- [昼生お花見コミバス企画の主催表記](feedback_ohanami_hanyu_shusai_attribution.md) — 主催=昼生地区まちづくり協議会×市地域社会振興会の協働。草川は参加・制度つなぎ役、手柄横取り印象を避ける／市民実名は対外SNS伏せる
 - [議会資料管理システム Phase 1〜4](project_council_materials_management.md) — 2026-05-11設計、Drive新規11フォルダ作成完了、草川手動アクション3件保留、Phase 2スクリプト拡張は次回セッション
 - [Desktopブリーフィング廃止](project_desktop_briefing_deprecation.md) — 2026-05-12 旧launchd版（~/.kameyama-briefing/daily_briefing.py）停止、news-briefing skill＋ohayoに一本化、過去20日HTMLは~/Desktop/_archive_briefing_2026-05-12/へ退避
 - [short-video-create システム新設](project_short_video_create_system.md) — 2026-05-18新設。skill `short-video-create` + agent `nanobanana-prompt-designer` の2層。セリフ→fact-check→risk-review→画像プロンプト→Notion保存を1パス化、サイズ指定忘れ・公選法漏れ・保存先迷子を構造的に防止
