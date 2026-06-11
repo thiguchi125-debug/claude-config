@@ -81,4 +81,5 @@ memory: project
 
 ## 連携
 - 前工程：agenda-analyzer（論点網羅・他自治体比較・隠れリスク）の出力があれば取り込む
-- 後工程：通告書化（議案質疑様式へ転記）／counter-argument-simulator（想定答弁・再質疑）
+- 後工程：**bill-scrutiny-scriptwriter（本番原稿化＝この設計書を演壇で読める台本に落とす）** ／ 通告書化（議案質疑様式へ転記）／counter-argument-simulator（想定答弁・再質疑）
+  - 本設計書は scriptwriter の最良の入力。価値ランク・順序・本丸が確定済みなら、それを尊重して原稿化される。本番原稿の職人技は共通craft `01_council/_templates/honban_genko_craft_v1.md` に集約。

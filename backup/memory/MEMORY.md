@@ -28,6 +28,7 @@
 - [市民意見DBはc2c34bd8に完全一本化（354432ecは廃止）](feedback_shimin_iken_db_consolidation_c2c34bd8.md) — 市民意見の正本は📝市民意見リスト`c2c34bd8-`のみ。旧📋受付BOX`354432ec-`は廃止。2026-06-07にai-interview-sns-poster等4ファイルの旧ID参照を張替え＋旧BOX#4(AI#37・5/23漏れ)をc2c34bd8へ移管救済。対応状況status廃止・フィールド名注意（2026-06-07）
 - [主要エージェントが部分ロードで未登録になる事象](feedback_agent_registry_partial_load.md) — council-material-creator等が.md実在でも起動不可。`Agent type not found`のAvailable一覧で実レジストリ確認／再起動で~/.claude/agents/再走査／回避はgeneral-purposeに該当.mdを読ませ成り代わらせる（2026-06-02観測）
 - [一般質問設計の専任エージェント新設](feedback_general_question_architect_agent.md) — general-question-architect（bill-scrutiny-architectの一般質問版）。時間バジェット逆算＋逃げ封じ（既決/報告返球を「先に認めてから刺す」）＋重複排除＋既決チェックをコード化。出力＝一般質問設計書。トリガー「一般質問を設計」「逃げられない質問にして」「45分に収めて」等（2026-06-02新設・代走で6月議会prep実適用）
+- [議案質疑/一般質問の本番原稿化を仕組み化](feedback_bill_scrutiny_scriptwriter_agent.md) — 太陽光条例の成功原稿から8職人技を抽出。新agent bill-scrutiny-scriptwriter（議案質疑の原稿化）＋共通craft honban_genko_craft_v1.md＋ゴールド見本GOLD_太陽光条例＋council-material-creator底上げ。設計=architect→原稿化=scriptwriter→戦闘準備=counter-sim。要CC再起動（2026-06-11新設）
 - [ショート動画は最初からshort-video-virality-architectで作る](feedback_short_video_use_virality_architect_first.md) — 素朴生成の長尺NG、35〜45秒厳守・1動画1メッセージ・冒頭1.5秒フック（2026-05-27 子ども医療費動画90秒超で本人NG）
 - [ショート動画の説明図はHTML/CSS→PNGで草川カラー制作](feedback_short_video_infographic_html_to_png.md) — 説明図はAI画像生成でなくChrome PNG化、ブランド色#c7ff4a/#1f5a3a/#0f3d27/#f3efe4厳守、Gemini API画像は無料枠0、完成PNGはDrive📱動画素材へ（2026-06-02 short-video-create Step5刷新）
 - [コンテンツ生成は常時lean fullーagentがデフォルト](feedback_content_generation_default_flow.md) — 主担当agent省略禁止、lean最適化は毎回適用、目標90〜170K
