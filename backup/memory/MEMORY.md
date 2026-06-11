@@ -6,7 +6,7 @@
 
 ## 🔄 進行中プロジェクト
 
-- [2026年6月議会 一般質問prep（resume手順）](project_ippan_shitsumon_2026-06_resume.md) — 通告書6/2提出済・確定／6中項目×45分設計確定／**最新正＝骨子v7（2026-06-11打ち合わせ反映・v6温存）**＝①部活大幅再構成/②-2送迎は利用率を問う型へ逆転/②-1経緯追加/③-2シャープ最新確認。**草川確認待ち2件（部活検証公開往復・送迎利用率逆転）＋戦闘マニュアル再武装が次の一手**
+- [2026年6月議会 一般質問prep（resume手順）](project_ippan_shitsumon_2026-06_resume.md) — 通告書6/2提出済・確定／6中項目×45分設計確定／**最新正＝骨子v7（2026-06-11打ち合わせ反映・v6温存）**＝①部活大幅再構成(案B=❹に検証公開A5復活)/②-2送迎は利用率を問う型(%未把握指摘)へ逆転/②-1経緯追加/③-2シャープ=v7.2「市長への大きな一問」型(コストコ予定地含むシャープ周辺一帯の同ビジョンを開いて問う・新聞になる答弁狙い)。**草川確認①②③すべて解決済。次の一手＝counter-argument-simulatorで全6中項目の戦闘マニュアル再武装**
 - [oyasumi v2 (cron化＋自動展開＋仕上げ統合)](project_oyasumi_v2_cron_autoexpansion.md) — 2026-05-08実装完。routine `trig_01TbZU1pJDecnG4QmZKosz72` 毎晩22時JST。Drive/ミーティング→質問ネタ／タスク自動展開、仕上げA/B/C統合、燃費200K→160〜190K
 - [マイドライブ全件取込v1](project_mydrive_full_intake.md) — 2026-05-05実施中。255件中108件取込済、残147件はsubagent rate limit reset(4pm JST)後resume
 - [oyasumi Step 9 過去ページ漸進棚卸し](project_oyasumi_step9_past_cleanup.md) — 旧情報DB配下を毎晩3件ずつ自動整理、約34日で完了予定
