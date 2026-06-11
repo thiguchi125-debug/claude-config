@@ -109,7 +109,7 @@
 - [画像EXIF処理のテクニック](feedback_image_exif_processing.md) — iPhone写真は`sips -r 90`単独だとブラウザ二重回転事故、`PIL ImageOps.exif_transpose`+EXIF strip で確実に正規化。太岡寺版v9太陽光写真向きおかしい指摘から確立（2026-05-15）
 - [印刷物への Drive PDF図面挿入・LINE QR並列・Page overflow段階圧縮](feedback_print_diagram_qr_layout.md) — ①Drive PDF→base64経由→pdftoppm→PIL clip/rotate ②contact-box flex 2カラム化でLINE QR並列（幅26mm） ③overflow解消の優先順位（写真wrap→infobox圧縮→figure max-width→冗長quote削除→padding微減→コメント短縮）。二本松版v6 2026-05-23制作の6イテレーションから集約
 - [後援会リーフレットデザイン原則](feedback_leaflet_design_principles.md) — 客観確認必須・元装飾尊重・段組勝手追加禁止・色統一(#c7ff4a/#1f5a3a/#0f3d27/#f3efe4)・「規制→適正立地」フレーム転換・「討議資料」公選法対策・写真300dpi最適化（2026選挙リーフレットv3制作から確立）
-- [チラシはAI製SaaS LP風を禁止・本物の地域チラシ調を標準](feedback_flyer_avoid_ai_saas_aesthetic.md) — 紫グラデぼかし／浮き角丸カード／絵文字丸アイコン／ピルバッジ／LP構図は初手から禁止。クリーム紙＋細枠＋ボタニカル線画／明朝＋手描き下線／白フチプリント写真風／罫線■案内枠／地図記号(〒文鳥居)の線画マップが標準。完成例=drafts/2026-06_lavender/flyer.html（2026-06-11 ラベンダーチラシで草川直接指示）
+- [チラシの固いNGはAI製SaaS LP風のみ・基調は内容で変える](feedback_flyer_avoid_ai_saas_aesthetic.md) — 唯一の禁止＝初回のAI臭（紫グラデぼかし／浮き角丸カード／絵文字丸アイコン／ピルバッジ／判で押したLP構図）。デザイン基調は内容・テーマ毎に作り分ける（特定スタイルの標準化はしない）。ラベンダーチラシ(drafts/2026-06_lavender/flyer.html)は“良い見本の1つ”でありコピペ標準ではない（2026-06-11 草川直接指示＋翌補正）
 - [切れ字対策は個別nowrap限定](feedback_kirejiha_individual_nowrap.md) — 固有名詞だけ`<span style="white-space:nowrap">`で囲む。`.parent { word-break:keep-all }` 等の汎用CSS変更禁止（2026選挙リーフレットv3で確立）
 - [lime下線は box-shadow inset で実装](feedback_lime_underline_box_shadow.md) — linear-gradient hard-stop は PDF レンダリングで暗化（オリーブ系）。`background:none; box-shadow:inset 0 -0.28em 0 #c7ff4a;` で純色維持
 - [Chrome PDF出力時の画像最適化必須](feedback_pdf_image_optimization.md) — 4000px級画像は非圧縮埋め込みで80MB級に膨らむ。`sips -Z 1500 -s formatOptions 90` で印刷300dpi目安にリサイズしてからPDF化
