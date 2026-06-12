@@ -72,10 +72,10 @@
     "security-guidance@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.4",
-        "version": "2.0.4",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.5",
+        "version": "2.0.5",
         "installedAt": "2026-04-30T08:22:33.413Z",
-        "lastUpdated": "2026-06-11T03:13:07.984Z",
+        "lastUpdated": "2026-06-12T14:22:35.222Z",
         "gitCommitSha": "1b527e2ee74e6dbd198e22cd41701c3b6f47dfec"
       }
     ],
