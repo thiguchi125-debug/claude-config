@@ -7,25 +7,17 @@
 ## 🔄 進行中プロジェクト
 
 - [2026年6月議会 一般質問prep（resume手順）](project_ippan_shitsumon_2026-06_resume.md) — 通告書6/2提出済・確定／6中項目×45分設計確定／**最新正＝骨子v7（2026-06-11打ち合わせ反映・v6温存）**＝①部活大幅再構成(案B=❹に検証公開A5復活)/②-2送迎は利用率を問う型(%未把握指摘)へ逆転/②-1経緯追加/③-2シャープ=v7.3「市長への大きな一問」型(シャープと共に亀山の産業基盤を次世代産業へ広げるビジョンを開いて問う・新聞になる答弁狙い・**前提是正済=シャープは去らず第1工場で車載再構築／止まるのはK2スマホ液晶**[[reference_sharp_kameyama_factory_facts]]・**『企業判断ゆえ口を挟めない』逃げ封じ4段**装備)。**草川確認①②③すべて解決済。「旗」比喩・「シャープ撤退」誤認は全廃。次の一手＝counter-argument-simulatorで全6中項目の戦闘マニュアル再武装**
-- [oyasumi v2 (cron化＋自動展開＋仕上げ統合)](project_oyasumi_v2_cron_autoexpansion.md) — 2026-05-08実装完。routine `trig_01TbZU1pJDecnG4QmZKosz72` 毎晩22時JST。Drive/ミーティング→質問ネタ／タスク自動展開、仕上げA/B/C統合、燃費200K→160〜190K
-- [マイドライブ全件取込v1](project_mydrive_full_intake.md) — 2026-05-05実施中。255件中108件取込済、残147件はsubagent rate limit reset(4pm JST)後resume
-- [oyasumi Step 9 過去ページ漸進棚卸し](project_oyasumi_step9_past_cleanup.md) — 旧情報DB配下を毎晩3件ずつ自動整理、約34日で完了予定
-- [Drive→ローカル同期v2拡張＋議会モード](project_drive_sync_v2.md) — Routine週2回(水日21時JST)、_INBOX_新規投函への投入運用。**⚠️議会モードは2026-06-13に廃止＝死亡確認**（フラグ`_council_mode.json`はohayo/oyasumi/drive-intakeのいずれも読んでおらず挙動を一切変えない／drive-intakeは会期をファイルの月から自動判定＝フラグ不要／元目的の同期頻度切替はDrive Desktopリアルタイム化で消滅）。CLAUDE.mdトリガー削除済。草川「議会期にohayoの中身を変えたい要望＝ない」確認済。詳細は[[feedback_system_closing_loops_rot]]
-- [Notion埋没ページ大掃除2026-05-05](project_notion_buried_pages_2026-05-05.md) — Phase 1本文化(90件)レート制限中断中(3am JST復帰)、Phase 2-3は草川判断待ち
-- [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成、次の一手は6ドメインexpert並列起動
-- [親子で米づくり事業の正しい主催表記](project_oyakode_kometukuri.md) — 亀山JC主催・草川がJC理事長時代に企画／2026第2回でJC継続事業化、「個人主催」表記禁止
-- [昼生お花見コミバス企画の主催表記](feedback_ohanami_hanyu_shusai_attribution.md) — 主催=昼生地区まちづくり協議会×市地域社会振興会の協働。草川は参加・制度つなぎ役、手柄横取り印象を避ける／市民実名は対外SNS伏せる
-- [議会資料管理システム Phase 1〜4](project_council_materials_management.md) — 2026-05-11設計、Drive新規11フォルダ作成完了、草川手動アクション3件保留、Phase 2スクリプト拡張は次回セッション
-- [Desktopブリーフィング廃止](project_desktop_briefing_deprecation.md) — 2026-05-12 旧launchd版（~/.kameyama-briefing/daily_briefing.py）停止、news-briefing skill＋ohayoに一本化、過去20日HTMLは~/Desktop/_archive_briefing_2026-05-12/へ退避
-- [short-video-create システム新設](project_short_video_create_system.md) — 2026-05-18新設。skill `short-video-create` + agent `nanobanana-prompt-designer` の2層。セリフ→fact-check→risk-review→画像プロンプト→Notion保存を1パス化、サイズ指定忘れ・公選法漏れ・保存先迷子を構造的に防止
-- [task-audit初回実施 2026-05-21](project_task_audit_2026-05-21.md) — standardモード+electoral-district-strategist連動・180K消費・**議席安全圏3,644票**発見・**3本柱5/28必達G7化**・5/31月末ゲート向け新規7件追加／反省: 期限再設定の前に完了確認義務（次回task-auditで恒久ガード化）
-- [task-audit 2026-05-26](project_task_audit_2026-05-26.md) — fullモード×PJ31件1件ずつ確認・180K消費・**PJ昇格5件**(P08/P11/P13/P19/P24)＋タスクDone化2件＋新規タスク3件追加／API制約「進行中ステータス設定不可」再確認・草川手動UIアクション要・P12「8/15本番」要約見直し課題発覚
-- [Drive運用構造v3](project_drive_structure_v3.md) — **2026-05-29 v3.1 完成**。Google Drive Desktopミラー＋日次自動パイプライン稼働。投函口2系統（_INBOX_council／_INBOX_daily）＋日常資料5カテゴリ＋テーマ別サブフォルダ（公共交通／防災／太陽光／部活動／総合計画／空き家／給食／DX／新庁舎／リニア／産業・農業／スポーツ等）。**マイドライブ直下325件＋既存10フォルダを全整理→直下は「草川たくや 議会質問アーカイブ」1個のみ**。日次パイプライン: launchd com.kusagawa.daily-drive-pipeline 毎晩2:30に `_auto_intake.sh`（INBOX→キーワード判定→正規配置）＋`_build_index.sh`（pdftotext→_index/）を順次実行。要判定残: `日常資料アーカイブ/99_その他/要判定_2026-05-29/`(169件・後日対応)
-- [選挙リーフレットv3 完成](project_senkyo_leaflet_v3_2026.md) — 2026-05制作完了。A4両面・後援会用・公選法「討議資料」マーク込み。3本柱「子育て(5つのゼロ)/防災・福祉/希望(産業+スポーツ拠点)」確定。次回類似制作の出発点 → `~/.claude/agents/knowledge/kusagawa_archive/02_publications/leaflets/2026-05_senkyo_leaflet_v3/`
+- [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成、次の一手は6ドメインexpert並列起動。【🟡要判断 2026-06-13＝選挙公約に効くか草川判断待ち。動かさないなら畳む】
+- [議会資料管理システム Phase 1〜4](project_council_materials_management.md) — 2026-05-11設計、Drive新規11フォルダ作成完了、草川手動アクション3件保留。【🟡要判断 2026-06-13＝復活して進めるか畳むか草川判断待ち】
+- [Drive同期クラウドRoutine 停止検討](project_drive_sync_v2.md) — trig_016r7yN(週2回 水日21時 cron)はDrive Desktopリアルタイム同期＋ローカル夜間launchdパイプラインで冗長の疑い。【🟡要判断 2026-06-13＝停止可否は草川判断待ち＋scheduleスキルで最終確認要】議会モードは廃止済[[feedback_system_closing_loops_rot]]
+
+> 🧹 2026-06-13 index整理：「進行中」を実進行中1件＋要判断3件に圧縮。除去したポインタ（.mdは全て memory/ に保全・ファイル名でgrep可）＝完了済システム記録(project_oyasumi_v2_cron_autoexpansion/project_short_video_create_system/project_drive_structure_v3/project_senkyo_leaflet_v3_2026)・過去ログ(project_task_audit_2026-05-21/project_task_audit_2026-05-26)・放棄案件(project_mydrive_full_intake/project_oyasumi_step9_past_cleanup/project_notion_buried_pages_2026-05-05)・完了記録(project_desktop_briefing_deprecation)。誤分類ガード2件(親子で米づくり/昼生お花見)はガードルール節へ移動。経緯=[[feedback_system_closing_loops_rot]]
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
 - [システムの法則＝自動トリガー有り＝生／人の記憶依存の締め工程＝腐る](feedback_system_closing_loops_rot.md) — 新機能は締め工程を定時トリガーに載せる・手動スイッチは作らず機械可読な一次情報から自動導出。2026-06-13検証で議会モード=死亡・ブログ還流=断絶を確認
+- [親子で米づくり事業の正しい主催表記](project_oyakode_kometukuri.md) — 亀山JC主催・草川がJC理事長時代に企画／2026第2回でJC継続事業化、「個人主催」表記禁止（2026-06-13に進行中→ガードルールへ移動）
+- [昼生お花見コミバス企画の主催表記](feedback_ohanami_hanyu_shusai_attribution.md) — 主催=昼生地区まちづくり協議会×市地域社会振興会の協働。草川は参加・制度つなぎ役、手柄横取り印象を避ける／市民実名は対外SNS伏せる（2026-06-13に進行中→ガードルールへ移動）
 - [市民意見DBはc2c34bd8に完全一本化（354432ecは廃止）](feedback_shimin_iken_db_consolidation_c2c34bd8.md) — 市民意見の正本は📝市民意見リスト`c2c34bd8-`のみ。旧📋受付BOX`354432ec-`は廃止。2026-06-07にai-interview-sns-poster等4ファイルの旧ID参照を張替え＋旧BOX#4(AI#37・5/23漏れ)をc2c34bd8へ移管救済。対応状況status廃止・フィールド名注意（2026-06-07）
 - [主要エージェントが部分ロードで未登録になる事象](feedback_agent_registry_partial_load.md) — council-material-creator等が.md実在でも起動不可。`Agent type not found`のAvailable一覧で実レジストリ確認／再起動で~/.claude/agents/再走査／回避はgeneral-purposeに該当.mdを読ませ成り代わらせる（2026-06-02観測）
 - [一般質問設計の専任エージェント新設](feedback_general_question_architect_agent.md) — general-question-architect（bill-scrutiny-architectの一般質問版）。時間バジェット逆算＋逃げ封じ（既決/報告返球を「先に認めてから刺す」）＋重複排除＋既決チェックをコード化。出力＝一般質問設計書。トリガー「一般質問を設計」「逃げられない質問にして」「45分に収めて」等（2026-06-02新設・代走で6月議会prep実適用）
