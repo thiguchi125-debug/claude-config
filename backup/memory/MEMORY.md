@@ -10,7 +10,7 @@
 - [oyasumi v2 (cron化＋自動展開＋仕上げ統合)](project_oyasumi_v2_cron_autoexpansion.md) — 2026-05-08実装完。routine `trig_01TbZU1pJDecnG4QmZKosz72` 毎晩22時JST。Drive/ミーティング→質問ネタ／タスク自動展開、仕上げA/B/C統合、燃費200K→160〜190K
 - [マイドライブ全件取込v1](project_mydrive_full_intake.md) — 2026-05-05実施中。255件中108件取込済、残147件はsubagent rate limit reset(4pm JST)後resume
 - [oyasumi Step 9 過去ページ漸進棚卸し](project_oyasumi_step9_past_cleanup.md) — 旧情報DB配下を毎晩3件ずつ自動整理、約34日で完了予定
-- [Drive→ローカル同期v2拡張＋議会モード](project_drive_sync_v2.md) — Routine週2回(水日21時JST)、_INBOX_新規投函への投入運用、council-mode-toggleで議会期日次切替
+- [Drive→ローカル同期v2拡張＋議会モード](project_drive_sync_v2.md) — Routine週2回(水日21時JST)、_INBOX_新規投函への投入運用。**⚠️議会モードは2026-06-13に廃止＝死亡確認**（フラグ`_council_mode.json`はohayo/oyasumi/drive-intakeのいずれも読んでおらず挙動を一切変えない／drive-intakeは会期をファイルの月から自動判定＝フラグ不要／元目的の同期頻度切替はDrive Desktopリアルタイム化で消滅）。CLAUDE.mdトリガー削除済。草川「議会期にohayoの中身を変えたい要望＝ない」確認済。詳細は[[feedback_system_closing_loops_rot]]
 - [Notion埋没ページ大掃除2026-05-05](project_notion_buried_pages_2026-05-05.md) — Phase 1本文化(90件)レート制限中断中(3am JST復帰)、Phase 2-3は草川判断待ち
 - [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成、次の一手は6ドメインexpert並列起動
 - [親子で米づくり事業の正しい主催表記](project_oyakode_kometukuri.md) — 亀山JC主催・草川がJC理事長時代に企画／2026第2回でJC継続事業化、「個人主催」表記禁止
@@ -25,6 +25,7 @@
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
+- [システムの法則＝自動トリガー有り＝生／人の記憶依存の締め工程＝腐る](feedback_system_closing_loops_rot.md) — 新機能は締め工程を定時トリガーに載せる・手動スイッチは作らず機械可読な一次情報から自動導出。2026-06-13検証で議会モード=死亡・ブログ還流=断絶を確認
 - [市民意見DBはc2c34bd8に完全一本化（354432ecは廃止）](feedback_shimin_iken_db_consolidation_c2c34bd8.md) — 市民意見の正本は📝市民意見リスト`c2c34bd8-`のみ。旧📋受付BOX`354432ec-`は廃止。2026-06-07にai-interview-sns-poster等4ファイルの旧ID参照を張替え＋旧BOX#4(AI#37・5/23漏れ)をc2c34bd8へ移管救済。対応状況status廃止・フィールド名注意（2026-06-07）
 - [主要エージェントが部分ロードで未登録になる事象](feedback_agent_registry_partial_load.md) — council-material-creator等が.md実在でも起動不可。`Agent type not found`のAvailable一覧で実レジストリ確認／再起動で~/.claude/agents/再走査／回避はgeneral-purposeに該当.mdを読ませ成り代わらせる（2026-06-02観測）
 - [一般質問設計の専任エージェント新設](feedback_general_question_architect_agent.md) — general-question-architect（bill-scrutiny-architectの一般質問版）。時間バジェット逆算＋逃げ封じ（既決/報告返球を「先に認めてから刺す」）＋重複排除＋既決チェックをコード化。出力＝一般質問設計書。トリガー「一般質問を設計」「逃げられない質問にして」「45分に収めて」等（2026-06-02新設・代走で6月議会prep実適用）
