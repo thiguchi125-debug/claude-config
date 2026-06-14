@@ -5,6 +5,9 @@ description: 草川たくや（亀山市議会議員）の✅タスクDB全体�
 
 # 🧹 task-audit — タスク監査・定期棚卸しスキル
 
+## 🔴 Todoist一本化（2026-06-14〜・最優先）
+タスク管理は Notion✅タスクDB→**Todoistへ移行済み**。本スキルの棚卸し対象も **Todoist**（`python3 ~/.claude/scripts/todoist/td.py audit` ／ `overdue` ／ `nodue`）。Notion✅タスクDB(`292cf503`)は新規登録に使わず参照のみ。PJ化判定は🗂プロジェクト・プラットフォーム(ds=`8975c6a9`)のPJページ＋Todoist地区/イベント箱で行う。旧Notion前提の6チェックはTodoistの期限なし/期限超過/＠結果待ち/＠保留に読み替える。
+
 ## 起動トリガー
 
 - 「タスク棚卸し」「タスク監査」「停滞タスク確認」「タスク整理」
