@@ -6,6 +6,7 @@
 
 ## 🔄 進行中プロジェクト
 
+- [Notionプロジェクト・プラットフォーム](project_notion_project_platform.md) — 2026-06-14新設。Todoist主要PJに対応した情報蓄積母艦DB（page=37a71464・ds=8975c6a9）。Todoist=実行/Notion=蓄積。各ページに概要/関係者/経緯ログ/資料/決定事項/次の一手テンプレ。初期17PJ投入済
 - [Todoistへタスク管理移行](project_todoist_task_migration.md) — 2026-06-14決定・**連携構築＋ohayo/oyasumi書換＋CLAUDE.md恒久ルール化まで完了**。ヘルパー=`python3 ~/.claude/scripts/todoist/td.py {morning/add/done/audit/list…}`（token=~/.config/todoist/token・API必ず/api/v1/）。構成=Inbox/🏛議員活動/📋政策・一般質問/📣発信/🏡家族＋ラベル@結果待ち/@保留/@アイデア。**今後タスク/プロジェクト登録は全てTodoist**（Notion✅タスクDB・🗂️PJDBは新規登録に使わない＝参照のみ）。残＝Notion既存未完了タスクの移行（任意・草川未依頼）
 - [2026年6月議会 一般質問prep（resume手順）](project_ippan_shitsumon_2026-06_resume.md) — 通告書6/2提出済・確定／6中項目×45分設計確定／**最新正＝骨子v7（2026-06-11打ち合わせ反映・v6温存）**＝①部活大幅再構成(案B=❹に検証公開A5復活)/②-2送迎は利用率を問う型(%未把握指摘)へ逆転/②-1経緯追加/③-2シャープ=v7.3「市長への大きな一問」型(シャープと共に亀山の産業基盤を次世代産業へ広げるビジョンを開いて問う・新聞になる答弁狙い・**前提是正済=シャープは去らず第1工場で車載再構築／止まるのはK2スマホ液晶**[[reference_sharp_kameyama_factory_facts]]・**『企業判断ゆえ口を挟めない』逃げ封じ4段**装備)。**草川確認①②③すべて解決済。「旗」比喩・「シャープ撤退」誤認は全廃。次の一手＝counter-argument-simulatorで全6中項目の戦闘マニュアル再武装**
 - [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成、次の一手は6ドメインexpert並列起動。【🟡要判断 2026-06-13＝選挙公約に効くか草川判断待ち。動かさないなら畳む】
