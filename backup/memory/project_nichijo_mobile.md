@@ -9,6 +9,11 @@ nichijoスキル（日次活動記録）はモバイル（Claude.aiプロジェ�
 
 **Why:** スマホ版Claude Codeネイティブアプリが存在せず、Claude.aiプロジェクトではサブエージェントが呼べないため、モバイルは簡易叩き台生成、PCで深掘り仕上げ、という役割分担にした。下書きが「仕上げ待ち」かどうかを機械的に判別するため、タイトル先頭 `📱 ` プレフィクスで識別する方式を採用。
 
+## 🔴 2026-06-14 Todoist移行に伴うモバイル「記録」修正（重要）
+- タスク管理がNotion✅タスクDB→Todoistへ移行。**スマホ(Claude.ai)はTodoist接続なし・bash不可で td.py を叩けない**ため、モバイル「記録」プロジェクトは **タスクを当日の日次ログ本文末尾に `## ✅ 発生タスク（📱要Todoist登録）` として記録するだけ**に変更（Notion✅タスクDBへのcreateは廃止）。
+- PC側 `/nichijo`（記録/仕上げ）が、その `📱要Todoist登録` を**拾ってTodoistへ登録**する（モバイル→PC handoff）。スマホ＝捕捉、PC＝Todoist登録＋スマートインテーク3面振り分け。
+- 原本 `nichijo-mobile-project-instructions.md` 修正済（基本ルール/リソース表/Step5/最終サマリー）。**草川がこの原本をClaude.aiプロジェクト「記録」のカスタム指示に貼り直す必要あり**。
+
 ## 構成ファイル
 - **モバイル指示書**: `/Users/kusakawatakuya/nichijo-mobile-project-instructions.md`（Claude.aiプロジェクト「記録（日次活動ログ）」のカスタム指示にコピペする原本）
 - **PC側スキル本体**: `/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/nichijo/SKILL.md`
