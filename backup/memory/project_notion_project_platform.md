@@ -18,4 +18,7 @@ metadata:
 - **初期投入17PJ（主要アクティブのみ）**: 🎪コスモス祭り2026/🎮eスポーツ/🛹スケートパーク/中庄お祭り/温泉で産後ケア/まちづくり団体/モルック/三重大応援団/川崎文化祭/SKfeelBallet／🏛井田川地区・南部地区・神辺地区(木下)市民相談・山下太陽光・サル対策／🗳9地区訪問・選挙運営人材確保。
 - **運用**: Todoist↔Notionの自動同期は不可（手動連携）。Todoistで動かす→Notionに経緯/資料/決定を蓄積。新規の主要PJが立ったら同DBに行を追加（種別=地区市民相談/イベント/政策テーマ等で分類）。
 
-関連: [[project_todoist_task_migration]] [[feedback_shisei_houkokukai_voice_capture]]
+- **スマートインテーク（2026-06-14実装・CLAUDE.md最上位ルール）**: 草川がトピック情報を入力したら、保存先指定が無くても「①正規DB(市民意見/一般質問ネタ/政策候補/報告会)②本DBの該当PJページの📅経緯ログ③Todoist該当箱のタスク」の3面を判定→確認→一括保存する。詳細はCLAUDE.md「情報入力の自動振り分け保存」。
+- **既存ページリンク**: 各PJページの📂資料・リンクにmention-page形式で関連既存ページを貼付済（神辺→木下報告会DB／南部→楠平尾報告会＋フォロー／井田川→一般質問ネタ「新団地アクセス複合課題」／eスポーツ→協会2026年間計画）。[[feedback_notion_link_deeplink]]準拠。
+
+関連: [[project_todoist_task_migration]] [[feedback_shisei_houkokukai_voice_capture]] [[feedback_notion_link_deeplink]]
