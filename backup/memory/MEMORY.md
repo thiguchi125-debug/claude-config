@@ -6,7 +6,7 @@
 
 ## 🔄 進行中プロジェクト
 
-- [Todoistへタスク管理移行](project_todoist_task_migration.md) — 2026-06-14決定・連携構築済（token=~/.config/todoist/token・API必ず/api/v1/）。構成=Inbox/🏛議員活動/📋政策・一般質問/📣発信/🏡家族。eスポ講座タスク移行済。**残＝①Notion未完了タスク移行 ②ohayo/oyasumiをTodoist参照に書換 ③Notion前提タスクルール改訂**。日々タスク=Todoist一本化、Notionは重いDB（市民意見・PJ記録）に限定
+- [Todoistへタスク管理移行](project_todoist_task_migration.md) — 2026-06-14決定・**連携構築＋ohayo/oyasumi書換＋CLAUDE.md恒久ルール化まで完了**。ヘルパー=`python3 ~/.claude/scripts/todoist/td.py {morning/add/done/audit/list…}`（token=~/.config/todoist/token・API必ず/api/v1/）。構成=Inbox/🏛議員活動/📋政策・一般質問/📣発信/🏡家族＋ラベル@結果待ち/@保留/@アイデア。**今後タスク/プロジェクト登録は全てTodoist**（Notion✅タスクDB・🗂️PJDBは新規登録に使わない＝参照のみ）。残＝Notion既存未完了タスクの移行（任意・草川未依頼）
 - [2026年6月議会 一般質問prep（resume手順）](project_ippan_shitsumon_2026-06_resume.md) — 通告書6/2提出済・確定／6中項目×45分設計確定／**最新正＝骨子v7（2026-06-11打ち合わせ反映・v6温存）**＝①部活大幅再構成(案B=❹に検証公開A5復活)/②-2送迎は利用率を問う型(%未把握指摘)へ逆転/②-1経緯追加/③-2シャープ=v7.3「市長への大きな一問」型(シャープと共に亀山の産業基盤を次世代産業へ広げるビジョンを開いて問う・新聞になる答弁狙い・**前提是正済=シャープは去らず第1工場で車載再構築／止まるのはK2スマホ液晶**[[reference_sharp_kameyama_factory_facts]]・**『企業判断ゆえ口を挟めない』逃げ封じ4段**装備)。**草川確認①②③すべて解決済。「旗」比喩・「シャープ撤退」誤認は全廃。次の一手＝counter-argument-simulatorで全6中項目の戦闘マニュアル再武装**
 - [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成、次の一手は6ドメインexpert並列起動。【🟡要判断 2026-06-13＝選挙公約に効くか草川判断待ち。動かさないなら畳む】
 - [議会資料管理システム Phase 1〜4](project_council_materials_management.md) — 2026-05-11設計、Drive新規11フォルダ作成完了、草川手動アクション3件保留。【🟡要判断 2026-06-13＝復活して進めるか畳むか草川判断待ち】

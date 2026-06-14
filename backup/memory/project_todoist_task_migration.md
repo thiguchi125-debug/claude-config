@@ -23,11 +23,16 @@ metadata:
   - ラベル: @結果待ち（相手のボール）/ @保留（やる方向だが要検討）/ @アイデア（いつか）/ @読む（既存）
   - 状態管理は「進行中/今週中」専用プロジェクトを作らず、**期限＋標準ビュー(今日/次の7日間)＋ラベル**で表現（これが軽さの源）。
   - 🏛議員活動のid=6grRHfFfc2WQF46C（参考。変わり得るので都度API取得が安全）
-- **移行済**: eスポーツ講座 全4回進行台本タスク（→🏛議員活動）。
-- **残作業（未完了）**:
-  1. Notion✅タスクDBの未完了タスクをTodoistへ移行（領域ごとに振り分け）
-  2. **ohayo / oyasumi スキルをTodoist参照に書き換え**（朝=今日/期限切れ/今週を表示、夜=完了集計＋未完了繰越）。現状は両スキルともNotion✅タスクDBを叩く実装。
-  3. citizen-inquiry→タスク登録、task-to-project昇格判定 等のNotion前提フローの扱いを整理（重いDB用途＝市民意見ログ・PJ記録はNotion残置、日々タスクはTodoist一本化の方針）。
-- **方針**: Notionは市民意見ログ・プロジェクト記録など重いDB用途に限定。日々の行動タスクはTodoistに一本化。
+- **ヘルパー（2026-06-14作成・動作確認済）**: `python3 ~/.claude/scripts/todoist/td.py <cmd>`。cmd＝`morning`(3ブロック+監査)／`add "内容" [--due ...][--project ...][--priority 1-4][--label ...][--desc ...]`／`today`/`overdue`/`week`/`nodue`/`audit`/`list [PROJECT]`/`done <id>`/`rm <id>`/`projects`。ページネーション・プロジェクト名部分一致解決・ラベル付与すべて対応。
+- **完了済（2026-06-14）**:
+  - ✅ Todoist連携構築（token保存・read/write/move/delete 全確認）
+  - ✅ 構成構築（5プロジェクト＋3ラベル、サンプル14件＋既定2プロジェクト削除）
+  - ✅ eスポーツ講座タスク移行（→🏛議員活動）
+  - ✅ **②ohayo/oyasumi をTodoist参照に書換**＝両SKILL.md 冒頭に「🔴タスクはTodoist参照」override追記（ohayo朝タスク＝`td.py morning`／oyasumi繰越・監査＝`td.py overdue`+`audit`）。プラグインキャッシュ編集は今回ブロックされず成功。
+  - ✅ **CLAUDE.md恒久ルール化**＝「タスク・プロジェクトはTodoistに一本化（最上位）」追加＋市民相談/プロジェクト化判定の登録先をTodoistへ変更。
+- **残作業（任意・未着手）**:
+  1. Notion✅タスクDBの**既存未完了タスク**をTodoistへ移行（草川未依頼。必要になれば `td.py add` で領域別に投入）。それまでNotion旧タスクは参照のみ。
+  2. nichijo / iken(citizen-inquiry) / task-audit スキル本体のNotionタスク記述も、必要時にTodoist override追記（現状はCLAUDE.md最上位ルールでカバー）。
+- **方針**: Notionは市民意見ログ・プロジェクト記録など重いDB用途に限定。日々の行動タスクはTodoistに一本化。プラグイン更新でSKILL.md override が消えてもCLAUDE.md側で挙動確定。
 
 関連: [[feedback_ohayo_oyasumi_task_db_query]] [[feedback_task_deadline_3days]] [[feedback_ohayo_task_3block_display]]（これらNotion前提のタスクルールはTodoist移行に合わせ要改訂）
