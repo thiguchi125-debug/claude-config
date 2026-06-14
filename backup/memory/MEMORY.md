@@ -62,6 +62,7 @@
 - [Notion会議ページ→Googleカレンダー登録時は元ページ削除まで自走](feedback_notion_meeting_to_calendar.md) — 「予定入れて」=Calendar登録＋アカウント明示＋元Notion削除依頼まで1パス
 - [議事録は草川発言＋市回答のみ抽出](feedback_giji_kusagawa_response_only.md) — voice-dna汚染防止＋トークン節約（CLAUDE.mdに同主旨記載、詳細はファイル）
 - [5/27子ども医療費SNS/動画パッケージは誤帰属あり](feedback_kodomo_iryohi_sns_misattribution.md) — 2026年3月議会の医療費質疑は草川でなく福沢議員。逐語4点は使用禁止、全国90.5%等は「市の調査」として中立引用可。確定版は drafts/2026-06-03_子ども医療費18歳まで_v3.md（2026-06-03）
+- [濁り水断水の給水描写は深水議員(3番)の発言・草川質疑ではない](feedback_fukami_water_distribution_misattribution.md) — R7.12議会の「給水車2台・タクシー給水・ポリ袋配達」は深水隆司議員(3番)発言。草川(4番)は重複回避し独自の被害アンケート/水質見える化/管路老朽化を質疑。発信で給水描写を草川に地続き帰属禁止、「議会で報告された」と中立化。2,700世帯/11月発生/12月取り上げは草川由来でOK（2026-06-14 避難所訓練ブログで検出）
 - [他議員の名前は対外発信物に載せない](feedback_no_other_council_members_names.md) — スライド/SNS/ブログ/印刷物等で他議員氏名禁止、汎用表記に置換、内部資料はOK（2026-05-09 草川直接指示）
 - [スライド生成はNotebookLM経由が必須（直接生成禁止）](feedback_slide_generation_via_notebooklm.md) — Marp/Slidev等で直接生成しない、成果物は「ソース束＋プロンプト」の2点セット、NotebookLMがスライド本体を生成（2026-05-09 草川直接指示）／**ただし市政報告会スライドは例外→次項**
 - [市政報告会スライドは今後もClaude Code（HTML/CSS→PDF）で制作](feedback_shisei_houkokukai_slides_claude_code.md) — NotebookLM経由にしない。御幸/小下/木下のslides.htmlをテンプレに地区化、出力先slide-deck-prep/output/、16:9・草川カラー、必須2ゲート通過。良い見本=木下版2026-06-13（20枚・太陽光議案第36号の審議中ライブ表記）（2026-06-13 草川直接指示）
