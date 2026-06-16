@@ -23,6 +23,7 @@
 - [親子で米づくり事業の正しい主催表記](project_oyakode_kometukuri.md) — 亀山JC主催・草川がJC理事長時代に企画／2026第2回でJC継続事業化、「個人主催」表記禁止（2026-06-13に進行中→ガードルールへ移動）
 - [昼生お花見コミバス企画の主催表記](feedback_ohanami_hanyu_shusai_attribution.md) — 主催=昼生地区まちづくり協議会×市地域社会振興会の協働。草川は参加・制度つなぎ役、手柄横取り印象を避ける／市民実名は対外SNS伏せる（2026-06-13に進行中→ガードルールへ移動）
 - [市民意見DBはc2c34bd8に完全一本化（354432ecは廃止）](feedback_shimin_iken_db_consolidation_c2c34bd8.md) — 市民意見の正本は📝市民意見リスト`c2c34bd8-`のみ。旧📋受付BOX`354432ec-`は廃止。2026-06-07にai-interview-sns-poster等4ファイルの旧ID参照を張替え＋旧BOX#4(AI#37・5/23漏れ)をc2c34bd8へ移管救済。対応状況status廃止・フィールド名注意（2026-06-07）
+- [市民意見への「経過報告」型返信メールの確定スタイル](feedback_citizen_reply_progress_report_style.md) — プレーンtxtでDesktop書き出し→open -e（CLIコピペ崩れ防止）。宛名=冒頭フルネーム＋様／件名・末尾署名なし／「この度は」不可・「平素より〜」開始／【】見出し／市民の指摘は「おっしゃる通り」で受ける／過去の取り組み織込み／📝市民意見リスト＋ネタDB登録（2026-06-16 山添真理菜様返信で確定）
 - [主要エージェントが部分ロードで未登録になる事象](feedback_agent_registry_partial_load.md) — council-material-creator等が.md実在でも起動不可。`Agent type not found`のAvailable一覧で実レジストリ確認／再起動で~/.claude/agents/再走査／回避はgeneral-purposeに該当.mdを読ませ成り代わらせる（2026-06-02観測）
 - [一般質問設計の専任エージェント新設](feedback_general_question_architect_agent.md) — general-question-architect（bill-scrutiny-architectの一般質問版）。時間バジェット逆算＋逃げ封じ（既決/報告返球を「先に認めてから刺す」）＋重複排除＋既決チェックをコード化。出力＝一般質問設計書。トリガー「一般質問を設計」「逃げられない質問にして」「45分に収めて」等（2026-06-02新設・代走で6月議会prep実適用）
 - [議案質疑/一般質問の本番原稿化を仕組み化](feedback_bill_scrutiny_scriptwriter_agent.md) — 太陽光条例の成功原稿から8職人技を抽出。新agent bill-scrutiny-scriptwriter（議案質疑の原稿化）＋共通craft honban_genko_craft_v1.md＋ゴールド見本GOLD_太陽光条例＋council-material-creator底上げ。設計=architect→原稿化=scriptwriter→戦闘準備=counter-sim。要CC再起動（2026-06-11新設）
