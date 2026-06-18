@@ -7,7 +7,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown",
         "version": "unknown",
         "installedAt": "2026-04-11T11:06:44.242Z",
-        "lastUpdated": "2026-06-18T01:59:01.042Z",
+        "lastUpdated": "2026-06-18T10:43:32.772Z",
         "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
@@ -17,7 +17,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:18:12.636Z",
-        "lastUpdated": "2026-06-18T01:59:00.989Z",
+        "lastUpdated": "2026-06-18T10:43:32.818Z",
         "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
@@ -27,7 +27,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/playwright/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:18:55.495Z",
-        "lastUpdated": "2026-06-18T01:59:00.960Z",
+        "lastUpdated": "2026-06-18T10:43:32.809Z",
         "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
@@ -46,7 +46,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/plugin-dev/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:21:01.163Z",
-        "lastUpdated": "2026-06-18T01:59:01.073Z",
+        "lastUpdated": "2026-06-18T10:43:32.874Z",
         "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
