@@ -7,7 +7,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown",
         "version": "unknown",
         "installedAt": "2026-04-11T11:06:44.242Z",
-        "lastUpdated": "2026-06-18T13:02:31.899Z",
+        "lastUpdated": "2026-06-19T02:24:42.290Z",
         "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
@@ -17,7 +17,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:18:12.636Z",
-        "lastUpdated": "2026-06-18T13:02:31.850Z",
+        "lastUpdated": "2026-06-19T02:24:42.258Z",
         "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
@@ -27,7 +27,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/playwright/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:18:55.495Z",
-        "lastUpdated": "2026-06-18T13:02:31.841Z",
+        "lastUpdated": "2026-06-19T02:24:42.254Z",
         "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
@@ -46,7 +46,7 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/plugin-dev/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:21:01.163Z",
-        "lastUpdated": "2026-06-18T13:02:31.926Z",
+        "lastUpdated": "2026-06-19T02:24:42.314Z",
         "gitCommitSha": "a8f5f1b3c940d98694ac74032d7de55439c8394b"
       }
     ],
@@ -62,10 +62,10 @@
     "superpowers@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/superpowers/6.0.2",
-        "version": "6.0.2",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/superpowers/6.0.3",
+        "version": "6.0.3",
         "installedAt": "2026-04-30T08:21:54.198Z",
-        "lastUpdated": "2026-06-18T01:59:03.715Z",
+        "lastUpdated": "2026-06-19T00:34:32.414Z",
         "gitCommitSha": "6efe32c9e2dd002d0c394e861e0529675d1ab32e"
       }
     ],
