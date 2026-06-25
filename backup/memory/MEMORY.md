@@ -124,6 +124,7 @@
 - [ラクスル入稿は裏面ラスタライズ版で](feedback_rakusuru_back_rasterize.md) — 裏面のみエラー。`pdftoppm -r 400`+PIL/pypdfで裏面400dpi JPEG化→表面と再結合、`_rakusuru.pdf`別保存
 - [フォーム回答の属性帰属はoperational contextで判定](feedback_form_response_no_attribution_guess.md) — 主語なし自由回答は運営文脈で自然な主体を選び即対応、過剰な「念のため確認」は信頼損なう
 - [亀山市中学校給食はすでに実施開始済み](feedback_kameyama_chugakko_kyushoku_already_started.md) — 「令和8年度2学期開始予定/過渡期」は古い・禁止。補食は「実施前提でも発生」で論じる
+- [給食「選択制で培った柔軟さ」は選択制回帰と切り取られる](feedback_kyushoku_sentakusei_kaiki_misread_guard.md) — 価値(一人ひとりに合わせる心)として書き制度郷愁にしない。土台肯定＋「後戻りしません」セット。亀山モデル＝公平×個別最適の両立で固定。造語連呼3回まで
 - [中学校給食はSNS/AIインタビュー先行調査後に書く](feedback_kyushoku_sns_research_first.md) — AIインタビュー設計→声収集→派生発信。素材揃ってから一体展開
 - [Instagram AIインタビュー由来投稿で私的演出禁止](feedback_instagram_no_personal_fiction.md) — 第一人称体験風＋抽象架空シーン禁止、「届きました」事実＋引用→構造化→比較→提案の4段
 - [news-briefing v3 重複検出強化（本体未反映・手動編集要）](feedback_news_briefing_v3_duplicate_detection.md) — 30日窓＋3層判定（URL/類似度85%/キーワード）＋続報追記＋国政週1上限。plugins cache HARD BLOCK
