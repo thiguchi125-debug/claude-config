@@ -145,7 +145,7 @@
 - [自治会・地区別市政報告会スライド作成プレイブック](reference_jichikai_shisei_houkokukai_playbook.md) — 地区別ニュース62本・一次資料・標準WF・voice-dna辞書
 - [亀山市議会 一般質問の標準時間](reference_kameyama_general_question_time.md) — 答弁込み45分。時間配分の基準値
 - [太岡寺自治会 太陽光要望書（R5.12.12）](reference_taikoji_yobosho_taiyoko.md) — 村山竹則会長／太陽光規制条例の早期策定要請。市内でいち早く市長に直接届けた先見事例
-- [亀山市新庁舎 開庁=令和12年度](reference_shincho_kaicho_r12.md) — 亀山駅周辺・約95億円・2030年度開庁。「令和18年度開庁」は誤り（木下版PLANの誤記）。発信物は必ずR12年度
+- [亀山市新庁舎 開庁=令和18年度（2036）](reference_shincho_kaicho_r18.md) — JR亀山駅周辺・当初R12計画から6年延伸（市R7.2取りまとめ・R7.6答弁）。発信物は必ずR18年度。「令和12年度」は旧計画＝誤り。失敗教訓は[[feedback_stale_authoritative_doc_vs_policy_change]]
 - [次期ごみ処理施設](reference_jiki_gomi_shori_shisetsu.md) — 現施設R12.3稼働終了→次期R15年度稼働目標・80t/日溶融炉・基本構想策定中・能登災害廃棄物R7.9月末受入終了
 - [選挙リーフレットv3 ファイル群](reference_senkyo_leaflet_v3_files.md) — 制作物の入口。HTML/PDF/画像/再生成コマンド
 - [朝の街頭活動場所9拠点](reference_morning_street_locations.md) — 阿野田公民館/みずきが丘・菅内・亀田・関・和田交差点/田村ミニストップ/商工会議所前/川合9号線前
