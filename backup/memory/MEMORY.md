@@ -29,7 +29,7 @@
 - [議案質疑/一般質問の本番原稿化](feedback_bill_scrutiny_scriptwriter_agent.md) — bill-scrutiny-scriptwriter＋honban_genko_craft_v1.md＋GOLD_太陽光条例。設計→原稿化→counter-sim
 - [ショート動画は最初からvirality-architectで](feedback_short_video_use_virality_architect_first.md) — 長尺NG・35〜45秒・1動画1メッセージ・冒頭1.5秒フック
 - [ショート動画の説明図はHTML/CSS→PNG](feedback_short_video_infographic_html_to_png.md) — AI生成でなくChrome PNG化、ブランド色#c7ff4a/#1f5a3a/#0f3d27/#f3efe4厳守、完成PNGはDrive📱動画素材へ
-- ショート動画挿入画像 — [字幕セーフ帯＋安っぽさ7信号](feedback_short_video_subtitle_safe_zone.md) y1080〜1500を静かに空ける・のっぺり/2トーン/棒人間潰す／[専任agent+可読性フロア](feedback_short_video_image_designer_agent.md) short-video-image-designer・記号化/文字消失を潰す・主役72px+・EYES-FIRST
+- ショート動画挿入画像 — [字幕セーフ帯＋安っぽさ7信号](feedback_short_video_subtitle_safe_zone.md) y1080〜1500を静かに空ける・のっぺり/2トーン/棒人間潰す／[専任agent+可読性フロア](feedback_short_video_image_designer_agent.md) short-video-image-designer・記号化/文字消失を潰す・主役72px+・EYES-FIRST／[確定デザイン仕様(往復ゼロ用)](feedback_short_video_insert_image_design_spec.md) 明るい配色基調(暗緑支配NG)・字幕帯y1150-1470固定・行間広く・文字主役級・孤立文字ゼロ・親しみ絵本調(女の子も)・テンプレ=knowledge/short_video_templates/insert_image_v1
 - [草川ショート動画原稿のスタイルガイド](feedback_kusagawa_short_video_script_style.md) — 疑問→断定フック／1段落1メッセージ／共感「したこと、ありませんか」／具体3例／独自タグライン強制禁止／テキスト連続版優先
 - [コンテンツ生成は常時lean full-agentがデフォルト](feedback_content_generation_default_flow.md) — 主担当agent省略禁止、lean毎回適用、目標90〜170K
 - [「次の議会で追及」型表現を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞禁止、「継続的フォロー」「対話を重ねる」で表現

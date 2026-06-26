@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1920px; }
+  body { font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    width:1080px; height:1920px; position:relative; overflow:hidden; background:#cdeaf6; }
+  svg.scene { position:absolute; inset:0; width:1080px; height:1920px; z-index:10; }
+
+  .kicker { position:absolute; top:54px; left:0; width:1080px; text-align:center; z-index:40; }
+  .kicker span { display:inline-block; font-size:48px; font-weight:900; letter-spacing:.08em;
+    color:#143a26; background:#c7ff4a; padding:16px 40px; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.35); }
+  .title { position:absolute; top:208px; left:0; width:1080px; text-align:center; z-index:40; padding:0 30px; }
+  .title h1 { font-size:100px; font-weight:900; line-height:1.36; color:#15402a; letter-spacing:-.02em;
+    text-shadow:0 2px 3px rgba(255,255,255,.7); white-space:nowrap; }
+  .title h1 .lime { color:#2f8a4f; -webkit-text-stroke:3px #0f3d27; paint-order:stroke fill; }
+
+  /* relocation route chips — BIG */
+  .route { position:absolute; top:518px; left:0; width:1080px; z-index:40;
+    display:flex; align-items:center; justify-content:center; gap:20px; }
+  .route .chip { background:rgba(15,61,39,.92); border:5px solid rgba(255,255,255,.85);
+    border-radius:26px; padding:24px 30px; text-align:center; box-shadow:0 12px 28px rgba(31,90,58,.30); }
+  .route .chip .lab { font-size:36px; font-weight:800; color:#cfe6c0; letter-spacing:.04em; }
+  .route .chip .nm { font-size:66px; font-weight:900; color:#fff; line-height:1.1; margin-top:16px; }
+  .route .chip.to { background:#c7ff4a; border-color:#fff; }
+  .route .chip.to .lab { color:#1f5a3a; }
+  .route .chip.to .nm { color:#0f3d27; }
+  .route .arr { font-size:96px; font-weight:900; color:#36a85c; text-shadow:0 2px 3px rgba(255,255,255,.6); line-height:1; }
+
+  /* bottom info — BIG, starts at y1500 (below subtitle band) */
+  .info { position:absolute; top:1486px; left:0; width:1080px; z-index:40; text-align:center; padding:0 44px; }
+  .info .year { font-size:114px; font-weight:900; color:#15402a; line-height:1.06; letter-spacing:.005em;
+    text-shadow:0 2px 3px rgba(255,255,255,.7); white-space:nowrap; }
+  .info .year .sub { font-size:54px; font-weight:800; color:#2f7a4c; }
+  .info p { margin-top:34px; font-size:56px; font-weight:800; line-height:1.54; color:#1c4a30;
+    text-shadow:0 2px 2px rgba(255,255,255,.6); white-space:nowrap; }
+  .info p .hl { color:#0f3d27; background:#c7ff4a; padding:4px 18px; border-radius:8px; box-shadow:0 3px 8px rgba(31,90,58,.25); }
+  .info .note { margin-top:26px; display:inline-block; font-size:36px; font-weight:800; letter-spacing:.04em; color:#3a7a52; white-space:nowrap; }
+</style>
+</head>
+<body>
+
+  <svg class="scene" viewBox="0 0 1080 1920" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7cc4ea"/><stop offset=".45" stop-color="#a9dcf2"/><stop offset="1" stop-color="#e6f6ed"/>
+      </linearGradient>
+      <linearGradient id="grassFar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a7d98a"/><stop offset="1" stop-color="#92cd74"/></linearGradient>
+      <linearGradient id="grassMid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86c763"/><stop offset="1" stop-color="#6eb84f"/></linearGradient>
+      <linearGradient id="grassNear" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6cb84a"/><stop offset="1" stop-color="#54a038"/></linearGradient>
+      <linearGradient id="wallL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdf7ec"/><stop offset="1" stop-color="#f1e8d2"/></linearGradient>
+      <linearGradient id="wallShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8dabb"/><stop offset="1" stop-color="#d8c69e"/></linearGradient>
+      <linearGradient id="roofA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#43a86a"/><stop offset="1" stop-color="#2a7a4c"/></linearGradient>
+      <linearGradient id="roofB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f5a3a"/><stop offset="1" stop-color="#163f29"/></linearGradient>
+      <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c4dcec"/><stop offset="1" stop-color="#97bcdb"/></linearGradient>
+      <radialGradient id="sun" cx="78%" cy="18%" r="42%"><stop offset="0" stop-color="#fff6cf" stop-opacity=".9"/><stop offset="1" stop-color="#fff6cf" stop-opacity="0"/></radialGradient>
+      <linearGradient id="infoBand" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f3efe4" stop-opacity="0"/><stop offset=".26" stop-color="#f5f1e6" stop-opacity=".92"/><stop offset="1" stop-color="#f7f3ea"/>
+      </linearGradient>
+      <linearGradient id="signPlate" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f1e3"/><stop offset="1" stop-color="#e8dcc2"/></linearGradient>
+      <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+      <filter id="treeBlur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5"/></filter>
+      <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="n"/>
+        <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0"/></filter>
+      <radialGradient id="vig" cx="50%" cy="40%" r="80%"><stop offset="64%" stop-color="#1f5a3a" stop-opacity="0"/><stop offset="100%" stop-color="#1f5a3a" stop-opacity=".14"/></radialGradient>
+    </defs>
+
+    <!-- SKY (top zone) -->
+    <rect x="0" y="0" width="1080" height="1180" fill="url(#sky)"/>
+    <ellipse cx="850" cy="430" rx="520" ry="420" fill="url(#sun)"/>
+    <g fill="#eaf6ee" opacity=".5" filter="url(#soft)">
+      <ellipse cx="240" cy="560" rx="150" ry="40"/><ellipse cx="350" cy="540" rx="110" ry="34"/>
+      <ellipse cx="730" cy="660" rx="130" ry="34"/>
+    </g>
+
+    <!-- PARK GROUND: 3 depth bands, full bleed to bottom (raised so band y1150-1470 is quiet near-grass) -->
+    <path d="M0 800 Q540 745 1080 800 L1080 1000 L0 1000 Z" fill="url(#grassFar)"/>
+    <path d="M0 905 Q540 850 1080 905 L1080 1150 L0 1150 Z" fill="url(#grassMid)"/>
+    <path d="M0 1050 Q540 1002 1080 1050 L1080 1920 L0 1920 Z" fill="url(#grassNear)"/>
+    <g stroke="#5ea874" stroke-width="4" opacity=".22">
+      <path d="M-40 1090 Q540 1050 1120 1090" fill="none"/>
+    </g>
+
+    <!-- FAR TREELINE (blurred) -->
+    <g filter="url(#treeBlur)" opacity=".85">
+      <ellipse cx="80" cy="775" rx="86" ry="96" fill="#2f7a49"/>
+      <ellipse cx="206" cy="795" rx="76" ry="82" fill="#358452"/>
+      <ellipse cx="984" cy="780" rx="96" ry="100" fill="#2f7a49"/>
+      <ellipse cx="880" cy="802" rx="74" ry="78" fill="#358452"/>
+    </g>
+
+    <!-- THE BUILDING (旧図書館) — HERO, large, labeled (lifted to clear band) -->
+    <g transform="translate(0,-285)">
+      <ellipse cx="560" cy="1330" rx="380" ry="52" fill="#000" opacity=".18" filter="url(#soft)"/>
+      <path d="M 286 1064 L 286 1320 L 470 1320 L 470 1064 Z" fill="url(#wallShade)"/>
+      <path d="M 270 1070 L 378 1004 L 470 1064 L 470 1082 L 286 1082 Z" fill="url(#roofB)"/>
+      <rect x="330" y="1130" width="92" height="68" rx="3" fill="url(#glass)"/>
+      <line x1="376" y1="1130" x2="376" y2="1198" stroke="#fdf7ec" stroke-width="5"/>
+      <!-- main body (big) -->
+      <rect x="455" y="1028" width="410" height="292" fill="url(#wallL)"/>
+      <rect x="790" y="1028" width="75" height="292" fill="url(#wallShade)"/>
+      <path d="M 430 1034 L 660 920 L 890 1034 Z" fill="url(#roofA)"/>
+      <path d="M 660 920 L 890 1034 L 870 1046 L 660 944 Z" fill="url(#roofB)"/>
+      <path d="M 430 1034 L 660 920 L 660 944 L 455 1046 Z" fill="#54c089" opacity=".55"/>
+      <rect x="657" y="920" width="6" height="110" fill="#163f29" opacity=".5"/>
+      <!-- BIG NAME SIGN -->
+      <g>
+        <rect x="486" y="1050" width="348" height="80" rx="12" fill="url(#signPlate)" stroke="#caa46f" stroke-width="4"/>
+        <text x="660" y="1108" font-size="62" font-weight="900" fill="#1f5a3a" text-anchor="middle" font-family="sans-serif" letter-spacing="5">旧 図 書 館</text>
+      </g>
+      <!-- entrance -->
+      <rect x="616" y="1208" width="88" height="112" rx="3" fill="#1f5a3a"/>
+      <rect x="616" y="1208" width="88" height="15" fill="#163f29"/>
+      <circle cx="688" cy="1268" r="6" fill="#c7ff4a"/>
+      <rect x="598" y="1196" width="124" height="15" rx="5" fill="#2a7a4c"/>
+      <!-- windows -->
+      <g>
+        <rect x="486" y="1144" width="88" height="66" rx="3" fill="url(#glass)"/>
+        <rect x="486" y="1144" width="88" height="20" fill="#aaccea"/>
+        <line x1="530" y1="1144" x2="530" y2="1210" stroke="#fdf7ec" stroke-width="5"/>
+        <line x1="486" y1="1177" x2="574" y2="1177" stroke="#fdf7ec" stroke-width="5"/>
+        <rect x="748" y="1144" width="88" height="66" rx="3" fill="url(#glass)"/>
+        <rect x="748" y="1144" width="88" height="20" fill="#aaccea"/>
+        <line x1="792" y1="1144" x2="792" y2="1210" stroke="#fdf7ec" stroke-width="5"/>
+        <line x1="748" y1="1177" x2="836" y2="1177" stroke="#fdf7ec" stroke-width="5"/>
+      </g>
+      <g stroke="#e6d8ba" stroke-width="2" opacity=".5"><line x1="455" y1="1294" x2="865" y2="1294"/></g>
+    </g>
+
+    <!-- NEAR foreground framing trees (lifted to clear band y1150-1470) -->
+    <g transform="translate(0,-365)">
+      <ellipse cx="80" cy="1300" rx="92" ry="128" fill="#1f5a3a"/>
+      <ellipse cx="58" cy="1258" rx="60" ry="74" fill="#2f8a55"/>
+      <ellipse cx="102" cy="1320" rx="44" ry="54" fill="#43a86a" opacity=".7"/>
+      <rect x="70" y="1394" width="24" height="80" rx="7" fill="#6b4a2a"/>
+      <ellipse cx="112" cy="1480" rx="64" ry="18" fill="#000" opacity=".14" filter="url(#soft)"/>
+    </g>
+    <g transform="translate(0,-365)">
+      <ellipse cx="1004" cy="1280" rx="96" ry="134" fill="#1f5a3a"/>
+      <ellipse cx="1026" cy="1238" rx="60" ry="74" fill="#2f8a55"/>
+      <ellipse cx="982" cy="1306" rx="44" ry="54" fill="#43a86a" opacity=".7"/>
+      <rect x="990" y="1378" width="26" height="84" rx="7" fill="#6b4a2a"/>
+      <ellipse cx="1002" cy="1468" rx="68" ry="18" fill="#000" opacity=".14" filter="url(#soft)"/>
+    </g>
+
+    <!-- INFO BAND gradient (starts BELOW subtitle band, covers y1490-1920 for text legibility) -->
+    <rect x="0" y="1490" width="1080" height="430" fill="url(#infoBand)"/>
+
+    <rect x="0" y="0" width="1080" height="1920" filter="url(#grain)" opacity=".05"/>
+    <rect x="0" y="0" width="1080" height="1920" fill="url(#vig)"/>
+  </svg>
+
+  <div class="kicker"><span>児童センターが動く</span></div>
+  <div class="title"><h1><span class="lime">旧図書館</span>へ<br>児童センターが移る</h1></div>
+
+  <div class="route">
+    <div class="chip"><div class="lab">いまの</div><div class="nm">児童センター</div></div>
+    <div class="arr">&#10142;</div>
+    <div class="chip to"><div class="lab">移転先</div><div class="nm">旧図書館</div></div>
+  </div>
+
+  <div class="info">
+    <div class="year">令和10年度<span class="sub"> をめどに</span></div>
+    <p>亀山公園の旧図書館へ。<br>移転を目指して<span class="hl">市が検討中</span></p>
+    <span class="note">※市の総合計画に位置づけ</span>
+  </div>
+
+</body>
+</html>
