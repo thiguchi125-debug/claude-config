@@ -38,6 +38,7 @@
 - [issues返信は記録不要](feedback_issues_response_no_log.md) — 「賛成」「反対」冒頭の意見はNotion保存/タスク化省略、返信3案だけ
 - [コピペ前提原稿は納品形式を先に伺う](feedback_copypaste_draft_delivery.md) — コードブロックは左余白が入る。既定はtxt書出し→open -e（TextEdit全選択コピー）。「余白入らない」と断定しない
 - [動画原稿の保存先は📣SNS投稿管理DB](feedback_video_script_save_destination.md) — 専用DB作らず集約、タイトル先頭🎬
+- [Xは字数制限撤廃→長文可](feedback_x_no_char_limit.md) — X投稿は140字厳守やめ長文OK、内容充実。SNS生成時にX=長文と明示しエージェントの「140字厳守」を上書き
 - [AIインタビュー紹介SNSの定型クレジット必須](feedback_ai_interview_disclaimer.md) — 安野貴博・有賀啓介クレジット＋個人情報禁止注意を4PFに
 - [Notion内部リンクは mention-page タグ必須](feedback_notion_link_deeplink.md) — `<mention-page url="...">タイトル</mention-page>`（markdownリンクはモバイルでブラウザに飛ぶ）
 - Notion update_content/DSLの罠 — [落とし穴](feedback_notion_update_content_pitfalls.md)複数セクション一括でサイレント失敗・fetch検証＆固有名詞コピペ／[罠v2](feedback_notion_update_content_pitfalls_v2.md)timeout後も適用済・即リトライ禁止・fetchキャッシュ古い／[DSLステータスフィルタ書込不可](feedback_notion_dsl_status_filter_limitation.md)Done/Archive除外は草川手動
