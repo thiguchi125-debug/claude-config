@@ -87,6 +87,15 @@
         "installedAt": "2026-04-30T08:23:59.621Z",
         "lastUpdated": "2026-04-30T08:23:59.621Z"
       }
+    ],
+    "swift-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/swift-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-06-28T12:04:15.434Z",
+        "lastUpdated": "2026-06-28T12:04:15.434Z"
+      }
     ]
   }
 }

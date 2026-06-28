@@ -28,7 +28,8 @@
     "claude-md-management@claude-plugins-official": false,
     "superpowers@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "discord@claude-plugins-official": true
+    "discord@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
   },
   "theme": "auto",
   "skipAutoPermissionPrompt": true
