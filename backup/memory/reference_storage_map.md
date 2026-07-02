@@ -32,7 +32,7 @@ CLAUDE.mdの「📂保存先マップ」の詳細版。散乱の3根本原因（
 
 ## 自動化（夜間パイプライン v4）
 
-- launchd `com.kusagawa.daily-drive-pipeline` 毎晩2:30 — ランナーは `~/.local/bin/kusagawa-pipeline-bash`（**FDA付与済みの専用bashコピー**。/bin/bashのままだとTCCでCloudStorageが空に見える＝2026-05〜06のサイレント故障の原因）
+- launchd `com.kusagawa.daily-drive-pipeline` 毎晩2:30 — ランナーは `~/.local/bin/kusagawa-pipeline-bash`（bashコピー＋ad-hoc署名 `codesign -s - --identifier com.kusagawa.pipeline-bash`。/bin/bash直起動だとCloudStorageが空に見える＝2026-05〜06のサイレント故障の原因。2026-07-02のE2Eテストで振分け動作確認済み。**将来visibility_errorが出たら**システム設定→フルディスクアクセスにこのバイナリを追加）
 - Phase1 `_auto_intake.sh`(v4): INBOX振分＋可視性チェック（空に見えたらVISIBILITY_ERROR）＋council判定不能はmtimeから`📥要確認_YYYY-MM/`へ＋ファイル名に「個人情報/名簿/連絡先」→00_名簿・個人情報へ自動隔離＋結果を`_pipeline_status.json`へ
 - Phase2 `_build_index.sh`: pdftotext→`_index/`（00_名簿・個人情報は除外）
 - Phase3 `_local_sweep.sh`: 日曜のみDesktop/Downloadsの30日超を退避

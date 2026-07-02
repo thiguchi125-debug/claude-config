@@ -142,7 +142,7 @@ metadata:
 **発覚した故障**: 夜間launchdパイプラインが2026-05末〜07-02の間、TCC権限欠如（launchd起動の/bin/bashはCloudStorageが空に見える）で毎晩 council=0/daily=0 のゼロ処理。INBOX滞留12件・index更新停止（+133件未反映）が発生していた。
 
 **v4修理内容**:
-1. ランナーを `~/.local/bin/kusagawa-pipeline-bash`（bashコピー・FDA付与）に差替え
+1. ランナーを `~/.local/bin/kusagawa-pipeline-bash`（bashコピー＋ad-hoc署名。FDA付与不要で動作確認済・E2Eテスト合格）に差替え
 2. `_auto_intake.sh` v4化: 可視性チェック（VISIBILITY_ERROR検出）／council判定不能はmtimeで`📥要確認_YYYY-MM/`へ／個人情報キーワード自動隔離／`_pipeline_status.json`出力
 3. ohayo v2.7 が毎朝 status を1行表示（サイレント故障の根絶）
 4. `_local_sweep.sh` 新設（日曜・Desktop/Downloads 30日超→~/Archive/_sweep/）
