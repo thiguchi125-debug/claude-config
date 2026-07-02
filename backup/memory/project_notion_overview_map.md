@@ -81,3 +81,16 @@ originSessionId: 9a9e7ee5-7eca-4eb3-ace0-44c9502a7dc3
 - 既知問題（feedback_notion_update_content_pitfalls.md）に該当
 - 改善ロードマップは番号付きリスト形式に修正済み
 - 既存DBを新規ページに inline embed する `<database url="..." inline="false">` タグはAPI不可（"Failed to create block"）→ mention-page リンクで代替
+
+---
+
+## 【v2 2026-07-03 大改修反映】
+
+本ファイルの上記記載（21DB+14ハブ・✅タスクDB中心・月次UI棚卸し）は**v1の歴史記録**。現行はv2：
+
+- **役割分担**: Todoist=実行（タスク/PJはtd.py一本）／Notion=蓄積（会議・声・政策・発信・報告会）
+- **Tier構造**: Tier1=🌅朝のダッシュボード(722beb9e)／Tier2=🏛️会議ハブ(a247fd5d)・🗺️地域選挙ハブ・📝一般質問ネタDB(cb47d25e)・📣投稿管理DB(78f40f33)・🗂プロジェクト・プラットフォーム(37a71464)／Tier3=各DB（市民意見c2c34bd8・報告会df08b5ea・政策候補6f1895ac・ニュース29e5c1a2等）
+- **🗄️旧アーカイブ**(391cf503-a68f-8160-bd59-eb48cb07f933): 旧タスクDB・旧PJDB・テンプレ残骸・📦旧_系など36件を収容（2026-07-03移動・削除ゼロ）
+- **📥未分類インテーク**(391cf503-a68f-8191-b218-e80fdc7aedeb): smart-intakeの判定不能受け皿・ohayoが毎朝件数表示
+- Notion側の「🌐Notion全体地図」ページもv2に全面改訂済み。**月次棚卸しはohayoが毎月1〜3日にlast_edited 60日超を検知して促す方式**（記憶依存を排除）
+- 手動Trash推奨（草川UI操作待ち）: テンプレ残骸4件＋プラン外「新規プロジェクト」3件（06a79718/22bcf503/1b2cf503…8081）＋3年放置ページ8ba6e67b

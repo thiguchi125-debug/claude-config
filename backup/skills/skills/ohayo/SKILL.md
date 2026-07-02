@@ -99,7 +99,7 @@ oyasumiデイリーサマリの最新1件を notion-search →fetch（デイリ�
 ## §10 シグナル欄（軽量・各1call以内）
 
 - **📡 policy-radar**: 🎯政策候補DB「草川承認待ち」＋📝ネタDB「🆕/🔄かつ調査中」を各1クエリ → 件数のみ（月曜=weekly実行後・毎月2日=monthly実行後の文言は従来通り。Routine: weekly `trig_01MyKkdatWADfmAdUgB3UDu7`／monthly `trig_019LPFjUFu9anWC53UFJCavK`）。0件なら1行。
-- **📥 未分類インテーク**: notion-search「📥未分類インテーク」→ 未チェック行数を「📥未分類 N件」表示。3件以上で「棚卸ししよ」を添える（smart-intakeの締めループ）。
+- **📥 未分類インテーク**: notion-fetch `391cf503-a68f-8191-b218-e80fdc7aedeb` → 未チェック行数を「📥未分類 N件」表示。3件以上で「棚卸ししよ」を添える（smart-intakeの締めループ）。
 - **📂 Drive新規資料**: Drive資料サマリDB（`collection://317c4d02-ac0a-48c3-9fc5-56029000e64e`）の昨日分1クエリ → 件数＋主要2件の1行リンク。
 - **🌐 全体地図チェック（毎月1〜3日のみ）**: 「🌐Notion全体地図」の last_edited が60日超なら「地図が古い→月次棚卸し推奨」1行。
 
