@@ -5,7 +5,7 @@
 ## 🔄 進行中プロジェクト
 
 - [sparkスキル（小さな種→発信）](project_spark_skill.md) — 2026-07-03新設。ひらめき/ニュースURL/活動メモ→接地→切り口2〜3案→選択分だけ生成→安全ゲート→保存。「貯めて」で📣SNS投稿管理DBに💡ストック。初回実運用フィードバック待ち
-- [Notion大改修＋ohayo/news v3＋smart-intake](project_notion_ohayo_news_v3_renewal.md) — 2026-07-03実施。ohayo=150行v3・news=dedup+活用フック・smart-intake新設（投げ込み保存+「〇〇どこ？」検索・🔖台帳）・🗄️旧アーカイブ収容。翌朝ニュース重複停止とohayo初回実走の確認待ち
+- [Notion大改修＋ohayo/news v3＋smart-intake](project_notion_ohayo_news_v3_renewal.md) — 2026-07-03実施。ohayo=150行v3・news=dedup+活用フック・smart-intake新設（投げ込み保存+「〇〇どこ？」検索・🔖台帳）・🗄️旧アーカイブ収容。初回実走の指摘3点（タスク無断登録/ニュース重複と鮮度/SQLプランゲート誤報告）を2026-07-03に修理: Routine v3.1=dedupインデックス+ダイジェスト固定ページ方式・oyasumiタスク登録は承認キュー化・水道濁り重複は6/9正ページへ統合済み
 - [議会だより制作エージェント](project_gikai_dayori_creator.md) — gikai-dayori-creator整備完了(2026-07-02)。会議録→650字→提出docx＋引用参照マークdocxのフルパイプライン。スクリプト=~/.claude/scripts/gikai_dayori/。トリガー「議会だより作って」（要再起動）
 - [Notionプロジェクト・プラットフォーム](project_notion_project_platform.md) — Todoist主要PJ対応の情報蓄積母艦DB（page=37a71464・ds=8975c6a9）。Todoist=実行/Notion=蓄積。初期17PJ投入済
 - [Todoistへタスク管理移行](project_todoist_task_migration.md) — 完了。`python3 ~/.claude/scripts/todoist/td.py {morning/add/done/audit/list…}`（token=~/.config/todoist/token・API /api/v1/）。今後タスク/PJ登録は全てTodoist（Notion✅/🗂️は参照のみ）
@@ -16,6 +16,7 @@
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
+- [Notion SQLクエリはプラン限定ブロック](feedback_notion_sql_plan_gate.md) — query-data-sources(SQL)使用禁止・viewはフィルタ欠落の罠。定常一覧は自己管理固定ページ（newsのdedupインデックス/ダイジェスト）パターンで
 - [デザイン品質基準=中庄夏祭りポスター2026](feedback_design_quality_bar_natsumatsuri2026.md) — 全デザイン制作物はこの水準以上。参照忠実再現・グリフ単位検品・レイヤー順・EYES-FIRST・完成処理込み。見本=drafts/2026-08_中庄夏祭りポスター
 - [イベント運営段取り表はスマホ縦スクロールPDF](feedback_event_runsheet_mobile_pdf_format.md) — 幅390px1ページ縦長・カード型・絵文字なし。A4/長尺PNGはNG。実測+200px・/Count=1まで高さ探索。個人情報は見出し＋名に注意書き
 - [ohayoダッシュボードのタスク/PJ欄もTodoist由来に](feedback_ohayo_dashboard_task_project_todoist.md) — 朝の✅今日のタスク/🔗進行中PJはtd.pyから。Notion紐付け・mention-page張らない
