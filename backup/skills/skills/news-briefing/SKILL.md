@@ -187,7 +187,7 @@ notion-update-page command:update_content（末尾append）
 各記事について以下フィルタを順に適用:
 
 1. **24〜48時間以内の新着か** → No なら除外
-2. **過去7日DBの見出しと類似度80%超 or 同URL** → Yes なら除外（v2新規）
+2. **Step 0.5 の3層判定** → Layer1除外／Layer2・3は続報追記モード（新規禁止）
 3. **草川の議員活動に活用できるか**（一般質問・SNS発信・市民相談・現場視察）→ No なら除外
 4. **重複報道**は最も詳しい1本に集約
 
@@ -240,6 +240,7 @@ notion-update-page command:update_content（末尾append）
   - `概要` (text): 80字 (A) / 300字 (B)
   - `亀山関連度` (select): ★1〜★5
   - `議会活用メモ` (text): **必ず3点セットを含む**
+  - `活用` (select): `演説` / `SNS` / `一般質問` / `ブログ` / `静観` — **v3新設・展開フック**。議会活用メモの「問い立て/次アクション」から最も適した展開先を1つ判定して付与（ohayoが毎朝表示し、daily-content-generatorが参照する）
   - `ステータス` (select): `新着`
 
 ### Step 4: stdout出力（**v2: 圧縮版**）

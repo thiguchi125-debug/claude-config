@@ -4,6 +4,7 @@
 
 ## 🔄 進行中プロジェクト
 
+- [Notion大改修＋ohayo/news v3＋smart-intake](project_notion_ohayo_news_v3_renewal.md) — 2026-07-03実施。ohayo=150行v3・news=dedup+活用フック・smart-intake新設（投げ込み保存+「〇〇どこ？」検索・🔖台帳）・🗄️旧アーカイブ収容。翌朝ニュース重複停止とohayo初回実走の確認待ち
 - [議会だより制作エージェント](project_gikai_dayori_creator.md) — gikai-dayori-creator整備完了(2026-07-02)。会議録→650字→提出docx＋引用参照マークdocxのフルパイプライン。スクリプト=~/.claude/scripts/gikai_dayori/。トリガー「議会だより作って」（要再起動）
 - [Notionプロジェクト・プラットフォーム](project_notion_project_platform.md) — Todoist主要PJ対応の情報蓄積母艦DB（page=37a71464・ds=8975c6a9）。Todoist=実行/Notion=蓄積。初期17PJ投入済
 - [Todoistへタスク管理移行](project_todoist_task_migration.md) — 完了。`python3 ~/.claude/scripts/todoist/td.py {morning/add/done/audit/list…}`（token=~/.config/todoist/token・API /api/v1/）。今後タスク/PJ登録は全てTodoist（Notion✅/🗂️は参照のみ）
@@ -50,7 +51,7 @@
 - ブログ/SNS DBステータス＆URL — [選択肢](feedback_blog_sns_db_status_options.md)未着手/進行中/完了のみ・「下書き完成」無く進行中代用／[3DB view_url再設定](feedback_3db_view_url_correction.md)page URLのみ?v=不在・廃止DB参照ミス／[SNS DB v2](feedback_3db_view_url_correction_v2.md)ds=1bd98deb・「未投稿」は誤記
 - [仕上げモードU4後に日次ログ追記必須](feedback_nichijo_finalize_log_append.md) — 仕上げ生成物が日次ログに自動反映されない穴
 - [ohayo/oyasumi タスクDB実クエリ必須](feedback_ohayo_oyasumi_task_db_query.md) — 旧表流用禁止、view直叩きで本日inbox包含
-- ohayo燃費 — [効率化](feedback_ohayo_token_efficiency.md)本文置換省略・filter view／[v3](feedback_ohayo_token_efficiency_v3.md)timeout後即リトライ禁止・fetch1回・目標70〜90K／[v2.5](feedback_ohayo_v25_streamline.md)iJAMP停止・発信テーマ提案トリガー型・書込3セクション限定
+- ohayo燃費（歴史的経緯・**v3全面書き直しで構造解決済 2026-07-03**） — [効率化](feedback_ohayo_token_efficiency.md)／[v3](feedback_ohayo_token_efficiency_v3.md)timeout後即リトライ禁止は現役／[v2.5](feedback_ohayo_v25_streamline.md)
 - [oyasumi トークン効率化方針](feedback_oyasumi_token_efficiency.md) — Drive pageSize10/read1500字/Notion pageSize30
 - [会議体マスタの網羅性不足対策](feedback_meeting_master_coverage.md) — マスタ少なく未紐付発生、単発講演も登録
 - [議会公務の会議資料は📅ミーティングノートDB配下](feedback_council_meeting_db_placement.md) — 議案分析・委員会説明会・所管事務調査は期別フォルダでなくMTGノートDB＋会議体マスタ紐付け

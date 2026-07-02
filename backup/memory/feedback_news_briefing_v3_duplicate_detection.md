@@ -100,3 +100,12 @@ notion-query-database-view
 - [[feedback_news_briefing_hallucination_guard]] — 2026-05-12 ハルシネーション対策v2.5
 - [[feedback_news_briefing_freshness_check]] — 2026-05-08 Yahoo検索キャッシュ罠
 - [[feedback_news_briefing_quality_over_quantity]] — 2026-05-06 v2 質>量方針
+
+---
+
+## ✅ 2026-07-03 本体反映完了
+
+- SKILL.md本体（Step 0/0.5/0.6）へ v3 dedup を適用済み（30日窓・3層判定・続報追記・国政週1）
+- クラウドRoutine `trig_01WXgkt4JqANvhi1YuQLGsEQ` のプロンプトも v3 に更新済み（notion-update-page をallowed_toolsに追加し続報追記を可能化）
+- あわせて `活用` セレクト（演説/SNS/一般質問/ブログ/静観）をDBスキーマに新設＝展開フック。廃止カテゴリ`全国時事`/`SNSトレンド`はスキーマから撤去
+- 「HARD BLOCKで反映不可」の記載は解消済み（本セッションでplugins cache配下の編集が可能だった）
