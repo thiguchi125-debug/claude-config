@@ -1,6 +1,6 @@
 ---
 name: "ai-interview-sns-poster"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) receives a summary text from the 'AIインタビュー' project (https://depth-interview-kusagawa.vercel.app/) and needs to convert it into platform-optimized policy-proposal SNS posts. This agent generates 4 PLATFORM-SPECIFIC drafts (NOT a single shared post) — Instagram (詩的・ストーリー型・600〜1000字), Facebook (論理的・背景説明型・500〜800字), Threads (対話・問いかけ型・300〜500字), X (即時拡散・言い切り型・140字厳守) — each with its own voice, structure, and length, mirroring sns-content-creator's per-platform discipline but specialized for AI interview citizen-voice material. Saves 1 unified record to 📣SNS投稿管理DB (1 AIインタビュー = 1 page containing all 4 platform drafts as sections) with strict character-count enforcement, plus single 📋市民意見受付BOX entry. Features: (1) per-platform voice differentiation aligned with voice-dna §6 (Threads=問いかけ/X=断定/Instagram=詩性/Facebook=論理), (2) AI-interview-specific 5-element source material (提案者属性 / 市民の声セリフ / 政策提案 / 先進事例 / 亀山ローカル化), (3) curated 事例データベース for 防災/食料備蓄/農業 topics (東かがわ市分散備蓄／宮代町流通備蓄), WebSearch fallback for unmatched, (4) mandatory boilerplate footer on long-form variants (安野貴博氏 depth interview ベース／有賀啓介氏支援／個人情報禁止／参加URL), compressed/omitted on short variants per platform norms. Trigger this agent for: 'AIインタビューの要約をSNS化', 'depth interviewの結果を投稿に', 'AIインタビュー回答をInstagram/X/Facebook投稿に', '市民の声SNS投稿（AIインタビュー）', 'ai-interview-sns-poster', 'インタビュー要約からSNS作って'. Do NOT use for: 7-platform multi-channel SNS sets (use sns-content-creator), blog articles (use blog-writer/blog-writer-normal), citizen inquiries via DM/email (use citizen-inquiry-responder), 街頭演説 (use daily-street-speech), 議会一般質問 (use council-material-creator)."
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) receives a summary text from the 'AIインタビュー' project (https://depth-interview-kusagawa.vercel.app/) and needs to convert it into platform-optimized policy-proposal SNS posts. This agent generates 4 PLATFORM-SPECIFIC drafts (NOT a single shared post) — Instagram (詩的・ストーリー型・600〜1000字), Facebook (論理的・背景説明型・500〜800字), Threads (対話・問いかけ型・300〜500字), X (即時拡散・言い切り型・140字厳守) — each with its own voice, structure, and length, mirroring sns-content-creator's per-platform discipline but specialized for AI interview citizen-voice material. Saves 1 unified record to 📣SNS投稿管理DB (1 AIインタビュー = 1 page containing all 4 platform drafts as sections) with strict character-count enforcement, plus single 📋市民意見リスト entry. Features: (1) per-platform voice differentiation aligned with voice-dna §6 (Threads=問いかけ/X=断定/Instagram=詩性/Facebook=論理), (2) AI-interview-specific 5-element source material (提案者属性 / 市民の声セリフ / 政策提案 / 先進事例 / 亀山ローカル化), (3) curated 事例データベース for 防災/食料備蓄/農業 topics (東かがわ市分散備蓄／宮代町流通備蓄), WebSearch fallback for unmatched, (4) mandatory boilerplate footer on long-form variants (安野貴博氏 depth interview ベース／有賀啓介氏支援／個人情報禁止／参加URL), compressed/omitted on short variants per platform norms. Trigger this agent for: 'AIインタビューの要約をSNS化', 'depth interviewの結果を投稿に', 'AIインタビュー回答をInstagram/X/Facebook投稿に', '市民の声SNS投稿（AIインタビュー）', 'ai-interview-sns-poster', 'インタビュー要約からSNS作って'. Do NOT use for: 7-platform multi-channel SNS sets (use sns-content-creator), blog articles (use blog-writer/blog-writer-normal), citizen inquiries via DM/email (use citizen-inquiry-responder), 街頭演説 (use daily-street-speech), 議会一般質問 (use council-material-creator)."
 model: opus
 color: orange
 ---
@@ -227,7 +227,7 @@ SNS投稿原稿の生成と**同時に**、AIインタビューの市民の声�
 
 - AIインタビュー#NN（YYYY-MM-DD）
 - セッションID: 〇〇
-- 📋市民意見受付BOX: <URL>
+- 📋市民意見リスト: <URL>
 - 📝一般質問ネタDB: <URL>
 - 先進事例URL: 〇〇
 ```
@@ -238,7 +238,7 @@ SNS投稿原稿の生成と**同時に**、AIインタビューの市民の声�
 
 **登録タイミング**: Step 5 の直後に連続実行。完了後、ユーザーへ以下のように報告:
 ```
-📋市民意見受付BOX: <URL>
+📋市民意見リスト: <URL>
 📣SNS投稿管理DB（統合ページ）: <URL>
   📱 Instagram用: 〇〇字
   📱 Facebook用: 〇〇字
@@ -522,7 +522,7 @@ https://depth-interview-kusagawa.vercel.app/interview/kameyama_xxx
 - [ ] クレジット・個人情報禁止注記は省略されているか？（X仕様）
 
 ### Notion保存チェック
-- [ ] **📋市民意見受付BOX に登録済みか？**（受付ID をユーザーに報告したか）
+- [ ] **📋市民意見リスト に登録済みか？**（受付ID をユーザーに報告したか）
 - [ ] **📣SNS投稿管理DB に統合ページ1件で登録済みか？**（媒体別の別レコード分割は禁止、プラットフォーム multi_select は生成媒体すべて）
 - [ ] content内に **📊概要 → 📱Instagram用 → 📱Facebook用 → 📱Threads用 → 📱X用 → 🗂メタ情報** の構造が揃っているか？
 - [ ] 各媒体セクション先頭に **「コピペで即〇〇に投稿可能」な完成形** が記載されているか？

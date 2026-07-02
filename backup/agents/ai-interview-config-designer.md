@@ -1,6 +1,6 @@
 ---
 name: "ai-interview-config-designer"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to DESIGN a NEW AI interview configuration for the depth-interview-kusagawa.vercel.app admin panel — given a policy theme as input, this agent produces all 8 fields of the interview setting form (config_id, タイトル, 説明, 推定時間, LLMプロバイダー, 初期挨拶, ナレッジソーステキスト, カスタムプロンプト, ステータス, ランディングページ概要, 質問テーマ, プライバシーノート, 質問設定 #1〜#N) ready for paste-and-save, AND auto-registers the config to 📡AIインタビュー設定DB (ds:a2396bf5-) with all long-form fields stored as Notion code blocks for one-click copy-paste to the admin panel, AND cross-registers a 調査中 entry to 📝一般質問ネタDB (ds:42716725-). This is the INVERSE of ai-interview-sns-poster: that one CONSUMES interview output → SNS posts; this one CREATES the interview config itself. The agent (1) analyzes the policy theme through Kameyama-local lens by auto-invoking kameyama-researcher (現状・計画・担当課・既存施策) and policy-researcher (国の動向・他自治体先進事例) in parallel, (2) optionally consults policy-archive-miner (草川の過去発言) and queries 📋市民意見受付BOX for existing citizen voices on the topic, (3) produces a config_id following the kameyama_<keyword> snake_case convention (e.g., kameyama_kosodate, kameyama_akiya), (4) crafts deeply-grounded ナレッジソーステキスト from real Kameyama context (NOT generic AI fluff — must include 計画名・統計数値・条例名・担当課名), (5) designs 5 question themes that move from broad expectation/concern → specific operational details, (6) generates 3〜5 質問項目 starting with the standard 在住・関わり方 question and progressing to深掘り questions with 3 ヒント each, (7) writes the master record to 📡AIインタビュー設定DB with all 12 fields as code blocks (Notion's one-click-copy UX), (8) cross-references in 📝一般質問ネタDB with bidirectional links. Trigger this agent for: 'AIインタビュー設定を作って', '新しいインタビューを設計', 'depth interviewの設定編集', '〇〇テーマでAIインタビュー作成', 'インタビュー設定の素案', 'config編集内容を考えて', 'ai-interview-config-designer', '〇〇でヒアリング設計'. Do NOT use for: SNS post creation from interview results (use ai-interview-sns-poster), citizen inquiry replies (use citizen-inquiry-responder), council questions (use council-material-creator)."
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to DESIGN a NEW AI interview configuration for the depth-interview-kusagawa.vercel.app admin panel — given a policy theme as input, this agent produces all 8 fields of the interview setting form (config_id, タイトル, 説明, 推定時間, LLMプロバイダー, 初期挨拶, ナレッジソーステキスト, カスタムプロンプト, ステータス, ランディングページ概要, 質問テーマ, プライバシーノート, 質問設定 #1〜#N) ready for paste-and-save, AND auto-registers the config to 📡AIインタビュー設定DB (ds:a2396bf5-) with all long-form fields stored as Notion code blocks for one-click copy-paste to the admin panel, AND cross-registers a 調査中 entry to 📝一般質問ネタDB (ds:42716725-). This is the INVERSE of ai-interview-sns-poster: that one CONSUMES interview output → SNS posts; this one CREATES the interview config itself. The agent (1) analyzes the policy theme through Kameyama-local lens by auto-invoking kameyama-researcher (現状・計画・担当課・既存施策) and policy-researcher (国の動向・他自治体先進事例) in parallel, (2) optionally consults policy-archive-miner (草川の過去発言) and queries 📋市民意見リスト for existing citizen voices on the topic, (3) produces a config_id following the kameyama_<keyword> snake_case convention (e.g., kameyama_kosodate, kameyama_akiya), (4) crafts deeply-grounded ナレッジソーステキスト from real Kameyama context (NOT generic AI fluff — must include 計画名・統計数値・条例名・担当課名), (5) designs 5 question themes that move from broad expectation/concern → specific operational details, (6) generates 3〜5 質問項目 starting with the standard 在住・関わり方 question and progressing to深掘り questions with 3 ヒント each, (7) writes the master record to 📡AIインタビュー設定DB with all 12 fields as code blocks (Notion's one-click-copy UX), (8) cross-references in 📝一般質問ネタDB with bidirectional links. Trigger this agent for: 'AIインタビュー設定を作って', '新しいインタビューを設計', 'depth interviewの設定編集', '〇〇テーマでAIインタビュー作成', 'インタビュー設定の素案', 'config編集内容を考えて', 'ai-interview-config-designer', '〇〇でヒアリング設計'. Do NOT use for: SNS post creation from interview results (use ai-interview-sns-poster), citizen inquiry replies (use citizen-inquiry-responder), council questions (use council-material-creator)."
 model: opus
 color: cyan
 ---
@@ -169,7 +169,7 @@ color: cyan
 - **元ネタ記事**: [URLがあれば]
 - **想定回答者**: ...
 - **議会連動**: 2026年〇月議会上程・採決に先立ち市民の声を収集
-- **既存市民意見との重複**: 📋市民意見受付BOXクエリ結果
+- **既存市民意見との重複**: 📋市民意見リストクエリ結果
 - **草川過去発言との整合**: policy-archive-miner結果
 - **公開後アクション**: 回答が3件以上集まったら ai-interview-sns-poster で順次SNS化
 - **関連エントリ**:
@@ -357,7 +357,7 @@ Claude Sonnet 4.5 (推奨)
 - **想定回答者**: {target}
 - **回答時間目安**: 約10分（推定時間600秒に整合）
 - **議会連動**: {あれば連動する議会タイミング}
-- **既存市民意見との重複**: {📋市民意見受付BOXクエリ結果}
+- **既存市民意見との重複**: {📋市民意見リストクエリ結果}
 - **草川過去発言との整合**: {policy-archive-miner結果}
 - **公開後アクション**: 回答が3件以上集まったら ai-interview-sns-poster で順次SNS化
 - **📡AIインタビュー設定DB登録**: ✅ 登録済み（ページURL: ◯◯／ステータス=設計中／コピペ可能なコードブロック構造）
@@ -449,7 +449,7 @@ Claude Sonnet 4.5 (推奨)
 
 [ai-interview-sns-poster]
     ├→ Instagram/X/Facebook投稿（拡散）
-    ├→ 📋市民意見受付BOX登録
+    ├→ 📋市民意見リスト登録
     └→ 📡AIインタビュー設定DB の回答数を更新
 
     ↓
