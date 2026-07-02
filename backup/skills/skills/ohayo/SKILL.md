@@ -3,7 +3,7 @@ name: ohayo
 description: 毎朝「おはよう」「おはよ」「morning」「朝のブリーフィング」「今日のタスク」「今日の予定教えて」などと入力されたら必ず起動する。Google Calendar・Gmail・Todoist・Notionを横断して今日1日の情報を収集し、日本語でまとめた朝のブリーフィングを出力するスキル。ユーザーが朝の挨拶をしたとき、または今日やることを把握したいと思われるとき、積極的にこのスキルを使うこと。
 ---
 
-# ohayo v3 — 朝のブリーフィング（2026-07-03 全面書き直し）
+# ohayo v3.1 — 朝のブリーフィング（2026-07-03 全面書き直し・同日v3.1修正）
 
 > v2系（12層パッチ・1,444行）を廃止し一直線の手順に再構築。旧版はclaude-config gitに保全。
 > v3の設計原則: **①実態とズレない**（死んだ手順ゼロ・自動化の死活を毎朝可視化）**②今日の行動に直結**（予定コンテキスト・議会/選挙カウントダウン・ニュース展開フック）**③燃費60〜80K**。
@@ -14,7 +14,8 @@ description: 毎朝「おはよう」「おはよ」「morning」「朝のブリ
 2. **チャット出力が主成果物**。Notionダッシュボードへの書込は3セクションのみ（§F）。ニュース・iJAMP・過去発言連動・Drive資料をダッシュボードに書くことは**ない**。
 3. **リトライ規律**: Notion書込がtimeoutしても即リトライ禁止（適用済みの可能性大）。fetch確認→未適用の場合のみ1回だけ再試行。
 4. ルーティンページ（`34acf503-`「📅毎日のルーティン（改訂版）」）には**一切書き込まない**（リセット処理は2026-05-08廃止済み）。
-5. 日付は `date` コマンドで実確認してから使う（誤日付事故対策）。
+5. 日付・曜日は `date '+%Y-%m-%d (%a)'` で実確認してから使う（7/3を木曜と誤記した事故対策・全セクションで同一値を使う）。
+6. **`notion-query-data-sources`（SQLモード）は使用禁止**。Businessプラン限定機能でブロックされる（2026-07-03実測）。使ってよいのは notion-fetch / notion-search / notion-query-database-view（view URL必須）のみ。ブロックに遭ったら「プラン制約」と騒がず、このルール違反を疑うこと。
 
 ## §0 実行チェックリスト（起動直後に内部初期化・全10項目）
 
@@ -47,6 +48,8 @@ description: 毎朝「おはよう」「おはよ」「morning」「朝のブリ
 
 oyasumiデイリーサマリの最新1件を notion-search →fetch（デイリーサマリ格納先: `https://www.notion.so/34ecf503a68f818299d3fabb7e7c4c5e` 配下）。要点3〜5行に圧縮してチャットに表示。見つからなければ「昨夜のまとめなし（oyasumi未実行）」1行。
 
+**🧾 タスク登録候補の承認（v3.1新設・必須）**: サマリに「🧾 タスク登録候補（承認待ち）」セクションがあれば、**候補を全件そのまま列挙**して「登録する？（全部/選んで/しない）」と草川に確認 → 承認分のみ `td.py add` で登録。**「N件自動登録しました」のような内訳なしの事後報告は禁止**（何が登録されたか分からない事故の再発防止）。過去に自動登録済みの表記を見つけた場合も内訳を必ず展開表示する。
+
 ## §3 今日の予定＋予定コンテキスト連動
 
 1. Google Calendar `list_events`（calendarId: **`kusakawa.taku@gmail.com` のみ**・今日0:00〜23:59）
@@ -66,13 +69,11 @@ oyasumiデイリーサマリの最新1件を notion-search →fetch（デイリ�
 1. `td.py morning` → **3ブロック（🔴期限超過／🟡本日／🟢今週中）を全件表示**（件数絞り込み禁止・[[feedback_ohayo_task_3block_display]]）
 2. **増分監査（v3変更）**: `td.py audit` の各指標件数を `~/.claude/projects/-Users-kusakawatakuya/ohayo_state.json` の前回値と比較し、**前回比の増減**で表示（例:「期限超過 92件（+3）」）。増分が +5 以上の指標のみ⚠️を付け、task-audit起動を提案。絶対値の常時🚨表示は廃止（オオカミ少年解消）。表示後、今回値をohayo_state.jsonへ保存（last_audit_date含む）。
 
-## §6 今朝のニュース＋過去発言grep（Notion 1call＋Bash 1call）
+## §6 今朝のニュース＋過去発言grep（Notion 1fetch＋Bash 1call・v3.1でクエリ全廃）
 
-1. 📰ニュースDB（data_source `29e5c1a2-d64d-4822-81fd-0d642c3f07bc`／view `https://www.notion.so/f2eefc669dd54648bbcdacdc8afa1158?v=357cf503a68f81e0b678000ca149e75e`）から**当日分**を1クエリ取得。
-2. チャットに亀山関連度順で表示。各件のフォーマット：
-   `・[★4] タイトル（出典・日付）→ 展開: 演説A案向き`
-   「展開」はDBの`活用`フィールド（news-briefing v3が登録時に付与）をそのまま表示。**ohayoでWebFetch再検証はしない**（登録前ゲートで済んでいる前提）。
-3. 当日0件かつ最終登録が26時間超 → §1の形式でRoutine警告。
+1. **📰今朝のニュースダイジェスト（page `391cf503-a68f-8194-be35-fec5aede8a5e`）を notion-fetch 1回**。収集Routine v3.1が毎朝6時に本日分へ全置換している固定ページで、新規・続報・dedup判定ログ・活用フックが全部入っている。**ニュースDBへのクエリは一切しない**。
+2. ダイジェストの内容を亀山関連度順でチャット表示（`・[★4] タイトル（出典）→ 展開: 演説` 形式）。続報があれば「続報: 案件名＋正ページリンク」も表示。
+3. **Routine死活判定**: ダイジェストの見出し日付が今日でない → `🚨 ニュース収集Routineが今朝動いていません（https://claude.ai/code/routines/ で確認）`。ダイジェストに🚨行があればそのまま表示。
 4. **過去発言連動**: 上位3件のキーワード（＋草川語彙の言い換え）で `grep -ril ~/.claude/agents/knowledge/kusagawa_archive/{01_council,02_publications,03_themes}/` → ヒットファイル名＋関連1行。ニュースと自分の過去発言が繋がる時だけ表示。
 
 ## §7 議会・選挙カウントダウン（v3新設・Notion 1call）
@@ -84,7 +85,7 @@ oyasumiデイリーサマリの最新1件を notion-search →fetch（デイリ�
 
 [[feedback_ohayo_content_proposal_always_show]]（毎朝必出力・トリガー型化禁止）を継承しつつ軽量化：
 1. 材料 = §6のニュース＋grep結果＋📝一般質問ネタDB（view `https://www.notion.so/cb47d25e30b14b61b39f56254bf9432a?v=2d912401-3794-484a-8252-04ade354fbd2`・調査中上位）1クエリ。
-2. **重複除外**: 📣SNS投稿管理DB（ds `1bd98deb-624f-402c-aeb3-bdaa4782b389`）の直近14日「完了」1クエリと突合 → 既発信テーマは除外 or 新規角度のみ（[[feedback_ohayo_duplication_check]]）。
+2. **重複除外**: 📣SNS投稿管理DBを notion-search（data_source_url=`collection://1bd98deb-624f-402c-aeb3-bdaa4782b389`・直近テーマ語で1回）で突合（SNS DBはviewが無いためviewクエリ不可・SQLは禁止） → 既発信テーマは除外 or 新規角度のみ（[[feedback_ohayo_duplication_check]]）。
 3. 出力: 🎤街頭演説3案（A深掘り/B共感/C攻め・テーマ単位・本文は生成しない）＋📝ブログ・SNSテーマ2〜3本（レーン付き）。分野は5ドメイン分散・選挙文脈は引っ込める（[[feedback_street_speech_topic_diversity]]他）。
 4. トリガー条件成立時のみ末尾に「💫 今日はフルパッケージ作る？（daily-content-generator）」を1行（自動連結禁止・[[feedback_ohayo_daily_content_generator_prompt]]）。
 
@@ -98,9 +99,9 @@ oyasumiデイリーサマリの最新1件を notion-search →fetch（デイリ�
 
 ## §10 シグナル欄（軽量・各1call以内）
 
-- **📡 policy-radar**: 🎯政策候補DB「草川承認待ち」＋📝ネタDB「🆕/🔄かつ調査中」を各1クエリ → 件数のみ（月曜=weekly実行後・毎月2日=monthly実行後の文言は従来通り。Routine: weekly `trig_01MyKkdatWADfmAdUgB3UDu7`／monthly `trig_019LPFjUFu9anWC53UFJCavK`）。0件なら1行。
+- **📡 policy-radar**: 📝ネタDBはview（`https://www.notion.so/cb47d25e30b14b61b39f56254bf9432a?v=2d912401-3794-484a-8252-04ade354fbd2`）をquery-database-viewで1回→ローカルで🆕/🔄・調査中を数える。🎯政策候補DBはnotion-search（data_source_url指定・「承認待ち」）1回。取得不能なら「⊘ radar件数取得不可（月曜はGmail下書き【週次policy-radar】で代替確認）」1行 → 件数のみ（月曜=weekly実行後・毎月2日=monthly実行後の文言は従来通り。Routine: weekly `trig_01MyKkdatWADfmAdUgB3UDu7`／monthly `trig_019LPFjUFu9anWC53UFJCavK`）。0件なら1行。
 - **📥 未分類インテーク**: notion-fetch `391cf503-a68f-8191-b218-e80fdc7aedeb` → 未チェック行数を「📥未分類 N件」表示。3件以上で「棚卸ししよ」を添える（smart-intakeの締めループ）。
-- **📂 Drive新規資料**: Drive資料サマリDB（`collection://317c4d02-ac0a-48c3-9fc5-56029000e64e`）の昨日分1クエリ → 件数＋主要2件の1行リンク。
+- **📂 Drive新規資料**: §2で読んだ昨夜のまとめの「Drive新規N件」をそのまま転記（**追加クエリしない**。サマリに無い場合のみ「⊘ oyasumi未実行のため不明」1行）。
 - **🌐 全体地図チェック（毎月1〜3日のみ）**: 「🌐Notion全体地図」の last_edited が60日超なら「地図が古い→月次棚卸し推奨」1行。
 
 ## §F ダッシュボード更新（3セクション限定・Notion 2〜4call）
