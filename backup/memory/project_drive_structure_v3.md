@@ -134,3 +134,21 @@ metadata:
 - 旧版: [[project_drive_structure_v2]]（2026-05-21設計、rclone路線、停止）
 - 関連skill: drive-intake（要更新）、council-mode-toggle（要更新）
 - 過去シリーズ: [[project_drive_sync_v2]]、[[project_mydrive_full_intake]]
+
+---
+
+## 【v4 修理・拡張 2026-07-02】ファイル管理システム再構築
+
+**発覚した故障**: 夜間launchdパイプラインが2026-05末〜07-02の間、TCC権限欠如（launchd起動の/bin/bashはCloudStorageが空に見える）で毎晩 council=0/daily=0 のゼロ処理。INBOX滞留12件・index更新停止（+133件未反映）が発生していた。
+
+**v4修理内容**:
+1. ランナーを `~/.local/bin/kusagawa-pipeline-bash`（bashコピー・FDA付与）に差替え
+2. `_auto_intake.sh` v4化: 可視性チェック（VISIBILITY_ERROR検出）／council判定不能はmtimeで`📥要確認_YYYY-MM/`へ／個人情報キーワード自動隔離／`_pipeline_status.json`出力
+3. ohayo v2.7 が毎朝 status を1行表示（サイレント故障の根絶）
+4. `_local_sweep.sh` 新設（日曜・Desktop/Downloads 30日超→~/Archive/_sweep/）
+5. 新区画: `00_名簿・個人情報/`（index除外）・`06_フォーム・アンケート運用/`
+6. Drive直下野良27件一掃・INBOX12件処理・要判定はそのまま（99_その他の再分類は後日）
+7. ローカル: ~/Archive新設（旧Documents14GB脱iCloud）・Desktop/Downloads 232件ゼロベース振分け・outputs一本化(~/outputs)
+8. 全移動記録: `~/Archive/_relocation_log_20260702.csv`
+
+**残タスク**: 99_その他1,415件・後援会2,585件の再分類（後日）／要判定169件の草川確認／`~/Archive/_trash_pending_20260702/`(38件)と`_要確認_20260702/`(19件)の草川確認。詳細は [[reference_storage_map]]
