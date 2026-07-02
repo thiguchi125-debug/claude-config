@@ -4,6 +4,7 @@
 
 ## 🔄 進行中プロジェクト
 
+- [sparkスキル（小さな種→発信）](project_spark_skill.md) — 2026-07-03新設。ひらめき/ニュースURL/活動メモ→接地→切り口2〜3案→選択分だけ生成→安全ゲート→保存。「貯めて」で📣SNS投稿管理DBに💡ストック。初回実運用フィードバック待ち
 - [Notion大改修＋ohayo/news v3＋smart-intake](project_notion_ohayo_news_v3_renewal.md) — 2026-07-03実施。ohayo=150行v3・news=dedup+活用フック・smart-intake新設（投げ込み保存+「〇〇どこ？」検索・🔖台帳）・🗄️旧アーカイブ収容。翌朝ニュース重複停止とohayo初回実走の確認待ち
 - [議会だより制作エージェント](project_gikai_dayori_creator.md) — gikai-dayori-creator整備完了(2026-07-02)。会議録→650字→提出docx＋引用参照マークdocxのフルパイプライン。スクリプト=~/.claude/scripts/gikai_dayori/。トリガー「議会だより作って」（要再起動）
 - [Notionプロジェクト・プラットフォーム](project_notion_project_platform.md) — Todoist主要PJ対応の情報蓄積母艦DB（page=37a71464・ds=8975c6a9）。Todoist=実行/Notion=蓄積。初期17PJ投入済
