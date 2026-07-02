@@ -23,7 +23,7 @@
 - [市民意見DBはc2c34bd8に一本化](feedback_shimin_iken_db_consolidation_c2c34bd8.md) — 正本は📝市民意見リスト`c2c34bd8-`のみ。旧📋受付BOX`354432ec-`廃止。対応状況status廃止
 - [市民意見「経過報告」型返信メールの確定スタイル](feedback_citizen_reply_progress_report_style.md) — txt→open -e／冒頭フルネーム＋様・署名なし・「平素より〜」開始・【】見出し・「おっしゃる通り」で受ける
 - [市民SNS DM返信の確定スタイル](feedback_citizen_dm_reply_finalize_style.md) — 無知露呈禁止・現場情報は「大事な現場の課題」・遅延は冒頭お詫び・DMは署名なし・「本会議で」明示・「議会で継続して追いかけます」
-- [主要エージェントが部分ロードで未登録](feedback_agent_registry_partial_load.md) — .md実在でも起動不可。Available一覧で確認／再起動で再走査／回避はgeneral-purposeに.md読ませ成り代わり
+- [エージェント部分ロードの根本原因と修理記録](feedback_agent_registry_partial_load.md) — 原因=agents/knowledge配下の入れ子.claude/agent-memoryがレジストリ汚染。2026-07-02隔離修理済。再発時は`find ~/.claude/agents/knowledge -type d -name .claude`
 - [印刷物レイアウトはprint-layout-architectに任せる](feedback_print_layout_architect_agent.md) — 画像小/中途半端余白/文章を横に系の手戻り防止。地図大きく・text-beside-image2カラム・Chrome実画素確認反復
 - [print-layout-architectが0ツールで停止→自分で実測ループ](feedback_print_layout_architect_stalls.md) — 空応答即停止。Chrome実測（scrollHeight−clientHeight=0）。`margin-top:auto`禁。横長地図はaspect-ratio+object-fit cover
 - [一般質問設計の専任エージェント](feedback_general_question_architect_agent.md) — general-question-architect。時間逆算＋逃げ封じ（先に認めてから刺す）＋重複/既決チェック。出力＝設計書
@@ -141,4 +141,4 @@
 - ニュース/政策: project_news_briefing_system.md / project_ijamp_integration.md / project_policy_update_system.md / project_policy_expert_agents_11.md
 - 発信物安全/品質: project_content_safety_gates.md / project_content_pipeline_quality.md / project_published_archive_system.md / project_blog_normal_mode.md
 - AIインタビュー: project_ai_interview_config_db.md / project_ai_interview_config_designer.md / project_ai_interview_sns_poster.md
-- エージェント本体: ~/.claude/agents/ 配下（kameyama-researcher / community-rally-speaker / daily-street-speech / speech-writer / electoral-district-strategist / agenda-analyzer / counter-argument-simulator / video-content-strategist / short-video-virality-architect / sns-content-polisher / policy-archive-miner / policy-validator / design-director / design-inspiration-researcher / print-designer / photo-curator 等）
+- エージェント本体: ~/.claude/agents/ 配下（kameyama-researcher / community-rally-speaker / daily-street-speech / speech-writer / electoral-district-strategist / agenda-analyzer / counter-argument-simulator / short-video-virality-architect / sns-content-polisher / policy-archive-miner / policy-validator / design-director / design-inspiration-researcher / print-designer / photo-curator 等）

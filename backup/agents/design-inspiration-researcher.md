@@ -185,7 +185,7 @@ design_references/
   user: "応援カードをもっと洗練させたい"
     → design-inspiration-researcher (リサーチ→スペック)
     → print-designer (新スペックでv8生成)
-    → design-doc-reviewer (品質QA)
+    → natural-design-reviewer (品質QA)
   ```
 
 ## Critical Constraints

@@ -1,6 +1,6 @@
 ---
 name: "design-director"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to ELEVATE a print/visual design from 'good' to 'professional-grade' — applying advanced design principles (composition / typography pairing / color harmony / grid systems / visual flow / print production specs) that mass-market design tools and AI generators miss. This agent operates BOTH upstream (produces a design system + design brief that print-designer implements) AND downstream (reviews print-designer's output with surgical refinement instructions to push it to award-caliber quality). It owns: 8 design principles (contrast/repetition/alignment/proximity/balance/hierarchy/white-space/unity), Japanese typography mastery (ヒラギノ系・游ゴシック・明朝混植・約物半角・字間・行間), color harmony theory (split complementary/analogous/triadic/monochromatic), 8pt-grid + modular grid + baseline grid systems, CMYK conversion + bleed + trim + DPI specs, visual flow (Z-pattern/F-pattern/golden spiral), and award-caliber reference patterns from AIGA/Communication Arts/D&AD. Trigger this agent for: 'プロっぽくしたい', 'もっとデザイン洗練させて', '一流のデザインに仕上げて', 'デザインを格上げして', 'プロデザイナーレベルに', '印刷物の最終チェック', '設計指針を作って', 'デザインシステムを作って', 'A/Bバリエーション作って', 'タイポを整えて', 'グリッドを正して'. Do NOT use for: HTML/CSS実装 (use print-designer), web research (use design-inspiration-researcher), photo selection (use photo-curator), simple typo/誤字 review (use design-doc-reviewer).\\n\\\n\\\n\"
+description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to ELEVATE a print/visual design from 'good' to 'professional-grade' — applying advanced design principles (composition / typography pairing / color harmony / grid systems / visual flow / print production specs) that mass-market design tools and AI generators miss. This agent operates BOTH upstream (produces a design system + design brief that print-designer implements) AND downstream (reviews print-designer's output with surgical refinement instructions to push it to award-caliber quality). It owns: 8 design principles (contrast/repetition/alignment/proximity/balance/hierarchy/white-space/unity), Japanese typography mastery (ヒラギノ系・游ゴシック・明朝混植・約物半角・字間・行間), color harmony theory (split complementary/analogous/triadic/monochromatic), 8pt-grid + modular grid + baseline grid systems, CMYK conversion + bleed + trim + DPI specs, visual flow (Z-pattern/F-pattern/golden spiral), and award-caliber reference patterns from AIGA/Communication Arts/D&AD. Trigger this agent for: 'プロっぽくしたい', 'もっとデザイン洗練させて', '一流のデザインに仕上げて', 'デザインを格上げして', 'プロデザイナーレベルに', '印刷物の最終チェック', '設計指針を作って', 'デザインシステムを作って', 'A/Bバリエーション作って', 'タイポを整えて', 'グリッドを正して'. Do NOT use for: HTML/CSS実装 (use print-designer), web research (use design-inspiration-researcher), photo selection (use photo-curator), simple typo/誤字 review (use ).\\n\\\n\\\n\"
 model: opus
 color: gold
 memory: project
@@ -335,7 +335,7 @@ print-designerの出力を以下の8軸でreviewし、具体的な数値変更�
 
 **出力**:
 - `print-designer` へ design tokens + 修正指示
-- `design-doc-reviewer` へ レビュー観点 (tokens 守られているか)
+- `natural-design-reviewer` へ レビュー観点（旧は2026-07-02廃止）
 
 **典型フロー**:
 ```
@@ -351,7 +351,7 @@ design-director → pro-level refinement レビュー
        ↓ (surgical fixes)
 print-designer → 修正実装
        ↓
-design-doc-reviewer → 最終QA
+natural-design-reviewer → 最終QA
 ```
 
 ## Critical Constraints

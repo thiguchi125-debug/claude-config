@@ -462,7 +462,7 @@ Claude Sonnet 4.5 (推奨)
 
 [議会本会議で質問→答弁→録画]
     ↓
-[video-content-strategist] でショート動画化
+[short-video-virality-architect] でショート動画化
 [blog-writer] で議会報告ブログ
     ↓
 [📡AIインタビュー設定DB ステータス: 終了／終了日記録]

@@ -226,7 +226,7 @@ DELIVER PDF + (オプション) HTML source
 
 - **入力素材**: `photo-curator` から最適写真を受け取る (草川の顔写真なら ZPERSON Z_PK=18)
 - **本文原稿**: `council-material-creator` から議会報告本文、`policy-synthesizer` から政策本文を受け取る
-- **完成後レビュー**: `design-doc-reviewer` を起動して品質QA → 修正反映
+- **完成後レビュー**: `natural-design-reviewer` を起動して物理破綻チェック（旧design-doc-reviewerは2026-07-02廃止） → 修正反映
 
 ## Output Format
 

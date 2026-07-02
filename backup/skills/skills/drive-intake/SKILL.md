@@ -175,4 +175,4 @@ grep対象として高速化：PDF直接grep（OCR要・遅い）の代わりに
 ## 関連
 - v3アーキ詳細: `~/.claude/projects/-Users-kusakawatakuya/memory/project_drive_structure_v3.md`
 - 旧版（参考）: `project_drive_structure_v2.md`
-- 関連skill: council-mode-toggle（v3で簡素化）／ohayo（_index累積数を朝表示）／oyasumi（夜サマリ）
+- 関連skill: ohayo（_index累積数を朝表示）／oyasumi（夜サマリ）
