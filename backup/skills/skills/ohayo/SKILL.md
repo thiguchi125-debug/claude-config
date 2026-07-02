@@ -256,6 +256,20 @@ D-F. **将来D（曜日限定自動）への拡張余地**：火・木のみ自�
 
 詳細は [[feedback_ohayo_stale_display_removal]] 参照。
 
+### 📌 2026-07-02 v2.7 追加（📥Drive取込パイプライン監視・サイレント故障の再発防止）
+
+背景: 2026-05末〜06末、夜間launchdパイプラインがTCC権限欠如で「INBOXが空に見える」状態のまま毎晩 council=0/daily=0 を記録し続け、誰も気づかず滞留12件が発生した（[[feedback_system_closing_loops_rot]]の実例）。ohayoが毎朝ステータスを読むことで締めループを定時トリガー化する。
+
+39. **§📥 取込ステータス（チャット出力のみ・Notion書込なし・最軽量）**：起動時に以下の1ファイルをReadする（トークン+0.2K程度）：
+    `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_pipeline_status.json`
+    表示ルール（🗞️ニュースの直前に1〜2行）：
+    - `error: "none"` かつ inbox_remaining=0 → `📥 昨夜の取込: council N件 / daily M件 ✅`（全て0でも1行出す＝生存確認）
+    - `inbox_remaining > 0` → `📥 INBOX滞留 K件 — 「取り込んで」で処理できます` を⚠️付きで表示
+    - `error: "visibility_error"` → `🚨 取込パイプライン権限エラー（フルディスクアクセス確認: システム設定→プライバシー→FDA→kusagawa-pipeline-bash）` を最上部に表示
+    - `error: "symlink_missing"` → `🚨 Drive symlink切れ` を最上部に表示
+    - ファイル自体が無い/last_run_atが48時間以上前 → `🚨 取込パイプラインが動いていません（launchctl要確認）` を表示
+40. **判断はしない**: ohayoは表示と誘導のみ。実際の取込は「取り込んで」（drive-intake）に委ねる。
+
 ### 燃費目標（v2.5）
 
 - v2.4見積り：105〜110K
