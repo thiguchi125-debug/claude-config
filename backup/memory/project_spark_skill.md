@@ -9,7 +9,7 @@ metadata:
 
 2026-07-03、新スキル **spark** を `~/.claude/skills/spark/SKILL.md` に作成（設計書=drafts/2026-07-03_sparkスキル設計_v1.md）。
 
-**役割**: ひらめき一言・ニュースURL1本・活動メモ数行という「小さな種」を、①受付分類 ②アーカイブgrep接地（省略禁止）③切り口2〜3案提示（1回確認・💾貯めておく選択肢つき）④選択分だけ生成（sns-content-creator該当PFのみ/blog-writer-normal等へ委譲）⑤fact-checker→risk-reviewer→D1 drafts保存→承認後1回Notion保存→🔖台帳、の5ステップで発信に育てる。
+**役割**: ひらめき一言・ニュースURL1本・活動メモ数行という「小さな種」を、①受付分類 ②アーカイブgrep接地（省略禁止）③切り口2〜3案提示（1回確認・各案に不足情報1行・💾貯めておく選択肢つき）③.5 調査ブースト（切り口確定後に不足だけ狙い撃ち。軽微=自前WebSearch／構造的=kameyama-researcher or policy-researcherをD5厳守で1回だけ／両方不足=content-pipeline委譲。結果は事実パックとして生成に渡す）④選択分だけ生成（sns-content-creator該当PFのみ/blog-writer-normal等へ委譲）⑤fact-checker→risk-reviewer→D1 drafts保存→承認後1回Notion保存→🔖台帳、で発信に育てる。
 
 **棲み分け**: 「記録」→nichijo／「メモ:」保存意図→smart-intake／まとまった素材→content-pipeline／「今日の発信」→daily-content-generator。ストックは新DBを作らず📣SNS投稿管理DB（ds 1bd98deb-）にタイトル💡・ステータス未着手で登録し、daily-content-generatorの朝棚卸しが拾う設計。
 
