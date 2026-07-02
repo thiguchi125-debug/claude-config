@@ -1,1 +1,0 @@
-- [気象警報時 小中学校 休業・始業繰下げ基準ベンチマーク](reference_weather_warning_school_closure_benchmarks.md) — 津/鈴鹿/桑名/松阪/可児/東金の時刻ルール一次資料URL付き。亀山の基準明文化用条文素材
