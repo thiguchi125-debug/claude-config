@@ -14,6 +14,7 @@
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
+- [デザイン品質基準=中庄夏祭りポスター2026](feedback_design_quality_bar_natsumatsuri2026.md) — 全デザイン制作物はこの水準以上。参照忠実再現・グリフ単位検品・レイヤー順・EYES-FIRST・完成処理込み。見本=drafts/2026-08_中庄夏祭りポスター
 - [イベント運営段取り表はスマホ縦スクロールPDF](feedback_event_runsheet_mobile_pdf_format.md) — 幅390px1ページ縦長・カード型・絵文字なし。A4/長尺PNGはNG。実測+200px・/Count=1まで高さ探索。個人情報は見出し＋名に注意書き
 - [ohayoダッシュボードのタスク/PJ欄もTodoist由来に](feedback_ohayo_dashboard_task_project_todoist.md) — 朝の✅今日のタスク/🔗進行中PJはtd.pyから。Notion紐付け・mention-page張らない
 - [システムの法則＝自動トリガー有=生/記憶依存の締め=腐る](feedback_system_closing_loops_rot.md) — 締め工程を定時トリガーに載せる・機械可読な一次情報から自動導出
