@@ -32,7 +32,9 @@ mkdir -p "$MEM_DST"
 rsync -a "$SRC/memory/" "$MEM_DST/"
 
 echo "[restore] カスタムskills を復元"
-SKILL_DST="$DST/plugins/cache/claude-plugins-official/skill-creator/unknown"
+# 2026-07-04変更: 旧復元先の plugins cache はプラグイン自動更新で上書きされ
+# スキル消失事故 (2026-07-03) の原因になった。復元先は ~/.claude/skills/ のみ。
+SKILL_DST="$DST/skills"
 mkdir -p "$SKILL_DST"
 rsync -a "$SRC/skills/" "$SKILL_DST/"
 

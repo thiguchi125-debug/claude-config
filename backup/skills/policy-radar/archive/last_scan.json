@@ -1,0 +1,8 @@
+{
+  "last_scan_at": null,
+  "last_scan_mode": null,
+  "next_scan_recommended_at": "2026-05-22T06:00:00+09:00",
+  "scan_history": [],
+  "initialized_at": "2026-05-21",
+  "note": "初回起動時に null を上書き。/policy-radar 実行時にこのファイルを更新する。"
+}

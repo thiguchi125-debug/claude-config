@@ -1,0 +1,394 @@
+# policy-radar 監視情報源リスト
+# 草川たくや（亀山市議会議員）が編集可能
+# 編集後、次回 /policy-radar 起動時から反映
+#
+# 各源の "priority" は朝の定期スキャンの取得優先度
+#   high  = 必ず毎回チェック
+#   mid   = 隔日 or 週次でチェック（時間配分次第）
+#   low   = 月次 or テーマ深掘り時のみ
+#
+# 各源の "category" は kameyama_context.md のテーマ分類とリンク
+
+# ===========================================
+# 中央省庁（最重要・毎回チェック）
+# ===========================================
+中央省庁:
+  - name: 国土交通省 報道発表
+    url: https://www.mlit.go.jp/report/press/
+    priority: high
+    category: [住宅, インフラ, 公共交通, 防災]
+    note: 住生活基本計画・関西本線・草津線・地域公共交通計画関連
+
+  - name: 厚生労働省 報道発表
+    url: https://www.mhlw.go.jp/stf/houdou/index.html
+    priority: high
+    category: [医療, 福祉, 介護, 産後ケア]
+
+  - name: こども家庭庁 報道発表
+    url: https://www.cfa.go.jp/news/
+    priority: high
+    category: [子育て, 保育, 誰でも通園, 5歳児健診]
+    note: 草川の継続テーマ最重要源
+
+  - name: 文部科学省 報道発表
+    url: https://www.mext.go.jp/b_menu/houdou/
+    priority: high
+    category: [教育, 学校給食, 部活動地域移行, 不登校]
+
+  - name: 総務省 報道発表
+    url: https://www.soumu.go.jp/menu_news/s-news/index.html
+    priority: high
+    category: [自治体DX, 地方財政, 消防団, マイナンバー]
+
+  - name: デジタル庁 ニュース
+    url: https://www.digital.go.jp/news
+    priority: high
+    category: [行政DX, 行かない窓口, AIチャットボット]
+
+  - name: 内閣府 政策動向
+    url: https://www.cao.go.jp/news_topic.html
+    priority: high
+    category: [防災, こども政策, 地方創生]
+
+  - name: 内閣府 防災情報
+    url: https://www.bousai.go.jp/index.html
+    priority: high
+    category: [防災, 避難計画, 南海トラフ, 線状降水帯]
+    note: 要配慮者個別避難計画は本サイトが一次情報
+
+  - name: 経済産業省 報道発表
+    url: https://www.meti.go.jp/press/
+    priority: mid
+    category: [産業誘致, AI半導体, 中小企業, 商店街]
+
+  - name: 環境省 報道発表
+    url: https://www.env.go.jp/press/index.html
+    priority: mid
+    category: [太陽光規制, クーリングシェルター, 気候変動適応]
+
+  - name: 農林水産省 報道発表
+    url: https://www.maff.go.jp/j/press/
+    priority: mid
+    category: [農業, 鳥獣害, 6次産業化, 亀山茶]
+
+  - name: 気象庁 報道発表
+    url: https://www.jma.go.jp/jma/press/index.html
+    priority: high
+    category: [防災, 警報体系, 線状降水帯]
+    note: 2026-05-29 新警報体系運用開始
+
+# ===========================================
+# 中央省庁の基本計画改定動向（インテリジェンス層・最重要・追加 2026-05-21）
+# ===========================================
+# モードD月次棚卸しで毎月必ずチェックする「基本計画」群。
+# 「閣議決定」「審議会答申」「パブコメ開始」「法案提出」を察知して亀山塩漬け計画改定主導につなげる。
+基本計画改定動向:
+  - name: 住生活基本計画（全国計画）
+    url: https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000023.html
+    priority: high
+    category: [住宅, 居住支援, 空家]
+    cycle: 5年
+    last_revised: 2026-03-27
+    note: 亀山住生活基本計画(2014塩漬け)の改定主導論拠
+
+  - name: 国土形成計画
+    url: https://www.mlit.go.jp/kokudoseisaku/kokudokeikaku_fr3_000003.html
+    priority: low
+    category: [国土計画]
+    cycle: 10年
+    last_revised: 2023-07
+
+  - name: 社会資本整備重点計画
+    url: https://www.mlit.go.jp/sogoseisaku/point/sosei_point_tk_000003.html
+    priority: high
+    category: [インフラ, 都市計画]
+    cycle: 5年
+    last_revised: 2026-01-16
+    note: 亀山都市マスタープラン改定主導論拠
+
+  - name: 交通政策基本計画
+    url: https://www.mlit.go.jp/sogoseisaku/transport/sosei_transport_tk_000035.html
+    priority: high
+    category: [公共交通]
+    cycle: 5年
+    last_revised: 2026-01-16
+    note: 第3次計画で「自治体補完代替制度」明文化・亀山リ・デザイン論拠
+
+  - name: 教育振興基本計画
+    url: https://www.mext.go.jp/a_menu/keikaku/index.htm
+    priority: mid
+    category: [教育]
+    cycle: 5年
+    last_revised: 2023-06
+    note: 第4期R5〜R9・第5期検討は2027頃
+
+  - name: こども大綱・こどもまんなか実行計画
+    url: https://www.cfa.go.jp/policies/kodomo-taikou
+    priority: high
+    category: [子育て, 保育]
+    cycle: 5年
+    last_revised: 2023-12
+    note: 実行計画2026は6月決定予定
+
+  - name: 健康日本21（第三次）アクションプラン
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kenkounippon21.html
+    priority: mid
+    category: [健康, 医療]
+    cycle: 12年
+    last_revised: 2024-から
+    note: アクションプラン2026年度から自治体提示
+
+  - name: 介護保険事業（支援）計画 基本指針
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000209389.html
+    priority: mid
+    category: [介護, 福祉]
+    cycle: 3年
+    last_revised: R6〜R8
+    note: 第9期(R9〜R11)指針は2026年度作成
+
+  - name: 第8次医療計画 / 地域医療構想
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000176029.html
+    priority: mid
+    category: [医療]
+    cycle: 5年
+    last_revised: 2024-2029
+    note: 新たな地域医療構想ガイドライン2026年4月公表予定
+
+  - name: 環境基本計画（第六次）
+    url: https://www.env.go.jp/policy/kihon_keikaku/
+    priority: high
+    category: [環境]
+    cycle: 6年
+    last_revised: 2024-05
+
+  - name: エネルギー基本計画（第7次）
+    url: https://www.enecho.meti.go.jp/category/others/basic_plan/
+    priority: high
+    category: [エネルギー, 太陽光]
+    cycle: 3年
+    last_revised: 2025-02-18
+    note: 再エネ「最大電源」位置づけ・2040年4〜5割
+
+  - name: 地球温暖化対策計画
+    url: https://www.env.go.jp/earth/ondanka/keikaku/250218.html
+    priority: high
+    category: [環境, 温対]
+    last_revised: 2025-02-18
+    note: 新NDC 2035年▲60%・2040年▲73%・自治体への明文要請
+
+  - name: 気候変動適応計画
+    url: https://www.env.go.jp/earth/earth/tekiou/
+    priority: mid
+    category: [気候変動]
+
+  - name: 国土強靱化基本計画 / 実施中期計画
+    url: https://www.cas.go.jp/jp/seisaku/kokudo_kyoujinka/kihon.html
+    priority: high
+    category: [防災, 国土強靱化]
+    last_revised: 2025-06（実施中期計画第1次）
+    note: 地域計画策定ガイドライン第2版 2026/3確定版
+
+  - name: 防災基本計画
+    url: https://www.bousai.go.jp/taisaku/keikaku/kihon.html
+    priority: high
+    category: [防災]
+    last_revised: 2025-07-01
+    note: 林野火災対策編・避難所環境整備強化
+
+  - name: 景観法運用指針
+    url: https://www.mlit.go.jp/toshi/townscape/toshi_townscape_tk_000038.html
+    priority: high
+    category: [景観, 都市計画]
+    last_revised: 2026-03-31
+    note: 亀山関宿重伝建保有・改正対応必須
+
+  - name: 空家等対策基本指針
+    url: https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000035.html
+    priority: high
+    category: [空家, 住宅]
+    note: 住生活基本計画と連動・2030年400万戸KPI
+
+  - name: 地方創生2.0基本構想
+    url: https://www.cas.go.jp/jp/seisaku/atarashii_chihousousei/
+    priority: high
+    category: [総合計画]
+    last_revised: 2025-06-13
+    note: 市町村への総合戦略評価・検証要請
+
+  - name: 都市計画運用指針
+    url: https://www.mlit.go.jp/toshi/city_plan/toshi_city_plan_tk_000043.html
+    priority: mid
+    category: [都市計画]
+
+  - name: 公営住宅等長寿命化計画策定指針
+    url: https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000037.html
+    priority: mid
+    category: [住宅, 公営住宅]
+
+# ===========================================
+# 審議会・分科会（議事録レベル・インテリジェンス強化）
+# ===========================================
+審議会:
+  - name: 社会資本整備審議会 住宅宅地分科会
+    url: https://www.mlit.go.jp/policy/shingikai/s103_jutakutakuchi01.html
+    priority: high
+    category: [住宅, 居住支援]
+    note: 住生活基本計画の議論母体
+
+  - name: 社会資本整備審議会 都市計画分科会
+    url: https://www.mlit.go.jp/policy/shingikai/s103_toshikeikaku01.html
+    priority: high
+    category: [都市計画, 立地適正化]
+
+  - name: 中央教育審議会
+    url: https://www.mext.go.jp/b_menu/shingi/chukyo/index.htm
+    priority: mid
+    category: [教育, 学校制度, 部活動]
+
+  - name: 社会保障審議会
+    url: https://www.mhlw.go.jp/stf/shingi/shingi-hosho_127719.html
+    priority: mid
+    category: [医療, 介護, 福祉]
+
+  - name: こども家庭審議会
+    url: https://www.cfa.go.jp/councils/shingikai
+    priority: high
+    category: [子育て, 保育, 児童福祉]
+
+  - name: 国土審議会 計画推進部会
+    url: https://www.mlit.go.jp/policy/shingikai/s101_sokai01.html
+    priority: mid
+    category: [国土計画, 広域連携]
+
+  - name: 中央環境審議会
+    url: https://www.env.go.jp/council/index.html
+    priority: high
+    category: [環境, 温対, 太陽光]
+
+  - name: 産業構造審議会
+    url: https://www.meti.go.jp/shingikai/sankoshin/
+    priority: mid
+    category: [産業, エネルギー]
+
+  - name: 交通政策審議会 地域公共交通部会
+    url: https://www.mlit.go.jp/policy/shingikai/sogo08_sg_000028.html
+    priority: high
+    category: [公共交通, リ・デザイン]
+
+  - name: 国土強靱化推進会議
+    url: https://www.cas.go.jp/jp/seisaku/kokudo_kyoujinka/suishin_kaigi/
+    priority: mid
+    category: [防災, 国土強靱化]
+
+# ===========================================
+# 三重県
+# ===========================================
+三重県:
+  - name: 三重県知事会見
+    url: https://www.pref.mie.lg.jp/CHIJI/HP/index.htm
+    priority: high
+    category: [県政全般]
+
+  - name: 三重県議会会議録
+    url: https://www.pref.mie.lg.jp/GIKAI/HP/index.htm
+    priority: mid
+    category: [県議会動向]
+
+  - name: 三重県 報道発表
+    url: https://www.pref.mie.lg.jp/SOSHIKI/houdou.htm
+    priority: high
+    category: [県政全般]
+
+  - name: 三重県防災対策部
+    url: https://www.pref.mie.lg.jp/BOUSAI/HP/index.htm
+    priority: high
+    category: [防災, 南海トラフ, 線状降水帯]
+
+  - name: 三重県デジタル戦略
+    url: https://www.pref.mie.lg.jp/DIGI/HP/index.htm
+    priority: mid
+    category: [行政DX, 自治体クラウド]
+
+# ===========================================
+# 隣接・類似自治体（参照先）
+# ===========================================
+類似自治体:
+  - name: 鈴鹿市
+    url: https://www.city.suzuka.lg.jp/news/index.html
+    priority: mid
+    category: [隣接自治体]
+
+  - name: 四日市市
+    url: https://www.city.yokkaichi.lg.jp/cmsfiles/contents/0000000/000179/oshirase.html
+    priority: mid
+    category: [県内中核市]
+
+  - name: 伊賀市
+    url: https://www.city.iga.lg.jp/0000000456.html
+    priority: mid
+    category: [人口同規模・東海圏]
+
+  - name: 桑名市
+    url: https://www.city.kuwana.lg.jp/index.html
+    priority: low
+    category: [産後ケア・選べる子育てリフレッシュ参照]
+
+  - name: いなべ市
+    url: https://www.city.inabe.mie.jp/
+    priority: low
+    category: [子育て申請ワンストップ参照]
+
+# ===========================================
+# 統計・データソース
+# ===========================================
+統計:
+  - name: 政府統計の総合窓口 e-Stat
+    url: https://www.e-stat.go.jp/
+    priority: low
+    category: [統計データ]
+    note: テーマ深掘り時のみ
+
+  - name: RESAS（地域経済分析システム）
+    url: https://resas.go.jp/
+    priority: low
+    category: [地域経済データ]
+
+# ===========================================
+# 政策ベンチマーク（先進事例）
+# ===========================================
+先進事例:
+  - name: 高島市（滋賀・要配慮者避難計画）
+    url: https://www.city.takashima.lg.jp/
+    priority: mid
+    category: [要配慮者避難計画ベンチマーク]
+    note: 「滋賀モデル」の本拠地
+
+  - name: 飯田市（長野・太陽光地域協議会）
+    url: https://www.city.iida.lg.jp/
+    priority: mid
+    category: [太陽光規制ベンチマーク]
+    note: 飯田モデルの本拠地
+
+  - name: 足利市（栃木・山火事条例）
+    url: https://www.city.ashikaga.tochigi.jp/
+    priority: low
+    category: [山火事防止条例ベンチマーク]
+
+# ===========================================
+# 監視除外（ノイズ源）
+# ===========================================
+# 以下は意図的に除外。スキャン対象としない。
+exclude:
+  - 一般ニュースサイト（Yahoo!ニュース、ニュースサイトのRSS等）
+  - 業界団体PR・プレスリリースのみのサイト
+  - 大都市（東京23区・大阪市・名古屋市等）の局所的取り組み
+  - 政治パフォーマンス報道
+  - 既に決着済の議論・廃止済の制度
+
+# ===========================================
+# メモ
+# ===========================================
+# - 情報源の追加・削除は本ファイルを直接編集
+# - URLが取得不能になった場合は priority: low に下げる
+# - 新しい先進事例を見つけたら 先進事例 セクションに追加
+# - 3か月運用後、ノイズが多い源は priority: low か exclude へ

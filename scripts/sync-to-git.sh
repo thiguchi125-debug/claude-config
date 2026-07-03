@@ -57,14 +57,27 @@ if [ -d "$MEM_SRC" ]; then
     || warn "memory/ rsync had errors (continuing)"
 fi
 
-# 5) カスタムskills (plugins cache配下)
-SKILL_SRC="$SRC/plugins/cache/claude-plugins-official/skill-creator/unknown"
+# 5) カスタムskills (~/.claude/skills/ 直下)
+# 過去事故 (2026-07-03): 旧配置の plugins cache 配下はプラグイン自動更新で
+# ディレクトリごと公式版に上書きされ、自作8スキルが消失。--delete がその消失を
+# backup にも鏡写しした（git履歴から復旧）。以後、自作スキルは ~/.claude/skills/ のみ。
+# さらに「ソースは存在するが中身が抉られた」状態で --delete が走るのを防ぐため、
+# SKILL.md の数が閾値未満なら同期をスキップして警告する。
+SKILL_SRC="$SRC/skills"
+SKILL_MIN=10  # 現在17スキル。半分以下に減っていたら異常とみなす
 if [ -d "$SKILL_SRC" ]; then
-  rsync "${rsync_opts[@]}" \
-    --exclude 'evals/results' \
-    --exclude '*.log' \
-    "$SKILL_SRC/" "$DST/skills/" \
-    || warn "skills/ rsync had errors (continuing)"
+  SKILL_COUNT=$(find "$SKILL_SRC" -mindepth 2 -maxdepth 2 -name 'SKILL.md' 2>/dev/null | wc -l | tr -d ' ')
+  if [ "$SKILL_COUNT" -ge "$SKILL_MIN" ]; then
+    rsync "${rsync_opts[@]}" \
+      --exclude 'evals/results' \
+      --exclude '*.log' \
+      "$SKILL_SRC/" "$DST/skills/" \
+      || warn "skills/ rsync had errors (continuing)"
+  else
+    warn "skills/ 同期スキップ: SKILL.md が ${SKILL_COUNT} 個しかない (閾値 ${SKILL_MIN})。スキル消失の疑い — ~/.claude/skills/ を確認せよ"
+  fi
+else
+  warn "skills/ 同期スキップ: $SKILL_SRC が存在しない"
 fi
 
 # 6) plugins installed list (どのplugin marketplace入れたかの記録)
