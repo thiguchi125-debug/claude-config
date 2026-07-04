@@ -67,8 +67,7 @@
 - [架空エピソード・つくり話禁止](feedback_no_fabricated_stories.md) — 感情演出禁止、実体験/一次情報/公式データのみ
 - [アーカイブgrepは話題ワード＋草川独自表現を並列で](feedback_archive_grep_keyword_expansion.md) — 「乗って残す」等の草川語彙を引き忘れない
 - [返信文でのおうむ返し禁止](feedback_no_parroting_in_replies.md) — 相手が書いた事実の反復はAI臭。自分の反応→決意→約束で組み立てる
-- [タスクの期限は基本3日以内](feedback_task_deadline_3days.md) — 明示指定なければ今日+3日デフォルト（提示し回答待ち＝下記で上書き）
-- [登録前に保存先と期限を毎回尋ねる](feedback_ask_destination_and_deadline_before_register.md) — 保存先＋期限を本人に尋ね回答を得てから保存。既定値で勝手に登録しない
+- [タスク登録は記録/タスク振り分け→保存先＋期限（推奨+3日）提示→本人回答後に保存](feedback_ask_destination_and_deadline_before_register.md) — 既定値で勝手に登録しない。[[feedback_task_deadline_3days]]の+3日は「推奨案」に降格済（CLAUDE.mdと統一2026-07-04）
 - [✅タスクDB Pending／保留系3区分](feedback_task_db_pending_status.md) — Pending=実行に検討要／Wish List=追加対応なし／Waiting=相手待ち。status追加はUI手動のみ
 - [brainstormingのトークン浪費パターン](feedback_brainstorming_token_efficiency.md) — 同内容md多重生成禁止、design docは3000字以内、探索はサンプリング段階
 - [「亀山」typo再発防止（亜山・亵山禁止）](feedback_kameyama_kanji_typo_guard.md) — JSONのunicode escapeで「亀」(U+4E80)取り違え事故。日本語は直接書く

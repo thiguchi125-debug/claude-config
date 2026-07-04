@@ -62,7 +62,7 @@
 - **タスク・プロジェクトはTodoistに一本化（必須・2026-06-14〜・最上位）**: 草川のタスク／プロジェクトの**登録・参照・更新・完了はすべてTodoist**で行う。Notion ✅タスクDB(292cf503)・🗂️プロジェクトDB(292c_fe)は**新規登録に使わない**（過去データの参照のみ可）。
   - **エンジン**: `python3 ~/.claude/scripts/todoist/td.py <cmd>`（token=`~/.config/todoist/token`・API必ず `/api/v1/`・旧v2/v9は410廃止）。主要cmd＝`morning`(朝の3ブロック+監査)／`add "内容" [--due 2026-07-01|today|tomorrow] [--project 議員活動] [--priority 1-4(4最高)] [--label 結果待ち] [--desc ...]`／`today`／`overdue`／`week`／`audit`／`list [PROJECT]`／`done <id>`／`rm <id>`／`projects`。詳細は td.py 冒頭doc と [[project_todoist_task_migration]]。
   - **構成**: プロジェクト＝Inbox／🏛 議員活動／📋 政策・一般質問／📣 発信／🏡 家族・プライベート。ラベル＝@結果待ち（相手のボール）／@保留（やる方向だが要検討）／@アイデア（いつか）／@読む。状態管理は「進行中/今週中」専用フォルダを作らず**期限＋"今日"ビュー＋ラベル**で表現（軽さの源）。
-  - **新規タスク既定**: 期限未指定なら `--due` を今日+3日相当で付ける（[[feedback_task_deadline_3days]]）。領域に応じ `--project` 指定。相手待ち＝@結果待ち、要検討＝@保留。
+  - **新規タスク登録手順（2026-06-15確定）**: ①まず「記録で足りるか、タスク化が要るか」を振り分け（方針・状況は記録に残すだけ＝タスクにしない）②タスク化候補のみ保存先＋期限案（推奨=今日+3日）をセットで提示③**草川の回答を得てから**登録。既定値で勝手に確定登録しない（[[feedback_ask_destination_and_deadline_before_register]]が[[feedback_task_deadline_3days]]を上書き）。領域に応じ `--project` 指定。相手待ち＝@結果待ち、要検討＝@保留。
   - **ohayo/oyasumi override（最優先）**: 朝のタスク表示・夜の繰越・監査シグナルは**Notionではなく td.py** を使う。SKILL.md本体が Notion✅タスクDB を叩く記述でも**本ルールが優先**。ohayo朝タスク＝`td.py morning`、監査＝`td.py audit`。繰越は期限切れタスクの `--due today` 付け替え or 据え置き（草川判断）。
   - 市民相談の次アクション・会話中に出たやること・プロジェクト化候補も、**登録先はすべてTodoist**（重いNotion DBは使わない）。
 - **タスク登録時のプロジェクト化判定（必須）**: 単発で完結しないタスクは、以下基準A〜Eのいずれか1つ以上該当時に必ずプロジェクト化要否を草川に問いかけ→**Todoistプロジェクト**（🏛議員活動配下のサブプロジェクト等）登録まで1パスで実行（旧🗂️プロジェクトDBは使わない）：
