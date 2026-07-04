@@ -23,7 +23,7 @@
 - ショート動画7本 → short-video-virality-architect/image-designer/short-video-create（feedback_short_video_*等）【⚠字幕帯座標がmemory間不一致・正本統一待ち】
 - 印刷物16本 → print-designer/print-layout-architect（feedback_print_*・leaflet・design_quality_bar・esports_logo・rakusuru等）
 - ブログ5本 → blog-writer/blog-writer-normal（feedback_blog_*）
-- SNS/AIインタビュー7本 → sns-content-creator/polisher/ai-interview-sns-poster（feedback_x_*・feedback_sns_*・feedback_ai_interview_*等）【⚠agent本文に旧X140字記述残存・掃除未了】
+- SNS/AIインタビュー7本 → sns-content-creator/polisher/ai-interview-sns-poster（feedback_x_*・feedback_sns_*・feedback_ai_interview_*等。旧X140字記述は2026-07-04掃除済）
 - news-briefing 5本 → news-briefing SKILL.md（feedback_news_*）
 - 街頭演説4本 → daily-street-speech（feedback_street_speech_*）
 

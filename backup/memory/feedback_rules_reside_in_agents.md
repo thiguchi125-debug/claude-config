@@ -16,7 +16,7 @@ metadata:
 - **全タスク横断のルール**（禁止表現・帰属事故・Notion罠・タスク運用等）だけをMEMORY.md索引の個別行にする
 - 移設済み7束: ohayo/oyasumi16本・ショート動画7本・印刷物16本・ブログ5本・SNS/AIインタビュー7本・news-briefing5本・街頭演説4本
 
-**未了フォロー（2026-07-04時点）:**
+**未了フォロー:**
 1. 字幕セーフ帯座標の正本統一（y1150-1470 vs y1240-1460・草川判断待ち）→ short-video-image-designer.md内に両論併記中
-2. SNS系3agent本文の旧「X140字厳守」記述の掃除（10箇所超・上書き宣言で運用は担保済）
-3. oyasumi SKILL.md本文の旧Notion✅タスクDB記述のtd.py化（CLAUDE.md overrideで運用中）
+2. ~~X140字掃除~~ ✅2026-07-04完了（3agent・16箇所・grep残存ゼロ）
+3. ~~oyasumi td.py化~~ ✅2026-07-04完了（13箇所修理・CLAUDE.mdのoverride文言も撤去）。oyasumiの繰越は「期限据え置き→翌朝morning承認」設計に確定。週次完了集計はTodoist MCP find-completed-tasks使用（td.pyにcompletedコマンド追加は将来判断）
