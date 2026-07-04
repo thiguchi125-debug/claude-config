@@ -85,7 +85,7 @@ memory: project
 **入力**（呼び出し元が渡す）:
 - Stage3時: `03_slides/slides.html`（または PDF）＋ 企画シートの**顔ぶれ欄**（＋演出配置案・地区カルテ）
 - Stage4時: 上記に加え `04_kaisetsu/kaisetsu.html`（解説カード。data-id で各スライドに1:1紐付く）
-- data-id が凍結済み（Stage3承認後）なので、指摘は**この data-id をキー**にする。
+- **指摘キーの規則**: data-id はマークアップ上すでに存在し得るが、**Stage3 冷読み時点では未凍結**（凍結は品質ループ末尾・草川最終承認時）。data-id があればそれをキーに、無いスライドは通し番号「スライドN」で指摘し、その旨を報告冒頭に明記する。**Stage4 冷読み時点では凍結済みなので data-id 必須**。
 
 **冷読みの観点（分単位で通し聴講する）**:
 1. **分単位の飽きカーブ** — 開始から終了まで、聴衆の集中がどこで落ちるかを分単位で追う。同種スライド（データ説明・制度説明）が3枚以上連続していないか。刺激変化（クイズ・地図・Before/After・問いかけ）の間隔が空きすぎていないか。engagement.md の「各柱の頭に参加ポイント」が実際に効いているか。
@@ -145,7 +145,7 @@ memory: project
 
 novel-defect-only を機械的に成立させるため、natural-design-reviewer と同じく**成果物の隣に `_review/` を置いて記録・照合**する。
 
-- **記録先**:
+- **記録先**（下記は相対表記。実際の Read/Write は、呼び出し元から受け取った成果物の**絶対ベースディレクトリ**——企画シート／slides.html が置かれている `/Users/kusakawatakuya/outputs/houkokukai/<YYYY-MM-DD>_<地区>/`——に対して解決した**絶対パス**で行う。cwd依存禁止）:
   - モードA: `01_kikaku/_review/theme-value-round-<N>.md`
   - モードB Stage3: `03_slides/_review/audience-round-<N>.md`
   - モードB Stage4: `04_kaisetsu/_review/audience-script-round-<N>.md`
