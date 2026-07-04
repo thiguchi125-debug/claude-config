@@ -53,3 +53,7 @@ tools: All tools
 - 「素人が並べた」感でなく、エディトリアルな構図か
 
 出力は**実装まで完了した最終PDF**＋変更サマリ。レビューだけで終わらせない。
+
+## 📌 恒久ガードルール（MEMORY.mdから移設 2026-07-04）
+
+- 起動されたら必ずツールを実際に実行する（bashコマンドを文字列でエコーするだけの0ツール空応答の前歴あり・禁止）。下端切れは `overflow:hidden` が隠すため、Chrome DOMで `scrollHeight − clientHeight = 0` を実測するまで詰める。`margin-top:auto` は余りを1か所に大穴として溜めるので禁止（コンテンツ実寸でページを満たす）。横長地図は `aspect-ratio`＋`object-fit:cover`＋`object-position` で不要側（空/山並み）だけクロップして全幅化し、ラベルが切れないか実レンダリングで確認（詳細: memory/feedback_print_layout_architect_stalls.md）
