@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Anton&family=Space+Grotesk:wght@500;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1080px;height:1350px;}
+  body{font-family:'Noto Sans JP',sans-serif;background:#101216;color:#0f1116;overflow:hidden;position:relative;}
+  .bg{position:absolute;inset:0;background:radial-gradient(120% 80% at 15% 0%,#1b1f27 0%,#0d0f13 60%);}
+  .wedge{position:absolute;top:-200px;right:-260px;width:1000px;height:1000px;
+     background:conic-gradient(from 200deg at 50% 50%,#c7ff4a,#3df0ff 55%,#0d0f13 90%);
+     filter:blur(2px);opacity:.14;transform:rotate(8deg);}
+  .halftone{position:absolute;inset:0;opacity:.5;
+     background-image:radial-gradient(rgba(255,255,255,.07) 1.4px,transparent 1.6px);
+     background-size:18px 18px;mask-image:linear-gradient(160deg,#000 0%,transparent 48%);}
+  .frame{position:absolute;inset:34px;border:1.5px solid rgba(255,255,255,.14);border-radius:6px;}
+
+  .wrap{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;padding:70px 78px 58px;color:#f4f5f2;}
+  .head{display:flex;justify-content:space-between;align-items:center;
+     font-family:'Space Grotesk';letter-spacing:.22em;font-size:23px;font-weight:700;color:#aeb6c2;}
+  .head .org{color:#c7ff4a;}
+  .rule{height:1.5px;background:linear-gradient(90deg,#c7ff4a,transparent);margin-top:20px;}
+
+  .hero{margin-top:22px;position:relative;}
+  .heroTop{display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative;}
+  .burst{position:absolute;left:-40px;top:-78px;width:330px;height:330px;z-index:0;opacity:.9;
+     filter:drop-shadow(0 0 26px rgba(199,255,74,.35));}
+  .en{position:relative;z-index:2;font-family:'Anton';font-size:150px;line-height:.82;letter-spacing:.005em;
+     background:linear-gradient(180deg,#fafff1 0%,#c7ff4a 62%,#7bd11f 100%);
+     -webkit-background-clip:text;background-clip:text;color:transparent;
+     filter:drop-shadow(0 6px 0 rgba(61,240,255,.35));text-transform:uppercase;}
+  .logo{width:352px;height:auto;flex-shrink:0;position:relative;z-index:2;
+     filter:drop-shadow(0 8px 22px rgba(0,0,0,.55)) drop-shadow(0 0 30px rgba(199,255,74,.18));}
+  .jp{margin-top:14px;position:relative;z-index:2;font-weight:900;font-size:88px;line-height:1.02;letter-spacing:.005em;color:#fff;white-space:nowrap;}
+  .jp u{text-decoration:none;border-bottom:11px solid #ff4d8d;padding-bottom:2px;}
+  .lead{margin-top:22px;position:relative;z-index:2;font-weight:500;font-size:34px;color:#cfd6df;}
+  .lead b{color:#c7ff4a;font-weight:700;}
+  .spark{position:absolute;z-index:1;}
+
+  .meta{margin-top:22px;display:grid;grid-template-columns:auto 1fr;
+     border-top:1.5px solid rgba(255,255,255,.16);border-bottom:1.5px solid rgba(255,255,255,.16);}
+  .meta .cell{padding:20px 4px;display:flex;flex-direction:column;gap:8px;}
+  .meta .cell+.cell{border-left:1.5px solid rgba(255,255,255,.16);padding-left:40px;}
+  .meta .k{font-family:'Space Grotesk';font-size:21px;letter-spacing:.2em;color:#8f97a3;}
+  .meta .date{font-family:'Anton';font-size:72px;line-height:.9;color:#fff;}
+  .meta .date small{font-family:'Noto Sans JP';font-weight:700;font-size:26px;color:#ff4d8d;margin-left:10px;}
+  .meta .time{font-family:'Anton';font-size:56px;color:#c7ff4a;line-height:1;}
+  .meta .place{font-weight:700;font-size:33px;color:#fff;line-height:1.28;}
+  .meta .place span{display:block;font-weight:500;font-size:24px;color:#9aa2ae;margin-top:4px;}
+
+  .tags{margin-top:24px;display:flex;gap:14px;}
+  .tags span{flex:1;text-align:center;font-weight:700;font-size:30px;color:#0d0f13;background:#c7ff4a;border-radius:2px;padding:18px 6px;}
+  .tags span:nth-child(2){background:#3df0ff;}
+  .tags span:nth-child(3){background:#ff4d8d;color:#fff;}
+
+  .strip{margin-top:24px;display:flex;align-items:center;gap:34px;}
+  .strip .free{font-family:'Anton';font-size:90px;color:#fff;line-height:.85;}
+  .strip .free small{display:block;font-family:'Space Grotesk';font-size:22px;letter-spacing:.2em;color:#8f97a3;margin-bottom:6px;}
+  .strip .det{font-weight:500;font-size:30px;color:#cfd6df;line-height:1.6;}
+  .strip .det b{color:#fff;font-weight:700;}
+
+  .foot{margin-top:24px;display:flex;align-items:center;gap:30px;padding-top:26px;border-top:1.5px solid rgba(255,255,255,.16);}
+  .foot .qr{width:166px;height:166px;background:#fff;padding:11px;border-radius:4px;flex-shrink:0;}
+  .foot .qr img{width:100%;height:100%;display:block;}
+  .foot .ft .h{font-weight:900;font-size:36px;color:#fff;line-height:1.25;}
+  .foot .ft .h em{color:#c7ff4a;font-style:normal;}
+  .foot .ft .s{margin-top:10px;font-weight:500;font-size:25px;color:#aeb6c2;line-height:1.4;}
+  .foot .ft .host{margin-top:12px;font-family:'Space Grotesk';font-weight:700;font-size:24px;letter-spacing:.04em;color:#3df0ff;}
+  .note{margin-top:22px;font-size:18px;color:#6b7280;line-height:1.5;}
+</style>
+</head>
+<body>
+  <div class="bg"></div><div class="wedge"></div><div class="halftone"></div><div class="frame"></div>
+  <div class="wrap">
+    <div class="head"><div class="org">SMASH MEETUP &amp; CUP</div><div>CIRCLE&nbsp;ACTIVITY&nbsp;2026</div></div>
+    <div class="rule"></div>
+
+    <div class="hero">
+      <!-- sparkles -->
+      <svg class="spark" style="right:120px;top:-6px;width:46px;height:46px" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#3df0ff"/></svg>
+      <svg class="spark" style="right:60px;top:120px;width:30px;height:30px" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ff4d8d"/></svg>
+      <svg class="spark" style="left:18px;top:212px;width:26px;height:26px" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#c7ff4a"/></svg>
+
+      <div class="heroTop">
+        <!-- impact burst behind SMASH -->
+        <svg class="burst" viewBox="0 0 200 200"><polygon points="100,2 119,52 160,22 150,74 198,72 158,104 196,140 146,134 158,188 116,156 100,200 84,156 42,188 54,134 4,140 42,104 2,72 50,74 40,22 81,52" fill="none" stroke="#c7ff4a" stroke-width="3" opacity="0.45"/><polygon points="100,26 113,60 148,42 138,78 174,84 144,106 168,140 130,130 132,166 100,146 68,166 70,130 32,140 56,106 26,84 62,78 52,42 87,60" fill="rgba(199,255,74,0.06)" stroke="#c7ff4a" stroke-width="2" opacity="0.6"/></svg>
+
+        <div class="en">SMASH</div>
+
+        <!-- 亀山市eスポーツ協会 公式ロゴ（マスコット） -->
+        <img class="logo" src="logo_t.png" alt="亀山市eスポーツ協会 TUIRTLE ロゴ">
+      </div>
+
+      <div class="jp"><u>スマブラ</u>交流＆大会</div>
+      <div class="lead"><b>初心者大歓迎。</b>みんなでワイワイ、スマッシュしよう。</div>
+    </div>
+
+    <div class="meta">
+      <div class="cell">
+        <div class="k">DATE / TIME</div>
+        <div class="date">6.27<small>SAT</small></div>
+        <div class="time">9:30–11:00</div>
+      </div>
+      <div class="cell">
+        <div class="k">VENUE</div>
+        <div class="place">市民協働センター「みらい」<span>亀山市東町1-8-7</span></div>
+      </div>
+    </div>
+
+    <div class="tags"><span>初心者OK</span><span>手ぶらOK</span><span>見るだけOK</span></div>
+
+    <div class="strip">
+      <div class="free"><small>ENTRY FEE</small>無料</div>
+      <div class="det">対象 ─ <b>どなたでも</b><br>定員 ─ <b>なし</b>　持ち物 ─ <b>不要</b></div>
+    </div>
+
+    <div class="foot">
+      <div class="qr"><img src="form_qr.png" alt="申込フォームQR"></div>
+      <div class="ft">
+        <div class="h">お申込みは<em>参加申込フォーム</em>から</div>
+        <div class="s">QRを読み取って必要事項を入力するだけ（1〜2分）</div>
+        <div class="host">主催：亀山市eスポーツ協会</div>
+      </div>
+    </div>
+    <div class="note">本体・ソフト・コントローラーは協会で用意します。Nintendo Switch『大乱闘スマッシュブラザーズ SPECIAL』を使用。『大乱闘スマッシュブラザーズ SPECIAL』『Nintendo Switch』は任天堂の商標です。</div>
+  </div>
+</body>
+</html>

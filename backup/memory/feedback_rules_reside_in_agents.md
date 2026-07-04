@@ -17,6 +17,6 @@ metadata:
 - 移設済み7束: ohayo/oyasumi16本・ショート動画7本・印刷物16本・ブログ5本・SNS/AIインタビュー7本・news-briefing5本・街頭演説4本
 
 **未了フォロー:**
-1. 字幕セーフ帯座標の正本統一（y1150-1470 vs y1240-1460・草川判断待ち）→ short-video-image-designer.md内に両論併記中
+1. ~~字幕セーフ帯座標統一~~ ✅2026-07-04完了：正本=y1240-1460（2026-07-02京都直通で草川承認済のため新しい方に統一。旧y1150-1470は帯を内包する広め運用＝既存テンプレinsert_image_v1はそのままで互換）
 2. ~~X140字掃除~~ ✅2026-07-04完了（3agent・16箇所・grep残存ゼロ）
 3. ~~oyasumi td.py化~~ ✅2026-07-04完了（13箇所修理・CLAUDE.mdのoverride文言も撤去）。oyasumiの繰越は「期限据え置き→翌朝morning承認」設計に確定。週次完了集計はTodoist MCP find-completed-tasks使用（td.pyにcompletedコマンド追加は将来判断）

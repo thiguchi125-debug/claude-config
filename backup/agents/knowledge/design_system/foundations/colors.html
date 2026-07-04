@@ -1,0 +1,74 @@
+<!-- @dsCard group="Foundations" name="ブランドカラー" subtitle="ブランド4色＋印刷インク節約パレットと使い分け" -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>草川たくや ブランドカラー</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;background:#f3efe4;color:#111418;padding:36px;line-height:1.7;}
+  h1{font-size:22px;font-weight:900;color:#0f3d27;margin-bottom:4px;}
+  .lead{font-size:12.5px;color:#444;margin-bottom:24px;}
+  h2{font-size:15px;font-weight:900;color:#0f3d27;margin:28px 0 10px;padding-left:10px;box-shadow:inset 4px 0 0 #c7ff4a;}
+  .swatches{display:flex;gap:12px;flex-wrap:wrap;}
+  .sw{width:170px;border:2px solid #111418;background:#fff;}
+  .sw .chip{height:84px;}
+  .sw .meta{padding:8px 10px;font-size:11px;}
+  .sw .name{font-weight:900;font-size:13px;}
+  .sw .hex{font-family:ui-monospace,Menlo,monospace;color:#555;}
+  .sw .use{margin-top:4px;color:#333;}
+  table{border-collapse:collapse;width:100%;background:#fff;font-size:12px;}
+  th,td{border:1px solid #999;padding:6px 10px;text-align:left;vertical-align:top;}
+  th{background:#0f3d27;color:#f3efe4;font-weight:700;}
+  .demo{margin-top:10px;background:#fff;border:2px solid #111418;padding:18px 20px;}
+  .demo-h{display:inline-block;font-size:17px;font-weight:900;color:#111418;box-shadow:inset 0 -0.32em 0 #c7ff4a;padding:0 4px;}
+  .demo-band{margin-top:12px;background:#0f3d27;color:#f3efe4;padding:8px 14px;font-weight:900;font-size:14px;}
+  .demo-band span{color:#c7ff4a;}
+  .demo-lead{margin-top:12px;border-left:4px solid #1f5a3a;background:#f3efe4;padding:8px 12px;font-size:12px;}
+  .note{margin-top:8px;font-size:11px;color:#555;}
+  .caution{margin-top:16px;background:#fff;border:2px solid #0f3d27;border-left:8px solid #c7ff4a;padding:12px 16px;font-size:12px;}
+</style>
+</head>
+<body>
+  <h1>草川たくや ブランドカラー</h1>
+  <p class="lead">正本4色。発信物・印刷物・動画差し込み画像はこのパレットを基調に組む。</p>
+
+  <h2>ブランド4色（正本）</h2>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#c7ff4a;"></div><div class="meta"><div class="name">ライム</div><div class="hex">#c7ff4a</div><div class="use">アクセント専用：見出し下線・帯・ピン・強調ボックスの影</div></div></div>
+    <div class="sw"><div class="chip" style="background:#1f5a3a;"></div><div class="meta"><div class="name">濃緑</div><div class="hex">#1f5a3a</div><div class="use">主色：見出し・左罫線・面（緑ブロック背景）</div></div></div>
+    <div class="sw"><div class="chip" style="background:#0f3d27;"></div><div class="meta"><div class="name">最濃緑</div><div class="hex">#0f3d27</div><div class="use">最暗部：反転セクション背景・締めの帯・濃い文字</div></div></div>
+    <div class="sw"><div class="chip" style="background:#f3efe4;border-bottom:1px solid #ddd;"></div><div class="meta"><div class="name">生成り</div><div class="hex">#f3efe4</div><div class="use">紙面ベース：背景・反転時の文字色</div></div></div>
+  </div>
+  <p class="note">補助インク：#111418（ink＝ほぼ黒。枠線・本文・黒影に使用。真っ黒 #000 は使わない）。</p>
+
+  <h2>印刷での使い分け（実績パターン）</h2>
+  <table>
+    <tr><th>役割</th><th>色の組み合わせ</th><th>実績</th></tr>
+    <tr><td>見出し帯（反転）</td><td>最濃緑 #0f3d27 地 × 生成り文字、キーワードだけライム</td><td>選挙リーフレットv3 裏面 Pillar03</td></tr>
+    <tr><td>見出し下線（ハイライト）</td><td>box-shadow: inset 0 -0.28em 0 #c7ff4a（詳細は components/lime_heading.html）</td><td>選挙リーフレットv3</td></tr>
+    <tr><td>背景・紙面ベース</td><td>生成り #f3efe4。白 #fff はカード・写真枠内のみ</td><td>選挙リーフレットv3</td></tr>
+    <tr><td>強調ボックス</td><td>黒 #111418 地＋ライム影（box-shadow: 5px 5px 0 #c7ff4a）</td><td>選挙リーフレットv3 5つのゼロ</td></tr>
+    <tr><td>左罫線（引用・リード）</td><td>濃緑 #1f5a3a の 4px 左ボーダー</td><td>市政報告レポート系</td></tr>
+  </table>
+
+  <h2>インク節約パレット（家庭用プリンタ配布物・市政報告レポート系）</h2>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#1f7a3a;"></div><div class="meta"><div class="name">報告レポート緑</div><div class="hex">#1f7a3a</div><div class="use">枠線・章罫線・ラベル枠（ベタ塗りしない）</div></div></div>
+    <div class="sw"><div class="chip" style="background:#0e4d27;"></div><div class="meta"><div class="name">報告レポート深緑</div><div class="hex">#0e4d27</div><div class="use">見出し文字・強調文字</div></div></div>
+    <div class="sw"><div class="chip" style="background:#c89211;"></div><div class="meta"><div class="name">金</div><div class="hex">#c89211</div><div class="use">金下線・金帯・地区バッジ（強調は太字＋金下線、黄色ハイライト禁止）</div></div></div>
+  </div>
+  <p class="note">木下版v22（report_a4_duplex）で確立。全面配布・家庭用プリンタ前提のためベタ塗り総面積3%以下、白背景＋細罫線で組む。ブランド4色版と混ぜない（1制作物1パレット）。</p>
+
+  <h2>実演サンプル</h2>
+  <div class="demo">
+    <span class="demo-h">見出しサンプル：ライム下線ハイライト</span>
+    <div class="demo-band">反転帯サンプル：<span>キーワードだけライム</span>で照らす</div>
+    <div class="demo-lead">リード文サンプル：濃緑の左罫線＋生成り地。本文が入ります。本文が入ります。</div>
+  </div>
+
+  <div class="caution">
+    <strong>禁止事項</strong>：紫グラデ・浮き角丸カード・ピルバッジ等のAI製SaaS LP風意匠は使わない。ライムを本文文字色に使わない（可読性が落ちる。地色か影・下線としてのみ）。linear-gradient のハード・ストップによる下線はPDF変換で暗化するため禁止（box-shadow inset 方式を使う）。
+  </div>
+</body>
+</html>

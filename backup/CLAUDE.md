@@ -44,7 +44,7 @@
   3. 対応すべき声を **Todoist「〇〇地区 フォロー」箱**（🏛議員活動配下・無ければ `td.py`/API で新設）へ登録。具体アクション明示の声（「まず〇〇に連絡」等）は **期限つき・優先度高**。
   4. 報告会由来タスクには **`要整理`ラベル**を付け、後でまとめてレビューできるようにする。
   5. **重複チェック**：📝一般質問ネタDB／📝市民意見リスト（c2c34bd8-）／既存Todoistに同じ声が既出なら新規作成せず参照（例：小下=「新団地アクセス道路の複合課題」は5/31に既存展開済→重複登録しない）。
-- **印刷物**: print-designer（HTML/CSS→PDF）＋photo-curator（草川 ZPERSON=18）の組合せ。
+- **印刷物**: 入口は **design-studioスキル**（テンプレ選択→実装→レビュー→安全ゲート→PDF→保存→テンプレ昇格を1パス）。テンプレ正本=`~/.claude/agents/knowledge/design_system/`（claude.ai/design「草川たくやデザインシステム」とDesignSync同期）。実装層は print-layout-architect／print-designer＋photo-curator（草川 ZPERSON=18）。
 - **発信物の安全ゲート（必須）**: ブログ・SNS原稿を生成・確定する前に **必ず** 以下2エージェントを順に通す：
   1. `content-fact-checker` — 数値・固有名詞・法令・統計を一次情報まで遡って検証
   2. `content-risk-reviewer` — 公選法・個人情報・名誉毀損・差別・利益相反・品位・物議の8軸スキャン
@@ -87,6 +87,7 @@
 | 〇〇どこ？ / あれどこだっけ / 〇〇探して | **smart-intake モードB**（Notion・Drive・drafts・outputs・移動ログ・Todoist横断検索） |
 | 発信ネタ: / ひらめき: / これ発信できる？ / ネタにして / この記事から何か作れる？ | **spark**（小さな種→接地→切り口2〜3案→選択分だけ生成→安全ゲート→保存。「貯めて」で📣SNS投稿管理DBに💡ストック） |
 | 〇〇地区の報告会準備 / 報告会の企画・案内レポート・スライド・解説・前夜チェック | **shisei-houkokukai**（5ステージ制プロデュース・進捗は_status.json正本・急ぎは短縮経路） |
+| チラシ作って / ポスター作って / リーフレット作って / 印刷物作って / デザイン制作 | **design-studio**（design_systemテンプレ候補提示→print-layout-architect実装→natural-design-reviewer→安全ゲート→PDF→保存→テンプレ昇格還元。勝負所のみdesign-director追加） |
 
 詳細トリガーは Notion「スキルトリガー一覧」「エージェントトリガー一覧」（MEMORY.md参照）。
 

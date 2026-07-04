@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --red:#c33f2f;
+    --navy:#2d3157;
+    --band:#666d8e;
+    --cream:#f2ede1;
+    --tan:#e2a878;
+    --yellow:#f2c218;
+    --green:#8cbf50;
+    --teal:#4aa7bf;
+    --pink:#e58cb0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  @page{size:874px 1250px;margin:0;}
+  html,body{width:874px;height:1250px;}
+  .stage{
+    position:relative;width:874px;height:1250px;overflow:hidden;
+    background:var(--cream) url("assets/bg.png") center/cover no-repeat;
+    font-family:"ヒラギノ角ゴシック","Hiragino Sans",sans-serif;
+  }
+  .layer{position:absolute;z-index:2;}
+  .titleimg{position:absolute;z-index:3;left:74px;top:8px;width:760px;}
+
+  /* 2026 vertical */
+  .y2026{
+    left:116px;top:34px;writing-mode:vertical-lr;z-index:6;
+    font-family:"Arial Black",sans-serif;font-weight:900;
+    font-size:40px;letter-spacing:6px;color:transparent;
+    -webkit-text-stroke:2.5px var(--red);
+  }
+  /* Title 夏祭り */
+  .title{
+    left:0;top:-12px;width:874px;height:312px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"ヒラギノ角ゴシック","Hiragino Sans",sans-serif;
+    font-weight:900;color:var(--red);
+    font-size:250px;line-height:1;letter-spacing:-16px;
+    text-shadow:2px 3px 0 rgba(120,30,20,.12);
+  }
+  .title .hatch{
+    position:absolute;inset:0;
+    background-image:repeating-linear-gradient(45deg, rgba(242,237,225,0) 0 2px, rgba(242,237,225,.6) 2px 3px),
+                     repeating-linear-gradient(-45deg, rgba(242,237,225,0) 0 2px, rgba(242,237,225,.6) 2px 3px);
+    mix-blend-mode:screen;pointer-events:none;
+  }
+  .origin{
+    position:absolute;left:430px;top:118px;z-index:5;
+    font-family:"Snell Roundhand","Bradley Hand",cursive;
+    font-size:34px;color:var(--navy);opacity:.5;transform:rotate(-4deg);
+  }
+
+  /* navy band */
+  .band{
+    left:0;top:300px;width:874px;height:58px;background:var(--band);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .band img{height:45px;}
+
+  /* 今年もやるよ！ */
+  .pop{
+    left:0;top:356px;width:874px;height:116px;z-index:5;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"ヒラギノ丸ゴ ProN","筑紫B丸ゴシック";font-weight:800;
+    font-size:102px;line-height:1;letter-spacing:0;
+  }
+  .pop b{
+    display:inline-block;
+    text-shadow:
+      -3px -3px 0 #fff,3px -3px 0 #fff,-3px 3px 0 #fff,3px 3px 0 #fff,0 -3px 0 #fff,0 3px 0 #fff,-3px 0 0 #fff,3px 0 0 #fff,
+      -6px -6px 0 #2d3157,6px -6px 0 #2d3157,-6px 6px 0 #2d3157,6px 6px 0 #2d3157,0 -6px 0 #2d3157,0 6px 0 #2d3157,-6px 0 0 #2d3157,6px 0 0 #2d3157,
+      5px 9px 0 rgba(45,49,87,.28);
+  }
+  .pop b:nth-child(odd){transform:translateY(-4px) rotate(-2deg);}
+  .pop b:nth-child(even){transform:translateY(4px) rotate(2deg);}
+  .c-y{color:var(--yellow);} .c-g{color:var(--green);}
+  .c-t{color:var(--teal);} .c-p{color:var(--pink);}
+
+  .garland{left:0;top:416px;width:874px;height:150px;z-index:2;}
+  .subfes{
+    left:0;top:526px;width:874px;text-align:center;z-index:4;
+    font-family:"筑紫B丸ゴシック","ヒラギノ丸ゴ ProN";font-weight:800;
+    font-size:33px;color:var(--navy);letter-spacing:2px;transform:rotate(-1.5deg);
+    -webkit-text-stroke:5px #fff;paint-order:stroke fill;
+  }
+
+  .fanimg{left:192px;top:550px;width:490px;z-index:2;}
+
+  .date{
+    left:0;top:572px;width:874px;text-align:center;z-index:4;
+    font-family:"Arial Rounded MT Bold","ヒラギノ角ゴ ProN",sans-serif;
+    font-weight:900;color:var(--navy);font-size:164px;line-height:1;letter-spacing:14px;
+    -webkit-text-stroke:11px #fff;paint-order:stroke fill;
+    text-indent:14px; /* balance trailing letter-spacing so glyphs stay centered */
+  }
+  .date .yr{font-family:"Arial Black";font-size:26px;color:var(--red);
+    letter-spacing:12px;position:absolute;left:640px;top:10px;
+    background:#e0d2b6;padding:7px 4px 7px 16px;line-height:1;}
+  .date .sat{font-family:"Arial Rounded MT Bold";font-weight:900;
+    font-size:66px;color:var(--navy);position:absolute;left:652px;top:88px;
+    letter-spacing:3px;text-indent:0;
+    -webkit-text-stroke:6px #fff;paint-order:stroke fill;}
+  .addr{left:0;top:750px;width:874px;text-align:center;z-index:4;
+    font-weight:800;font-size:40px;color:var(--navy);letter-spacing:1px;
+    -webkit-text-stroke:6px #fff;paint-order:stroke fill;}
+  .time{left:0;top:808px;width:874px;text-align:center;z-index:4;
+    font-family:"Arial Rounded MT Bold",sans-serif;font-weight:900;font-size:66px;color:var(--navy);
+    -webkit-text-stroke:7px #fff;paint-order:stroke fill;}
+  .note{left:0;top:880px;width:874px;text-align:center;z-index:4;
+    font-weight:600;font-size:20px;color:var(--navy);
+    -webkit-text-stroke:4px #fff;paint-order:stroke fill;}
+
+  /* price items */
+  .price{position:absolute;z-index:5;text-align:center;color:var(--navy);
+    transform:translateX(-50%);white-space:nowrap;line-height:1.15;}
+  .price .lbl{font-weight:800;font-size:32px;-webkit-text-stroke:6px #fff;paint-order:stroke fill;}
+  .price .amt{font-weight:900;font-size:39px;color:var(--red);-webkit-text-stroke:7px #fff;paint-order:stroke fill;}
+  .price .sm{font-weight:700;font-size:15px;-webkit-text-stroke:4px #fff;paint-order:stroke fill;}
+  .banner{display:inline-block;position:relative;padding:0 4px;}
+  .pcloud{position:absolute;z-index:3;transform:translate(-50%,-50%);}
+
+  /* ground wave band behind crowd */
+  .ground{left:0;bottom:0;width:874px;height:150px;z-index:2;}
+  /* crowd */
+  .crowd img{position:absolute;bottom:0;z-index:3;}
+  #g_four{left:-80px;width:240px;}
+  #g_couple{left:110px;width:210px;}
+  #g_dance{left:280px;width:330px;}
+  #g_cotton{left:575px;width:330px;}
+</style>
+</head>
+<body>
+<div class="stage">
+  <img class="titleimg" src="assets/title.png">
+
+  <div class="layer band"><img src="assets/bandtext.png"></div>
+
+  <div class="layer pop">
+    <b class="c-y">今</b><b class="c-g">年</b><b class="c-g">も</b><b class="c-y">や</b><b class="c-t">る</b><b class="c-p">よ</b><b class="c-p">！</b>
+  </div>
+
+  <svg class="layer garland" viewBox="0 0 874 150">
+    <path d="M20 10 Q230 104 430 44" fill="none" stroke="#2d3157" stroke-width="4"/>
+    <path d="M430 44 Q640 104 854 10" fill="none" stroke="#2d3157" stroke-width="4"/>
+    <g id="lanterns"></g>
+  </svg>
+
+  <svg class="layer subfesarc" style="left:0;top:492px;width:874px;height:96px;z-index:4;" viewBox="0 0 874 96">
+    <defs><path id="arc" d="M150 84 Q437 8 724 84" fill="none"/></defs>
+    <text font-family="筑紫B丸ゴシック,ヒラギノ丸ゴ ProN,sans-serif" font-weight="800"
+      font-size="35" fill="#2d3157" stroke="#fff" stroke-width="6" paint-order="stroke"
+      letter-spacing="1" stroke-linejoin="round">
+      <textPath href="#arc" startOffset="50%" text-anchor="middle">中庄の若者有志のお祭り！</textPath>
+    </text>
+  </svg>
+
+  <img class="layer fanimg" src="assets/fan.png">
+
+  <div class="layer date">8.15<span class="yr">2026</span><span class="sat">Sat</span></div>
+  <div class="layer addr">草川たくや事務所前広場</div>
+  <div class="layer time">17:00-20:00</div>
+
+  <!-- price decorative clouds (real assets) -->
+  <img class="pcloud" src="assets/cloud1.png" style="left:138px;top:888px;width:150px;">
+  <img class="pcloud" src="assets/cloud2.png" style="left:718px;top:862px;width:186px;">
+  <img class="pcloud" src="assets/cloud3.png" style="left:178px;top:1118px;width:200px;">
+
+  <!-- prices -->
+  <!-- games (top, staggered heights) -->
+  <div class="price" style="left:138px;top:846px;">
+    <div class="lbl">メダカすくい</div><div class="amt"><span class="banner">無料</span></div>
+  </div>
+  <div class="price" style="left:452px;top:878px;">
+    <div class="lbl">千本くじ</div><div class="amt">90円</div>
+  </div>
+  <div class="price" style="left:718px;top:850px;">
+    <div class="lbl"><span class="banner">ピンボール</span></div><div class="amt">90円</div>
+  </div>
+  <!-- ICE SET: カップ入り氷 + 氷おかわり grouped side-by-side -->
+  <div class="price iceset" style="left:170px;top:938px;">
+    <div class="lbl">カップ入り氷</div><div class="amt">50円</div>
+  </div>
+  <div class="price iceset" style="left:360px;top:966px;">
+    <div class="lbl">氷おかわり</div><div class="amt">30円</div>
+  </div>
+  <!-- drink -->
+  <div class="price" style="left:610px;top:942px;">
+    <div class="lbl">ジュース</div><div class="amt">50円</div>
+  </div>
+  <!-- tall items (lower, staggered heights so it doesn't read as a rigid row) -->
+  <div class="price" style="left:178px;top:1040px;">
+    <div class="lbl">食べ物</div>
+    <div class="sm">焼き鳥・フランクフルト・<br>とうもろこしなど</div>
+    <div class="amt"><span class="banner">すべて90円</span></div>
+  </div>
+  <div class="price" style="left:398px;top:1062px;">
+    <div class="lbl"><span class="banner">綿菓子 無料</span></div>
+    <div class="sm">※食べ物or飲み物を購入された方限定</div>
+  </div>
+  <div class="price" style="left:672px;top:1030px;">
+    <div class="lbl">ビール<br>酎ハイ</div><div class="amt">150~200円</div>
+  </div>
+
+  <!-- ground wave band -->
+  <svg class="layer ground" viewBox="0 0 874 150" preserveAspectRatio="none">
+    <path d="M0 70 Q140 30 300 60 T620 55 T874 62 L874 150 L0 150 Z" fill="#5c6489" opacity="0.35"/>
+    <path d="M0 96 Q180 66 380 92 T760 88 T874 96 L874 150 L0 150 Z" fill="#3d4270" opacity="0.4"/>
+  </svg>
+
+  <!-- crowd -->
+  <div class="crowd">
+    <img id="g_four" src="assets/grp_four4.png">
+    <img id="g_couple" src="assets/grp_couple2.png">
+    <img id="g_dance" src="assets/grp_dance3.png">
+    <img id="g_cotton" src="assets/grp_cotton2.png">
+  </div>
+</div>
+
+<script>
+const svg=document.querySelector('.garland');
+const g=document.getElementById('lanterns');
+const ps=svg.querySelectorAll('path');
+function lantern(x,y){
+  const ns='http://www.w3.org/2000/svg';
+  const grp=document.createElementNS(ns,'g');
+  grp.setAttribute('transform',`translate(${x},${y+14})`);
+  grp.innerHTML=`
+    <line x1="0" y1="-14" x2="0" y2="-2" stroke="#2d3157" stroke-width="2"/>
+    <ellipse cx="0" cy="20" rx="20" ry="24" fill="#c33f2f" stroke="#a83322" stroke-width="1"/>
+    <path d="M-16 12 h32 M-18 20 h36 M-16 28 h32" stroke="#e08a78" stroke-width="2"/>
+    <rect x="-8" y="-4" width="16" height="6" rx="1" fill="#2d3157"/>
+    <rect x="-8" y="40" width="16" height="6" rx="1" fill="#2d3157"/>
+  `;
+  g.appendChild(grp);
+}
+ps.forEach(p=>{
+  const L=p.getTotalLength();
+  for(let i=1;i<=3;i++){const pt=p.getPointAtLength(L*i/4);lantern(pt.x,pt.y);}
+});
+</script>
+</body>
+</html>

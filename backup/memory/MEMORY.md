@@ -4,6 +4,7 @@
 
 ## 🔄 進行中プロジェクト
 
+- [デザインスタジオ環境（Canva超え）](project_design_studio.md) — 2026-07-04設計確定。claude.ai/design正本「草川たくやデザインシステム」＋design-studioスキル＋印刷物コア4種テンプレ。【🟡草川操作待ち /design-login→push】
 - [市政報告会5ステージスキル](project_shisei_houkokukai_skill.md) — 2026-07-04実装。企画→案内→スライド→解説→前夜・新設agent3本・_status.json正本。初回実走待ち
 - [sparkスキル（小さな種→発信）](project_spark_skill.md) — 2026-07-03新設。種→接地→切り口案→生成→安全ゲート→保存。初回実運用フィードバック待ち
 - [Notion大改修＋ohayo/news v3＋smart-intake](project_notion_ohayo_news_v3_renewal.md) — 2026-07-03実施。ohayo v3・news dedup・smart-intake新設。初回実走の指摘3点も同日修理済（詳細はファイル）
@@ -20,7 +21,7 @@
 - [運用規約：タスク特化ルールは担当agent/SKILL常駐](feedback_rules_reside_in_agents.md) — 新feedbackは対象agent/SKILL末尾へ追記・索引は束カウントのみ。横断ルールだけ個別行
 
 - ohayo/oyasumi運用16本 → ohayo/oyasumi SKILL.md（feedback_ohayo_*/feedback_oyasumi_*）
-- ショート動画7本 → short-video-virality-architect/image-designer/short-video-create（feedback_short_video_*等）【⚠字幕帯座標がmemory間不一致・正本統一待ち】
+- ショート動画7本 → short-video-virality-architect/image-designer/short-video-create（feedback_short_video_*等。字幕帯はy1240-1460に正本統一済2026-07-04）
 - 印刷物16本 → print-designer/print-layout-architect（feedback_print_*・leaflet・design_quality_bar・esports_logo・rakusuru等）
 - ブログ5本 → blog-writer/blog-writer-normal（feedback_blog_*）
 - SNS/AIインタビュー7本 → sns-content-creator/polisher/ai-interview-sns-poster（feedback_x_*・feedback_sns_*・feedback_ai_interview_*等。旧X140字記述は2026-07-04掃除済）

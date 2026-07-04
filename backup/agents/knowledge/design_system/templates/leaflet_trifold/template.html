@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>選挙リーフレット v3 — 草川たくや後援会</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho+B1:wght@700;900&family=Anton&display=swap" rel="stylesheet">
+<style>
+  /* ───── tokens (baked from TWEAK_DEFAULTS) ───── */
+  :root{
+    --green:#1f5a3a;
+    --green-deep:#0f3d27;
+    --paper:#f3efe4;
+    --lime:#c7ff4a;        /* useLime=true → accent */
+    --ink:#111418;
+    --accent:#c7ff4a;      /* alias for lime */
+  }
+
+  /* ───── base ───── */
+  html,body{margin:0;padding:0;background:#1a1a1a;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;color:var(--ink)}
+  body{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:40px 20px 80px}
+  .page-label{color:#888;font-size:11px;letter-spacing:.3em;margin:0 0 10px;text-transform:uppercase}
+  .stack{display:flex;flex-direction:column;align-items:center;gap:42px}
+  .leaflet-wrap{box-shadow:0 30px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06)}
+
+  /* ───── leaflet page ───── */
+  .leaflet{
+    width:842px;height:1190px;background:var(--paper);position:relative;overflow:hidden;
+    font-family:"Noto Sans JP",sans-serif;color:var(--ink);
+  }
+
+  /* paper grain (shared) */
+  .grain{
+    position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.22;
+    background:
+      radial-gradient(rgba(0,0,0,.08) 1px,transparent 1.4px) 0 0/3px 3px,
+      radial-gradient(rgba(0,0,0,.05) 1px,transparent 1.4px) 1px 2px/7px 7px;
+  }
+
+  /* ===================================================================== */
+  /* FRONT                                                                  */
+  /* ===================================================================== */
+
+  /* BG green diagonal mass */
+  .f-bg-green{
+    position:absolute;top:-120px;right:-160px;width:760px;height:1100px;
+    background:var(--green);transform:rotate(-14deg);transform-origin:top right;
+    box-shadow:0 0 0 10px var(--green-deep) inset;
+  }
+  /* halftone fade over green */
+  .f-bg-halftone{
+    position:absolute;top:-120px;right:-160px;width:760px;height:1100px;
+    transform:rotate(-14deg);transform-origin:top right;
+    background:radial-gradient(circle,rgba(0,0,0,0) 1px,transparent 1.5px) 0 0/6px 6px;
+    opacity:.35;pointer-events:none;
+    -webkit-mask-image:linear-gradient(135deg,#000 30%,transparent 80%);
+            mask-image:linear-gradient(135deg,#000 30%,transparent 80%);
+  }
+  /* hairline diagonal stripes */
+  .f-stripe-a{position:absolute;left:-40px;top:540px;width:1000px;height:4px;background:var(--ink);transform:rotate(-14deg)}
+  .f-stripe-b{position:absolute;left:-40px;top:558px;width:1000px;height:1px;background:var(--ink);opacity:.4;transform:rotate(-14deg)}
+
+  /* top ribbon */
+  .f-ribbon{
+    position:absolute;left:0;top:0;right:0;height:38px;background:var(--ink);
+    color:var(--paper);display:flex;align-items:center;padding:0 20px;
+    justify-content:space-between;
+    font-size:10.5px;letter-spacing:.25em;font-weight:700;z-index:5;
+  }
+  .f-ribbon .r{opacity:.7}
+  .f-ribbon span{white-space:nowrap}
+
+  /* corner number block — STATEMENT帯より上に */
+  .f-corner{position:absolute;left:32px;top:68px;z-index:8;color:var(--ink)}
+  .f-corner .row{display:flex;align-items:center;gap:8px}
+  .f-corner .bar{width:6px;height:30px;background:var(--green)}
+  .f-corner .lbl{font-size:10px;letter-spacing:.35em;font-weight:700;margin-bottom:-1px;white-space:nowrap}
+  .f-corner .en{font-family:"Anton",sans-serif;font-size:22px;letter-spacing:.1em;color:#666;white-space:nowrap}
+  .f-corner .no{font-family:"Anton",sans-serif;font-size:110px;line-height:.82;color:var(--green);text-shadow:5px 5px 0 var(--ink);margin-top:4px;margin-left:-4px}
+
+  /* portrait — tag-l「草川たくや」帯と頭が重ならないよう下にずらす */
+  .f-portrait{
+    position:absolute;right:-50px;top:90px;width:480px;height:680px;
+    transform:rotate(-6deg);z-index:4;
+    border:6px solid var(--ink);
+    box-shadow:22px 22px 0 var(--ink),22px 22px 0 10px var(--lime);
+    background:var(--paper);overflow:hidden;
+  }
+  .f-portrait img{
+    position:absolute;left:62%;bottom:0;width:155%;height:auto;
+    transform:translateX(-50%);object-fit:cover;pointer-events:none;
+  }
+  /* 「草川たくや」帯：portraitの外、紙面右上の緑背景上に大きく独立配置（VOL.01ribbon避ける） */
+  .f-name-banner{
+    position:absolute;top:10px;right:230px;z-index:7;
+    background:var(--ink);color:var(--paper);
+    padding:16px 34px;font-size:48px;letter-spacing:.2em;font-weight:900;
+    white-space:nowrap;font-family:"Shippori Mincho B1",serif;
+    box-shadow:6px 6px 0 var(--lime);
+    transform:rotate(-6deg);transform-origin:top right;
+  }
+  .f-portrait .tag-r{position:absolute;right:0;top:0;background:var(--lime);color:var(--ink);padding:5px 9px;font-size:10px;letter-spacing:.3em;font-weight:700;white-space:nowrap}
+  .f-portrait .mono{position:absolute;left:12px;bottom:12px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:rgba(0,0,0,.5)}
+  .f-portrait .cross{position:absolute;right:10px;bottom:10px;width:18px;height:18px}
+  .f-portrait .cross .v{position:absolute;left:8px;top:0;bottom:0;width:1px;background:rgba(0,0,0,.4)}
+  .f-portrait .cross .h{position:absolute;top:8px;left:0;right:0;height:1px;background:rgba(0,0,0,.4)}
+
+  /* sticker burst */
+  .f-sticker{
+    position:absolute;left:480px;top:130px;width:110px;height:110px;z-index:7;
+    transform:rotate(14deg);
+    filter:drop-shadow(4px 4px 0 var(--ink));
+  }
+  .f-sticker .inner{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:flex-start;text-align:center;padding:24px 14px 14px;gap:3px;
+  }
+  .f-sticker .t1{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:24px;color:var(--ink);line-height:1}
+  .f-sticker .t2{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:20px;color:var(--ink);line-height:1.1}
+  .f-sticker .t3{display:none}
+
+  /* slogan area — STATEMENT帯を01のすぐ下に */
+  .f-slogan{position:absolute;left:32px;top:215px;z-index:6;width:520px}
+  .f-tape{
+    position:relative;display:inline-block;margin-bottom:18px;background:var(--lime);
+    color:var(--ink);padding:5px 14px 5px 12px;font-size:12px;letter-spacing:.3em;font-weight:700;
+    white-space:nowrap;transform:rotate(-1.5deg);box-shadow:2px 2px 0 rgba(0,0,0,.1);
+  }
+  .f-tape::before{content:"";position:absolute;left:-6px;top:50%;width:6px;height:14px;margin-top:-7px;background:var(--lime);clip-path:polygon(100% 0,0 50%,100% 100%)}
+  .f-tape::after{content:"";position:absolute;right:-6px;top:50%;width:6px;height:14px;margin-top:-7px;background:var(--lime);clip-path:polygon(0 0,100% 50%,0 100%)}
+  .f-headline{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:96px;line-height:.9;letter-spacing:-.03em;color:var(--ink);white-space:nowrap}
+  /* 「止めない、」を「この街を」accent帯より上に */
+  .f-headline > div:first-child{position:relative;z-index:2}
+  /* 「い」だけpaper縁取りで背景緑帯から分離 */
+  .f-headline .ii{text-shadow:-2px 0 0 var(--paper),2px 0 0 var(--paper),0 -2px 0 var(--paper),0 2px 0 var(--paper),-2px -2px 0 var(--paper),2px 2px 0 var(--paper),-2px 2px 0 var(--paper),2px -2px 0 var(--paper)}
+  .f-headline .accent{
+    display:inline-block;background:var(--lime);color:var(--ink);
+    padding:4px 14px 0;transform:skewX(-7deg);box-shadow:4px 4px 0 var(--ink);
+    position:relative;z-index:1;
+  }
+  .f-headline .accent > span{display:inline-block;transform:skewX(7deg)}
+  .f-sub{font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:26px;margin-top:10px;letter-spacing:.04em}
+  .f-tags{margin-top:14px;display:flex;gap:6px;flex-wrap:wrap}
+  .f-tags span{font-size:11px;letter-spacing:.15em;font-weight:700;padding:4px 10px;border:1.5px solid var(--ink);background:var(--paper);white-space:nowrap}
+
+  /* postmark stamp */
+  .f-stamp{
+    position:absolute;left:470px;top:540px;width:120px;height:120px;z-index:7;
+    border:3px double var(--green-deep);border-radius:50%;color:var(--green-deep);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    transform:rotate(-14deg);
+    background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),transparent 65%);
+    font-family:"Shippori Mincho B1",serif;font-weight:900;
+  }
+  .f-stamp .s-t{font-size:9px;letter-spacing:.25em;margin-bottom:2px;white-space:nowrap}
+  .f-stamp .s-m{font-size:26px;letter-spacing:.2em}
+  .f-stamp .s-b{font-size:9px;letter-spacing:.25em;margin-top:2px;white-space:nowrap}
+  .f-stamp .ring{position:absolute;inset:10px;border:1px dashed var(--green-deep);border-radius:50%;opacity:.4}
+
+  /* HUGE NAME */
+  .f-name-wrap{position:absolute;left:28px;right:28px;bottom:156px;z-index:8}
+  .f-name-kicker{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+  .f-name-kana{background:var(--ink);color:var(--paper);padding:4px 10px;font-size:11px;letter-spacing:.35em;font-weight:600;white-space:nowrap}
+  .f-name-role{background:var(--lime);color:var(--ink);padding:6px 14px;font-size:14px;font-weight:900;letter-spacing:.18em;white-space:nowrap;box-shadow:3px 3px 0 var(--ink)}
+  .f-name-1{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:240px;line-height:.82;color:var(--ink);letter-spacing:-.03em;margin-left:-6px;margin-bottom:-16px;white-space:nowrap}
+  /* 「たくや」: 元の緑+黒影スタイル。「や」のみ深緑で背景緑帯と差別化 */
+  .f-name-2{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:200px;line-height:.82;color:var(--green);letter-spacing:-.03em;margin-left:80px;white-space:nowrap;position:relative;text-shadow:5px 5px 0 var(--ink)}
+  .f-name-2 .ya{color:var(--green-deep);text-shadow:5px 5px 0 var(--ink),-2px 0 0 var(--paper),2px 0 0 var(--paper),0 -2px 0 var(--paper),0 2px 0 var(--paper)}
+  .f-name-2 svg{position:absolute;left:0;bottom:-4px}
+
+  /* bottom contact strip — QR 80px が収まるよう高さ拡大 */
+  .f-contact{position:absolute;left:0;right:0;bottom:0;height:140px;background:var(--ink);color:var(--paper);z-index:9;display:flex;flex-direction:column}
+  .f-cta{background:var(--lime);color:var(--ink);padding:8px 28px;display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:700;letter-spacing:.1em}
+  .f-cta .cta-label{white-space:nowrap;font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:22px;letter-spacing:.08em}
+  .f-cta .cta-line{white-space:nowrap}
+  .f-cta .cta-name{background:var(--ink);color:var(--lime);padding:2px 10px;margin-left:4px;font-weight:800}
+  .f-contact-row{flex:1;padding:8px 28px 10px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .f-contact-left{display:flex;align-items:center;gap:18px;min-width:0}
+  .f-flogo{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:22px;letter-spacing:.1em;white-space:nowrap}
+  .f-divider{border-left:1px solid rgba(255,255,255,.3);height:42px}
+  .f-addr-block{line-height:1.55;font-size:13px}
+  .f-addr-line{white-space:nowrap}
+  .f-meet-line{opacity:.65;font-size:11px;margin-top:1px;letter-spacing:.15em;white-space:nowrap}
+  .f-qr{display:flex;align-items:center;gap:8px;flex-shrink:0}
+  .f-qr-lead{font-size:11px;letter-spacing:.05em;font-weight:700;color:var(--paper);line-height:1.4;text-align:right;white-space:nowrap}
+  .f-qr img{width:80px;height:80px;display:block;background:#fff;padding:3px;box-sizing:border-box;image-rendering:crisp-edges}
+
+  /* printer reg marks */
+  .f-reg{position:absolute;width:18px;height:18px;z-index:10;opacity:.55}
+  .f-reg .v{position:absolute;left:8px;top:0;bottom:0;width:1px;background:var(--ink)}
+  .f-reg .h{position:absolute;top:8px;left:0;right:0;height:1px;background:var(--ink)}
+  .f-reg .dot{position:absolute;left:4px;top:4px;width:10px;height:10px;border:1px solid var(--ink);border-radius:50%}
+
+  /* 公職選挙法対策の「討議資料」マーク（透過枠・白文字、目立たない） */
+  .f-discussion-mark{
+    position:absolute;top:46px;right:12px;z-index:10;
+    background:transparent;color:#fff;border:1px solid #fff;
+    padding:2px 6px;font-size:8px;letter-spacing:.1em;font-weight:600;
+    white-space:nowrap;font-family:"Noto Sans JP",sans-serif;opacity:.85;
+  }
+
+  /* right-edge perforation */
+  .f-perf{position:absolute;right:4px;top:50px;bottom:156px;width:4px;z-index:5}
+  .f-perf i{position:absolute;width:4px;height:18px;background:var(--ink);opacity:.25;display:block}
+
+  /* ===================================================================== */
+  /* BACK                                                                   */
+  /* ===================================================================== */
+
+  /* diagonal green wedge top-left */
+  .b-wedge{position:absolute;top:-180px;left:-120px;width:720px;height:320px;background:var(--green);transform:rotate(-10deg);transform-origin:top left}
+
+  /* top ribbon */
+  .b-ribbon{
+    position:absolute;left:0;top:0;right:0;height:32px;background:var(--ink);color:var(--paper);
+    display:flex;align-items:center;padding:0 20px;justify-content:space-between;
+    font-size:11px;letter-spacing:.25em;font-weight:700;z-index:5;
+  }
+  .b-ribbon span{white-space:nowrap}
+  .b-ribbon .r{opacity:.8}
+
+  /* header */
+  .b-header{
+    position:relative;z-index:4;padding:40px 28px 8px;
+    display:flex;justify-content:space-between;align-items:flex-end;
+    border-bottom:3px solid var(--ink);
+  }
+  .b-kick{display:inline-block;background:var(--ink);color:var(--paper);padding:4px 10px;font-size:11px;letter-spacing:.3em;font-weight:700;white-space:nowrap;margin-bottom:6px}
+  .b-h{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:28px;margin:0;line-height:1;letter-spacing:-.01em;color:var(--paper);text-shadow:3px 3px 0 var(--ink)}
+  .b-h .accent{color:var(--lime)}
+  .b-year{font-family:"Anton",sans-serif;font-size:38px;line-height:.9;color:var(--lime);text-shadow:2px 2px 0 var(--ink)}
+  .b-year-sub{font-size:10px;letter-spacing:.3em;color:var(--ink);margin-top:2px;font-weight:700}
+  .b-header-r{text-align:right;color:var(--paper);white-space:nowrap}
+
+  /* policy 01 — flagship */
+  .b-policy01{position:relative;z-index:3;background:var(--paper);padding:4px 24px 6px;border-bottom:1px dashed rgba(0,0,0,.25)}
+  .b-p01-head{display:grid;grid-template-columns:92px 1fr 200px;gap:14px;align-items:center;margin-bottom:8px}
+  .b-p01-num{font-family:"Anton",sans-serif;font-size:70px;line-height:.85;color:var(--green);text-shadow:3px 3px 0 var(--ink);white-space:nowrap}
+  .b-p01-lbl{font-size:9.5px;letter-spacing:.18em;font-weight:700;margin-top:2px;line-height:1.35;color:#444;word-break:keep-all}
+  .b-p01-title{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:22px;margin:0 0 4px;line-height:1.25;letter-spacing:-.01em}
+  .b-p01-title .hl{background:none;padding:0 3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .b-p01-sub{font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:14px;color:#444;letter-spacing:.02em}
+
+  /* p01 photo — halftone/stripe/tape/filter削除で写真クリア化。下に伸ばしてZEROボックスにはみ出し（grid行は変えずmargin負で）。レイヤー最上位 */
+  .b-p01-photo{position:relative;width:200px;height:160px;transform:rotate(-2deg);transform-origin:center center;margin-bottom:-36px;z-index:10}
+  .b-p01-photo .behind{position:absolute;inset:8px -8px -8px 8px;background:var(--lime);border:3px solid var(--ink);z-index:0}
+  .b-p01-photo .frame{position:absolute;inset:0;background:#c9c2ac;border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);overflow:hidden;z-index:1}
+  .b-p01-photo .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 36%;display:block}
+  .b-p01-photo .halftone{display:none}
+  .b-p01-photo .tag{position:absolute;top:0;left:0;background:var(--ink);color:var(--paper);padding:4px 9px;font-size:10px;letter-spacing:.2em;font-weight:700;white-space:nowrap;z-index:2}
+  .b-p01-photo .mono{position:absolute;left:10px;right:10px;bottom:3px;font-family:"Noto Sans JP",sans-serif;font-size:11.5px;font-weight:500;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 4px rgba(0,0,0,.55);z-index:2;letter-spacing:.02em;font-style:italic}
+  .b-p01-photo .tape{display:none}
+
+  /* flagship — 5 ZERO */
+  .b-zero-box{position:relative;background:var(--ink);color:var(--paper);padding:8px 14px 10px;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--lime)}
+  .b-zero-head{display:flex;align-items:center;gap:10px;margin-bottom:3px;flex-wrap:wrap}
+  .b-zero-badge{font-family:"Anton",sans-serif;font-size:14px;color:var(--ink);background:var(--lime);padding:3px 9px;letter-spacing:.15em;white-space:nowrap}
+  .b-zero-title{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:22px;margin:0;line-height:1.15;letter-spacing:.02em;color:var(--paper)}
+  .b-zero-title .big{color:var(--lime);font-size:30px}
+  .b-zero-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+  .b-zero-cell{background:rgba(255,255,255,.06);border:2px solid var(--lime);padding:5px 6px 6px;text-align:center}
+  .b-zero-no{font-family:"Anton",sans-serif;font-size:9px;color:var(--lime);letter-spacing:.25em;white-space:nowrap}
+  .b-zero-jp{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:14px;line-height:1.3;color:var(--paper);margin-top:3px;margin-bottom:4px}
+  .b-zero-zz{display:inline-block;background:var(--lime);color:var(--ink);font-family:"Anton",sans-serif;font-size:22px;letter-spacing:-.02em;padding:0 9px;line-height:1.1;white-space:nowrap}
+  .b-zero-en{font-size:8.5px;opacity:.6;letter-spacing:.2em;margin-top:3px;font-family:ui-monospace,Menlo,monospace;white-space:nowrap}
+  /* NO.04セル内に注釈を詰め込む（黒枠を下に広げない） */
+  .b-zero-cell-note{padding-bottom:3px}
+  .b-zero-foot{font-size:7.5px;line-height:1.15;color:rgba(255,255,255,.55);letter-spacing:0;margin-top:2px}
+
+  /* sub-sections grid (周産期 / 学校) */
+  .b-subs{margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .b-sub{border:2px solid var(--ink);padding:5px 10px 7px;background:var(--paper)}
+  .b-sub.s0{box-shadow:3px 3px 0 var(--green)}
+  .b-sub.s1{box-shadow:3px 3px 0 var(--ink)}
+  .b-sub-head{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+  .b-sub-no{font-family:"Anton",sans-serif;font-size:14px;color:var(--lime);background:var(--ink);padding:2px 7px;white-space:nowrap;letter-spacing:.15em}
+  .b-sub-h{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:16px;margin:0;line-height:1.3;color:var(--ink);letter-spacing:.02em}
+  .b-sub ul{margin:0;padding:0;list-style:none}
+  .b-sub li{display:grid;grid-template-columns:14px 1fr;gap:5px;font-size:12.5px;line-height:1.7;color:#1a1a1a;padding:1px 0}
+  .b-sub li .ck{color:var(--green);font-weight:900;font-size:13px}
+
+  /* pillar block (02 / 03) — Policy 01 と左端揃え、上下padding詰めて高さ圧縮 */
+  .b-pillar{position:relative;z-index:3;padding:2px 24px 4px 24px;border-bottom:1px dashed rgba(0,0,0,.2)}
+  .b-pillar.p02{background:var(--paper);color:var(--ink)}
+  /* Pillar 03 は写真の右はみ出し回避＋下余白は控えめに */
+  .b-pillar.p03{background:var(--green-deep);color:var(--paper);padding:2px 42px 6px 24px}
+  .b-pillar-head{display:flex;align-items:baseline;gap:24px;margin-bottom:2px;flex-wrap:wrap}
+  .b-pillar-num{font-family:"Anton",sans-serif;font-size:52px;line-height:.9;text-shadow:2px 2px 0 var(--ink);white-space:nowrap}
+  .b-pillar.p02 .b-pillar-num{color:var(--green)}
+  .b-pillar.p03 .b-pillar-num{color:var(--lime)}
+  .b-pillar-lbl{font-size:12px;letter-spacing:.22em;font-weight:700;white-space:nowrap;align-self:center}
+  .b-pillar.p02 .b-pillar-lbl{color:#555}
+  .b-pillar.p03 .b-pillar-lbl{color:rgba(255,255,255,.8)}
+  /* タイトルはヘッダー横並びに戻し、サイズ大＋ハイライト強化で目立たせる（縦伸び抑制） */
+  .b-pillar-title{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:28px;margin:0;line-height:1.15;letter-spacing:-.01em;align-self:center}
+  .b-pillar.p02 .b-pillar-title span{background:none;box-shadow:inset 0 -0.28em 0 #c7ff4a;padding:0 6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .b-pillar.p03 .b-pillar-title span{background:none;box-shadow:inset 0 -0.28em 0 #1f5a3a;padding:0 6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+  /* pillar body grid — 本文は1frで右端まで自然に伸ばし、gapで写真との余裕を確保 */
+  .b-pillar-body{display:grid;gap:24px;align-items:flex-start}
+  .b-pillar.p02 .b-pillar-body{grid-template-columns:160px 1fr;gap:38px}
+  .b-pillar.p03 .b-pillar-body{grid-template-columns:1fr 140px}
+  .b-pillar-text{margin:0;font-size:13px;line-height:1.85;letter-spacing:.02em}
+  .b-pillar.p02 .b-pillar-text{color:#1a1a1a}
+  .b-pillar.p03 .b-pillar-text{color:rgba(255,255,255,.95)}
+  .b-pillar-chips{margin-top:6px;display:flex;gap:4px;flex-wrap:wrap}
+  .b-pillar-chips span{font-size:12px;padding:4px 9px;letter-spacing:.1em;font-weight:700;white-space:nowrap}
+  .b-pillar-chips .chip-note{background:transparent !important;color:rgba(0,0,0,.6) !important;font-weight:500 !important;font-size:9.5px;padding:4px 2px;letter-spacing:.02em}
+  .b-pillar.p02 .b-pillar-chips span{background:var(--ink);color:var(--paper)}
+  .b-pillar.p03 .b-pillar-chips span{background:var(--lime);color:var(--ink)}
+
+  /* generic photo block (used by pillars 02/03 and profile) */
+  .b-photo{border:4px solid var(--ink);position:relative;flex-shrink:0;overflow:hidden}
+  .b-photo img{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .b-photo .tag{position:absolute;top:0;left:0;background:var(--ink);color:var(--paper);padding:3px 7px;font-size:10px;letter-spacing:.04em;font-weight:700;white-space:nowrap;z-index:1}
+  .b-photo .mono{position:absolute;left:6px;right:6px;bottom:3px;font-family:"Noto Sans JP",sans-serif;font-size:10.5px;font-weight:500;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 4px rgba(0,0,0,.55);z-index:1;letter-spacing:-.02em;font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  .b-photo-p02{width:160px;height:100px;
+    background:repeating-linear-gradient(45deg,#d6cfbe 0 9px,#c9c2ac 9px 18px);
+    box-shadow:8px 8px 0 var(--green);transform:rotate(-1.5deg)}
+  .b-photo-p02 img{object-fit:cover;object-position:center 28%}
+
+  .b-photo-p03{width:140px;height:128px;background:#c9c2ac;
+    box-shadow:8px 8px 0 var(--lime);transform:rotate(1.5deg) translateY(-26px);align-self:center}
+  .b-photo-p03 img{object-fit:cover;object-position:60% 60%}
+
+  /* profile — 写真とテキストの隙間を広げて重なり回避 */
+  .b-profile{position:relative;z-index:3;background:#efe8d8;padding:2px 24px 2px;display:grid;grid-template-columns:108px 1fr;gap:24px;align-items:flex-start}
+  .b-photo-prof{width:108px;height:130px;
+    background:repeating-linear-gradient(-30deg,#d6cfbe 0 9px,#c9c2ac 9px 18px);
+    box-shadow:8px 8px 0 var(--green);transform:rotate(-2deg)}
+  .b-photo-prof img{object-fit:cover;object-position:35% 30%}
+  /* プロフィール写真のmonoは小さく1行、ユニフォームを隠さない */
+  .b-photo-prof .mono{font-size:7.5px;letter-spacing:-.02em;line-height:1.1;bottom:2px;font-style:normal;font-weight:600;white-space:nowrap;left:4px;right:4px}
+  .b-prof-line1{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+  .b-prof-name{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:22px;letter-spacing:.04em;white-space:nowrap}
+  .b-prof-kana{font-family:ui-monospace,Menlo,monospace;font-weight:500;font-size:11px;letter-spacing:.15em;margin-left:10px;color:#666}
+  .b-prof-kick{display:inline-block;background:var(--ink);color:var(--paper);padding:2px 9px;font-size:10.5px;letter-spacing:.25em;font-weight:700;white-space:nowrap}
+  .b-prof-spec{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:#1a1a1a;letter-spacing:.05em;white-space:nowrap;margin-bottom:4px}
+  .b-prof-intro{padding-left:12px;border-left:4px solid var(--lime);font-family:"Noto Sans JP",sans-serif;font-weight:500;font-size:12.5px;line-height:1.85;letter-spacing:.02em;color:#1a1a1a}
+
+  /* activity strip */
+  .b-act{position:relative;z-index:3;background:#efe8d8;padding:0 24px 12px}
+  .b-act-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;gap:10}
+  .b-act-kick{background:var(--ink);color:var(--paper);padding:2px 9px;font-size:10.5px;letter-spacing:.25em;font-weight:700;white-space:nowrap}
+  .b-act-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .b-act-cell{position:relative}
+  .b-act-photo{position:relative;height:42px;overflow:hidden;background:repeating-linear-gradient(-30deg,#d6cfbe 0 7px,#c9c2ac 7px 14px);border:2px solid var(--ink)}
+  .b-act-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+  .b-act-fw{position:absolute;top:0;left:0;background:var(--ink);color:var(--paper);font-size:8px;padding:1px 5px;letter-spacing:.2em;font-weight:700;white-space:nowrap}
+  .b-act-pin{position:absolute;top:-4px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--lime);border:1.5px solid var(--ink)}
+  .b-act-title{margin-top:3px;font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:11px;line-height:1.25;color:var(--ink);white-space:nowrap;overflow:visible;letter-spacing:-.03em}
+
+  /* ───── print ───── A4 (210mm × 297mm)。leaflet本体は842×1190pxのまま、印刷時にscale(0.9426)でA4にフィット */
+  @page{size:A4;margin:0}
+  @media print{
+    html,body{background:#fff;padding:0;margin:0}
+    body{display:block;padding:0}
+    .stack{gap:0;display:block}
+    .page-label{display:none !important}
+    .page-label-wrap{
+      display:block !important;margin:0 !important;padding:0 !important;
+      width:210mm;height:297mm;overflow:hidden;
+      page-break-after:always;break-after:page;
+    }
+    .page-label-wrap:last-child{page-break-after:auto;break-after:auto}
+    .leaflet-wrap{
+      box-shadow:none !important;margin:0 !important;padding:0 !important;
+      width:842px;height:1190px;
+      transform:scale(0.9426);transform-origin:top left;
+    }
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="stack">
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- SIDE A — FRONT                                                           -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <div class="page-label-wrap">
+    <div class="page-label">SIDE A — 表 / FRONT</div>
+    <div class="leaflet-wrap">
+      <div class="leaflet">
+
+        <div class="f-bg-green"></div>
+        <div class="f-bg-halftone"></div>
+        <div class="f-stripe-a"></div>
+        <div class="f-stripe-b"></div>
+
+        <div class="f-ribbon">
+          <span>● 草川たくや後援会 · SUPPORTERS</span>
+          <span class="r">VOL.01 · 2026 SPRING</span>
+        </div>
+
+        <div class="f-corner">
+          <div class="row">
+            <div class="bar"></div>
+            <div>
+              <div class="lbl">VOLUME</div>
+              <div class="en">SUPPORTERS</div>
+            </div>
+          </div>
+          <div class="no">01</div>
+        </div>
+
+        <div class="f-discussion-mark">討議資料</div>
+        <div class="f-portrait">
+          <img src="assets/portrait.png" alt="草川たくや" />
+          <div class="tag-r">2026.5</div>
+          <div class="cross"><div class="v"></div><div class="h"></div></div>
+        </div>
+        <div class="f-name-banner">草川たくや</div>
+
+        <div class="f-sticker">
+          <svg viewBox="0 0 100 100" width="110" height="110" style="display:block">
+            <polygon
+              points="50,2 58,18 76,8 74,28 94,28 82,42 98,54 78,58 86,76 66,72 64,92 50,80 36,92 34,72 14,76 22,58 2,54 18,42 6,28 26,28 24,8 42,18"
+              fill="#c7ff4a" stroke="#111418" stroke-width="2.5" />
+          </svg>
+          <div class="inner">
+            <div class="t1">入会</div>
+            <div class="t2">受付中</div>
+          </div>
+        </div>
+
+        <div class="f-slogan">
+          <div class="f-tape">STATEMENT — 私の約束</div>
+          <div class="f-headline">
+            <div>止めな<span class="ii">い</span>、</div>
+            <div class="accent"><span>この街を。</span></div>
+          </div>
+          <svg width="360" height="12" viewBox="0 0 360 12" style="margin-top:3px;margin-left:6px">
+            <path d="M2,7 C 80,2 160,11 240,5 S 340,9 358,3" stroke="#111418" stroke-width="2.5" fill="none" stroke-linecap="round" />
+          </svg>
+          <div class="f-sub">声を、チカラに。</div>
+          <div class="f-tags">
+            <span>対話する政治</span>
+            <span>現場主義</span>
+            <span>行動力</span>
+          </div>
+        </div>
+
+        <div class="f-stamp">
+          <div class="s-t">OFFICIAL · 公式</div>
+          <div class="s-m">後 援 会</div>
+          <div class="s-b">SINCE · 2018</div>
+          <div class="ring"></div>
+        </div>
+
+        <div class="f-name-wrap">
+          <div class="f-name-kicker">
+            <span class="f-name-kana">KUSAKAWA TAKUYA</span>
+            <span class="f-name-role">亀山市議会議員 (2期目)</span>
+          </div>
+          <div class="f-name-1">草川</div>
+          <div class="f-name-2">
+            たく<span class="ya">や</span>
+            <svg width="480" height="12" viewBox="0 0 480 12">
+              <path d="M2,6 C 80,1 180,10 280,4 S 440,8 478,2" stroke="#1f5a3a" stroke-width="4" fill="none" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="f-contact">
+          <div class="f-cta">
+            <span class="cta-label">ええやん 亀山。</span>
+            <span class="cta-line">あなたの声を、<span class="cta-name">草川たくや</span> と一緒に。</span>
+          </div>
+          <div class="f-contact-row">
+            <div class="f-contact-left">
+              <div class="f-flogo">草川たくや後援会</div>
+              <div class="f-divider"></div>
+              <div class="f-addr-block">
+                <div class="f-addr-line">〒519-0134  三重県亀山市中庄町 858</div>
+                <div class="f-addr-line" style="opacity:.85;font-size:11.5px;letter-spacing:.05em;margin-top:1px">090-1099-2458  /  t.higuchi125@gmail.com</div>
+              </div>
+            </div>
+            <div class="f-qr">
+              <div class="f-qr-lead">最新情報・活動実績は<br/>公式LINE / SNSから</div>
+              <img src="assets/qr-line.png" alt="LINE QR" />
+              <img src="assets/qr-instagram-clean.png" alt="Instagram QR" />
+            </div>
+          </div>
+        </div>
+
+        <div class="f-perf">
+          <i style="top:0px"></i><i style="top:44px"></i><i style="top:88px"></i><i style="top:132px"></i>
+          <i style="top:176px"></i><i style="top:220px"></i><i style="top:264px"></i><i style="top:308px"></i>
+          <i style="top:352px"></i><i style="top:396px"></i><i style="top:440px"></i><i style="top:484px"></i>
+          <i style="top:528px"></i><i style="top:572px"></i><i style="top:616px"></i><i style="top:660px"></i>
+          <i style="top:704px"></i><i style="top:748px"></i><i style="top:792px"></i><i style="top:836px"></i>
+          <i style="top:880px"></i><i style="top:924px"></i>
+        </div>
+
+        <div class="grain"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- SIDE B — BACK                                                            -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <div class="page-label-wrap">
+    <div class="page-label">SIDE B — 裏 / BACK</div>
+    <div class="leaflet-wrap">
+      <div class="leaflet">
+
+        <div class="b-wedge"></div>
+
+        <div class="b-ribbon">
+          <span>● VISION · 亀山を、全力で応援する。</span>
+          <span class="r">3つの約束 · BACK</span>
+        </div>
+
+        <div class="b-header">
+          <div>
+            <div class="b-kick">VISION · 3つの約束</div>
+            <h2 class="b-h"><span class="accent">亀山のこれからの4年。</span></h2>
+          </div>
+          <div class="b-header-r">
+            <div class="b-year">2030</div>
+            <div class="b-year-sub">VISION · までに</div>
+          </div>
+        </div>
+
+        <!-- POLICY 01 — FLAGSHIP 子育て・教育 -->
+        <div class="b-policy01">
+          <div class="b-p01-head">
+            <div>
+              <div class="b-p01-num">01</div>
+              <div class="b-p01-lbl">KOSODATE · 子育て・教育</div>
+            </div>
+            <div>
+              <h3 class="b-p01-title"><span class="hl">子どもの未来に投資を。<br/>子育てという、かけがえのない営みを支える。</span></h3>
+              <div class="b-p01-sub">〜できることは全部やる。〜</div>
+            </div>
+            <div class="b-p01-photo">
+              <div class="behind"></div>
+              <div class="frame">
+                <img src="uploads/IMG_8382.jpeg" alt="子育て支援の現場" />
+                <div class="halftone"></div>
+                <div class="tag">保育園の交通安全対策を実現</div>
+                <div class="mono">昼生保育園前の路面標示を新設</div>
+              </div>
+              <div class="tape"></div>
+            </div>
+          </div>
+
+          <div class="b-zero-box">
+            <div class="b-zero-head">
+              <span class="b-zero-badge">▶ FLAGSHIP / 看板政策</span>
+              <h4 class="b-zero-title">かめやま子育て<span class="big"> 5</span>つのゼロ</h4>
+            </div>
+            <div class="b-zero-grid">
+              <div class="b-zero-cell">
+                <div class="b-zero-no">NO. 01</div>
+                <div class="b-zero-jp">18歳まで医療費</div>
+                <div class="b-zero-zz">ZERO</div>
+                <div class="b-zero-en">MEDICAL</div>
+              </div>
+              <div class="b-zero-cell">
+                <div class="b-zero-no">NO. 02</div>
+                <div class="b-zero-jp">給食費</div>
+                <div class="b-zero-zz">ZERO</div>
+                <div class="b-zero-en">LUNCH</div>
+              </div>
+              <div class="b-zero-cell">
+                <div class="b-zero-no">NO. 03</div>
+                <div class="b-zero-jp">保育料 第2子以降</div>
+                <div class="b-zero-zz">ZERO</div>
+                <div class="b-zero-en">HOIKU</div>
+              </div>
+              <div class="b-zero-cell b-zero-cell-note">
+                <div class="b-zero-no">NO. 04</div>
+                <div class="b-zero-jp">待機児童・育休退園</div>
+                <div class="b-zero-zz">ZERO</div>
+                <div class="b-zero-en">TAIKI</div>
+                <div class="b-zero-foot">※育休退園＝育休中の上の子退園</div>
+              </div>
+              <div class="b-zero-cell">
+                <div class="b-zero-no">NO. 05</div>
+                <div class="b-zero-jp">アナログ行政手続き</div>
+                <div class="b-zero-zz">ZERO</div>
+                <div class="b-zero-en">DIGITAL</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="b-subs">
+            <div class="b-sub s0">
+              <div class="b-sub-head">
+                <span class="b-sub-no">▶ 02</span>
+                <h4 class="b-sub-h">亀山版・周産期ケアシステム</h4>
+              </div>
+              <ul>
+                <li><span class="ck">✓</span><span>不妊治療・妊娠・出産の費用負担、限りなくゼロへ</span></li>
+                <li><span class="ck">✓</span><span>妊婦・陣痛タクシーで移動負担を減らす</span></li>
+                <li><span class="ck">✓</span><span>24時間オンライン医療相談で不安軽減</span></li>
+                <li><span class="ck">✓</span><span>産後ケアネット強化（民間×あいあい×医療）と負担ゼロ</span></li>
+                <li><span class="ck">✓</span><span>発達支援プラットフォームの確立で療育不安を軽減</span></li>
+              </ul>
+            </div>
+            <div class="b-sub s1">
+              <div class="b-sub-head">
+                <span class="b-sub-no">▶ 03</span>
+                <h4 class="b-sub-h">学校現場と子どもと保護者に最優先投資</h4>
+              </div>
+              <ul>
+                <li><span class="ck">✓</span><span>体育館エアコン早期設置で熱中症リスクを限りなくゼロへ</span></li>
+                <li><span class="ck">✓</span><span>部活動の地域移行、家計負担、ふやさない</span></li>
+                <li><span class="ck">✓</span><span>いじめによる孤立・泣き寝入りゼロ／不登校児童の孤独ゼロ</span></li>
+                <li><span class="ck">✓</span><span>雨の日も暑い日も快適な子どもの遊び場をつくる</span></li>
+                <li><span class="ck">✓</span><span>通学路の危険箇所対策／バス再編と無料化で通学負担を軽減</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- POLICY 02 — 防災・福祉 -->
+        <div class="b-pillar p02">
+          <div class="b-pillar-head">
+            <span class="b-pillar-num">02</span>
+            <span class="b-pillar-lbl">BOSAI・FUKUSHI  防災・福祉</span>
+            <h3 class="b-pillar-title"><span>毎日を、当たり前に安心安全に。</span></h3>
+          </div>
+          <div class="b-pillar-body">
+            <div class="b-photo b-photo-p02">
+              <img src="uploads/IMG_9789.jpeg" alt="特別教室の空調機設置が決定" />
+              <div class="tag">特別教室の空調機設置が決定</div>
+              <div class="mono" style="color:rgba(255,255,255,.85)">校内ふれあい教室も</div>
+            </div>
+            <div>
+              <p class="b-pillar-text">水道管路更新の加速で濁り水ゼロ。要配慮者の個別避難計画100％、福祉避難所の事前指定と<span style="white-space:nowrap">災害ケアマネジメント</span>で在宅避難者まで見守り、災害関連死ゼロへ。子どもインフルワクチン無料。<span style="white-space:nowrap">AIと新薬</span>で認知症の早期発見・治療。<span style="white-space:nowrap">AIで先回り訪問</span>・<span style="white-space:nowrap">８０５０</span>家族をひとりにしない亀山へ。</p>
+              <div class="b-pillar-chips">
+                <span>個別避難計画</span><span>福祉避難所</span><span>災害ケアマネ</span><span>ワクチン</span><span>認知症</span><span>８０５０</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- POLICY 03 — 希望 (hero) -->
+        <div class="b-pillar p03">
+          <div class="b-pillar-head">
+            <span class="b-pillar-num">03</span>
+            <span class="b-pillar-lbl">KIBOU · 希望</span>
+            <h3 class="b-pillar-title"><span>亀山に、希望の旗を立てる。</span></h3>
+          </div>
+          <div class="b-pillar-body">
+            <div>
+              <p class="b-pillar-text">JR関西本線のJR草津線直通化で京都・大阪へ一直線。AIサプライチェーン産業団地で半導体・AI<br>サーバー誘致、「次は亀山だ」。コストコ誘致を諦めない。JR亀山駅周辺の活性化と鈴鹿川河川流域<br>「かわまちづくり」や、新たに沿道拠点となった菅内周辺と、鈴鹿亀山道路ＩＣ周辺を大きく変える。<br>交通拠点性を活かしたスポーツ施設整備で、未来のオリンピアン・パラリンピアンが生まれる街へ。</p>
+              <div class="b-pillar-chips">
+                <span>草津線直通</span><span>AI産業</span><span>コストコ</span><span>かわまち</span><span>沿道拠点</span><span>スポーツ</span>
+              </div>
+            </div>
+            <div class="b-photo b-photo-p03">
+              <img src="assets/okuwa-site.jpg" alt="菅内の「拠点化」を実現" />
+              <div class="tag">菅内の「拠点化」を実現</div>
+              <div class="mono">菅内の新たな開発予定地</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFILE -->
+        <div class="b-profile">
+          <div>
+            <div class="b-photo b-photo-prof">
+              <img src="assets/profile-family-blurred.jpg" alt="PROFILE" />
+              <div class="mono">マスターズ陸上で県大会優勝</div>
+            </div>
+          </div>
+          <div>
+            <div class="b-prof-line1">
+              <div>
+                <span class="b-prof-name">草川 たくや</span>
+                <span class="b-prof-kana">KUSAKAWA TAKUYA</span>
+              </div>
+              <div class="b-prof-kick">PROFILE · 自己紹介</div>
+            </div>
+            <div class="b-prof-spec">亀山市議会議員 (2期目) · 1988.08.16生 · 37歳 · 亀山市中庄町</div>
+            <div class="b-prof-intro">亀山市中庄町生まれ ● 昼生小、6年制鈴鹿中高、早稲田大学（応援部主将） ● 衆議院議員 小池百合子（<span style="white-space:nowrap">現・東京都知事</span>）秘書を経て、亀山市議会議員（2期目） ● 三重パラ陸上競技協会 理事 ● 三重大学 応援団 <span style="white-space:nowrap">監督</span> ●<span style="white-space:nowrap">一般社団法人 亀山青年会議所 監事</span> ● 亀山飲食業組合 顧問 ● 亀山市eスポーツ協会 事務局長</div>
+          </div>
+        </div>
+
+        <!-- ACTIVITY STRIP -->
+        <div class="b-act">
+          <div class="b-act-head">
+            <span class="b-act-kick">FIELD WORK · 活動実績</span>
+          </div>
+          <div class="b-act-grid">
+            <div class="b-act-cell" style="transform:rotate(-1.2deg)">
+              <div class="b-act-photo" style="box-shadow:3px 3px 0 var(--green)">
+                <img src="assets/taiokaji-solar.jpg" alt="「太陽光パネル適正立地」条例を提案" style="object-position:50% 40%" />
+                <div class="b-act-fw">FW 01</div>
+              </div>
+              <div class="b-act-title" style="margin-left:-15px">「太陽光パネル適正立地」条例を提案</div>
+            </div>
+            <div class="b-act-cell" style="transform:rotate(0.8deg)">
+              <div class="b-act-photo" style="box-shadow:3px 3px 0 var(--ink)">
+                <img src="assets/skatepark-meeting.jpg" alt="スケートパーク整備を実現" style="object-position:50% 40%" />
+                <div class="b-act-fw">FW 02</div>
+                <div class="b-act-pin"></div>
+              </div>
+              <div class="b-act-title">スケートパーク整備を実現</div>
+            </div>
+            <div class="b-act-cell" style="transform:rotate(-0.6deg)">
+              <div class="b-act-photo" style="box-shadow:3px 3px 0 var(--green)">
+                <img src="assets/school-lunch-new.jpg" alt="中学校給食実現と小学校給食無償化" style="object-position:50% 50%" />
+                <div class="b-act-fw">FW 03</div>
+              </div>
+              <div class="b-act-title" style="margin-left:-10px">中学校給食実現と小学校給食無償化</div>
+            </div>
+            <div class="b-act-cell" style="transform:rotate(1.2deg)">
+              <div class="b-act-photo" style="box-shadow:3px 3px 0 var(--ink)">
+                <img src="assets/anoda-crosswalk-v2.jpg" alt="阿野田公民館前の信号設置へ道筋" style="object-position:40% 55%" />
+                <div class="b-act-fw">FW 04</div>
+              </div>
+              <div class="b-act-title">阿野田公民館前の信号設置へ道筋</div>
+            </div>
+            <div class="b-act-cell" style="transform:rotate(-0.8deg)">
+              <div class="b-act-photo" style="box-shadow:3px 3px 0 var(--green)">
+                <img src="assets/water-turbid.jpg" alt="市民に寄り添った濁り水対応" style="object-position:50% 55%" />
+                <div class="b-act-fw">FW 05</div>
+                <div class="b-act-pin"></div>
+              </div>
+              <div class="b-act-title">市民に寄り添った濁り水対応</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grain"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
