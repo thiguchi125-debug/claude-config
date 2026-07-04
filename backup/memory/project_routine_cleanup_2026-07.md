@@ -9,7 +9,9 @@ metadata:
 
 2026-07-04〜05、クラウドRoutine全10本を棚卸しし、廃止Notion✅タスクDB(292cf503)への書込が残っていた腐敗Routineを処置した（[[feedback-system-closing-loops-rot]]の実例）。
 
-**停止した2本（無効化のみ・削除は https://claude.ai/code/routines から草川手動）:**
+**✅ 2026-07-05 削除完了**: 下記の停止4本＋実行済み単発2本（議運リマインド5/22・プロジェクト化判定レビュー5/8）の計6本を、Claude in Chrome経由でclaude.ai/code/routinesから完全削除（草川承認のもと代行・各削除前にtrigger IDを照合）。現在のRoutineは現役4本のみ：news-briefing v3.1／oyasumi-nightly（7/4修理済）／weekly-policy-radar／monthly-policy-radar。
+
+**停止した2本（当初は無効化・後に上記の通り削除済）:**
 1. `weekly-drive-sync-kusagawa`（trig_016r7yNKRqVubUvCJMTzVZ98）— Drive Desktop＋夜間パイプラインに吸収され二重処理。詳細は[[project_drive_sync_v2]]
 2. `草川選挙進捗ウィークリーレビュー`（trig_01KfnWW7sA6xGTH3ZX251p5b）— 廃止Notion✅タスクDBの★選挙プロジェクト前提で、毎週金曜に廃止DBへタスクを書き込み続けていた。選挙カウントダウンはohayo§7が毎朝表示するため役割消滅。Todoist🗳選挙2026ベースの週次レビューが欲しくなったら新規Routineとして作り直す
 
