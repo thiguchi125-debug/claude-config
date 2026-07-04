@@ -262,3 +262,19 @@ DELIVER PDF + (オプション) HTML source
 - **地域版テンプレを他用途に流用しない**: 地域版市政報告レポートのレイアウトは「自治会単位の小ロット家庭用印刷物」に最適化されている。全域版・リーフレット・名刺・応援カードは別レイアウト体系。
 
 これらを守り、再現性のある美しい印刷物を量産すること。
+
+## 📌 恒久ガードルール（MEMORY.mdから移設 2026-07-04）
+
+- 全デザイン制作物の品質基準＝「中庄夏祭りポスター2026」水準以上。参照画像はピクセル単位で忠実再現、文字は1グリフ単位で検品、文字は装飾より上のレイヤー、EYES-FIRSTで実PNG目視反復、完成処理（日本語ファイル名・旧版削除・一式drafts保存）まで含めて品質（詳細: memory/feedback_design_quality_bar_natsumatsuri2026.md）
+- イベント当日の運営段取り表は「スマホ幅390px・1ページ縦長PDF」で作る。A4 PDFと長尺PNGはNG。タイムテーブルはカード型・絵文字なし。ページ高さは実測+約200px＋余裕で `/Count=1` を確認。個人情報入りは見出しとファイル名に注意書き（詳細: memory/feedback_event_runsheet_mobile_pdf_format.md）
+- 印刷物バイナリ素材（PDF/HTML/写真/QR）は02_publications/reports・leaflets直下に直接置かず `<YYYY-MM>_<案件名>/` サブフォルダに隔離。完成PDFは案件直下、素材は機能別小分類、中間版は最終確定後に削除し最終版＋直前版のみ保持（詳細: memory/feedback_publications_binary_storage.md）
+- 印刷物PDFを生成・更新した直後は確認を待たず即 `open <PDF絶対パス>` でプレビュー表示（最終成果物の画像も同様）。コピペ用コマンド案内は出さない。HTML・/tmp中間PNG・5件以上同時は自動openしない（詳細: memory/feedback_auto_open_pdf_after_render.md）
+- iPhone等の撮影写真は埋め込み前に必ずPIL `ImageOps.exif_transpose` で向きを画素に焼き込み→ `exif=b''` でEXIF完全strip。`sips -r 90` 単独はEXIF残存で二重回転する（macOS Previewの目視では気づけない）。Readツールで実向き確認（詳細: memory/feedback_image_exif_processing.md）
+- Drive一次資料PDFの図面挿入は pdftoppm→PILクロップで抽出し中間素材も案件フォルダに保持。contact-boxにはLINE公式QR（幅26mm）を並列配置。Page overflowは章削除でなく写真float化→infobox圧縮→figure幅縮小の段階圧縮で解消（本文7.5pt未満禁止）（詳細: memory/feedback_print_diagram_qr_layout.md）
+- 市政報告レポート（A4両面）は制作チェックリスト全項目クリアが必須：氏名42pt・章本文9.5pt統一・章2主役写真は横長80×54mm・他地区名残存grep・自治会員個人名不掲載・大幅変更後は安全ゲート再通過・natural-design-reviewer複数回（詳細: memory/feedback_print_publication_checklist.md）
+- 後援会リーフレットの恒久原則：preview PNGをReadで客観確認・元デザインの装飾を勝手に削除しない・指示外の段組/大幅レイアウト変更禁止・lime `#c7ff4a` 等の色統一・「規制」→「適正立地」転換・「討議資料」表記必須・写真は300dpi目安に事前最適化（詳細: memory/feedback_leaflet_design_principles.md）
+- 亀山市eスポーツ協会の制作物には必ず公式ロゴ「TUIRTLE」を使用（正本: `~/.claude/projects/-Users-kusakawatakuya/assets/esports_logo/logo_transparent.png`）。ダーク背景は淡ライムdrop-shadowで発光。別途コントローラー絵は重複NG。"ASOCIATION" 表記は原本のまま（詳細: memory/feedback_esports_association_logo.md）
+- チラシで唯一の固いNG＝「AI製SaaS LP風」：紫系グラデ/ぼかしブロブ・浮いた角丸カード積み・絵文字丸アイコン・ピル型バッジ・判で押したLP構図・抽象キャッチ。基調は内容ごとに毎回作り分け、特定スタイルを標準化しない（詳細: memory/feedback_flyer_avoid_ai_saas_aesthetic.md）
+- 切れ字対策は該当固有名詞だけ `<span style="white-space:nowrap">` で個別対応。親要素への汎用 `word-break:keep-all` 等のCSS変更は禁止（本文全体の改行が不自然になる）。行末調整は本文短縮かテキストボックス幅拡大が安全（詳細: memory/feedback_kirejiha_individual_nowrap.md）
+- 黒系文字下のlimeマーカー下線は `linear-gradient` のhard-stopでなく `box-shadow:inset 0 -0.28em 0 #c7ff4a`＋`box-decoration-break:clone` で実装（gradientはChrome PDF化で暗化しオリーブ色になる）（詳細: memory/feedback_lime_underline_box_shadow.md）
+- ラクスル入稿では裏面のみ「システムで問題が発生しました」エラーが出るため、入稿前に必ず裏面を400dpi JPEGにラスタライズし表面ベクターと再結合した `<案件名>_rakusuru.pdf` を生成してから入稿。ベクター版PDFの直接入稿は禁止（詳細: memory/feedback_rakusuru_back_rasterize.md）
