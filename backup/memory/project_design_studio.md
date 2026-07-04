@@ -36,9 +36,16 @@ claude.ai/design のテンプレート群を「正本」とし、既存デザイ
 
 ## 進行状況
 - [x] 設計承認（2026-07-04）
-- [ ] ローカルデザインシステム構築
-- [ ] design-studioスキル作成
-- [ ] CLAUDE.md・エージェント追記
-- [ ] /design-login → claude.ai/design push（草川操作待ち）
+- [x] ローカルデザインシステム構築（2026-07-05・21ファイル・カード10枚。preview系は外部参照ゼロ検証済）
+- [x] design-studioスキル作成（登録済・トリガー「チラシ作って」等）
+- [x] CLAUDE.md・print-designer/print-layout-architect「テンプレ第一手」追記
+- [ ] /design-login → claude.ai/design push（**草川操作待ち**。認可後に create_project「草川たくやデザインシステム」→差分push→カード表示確認）
+
+## 構築時の発見（制作時に効く注意）
+- 市政報告レポートv22はブランド4色でなく「インク節約パレット」（緑#1f7a3a/深緑#0e4d27/金#c89211・ベタ塗り3%以下）。**1制作物1パレット・混用禁止**（colors.htmlに両パレット収録）
+- lime下線の正本値=`box-shadow: inset 0 -0.28em 0 #c7ff4a`（gradient hard-stopはPDF暗化で禁止）
+- flyer_a4正本はeスポーツflyer_a2.html採用（TUIRTLE公式ロゴ準拠）。旧flyer.htmlにはピルバッジ（AI-LP禁止信号）あり採用不可
+- leaflet_trifoldは名前と裏腹に実態A4両面1枚もの（842×1190px×2面・印刷scale 0.9426）
+- template.htmlはposter/flyer/leafletが元ディレクトリのassets/へ相対参照（reportのみbase64単体完結）→制作時は案件フォルダへassetsごと複製
 
 関連: [[feedback_design_quality_bar_natsumatsuri2026]] [[feedback_print_layout_architect_agent]] [[feedback_flyer_avoid_ai_saas_aesthetic]] [[feedback_no_emoji_ai_smell]] [[reference_senkyo_leaflet_v3_files]]
