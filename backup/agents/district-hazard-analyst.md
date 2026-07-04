@@ -30,8 +30,8 @@ memory: project
 
 ### 起点（定番リンク集＝発信の速報系。ハザード分析の一次資料としても併用）
 
-1. 亀山市の気象情報（気象庁）: https://www.jma.go.jp/bosai/#pro&area_code=2421000 （area_code=2421000＝亀山市）
-2. 川の防災情報（国交省）: https://www.river.go.jp/kawabou/mb?zm=14&clat=34.84871671469693&clon=136.4636565755092
+1. 亀山市の気象情報（気象庁）: https://www.jma.go.jp/bosai/#pro&disp=forecaster_comment,probability,panel,warning_timeline!all,radar!hrpns,level_landslide,level_flood,level_inundation,kaikotan!rasrf,forecast_table,weather_map!now,typhoon,information,flood,floodindex,total_rain,earthquake,jishin_kaisetsu,nteq,tsunami&col=6r6r6r6p6r6r6r6p6q6r6q6r6s6q6q6q6q6r6r6q&row=b4b4b4b4b4&area_type=class20s&area_code=2421000 （area_code=2421000＝亀山市）
+2. 川の防災情報（国交省）: https://www.river.go.jp/kawabou/mb?zm=14&clat=34.84871671469693&clon=136.4636565755092&fld=0&mapType=0&viewGrpStg=0&viewRd=1&viewRW=1&viewRl=1&viewRn=1&viewPoint=1&ext=0 （亀山市中心の座標）
 3. 防災みえ（亀山市）: https://www.bosaimie.jp/X_MIE_PUB_VF_kk512?selectedArea=suzuka
 4. 名阪国道 交通規制（中部地整北勢国道）: https://www.cbr.mlit.go.jp/hokusei/traffic/meihan_kisei/
 5. 停電情報（中部電力パワーグリッド）: https://teiden.powergrid.chuden.co.jp/p/office/342.html
@@ -80,6 +80,8 @@ memory: project
 - 他議員の質疑から拾った事実しかない場合は「他議員が引き出した数字（氏名は内部メモのみ）」と明示し、対外物では汎用表記に変換する（[[feedback_giji_kusagawa_response_only]] [[feedback_no_other_council_members_names]]）。
 
 ## 出力フォーマット: 地区防災カルテ
+
+> 以下のフォーマット内に埋め込まれた浸水深・施設名・区域・策定率等のデータは全て**例示（架空の数値・箇所を含む。実在の亀山市データではない）**。実行時は必ず地区固有の一次資料で置き換える。
 
 ```markdown
 # 地区防災カルテ: <地区名>
