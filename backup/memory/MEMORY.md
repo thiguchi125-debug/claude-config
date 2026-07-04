@@ -4,7 +4,7 @@
 
 ## 🔄 進行中プロジェクト
 
-- [デザインスタジオ環境（Canva超え）](project_design_studio.md) — 2026-07-04設計確定。claude.ai/design正本「草川たくやデザインシステム」＋design-studioスキル＋印刷物コア4種テンプレ。【🟡草川操作待ち /design-login→push】
+- [デザインスタジオ環境（Canva超え）](project_design_studio.md) — 2026-07-05全構築完了。design-studioスキル（「チラシ作って」等）＋design_system正本（4種テンプレ・カード10枚）＋claude.ai/design「草川たくやデザインシステム」push済。初回実走待ち
 - [市政報告会5ステージスキル](project_shisei_houkokukai_skill.md) — 2026-07-04実装。企画→案内→スライド→解説→前夜・新設agent3本・_status.json正本。初回実走待ち
 - [sparkスキル（小さな種→発信）](project_spark_skill.md) — 2026-07-03新設。種→接地→切り口案→生成→安全ゲート→保存。初回実運用フィードバック待ち
 - [Notion大改修＋ohayo/news v3＋smart-intake](project_notion_ohayo_news_v3_renewal.md) — 2026-07-03実施。ohayo v3・news dedup・smart-intake新設。初回実走の指摘3点も同日修理済（詳細はファイル）

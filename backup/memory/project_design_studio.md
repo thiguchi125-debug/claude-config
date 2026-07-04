@@ -39,7 +39,7 @@ claude.ai/design のテンプレート群を「正本」とし、既存デザイ
 - [x] ローカルデザインシステム構築（2026-07-05・21ファイル・カード10枚。preview系は外部参照ゼロ検証済）
 - [x] design-studioスキル作成（登録済・トリガー「チラシ作って」等）
 - [x] CLAUDE.md・print-designer/print-layout-architect「テンプレ第一手」追記
-- [ ] /design-login → claude.ai/design push（**草川操作待ち**。認可後に create_project「草川たくやデザインシステム」→差分push→カード表示確認）
+- [x] /design-login → claude.ai/design push 完了（2026-07-05）。プロジェクト「草川たくやデザインシステム」projectId=`b84082a3-d0ff-40d6-a256-308e08910c3c`・20ファイル・カード10枚register済（v1_refinement_spec.mdはローカルのみ）。以後の更新は差分push（list_files→finalize_plan→write_files・wholesale replace禁止）
 
 ## 構築時の発見（制作時に効く注意）
 - 市政報告レポートv22はブランド4色でなく「インク節約パレット」（緑#1f7a3a/深緑#0e4d27/金#c89211・ベタ塗り3%以下）。**1制作物1パレット・混用禁止**（colors.htmlに両パレット収録）
