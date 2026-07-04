@@ -12,6 +12,10 @@ metadata:
 **Why:** 御幸（2026-05-30）・小下（2026-05-31）・木下（2026-06-13）はいずれもClaude Code内でslides.html→Chrome印刷PDF化して制作し、草川カラー・写真差し込み・数字グリッド・タイムライン等を自在に組めた。地区固有の数字・写真・出典を1枚ずつ作り込む市政報告会スライドはこの方式が最適。NotebookLM必須ルール（[[feedback-slide-generation-via-notebooklm]]）は議会報告等の汎用スライド向けで、市政報告会スライドはこの例外として扱う。
 
 **How to apply:**
+- **2026-07-04移管**: 市政報告会スライドの制作フローは shisei-houkokukai スキル（Stage3）が正。
+  本メモの規格（16:9・草川カラー・テンプレ血統・2ゲート）はスキルに継承済み。
+  トリガーが来たらまず shisei-houkokukai を起動する。出力先も
+  ~/outputs/houkokukai/<日付>_<地区>/03_slides/ に変更（過去デッキは slide-deck-prep/output/ に据え置き・参照専用）。
 - トリガー「市政報告会のスライド作って」「〇〇（地区）の市政報告会資料」等が来たら、slide-deck-prep（NotebookLMソース束方式）ではなく、**小下/御幸/木下のslides.htmlをテンプレートに複製→地区化**する。
 - 出力先: `~/.claude/skills/slide-deck-prep/output/<YYYY-MM-DD>_<地区>市政報告会/`（slides.html / `<地区>市政報告会_<日付>.pdf` / assets/ / _review/）
 - テンプレ規格: 16:9（13.333×7.5in）、草川カラー（--lime:#c7ff4a / --green-deep:#0f3d27 / --green:#1f5a3a / --cream:#f3efe4）、topbar lime帯・cover濃緑左+顔写真右+namechip・foot「草川たくや 市政報告会＠<地区>」。CSSは小下slides.htmlからそのまま流用可。

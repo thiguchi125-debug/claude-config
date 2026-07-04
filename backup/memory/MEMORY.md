@@ -4,6 +4,7 @@
 
 ## 🔄 進行中プロジェクト
 
+- [市政報告会5ステージスキル](project_shisei_houkokukai_skill.md) — 2026-07-04実装。企画→案内→スライド→解説→前夜の5ステージ・新設agent3本（聴衆レビュー/地区テーマ/ハザード）・_status.json正本。初回実走待ち
 - [sparkスキル（小さな種→発信）](project_spark_skill.md) — 2026-07-03新設。ひらめき/ニュースURL/活動メモ→接地→切り口2〜3案→選択分だけ生成→安全ゲート→保存。「貯めて」で📣SNS投稿管理DBに💡ストック。初回実運用フィードバック待ち
 - [Notion大改修＋ohayo/news v3＋smart-intake](project_notion_ohayo_news_v3_renewal.md) — 2026-07-03実施。ohayo=150行v3・news=dedup+活用フック・smart-intake新設（投げ込み保存+「〇〇どこ？」検索・🔖台帳）・🗄️旧アーカイブ収容。初回実走の指摘3点（タスク無断登録/ニュース重複と鮮度/SQLプランゲート誤報告）を2026-07-03に修理: Routine v3.1=dedupインデックス+ダイジェスト固定ページ方式・oyasumiタスク登録は承認キュー化・水道濁り重複は6/9正ページへ統合済み
 - [議会だより制作エージェント](project_gikai_dayori_creator.md) — gikai-dayori-creator整備完了(2026-07-02)。会議録→650字→提出docx＋引用参照マークdocxのフルパイプライン。スクリプト=~/.claude/scripts/gikai_dayori/。トリガー「議会だより作って」（要再起動）
