@@ -15,13 +15,20 @@
 - [議会資料管理システム Phase 1〜4](project_council_materials_management.md) — Drive11フォルダ作成済・手動3件保留。【🟡要判断 復活/畳む待ち】
 - [Drive同期クラウドRoutine 停止検討](project_drive_sync_v2.md) — cron冗長疑い。【🟡要判断 停止可否待ち】議会モード廃止済[[feedback_system_closing_loops_rot]]
 
+## 📦 移設済みルール束（2026-07-04・詳細は各agent/SKILL末尾「📌恒久ガードルール」節＋memory各ファイル）
+
+- ohayo/oyasumi運用16本 → ohayo/oyasumi SKILL.md常駐（feedback_ohayo_*/feedback_oyasumi_*。timeout後即リトライ禁止・3ブロック表示・監査シグナル・重複除外・堆積スイープ等）
+- ショート動画7本 → short-video-virality-architect/short-video-image-designer/short-video-create常駐（feedback_short_video_*ほか）【⚠字幕帯座標がmemory間不一致 y1150-1470 vs y1240-1460・正本統一は草川判断待ち】
+- 印刷物16本 → print-designer/print-layout-architect常駐（feedback_print_*・leaflet・design_quality_bar・event_runsheet・publications_binary・esports_logo・flyer_ai_saas・kirejiha・lime・rakusuru等）
+- ブログ5本 → blog-writer/blog-writer-normal常駐（feedback_blog_*。市民/論考モード判定・自己引用慎重・最先端事例スキャン・パイプライン効率）
+- SNS/AIインタビュー7本 → sns-content-creator/sns-content-polisher/ai-interview-sns-poster常駐（feedback_x_*・feedback_sns_*・feedback_ai_interview_*・instagram_no_personal_fiction）【⚠agent本文に旧「X140字厳守」残存10箇所・掃除タスク未了】
+- news-briefing 5本 → news-briefing SKILL.md常駐（feedback_news_*。鮮度/ハルシ検証/件数より質/重複検出はv3本文化済）
+- 街頭演説4本 → daily-street-speech常駐（feedback_street_speech_*。選挙文脈引込め/1テーマ/鮮度×archive層/分野分散）
+
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
 - [自作スキルは ~/.claude/skills/ のみ（plugins cache禁止）](feedback_skills_home_not_plugin_cache.md) — 2026-07-03プラグイン自動更新でcache同居の8スキル消失→git 41ab43bから復旧。sync-to-git.shにガット検知ガード実装済
 - [Notion SQLクエリはプラン限定ブロック](feedback_notion_sql_plan_gate.md) — query-data-sources(SQL)使用禁止・viewはフィルタ欠落の罠。定常一覧は自己管理固定ページ（newsのdedupインデックス/ダイジェスト）パターンで
-- [デザイン品質基準=中庄夏祭りポスター2026](feedback_design_quality_bar_natsumatsuri2026.md) — 全デザイン制作物はこの水準以上。参照忠実再現・グリフ単位検品・レイヤー順・EYES-FIRST・完成処理込み。見本=drafts/2026-08_中庄夏祭りポスター
-- [イベント運営段取り表はスマホ縦スクロールPDF](feedback_event_runsheet_mobile_pdf_format.md) — 幅390px1ページ縦長・カード型・絵文字なし。A4/長尺PNGはNG。実測+200px・/Count=1まで高さ探索。個人情報は見出し＋名に注意書き
-- [ohayoダッシュボードのタスク/PJ欄もTodoist由来に](feedback_ohayo_dashboard_task_project_todoist.md) — 朝の✅今日のタスク/🔗進行中PJはtd.pyから。Notion紐付け・mention-page張らない
 - [システムの法則＝自動トリガー有=生/記憶依存の締め=腐る](feedback_system_closing_loops_rot.md) — 締め工程を定時トリガーに載せる・機械可読な一次情報から自動導出
 - [Google Keep→EOD貼り付けで日次ログ1パス処理](feedback_keep_eod_daily_log_intake.md) — 日中はKeepに溜め夜PCへ全文コピペ。☐チェックボックス=タスク化(期限今日+3日)/☑=完了ログ/素の行=記録/`発信:`💡=spark/`声:`=市民意見/`会った:`=接触ログ。振り分け1回提示→承認→一括保存→🔖台帳
 - [市政報告会の声の自動記録](feedback_shisei_houkokukai_voice_capture.md) — 「記録：〇〇報告会で△△の声」で🎤報告会DB「主な意見・要望」欄＋Todoist「〇〇地区フォロー」箱(要整理ラベル)
@@ -31,33 +38,17 @@
 - [市民意見「経過報告」型返信メールの確定スタイル](feedback_citizen_reply_progress_report_style.md) — txt→open -e／冒頭フルネーム＋様・署名なし・「平素より〜」開始・【】見出し・「おっしゃる通り」で受ける
 - [市民SNS DM返信の確定スタイル](feedback_citizen_dm_reply_finalize_style.md) — 無知露呈禁止・現場情報は「大事な現場の課題」・遅延は冒頭お詫び・DMは署名なし・「本会議で」明示・「議会で継続して追いかけます」
 - [エージェント部分ロードの根本原因と修理記録](feedback_agent_registry_partial_load.md) — 原因=agents/knowledge配下の入れ子.claude/agent-memoryがレジストリ汚染。2026-07-02隔離修理済。再発時は`find ~/.claude/agents/knowledge -type d -name .claude`
-- [印刷物レイアウトはprint-layout-architectに任せる](feedback_print_layout_architect_agent.md) — 画像小/中途半端余白/文章を横に系の手戻り防止。地図大きく・text-beside-image2カラム・Chrome実画素確認反復
-- [print-layout-architectが0ツールで停止→自分で実測ループ](feedback_print_layout_architect_stalls.md) — 空応答即停止。Chrome実測（scrollHeight−clientHeight=0）。`margin-top:auto`禁。横長地図はaspect-ratio+object-fit cover
 - [一般質問設計の専任エージェント](feedback_general_question_architect_agent.md) — general-question-architect。時間逆算＋逃げ封じ（先に認めてから刺す）＋重複/既決チェック。出力＝設計書
 - [議案質疑/一般質問の本番原稿化](feedback_bill_scrutiny_scriptwriter_agent.md) — bill-scrutiny-scriptwriter＋honban_genko_craft_v1.md＋GOLD_太陽光条例。設計→原稿化→counter-sim
-- [ショート動画は最初からvirality-architectで](feedback_short_video_use_virality_architect_first.md) — 長尺NG・35〜45秒・1動画1メッセージ・冒頭1.5秒フック
-- [ショート動画の説明図はHTML/CSS→PNG](feedback_short_video_infographic_html_to_png.md) — AI生成でなくChrome PNG化、ブランド色#c7ff4a/#1f5a3a/#0f3d27/#f3efe4厳守、完成PNGはDrive📱動画素材へ
-- ショート動画挿入画像 — [字幕セーフ帯＋安っぽさ7信号](feedback_short_video_subtitle_safe_zone.md) 確定3ゾーン固定=上y0-1240/字幕帯y1240-1460(全画像共通の固定座標・中央寄せ禁止)/下y1460-・文字大きめ・のっぺり/2トーン/棒人間潰す／[専任agent+可読性フロア](feedback_short_video_image_designer_agent.md) short-video-image-designer・記号化/文字消失を潰す・主役72px+・EYES-FIRST／[確定デザイン仕様(往復ゼロ用)](feedback_short_video_insert_image_design_spec.md) 明るい配色基調(暗緑支配NG)・字幕帯y1150-1470固定・行間広く・文字主役級・孤立文字ゼロ・親しみ絵本調(女の子も)・テンプレ=knowledge/short_video_templates/insert_image_v1
-- [草川ショート動画原稿のスタイルガイド](feedback_kusagawa_short_video_script_style.md) — 疑問→断定フック／1段落1メッセージ／共感「したこと、ありませんか」／具体3例／独自タグライン強制禁止／テキスト連続版優先
 - [コンテンツ生成は常時lean full-agentがデフォルト](feedback_content_generation_default_flow.md) — 主担当agent省略禁止、lean毎回適用、目標90〜170K
 - [「次の議会で追及」型表現を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞禁止、「継続的フォロー」「対話を重ねる」で表現
-- [ブログは市民情報伝達と政策論考を分けて書く](feedback_blog_citizen_first.md) — モードA/B判定後に書き始める
-- 街頭演説 — [選挙文脈引込め政策厚く](feedback_street_speech_no_election_focus.md)投票日・期数・「もう一度」最小化／[1テーマ深掘り](feedback_street_speech_one_theme_only.md)複数話題の傘でなく／[鮮度基軸×蓄積layer](feedback_street_speech_recent_base_archive_layer.md)今日のホットニュース＋archive層／[本論は分野分散](feedback_street_speech_topic_diversity.md)5ドメイン以上から組立
 - [issues返信は記録不要](feedback_issues_response_no_log.md) — 「賛成」「反対」冒頭の意見はNotion保存/タスク化省略、返信3案だけ
 - [コピペ前提原稿は納品形式を先に伺う](feedback_copypaste_draft_delivery.md) — コードブロックは左余白が入る。既定はtxt書出し→open -e（TextEdit全選択コピー）。「余白入らない」と断定しない
-- [動画原稿の保存先は📣SNS投稿管理DB](feedback_video_script_save_destination.md) — 専用DB作らず集約、タイトル先頭🎬
-- [Xは字数制限撤廃→長文可](feedback_x_no_char_limit.md) — X投稿は140字厳守やめ長文OK、内容充実。SNS生成時にX=長文と明示しエージェントの「140字厳守」を上書き
-- [Xは1ツイート1メッセージ・リンクはリプライ](feedback_x_post_lean_one_message.md) — 字数制限なくても詳細詰め込み禁止。数字/制度詳細/副論点はブログへ逃がす、URLは本文でなくリプライ欄、演出削ぎ政策主体明示
-- [SNSハッシュタグ定番](feedback_sns_hashtag_staples.md) — #草川たくや と #ええやん亀山 を必ず入れる。テーマタグ2〜3個と組み合わせる
-- [AIインタビュー紹介SNSの定型クレジット必須](feedback_ai_interview_disclaimer.md) — 安野貴博・有賀啓介クレジット＋個人情報禁止注意を4PFに
 - [Notion内部リンクは mention-page タグ必須](feedback_notion_link_deeplink.md) — `<mention-page url="...">タイトル</mention-page>`（markdownリンクはモバイルでブラウザに飛ぶ）
 - Notion update_content/DSLの罠 — [落とし穴](feedback_notion_update_content_pitfalls.md)複数セクション一括でサイレント失敗・fetch検証＆固有名詞コピペ／[罠v2](feedback_notion_update_content_pitfalls_v2.md)timeout後も適用済・即リトライ禁止・fetchキャッシュ古い／[DSLステータスフィルタ書込不可](feedback_notion_dsl_status_filter_limitation.md)Done/Archive除外は草川手動
 - [notion-saver保存後は漢字化け実体確認必須](feedback_notion_saver_kanji_garble_verify.md) — お風呂→お風坂等の実体破損あり。「表示上の問題」の自己弁明を信じずfetch検証→replace_content全置換
 - ブログ/SNS DBステータス＆URL — [選択肢](feedback_blog_sns_db_status_options.md)未着手/進行中/完了のみ・「下書き完成」無く進行中代用／[3DB view_url再設定](feedback_3db_view_url_correction.md)page URLのみ?v=不在・廃止DB参照ミス／[SNS DB v2](feedback_3db_view_url_correction_v2.md)ds=1bd98deb・「未投稿」は誤記
 - [仕上げモードU4後に日次ログ追記必須](feedback_nichijo_finalize_log_append.md) — 仕上げ生成物が日次ログに自動反映されない穴
-- [ohayo/oyasumi タスクDB実クエリ必須](feedback_ohayo_oyasumi_task_db_query.md) — 旧表流用禁止、view直叩きで本日inbox包含
-- ohayo燃費（歴史的経緯・**v3全面書き直しで構造解決済 2026-07-03**） — [効率化](feedback_ohayo_token_efficiency.md)／[v3](feedback_ohayo_token_efficiency_v3.md)timeout後即リトライ禁止は現役／[v2.5](feedback_ohayo_v25_streamline.md)
-- [oyasumi トークン効率化方針](feedback_oyasumi_token_efficiency.md) — Drive pageSize10/read1500字/Notion pageSize30
 - [会議体マスタの網羅性不足対策](feedback_meeting_master_coverage.md) — マスタ少なく未紐付発生、単発講演も登録
 - [議会公務の会議資料は📅ミーティングノートDB配下](feedback_council_meeting_db_placement.md) — 議案分析・委員会説明会・所管事務調査は期別フォルダでなくMTGノートDB＋会議体マスタ紐付け
 - news-briefing — [鮮度チェック](feedback_news_briefing_freshness_check.md)WebFetchで本体実在＋配信日確認後DB登録／[DBクエリ落とし穴](feedback_news_db_query_pitfall.md)view_url直叩き・database/data_source取違え／[件数より質](feedback_news_briefing_quality_over_quantity.md)5〜7件・過去7日重複排除・国政俯瞰／[ハルシ検証ゲート](feedback_news_briefing_hallucination_guard.md)登録前3点検証／[v3重複検出(手動編集要)](feedback_news_briefing_v3_duplicate_detection.md)30日窓3層判定
