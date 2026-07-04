@@ -6,6 +6,8 @@ originSessionId: c51d25d3-bac9-4389-a011-c69108f135b0
 ---
 # Drive→ローカル同期 v2拡張（2026-05-05）
 
+> **🔒 クローズ（2026-07-05・Fable判断で停止・草川委任）**: クラウドRoutine `weekly-drive-sync-kusagawa`（trig_016r7yNKRqVubUvCJMTzVZ98）を**無効化済み**（削除はhttps://claude.ai/code/routines から草川手動でのみ可）。理由＝Google Drive Desktop のリアルタイム自動ミラー＋launchd夜間パイプライン（毎晩2:30・稼働正常確認済）＋drive-intake（朝7時/夜22時）に完全に吸収され二重処理だった。Notion📥Drive取込キューDBと/drive-sync-reviewスキルも既に廃止済。復活時はRoutineをenabledに戻すだけ。
+
 ## v1からの変更点
 
 ### Drive側

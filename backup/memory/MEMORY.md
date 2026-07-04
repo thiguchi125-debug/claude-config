@@ -12,9 +12,8 @@
 - [Notionプロジェクト・プラットフォーム](project_notion_project_platform.md) — Todoist主要PJ対応の情報蓄積母艦DB（page=37a71464・ds=8975c6a9）。Todoist=実行/Notion=蓄積。初期17PJ投入済
 - [Todoistへタスク管理移行](project_todoist_task_migration.md) — 完了。td.py使用（詳細はCLAUDE.md正本）。タスク/PJ登録は全てTodoist・Notion✅/🗂️は参照のみ
 - [2026年6月議会 一般質問prep](project_ippan_shitsumon_2026-06_resume.md) — 通告書6/2提出済・骨子v7確定（①部活②送迎③シャープ）。次=counter-argument-simulatorで戦闘マニュアル
-- [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成。【🟡要判断 選挙公約に効くか草川判断待ち】
-- [議会資料管理システム Phase 1〜4](project_council_materials_management.md) — Drive11フォルダ作成済・手動3件保留。【🟡要判断 復活/畳む待ち】
-- [Drive同期クラウドRoutine 停止検討](project_drive_sync_v2.md) — cron冗長疑い。【🟡要判断 停止可否待ち】議会モード廃止済[[feedback_system_closing_loops_rot]]
+- [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成。判断タスクをTodoist🗳選挙2026に登録済（期限7/11・「3本柱v0見せて」で要約提示）
+- [クラウドRoutine棚卸し2026-07](project_routine_cleanup_2026-07.md) — 停止4本（drive-sync／選挙週次／旧policy-update週次・月次＝いずれも廃止DB前提or二重生成）・修理1本（oyasumi夜間=Todoist読取専用化）・現役4本。議会資料管理Phase1-4も畳んだ（Drive v3に吸収済[[project_council_materials_management]]）
 
 ## 📦 移設済みルール束（2026-07-04・詳細は各agent/SKILL末尾「📌恒久ガードルール」節＋memory各ファイル）
 

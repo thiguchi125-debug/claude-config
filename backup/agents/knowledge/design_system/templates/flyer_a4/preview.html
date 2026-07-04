@@ -1,0 +1,111 @@
+<!-- @dsCard group="Templates" name="イベントチラシ A4" subtitle="ダーク×ライム発光・編集ルール構成（eスポーツ正本）" -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>イベントチラシ A4 プレビュー</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;background:#dcd6c6;padding:28px;display:flex;gap:28px;justify-content:center;align-items:flex-start;flex-wrap:wrap;}
+  .stage{position:relative;width:432px;height:540px;overflow:hidden;color:#f4f5f2;box-shadow:0 2px 12px rgba(0,0,0,.3);background:radial-gradient(120% 80% at 15% 0%,#1b1f27 0%,#0d0f13 60%);}
+  .wedge{position:absolute;top:-80px;right:-104px;width:400px;height:400px;background:conic-gradient(from 200deg at 50% 50%,#c7ff4a,#3df0ff 55%,#0d0f13 90%);filter:blur(1px);opacity:.14;transform:rotate(8deg);}
+  .halftone{position:absolute;inset:0;opacity:.5;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.2px);background-size:8px 8px;-webkit-mask-image:linear-gradient(160deg,#000 0%,transparent 48%);mask-image:linear-gradient(160deg,#000 0%,transparent 48%);}
+  .frame{position:absolute;inset:14px;border:1px solid rgba(255,255,255,.14);border-radius:3px;}
+  .wrap{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;padding:28px 31px 23px;}
+
+  .head{display:flex;justify-content:space-between;align-items:center;letter-spacing:.22em;font-size:9px;font-weight:700;color:#aeb6c2;}
+  .head .org{color:#c7ff4a;}
+  .rule{height:1px;background:linear-gradient(90deg,#c7ff4a,transparent);margin-top:8px;}
+
+  .heroTop{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .en{font-family:"Anton","Arial Black","Hiragino Sans",sans-serif;font-weight:900;font-size:58px;line-height:.85;background:linear-gradient(180deg,#fafff1 0%,#c7ff4a 62%,#7bd11f 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-transform:uppercase;}
+  .logo-ph{width:140px;height:96px;flex-shrink:0;border:1.5px dashed rgba(199,255,74,.5);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#c7ff4a;font-weight:700;text-align:center;line-height:1.5;}
+  .jp{margin-top:6px;font-weight:900;font-size:34px;line-height:1.05;color:#fff;white-space:nowrap;}
+  .jp u{text-decoration:none;border-bottom:4.5px solid #ff4d8d;padding-bottom:1px;}
+  .lead{margin-top:9px;font-weight:500;font-size:13px;color:#cfd6df;}
+  .lead b{color:#c7ff4a;font-weight:700;}
+
+  .meta{margin-top:9px;display:grid;grid-template-columns:auto 1fr;border-top:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16);}
+  .meta .cell{padding:8px 2px;display:flex;flex-direction:column;gap:3px;}
+  .meta .cell+.cell{border-left:1px solid rgba(255,255,255,.16);padding-left:16px;}
+  .meta .k{font-size:8px;letter-spacing:.2em;color:#8f97a3;font-weight:700;}
+  .meta .date{font-family:"Anton","Arial Black",sans-serif;font-size:29px;line-height:.9;color:#fff;}
+  .meta .date small{font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:10px;color:#ff4d8d;margin-left:4px;}
+  .meta .time{font-family:"Anton","Arial Black",sans-serif;font-size:22px;color:#c7ff4a;line-height:1;}
+  .meta .place{font-weight:700;font-size:13px;color:#fff;line-height:1.3;}
+  .meta .place span{display:block;font-weight:500;font-size:9.5px;color:#9aa2ae;margin-top:2px;}
+
+  .tags{margin-top:10px;display:flex;gap:6px;}
+  .tags span{flex:1;text-align:center;font-weight:700;font-size:12px;color:#0d0f13;background:#c7ff4a;border-radius:1px;padding:7px 2px;}
+  .tags span:nth-child(2){background:#3df0ff;}
+  .tags span:nth-child(3){background:#ff4d8d;color:#fff;}
+
+  .strip{margin-top:10px;display:flex;align-items:center;gap:14px;}
+  .strip .free{font-family:"Anton","Arial Black",sans-serif;font-size:34px;color:#fff;line-height:.85;}
+  .strip .free small{display:block;font-size:8px;letter-spacing:.2em;color:#8f97a3;margin-bottom:2px;font-family:"Noto Sans JP",sans-serif;font-weight:700;}
+  .strip .det{font-weight:500;font-size:12px;color:#cfd6df;line-height:1.6;}
+  .strip .det b{color:#fff;font-weight:700;}
+
+  .foot{margin-top:auto;display:flex;align-items:center;gap:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.16);}
+  .qr-ph{width:64px;height:64px;background:#fff;padding:4px;border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .qr-ph i{font-style:normal;width:100%;height:100%;background:repeating-linear-gradient(45deg,#ddd 0 4px,#fff 4px 8px);display:flex;align-items:center;justify-content:center;font-size:8px;color:#555;font-weight:700;}
+  .ft .h{font-weight:900;font-size:14px;color:#fff;line-height:1.3;}
+  .ft .h em{color:#c7ff4a;font-style:normal;}
+  .ft .s{margin-top:3px;font-weight:500;font-size:10px;color:#aeb6c2;}
+  .ft .host{margin-top:4px;font-weight:700;font-size:9.5px;letter-spacing:.04em;color:#3df0ff;}
+  .note{margin-top:8px;font-size:7px;color:#6b7280;line-height:1.5;}
+
+  .memo{width:432px;font-size:11px;color:#333;line-height:1.7;background:#fff;border:2px solid #0f3d27;padding:12px 16px;}
+  .memo b{color:#0f3d27;}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="halftone"></div>
+    <div class="wedge"></div>
+    <div class="frame"></div>
+    <div class="wrap">
+      <div class="head"><div class="org">EVENT KICKER SAMPLE</div><div>CIRCLE ACTIVITY 2026</div></div>
+      <div class="rule"></div>
+      <div class="heroTop">
+        <div class="en">TITLE</div>
+        <div class="logo-ph">主催団体ロゴ<br>（画像差し替え）</div>
+      </div>
+      <div class="jp"><u>イベント名</u>サンプル</div>
+      <div class="lead"><b>キャッチコピー強調。</b>リード文サンプルが入ります。</div>
+      <div class="meta">
+        <div class="cell">
+          <div class="k">DATE / TIME</div>
+          <div class="date">0.00<small>SAT</small></div>
+          <div class="time">0:00-0:00</div>
+        </div>
+        <div class="cell">
+          <div class="k">VENUE</div>
+          <div class="place">会場名サンプルが入ります<span>会場住所サンプルが入ります</span></div>
+        </div>
+      </div>
+      <div class="tags"><span>特徴タグ1</span><span>特徴タグ2</span><span>特徴タグ3</span></div>
+      <div class="strip">
+        <div class="free"><small>ENTRY FEE</small>無料</div>
+        <div class="det">対象 ─ <b>どなたでも</b><br>定員 ─ <b>なし</b>　持ち物 ─ <b>不要</b></div>
+      </div>
+      <div class="foot">
+        <div class="qr-ph"><i>QR</i></div>
+        <div class="ft">
+          <div class="h">お申込みは<em>参加申込フォーム</em>から</div>
+          <div class="s">QRを読み取って必要事項を入力するだけ</div>
+          <div class="host">主催：主催団体名サンプル</div>
+        </div>
+      </div>
+      <div class="note">注記サンプルが入ります。商標・利用機材等の但し書きはここに小さく。注記サンプルが入ります。</div>
+    </div>
+  </div>
+
+  <div class="memo">
+    <b>正本＝eスポーツ「スマブラ交流＆大会」flyer_a2</b>（1080×1350px）。ダーク背景でライムは「淡い発光」で使う（暗緑支配・ベタ塗りライムのNG回避）。
+    構成＝編集ルール型：ヘッダ英字ラベル→英字ヒーロー＋主催ロゴ→和文タイトル（ピンク下線）→罫線区切りのメタグリッド（日時/会場）→3色タグ→料金ストリップ→QRフッター。
+    数字は Anton 系に集約。ピルバッジ・浮き角丸カード・絵文字は不使用。
+    このプレビューのロゴ・QRはプレースホルダー。実制作では主催団体の公式ロゴ正本を必ず使用（eスポーツ協会=TUIRTLEロゴ必須）。
+  </div>
+</body>
+</html>
