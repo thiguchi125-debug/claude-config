@@ -1,0 +1,91 @@
+<!-- @dsCard group="Templates" name="イベントポスター" subtitle="縦長1枚もの・絶対配置レイヤー構成（夏祭り2026正本）" -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>イベントポスター プレビュー</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"ヒラギノ角ゴシック","Hiragino Sans","Yu Gothic",sans-serif;background:#dcd6c6;padding:28px;display:flex;gap:28px;justify-content:center;align-items:flex-start;flex-wrap:wrap;}
+  .stage{position:relative;width:437px;height:625px;overflow:hidden;background:#f2ede1;box-shadow:0 2px 12px rgba(0,0,0,.25);}
+
+  /* 2026 縦書き */
+  .y2026{position:absolute;left:56px;top:16px;writing-mode:vertical-lr;font-family:"Arial Black",sans-serif;font-weight:900;font-size:20px;letter-spacing:3px;color:transparent;-webkit-text-stroke:1.3px #c33f2f;z-index:6;}
+  /* タイトル特大 */
+  .title{position:absolute;left:0;top:0;width:437px;height:150px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#c33f2f;font-size:118px;line-height:1;letter-spacing:-8px;text-shadow:1px 2px 0 rgba(120,30,20,.12);z-index:3;}
+  /* 帯 */
+  .band{position:absolute;left:0;top:150px;width:437px;height:29px;background:#666d8e;display:flex;align-items:center;justify-content:center;color:#f2ede1;font-size:11px;font-weight:700;letter-spacing:.3em;z-index:2;}
+  /* ポップ体キャッチ（1文字ずつ色替え＋白/紺2重縁取り） */
+  .pop{position:absolute;left:0;top:180px;width:437px;height:58px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:48px;line-height:1;z-index:5;}
+  .pop b{display:inline-block;text-shadow:-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff,1.5px 1.5px 0 #fff,-3px -3px 0 #2d3157,3px -3px 0 #2d3157,-3px 3px 0 #2d3157,3px 3px 0 #2d3157,2.5px 4.5px 0 rgba(45,49,87,.28);}
+  .pop b:nth-child(odd){transform:translateY(-2px) rotate(-2deg);}
+  .pop b:nth-child(even){transform:translateY(2px) rotate(2deg);}
+  .c-y{color:#f2c218;}.c-g{color:#8cbf50;}.c-t{color:#4aa7bf;}.c-p{color:#e58cb0;}
+  /* 提灯ガーランド（簡略） */
+  .garland{position:absolute;left:0;top:208px;width:437px;height:75px;z-index:2;}
+  /* アーチ副題 */
+  .subarc{position:absolute;left:0;top:250px;width:437px;text-align:center;font-weight:800;font-size:16px;color:#2d3157;letter-spacing:1px;transform:rotate(-1.5deg);-webkit-text-stroke:2.5px #fff;paint-order:stroke fill;z-index:4;}
+  /* 日付特大＋白ストローク */
+  .date{position:absolute;left:0;top:286px;width:437px;text-align:center;font-family:"Arial Rounded MT Bold","Hiragino Sans",sans-serif;font-weight:900;color:#2d3157;font-size:82px;line-height:1;letter-spacing:7px;text-indent:7px;-webkit-text-stroke:5.5px #fff;paint-order:stroke fill;z-index:4;}
+  .date .yr{font-family:"Arial Black";font-size:13px;color:#c33f2f;letter-spacing:6px;position:absolute;left:320px;top:5px;background:#e0d2b6;padding:3px 2px 3px 8px;line-height:1;-webkit-text-stroke:0;}
+  .date .sat{font-weight:900;font-size:33px;color:#2d3157;position:absolute;left:326px;top:44px;letter-spacing:1px;text-indent:0;-webkit-text-stroke:3px #fff;paint-order:stroke fill;}
+  .addr{position:absolute;left:0;top:375px;width:437px;text-align:center;font-weight:800;font-size:20px;color:#2d3157;-webkit-text-stroke:3px #fff;paint-order:stroke fill;z-index:4;}
+  .time{position:absolute;left:0;top:404px;width:437px;text-align:center;font-family:"Arial Rounded MT Bold",sans-serif;font-weight:900;font-size:33px;color:#2d3157;-webkit-text-stroke:3.5px #fff;paint-order:stroke fill;z-index:4;}
+  /* 料金（散らし配置＋白ストローク） */
+  .price{position:absolute;z-index:5;text-align:center;color:#2d3157;transform:translateX(-50%);white-space:nowrap;line-height:1.15;}
+  .price .lbl{font-weight:800;font-size:16px;-webkit-text-stroke:3px #fff;paint-order:stroke fill;}
+  .price .amt{font-weight:900;font-size:19px;color:#c33f2f;-webkit-text-stroke:3.5px #fff;paint-order:stroke fill;}
+  .price .sm{font-weight:700;font-size:8px;-webkit-text-stroke:2px #fff;paint-order:stroke fill;}
+  /* 地面の波＋群衆プレースホルダー */
+  .ground{position:absolute;left:0;bottom:0;width:437px;height:75px;z-index:2;}
+  .crowd-ph{position:absolute;bottom:0;z-index:3;background:repeating-linear-gradient(45deg,rgba(45,49,87,.28) 0 6px,rgba(45,49,87,.18) 6px 12px);border-radius:6px 6px 0 0;display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.4);}
+
+  .note{width:437px;font-size:11px;color:#333;line-height:1.7;background:#fff;border:2px solid #2d3157;padding:12px 16px;}
+  .note b{color:#c33f2f;}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="y2026">2026</div>
+    <div class="title">夏祭り</div>
+    <div class="band">イベント名サブタイトルが入ります</div>
+    <div class="pop"><b class="c-y">今</b><b class="c-g">年</b><b class="c-g">も</b><b class="c-y">や</b><b class="c-t">る</b><b class="c-p">よ</b><b class="c-p">！</b></div>
+    <svg class="garland" viewBox="0 0 437 75">
+      <path d="M10 5 Q115 52 215 22" fill="none" stroke="#2d3157" stroke-width="2"/>
+      <path d="M215 22 Q320 52 427 5" fill="none" stroke="#2d3157" stroke-width="2"/>
+      <g>
+        <ellipse cx="80" cy="38" rx="9" ry="11" fill="#c33f2f" stroke="#a83322"/>
+        <ellipse cx="150" cy="42" rx="9" ry="11" fill="#c33f2f" stroke="#a83322"/>
+        <ellipse cx="290" cy="42" rx="9" ry="11" fill="#c33f2f" stroke="#a83322"/>
+        <ellipse cx="360" cy="38" rx="9" ry="11" fill="#c33f2f" stroke="#a83322"/>
+      </g>
+    </svg>
+    <div class="subarc">主催・キャッチコピーが入ります</div>
+    <div class="date">8.15<span class="yr">2026</span><span class="sat">Sat</span></div>
+    <div class="addr">会場名サンプルが入ります</div>
+    <div class="time">17:00-20:00</div>
+
+    <div class="price" style="left:70px;top:440px;"><div class="lbl">出し物A</div><div class="amt">無料</div></div>
+    <div class="price" style="left:225px;top:455px;"><div class="lbl">出し物B</div><div class="amt">90円</div></div>
+    <div class="price" style="left:360px;top:442px;"><div class="lbl">出し物C</div><div class="amt">90円</div></div>
+    <div class="price" style="left:90px;top:502px;"><div class="lbl">食べ物</div><div class="sm">品目リストが入ります</div><div class="amt">すべて90円</div></div>
+    <div class="price" style="left:250px;top:512px;"><div class="lbl">出し物D 無料</div><div class="sm">※条件注記が入ります</div></div>
+    <div class="price" style="left:370px;top:505px;"><div class="lbl">飲み物</div><div class="amt">150円~</div></div>
+
+    <svg class="ground" viewBox="0 0 437 75" preserveAspectRatio="none">
+      <path d="M0 35 Q70 15 150 30 T310 27 T437 31 L437 75 L0 75 Z" fill="#5c6489" opacity="0.35"/>
+      <path d="M0 48 Q90 33 190 46 T380 44 T437 48 L437 75 L0 75 Z" fill="#3d4270" opacity="0.4"/>
+    </svg>
+    <div class="crowd-ph" style="left:8px;width:100px;height:52px;">人物イラスト</div>
+    <div class="crowd-ph" style="left:120px;width:150px;height:60px;">人物イラスト</div>
+    <div class="crowd-ph" style="left:285px;width:140px;height:55px;">人物イラスト</div>
+  </div>
+
+  <div class="note">
+    <b>デザイン品質基準の正本</b>（中庄夏祭りポスター2026）。874×1250pxステージにレイヤー絶対配置：背景→帯・波→イラスト→テキスト。
+    文字の視認性は白ストローク（-webkit-text-stroke＋paint-order:stroke fill）で確保。ポップ体は1文字ずつ色替え＋回転＋白/紺2重縁取り。
+    配色は案件毎に作り分ける（本作は祭り色パレット：紅 #c33f2f／紺 #2d3157／生成り #f2ede1 ほか。ブランド4色固定ではない）。
+    このプレビューの斜線ブロックはイラスト・人物のプレースホルダー。実物は assets/ のPNG群を参照。
+  </div>
+</body>
+</html>
