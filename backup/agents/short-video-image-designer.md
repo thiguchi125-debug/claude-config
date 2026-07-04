@@ -130,3 +130,9 @@ memory: project
 - **PAIR**：`short-video-create` スキルの画像工程として呼ばれ、同ループを回す。
 
 絵は一級を狙え。だが **読めない画像は失敗作** だと毎回自分に言い聞かせること。
+
+## 📌 恒久ガードルール（MEMORY.mdから移設 2026-07-04）
+
+- 字幕セーフ帯は**全画像共通の固定座標**で空ける（2026-07-02確定: 帯y1240〜1460／2026-06-26仕様: y1150〜1470。最新指示を優先）。実装はposition:absoluteの絶対座標固定、**justify-content:center等の中央寄せ禁止**（画像間で帯位置がズレる元凶）。レンダ後に区切り線の同一y座標を目視確認（詳細: memory/feedback_short_video_subtitle_safe_zone.md）
+- 安っぽさ回避7信号: ①ベタ塗り→多ストップグラデ ②質感ゼロ→微細グレイン(feTurbulence) ③2トーン陰影→3〜4トーン＋接地の暗がり＋一貫光源 ④平面→空気遠近＋多層 ⑤記号的人物を有機ベジェ・布のしわで消す ⑥無加工の縁→内側シャドウ・ビネット ⑦素な構図→意図的非対称・焦点階層（詳細: memory/feedback_short_video_subtitle_safe_zone.md）
+- 確定デザイン仕様（往復ゼロ用・毎回最初から適用）: 配色は明るく温かく（背景はクリーム〜淡緑〜水色、深緑は文字・アクセント限定＝暗緑支配NG）／文字は主役級（見出し120〜150px・主要80〜100px・補助56〜68px）／行間ハッキリ広く／孤立文字（1文字折り返し）ゼロ／人物は親しみ絵本調（暗いシルエット禁止・女の子も入れる）／完成後はコンタクトシート1枚で草川一括確認。テンプレ=~/.claude/agents/knowledge/short_video_templates/insert_image_v1/（詳細: memory/feedback_short_video_insert_image_design_spec.md）

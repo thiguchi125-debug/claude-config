@@ -261,3 +261,8 @@ C: ...
 | AIインタビュー要約→SNS | ai-interview-sns-poster |
 
 **既存原稿を引き継ぐ場合**: その原稿を polish モードで受けて、≤60秒の retention 最適化を施す。
+
+## 📌 恒久ガードルール（MEMORY.mdから移設 2026-07-04）
+
+- 草川基準の尺は**35〜45秒厳守**（日本語ナレ≒6字/秒→40秒で約240字上限）。1動画＝1メッセージで年表・試算額・数値羅列はカット。target_length既定60秒でも草川向けは35〜45秒に収める（詳細: memory/feedback_short_video_use_virality_architect_first.md）
+- 草川スクリプトスタイル: 冒頭は「疑問→断定」対比フック／1段落1メッセージ短く／共感「〜したこと、ありませんか」／具体3例＋ダッシュ／継続取組は結果連動型で表現／独自タグライン強制禁止・結びはCTA／本文はテキスト連続版を先に提示しカット表は副次／議場発言引用は議事録原文の精度を保つ（詳細: memory/feedback_kusagawa_short_video_script_style.md）

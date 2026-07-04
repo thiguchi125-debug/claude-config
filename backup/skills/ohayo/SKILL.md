@@ -141,3 +141,9 @@ oyasumiデイリーサマリの最新1件を notion-search →fetch（デイリ�
 - 旧DB（292cf503系タスク/PJ・354432ec受付BOX・🗄️旧アーカイブ配下すべて）へのクエリ・リンク掲載禁止。
 - 発信テーマの提案のみ・本文生成はしない（生成は各エージェント/スキルへ誘導）。
 - 燃費: 目標60〜80K。API呼び出し目安 = Notion 10〜12・Bash 4・Calendar 1・Gmail 1〜2・Sheets 3（意見ゼロ時は読み1回）。これを大きく超える追加取得はしない。
+
+## 📌 恒久ガードルール（MEMORY.mdから移設 2026-07-04）
+
+- MCPツールが継続シグナル（Notion `has_more: true`／Drive `nextPageToken`／`next_page_token`／件数がpageSizeぴったり）を返したら必ず追加クエリで全件取得。「無い」と判定する前にページング全件・キーワード変奏・想定外フォルダを確認する（詳細: memory/feedback_ohayo_oyasumi_task_db_query.md）
+- 発信テーマ提案の公選法ガード: 投票日（2026-10-25）まで30日以内は政策論型優先・7日以内は実績報告型に調整。「投票してください」等の直接依頼表現はテーマ提案段階でも禁止（詳細: memory/feedback_ohayo_v21_speech_blog_themes.md）
+- 期限なしタスクは§5の3ブロックに構造的に表示されない盲点がある。audit増分の「期限なし」指標で監視し、タスク登録時は期限必須（既定=今日+3日）・増加時はtask-auditで棚卸しする（詳細: memory/feedback_ohayo_deadline_null_blindspot.md）

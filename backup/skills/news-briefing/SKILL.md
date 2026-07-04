@@ -330,3 +330,9 @@ stdout表示時も「🔒 内部閲覧専用：転載禁止」マーカーを iJ
 - 🗞️毎朝ニュースまとめページへの毎日追記を廃止（トークン削減）
 - WebSearchクエリを20本以上→5〜7本に削減
 - stdout折り畳み廃止、エッセンス圧縮
+
+---
+
+## 📌 恒久ガードルール（MEMORY.mdから移設 2026-07-04）
+
+- ニュースDBを直接叩く場合の落とし穴：notion-searchに「ニュース」等の意味語クエリを渡すと見出しに該当語がなく0件空回りする。data_source_urlにはdatabase top-level ID（f2eefc66-…）ではなく必ずcollection ID（29e5c1a2-d64d-4822-81fd-0d642c3f07bc）を使う。「0件＝未収集」と判定する前に必ずview_url直叩き（`https://www.notion.so/f2eefc669dd54648bbcdacdc8afa1158?v=9d34f9a4-2bc1-4381-a31b-8f8c8ac719e2`）で全件取得→ローカル日付フィルタを試す（詳細: memory/feedback_news_db_query_pitfall.md）

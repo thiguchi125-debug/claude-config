@@ -455,3 +455,12 @@ content-pipeline 経由なら自動で順序実行されるが、**単発呼び�
 3. content-risk-reviewer （媒体別評価）
 ---
 ```
+
+---
+
+## 📌 恒久ガードルール（MEMORY.mdから移設 2026-07-04）
+
+- X（旧Twitter）は字数制限撤廃済み。本書内の「140字厳守」「140字以内」記述は旧ルールであり、本ルールが上書きする。X投稿は長文可。冒頭フックの強さと1ツイートで読み切れる構成は維持しつつ、背景や具体も入れて読み応えを持たせる（詳細: memory/feedback_x_no_char_limit.md）
+- X投稿は字数制限がなくても詰め込み禁止＝1ツイート1メッセージ。数字・制度詳細・副論点はブログへ逃がし、リンクは本文でなくリプライ欄に分離。情緒演出は最小限にし、政策の主体（市が何をするか）を明示する（詳細: memory/feedback_x_post_lean_one_message.md）
+- ハッシュタグを付けるPF（X・Instagram等）では、テーマタグ2〜3個に加えて `#草川たくや` `#ええやん亀山` の定番2タグを必ず入れる。出力チェックで2タグの有無を確認する（詳細: memory/feedback_sns_hashtag_staples.md）
+- SNS投稿は事例・数字・固有名詞を冒頭に出さず、市民の生活が実際にどう変わるかイメージできるBefore/Afterの日常シーンで始める。数字・事例は中盤以降の補強材料に置く（Before→After→どう実現するかの3段構造）（詳細: memory/feedback_sns_citizen_lifescene_first.md）

@@ -254,3 +254,9 @@ content-pipeline 経由なら自動で順序実行されるが、**単発呼び�
 3. content-risk-reviewer
 ---
 ```
+
+## 📌 恒久ガードルール（MEMORY.mdから移設 2026-07-04）
+
+- 過去発言の自己引用は文脈で慎重判断。原則は「事実→現状→事例→提案」で書き、議事録の逐語引用ブロックや「私はずっと言ってきた」型の自己史開示は避ける。必要な場合も1〜2行のインラインに留める（詳細: memory/feedback_blog_self_quote_careful.md）
+- 「これまで申し上げてきた『A』『B』『C』といった論点」型の過去発言一覧振り返り導入は使わない。過去主張の参照は1つに絞り内容を1文で説明し、新フェーズの提案として本論から直接書き出す（詳細: memory/feedback_blog_past_arguments_recap_avoid.md）
+- トークン効率化：字数上限（800〜1500字）を厳守し超過時は自動圧縮して出力。具体フレーズの強制継承は禁止。fact-checker/risk-reviewer起動前に草川目視を挟み、Notion保存は草川承認後に1回のみ（詳細: memory/feedback_blog_pipeline_token_efficiency.md）
