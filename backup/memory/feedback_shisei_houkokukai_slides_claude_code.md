@@ -17,7 +17,7 @@ metadata:
   トリガーが来たらまず shisei-houkokukai を起動する。出力先も
   ~/outputs/houkokukai/<日付>_<地区>/03_slides/ に変更（過去デッキは slide-deck-prep/output/ に据え置き・参照専用）。
 - トリガー「市政報告会のスライド作って」「〇〇（地区）の市政報告会資料」等が来たら、slide-deck-prep（NotebookLMソース束方式）ではなく、**小下/御幸/木下のslides.htmlをテンプレートに複製→地区化**する。
-- 出力先: `~/.claude/skills/slide-deck-prep/output/<YYYY-MM-DD>_<地区>市政報告会/`（slides.html / `<地区>市政報告会_<日付>.pdf` / assets/ / _review/）
+- 出力先: `~/outputs/houkokukai/<YYYY-MM-DD>_<地区>/03_slides/`（shisei-houkokukai Stage3準拠。slides.html / `<地区>市政報告会_<日付>.pdf` / assets/ / _review/）。過去デッキ（御幸/小下/木下/太岡寺/城東）は `slide-deck-prep/output/` に据え置き・参照専用。
 - テンプレ規格: 16:9（13.333×7.5in）、草川カラー（--lime:#c7ff4a / --green-deep:#0f3d27 / --green:#1f5a3a / --cream:#f3efe4）、topbar lime帯・cover濃緑左+顔写真右+namechip・foot「草川たくや 市政報告会＠<地区>」。CSSは小下slides.htmlからそのまま流用可。
 - 素材: 地区固有写真は当該地区の市政報告レポート印刷物フォルダ（02_publications/reports/）＋過去デッキassetsから sips -Z 1500 で最適化コピー。
 - 制作後: PDF化→open でプレビュー→ natural-design-reviewer（PNG化して物理破綻チェック）→ content-fact-checker → content-risk-reviewer（必須2ゲート）。

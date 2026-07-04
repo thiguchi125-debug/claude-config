@@ -6,3 +6,4 @@ Task 4: complete (audience-experience-reviewer.md; Important fix data-id凍結�
 Task 5: complete (district-issue-scout.md, review approved, no findings; _index実構造への正しい適応を確認済み)
 Task 6: complete (district-hazard-analyst.md; Important URL逐語修正+Minor例示注記を修正・コントローラでURL一致検証済み)
 Task 7: complete (CLAUDE.md行89・feedback移管bullet・project memo新設・MEMORY.md行7 — 全diffをコントローラ直接検証)
+Task 8: complete (registry汚染1件検知→隔離/6ファイル存在/名前整合3/sync-to-git push OK/Notionトリガー一覧3本追記fetch検証済み)
