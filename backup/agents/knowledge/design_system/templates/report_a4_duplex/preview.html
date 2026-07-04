@@ -1,0 +1,167 @@
+<!-- @dsCard group="Templates" name="市政報告レポート A4両面" subtitle="地区版レポート・インク節約設計（木下v22正本）" -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>市政報告レポート A4両面 プレビュー</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:#e7e2d4;color:#1a1a1a;padding:28px;display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
+  .page{width:420px;height:594px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.18);padding:14px 12px;position:relative;overflow:hidden;font-size:8px;line-height:1.6;}
+  .side-lbl{position:absolute;top:-1px;right:8px;font-size:8px;letter-spacing:.2em;color:#999;}
+
+  /* ヘッダ帯：白＋緑太枠＋金左帯 */
+  .header{border:2px solid #1f7a3a;border-left:9px solid #c89211;padding:8px 10px;border-radius:2px;display:flex;align-items:center;gap:9px;}
+  .profile-ph{width:56px;height:56px;border-radius:50%;border:2px solid #c89211;background:repeating-linear-gradient(45deg,#dcd8cc 0 6px,#eae6da 6px 12px);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:7px;color:#555;font-weight:700;}
+  .role{display:inline-block;font-size:7px;font-weight:900;color:#0e4d27;border:1px solid #0e4d27;padding:0 4px;border-radius:1px;}
+  .h-title{font-size:19px;font-weight:900;color:#0e4d27;line-height:1.1;white-space:nowrap;}
+  .h-title small{font-size:6.5px;font-weight:400;color:#555;margin-left:4px;}
+  .h-sub{font-size:8.5px;font-weight:700;color:#0e4d27;margin-top:2px;}
+  .h-sub .district{color:#c89211;border:1px solid #c89211;padding:0 4px;border-radius:1px;font-weight:900;margin-left:3px;}
+  .h-date{font-size:6px;color:#555;margin-top:1px;}
+  .slogan{text-align:center;font-size:5.5px;line-height:1.5;font-weight:700;padding:2px 4px;border-left:1px solid #1f7a3a;color:#0e4d27;flex-shrink:0;}
+  .slogan .big{font-size:8px;font-weight:900;color:#c89211;display:block;margin-top:1px;}
+
+  /* リード：白＋緑左罫線 */
+  .lead{border:1px solid #cfe6d4;border-left:3px solid #1f7a3a;padding:6px 8px;margin-top:6px;border-radius:0 1px 1px 0;}
+  .lead-title{font-size:9px;font-weight:900;color:#0e4d27;border-bottom:1px dashed #1f7a3a;padding-bottom:2px;margin-bottom:3px;}
+  .lead p{font-size:7px;text-align:justify;}
+  .em{color:#0e4d27;font-weight:700;border-bottom:1px dotted #1f7a3a;}
+
+  /* 章 */
+  .chapter-head{margin:6px 0 4px;border-bottom:2px solid #1f7a3a;padding-bottom:2px;}
+  .ch-num{display:inline-block;color:#1f7a3a;border:1.5px solid #1f7a3a;font-size:8.5px;font-weight:900;padding:0 4px;border-radius:1px;margin-right:4px;}
+  .ch-title{font-size:10px;font-weight:900;color:#0e4d27;}
+  .ch-sub{font-size:7.5px;font-weight:700;color:#c89211;margin-top:2px;}
+  .ch-lead{margin-top:4px;padding:4px 6px;border:1px solid #f0e0a8;border-left:3px solid #c89211;border-radius:0 1px 1px 0;font-size:7.2px;}
+  .ch-lead strong{color:#0e4d27;font-weight:800;}
+
+  /* 画像枠＋本文 2カラム（text-beside-image） */
+  .img-frame{margin:5px 0;display:flex;gap:6px;align-items:flex-start;}
+  .img-ph{width:140px;height:120px;flex-shrink:0;border:1px solid #1f7a3a;border-radius:1px;background:repeating-linear-gradient(45deg,#dcd8cc 0 8px,#eae6da 8px 16px);display:flex;align-items:center;justify-content:center;color:#555;font-weight:700;font-size:8px;}
+  .img-cap{font-size:5.5px;color:#0e4d27;font-weight:600;text-align:center;margin-top:2px;}
+  .body-text{flex:1;font-size:7.2px;text-align:justify;line-height:1.75;}
+  .body-text p{margin-bottom:4px;}
+  .body-text strong{color:#0e4d27;font-weight:800;border-bottom:1px solid #c89211;}
+  .kw{color:#c89211;font-weight:800;}
+
+  /* 章2：横長写真＋2×2数字セル */
+  .ch2-row{display:flex;gap:7px;margin:4px 0;align-items:stretch;}
+  .ch2-ph{width:180px;height:112px;flex-shrink:0;border:1px solid #1f7a3a;background:repeating-linear-gradient(45deg,#dcd8cc 0 8px,#eae6da 8px 16px);display:flex;align-items:center;justify-content:center;color:#555;font-weight:700;font-size:8px;}
+  .stat{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+  .cell{border:1.5px solid #1f7a3a;border-radius:2px;padding:4px 2px;text-align:center;display:flex;flex-direction:column;justify-content:center;position:relative;}
+  .cell::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:#c89211;}
+  .cell .num{font-size:11px;font-weight:900;color:#0e4d27;}
+  .cell .lb{font-size:5.5px;font-weight:700;color:#555;margin-top:1px;}
+
+  /* 4本柱 2×2 */
+  .measure{display:grid;grid-template-columns:1fr 1fr;gap:4px 5px;margin-top:3px;}
+  .measure li{list-style:none;padding:4px 5px;border:1px solid #cfe6d4;border-left:2.5px solid #1f7a3a;border-radius:0 2px 2px 0;font-size:6.2px;line-height:1.45;}
+  .m-num{display:inline-block;width:9px;height:9px;color:#1f7a3a;border:1px solid #1f7a3a;border-radius:50%;text-align:center;line-height:9px;font-size:6.5px;font-weight:900;margin-right:2px;}
+  .m-title{font-weight:900;color:#0e4d27;font-size:7px;}
+
+  /* 連絡先 */
+  .contact{margin-top:5px;border:2px solid #1f7a3a;border-radius:3px;overflow:hidden;}
+  .c-head{color:#0e4d27;border-bottom:1.5px solid #1f7a3a;padding:2px 8px;font-size:7.5px;font-weight:900;}
+  .c-head::before{content:"▶";color:#c89211;margin-right:3px;}
+  .c-body{display:flex;padding:4px 8px;gap:8px;align-items:center;}
+  .c-info{flex:1;font-size:6.5px;}
+  .c-name{font-size:7.5px;font-weight:900;color:#0e4d27;margin-bottom:2px;}
+  .c-row{display:flex;gap:4px;margin-bottom:1px;align-items:center;}
+  .c-lbl{color:#1f7a3a;border:1px solid #1f7a3a;font-size:5.5px;font-weight:700;padding:0 3px;border-radius:1px;min-width:22px;text-align:center;}
+  .qrs{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding-left:8px;border-left:1px dashed #cfe6d4;}
+  .qr{text-align:center;}
+  .qr .bx{width:30px;height:30px;border:1px solid #0e4d27;background:repeating-linear-gradient(45deg,#e6e2d6 0 4px,#f5f2e8 4px 8px);display:flex;align-items:center;justify-content:center;font-size:5px;color:#555;font-weight:700;}
+  .qr .lb{font-size:5px;font-weight:700;color:#0e4d27;margin-top:1px;}
+</style>
+</head>
+<body>
+
+  <!-- 表面 -->
+  <div class="page">
+    <div class="side-lbl">A4 表面</div>
+    <div class="header">
+      <div class="profile-ph">顔写真</div>
+      <div style="flex:1;">
+        <span class="role">亀山市議会議員</span>
+        <div class="h-title">草川たくや<small>くさかわ・たくや</small></div>
+        <div class="h-sub">市政報告レポート<span class="district">地区名版</span></div>
+        <div class="h-date">0000年0月0日発行</div>
+      </div>
+      <div class="slogan">届ける／繋ぐ／<br>希望をつくる<span class="big">声を、<br>チカラに。</span></div>
+    </div>
+    <div class="lead">
+      <div class="lead-title">リード見出しサンプルが入ります</div>
+      <p>リード本文が入ります。地区の現状を<span class="em">強調表現</span>で押さえ、<span class="em">課題と姿勢</span>を2段落で示します。本文が入ります。本文が入ります。本文が入ります。</p>
+    </div>
+    <div class="chapter-head">
+      <span class="ch-num">1</span><span class="ch-title">章1タイトルサンプル（地区共通テーマ）</span>
+      <div class="ch-sub">章サブタイトルが入ります —— 数字と地区名で具体化</div>
+    </div>
+    <div class="ch-lead">章リードが入ります。<strong>キーワード強調</strong>を交えて3行程度。本文が入ります。本文が入ります。</div>
+    <div class="img-frame">
+      <div>
+        <div class="img-ph">写真 70×60mm</div>
+        <div class="img-cap">写真キャプションが入ります</div>
+      </div>
+      <div class="body-text">
+        <p>本文が入ります。<strong>強調は太字＋金下線</strong>で行います。本文が入ります。本文が入ります。本文が入ります。本文が入ります。</p>
+        <p>本文が入ります。<span class="kw">キーワードは金色強調</span>。本文が入ります。本文が入ります。本文が入ります。</p>
+      </div>
+    </div>
+    <div class="body-text" style="font-size:7.2px;">
+      <p>画像下の独立段落が入ります。本文が入ります。本文が入ります。本文が入ります。本文が入ります。本文が入ります。本文が入ります。</p>
+    </div>
+  </div>
+
+  <!-- 裏面 -->
+  <div class="page">
+    <div class="side-lbl">A4 裏面</div>
+    <div class="chapter-head" style="margin-top:0;">
+      <span class="ch-num">2</span><span class="ch-title">章2タイトルサンプル（地区固有テーマ）</span>
+      <div class="ch-sub">章サブタイトルが入ります</div>
+    </div>
+    <div class="ch-lead">章リードが入ります。<strong>地区への効果</strong>を一言で。本文が入ります。</div>
+    <div class="ch2-row">
+      <div>
+        <div class="ch2-ph">写真 90×56mm</div>
+        <div class="img-cap">写真キャプションが入ります</div>
+      </div>
+      <div class="stat">
+        <div class="cell"><span class="num">0.0km</span><span class="lb">数値ラベル</span></div>
+        <div class="cell"><span class="num">残000m</span><span class="lb">数値ラベル</span></div>
+        <div class="cell"><span class="num">0.0億円</span><span class="lb">数値ラベル</span></div>
+        <div class="cell"><span class="num">R00年度</span><span class="lb">数値ラベル</span></div>
+      </div>
+    </div>
+    <div class="body-text">
+      <p>本文が入ります。<strong>事業規模・期間・財源</strong>を数字で示します。本文が入ります。本文が入ります。本文が入ります。</p>
+    </div>
+    <div class="chapter-head">
+      <span class="ch-num">3</span><span class="ch-title">章3タイトルサンプル（市全体テーマ）</span>
+    </div>
+    <ul class="measure">
+      <li><span class="m-num">1</span><span class="m-title">柱タイトル</span><br>柱の説明文が入ります。本文が入ります。</li>
+      <li><span class="m-num">2</span><span class="m-title">柱タイトル</span><br>柱の説明文が入ります。本文が入ります。</li>
+      <li><span class="m-num">3</span><span class="m-title">柱タイトル</span><br>柱の説明文が入ります。本文が入ります。</li>
+      <li><span class="m-num">4</span><span class="m-title">柱タイトル</span><br>柱の説明文が入ります。本文が入ります。</li>
+    </ul>
+    <div class="contact">
+      <div class="c-head">お困りごと・ご意見・ご相談はこちらへ</div>
+      <div class="c-body">
+        <div class="c-info">
+          <div class="c-name">亀山市議会議員　草川たくや</div>
+          <div class="c-row"><span class="c-lbl">電話</span><span style="font-weight:700;color:#0e4d27;">000-0000-0000</span></div>
+          <div class="c-row"><span class="c-lbl">メール</span><span style="font-weight:700;color:#0e4d27;">sample@example.com</span></div>
+        </div>
+        <div class="qrs">
+          <div class="qr"><div class="bx">QR</div><div class="lb">公式LINE</div></div>
+          <div class="qr"><div class="bx">QR</div><div class="lb">ご意見箱</div></div>
+          <div class="qr"><div class="bx">QR</div><div class="lb">公式HP</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

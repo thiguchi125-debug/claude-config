@@ -1,0 +1,83 @@
+<!-- @dsCard group="Components" name="数字強調ブロック" subtitle="2×2数字セルと5連ZEROグリッドの実績様式" -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>数字強調ブロック</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;background:#f3efe4;color:#111418;padding:36px;line-height:1.6;}
+  h1{font-size:20px;font-weight:900;color:#0f3d27;margin-bottom:18px;}
+  .lbl{font-size:10.5px;font-family:ui-monospace,Menlo,monospace;color:#666;margin:22px 0 8px;}
+  .sheet{background:#fff;border:2px solid #111418;padding:20px 24px;max-width:720px;}
+
+  /* ============================================================
+     パターンA: 2×2数字セル（市政報告レポートv22 .ch2-stat 実績）
+     白背景＋緑枠＋金上帯。インク節約デザイン
+     ============================================================ */
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:420px;}
+  .stat-cell{
+    background:#fff;border:2px solid #1f7a3a;border-radius:5px;
+    padding:12px 8px;text-align:center;
+    display:flex;flex-direction:column;justify-content:center;position:relative;
+  }
+  .stat-cell::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:5px;
+    background:#c89211;border-radius:3px 3px 0 0;
+  }
+  .stat-cell .num{font-size:24px;font-weight:900;line-height:1.1;color:#0e4d27;}
+  .stat-cell .label{font-size:11px;font-weight:700;margin-top:4px;color:#555;}
+
+  /* ============================================================
+     パターンB: 黒地×ライム枠の横並びグリッド（リーフレットv3 5つのゼロ 実績）
+     ============================================================ */
+  .zero-box{background:#111418;color:#f3efe4;padding:12px 14px 14px;border:3px solid #111418;box-shadow:5px 5px 0 #c7ff4a;max-width:660px;}
+  .zero-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
+  .zero-badge{font-size:11px;font-weight:900;color:#111418;background:#c7ff4a;padding:3px 9px;letter-spacing:.12em;white-space:nowrap;}
+  .zero-title{font-family:"Shippori Mincho B1","Hiragino Mincho ProN",serif;font-weight:900;font-size:17px;color:#f3efe4;}
+  .zero-title .big{color:#c7ff4a;font-size:23px;}
+  .zero-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;}
+  .zero-cell{background:rgba(255,255,255,.06);border:2px solid #c7ff4a;padding:7px 5px 8px;text-align:center;}
+  .zero-no{font-size:8px;color:#c7ff4a;letter-spacing:.2em;font-weight:700;}
+  .zero-jp{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:11px;line-height:1.3;margin:4px 0 5px;}
+  .zero-zz{display:inline-block;background:#c7ff4a;color:#111418;font-weight:900;font-size:15px;letter-spacing:-.02em;padding:0 8px;line-height:1.3;white-space:nowrap;}
+
+  .caution{background:#fff;border:2px solid #0f3d27;border-left:8px solid #c7ff4a;padding:12px 16px;font-size:12px;margin-top:24px;max-width:720px;}
+</style>
+</head>
+<body>
+  <h1>数字強調ブロック（2パターン）</h1>
+
+  <div class="lbl">A. stat-grid — 2×2数字セル（レポートv22 章2様式・インク節約）</div>
+  <div class="sheet">
+    <div class="stat-grid">
+      <div class="stat-cell"><span class="num">0.0km</span><span class="label">計画延長（サンプル）</span></div>
+      <div class="stat-cell"><span class="num">残000m</span><span class="label">未改良区間（サンプル）</span></div>
+      <div class="stat-cell"><span class="num">0.0億円</span><span class="label">事業費（サンプル）</span></div>
+      <div class="stat-cell"><span class="num">R00年度</span><span class="label">完成予定（サンプル）</span></div>
+    </div>
+  </div>
+
+  <div class="lbl">B. zero-grid — 黒地×ライム枠の政策グリッド（リーフレットv3 看板政策様式）</div>
+  <div class="zero-box">
+    <div class="zero-head">
+      <span class="zero-badge">▶ FLAGSHIP / 看板政策</span>
+      <span class="zero-title">見出しサンプル<span class="big"> 5</span>つの項目</span>
+    </div>
+    <div class="zero-grid">
+      <div class="zero-cell"><div class="zero-no">NO. 01</div><div class="zero-jp">項目サンプル</div><div class="zero-zz">ZERO</div></div>
+      <div class="zero-cell"><div class="zero-no">NO. 02</div><div class="zero-jp">項目サンプル</div><div class="zero-zz">ZERO</div></div>
+      <div class="zero-cell"><div class="zero-no">NO. 03</div><div class="zero-jp">項目サンプル</div><div class="zero-zz">ZERO</div></div>
+      <div class="zero-cell"><div class="zero-no">NO. 04</div><div class="zero-jp">項目サンプル</div><div class="zero-zz">ZERO</div></div>
+      <div class="zero-cell"><div class="zero-no">NO. 05</div><div class="zero-jp">項目サンプル</div><div class="zero-zz">ZERO</div></div>
+    </div>
+  </div>
+
+  <div class="caution">
+    <strong>実装上の注意</strong><br>
+    数字は一次資料照合済みのものだけ入れる（レポートは content-fact-checker 通過必須。「827人減」型の出典不明数字事故の再発防止）。
+    数字セルの数字は w900・ラベルは w700 小さめで階層を立てる。
+    セルは「白背景＋実線枠」が基本 — 浮き角丸カード（大きな border-radius ＋ぼかし影）はAI製SaaS風になるため禁止。
+  </div>
+</body>
+</html>

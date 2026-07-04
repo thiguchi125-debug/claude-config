@@ -1,0 +1,105 @@
+<!-- @dsCard group="Components" name="QRフッターブロック" subtitle="連絡先＋QR3枠＋討議資料表記のフッター部品" -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>QRフッターブロック</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;background:#f3efe4;color:#111418;padding:36px;line-height:1.6;}
+  h1{font-size:20px;font-weight:900;color:#0f3d27;margin-bottom:18px;}
+  .lbl{font-size:10.5px;font-family:ui-monospace,Menlo,monospace;color:#666;margin:22px 0 8px;}
+
+  /* ============================================================
+     パターンA: 白地・緑太枠（市政報告レポートv22 実績・インク節約）
+     ============================================================ */
+  .contact-block{border:3px solid #1f7a3a;border-radius:6px;background:#fff;overflow:hidden;max-width:760px;}
+  .contact-header{color:#0e4d27;border-bottom:2px solid #1f7a3a;padding:7px 18px;font-size:14px;font-weight:900;letter-spacing:.05em;}
+  .contact-header::before{content:"▶";color:#c89211;margin-right:8px;font-size:12px;}
+  .contact-body{display:flex;padding:12px 18px;gap:18px;align-items:center;}
+  .contact-info{flex:1;}
+  .contact-name{font-size:14px;font-weight:900;color:#0e4d27;margin-bottom:8px;}
+  .contact-name .sub{font-size:11px;font-weight:500;color:#777;}
+  .contact-row{display:flex;align-items:center;gap:10px;margin-bottom:5px;font-size:12px;}
+  .contact-label{display:inline-block;min-width:58px;color:#1f7a3a;border:1.5px solid #1f7a3a;font-size:11px;font-weight:700;padding:1px 8px;border-radius:3px;text-align:center;}
+  .contact-value{font-weight:700;color:#0e4d27;}
+  .contact-value.tel{font-size:17px;}
+  .contact-qrs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-left:16px;border-left:1px dashed #cfe6d4;}
+  .qr-item{text-align:center;}
+  /* QRプレースホルダー矩形：実制作時は <img> に差し替え */
+  .qr-box{width:72px;height:72px;border:1.5px solid #0e4d27;border-radius:3px;background:repeating-linear-gradient(45deg,#e8e4d8 0 6px,#f7f4ec 6px 12px);display:flex;align-items:center;justify-content:center;font-size:10px;color:#555;font-weight:700;}
+  .qr-label{font-size:10px;font-weight:700;color:#0e4d27;margin-top:4px;}
+
+  /* ============================================================
+     パターンB: 黒帯＋ライムCTA（選挙リーフレットv3 実績）
+     ============================================================ */
+  .f-contact{max-width:760px;background:#111418;color:#f3efe4;display:flex;flex-direction:column;position:relative;}
+  .f-cta{background:#c7ff4a;color:#111418;padding:8px 22px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:.1em;gap:12px;flex-wrap:wrap;}
+  .f-cta .cta-label{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:18px;white-space:nowrap;}
+  .f-cta .cta-name{background:#111418;color:#c7ff4a;padding:2px 8px;margin-left:4px;font-weight:800;}
+  .f-contact-row{padding:12px 22px 14px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .f-flogo{font-family:"Shippori Mincho B1",serif;font-weight:900;font-size:17px;white-space:nowrap;}
+  .f-divider{border-left:1px solid rgba(255,255,255,.3);height:38px;}
+  .f-addr-block{line-height:1.55;font-size:11.5px;}
+  .f-qr{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+  .f-qr-lead{font-size:10px;font-weight:700;line-height:1.4;text-align:right;white-space:nowrap;}
+  .f-qr .ph{width:64px;height:64px;background:#fff;padding:3px;display:flex;align-items:center;justify-content:center;}
+  .f-qr .ph i{font-style:normal;width:100%;height:100%;background:repeating-linear-gradient(45deg,#ddd 0 5px,#fff 5px 10px);display:flex;align-items:center;justify-content:center;font-size:9px;color:#555;font-weight:700;}
+  .f-discussion-mark{position:absolute;top:6px;right:8px;background:transparent;color:#fff;border:1px solid #fff;padding:2px 6px;font-size:8px;letter-spacing:.1em;font-weight:600;opacity:.85;}
+
+  .caution{background:#fff;border:2px solid #0f3d27;border-left:8px solid #c7ff4a;padding:12px 16px;font-size:12px;margin-top:24px;max-width:760px;}
+</style>
+</head>
+<body>
+  <h1>QRコード＋フッターブロック（2パターン）</h1>
+
+  <div class="lbl">A. 白地・緑太枠 — 市政報告レポート系（家庭用プリンタ・インク節約）</div>
+  <div class="contact-block">
+    <div class="contact-header">お困りごと・ご意見・ご相談はこちらへ</div>
+    <div class="contact-body">
+      <div class="contact-info">
+        <div class="contact-name">亀山市議会議員　草川たくや <span class="sub">（くさかわ・たくや）</span></div>
+        <div class="contact-row"><span class="contact-label">電話</span><span class="contact-value tel">000-0000-0000</span></div>
+        <div class="contact-row"><span class="contact-label">メール</span><span class="contact-value">sample@example.com</span></div>
+        <div class="contact-row"><span class="contact-label">ご意見箱</span><span class="contact-value" style="font-size:11px;">公式LINE／X／Facebook／Instagramで随時受付中</span></div>
+      </div>
+      <div class="contact-qrs">
+        <div class="qr-item"><div class="qr-box">QR</div><div class="qr-label">公式LINE</div></div>
+        <div class="qr-item"><div class="qr-box">QR</div><div class="qr-label">ご意見箱</div></div>
+        <div class="qr-item"><div class="qr-box">QR</div><div class="qr-label">公式HP</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lbl">B. 黒帯＋ライムCTA — リーフレット・選挙系（討議資料表記つき）</div>
+  <div class="f-contact">
+    <div class="f-discussion-mark">討議資料</div>
+    <div class="f-cta">
+      <span class="cta-label">ええやん 亀山。</span>
+      <span>あなたの声を、<span class="cta-name">草川たくや</span> と一緒に。</span>
+    </div>
+    <div class="f-contact-row">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="f-flogo">草川たくや後援会</div>
+        <div class="f-divider"></div>
+        <div class="f-addr-block">
+          <div>〒000-0000　三重県亀山市（住所サンプル）</div>
+          <div style="opacity:.85;font-size:10.5px;margin-top:1px;">000-0000-0000 ／ sample@example.com</div>
+        </div>
+      </div>
+      <div class="f-qr">
+        <div class="f-qr-lead">最新情報・活動実績は<br>公式LINE / SNSから</div>
+        <div class="ph"><i>QR</i></div>
+        <div class="ph"><i>QR</i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caution">
+    <strong>実装上の注意</strong><br>
+    QR画像はこのプレビューではプレースホルダー矩形。実制作時は実QR画像（白フチ3px以上・crisp-edges）に差し替え、印刷17mm角以上を確保する。
+    政治活動印刷物には「討議資料」表記を必ず入れる（パターンBの右上・目立たない透過枠が実績スタイル）。
+    電話・メール等の固有情報は手打ちせず正本からコピペする。
+  </div>
+</body>
+</html>
