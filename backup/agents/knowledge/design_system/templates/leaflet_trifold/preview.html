@@ -1,0 +1,216 @@
+<!-- @dsCard group="Templates" name="後援会リーフレット A4両面" subtitle="ジン風エディトリアル・ブランド4色の正本（選挙v3）" -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>後援会リーフレット A4両面 プレビュー</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;background:#dcd6c6;color:#111418;padding:28px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
+  .mincho{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;}
+  .page{position:relative;width:421px;height:595px;background:#f3efe4;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.25);}
+  .side-lbl{position:absolute;bottom:4px;left:8px;font-size:8px;letter-spacing:.2em;color:#999;z-index:20;}
+
+  /* ===== 表面 ===== */
+  .f-bg{position:absolute;top:-60px;right:-80px;width:380px;height:550px;background:#1f5a3a;transform:rotate(-14deg);transform-origin:top right;box-shadow:0 0 0 5px #0f3d27 inset;}
+  .f-ribbon{position:absolute;left:0;top:0;right:0;height:19px;background:#111418;color:#f3efe4;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:6px;letter-spacing:.25em;font-weight:700;z-index:5;}
+  .f-discussion{position:absolute;top:23px;right:6px;z-index:10;color:#fff;border:.5px solid #fff;padding:1px 3px;font-size:5px;letter-spacing:.1em;opacity:.85;}
+  .f-corner{position:absolute;left:16px;top:34px;z-index:8;}
+  .f-corner .row{display:flex;gap:4px;align-items:center;}
+  .f-corner .bar{width:3px;height:15px;background:#1f5a3a;}
+  .f-corner .lbl{font-size:5px;letter-spacing:.3em;font-weight:700;}
+  .f-corner .en{font-family:"Anton","Arial Black",sans-serif;font-size:11px;color:#666;}
+  .f-corner .no{font-family:"Anton","Arial Black",sans-serif;font-size:55px;line-height:.82;color:#1f5a3a;text-shadow:2.5px 2.5px 0 #111418;margin-top:2px;}
+  .f-portrait{position:absolute;right:-25px;top:45px;width:240px;height:340px;transform:rotate(-6deg);z-index:4;border:3px solid #111418;box-shadow:11px 11px 0 #111418,11px 11px 0 5px #c7ff4a;background:repeating-linear-gradient(45deg,#d8d3c4 0 12px,#e6e1d2 12px 24px);display:flex;align-items:center;justify-content:center;font-size:11px;color:#555;font-weight:700;}
+  .f-name-banner{position:absolute;top:5px;right:115px;z-index:7;background:#111418;color:#f3efe4;padding:8px 17px;font-size:24px;letter-spacing:.2em;font-weight:900;white-space:nowrap;box-shadow:3px 3px 0 #c7ff4a;transform:rotate(-6deg);transform-origin:top right;}
+  .f-slogan{position:absolute;left:16px;top:108px;z-index:6;}
+  .f-tape{display:inline-block;margin-bottom:9px;background:#c7ff4a;padding:2px 7px;font-size:6px;letter-spacing:.3em;font-weight:700;transform:rotate(-1.5deg);}
+  .f-headline{font-weight:900;font-size:48px;line-height:.9;letter-spacing:-.03em;white-space:nowrap;}
+  .f-headline .accent{display:inline-block;background:#c7ff4a;padding:2px 7px 0;transform:skewX(-7deg);box-shadow:2px 2px 0 #111418;}
+  .f-headline .accent span{display:inline-block;transform:skewX(7deg);}
+  .f-sub{font-weight:700;font-size:13px;margin-top:5px;}
+  .f-tags{margin-top:7px;display:flex;gap:3px;}
+  .f-tags span{font-size:5.5px;letter-spacing:.15em;font-weight:700;padding:2px 5px;border:1px solid #111418;background:#f3efe4;white-space:nowrap;}
+  .f-stamp{position:absolute;left:235px;top:270px;width:60px;height:60px;z-index:7;border:1.5px double #0f3d27;border-radius:50%;color:#0f3d27;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-14deg);font-size:5px;letter-spacing:.2em;font-weight:900;}
+  .f-stamp .m{font-size:13px;letter-spacing:.15em;}
+  .f-name-wrap{position:absolute;left:14px;bottom:78px;z-index:8;}
+  .f-name-kicker{display:flex;gap:5px;margin-bottom:2px;}
+  .f-name-kana{background:#111418;color:#f3efe4;padding:2px 5px;font-size:5.5px;letter-spacing:.35em;}
+  .f-name-role{background:#c7ff4a;padding:3px 7px;font-size:7px;font-weight:900;letter-spacing:.18em;box-shadow:1.5px 1.5px 0 #111418;}
+  .f-name-1{font-weight:900;font-size:120px;line-height:.82;letter-spacing:-.03em;margin-left:-3px;margin-bottom:-8px;white-space:nowrap;}
+  .f-name-2{font-weight:900;font-size:100px;line-height:.82;color:#1f5a3a;letter-spacing:-.03em;margin-left:40px;white-space:nowrap;text-shadow:2.5px 2.5px 0 #111418;}
+  .f-contact{position:absolute;left:0;right:0;bottom:0;height:70px;background:#111418;color:#f3efe4;z-index:9;display:flex;flex-direction:column;}
+  .f-cta{background:#c7ff4a;color:#111418;padding:4px 14px;display:flex;align-items:center;justify-content:space-between;font-size:7px;font-weight:700;}
+  .f-cta .cl{font-weight:900;font-size:11px;}
+  .f-crow{flex:1;padding:4px 14px;display:flex;align-items:center;justify-content:space-between;gap:9px;font-size:6.5px;}
+  .f-flogo{font-weight:900;font-size:11px;white-space:nowrap;}
+  .f-qr{display:flex;gap:4px;align-items:center;}
+  .f-qr .ph{width:40px;height:40px;background:#fff;padding:2px;display:flex;}
+  .f-qr .ph i{font-style:normal;width:100%;background:repeating-linear-gradient(45deg,#ddd 0 3px,#fff 3px 6px);display:flex;align-items:center;justify-content:center;font-size:6px;color:#555;font-weight:700;}
+
+  /* ===== 裏面 ===== */
+  .b-wedge{position:absolute;top:-90px;left:-60px;width:360px;height:160px;background:#1f5a3a;transform:rotate(-10deg);transform-origin:top left;}
+  .b-header{position:relative;z-index:4;padding:24px 14px 4px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid #111418;}
+  .b-kick{display:inline-block;background:#111418;color:#f3efe4;padding:2px 5px;font-size:5.5px;letter-spacing:.3em;font-weight:700;margin-bottom:3px;}
+  .b-h{font-weight:900;font-size:14px;color:#f3efe4;text-shadow:1.5px 1.5px 0 #111418;}
+  .b-h .ac{color:#c7ff4a;}
+  .b-year{font-family:"Anton","Arial Black",sans-serif;font-size:19px;color:#c7ff4a;text-shadow:1px 1px 0 #111418;text-align:right;}
+  .b-sec{position:relative;z-index:3;padding:5px 12px;border-bottom:1px dashed rgba(0,0,0,.25);}
+  .b-num{font-family:"Anton","Arial Black",sans-serif;font-size:26px;line-height:.9;color:#1f5a3a;text-shadow:1.5px 1.5px 0 #111418;display:inline-block;margin-right:6px;vertical-align:middle;}
+  .b-title{display:inline-block;font-weight:900;font-size:12px;vertical-align:middle;}
+  .b-title span{box-shadow:inset 0 -0.28em 0 #c7ff4a;padding:0 3px;}
+  .zero-box{margin-top:4px;background:#111418;color:#f3efe4;padding:5px 7px 6px;box-shadow:2.5px 2.5px 0 #c7ff4a;}
+  .zero-head{display:flex;gap:5px;align-items:center;margin-bottom:3px;}
+  .zero-badge{font-size:6px;font-weight:900;color:#111418;background:#c7ff4a;padding:1px 4px;letter-spacing:.12em;white-space:nowrap;}
+  .zero-title{font-weight:900;font-size:9px;}
+  .zero-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;}
+  .zero-cell{background:rgba(255,255,255,.06);border:1px solid #c7ff4a;padding:3px 2px;text-align:center;}
+  .zero-no{font-size:4px;color:#c7ff4a;letter-spacing:.2em;font-weight:700;}
+  .zero-jp{font-weight:900;font-size:5.5px;line-height:1.3;margin:2px 0;}
+  .zero-zz{display:inline-block;background:#c7ff4a;color:#111418;font-weight:900;font-size:7px;padding:0 4px;}
+  .b-subs{margin-top:4px;display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+  .b-sub{border:1px solid #111418;padding:3px 5px;background:#f3efe4;font-size:5.5px;line-height:1.6;}
+  .b-sub.s0{box-shadow:1.5px 1.5px 0 #1f5a3a;}
+  .b-sub.s1{box-shadow:1.5px 1.5px 0 #111418;}
+  .b-sub .h{font-weight:900;font-size:7.5px;margin-bottom:2px;}
+  .b-sub .ck{color:#1f5a3a;font-weight:900;}
+  .p02-body{display:flex;gap:8px;margin-top:3px;align-items:flex-start;}
+  .ph-photo{flex-shrink:0;border:2px solid #111418;background:repeating-linear-gradient(45deg,#d8d3c4 0 8px,#e6e1d2 8px 16px);display:flex;align-items:center;justify-content:center;font-size:7px;color:#555;font-weight:700;}
+  .p02-body .ph-photo{width:80px;height:50px;box-shadow:4px 4px 0 #1f5a3a;transform:rotate(-1.5deg);}
+  .b-text{flex:1;font-size:6.2px;line-height:1.8;}
+  .chips{margin-top:3px;display:flex;gap:2px;flex-wrap:wrap;}
+  .chips span{font-size:5px;padding:1.5px 4px;font-weight:700;background:#111418;color:#f3efe4;white-space:nowrap;}
+  .b-sec.p03{background:#0f3d27;color:#f3efe4;border-bottom:none;}
+  .b-sec.p03 .b-num{color:#c7ff4a;}
+  .b-sec.p03 .b-title span{box-shadow:inset 0 -0.28em 0 #1f5a3a;}
+  .b-sec.p03 .chips span{background:#c7ff4a;color:#111418;}
+  .b-sec.p03 .ph-photo{width:70px;height:56px;box-shadow:4px 4px 0 #c7ff4a;transform:rotate(1.5deg);}
+  .b-prof{position:relative;z-index:3;background:#efe8d8;padding:4px 12px;display:flex;gap:9px;align-items:flex-start;}
+  .b-prof .ph-photo{width:54px;height:64px;box-shadow:4px 4px 0 #1f5a3a;transform:rotate(-2deg);}
+  .b-prof .txt{flex:1;font-size:6px;line-height:1.8;}
+  .b-prof .nm{font-weight:900;font-size:11px;}
+  .b-prof .intro{margin-top:2px;padding-left:5px;border-left:2px solid #c7ff4a;}
+  .b-act{position:relative;z-index:3;background:#efe8d8;padding:2px 12px 8px;}
+  .b-act .kick{display:inline-block;background:#111418;color:#f3efe4;padding:1px 5px;font-size:5.5px;letter-spacing:.25em;font-weight:700;margin-bottom:2px;}
+  .b-act-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;}
+  .b-act-cell .ph-photo{width:100%;height:21px;border-width:1px;}
+  .b-act-cell .t{margin-top:1px;font-weight:700;font-size:5px;line-height:1.25;}
+
+  .memo{width:100%;max-width:872px;font-size:11px;color:#333;line-height:1.7;background:#fff;border:2px solid #0f3d27;padding:12px 16px;}
+  .memo b{color:#0f3d27;}
+</style>
+</head>
+<body>
+
+  <!-- 表面 -->
+  <div class="page">
+    <div class="f-bg"></div>
+    <div class="f-ribbon"><span>後援会名 · SUPPORTERS</span><span>VOL.01 · 2026</span></div>
+    <div class="f-discussion">討議資料</div>
+    <div class="f-corner">
+      <div class="row"><div class="bar"></div><div><div class="lbl">VOLUME</div><div class="en">SUPPORTERS</div></div></div>
+      <div class="no">01</div>
+    </div>
+    <div class="f-portrait">人物写真<br>（差し替え）</div>
+    <div class="f-name-banner mincho">草川たくや</div>
+    <div class="f-slogan">
+      <div class="f-tape">STATEMENT — キャッチ帯</div>
+      <div class="f-headline mincho">
+        <div>見出し1行目、</div>
+        <div class="accent"><span>2行目強調。</span></div>
+      </div>
+      <div class="f-sub mincho">サブコピーが入ります。</div>
+      <div class="f-tags"><span>タグ1</span><span>タグ2</span><span>タグ3</span></div>
+    </div>
+    <div class="f-stamp mincho"><span>OFFICIAL · 公式</span><span class="m">後 援 会</span><span>SINCE · 2018</span></div>
+    <div class="f-name-wrap">
+      <div class="f-name-kicker"><span class="f-name-kana">KUSAKAWA TAKUYA</span><span class="f-name-role">亀山市議会議員</span></div>
+      <div class="f-name-1 mincho">草川</div>
+      <div class="f-name-2 mincho">たくや</div>
+    </div>
+    <div class="f-contact">
+      <div class="f-cta"><span class="cl mincho">ええやん 亀山。</span><span>CTAサブ文言が入ります</span></div>
+      <div class="f-crow">
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div class="f-flogo mincho">後援会名サンプル</div>
+          <div style="border-left:1px solid rgba(255,255,255,.3);height:22px;"></div>
+          <div>〒000-0000　住所サンプル<br><span style="opacity:.85;">000-0000-0000 ／ sample@example.com</span></div>
+        </div>
+        <div class="f-qr"><div class="ph"><i>QR</i></div><div class="ph"><i>QR</i></div></div>
+      </div>
+    </div>
+    <div class="side-lbl" style="color:#ccc;">SIDE A 表面</div>
+  </div>
+
+  <!-- 裏面 -->
+  <div class="page">
+    <div class="b-wedge"></div>
+    <div class="b-header">
+      <div><div class="b-kick">VISION · 3つの約束</div><div class="b-h mincho"><span class="ac">見出しサンプルが入ります。</span></div></div>
+      <div class="b-year">2030</div>
+    </div>
+    <div class="b-sec">
+      <span class="b-num">01</span><span class="b-title mincho"><span>柱1タイトルサンプルが入ります</span></span>
+      <div class="zero-box">
+        <div class="zero-head"><span class="zero-badge">▶ FLAGSHIP / 看板政策</span><span class="zero-title mincho">看板政策タイトル 5つの項目</span></div>
+        <div class="zero-grid">
+          <div class="zero-cell"><div class="zero-no">NO.01</div><div class="zero-jp mincho">項目サンプル</div><div class="zero-zz">ZERO</div></div>
+          <div class="zero-cell"><div class="zero-no">NO.02</div><div class="zero-jp mincho">項目サンプル</div><div class="zero-zz">ZERO</div></div>
+          <div class="zero-cell"><div class="zero-no">NO.03</div><div class="zero-jp mincho">項目サンプル</div><div class="zero-zz">ZERO</div></div>
+          <div class="zero-cell"><div class="zero-no">NO.04</div><div class="zero-jp mincho">項目サンプル</div><div class="zero-zz">ZERO</div></div>
+          <div class="zero-cell"><div class="zero-no">NO.05</div><div class="zero-jp mincho">項目サンプル</div><div class="zero-zz">ZERO</div></div>
+        </div>
+      </div>
+      <div class="b-subs">
+        <div class="b-sub s0"><div class="h mincho">▶ 02 サブ政策見出し</div><span class="ck">✓</span> 施策サンプルが入ります<br><span class="ck">✓</span> 施策サンプルが入ります<br><span class="ck">✓</span> 施策サンプルが入ります</div>
+        <div class="b-sub s1"><div class="h mincho">▶ 03 サブ政策見出し</div><span class="ck">✓</span> 施策サンプルが入ります<br><span class="ck">✓</span> 施策サンプルが入ります<br><span class="ck">✓</span> 施策サンプルが入ります</div>
+      </div>
+    </div>
+    <div class="b-sec">
+      <span class="b-num">02</span><span class="b-title mincho"><span>柱2タイトルサンプルが入ります</span></span>
+      <div class="p02-body">
+        <div class="ph-photo">写真</div>
+        <div>
+          <div class="b-text">本文が入ります。実績と数字を高密度で詰める文体。本文が入ります。本文が入ります。本文が入ります。本文が入ります。</div>
+          <div class="chips"><span>キーワード</span><span>キーワード</span><span>キーワード</span><span>キーワード</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="b-sec p03">
+      <span class="b-num">03</span><span class="b-title mincho"><span>柱3タイトルサンプルが入ります</span></span>
+      <div class="p02-body">
+        <div>
+          <div class="b-text">本文が入ります。反転セクションは最濃緑地×生成り文字。本文が入ります。本文が入ります。本文が入ります。</div>
+          <div class="chips"><span>キーワード</span><span>キーワード</span><span>キーワード</span></div>
+        </div>
+        <div class="ph-photo">写真</div>
+      </div>
+    </div>
+    <div class="b-prof">
+      <div class="ph-photo">写真</div>
+      <div class="txt">
+        <span class="nm mincho">草川 たくや</span>　<span style="color:#666;">KUSAKAWA TAKUYA</span>
+        <div class="intro">プロフィール本文サンプルが入ります。経歴・所属を ● 区切りで列挙します。プロフィール本文サンプルが入ります。</div>
+      </div>
+    </div>
+    <div class="b-act">
+      <span class="kick">FIELD WORK · 活動実績</span>
+      <div class="b-act-grid">
+        <div class="b-act-cell"><div class="ph-photo">写真</div><div class="t mincho">実績タイトルサンプル</div></div>
+        <div class="b-act-cell"><div class="ph-photo">写真</div><div class="t mincho">実績タイトルサンプル</div></div>
+        <div class="b-act-cell"><div class="ph-photo">写真</div><div class="t mincho">実績タイトルサンプル</div></div>
+        <div class="b-act-cell"><div class="ph-photo">写真</div><div class="t mincho">実績タイトルサンプル</div></div>
+        <div class="b-act-cell"><div class="ph-photo">写真</div><div class="t mincho">実績タイトルサンプル</div></div>
+      </div>
+    </div>
+    <div class="side-lbl">SIDE B 裏面</div>
+  </div>
+
+  <div class="memo">
+    <b>正本＝選挙リーフレットv3</b>（842×1190px×2面・実態はA4両面。「三つ折り」名は歴史的呼称）。ブランド4色（ライム #c7ff4a／濃緑 #1f5a3a／最濃緑 #0f3d27／生成り #f3efe4）を最も忠実に使う正本作品。
+    ジン風エディトリアル：斜め緑マッシブ＋黒枠写真＋ライム影＋明朝特大名前＋Anton番号＋紙目グレイン。
+    見出し下線は box-shadow inset 方式（gradient hard-stop禁止）。右上に「討議資料」表記（公選法対策）。
+    このプレビューの写真・QRはすべてプレースホルダー。実物のassets／印刷スケール（scale 0.9426でA4フィット）は template.html を参照。
+  </div>
+</body>
+</html>
