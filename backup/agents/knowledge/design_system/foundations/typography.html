@@ -1,0 +1,91 @@
+<!-- @dsCard group="Foundations" name="タイポグラフィ" subtitle="実績4作品から抽出したフォントスタックとサイズ階層" -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>草川たくや タイポグラフィ</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;background:#f3efe4;color:#111418;padding:36px;line-height:1.7;}
+  h1{font-size:22px;font-weight:900;color:#0f3d27;margin-bottom:4px;}
+  .lead{font-size:12.5px;color:#444;margin-bottom:24px;}
+  h2{font-size:15px;font-weight:900;color:#0f3d27;margin:30px 0 10px;padding-left:10px;box-shadow:inset 4px 0 0 #c7ff4a;}
+  .card{background:#fff;border:2px solid #111418;padding:16px 20px;margin-bottom:14px;}
+  .card .src{font-size:10.5px;letter-spacing:.1em;color:#666;font-family:ui-monospace,Menlo,monospace;margin-bottom:8px;}
+  .stack{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;background:#f3efe4;padding:6px 10px;border-left:3px solid #1f5a3a;margin:6px 0 12px;}
+  .spec{display:flex;align-items:baseline;gap:14px;border-bottom:1px dashed #ccc;padding:8px 0;}
+  .spec:last-child{border-bottom:none;}
+  .spec .lbl{flex:0 0 190px;font-size:10.5px;color:#555;font-family:ui-monospace,Menlo,monospace;}
+  .mincho{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;}
+  .gothic{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;}
+  .hira{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;}
+  .maru{font-family:"Hiragino Maru Gothic ProN","ヒラギノ丸ゴ ProN","筑紫B丸ゴシック",sans-serif;}
+  .disp{font-family:"Anton","Arial Black",sans-serif;}
+  table{border-collapse:collapse;width:100%;background:#fff;font-size:12px;}
+  th,td{border:1px solid #999;padding:6px 10px;text-align:left;vertical-align:top;}
+  th{background:#0f3d27;color:#f3efe4;font-weight:700;}
+  .note{font-size:11px;color:#555;margin-top:8px;}
+</style>
+</head>
+<body>
+  <h1>タイポグラフィ</h1>
+  <p class="lead">種4作品（市政報告レポートv22／選挙リーフレットv3／中庄夏祭りポスター／eスポーツチラシ）で実際に使われたフォントスタックとサイズ階層の見本。</p>
+
+  <h2>1. 政治広報系の基本ペア（選挙リーフレットv3 実績）</h2>
+  <div class="card">
+    <div class="src">02_publications/leaflets/2026-05_senkyo_leaflet_v3</div>
+    <div class="stack">見出し（明朝）: "Shippori Mincho B1", serif — weight 700/900（Google Fonts）</div>
+    <div class="stack">本文（ゴシック）: "Noto Sans JP", sans-serif — weight 400/500/700/900（Google Fonts）</div>
+    <div class="stack">欧文ディスプレイ（番号・年号）: "Anton", sans-serif ／ 等幅注記: ui-monospace, Menlo, monospace</div>
+    <div class="spec"><span class="lbl">名前特大 240px/.82 w900</span><span class="mincho" style="font-size:56px;font-weight:900;line-height:.85;">草川</span></div>
+    <div class="spec"><span class="lbl">ヘッドライン 96px/.9 w900</span><span class="mincho" style="font-size:34px;font-weight:900;line-height:.95;">止めない、この街を。</span></div>
+    <div class="spec"><span class="lbl">柱タイトル 28px/1.15 w900</span><span class="mincho" style="font-size:22px;font-weight:900;">毎日を、当たり前に安心安全に。</span></div>
+    <div class="spec"><span class="lbl">本文 13px/1.85 w400-500</span><span class="gothic" style="font-size:13px;">本文が入ります。数字・固有名詞・実績を高密度で詰める文体。</span></div>
+    <div class="spec"><span class="lbl">キッカー 10-12px 字間.25em w700</span><span class="gothic" style="font-size:11px;letter-spacing:.25em;font-weight:700;background:#111418;color:#f3efe4;padding:3px 9px;">VISION · 3つの約束</span></div>
+    <div class="spec"><span class="lbl">欧文番号 Anton 52-110px</span><span class="disp" style="font-size:40px;color:#1f5a3a;text-shadow:2px 2px 0 #111418;">01</span></div>
+  </div>
+
+  <h2>2. 市政報告レポート系（木下版v22 実績・A4両面）</h2>
+  <div class="card">
+    <div class="src">print_templates/district_report/v22_kinoshita_final.html</div>
+    <div class="stack">全体: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif（システムフォントのみ・Web依存なし）</div>
+    <div class="spec"><span class="lbl">氏名 33pt w900</span><span class="hira" style="font-size:33px;font-weight:900;color:#0e4d27;">草川たくや</span></div>
+    <div class="spec"><span class="lbl">章タイトル 14.5pt w900</span><span class="hira" style="font-size:19px;font-weight:900;color:#0e4d27;">章タイトルサンプル</span></div>
+    <div class="spec"><span class="lbl">リード見出し 13pt w900</span><span class="hira" style="font-size:17px;font-weight:900;color:#0e4d27;">リード見出しサンプル</span></div>
+    <div class="spec"><span class="lbl">本文 11pt/1.85 justify</span><span class="hira" style="font-size:14.5px;">本文が入ります。強調は<strong style="color:#0e4d27;border-bottom:1.5px solid #c89211;">太字＋金下線</strong>で行います。</span></div>
+    <div class="spec"><span class="lbl">数字セル 16pt w900</span><span class="hira" style="font-size:21px;font-weight:900;color:#0e4d27;">2.3km</span></div>
+    <div class="spec"><span class="lbl">キャプション 7.5pt w600</span><span class="hira" style="font-size:10px;font-weight:600;color:#0e4d27;">写真キャプションサンプル</span></div>
+    <p class="note">単位は pt/mm（A4印刷前提）。本文 line-height 1.75〜1.85、text-align: justify。</p>
+  </div>
+
+  <h2>3. イベントポスター系（中庄夏祭り2026 実績・品質基準の正本）</h2>
+  <div class="card">
+    <div class="src">drafts/2026-08_中庄夏祭りポスター/poster.html</div>
+    <div class="stack">タイトル: "ヒラギノ角ゴシック", "Hiragino Sans" w900 ／ ポップ体: "ヒラギノ丸ゴ ProN", "筑紫B丸ゴシック" w800</div>
+    <div class="stack">日付・時刻: "Arial Rounded MT Bold" w900 ／ 年号: "Arial Black"</div>
+    <div class="spec"><span class="lbl">タイトル 250px 字間-16px</span><span class="hira" style="font-size:44px;font-weight:900;color:#c33f2f;letter-spacing:-3px;">夏祭り</span></div>
+    <div class="spec"><span class="lbl">日付 164px＋白ストローク</span><span style="font-family:'Arial Rounded MT Bold',sans-serif;font-size:40px;font-weight:900;color:#2d3157;-webkit-text-stroke:3px #fff;paint-order:stroke fill;">8.15</span></div>
+    <p class="note">ポスターは px 絶対配置（874×1250 等の実寸ステージ）。屋外掲示の視認性は「白ストローク（-webkit-text-stroke ＋ paint-order:stroke fill）」で確保。配色は案件毎に作り分け（この作品は祭り色でブランド色不使用＝「基調は内容毎に作り分ける」の実例）。</p>
+  </div>
+
+  <h2>4. イベントチラシ系（eスポーツ 実績・ダーク×ライム）</h2>
+  <div class="card">
+    <div class="src">drafts/2026-06_esports_smash/flyer_a2.html</div>
+    <div class="stack">本文: "Noto Sans JP" ／ 欧文見出し: "Anton" ／ 英字ラベル: "Space Grotesk"（Google Fonts）</div>
+    <div class="spec"><span class="lbl">欧文ヒーロー Anton 150px</span><span class="disp" style="font-size:40px;color:#1f5a3a;">SMASH</span></div>
+    <div class="spec"><span class="lbl">和文タイトル 88px w900</span><span class="gothic" style="font-size:28px;font-weight:900;">スマブラ交流＆大会</span></div>
+    <div class="spec"><span class="lbl">日付 Anton 72px</span><span class="disp" style="font-size:32px;">6.27</span></div>
+    <p class="note">ダーク背景（#101216 系）ではライムは「淡い発光（drop-shadow/opacity 抑えめ）」で使う。数字は Anton に集約すると情報階層が立つ。</p>
+  </div>
+
+  <h2>使い分け早見</h2>
+  <table>
+    <tr><th>制作物</th><th>見出し</th><th>本文</th><th>数字・欧文</th><th>単位系</th></tr>
+    <tr><td>選挙・後援会リーフレット</td><td>Shippori Mincho B1 900</td><td>Noto Sans JP 400-500</td><td>Anton</td><td>px（842×1190→print scale）</td></tr>
+    <tr><td>市政報告レポート A4</td><td>Hiragino Sans 900</td><td>Hiragino Sans 400</td><td>同スタック 900</td><td>pt / mm</td></tr>
+    <tr><td>イベントポスター</td><td>案件毎（角ゴ/丸ゴ 800-900）</td><td>角ゴ 600-800</td><td>Arial Rounded / Arial Black</td><td>px 絶対配置</td></tr>
+    <tr><td>イベントチラシ</td><td>Noto Sans JP 900 ＋ Anton</td><td>Noto Sans JP 500-700</td><td>Anton / Space Grotesk</td><td>px（1080×1350 等）</td></tr>
+  </table>
+  <p class="note">共通原則：ウェイトは 400/500/700/900 の4段で運用（中間ウェイト濫用禁止）／字間 .1em〜.35em のトラッキングはラベル・キッカーのみ／本文 line-height 1.7〜1.85。Google Fonts を使う場合は入稿前にレンダリング確認（PDF化時のフォント置換事故防止）。</p>
+</body>
+</html>
