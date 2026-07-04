@@ -87,6 +87,34 @@ if [ -f "$SRC/plugins/installed_plugins.json" ]; then
   cp -f "$SRC/plugins/known_marketplaces.json" "$DST/plugins-meta/" 2>/dev/null || true
 fi
 
+# 6.5) scripts/ (td.py = タスク管理エンジン、gikai_dayori 等の自作パイプライン)
+# 2026-07-04 追加: これが消えるとタスク管理・議会だより生成が復旧不能になる。
+# 秘密情報 (~/.config/todoist/token) は scripts/ 外なので git に載らない。
+if [ -d "$SRC/scripts" ]; then
+  rsync "${rsync_opts[@]}" \
+    --exclude '__pycache__' \
+    --exclude '*.pyc' \
+    --exclude '*.log' \
+    "$SRC/scripts/" "$DST/scripts-claude/" \
+    || warn "scripts/ rsync had errors (continuing)"
+fi
+
+# 6.6) ホーム直下の CLAUDE.md 現行版 (起動時自動読込される安定ルールの正本)
+cp -f "$HOME/CLAUDE.md" "$DST/CLAUDE.md" 2>/dev/null \
+  || warn "~/CLAUDE.md のコピーに失敗"
+
+# 6.7) launchd plist (com.kusagawa.* = 日次Driveパイプライン等の自動化定義)
+mkdir -p "$DST/launchd"
+for plist in "$HOME/Library/LaunchAgents"/com.kusagawa.*.plist; do
+  [ -e "$plist" ] || continue
+  cp -f "$plist" "$DST/launchd/" 2>/dev/null \
+    || warn "launchd plist のコピーに失敗: $plist"
+done
+# plist が参照するランナー本体も保全
+if [ -f "$HOME/.local/bin/kusagawa-pipeline-bash" ]; then
+  cp -f "$HOME/.local/bin/kusagawa-pipeline-bash" "$DST/launchd/" 2>/dev/null || true
+fi
+
 # 7) git commit & push (rsyncが部分失敗していても必ずここまで到達する)
 cd "$REPO"
 
