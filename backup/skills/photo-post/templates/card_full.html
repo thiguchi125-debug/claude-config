@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<style>
+:root{--lime:#c7ff4a;--green:#1f5a3a;--deep:#0f3d27;--kinari:#f3efe4;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{width:100vw;height:100vh;overflow:hidden;position:relative;background:#000;
+ font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",sans-serif;}
+.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{FOCUS}};}
+.copy{position:absolute;left:56px;top:96px;right:56px;}
+h1{font-size:64px;line-height:1.62;font-weight:800;display:inline;}
+h1 span{background:rgba(15,61,39,.90);color:#fff;padding:10px 26px;
+ -webkit-box-decoration-break:clone;box-decoration-break:clone;}
+h1.l2 span{background:var(--lime);color:var(--deep);}
+.sub-row{margin-top:26px;}
+.sub-row span{background:rgba(15,61,39,.85);color:#f3efe4;font-size:30px;font-weight:600;padding:8px 20px;}
+.foot{position:absolute;left:56px;right:56px;bottom:44px;display:flex;align-items:center;gap:18px;}
+.bar{width:14px;height:52px;background:var(--lime);}
+.name{color:#fff;font-size:30px;font-weight:700;text-shadow:0 2px 14px rgba(0,0,0,.6);white-space:nowrap;}
+.name small{font-weight:500;font-size:23px;margin-left:12px;}
+.tag{margin-left:auto;color:#fff;font-size:24px;font-weight:700;text-shadow:0 2px 14px rgba(0,0,0,.6);white-space:nowrap;}
+</style></head><body>
+<img class="photo" src="{{PHOTO}}">
+<div class="copy">
+ <div><h1><span>{{H1A}}</span></h1></div>
+ <div style="margin-top:14px;"><h1 class="l2"><span>{{H1B}}</span></h1></div>
+ <div class="sub-row"><span>{{SUB}}</span></div>
+</div>
+<div class="foot"><div class="bar"></div><div class="name">草川たくや<small>亀山市議会議員</small></div><div class="tag">{{TAG}}</div></div>
+</body></html>
