@@ -31,9 +31,16 @@ def main():
     px = im.load()
     mask = Image.new("L", (w, h), 255)
     mpx = mask.load()
+    # 保護帯: 下中央（顔下〜スーツ・シャツ・拳）は背景でないので絶対に抜かない。
+    # 背景は上部・上部両サイドにしか無いため、この帯を守れば内部の細い明色経路
+    # 越しにシャツが誤って抜かれる事故を防げる。
+    px0 = int(w * 0.22); px1 = int(w * 0.78)
+    py0 = int(h * 0.42)
     for y in range(h):
         for x in range(w):
             if px[x, y] == SENT:
+                if px0 <= x <= px1 and y >= py0:
+                    continue  # 保護帯は不透明のまま
                 mpx[x, y] = 0
 
     # 1px収縮（白ハロー除去）＋わずかにぼかしてエッジを馴染ませる
