@@ -97,6 +97,10 @@ grep -rl "<話題ワード>" ~/.claude/agents/knowledge/kusagawa_archive/{01_cou
    🔖 HH:MM 〈種の要約15字以内〉→発信化 → <mention-page url="...">保存先ページ名</mention-page>
    ```
 
+## 写真つきの種（photo-post連携・2026-07-05追加）
+
+種に写真（ファイルパス・添付）が一緒に投入されていたら、Step 5 の保存完了後に「📸 photo-post で投稿画像＋ショート動画も作る？」を選択肢として提示する。YESなら photo-post スキルを PAIRモード（生成済み投稿文を渡す）で起動する——文の再生成はさせず、コピー抽出→画像合成→動画→安全ゲート（画像・動画分のみ）に直行。
+
 ## ストック分岐（「貯めて」「ストックして」）
 
 Step 2 まで実施してから、📣SNS投稿管理DB（ds `1bd98deb-`）に新規ページを作る：
@@ -109,7 +113,7 @@ Step 2 まで実施してから、📣SNS投稿管理DB（ds `1bd98deb-`）に�
 
 ## やらないこと
 
-- 7PF一括生成・ショート動画・印刷物（それぞれ sns-content-creator フル / short-video-create / print系 の領分）
+- 7PF一括生成・セリフ型ショート動画・印刷物（それぞれ sns-content-creator フル / short-video-create / print系 の領分）。ただし**写真つきの種の投稿画像・写真動画化は photo-post に橋渡し**する（上記連携節）
 - 一般質問ネタとしての深掘り（政策の種と判明したら「📝一般質問ネタDB or 🎯政策候補DB に振り分ける？」と smart-intake の判定ツリー#5 へ橋渡し）
 - 保存だけしたい入力の処理（smart-intake の領分）
 
