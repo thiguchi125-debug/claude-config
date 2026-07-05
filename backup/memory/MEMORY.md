@@ -23,7 +23,7 @@
 - ohayo/oyasumi運用16本 → ohayo/oyasumi SKILL.md（feedback_ohayo_*/feedback_oyasumi_*）
 - ショート動画7本 → short-video-virality-architect/image-designer/short-video-create（feedback_short_video_*等。字幕帯はy1240-1460に正本統一済2026-07-04）
 - 印刷物16本 → print-designer/print-layout-architect（feedback_print_*・leaflet・design_quality_bar・esports_logo・rakusuru等）
-- ブログ5本 → blog-writer/blog-writer-normal（feedback_blog_*）
+- ブログ6本 → blog-writer/blog-writer-normal（feedback_blog_*・深掘りは02_publications/blog実物と型合わせ必須=絵文字/詩的抽象排除・具体密度・草川たくやの視点実務節）
 - SNS/AIインタビュー7本 → sns-content-creator/polisher/ai-interview-sns-poster（feedback_x_*・feedback_sns_*・feedback_ai_interview_*等。旧X140字記述は2026-07-04掃除済）
 - news-briefing 5本 → news-briefing SKILL.md（feedback_news_*）
 - 街頭演説4本 → daily-street-speech（feedback_street_speech_*）

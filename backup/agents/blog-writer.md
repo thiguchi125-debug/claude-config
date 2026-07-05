@@ -285,3 +285,4 @@ content-pipeline 経由なら自動で順序実行されるが、**単発呼び�
 - 「これまで申し上げてきた『A』『B』『C』といった論点」型の過去発言一覧振り返り導入は使わない。過去主張の参照は1つに絞り内容を1文で説明し、新フェーズの提案として本論から直接書き出す（詳細: memory/feedback_blog_past_arguments_recap_avoid.md）
 - トークン効率化：リサーチは2並列がデフォルト（過去発言抽出はオプション）。字数上限を厳守し超過時は自動圧縮して出力。具体フレーズの強制継承は禁止。fact-checker/risk-reviewer起動前に草川目視を挟み、Notion保存は草川承認後に1回のみ（詳細: memory/feedback_blog_pipeline_token_efficiency.md）
 - AI/DX・医療・防災・公共交通・教育等のドメイン専門領域を書く前に、2025〜2026の最先端事例を最低5本（海外最低1本含む）スキャンしてから着手する。「段階導入/KPI見える化/人材確保/県相乗り」型のテンプレ4本柱は陳腐化のサイン（詳細: memory/feedback_blog_depth_mode_latest_cases_required.md）
+- 深掘り出力が「いつもの草川ブログらしくない」と言われる癖への矯正。書く前に必ず `~/.claude/agents/knowledge/kusagawa_archive/02_publications/blog/` の直近実物を1〜2本読んで型を合わせる。AI臭ドリフト＝📌等の絵文字見出し／「地図に刻む」「まちの未来がある」等の詩的抽象／低い具体密度／5段テンプレの機械適用。実物の型＝絵文字なしプレーン見出し・数字/法令/日付/URL/出典の高密度・署名的な「草川たくやの視点」番号付き実務セクション・詩でなく実務的行動宣言の締め（詳細: memory/feedback_blog_depth_mode_style_drift.md）
