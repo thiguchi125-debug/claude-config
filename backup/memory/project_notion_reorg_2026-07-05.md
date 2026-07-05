@@ -32,6 +32,14 @@ metadata:
 - **👥後援会員DB改良**: 関係性に「市政報告会で出会う/戸別訪問・街頭で出会う/イベント・行事で出会う」追加（接触履歴・最終接触日・地区・自治会relationは既存）。
 - **旧DB参照の掃除**: skills9本＋agents6本の末尾に「DB統一override」節を一括追記（policy-radar/iken/spark/smart-intake/general-question-prep/daily-content-generator/ohayo/oyasumi/nichijo＋policy系agents）。SKILL.mdのfrontmatter descriptionは旧記述が残るが、本文override優先で動作は統一済み。
 
+## 第3弾（同日追加）：ご無沙汰アラート＋Step2.6修理＋凍結DB参照
+
+- **検証で発覚**: nichijo Step 2.6（🏘️自治会DB自動追記）は**2026-05-14以降実行されていなかった**（城東7/4報告会・太岡寺6/25が未反映）。nichijo末尾に「実行担保」節を追記（省略禁止・サマリー必須行・報告会6件のバックフィルを次回整理モードで提案）。
+- **ご無沙汰アラート（ohayo新設）**: 専用ビュー2本を作成し毎朝クエリ→空き時間とセットで「最近会えていない人・行けていない地域」を最大2〜3提案。
+  - 👥後援会員DB `?v=394cf503a68f81e581fd000c12be9b4d`（最終接触日昇順）
+  - 🏘️自治会DB `?v=394cf503a68f8130a124000c2146ac66`（更新日昇順）
+- **🎯政策・質問ハブに「📦凍結・過去DB参照」節**: 旧政策候補DB・旧ネタプラットフォーム・旧タスクDB・旧PJDB・旧アーカイブv2への1クリックリンク（草川要望＝参照時の不便解消。旧物リンク非表示原則のうち本ハブのみ例外）。
+
 ## How to apply
 - 廃止・重複ページは削除せず旧アーカイブv2へ移動＋タイトルに【ARCHIVED YYYY-MM-DD】
 - 選挙ハブに時限情報（カウントダウン・直近予定・月末ゲート）を書き戻さない。書くならohayo等の自動更新に載せる（[[feedback_system_closing_loops_rot]]）
