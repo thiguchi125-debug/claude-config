@@ -5,14 +5,14 @@
 ## 🔄 進行中プロジェクト
 
 - [デザインスタジオ環境（Canva超え）](project_design_studio.md) — 2026-07-05全構築完了。design-studioスキル（「チラシ作って」等）＋design_system正本（4種テンプレ・カード10枚）＋claude.ai/design「草川たくやデザインシステム」push済。初回実走待ち
-- [市政報告会5ステージスキル](project_shisei_houkokukai_skill.md) — 2026-07-04実装。企画→案内→スライド→解説→前夜・新設agent3本・_status.json正本。初回実走待ち
+- [市政報告会5ステージスキル](project_shisei_houkokukai_skill.md) — 2026-07-04実装。企画→案内→スライド→解説→前夜・新設agent3本・_status.json正本。**初回実走=安知本地区の市政報告会向けに実施予定**（2026-07-05草川指示・spark/design-studio初実走も同案件に合わせ得る）
 - [sparkスキル（小さな種→発信）](project_spark_skill.md) — 2026-07-03新設。種→接地→切り口案→生成→安全ゲート→保存。初回実運用フィードバック待ち
 - [Notion大改修＋ohayo/news v3＋smart-intake](project_notion_ohayo_news_v3_renewal.md) — 2026-07-03実施。ohayo v3・news dedup・smart-intake新設。初回実走の指摘3点も同日修理済（詳細はファイル）
 - [議会だより制作エージェント](project_gikai_dayori_creator.md) — 整備完了(2026-07-02)。会議録→650字→提出docx＋引用マークdocx。トリガー「議会だより作って」
 - [Notionプロジェクト・プラットフォーム](project_notion_project_platform.md) — Todoist主要PJ対応の情報蓄積母艦DB（page=37a71464・ds=8975c6a9）。Todoist=実行/Notion=蓄積。初期17PJ投入済
 - [Todoistへタスク管理移行](project_todoist_task_migration.md) — 完了。td.py使用（詳細はCLAUDE.md正本）。タスク/PJ登録は全てTodoist・Notion✅/🗂️は参照のみ
 - [2026年6月議会 一般質問prep](project_ippan_shitsumon_2026-06_resume.md) — 通告書6/2提出済・骨子v7確定（①部活②送迎③シャープ）。次=counter-argument-simulatorで戦闘マニュアル
-- [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成。判断タスクをTodoist🗳選挙2026に登録済（期限7/11・「3本柱v0見せて」で要約提示）
+- [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成・保管中。判断タスクは不要と草川判断（2026-07-05・Todoistから削除済）。公約設計で必要になったら「3本柱v0見せて」
 - [クラウドRoutine棚卸し2026-07](project_routine_cleanup_2026-07.md) — 停止4本（drive-sync／選挙週次／旧policy-update週次・月次＝いずれも廃止DB前提or二重生成）・修理1本（oyasumi夜間=Todoist読取専用化）・現役4本。議会資料管理Phase1-4も畳んだ（Drive v3に吸収済[[project_council_materials_management]]）
 
 ## 📦 移設済みルール束（2026-07-04・詳細は各agent/SKILL末尾「📌恒久ガードルール」節＋memory各ファイル）
