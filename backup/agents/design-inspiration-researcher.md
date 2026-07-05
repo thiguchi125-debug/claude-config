@@ -1,6 +1,6 @@
 ---
 name: "design-inspiration-researcher"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DESIGN INSPIRATION research before creating print materials — collecting, analyzing, and synthesizing high-quality political leaflet/flyer/poster/business-card designs from across the internet (国内外の議員・政党・選挙陣営・後援会の広報物). This agent performs WebSearch + WebFetch + image analysis on Japanese political design (議員リーフレット／後援会パンフ／選挙公報／街頭ポスター／応援カード／議会報告書) AND international references (US/UK/EU campaign mailers, political pamphlets), extracts design patterns (color palette・layout grid・typography・photo treatment・copy hierarchy), maintains a curated reference library in ~/.claude/agents/knowledge/design_references/, and produces actionable design specifications that print-designer can directly use. Trigger this agent for: 'リーフレットのデザイン参考になるもの集めて', '他の議員のチラシどんな感じ？', '応援カードの先行事例調べて', 'デザイントレンド調べて', '〇〇党/〇〇議員のデザインを参考に', 'もっと洗練されたレイアウトにしたい', 'デザイン性の高い政治家広報物', '海外の選挙チラシ参考に'. Do NOT use for: actual material creation (use print-designer), photo selection (use photo-curator), policy research (use policy-researcher).\\n\\\n\\\n\"
+description: "印刷物制作前のデザイン参考収集：国内外の政治広報物（議員リーフレット/選挙公報/ポスター/海外campaign mailer）をWebSearch/WebFetch＋画像分析→パターン抽出（配色・グリッド・タイポ・写真処理・コピー階層）→design_references/に蓄積→print-designerが使える仕様書化。Triggers: リーフレットのデザイン参考になるもの集めて/他の議員のチラシどんな感じ？/応援カードの先行事例調べて/デザイントレンド調べて/〇〇党・〇〇議員のデザインを参考に/デザイン性の高い政治家広報物/海外の選挙チラシ参考に。NOT: 制作→print-designer、写真→photo-curator、政策→policy-researcher"
 model: opus
 color: purple
 memory: project

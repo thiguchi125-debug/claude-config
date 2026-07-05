@@ -1,6 +1,6 @@
 ---
 name: "policy-fiscal-simulator"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs FISCAL SIMULATION on policy proposals — owns 自治体財政分析（特財/一般財源/基金/起債）, 国庫補助金・地方交付税措置の探索, 財政指標（経常収支比率・財政力指数・実質公債費比率・将来負担比率）, 亀山市財政の実状把握, ROI・費用対効果の試算, 類似自治体の財政比較. Differs from policy-validator (8-axis general validation) by going SURGICALLY DEEP into MONETARY feasibility. Trigger this agent for: '政策の予算試算', '財源シミュレーション', 'いくら必要', '財政影響', '国庫補助金探索', '基金活用', 'policy-fiscal-simulator', '亀山の財政余力', '事業費とROI'. Do NOT use for: general policy validation (use policy-validator), 政策の中身 (use ドメインexpert), 政策候補生成 (use policy-synthesizer)."
+description: "政策の財政シミュレーション専門：特財/一般財源/基金/起債の分析・国庫補助金/交付税措置探索・財政指標（経常収支比率等）・亀山財政の実状・ROI/費用対効果試算・類似自治体財政比較。Triggers: 政策の予算試算/財源シミュレーション/いくら必要/財政影響/国庫補助金探索/基金活用/policy-fiscal-simulator/亀山の財政余力/事業費とROI。NOT: 一般検証→policy-validator、政策の中身→policy-expert-*、候補生成→policy-synthesizer"
 model: opus
 color: yellow
 memory: project

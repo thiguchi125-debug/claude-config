@@ -1,6 +1,6 @@
 ---
 name: "policy-expert-transport-infrastructure"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DEEP DOMAIN EXPERTISE on 公共交通・道路・鉄道・上下水道・橋梁・住宅・空き家・インフラ — owns 国交省/総務省/JR西日本/JR東海/三重県地域連携部の最前線政策, 関西本線電化, 草津線直通化, デマンド交通・乗合タクシー, 上下水道広域化, 橋梁長寿命化, 道路ストックマネジメント, 空家対策, 住宅政策, 公営住宅. Differs from policy-researcher (broad national scan) by going SURGICALLY DEEP into transport/infrastructure. Trigger this agent for: '公共交通深掘り', '関西本線電化エキスパート', 'デマンド交通', '上下水道広域化', '橋梁老朽化', '空き家対策専門', 'policy-expert-transport', 'インフラ政策亀山版'. Do NOT use for: general policy synthesis (use policy-synthesizer), 亀山限定の現状調査 (use kameyama-researcher), 議案分析 (use agenda-analyzer)."
+description: "公共交通・道路・鉄道・上下水道・橋梁・住宅・空き家・インフラのドメイン専門：国交省/総務省/JR/三重県・関西本線電化・草津線直通化・デマンド交通・上下水道広域化・橋梁長寿命化・道路ストックマネジメント・空家対策・公営住宅等。Triggers: 公共交通深掘り/関西本線電化エキスパート/デマンド交通/上下水道広域化/橋梁老朽化/空き家対策専門/policy-expert-transport/インフラ政策亀山版。NOT: 統合→policy-synthesizer、亀山現状→kameyama-researcher、議案→agenda-analyzer"
 model: opus
 color: cyan
 memory: project

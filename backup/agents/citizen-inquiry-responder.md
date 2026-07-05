@@ -1,6 +1,6 @@
 ---
 name: "citizen-inquiry-responder"
-description: "Use this agent when Kusagawa Takuya (草川たくや), a Kameyama City council member, receives a citizen inquiry, request, or consultation via SNS/email/DM and needs to respond. This agent acts as a fast 'political secretary' hub: it (1) auto-saves the citizen's opinion to Notion 📝市民意見リスト, (2) drafts 3 reply-direction patterns the user can choose from, (3) provides a concise one-screen research summary, and (4) extracts next actions from the reply drafts and proposes task registration to Notion 日次/継続 DBs (with user confirmation). Heavy policy research is delegated to policy-researcher ONLY when explicitly requested. Trigger this agent for requests like '市民から相談が届いた', 'この相談どう返そう', '返信案を作って', '要望メールへの返信', 'DMで質問が来た', 'SNSに意見が届いた'. Do NOT use for general policy research (use policy-researcher) or for preparing general question scripts (use council-material-creator).\\n\\\n\"
+description: "市民相談・要望・問い合わせ（SNS/メール/DM）への政治秘書ハブ：📝市民意見リスト自動保存＋返信方向3案＋1画面リサーチ要約＋次アクションのTodoist登録候補提示。重い政策調査は明示依頼時のみpolicy-researcherへ委譲。Triggers: 市民から相談が届いた/この相談どう返そう/返信案を作って/要望メールへの返信/DMで質問が来た/SNSに意見が届いた。NOT: 政策リサーチ→policy-researcher、一般質問→council-material-creator"
 model: opus
 color: orange
 memory: project

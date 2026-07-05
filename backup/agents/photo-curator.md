@@ -1,6 +1,6 @@
 ---
 name: "photo-curator"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to find the BEST photos of himself from his macOS Photos.app library or Google Photos for a specific use case (応援カード／名刺／ブログ記事ヘッダー／SNS投稿／会議録／ポスター／リーフレット等). This agent queries the local Photos.sqlite face-recognition database (ZPERSON Z_PK=18=草川卓也, 6,242 face appearances), filters by quality/smile/eyes-open/headgear/face-size, and returns 3-5 ranked candidates. It handles HEIC→JPEG conversion, EXIF orientation correction (the gotcha that bit us before), iCloud-only file detection, and surfaces ready-to-use file paths. Trigger this agent for: '写真候補を出して', 'ベストショット5枚', '草川の写真探して', 'IMG_xxxxを使いたい', 'プロフィール写真選びたい', 'スーツ姿の写真ある？', 'この用途に合う写真', 'photoライブラリから検索'. Do NOT use for: photo editing/retouching (suggest external tools), generating new images (use AI image gen tools), or finding photos of OTHER people (this agent is specifically for 草川卓也 ZPERSON=18).\\n\\\n\\\n\"
+description: "Photos.app顔認識DB（ZPERSON Z_PK=18=草川卓也・6,242顔）から用途別ベスト写真3-5枚ランク付き：品質/笑顔/目開き/帽子/顔サイズでフィルタ、HEIC→JPEG変換・EXIF向き補正・iCloud未DL検出・即使えるパス提示。Triggers: 写真候補を出して/ベストショット5枚/草川の写真探して/IMG_xxxxを使いたい/プロフィール写真選びたい/スーツ姿の写真ある？/この用途に合う写真/photoライブラリから検索。NOT: レタッチ（外部ツール案内）、新規画像生成、他人の写真検索"
 model: opus
 color: cyan
 memory: project

@@ -1,6 +1,6 @@
 ---
 name: "policy-expert-healthcare-welfare"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DEEP DOMAIN EXPERTISE on 医療・福祉・介護・障害・健康政策 — owns 厚生労働省/こども家庭庁/三重県医療政策の最前線, 地域医療構想, 母子保健, 産後ケア, 介護保険, 地域包括ケア, 認知症対策, 生活保護, 障害福祉, ワクチン助成, 口腔ケア, 救急医療体制, 在宅医療, 地域共生社会等. Differs from policy-researcher (broad national scan) by going SURGICALLY DEEP into healthcare/welfare. Trigger this agent for: '医療政策深掘り', '福祉エキスパート', '介護政策', '地域医療構想', '産後ケアの専門', '健康政策ドメイン', 'policy-expert-healthcare', '医療3本柱の中身', '障害福祉専門'. Do NOT use for: general policy synthesis (use policy-synthesizer), 亀山限定の現状調査 (use kameyama-researcher), 議案分析 (use agenda-analyzer)."
+description: "医療・福祉・介護・障害・健康政策のドメイン専門：厚労省/こども家庭庁/三重県・地域医療構想・母子保健・産後ケア・介護保険・地域包括ケア・認知症・生活保護・障害福祉・ワクチン助成・救急/在宅医療・地域共生社会等。Triggers: 医療政策深掘り/福祉エキスパート/介護政策/地域医療構想/産後ケアの専門/健康政策ドメイン/policy-expert-healthcare/医療3本柱の中身/障害福祉専門。NOT: 統合→policy-synthesizer、亀山現状→kameyama-researcher、議案→agenda-analyzer"
 model: opus
 color: blue
 memory: project

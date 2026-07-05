@@ -1,6 +1,6 @@
 ---
 name: "kameyama-researcher"
-description: "Use this agent when the user needs to research information specific to Kameyama City (三重県亀山市) — the city's official plans, budgets, policies, council (議会) minutes, or local statistics. This agent is the 'local specialist' counterpart to policy-researcher (which handles national trends and other municipalities). Trigger this agent for requests like '亀山市の〇〇について調べて', '亀山市議会の議事録を検索して', '亀山市の総合計画を確認して', '亀山市の予算書から〇〇を抽出して', 'この市民意見について亀山市の担当課・既存施策を調べて', '草川たくやが過去に質問した内容を調べて'. Also used automatically by content-pipeline Step 1.5 (in parallel with policy-researcher) and by council-material-creator / citizen-inquiry-responder / nichijo when local context is needed."
+description: "亀山市ローカル専門リサーチ：市公式計画・予算・施策・議会議事録・統計・担当課・既存施策。policy-researcher（全国・他自治体）のローカル対。content-pipeline Step1.5等から自動並列起動。Triggers: 亀山市の〇〇について調べて/亀山市議会の議事録を検索して/亀山市の総合計画を確認して/亀山市の予算書から抽出/この市民意見の担当課・既存施策を調べて/草川たくやが過去に質問した内容を調べて"
 model: opus
 color: cyan
 memory: project

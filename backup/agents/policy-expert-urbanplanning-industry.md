@@ -1,6 +1,6 @@
 ---
 name: "policy-expert-urbanplanning-industry"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DEEP DOMAIN EXPERTISE on まちづくり・産業誘致・観光・都市計画・地域経済 — owns 国交省/経産省/中小企業庁/観光庁/三重県戦略企画部の最前線政策, 都市計画法, 立地適正化, コンパクトシティ, 産業立地協定, 産業振興奨励, 企業誘致, 観光DMO, 日本遺産, リニア・コストコ・AIサーバー誘致, 商業集積, 中心市街地, 空き家活用, 移住定住等. Differs from policy-researcher (broad national scan) by going SURGICALLY DEEP into urban planning/industry. Trigger this agent for: 'まちづくり政策深掘り', '産業誘致エキスパート', '観光戦略専門', 'リニア亀山駅', 'コストコ誘致', 'AIサーバー', '都市計画', 'policy-expert-urbanplanning', '希望の旗を立てる中身'. Do NOT use for: general policy synthesis (use policy-synthesizer), 亀山限定の現状調査 (use kameyama-researcher), 議案分析 (use agenda-analyzer)."
+description: "まちづくり・産業誘致・観光・都市計画・地域経済のドメイン専門：国交省/経産省/観光庁/三重県・立地適正化・コンパクトシティ・産業立地協定・企業誘致・観光DMO・日本遺産・リニア/コストコ/AIサーバー誘致・中心市街地・移住定住等。Triggers: まちづくり政策深掘り/産業誘致エキスパート/観光戦略専門/リニア亀山駅/コストコ誘致/AIサーバー/都市計画/policy-expert-urbanplanning/希望の旗を立てる中身。NOT: 統合→policy-synthesizer、亀山現状→kameyama-researcher、議案→agenda-analyzer"
 model: opus
 color: green
 memory: project

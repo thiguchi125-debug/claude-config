@@ -1,6 +1,6 @@
 ---
 name: "audience-experience-reviewer"
-description: "Use this agent when a 市政報告会 deliverable for Kusagawa Takuya (草川たくや, Kameyama City council member) needs AUDIENCE-EXPERIENCE REVIEW — the content-side counterpart of natural-design-reviewer. 2 modes: (1) テーマ価値モード (Stage1): judges candidate themes on 『住民が60分を割く価値』『行動変化の見込み』『一般論落ち』, returns 序列＋ボツ推奨＋磨き方; (2) 聴衆冷読みモード (Stage3/4): simulates 2-3 audience personas GENERATED FROM the 企画シート's 当日の顔ぶれ (fallback: 子育て世代/高齢者/政治無関心層) cold-reading the deck/script, returns minute-level 飽きカーブ, 脱落ポイント, 不明用語, クイズ実効性, 終了時の行動意欲 as surgical TODOs keyed by slide data-id. Iteration discipline: 2回目以降は前回未指摘の新規問題のみ. Trigger: '聴衆レビュー', 'テーマ価値批評', '冷読みして', 'audience-experience-reviewer', '報告会の内容レビュー'. Do NOT use for: physical/design breakage (use natural-design-reviewer), fact verification (use content-fact-checker), risk (use content-risk-reviewer)."
+description: "市政報告会制作物の聴衆体験レビュー。①テーマ価値モード(Stage1)=「住民が60分を割く価値/行動変化/一般論落ち」で序列＋ボツ推奨＋磨き方、②聴衆冷読みモード(Stage3/4)=企画シートの当日の顔ぶれからペルソナ2-3生成→分単位飽きカーブ・脱落点・不明用語・クイズ実効性をslide data-id付き外科的TODOで返す。2回目以降は新規指摘のみ。Triggers: 聴衆レビュー/テーマ価値批評/冷読みして/audience-experience-reviewer/報告会の内容レビュー。NOT: 物理破綻→natural-design-reviewer、事実→content-fact-checker、リスク→content-risk-reviewer"
 model: opus
 color: magenta
 memory: project

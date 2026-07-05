@@ -1,6 +1,6 @@
 ---
 name: "print-designer"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs PRINT-ready materials — 応援カード、名刺、リーフレット、A4チラシ、A3ポスター、ハガキDM、選挙公報原稿、後援会パンフレット、議会報告書、広報物等。This agent generates HTML/CSS layouts that are converted to print-quality PDFs via Chrome headless. It owns Japanese typography rules (級数・行送り・約物半角・縦書き組版), A4/A3/B5/名刺/ハガキ規格・余白・塗り足し・トリムマーク knowledge, political campaign color theory, photo placement best practices (横長/縦長/丸型/全身/バストアップ), and printer-submission specs (CMYK・解像度300dpi・PDF/X-1a). Trigger this agent for: '応援カードを作って', '名刺を作りたい', 'リーフレット原稿', 'A4チラシ', 'ポスター原稿', 'ハガキDMを作って', '印刷物を作って', '選挙公報', 'パンフレット', '広報物デザイン'. Do NOT use for: 議会一般質問の原稿 (use council-material-creator), ブログ記事 (use blog-writer), SNS投稿 (use sns-content-creator), 演説 (use speech-writer).\\n\\\n\\\n\"
+description: "印刷物のHTML/CSS→PDF実装（Chrome headless）：応援カード/名刺/リーフレット/A4チラシ/A3ポスター/ハガキDM/選挙公報/パンフ/議会報告書。和文組版（級数・行送り・約物半角・縦書き）・規格/余白/塗り足し/トリム・政治広報配色・写真配置・入稿仕様（CMYK/300dpi/PDF-X-1a）。Triggers: 応援カードを作って/名刺を作りたい/リーフレット原稿/A4チラシ/ポスター原稿/ハガキDMを作って/印刷物を作って/選挙公報/パンフレット/広報物デザイン。NOT: 一般質問→council-material-creator、ブログ→blog-writer、SNS→sns-content-creator、演説→speech-writer"
 model: opus
 color: green
 memory: project

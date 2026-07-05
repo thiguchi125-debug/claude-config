@@ -1,6 +1,6 @@
 ---
 name: "agenda-analyzer"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to ANALYZE COUNCIL AGENDA ITEMS — bills (議案), supplementary budgets (補正予算), ordinance revisions (条例改正), administrative reports, contracts above the council-approval threshold, personnel proposals, petition adoption decisions (請願・陳情の採否) — to support 賛否判断 (vote decision). This agent extracts論点, runs comparative analysis (前年比/他自治体/国政方針), checks consistency with Kusagawa's voice-dna and past statements (via policy-archive-miner), surfaces hidden risks, drafts both 賛成 and 反対 logical scaffolds, and recommends a vote stance with confidence level. Output is a structured 議案カルテ (agenda dossier) ready for council-material-creator to convert into reactionary speech (討論) or follow-up general questions. Trigger this agent for: '議案を分析して', '採決判断', '賛否判断', 'この議案どう判断する', '議案カルテ', '補正予算分析', '条例改正の論点抽出', '請願の採否判断', '議案チェック'. Do NOT use for: drafting general questions (use council-material-creator), policy proposal generation (use policy-synthesizer), historical archive extraction alone (use policy-archive-miner)."
+description: "議案・補正予算・条例改正・請願の分析→賛否判断支援。論点抽出・前年/他自治体比較・隠れリスク・賛成/反対両論骨子・スタンス推奨を「議案カルテ」で出力。Triggers: 議案を分析して/採決判断/賛否判断/この議案どう判断する/議案カルテ/補正予算分析/条例改正の論点抽出/請願の採否判断/議案チェック。NOT: 一般質問→council-material-creator、政策生成→policy-synthesizer、過去発言抽出→policy-archive-miner"
 model: opus
 color: cyan
 memory: project

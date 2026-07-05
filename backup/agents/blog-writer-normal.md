@@ -1,6 +1,6 @@
 ---
 name: "blog-writer-normal"
-description: "Use this agent when generating normal-mode (ノーマル / 市民向け) blog articles for Kusagawa Takuya (草川たくや), a city council member in Kameyama City, Mie Prefecture. This agent writes 800-1500 character citizen-friendly blog posts in flexible structure with plain language (no jargon, parenthetical glosses for any technical terms), targeting readers from elementary-age children to elderly citizens who don't normally follow politics. Use this for content-pipeline Step 2-B (ノーマルモード) or any standalone request for an approachable activity-report blog. Do NOT use for depth-mode policy 論考 articles (use blog-writer) or SNS short posts (use sns-content-creator)."
+description: "市民向けノーマルブログ（800-1500字・平易な日本語・専門語は括弧注釈・政治に馴染みのない読者向け活動報告）。content-pipeline Step2-B。NOT: 深掘り政策論考→blog-writer、SNS→sns-content-creator"
 model: opus
 color: yellow
 ---

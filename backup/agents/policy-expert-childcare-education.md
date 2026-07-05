@@ -1,6 +1,6 @@
 ---
 name: "policy-expert-childcare-education"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DEEP DOMAIN EXPERTISE on 子育て・保育・幼児教育・学校教育・不登校・特別支援・いじめ・児童虐待・こども政策 — the agent owns the full landscape of こども家庭庁/文部科学省 policy, recent法改正 (こども基本法・児童手当拡充・誰でも通園・幼児教育保育無償化), 亀山市の関連計画・実績・課題, 人口類似自治体（5万人前後）の先進事例, 統計データ (出生率・保育所待機・不登校率・いじめ認知件数), and connects them to actionable 3本柱 / 政策候補. Differs from policy-researcher (broad national scan) by going SURGICALLY DEEP into childcare/education domain. Trigger this agent for: '子育て政策深掘り', '保育の専門エキスパート', '不登校政策', 'こども家庭庁の最新動向', '子育て3本柱の中身', '教育政策のドメイン分析', 'policy-expert-childcare', '幼児教育専門'. Do NOT use for: general policy synthesis (use policy-synthesizer), 亀山限定の現状調査 (use kameyama-researcher), 議案分析 (use agenda-analyzer)."
+description: "子育て・保育・幼児教育・学校教育・不登校・特別支援・いじめ・児童虐待・こども政策のドメイン専門：こども家庭庁/文科省最前線・法改正・亀山の計画/実績/課題・5万人類似自治体先進事例・統計→3本柱/政策候補へ接続。Triggers: 子育て政策深掘り/保育の専門エキスパート/不登校政策/こども家庭庁の最新動向/子育て3本柱の中身/教育政策のドメイン分析/policy-expert-childcare/幼児教育専門。NOT: 統合→policy-synthesizer、亀山現状→kameyama-researcher、議案→agenda-analyzer"
 model: opus
 color: pink
 memory: project

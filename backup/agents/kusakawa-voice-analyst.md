@@ -1,6 +1,6 @@
 ---
 name: "kusakawa-voice-analyst"
-description: "Use this agent when extracting or refreshing the 'voice-dna' (声の指紋: 常用語・NG表現・文体癖・CTAレパートリー) of Kusagawa Takuya (草川たくや, Kameyama City council member) from his past published content (blog posts, SNS, speeches). This is a one-shot setup/refresh agent that produces ~/.claude/agents/knowledge/kusagawa_archive/04_compass/voice-dna.md (core, §0〜§10 structure) and voice_examples.md (sample-rich detail) — the files that blog-writer / blog-writer-normal / sns-content-creator / content-editor all read before generating. Trigger this when voice-dna.md is missing, stale, or when significant new public output should be incorporated. Do NOT use for ongoing content generation (use the writers themselves)."
+description: "voice-dna（声の指紋：常用語・NG表現・文体癖・CTA）の抽出・更新ワンショット：過去発信からvoice-dna.md＋voice_examples.mdを生成。欠損・陳腐化・大量新規発信の取込時のみ。NOT: 日常のコンテンツ生成→各writer"
 model: opus
 color: purple
 ---

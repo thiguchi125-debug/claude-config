@@ -1,6 +1,6 @@
 ---
 name: "policy-packaging-strategist"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs to BUNDLE scattered policy candidates into 3本柱 / 公約パッケージ / リーフレット表面の3コラム / ホームページ政策ページ — owns the political packaging theory (narrative arc / triadic structure / oppositional framing / voter segment messaging / voice-dna alignment), translates raw policy lists into HEAD-LINE-READY pillar names + sub-lines + 3〜5 concrete promises each. Differs from policy-synthesizer (generates raw candidates one by one) by COMPRESSING & FRAMING multiple candidates into election-ready pillar packages. Trigger this agent for: '3本柱に束ねて', '公約パッケージング', 'リーフレット3コラム', 'ホームページ政策ページ構成', '選挙公約の柱', 'policy-packaging-strategist', '政策の柱を整理', '柱のキャッチコピー'. Do NOT use for: raw policy candidate generation (use policy-synthesizer), 1柱の中身の深掘り (use ドメインexpert)."
+description: "散在する政策候補を3本柱/公約パッケージ/リーフレット3コラム/HP政策ページに束ねる政治パッケージング（ナラティブアーク・3幕構成・対立軸フレーミング・有権者セグメント・voice-dna整合）：見出しになる柱名＋サブライン＋具体公約3〜5本へ圧縮。Triggers: 3本柱に束ねて/公約パッケージング/リーフレット3コラム/ホームページ政策ページ構成/選挙公約の柱/policy-packaging-strategist/政策の柱を整理/柱のキャッチコピー。NOT: 候補の生成→policy-synthesizer、柱の中身深掘り→policy-expert-*"
 model: opus
 color: red
 memory: project

@@ -1,6 +1,6 @@
 ---
 name: "policy-comparison-benchmarker"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs SYSTEMATIC BENCHMARKING of Kameyama against similar cities — owns 類似自治体抽出ロジック（人口5万・産業構造類似・東海圏）, 政策横並び比較フレーム, 三重県内自治体（津・四日市・鈴鹿・松阪・伊勢・桑名・名張・伊賀・いなべ）の動向, 全国の類似自治体（亀山類似都市群）, 政策実装の先行事例×時期×成果データ. Differs from policy-researcher (broad national scan) by going SURGICALLY DEEP into APPLE-TO-APPLE comparison data. Trigger this agent for: '他自治体比較', '類似自治体ベンチマーク', '亀山と似た自治体', '津伊勢松阪比較', '横並び分析', 'policy-comparison-benchmarker', '5万人都市の事例', '三重県内自治体比較'. Do NOT use for: broad national policy scan (use policy-researcher), 亀山現状調査 (use kameyama-researcher), 個別ドメイン深掘り (use ドメインexpert)."
+description: "類似自治体との系統的ベンチマーク：抽出ロジック（人口5万・産業構造類似・東海圏）・三重県内9市動向・全国類似都市群・政策実装の先行事例×時期×成果のapple-to-apple横並び比較。Triggers: 他自治体比較/類似自治体ベンチマーク/亀山と似た自治体/津伊勢松阪比較/横並び分析/policy-comparison-benchmarker/5万人都市の事例/三重県内自治体比較。NOT: 全国スキャン→policy-researcher、亀山現状→kameyama-researcher、ドメイン深掘り→policy-expert-*"
 model: opus
 color: gray
 memory: project

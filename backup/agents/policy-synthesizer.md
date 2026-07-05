@@ -1,6 +1,6 @@
 ---
 name: "policy-synthesizer"
-description: "Use this agent when multiple research outputs (Kameyama city context, national/prefectural policy trends, citizen voices, social trends, NotebookLM exports, past conversation/blog/SNS) need to be synthesized into concrete policy candidates for Kusagawa Takuya (草川たくや, Kameyama City council member). This agent is the integration hub: it receives parallel outputs from kameyama-researcher, policy-researcher, WebSearch, Notion (市民意見リスト・一般質問ネタ・過去タスク), conversation history, and NotebookLM knowledge files, then produces structured policy drafts (Why/What/How/優先度/次アクション) ready for Notion 🎯政策候補DB. Called primarily from the /policy-update skill (weekly/monthly/on-demand). Do NOT use for raw research (use researchers) or for general question scripts (use council-material-creator). This agent does NOT write to Notion directly — it outputs drafts for human approval.\\n\\\n\"
+description: "並列リサーチ出力（kameyama-researcher/policy-researcher/WebSearch/Notion市民意見・ネタDB/会話履歴/NotebookLM）を統合し、政策候補ドラフト（Why/What/How/優先度/次アクション）を生成する統合ハブ。主に/policy-radarから起動。Notionへ直接書かない（承認用ドラフトのみ出力）。NOT: 生リサーチ→各researcher、一般質問原稿→council-material-creator"
 model: opus
 color: red
 memory: project

@@ -1,6 +1,6 @@
 ---
 name: "district-issue-scout"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DISTRICT-LENS DISCOVERY of important 市政テーマ for a specified 地区/自治会 from past 議事録・市資料 — the supply-side counterpart to citizen-voice-analyst (demand side) sitting between kameyama-researcher (city-wide facts) and the 報告会 pipeline. Scans _index/ txt cache → kusagawa_archive (01_council/05_resources/02_publications) → Drive primary sources only when insufficient, crossing 地区名＋道路名・学校名・施設名・自治会名 AND 草川語彙並列grep. Returns 地区×市政テーママップ: per theme {時系列経緯/現在ステータス(計画中・予算化済・工事中・完了・停滞)/地区への影響/出典/草川の関与有無} plus 簡易ハザードフラグ (recommends district-hazard-analyst full run if flagged). Guard: 議事録引用は草川発言＋市答弁ペア原則, other members' facts marked 『他議員が引き出した数字』 internally and genericized before any slide use. Trigger: '地区の市政テーマ', '〇〇地区の論点発掘', 'district-issue-scout', '地区テーマスカウト'. Do NOT use for: citizen voices (citizen-voice-analyst), 草川自身の発言 (policy-archive-miner), city-wide research (kameyama-researcher), hazard deep-dive (district-hazard-analyst)."
+description: "指定地区レンズで議事録・市資料から重要市政テーマを発掘（供給側・citizen-voice-analystの対）：_index/txtキャッシュ→kusagawa_archive→不足時のみDrive。地区名＋道路・学校・施設・自治会名＋草川語彙並列grep。テーマ別{時系列経緯/ステータス（計画中〜完了・停滞）/地区影響/出典/草川関与}マップ＋簡易ハザードフラグ。議事録は草川＋市答弁ペア原則、他議員数字は汎用化。Triggers: 地区の市政テーマ/〇〇地区の論点発掘/district-issue-scout/地区テーマスカウト。NOT: 市民の声→citizen-voice-analyst、草川発言→policy-archive-miner、市全域→kameyama-researcher、ハザード深掘り→district-hazard-analyst"
 model: sonnet
 color: green
 memory: project

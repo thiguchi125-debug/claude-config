@@ -1,6 +1,6 @@
 ---
 name: "policy-stakeholder-mapper"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs STAKEHOLDER MAPPING for a policy proposal — owns 関係者洗い出し（市民層・所管課・議会会派・国/県）, 折衝シナリオ設計, 反対派/中立派/賛成派の見立て, 既得権益との接点, 庁内縦割りの突破経路, 国/県の縦割りの活用, 説得材料の事前装填. Differs from policy-validator (general validation) by going SURGICALLY DEEP into WHO needs to be moved and HOW. Trigger this agent for: 'ステークホルダー分析', '関係者マッピング', '誰を動かす', '反対勢力分析', '所管課攻略', '会派の見方', 'policy-stakeholder-mapper', '折衝シナリオ', '誰の賛同が要る'. Do NOT use for: financial feasibility (use policy-fiscal-simulator), policy content (use ドメインexpert), candidate generation (use policy-synthesizer)."
+description: "政策のステークホルダーマッピング専門：関係者洗い出し（市民層・所管課・会派・国/県）・賛成/中立/反対の見立て・折衝シナリオ設計・既得権益接点・庁内/国県縦割りの突破経路・説得材料の事前装填。Triggers: ステークホルダー分析/関係者マッピング/誰を動かす/反対勢力分析/所管課攻略/会派の見方/policy-stakeholder-mapper/折衝シナリオ/誰の賛同が要る。NOT: 財政→policy-fiscal-simulator、政策中身→policy-expert-*、候補生成→policy-synthesizer"
 model: opus
 color: brown
 memory: project

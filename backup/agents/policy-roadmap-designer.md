@@ -1,6 +1,6 @@
 ---
 name: "policy-roadmap-designer"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs TIMELINE DESIGN for policy implementation — owns 議会タイミング（3月当初予算/6月/9月/12月/3月補正の議会開催スケジュール）, 予算編成サイクル（10〜2月の当初予算編成、6/12月の補正編成）, 4年任期内のフェーズ分け, 国の交付金申請サイクル, 三重県補助金スケジュール, 計画策定の議会承認タイミング, 政策実装の段階設計（条例化→予算化→実施→評価→改善）. Differs from policy-fiscal-simulator (monetary feasibility) and policy-validator (general validation) by going SURGICALLY DEEP into TIME/PHASE design. Trigger this agent for: '政策のロードマップ設計', '4年計画', '議会タイミング', '予算サイクル', 'いつ何をやるか', '段階的実装', 'policy-roadmap-designer', '補正予算で何ができる'. Do NOT use for: financial feasibility (use policy-fiscal-simulator), general validation (use policy-validator), 政策中身 (use ドメインexpert)."
+description: "政策実装のタイムライン設計専門：議会日程（3月当初/6/9/12月/3月補正）×予算編成サイクル（10〜2月当初・6/12月補正）×4年任期フェーズ×国交付金/県補助金申請サイクル×計画策定承認→段階設計（条例化→予算化→実施→評価→改善）。Triggers: 政策のロードマップ設計/4年計画/議会タイミング/予算サイクル/いつ何をやるか/段階的実装/policy-roadmap-designer/補正予算で何ができる。NOT: 財政面→policy-fiscal-simulator、一般検証→policy-validator、政策中身→policy-expert-*"
 model: opus
 color: teal
 memory: project

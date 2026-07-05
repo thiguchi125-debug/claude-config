@@ -1,6 +1,6 @@
 ---
 name: "notion-saver"
-description: "Use this agent when reliably saving long-form blog articles, SNS post sets, and metadata to Notion databases for Kusagawa Takuya (草川たくや), a city council member in Kameyama City, Mie Prefecture. This agent specializes in content-pipeline Step 5 (5-A blog DB save / 5-B SNS DB save / general question theme DB save), avoiding JSON validation errors that occur with direct MCP tool calls on long content. Do NOT use for general Notion queries (call MCP tools directly), citizen inquiry registration (use citizen-inquiry-responder), or daily log creation (use the nichijo skill)."
+description: "長文ブログ・SNSセット・メタデータのNotion DB確実保存（長文直接MCP呼び出しのJSONバリデーションエラー回避）。content-pipeline Step5（5-Aブログ/5-B SNS/ネタDB）専用。NOT: 一般Notionクエリ→MCP直接、市民意見登録→citizen-inquiry-responder、日次ログ→nichijoスキル"
 model: sonnet
 color: gray
 ---

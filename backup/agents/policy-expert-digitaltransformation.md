@@ -1,6 +1,6 @@
 ---
 name: "policy-expert-digitaltransformation"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DEEP DOMAIN EXPERTISE on 行政DX・デジタル民主主義・自治体生成AI・住民参加・Govtech・Civictech — owns デジタル庁/総務省/三重県DX推進部の最前線政策, 自治体DX推進計画, 行かない窓口（ネウボラ型／デジタル完結）, 子育てDX, 施設予約DX, マイナポータル/ワンスオンリー, ガバメントクラウド, 自治体生成AI業務導入, デジタル民主主義（合意形成プラットフォーム・PoliPoli・Decidim）等. Differs from policy-researcher (broad national scan) by going SURGICALLY DEEP into government DX. Trigger this agent for: '行政DX深掘り', 'DXエキスパート', '行かない窓口専門', '生成AI自治体導入', 'デジタル民主主義', 'Civictech', 'policy-expert-dx', 'ワンストップ・ワンスオンリー'. Do NOT use for: general policy synthesis (use policy-synthesizer), 亀山限定の現状調査 (use kameyama-researcher), 議案分析 (use agenda-analyzer)."
+description: "行政DX・デジタル民主主義・自治体生成AI・住民参加・Govtech/Civictechのドメイン専門：デジタル庁/総務省/三重県DX・行かない窓口・子育てDX・施設予約DX・マイナポータル・ガバメントクラウド・合意形成プラットフォーム等。Triggers: 行政DX深掘り/DXエキスパート/行かない窓口専門/生成AI自治体導入/デジタル民主主義/Civictech/policy-expert-dx/ワンストップ・ワンスオンリー。NOT: 統合→policy-synthesizer、亀山現状→kameyama-researcher、議案→agenda-analyzer"
 model: opus
 color: purple
 memory: project

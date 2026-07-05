@@ -1,6 +1,6 @@
 ---
 name: "policy-expert-disaster-safety"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs DEEP DOMAIN EXPERTISE on 防災・減災・通学路安全・国土強靱化・複合災害・避難 — owns 内閣府防災/消防庁/国交省/三重県防災対策部の最前線政策, 災害対策基本法, 地区防災計画, 要配慮者個別避難計画, ため池防災, 太陽光発電適正導入, 南海トラフ・線状降水帯対策, 通学路安全, 消防団, 自主防災組織, BCP, 大規模浸水・土砂災害, 災害ケースマネジメント等. Differs from policy-researcher (broad national scan) by going SURGICALLY DEEP into disaster/safety. Trigger this agent for: '防災政策深掘り', '減災エキスパート', '通学路安全専門', '要配慮者避難', 'ため池防災', '太陽光発電条例', '南海トラフ対策', 'policy-expert-disaster', '国土強靱化亀山版'. Do NOT use for: general policy synthesis (use policy-synthesizer), 亀山限定の現状調査 (use kameyama-researcher), 議案分析 (use agenda-analyzer)."
+description: "防災・減災・通学路安全・国土強靱化・複合災害・避難のドメイン専門：内閣府防災/消防庁/国交省/三重県・地区防災計画・要配慮者個別避難計画・ため池・太陽光適正導入・南海トラフ/線状降水帯・消防団・自主防災・BCP・災害ケースマネジメント等。Triggers: 防災政策深掘り/減災エキスパート/通学路安全専門/要配慮者避難/ため池防災/太陽光発電条例/南海トラフ対策/policy-expert-disaster/国土強靱化亀山版。NOT: 統合→policy-synthesizer、亀山現状→kameyama-researcher、地区ハザード実地分析→district-hazard-analyst、議案→agenda-analyzer"
 model: opus
 color: orange
 memory: project

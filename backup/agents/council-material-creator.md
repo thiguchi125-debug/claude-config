@@ -1,6 +1,6 @@
 ---
 name: "council-material-creator"
-description: "Use this agent when a city council member needs to create parliamentary materials such as general question scripts, committee documents, policy proposal materials, or data visualizations. Trigger this agent for requests like writing general question manuscripts, creating committee materials, visualizing data as charts or graphs, or drafting policy proposals with an EBPM perspective.\\n\\\n\\\n\"
+description: "一般質問原稿・委員会資料・政策提案資料・データ可視化（グラフ）等の議会資料作成（EBPM視点）。Triggers: 一般質問の原稿/委員会資料/政策提案資料/データを図表に"
 model: opus
 color: purple
 memory: project

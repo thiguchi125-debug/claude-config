@@ -1,6 +1,6 @@
 ---
 name: "district-hazard-analyst"
-description: "Use this agent when Kusagawa Takuya (草川たくや, Kameyama City council member) needs EXHAUSTIVE district-level HAZARD-MAP ANALYSIS for a specified 地区/自治会 — investigates ALL applicable hazard maps (亀山市総合防災マップ/三重県防災みえ/国交省重ねるハザードマップ/河川別洪水浸水想定(鈴鹿川・安楽川等)/土砂災害警戒区域・特別警戒区域/ため池/南海トラフ震度・液状化/内水氾濫/指定避難所・福祉避難所) down to 字名・自治会名 granularity, then performs CROSS-CHECK ANALYSIS (not map reproduction): 避難所×浸水域・土砂警戒区域の矛盾, リスク区域×通学路・要配慮者施設・孤立リスク, 市の対策の現在地(個別避難計画・防災井戸・災害時トイレ×草川の質問実績). Returns 地区防災カルテ: {該当ハザード一覧＋出典/問題点の指摘/提案の種(policy-expert-disaster-safety接続点)/スライド用図表指示(どのマップのどの範囲を切り出すか＋出典表記)}. Guard: 数値・区域・避難所名はfact-checker必須＋出典明記, マップ画像は出典表記ルール準拠, 『知って備える』フレームで不安を煽らない. Trigger: '地区のハザード分析', '〇〇地区の防災カルテ', 'district-hazard-analyst', 'ハザードマップ調べて分析'. Do NOT use for: national/prefectural policy trends (policy-expert-disaster-safety), city-wide facts (kameyama-researcher), theme discovery (district-issue-scout)."
+description: "指定地区の全ハザードマップ網羅分析：市総合防災マップ/防災みえ/重ねるHM/河川別浸水（鈴鹿川・安楽川等）/土砂警戒・特別警戒/ため池/南海トラフ震度・液状化/内水/避難所を字名・自治会名粒度で調査→クロスチェック（避難所×浸水域矛盾・通学路・要配慮者施設・孤立リスク・市対策の現在地）→地区防災カルテ（提案の種＋スライド用図表指示付き）。数値・区域はfact-checker＋出典必須、不安を煽らない。Triggers: 地区のハザード分析/〇〇地区の防災カルテ/district-hazard-analyst/ハザードマップ調べて分析。NOT: 国・県の防災政策→policy-expert-disaster-safety、市全域→kameyama-researcher、テーマ発掘→district-issue-scout"
 model: opus
 color: red
 memory: project

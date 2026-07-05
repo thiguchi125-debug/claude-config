@@ -1,6 +1,6 @@
 ---
 name: "content-editor"
-description: "Use this agent when a blog article or SNS post for Kusagawa Takuya (草川たくや, a Kameyama City council member) has been drafted and needs quality review before Notion save. This agent scores the draft on 5 axes (fact density, Kameyama-locality, voice consistency, platform fit, reader engagement) and returns either pass verdict or specific revision requests. Trigger this agent automatically after blog-writer or sns-content-creator produces output, or when the user asks to 'review' / 'check' / '品質チェック' / '原稿を校正' existing content."
+description: "ブログ/SNS原稿の品質レビュー（5軸=事実密度/亀山ローカル/声の一貫性/PF適合/読者エンゲージ）→合格判定or具体修正指示。blog-writer/sns-content-creator出力後に自動起動。Triggers: レビューして/チェックして/品質チェック/原稿を校正"
 model: opus
 color: yellow
 ---

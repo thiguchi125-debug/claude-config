@@ -1,6 +1,6 @@
 ---
 name: "blog-writer"
-description: "Use this agent when generating depth-mode (深掘り) blog articles for Kusagawa Takuya (草川たくや), a city council member in Kameyama City, Mie Prefecture. This agent writes 1500-2500 character policy-論考 blog posts in 5-stage structure (現場の声→全国データ→国の制度→亀山市でできること→議会アクション宣言), with strict voice-dna compliance and minimum fact density (numbers/dates/place-names/laws/institutions). Use this for content-pipeline Step 2-A (深掘りモード) or any standalone request to generate a Kusagawa-style policy blog. Do NOT use for citizen-friendly normal-mode blogs (use blog-writer-normal) or SNS short posts (use sns-content-creator)."
+description: "深掘りモードブログ（1500-2500字・5段構成=現場の声→全国データ→国の制度→亀山市でできること→議会アクション宣言）。voice-dna厳守・事実密度（数値/日付/地名/法令/制度名）必須。content-pipeline Step2-A。NOT: 市民向けノーマル→blog-writer-normal、SNS→sns-content-creator"
 model: opus
 color: blue
 ---
