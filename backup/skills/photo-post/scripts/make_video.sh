@@ -20,11 +20,14 @@ if [[ -z $OUT || -z $ENDCARD || ${#PHOTOS[@]} -lt 1 || ${#PHOTOS[@]} -gt 3 ]]; t
   exit 1
 fi
 
+# 合計10秒以内に収める（エンドカード2.5秒＋写真尺）。よほどの品質でなければ
+# ショート動画は10秒以内が完視聴の限界（2026-07-05草川フィードバック）。
 N=${#PHOTOS[@]}
-case $N in 1) DUR=9 ;; 2) DUR=7 ;; *) DUR=5 ;; esac
+case $N in 1) DUR=6.5 ;; 2) DUR=3.4 ;; *) DUR=2.4 ;; esac
 FPS=30
-FRAMES=$((DUR * FPS))
+FRAMES=$(echo "$DUR * $FPS / 1" | bc)
 FADE_OUT_ST=$(echo "$DUR - 0.5" | bc)
+ENDDUR=2.5
 TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 
@@ -45,9 +48,9 @@ for P in "${PHOTOS[@]}"; do
   i=$((i + 1))
 done
 
-# エンドカード 3.5秒
-"$FFMPEG" -y -loglevel error -loop 1 -t 3.5 -i "$ENDCARD" \
-  -filter_complex "[0:v]scale=1080:1920,fade=t=in:st=0:d=0.5,format=yuv420p" \
+# エンドカード（既定2.5秒）
+"$FFMPEG" -y -loglevel error -loop 1 -t "$ENDDUR" -i "$ENDCARD" \
+  -filter_complex "[0:v]scale=1080:1920,fade=t=in:st=0:d=0.4,format=yuv420p" \
   -c:v libx264 -preset medium -crf 20 -r "$FPS" "$TMP/zzz_end.mp4"
 
 # 連結（同一エンコードなので -c copy）

@@ -3,30 +3,35 @@
 :root{--lime:#c7ff4a;--green:#1f5a3a;--deep:#0f3d27;--kinari:#f3efe4;}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 body{width:100vw;height:100vh;overflow:hidden;position:relative;
- background:radial-gradient(120% 90% at 78% 88%, #1f5a3a 0%, #0f3d27 58%, #0a2d1c 100%);
+ background:radial-gradient(130% 100% at 50% 12%, #24694a 0%, #0f3d27 55%, #08281a 100%);
  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",sans-serif;}
-/* 人物ポートレート（透過PNG）: 右下にアンカーして裾を画面外へ */
-.portrait{position:absolute;right:-40px;bottom:0;height:64%;width:auto;
- filter:drop-shadow(0 12px 40px rgba(0,0,0,.45));}
-/* コピー: 左上ブロック */
-.copy{position:absolute;left:72px;top:210px;right:72px;}
-.bar{width:132px;height:14px;background:var(--lime);margin-bottom:40px;}
-.slogan{color:#fff;font-size:112px;font-weight:800;letter-spacing:.02em;line-height:1.1;}
-.slogan .accent{color:var(--lime);}
-/* 名前ブロック: スローガン直下のクリアな緑地帯（人物と重ねない） */
-.who{position:absolute;left:72px;top:470px;}
-.name{color:#fff;font-size:56px;font-weight:800;letter-spacing:.02em;}
-.role{color:var(--kinari);font-size:32px;font-weight:500;margin-top:14px;}
-.tag{color:var(--lime);font-size:32px;font-weight:700;margin-top:30px;letter-spacing:.04em;}
+/* 幾何アクセント: 右上のライム斜線 */
+.accent{position:absolute;top:0;right:0;width:340px;height:340px;overflow:hidden;}
+.accent::before{content:"";position:absolute;top:-190px;right:-190px;width:380px;height:380px;
+ background:var(--lime);transform:rotate(45deg);opacity:.9;}
+/* ヘッダー */
+.head{position:absolute;top:132px;left:80px;right:80px;}
+.kicker{color:var(--lime);font-size:30px;font-weight:700;letter-spacing:.22em;margin-bottom:22px;}
+.slogan{color:#fff;font-size:104px;font-weight:800;letter-spacing:.02em;line-height:1.08;}
+/* フォトカード */
+.card{position:absolute;top:452px;left:50%;transform:translateX(-50%);
+ width:760px;height:1000px;border-radius:30px;overflow:hidden;
+ border:7px solid rgba(199,255,74,.95);
+ box-shadow:0 34px 80px rgba(0,0,0,.55);background:#fff;}
+.card img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
+/* 下部の名前（カード直下） */
+.who{position:absolute;left:0;right:0;top:1512px;text-align:center;}
+.name{color:#fff;font-size:64px;font-weight:800;letter-spacing:.06em;}
+.tag{color:var(--lime);font-size:36px;font-weight:700;margin-top:22px;letter-spacing:.05em;}
 </style></head><body>
-<img class="portrait" src="{{PORTRAIT}}">
-<div class="copy">
- <div class="bar"></div>
+<div class="accent"></div>
+<div class="head">
+ <div class="kicker">亀山市議会議員</div>
  <div class="slogan">{{SLOGAN}}</div>
 </div>
+<div class="card"><img src="{{PORTRAIT}}"></div>
 <div class="who">
  <div class="name">草川たくや</div>
- <div class="role">亀山市議会議員</div>
  <div class="tag">{{TAG}}</div>
 </div>
 </body></html>

@@ -11,7 +11,7 @@ description: 草川たくや（亀山市議会議員）の写真1〜3枚＋ひ�
 
 - CHROME: `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`
 - テンプレ: `~/.claude/skills/photo-post/templates/`（card_band=下帯型/card_side=サイドバー型/card_full=座布団型/video_overlay/video_endcard）
-- 動画: `~/.claude/skills/photo-post/scripts/make_video.sh -o OUT.mp4 -e ENDCARD.png [-t OVERLAY.png] PHOTO...`（写真1枚9秒/2枚各7秒/3枚各5秒＋エンドカード3.5秒・無音・9:16 1080×1920 30fps）
+- 動画: `~/.claude/skills/photo-post/scripts/make_video.sh -o OUT.mp4 -e ENDCARD.png [-t OVERLAY.png] PHOTO...`（**合計10秒以内**＝写真1枚6.5秒/2枚各3.4秒/3枚各2.4秒＋エンドカード2.5秒・無音・9:16 1080×1920 30fps。よほどの品質でなければ10秒超は完視聴が落ちる＝2026-07-05草川指示）
 - 出力: `~/outputs/photo-post/<YYYY-MM-DD>_<テーマ>/`（絶対パス・cwd依存禁止）
 - ブランド: ライム#c7ff4a／濃緑#1f5a3a／最濃緑#0f3d27／生成り#f3efe4・絵文字禁止・他議員氏名禁止
 

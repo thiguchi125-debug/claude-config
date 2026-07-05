@@ -48,12 +48,9 @@ def main():
 
     fg = np.where((mask == cv2.GC_FGD) | (mask == cv2.GC_PR_FGD), 255, 0).astype(np.uint8)
 
-    # 端に残った白背景ブロックを除去: 中央帯(シャツ・襟)以外で純白に近い画素は背景へ。
-    # 残す白は中央のシャツ・襟のみ。両脇の白は取りこぼした背景なので落とす。
-    white = bgr.min(axis=2) > 205
-    side = np.ones((h, w), bool)
-    side[:, int(0.28 * w):int(0.68 * w)] = False
-    fg[white & side] = 0
+    # 穴埋め（シャツ内側の取りこぼしを塞ぐ）
+    fg = cv2.morphologyEx(fg, cv2.MORPH_CLOSE,
+                          cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9, 9)))
 
     # 最大連結成分だけ残す（孤立ノイズ除去）
     n, labels, stats, _ = cv2.connectedComponentsWithStats(fg, 8)
@@ -61,9 +58,13 @@ def main():
         biggest = 1 + np.argmax(stats[1:, cv2.CC_STAT_AREA])
         fg = np.where(labels == biggest, 255, 0).astype(np.uint8)
 
-    # 穴埋め（シャツ内側の取りこぼしを塞ぐ）
-    fg = cv2.morphologyEx(fg, cv2.MORPH_CLOSE,
-                          cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9, 9)))
+    # 最終工程: 残った白背景を除去（穴埋め後に実施して再付着を防ぐ）。
+    # 残す白は「シャツV＝下部中央」の keep ゾーンだけ。襟の開きの奥に覗く背景
+    # （首横・肩口の白）は中央にあってもここで落ちる。
+    white = bgr.min(axis=2) > 200
+    keep = np.zeros((h, w), bool)
+    keep[int(0.71 * h):h, int(0.30 * w):int(0.66 * w)] = True
+    fg[white & ~keep] = 0
 
     alpha = Image.fromarray(fg, "L").filter(ImageFilter.GaussianBlur(1.2))
 
