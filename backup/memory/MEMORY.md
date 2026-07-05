@@ -32,6 +32,7 @@
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
+- [agent大掃除2026-07-05＋description 400字ルール](feedback_agent_description_diet_2026-07-05.md) — 54→44本・description▲73%。旧policy-expert 6本→policy-domain-expert／旧実装系4本→policy-strategy-suiteに読み替え。新規agent/skillのdescriptionは400字以内厳守・復元は_retired_agents/とgit
 - [自作スキルは ~/.claude/skills/ のみ（plugins cache禁止）](feedback_skills_home_not_plugin_cache.md) — 2026-07-03プラグイン自動更新でcache同居の8スキル消失→git 41ab43bから復旧。sync-to-git.shにガット検知ガード実装済
 - [Notion SQLクエリはプラン限定ブロック](feedback_notion_sql_plan_gate.md) — query-data-sources(SQL)使用禁止・viewはフィルタ欠落の罠。定常一覧は自己管理固定ページ（newsのdedupインデックス/ダイジェスト）パターンで
 - [システムの法則＝自動トリガー有=生/記憶依存の締め=腐る](feedback_system_closing_loops_rot.md) — 締め工程を定時トリガーに載せる・機械可読な一次情報から自動導出
