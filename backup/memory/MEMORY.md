@@ -8,6 +8,7 @@
 - [中庄町夏祭りチラシ（毎年）](project_nakasho_natsumatsuri_flyer.md) — 2026=3年目。主催「中庄を全力応援する会」（草川と独立前提）。公選法HIGH留意（原資負担者・議員名会場表記・酒類許認可・選挙近接時の残置回避）。2026は草川判断で確定配布
 - [市政報告会5ステージスキル](project_shisei_houkokukai_skill.md) — 2026-07-04実装。企画→案内→スライド→解説→前夜・新設agent3本・_status.json正本。**初回実走=安知本地区の市政報告会向けに実施予定**（2026-07-05草川指示・spark/design-studio初実走も同案件に合わせ得る）
 - [sparkスキル（小さな種→発信）](project_spark_skill.md) — 2026-07-03新設。種→接地→切り口案→生成→安全ゲート→保存。初回実運用フィードバック待ち
+- [AI作業環境マップ Notion埋め込み](project_ai_env_map_notion_embed.md) — 2026-07-05設置。🤖AI作業環境ハブ(394cf503-8126)末尾に俯瞰図をHTML embed表示＋ライブリンク。ソース=~/outputs/ai-env-map/。自動更新なし→「作業環境マップ更新して」で再デプロイ＋embed差し替え
 - [Notion全体整理2026-07-05](project_notion_reorg_2026-07-05.md) — 🤖AIハブ新設(394cf503-8126)・選挙ハブ=報告会＋チラシ特化・🗄️旧アーカイブv2(394cf503-8150)一元化。**第2弾：政策×質問DB統一＝🎯政策・質問ネタDB(`42716725`・時間軸プロパティ)が唯一の書込先／旧政策候補DB(6f1895ac)凍結**・会議ハブ簡素化・自動追加3本（人名→後援会員DB承認制／報告会声→意見リスト／AI議事録→朝承認）
 - [Notion大改修＋ohayo/news v3＋smart-intake](project_notion_ohayo_news_v3_renewal.md) — 2026-07-03実施。ohayo v3・news dedup・smart-intake新設。初回実走の指摘3点も同日修理済（詳細はファイル）
 - [議会だより制作エージェント](project_gikai_dayori_creator.md) — 整備完了(2026-07-02)。会議録→650字→提出docx＋引用マークdocx。トリガー「議会だより作って」
