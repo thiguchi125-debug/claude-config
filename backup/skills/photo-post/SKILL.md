@@ -46,6 +46,7 @@ AskUserQuestion で提示: 切り口＋投稿文案＋デザイン3案（下帯�
    "$CHROME" --headless --disable-gpu --hide-scrollbars --screenshot=<out>_9x16.png --window-size=1080,1920 file://<html>
    ```
 3. **PNGを自分でReadして検品**（サブagent委譲禁止）: 文字切れ・重なり・被写体と帯の衝突・コントラスト。崩れは font-size/FOCUS を調整して再レンダ（最大3周）。可読性フロア: 最小フォント21px相当・9:16はSNS UIセーフゾーン（下240px/右150pxに重要要素を置かない）。
+4. 自分の検品が通ったら**確定前に natural-design-reviewer を必ず通す**（[[feedback_design_review_gate_no_skip]]・2回目以降は新規指摘のみ）。写真上の文字が読みにくい指摘は対症療法せずテンプレ変更（座布団型等の構造分離）で解決。
 
 ## Step 5: 動画生成（既定で続行・追加入力不要）
 
