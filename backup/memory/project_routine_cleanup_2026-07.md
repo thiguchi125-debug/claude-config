@@ -12,7 +12,7 @@ metadata:
 ## 2026-07-05 全体一掃の実行結果（草川「全部代行して」承認）
 - **ローカル削除**: _trash_pending_20260702(192MB)／旧v2同期残骸(_council_mode.json・_sync_state.json・_classify.py・旧ログ・_deprecated_v2フォルダ)／memory旧2本(ohayo_token_efficiency・v25_streamline)。_extract_*.pyは保持
 - **生成物移動**: slide-deck-prep/output(263MB) → `~/outputs/slide-deck-prep/`（SKILL.mdの出力先9箇所も書き換え済み）
-- **バックアップ肥大対策**: sync-to-git.shに5exclude追加(99_raw/02_publications/05_resources/_index/_drive＋skills側output/)＋--delete-excluded → backup/ 1.0GB→41MB。**⚠️.git履歴802MBの縮小(filter-repo＋force push)は不可逆のため未実行・草川の明示承認待ち**。書き換え前の完全履歴は `~/Archive/claude-config-full-history-20260705.bundle`(697MB)に保全済み
+- **バックアップ肥大対策**: sync-to-git.shに5exclude追加(99_raw/02_publications/05_resources/_index/_drive＋skills側output/)＋--delete-excluded → backup/ 1.0GB→41MB。**✅履歴圧縮も草川明示承認で実行済(2026-07-05)**: filter-repoで99_raw/02_publications/05_resources/_index/slide-deck-prep出力＋旧世代パス(googledrive/canva/transcripts)を履歴から除去 → **.git 802MB→17MB・リポジトリ全体1.8GB→58MB**。834コミット保持・force push済・復元能力検証済。⚠️旧コミットhash（例: 41ab43b）は書き換えで無効＝過去hash参照は `~/Archive/claude-config-full-history-20260705.bundle`(704MB・書き換え前の完全履歴)で解決可
 - **Notion**: 📚Driveミラー＋📥取込キューDB・3年放置ページ(8ba6e67b)を🗄️旧アーカイブへMCP移動。ゴミ箱投入はNotionの「アプリで開く」設定でWeb UI操作不可→**🗄️ページ冒頭に「🗑️ゴミ箱に入れてOKリスト」チェックリスト設置済み**＝草川が次にNotionを開いたとき1分で処理可
 - **drive-intake SKILL.md**: 旧取込キューDB参照2行を廃止注記化
 
