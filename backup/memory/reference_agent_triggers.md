@@ -8,7 +8,7 @@ originSessionId: dd8f1b22-bf50-4c11-95a3-c7704e21c8b9
 
 スキルトリガー一覧（同階層）：https://www.notion.so/34acf503a68f8168aba9dd21aa559941
 
-**親ページ**: 「Claude Code スキル一覧（リンク集＋選び方）」 a063131590af44d897ebc2b5ab35487a 配下
+**親ページ**: 🤖 AI作業環境ハブ（394cf503-a68f-8126-9d49-d2015f39d7b4・朝のダッシュボード配下・2026-07-05集約）
 
 **カテゴリ構成**:
 - 📝 コンテンツ生成系: sns-content-creator / content-editor / council-material-creator

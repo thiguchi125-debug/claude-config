@@ -7,7 +7,8 @@ originSessionId: 4106fbb9-d1d3-4a51-82e0-d79536592b47
 草川たくや用にカスタマイズしたスキル（nichijo記録モード・仕上げモード・ohayo・content-pipeline 等）のトリガーワード早見表を Notion ページとして作成した。
 
 **URL**: https://www.notion.so/34acf503a68f8168aba9dd21aa559941
-**親ページ**: 🧰 Claude Code スキル一覧（リンク集＋選び方）https://www.notion.so/a063131590af44d897ebc2b5ab35487a
+**親ページ**: 🤖 AI作業環境ハブ（394cf503-a68f-8126-9d49-d2015f39d7b4・朝のダッシュボード配下・2026-07-05集約）
+**内容**: 2026-07-05に20本現行版へ全面刷新（Todoist移行・smart-intake/spark/design-studio/shisei-houkokukai/drive-intake等反映・廃止スキル節あり）
 
 ## How to apply
 - 「トリガー何だっけ」「何て言ったら起動する」系の質問が来たら、まずこのNotionページを参照する
