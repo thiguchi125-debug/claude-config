@@ -23,5 +23,6 @@ metadata:
 - 制作後: PDF化→open でプレビュー→ natural-design-reviewer（PNG化して物理破綻チェック）→ content-fact-checker → content-risk-reviewer（必須2ゲート）。
 - 開催情報は🎤市政報告会DB（collection://df08b5ea-f5ff-4022-afe2-c8073fbe341a）の該当ページで日程・会場・配布チラシ・開催地区を確認。
 - 既存の良い見本: 木下版 `~/.claude/skills/slide-deck-prep/output/2026-06-13_木下市政報告会/`（20枚・30分枠・太陽光条例議案第36号の審議中ライブ表記を含む）。
+- **城東版（推奨見本・2026-07-04・3ゲート通過版）** `~/outputs/slide-deck-prep/2026-07-04_城東市政報告会/`（32枚・60分枠・御幸フル相当。natural-design-reviewer→fact-checker→risk-reviewerを全通過し草川承認済み）。※別途 `~/outputs/houkokukai/2026-07-04_城東/03_slides/城東市政報告会_2026-07-04_新版.pdf` に40枚の新版あり（shisei-houkokukai Stage3 canonical。中身は要確認）。御幸版を骨格に複製→城東化した例。再利用価値の高い新規部品＝**(1) `.merge` コンポーネント**（3園→矢印→こども園カードの統合図。幼稚園/施設統廃合の説明に流用可）、**(2) 地区固有ブロックの作り方**＝配布チラシのテーマ全反映＋地区ならではの1論点（城東=亀山幼稚園再編と跡地活用）を「聞く姿勢・断定しない・在園児の継続を大前提」で構成、**(3) 議決済み議案の成果表記**＝太陽光条例(議案36号)を令和8年6月24日 原案可決・成立／公布の日から施行／許可制は三重県内で初、として「審議中」から「成果」へアップデート（木下版6/13の"審議中"表記は古い）。安全ゲートの実指摘＝メニュー溢れ/緑ボックスのフッター重なり/`.split .foot`のページ番号が写真に埋没（→`left:0.85in;right:0.5in;width:auto`＋番号を白+text-shadow化で解決）/連絡先スライドの絵文字（→ライム図形＋"TEL"に置換）。
 
 関連: [[feedback-slide-generation-via-notebooklm]]（汎用スライド向けNotebookLM必須・本ルールはその市政報告会例外）／[[feedback-print-publication-checklist]]（A4配布印刷物の規範）
