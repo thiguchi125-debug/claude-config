@@ -2,7 +2,7 @@
 name: daily-content-generator
 description: |
   草川たくや（亀山市議会議員）の**当日発信フルパッケージ**を1パスで生成する日次オーケストレータースキル。
-  Notion（🎯政策候補DB／📝一般質問ネタDB／📣SNS投稿管理DB／📋市民意見受付BOX／📰ニュースDB／📒nichijo日次ログ）から
+  Notion（🎯政策・質問ネタDB（統一・42716725）／📣SNS投稿管理DB／📋市民意見受付BOX／📰ニュースDB／📒nichijo日次ログ）から
   当日テーマ候補を棚卸し→2〜3本を4軸スコアリングで選定→事実検証→
   ブログ＋7SNS（X単発/Xスレッド/Threads/Instagram/Facebook/LINE/YouTube/TikTok）＋
   ショート動画原稿＋差し込み画像プロンプトを一括生成、安全ゲート（content-fact-checker→content-risk-reviewer）通過後に
