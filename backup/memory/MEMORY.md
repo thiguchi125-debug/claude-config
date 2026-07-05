@@ -79,6 +79,7 @@
 - [子育てDX「遅れ」フレームは前面禁止](feedback_kosodate_dx_delay_risky_frame.md) — 亀山子育てDXは進んでいる側。運用ピンポイント（現金集金3費目/コドモン26機能）に絞る「制度はある。問題は運用」
 - [発信物で絵文字を使わない（AI臭い）](feedback_no_emoji_ai_smell.md) — 絵文字禁止、見出し装飾はCSSライムバー/角マーカー/ピル、制作後にコードポイント検査
 - [フォーム回答の属性帰属はoperational contextで判定](feedback_form_response_no_attribution_guess.md) — 主語なし自由回答は運営文脈で自然な主体を選び即対応、過剰な「念のため確認」は信頼損なう
+- [団体名義SNSの同意を個人政治ブログに移植すると射程がズレる](feedback_consent_scope_org_to_personal_blog.md) — 協会名義の掲載同意≠議員個人ブログ掲載同意。器が変われば「政治ブログに実名で載せる」と明示して取り直す（要配慮層は特に）。中和一文＋立場明示
 - 中学校給食 — [既に実施開始済（過渡期フレーム禁止）](feedback_kameyama_chugakko_kyushoku_already_started.md)／[選択制回帰の切り取り注意](feedback_kyushoku_sentakusei_kaiki_misread_guard.md)土台肯定＋「後戻りしません」セット／[SNS/AI先行調査](feedback_kyushoku_sns_research_first.md)
 - [通告書ドラフト→確定版の推敲パターン](feedback_tsukokusho_finalization_pattern.md) — 議案質疑は簡潔・名詞止め・評価語削除／一般質問は答弁者を件名ごと具体指定
 - [一般質問テーマ選定の優先序列](feedback_ippan_shitsumon_theme_priority.md) — 地域と約束＞会派協議中＞市民の声＞当事者性。議案・報告既出＋3月既出を除外。危険/老朽/矛盾の切実な声を軸
