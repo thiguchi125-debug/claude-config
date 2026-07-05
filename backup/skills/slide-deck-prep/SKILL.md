@@ -1,6 +1,6 @@
 ---
 name: slide-deck-prep
-description: 草川たくや（亀山市議会議員）の市政報告会・自治会総会・業界団体集会・後援会総会・議会報告会で使う30〜90分プレゼンのスライド資料を、**NotebookLM向けのソース束＋マスタープロンプト**として準備するスキル。「スライド作って」「市政報告会のスライド」「自治会総会のスライド」「業界団体集会のスライド」「後援会総会のスライド」「議会報告会のスライド」「NotebookLM資料準備」「プレゼン資料」「slide-deck-prep」「報告会の資料」等で起動。**memoryルール準拠**: Marp/Slidev等での直接生成禁止、必ずNotebookLM経由。本スキルは「ソース束（一次資料・03_themes・voice-dna・関連blog/SNS）」と「NotebookLM用プロンプト」の2点セットを output/<日付>_<テーマ>/ に出力するだけ。草川がそれをNotebookLMにアップロード→スライド生成→印刷物化。他議員氏名は対外発信のため一切記載しない（feedback_no_other_council_members_names）。安全ゲート（content-fact-checker / content-risk-reviewer）通過必須。aisatsu-prep（1〜10分の挨拶）とは別物、本スキルは30分以上の本格プレゼン用。
+description: 草川たくや（亀山市議会議員）の市政報告会・自治会総会・業界団体集会・後援会総会・議会報告会で使う30〜90分プレゼンのスライド資料を、**NotebookLM向けのソース束＋マスタープロンプト**として準備するスキル。「スライド作って」「市政報告会のスライド」「自治会総会のスライド」「業界団体集会のスライド」「後援会総会のスライド」「議会報告会のスライド」「NotebookLM資料準備」「プレゼン資料」「slide-deck-prep」「報告会の資料」等で起動。**memoryルール準拠**: Marp/Slidev等での直接生成禁止、必ずNotebookLM経由。本スキルは「ソース束（一次資料・03_themes・voice-dna・関連blog/SNS）」と「NotebookLM用プロンプト」の2点セットを ~/outputs/slide-deck-prep/<日付>_<テーマ>/ に出力するだけ。草川がそれをNotebookLMにアップロード→スライド生成→印刷物化。他議員氏名は対外発信のため一切記載しない（feedback_no_other_council_members_names）。安全ゲート（content-fact-checker / content-risk-reviewer）通過必須。aisatsu-prep（1〜10分の挨拶）とは別物、本スキルは30分以上の本格プレゼン用。
 ---
 
 # slide-deck-prep スキル
@@ -58,7 +58,7 @@ memory feedback_slide_generation_via_notebooklm 準拠:
 
 ### Step 3: ソース束自動収集（並列）
 
-以下を並列で収集して `output/<YYYY-MM-DD>_<テーマ>/sources/` に保存：
+以下を並列で収集して `~/outputs/slide-deck-prep/<YYYY-MM-DD>_<テーマ>/sources/` に保存：
 
 #### 3-A. 一次資料スキャン（WebFetch / kameyama-researcher agent）
 - 亀山市公式サイト：該当テーマの計画書・統計・条例
@@ -105,7 +105,7 @@ grep -rl "<テーマキーワード>" ~/.claude/agents/knowledge/kusagawa_archiv
 
 `prompts/notebooklm_master.md` をベースに、収集したソース束情報・テンプレ情報・voice-dna要素を組み込んで完成プロンプトを生成。
 
-出力: `output/<YYYY-MM-DD>_<テーマ>/notebooklm_prompt.md`
+出力: `~/outputs/slide-deck-prep/<YYYY-MM-DD>_<テーマ>/notebooklm_prompt.md`
 
 ### Step 6: 安全ゲート（必須）
 
@@ -133,20 +133,20 @@ grep -rl "<テーマキーワード>" ~/.claude/agents/knowledge/kusagawa_archiv
 【テーマ】 <テーマ>
 【開催日】 <日付>
 
-【ソース束】 output/<YYYY-MM-DD>_<テーマ>/sources/ 配下に <件> ファイル
+【ソース束】 ~/outputs/slide-deck-prep/<YYYY-MM-DD>_<テーマ>/sources/ 配下に <件> ファイル
   - 一次資料: <件>
   - archive: <件>
   - 過去発信: <件>
   - 地区/業界蓄積: <件>
   - 直近ニュース: <件>
 
-【NotebookLM プロンプト】 output/<YYYY-MM-DD>_<テーマ>/notebooklm_prompt.md
+【NotebookLM プロンプト】 ~/outputs/slide-deck-prep/<YYYY-MM-DD>_<テーマ>/notebooklm_prompt.md
   - 章立て: <章数> 章 / 推定 <枚数> 枚
   - voice-dna整合: ✅
   - 安全ゲート: ✅ fact-checker / ✅ risk-reviewer
 
 【次の手順】
-1. output/<日付>_<テーマ>/sources/ 配下のファイルをNotebookLMにアップロード
+1. ~/outputs/slide-deck-prep/<日付>_<テーマ>/sources/ 配下のファイルをNotebookLMにアップロード
 2. notebooklm_prompt.md の内容をNotebookLMにペースト
 3. NotebookLMがスライド生成 → 草川がレビュー
 4. 必要に応じて print-designer skill で配布資料化
@@ -156,7 +156,7 @@ grep -rl "<テーマキーワード>" ~/.claude/agents/knowledge/kusagawa_archiv
 - B: 🏘️自治会別訪問DB に登録（自治会総会の場合）
 - C: 🤝組織・業界団体接触ログに追記（業界団体集会の場合）
 - D: 📅ミーティングノートDB に登録（議会報告会・後援会総会の場合）
-- E: スキップ（output/ファイルのみ保存）
+- E: スキップ（~/outputs/slide-deck-prep/ ファイルのみ保存）
 
 A〜Eで指示してください（複数可、例: A,D）。
 ```
@@ -167,13 +167,13 @@ A〜Eで指示してください（複数可、例: A,D）。
 - タイトル先頭🎤付き
 - リレーション: 会議体マスタ／自治会マスタ／組織マスタ
 - 標準プロパティ（場面/日付/担当者/状態）
-- 本文: output/ ファイルへのリンク + 章立てサマリ
+- 本文: ~/outputs/slide-deck-prep/ ファイルへのリンク + 章立てサマリ
 
 ## 設定ファイル
 
 - `templates/<場面区分>.md` — 場面別の章立てテンプレ
 - `prompts/notebooklm_master.md` — NotebookLM向けマスタープロンプト
-- `output/<日付>_<テーマ>/` — 場面ごとのソース束＋プロンプト一式
+- `~/outputs/slide-deck-prep/<日付>_<テーマ>/` — 場面ごとのソース束＋プロンプト一式
 
 ## 関連skill/agent
 

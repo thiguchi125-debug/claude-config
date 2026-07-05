@@ -38,7 +38,16 @@ if rsync --help 2>&1 | grep -q -- '--iconv'; then
 fi
 
 # 1) agents/
-rsync "${rsync_opts[@]}" "$SRC/agents/" "$DST/agents/" \
+# 2026-07-05 肥大対策: PDF原本ミラー(99_raw 240MB)・刊行物(02_publications 320MB)・
+# 政策資料(05_resources 121MB)・再生成可能な_indexキャッシュ(65MB)はDrive一次資料の
+# ミラー/派生物なのでgitに入れない。--delete-excluded で既存バックアップ分も掃除。
+rsync "${rsync_opts[@]}" --delete-excluded \
+  --exclude 'knowledge/kusagawa_archive/99_raw' \
+  --exclude 'knowledge/kusagawa_archive/02_publications' \
+  --exclude 'knowledge/kusagawa_archive/05_resources' \
+  --exclude 'knowledge/kusagawa_archive/_index' \
+  --exclude 'knowledge/kusagawa_archive/_drive' \
+  "$SRC/agents/" "$DST/agents/" \
   || warn "agents/ rsync had errors (continuing)"
 
 # 2) commands/
@@ -68,9 +77,10 @@ SKILL_MIN=10  # 現在17スキル。半分以下に減っていたら異常と�
 if [ -d "$SKILL_SRC" ]; then
   SKILL_COUNT=$(find "$SKILL_SRC" -mindepth 2 -maxdepth 2 -name 'SKILL.md' 2>/dev/null | wc -l | tr -d ' ')
   if [ "$SKILL_COUNT" -ge "$SKILL_MIN" ]; then
-    rsync "${rsync_opts[@]}" \
+    rsync "${rsync_opts[@]}" --delete-excluded \
       --exclude 'evals/results' \
       --exclude '*.log' \
+      --exclude 'output/' \
       "$SKILL_SRC/" "$DST/skills/" \
       || warn "skills/ rsync had errors (continuing)"
   else
