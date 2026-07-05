@@ -51,9 +51,13 @@ AskUserQuestion で提示: 切り口＋投稿文案＋デザイン3案（下帯�
 ## Step 5: 動画生成（既定で続行・追加入力不要）
 
 1. video_overlay.html に H1A/H1B を差し込み→透過レンダ: `--default-background-color=00000000 --window-size=1080,1920` → overlay.png
-2. video_endcard.html に TAG を差し込み→通常レンダ 1080×1920 → endcard.png
+2. video_endcard.html に `{{PORTRAIT}}`/`{{SLOGAN}}`/`{{TAG}}` を差し込み→通常レンダ 1080×1920 → endcard.png
+   - `{{PORTRAIT}}` = `file://~/.claude/skills/photo-post/assets/kusagawa_portrait.png`（拳ポーズ透過ポートレート・**常用ブランド素材**）
+   - `{{SLOGAN}}` = 既定 `声をチカラに`（または `ええやん亀山`。「声を、チカラに。」の句読点付きは使わない）
+   - `{{TAG}}` = `#ええやん亀山` 等
+   - 別の本人写真をエンドカードに使いたい場合のみ `scripts/cutout_portrait.py <白背景写真.jpg> <out.png>` で透過切り抜きを再生成（白背景ポートレート専用・胴中央は台形保護帯で守る）。
 3. `make_video.sh -o <出力dir>/video.mp4 -e endcard.png -t overlay.png <写真...>`
-4. 中間フレームを1枚抜いて（`ffmpeg -ss 4 -i video.mp4 -frames:v 1 frame.png`）Readで合成確認。
+4. 末尾付近のフレームを1枚抜いて（`ffmpeg -ss <尺-1> -i video.mp4 -frames:v 1 frame.png`）Readでエンドカード（人物と文字の重なり無し）を確認。
 
 ## Step 6: 安全ゲート（skip禁止・まとめて1回）
 
