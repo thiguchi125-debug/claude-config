@@ -52,10 +52,11 @@ AskUserQuestion で提示: 切り口＋投稿文案＋デザイン3案（下帯�
 
 1. video_overlay.html に H1A/H1B を差し込み→透過レンダ: `--default-background-color=00000000 --window-size=1080,1920` → overlay.png
 2. video_endcard.html に `{{PORTRAIT}}`/`{{SLOGAN}}`/`{{TAG}}` を差し込み→通常レンダ 1080×1920 → endcard.png
-   - `{{PORTRAIT}}` = `file://~/.claude/skills/photo-post/assets/kusagawa_portrait.png`（拳ポーズ透過ポートレート・**常用ブランド素材**）
+   - デザイン = **枠付きフォトカード**（本人写真をライム枠のカードに額装＋幾何アクセント＋スローガン＋名前）。実写のAI改変・白背景の切り抜きはしない（襟と背景が同じ白で破綻しやすい＝2026-07-05検証で確認）。
+   - `{{PORTRAIT}}` = `file://~/.claude/skills/photo-post/assets/kusagawa_portrait_src.jpg`（拳ポーズ公式写真・**常用ブランド素材**。白背景のままカードに額装するので無加工でよい）
    - `{{SLOGAN}}` = 既定 `声をチカラに`（または `ええやん亀山`。「声を、チカラに。」の句読点付きは使わない）
    - `{{TAG}}` = `#ええやん亀山` 等
-   - 別の本人写真をエンドカードに使いたい場合のみ `scripts/cutout_portrait.py <白背景写真.jpg> <out.png>` で透過切り抜きを再生成（白背景ポートレート専用・胴中央は台形保護帯で守る）。
+   - （`scripts/cutout_portrait.py` は GrabCut 透過切り抜きの実験実装として残置。現行エンドカードは枠付きカード方式のため通常は使わない。）
 3. `make_video.sh -o <出力dir>/video.mp4 -e endcard.png -t overlay.png <写真...>`
 4. 末尾付近のフレームを1枚抜いて（`ffmpeg -ss <尺-1> -i video.mp4 -frames:v 1 frame.png`）Readでエンドカード（人物と文字の重なり無し）を確認。
 
