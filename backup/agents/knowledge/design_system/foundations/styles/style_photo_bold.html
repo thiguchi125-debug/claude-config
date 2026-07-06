@@ -1,0 +1,85 @@
+<!-- @dsCard group="Foundations" name="スタイル: 写真大胆系" subtitle="全面写真＋白帯タイポ。選挙・人物押し出し向け" -->
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>スタイルレシピ: 写真大胆系</title>
+<style>
+  :root{
+    --band:#ffffff;   /* 白帯: キャッチ・氏名 */
+    --ink:#1a2a22;    /* 文字主: 深緑ネイビー（純黒より上品） */
+    --green:#1f5a3a;  /* 草川グリーン: 氏名帯・スローガン帯 */
+    --gold:#c7a049;   /* 金: 役職・下線・縦罫 */
+  }
+  body{font-family:"Hiragino Kaku Gothic ProN",sans-serif;color:var(--ink);margin:0;padding:28px;background:#f5f5f2;line-height:1.7}
+  h1{font-size:22px;margin:0 0 4px}
+  h2{font-size:15px;margin:26px 0 8px;border-left:3px solid var(--gold);padding-left:.6em}
+  .sw{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .sw div{width:110px;border-radius:6px;padding:10px;font-size:11px;background:#fff}
+  .chip{height:44px;border-radius:4px;margin-bottom:6px;border:1px solid #e2e2dc}
+  table{border-collapse:collapse;font-size:12.5px;width:100%}
+  td,th{padding:6px 10px;border-bottom:1px solid #e2e2dc;text-align:left;vertical-align:top}
+  code{background:#ecece6;border-radius:4px;padding:1px 6px;font-size:11.5px}
+  ul{margin:6px 0;padding-left:20px;font-size:13px}
+  .demo{position:relative;height:300px;border-radius:6px;overflow:hidden;background:linear-gradient(135deg,#9aa89f 0%,#6b7d72 55%,#465549 100%)}
+  .demo .photo-note{position:absolute;top:12px;left:14px;color:#fff;font-size:11px;opacity:.85}
+  .demo .grad{position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(transparent,rgba(0,0,0,.55))}
+  .demo .catch{position:absolute;left:24px;bottom:86px;color:#fff;font-weight:800;font-size:30px;letter-spacing:-.02em;line-height:1.15;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+  .demo .band{position:absolute;inset:auto 0 0 0;background:var(--band);padding:12px 24px;display:flex;align-items:center;gap:14px}
+  .demo .name{font-family:"Hiragino Mincho ProN",serif;font-weight:600;font-size:22px;border-left:3px solid var(--gold);padding-left:.6em}
+  .demo .role{font-size:11px;color:#555}
+</style>
+</head>
+<body>
+<h1>スタイルレシピ: 写真大胆系</h1>
+<p style="font-size:13px">用途: 後援会リーフレット・選挙広報・人物押し出しの勝負フォーマット。写真65% / 白・緑帯30% / 金5%。テキストは帯に集約しノイズを消す。</p>
+
+<h2>配色</h2>
+<div class="sw">
+  <div><div class="chip" style="background:linear-gradient(135deg,#9aa89f,#465549)"></div>全面写真（主役）</div>
+  <div><div class="chip" style="background:#ffffff"></div>#ffffff 白帯</div>
+  <div><div class="chip" style="background:#1a2a22"></div>#1a2a22 文字・深緑黒</div>
+  <div><div class="chip" style="background:#1f5a3a"></div>#1f5a3a 草川グリーン帯</div>
+  <div><div class="chip" style="background:#c7a049"></div>#c7a049 金・縦罫</div>
+</div>
+
+<h2>フォント（3層コントラスト）</h2>
+<table>
+<tr><th>キャッチ</th><td>ヒラギノ角ゴ StdN W8 / 游ゴシック Bold。極太36〜60pt相当・letter-spacing:-.02em で塊感。「叫ぶ」層</td></tr>
+<tr><th>氏名</th><td>ヒラギノ明朝 ProN W6。「締める」層（丸ゴ禁止）</td></tr>
+<tr><th>本文・政策</th><td>游ゴシック Medium / ヒラギノ角ゴ W3・10.5pt前後。「静かに」層</td></tr>
+</table>
+
+<h2>装飾語彙</h2>
+<ul>
+<li>白帯・半透明黒帯（写真下部）／下部グラデーション <code>linear-gradient(transparent, rgba(0,0,0,.55))</code> で白文字を浮かせる</li>
+<li>金の細縦罫 <code>border-left:3px solid #c7a049</code>（氏名・役職の頭）／役職の細罫囲み or 金下線</li>
+<li>写真は四辺ブリード（塗り足し3mmまで伸ばし枠を作らない）／余白側にスローガン白抜き直載せ（上級型）</li>
+</ul>
+
+<h2>構図</h2>
+<ul>
+<li>A型: 全面写真＋下1/4〜1/3白帯（キャッチ＋氏名＋役職）— 最も安全な王道</li>
+<li>B型: 写真の余白（空・壁）に大キャッチ白抜き直載せ＋隅に氏名帯 — 雑誌表紙型</li>
+<li>C型: 左55%人物写真ブリード＋右45%緑ベース政策3本柱 — リーフA面向け</li>
+<li>人物の視線・体の向きは必ずテキスト側へ（人物が余白を「見る」配置で視線誘導）</li>
+</ul>
+
+<h2>CSSのコツ / NG</h2>
+<ul>
+<li><code>object-fit:cover</code>＋<code>overflow:hidden</code>で全面／白抜きには極薄 <code>text-shadow:0 1px 8px rgba(0,0,0,.3)</code></li>
+<li><b>NG</b>: 写真を枠に入れて縮小・影なし細字の写真直載せ・キャッチ長文化（15字以内）・帯の多色化（白緑金の3色厳守）・顔に文字/ロゴ重ね</li>
+</ul>
+
+<h2>ミニプレビュー</h2>
+<div class="demo">
+  <div class="photo-note">※全面写真（人物）が入る想定</div>
+  <div class="grad"></div>
+  <div class="catch">声を、チカラに。</div>
+  <div class="band">
+    <div class="name">草川 たくや</div>
+    <div class="role">亀山市議会議員</div>
+  </div>
+</div>
+</body>
+</html>

@@ -40,6 +40,7 @@ claude.ai/design のテンプレート群を「正本」とし、既存デザイ
 - [x] design-studioスキル作成（登録済・トリガー「チラシ作って」等）
 - [x] CLAUDE.md・print-designer/print-layout-architect「テンプレ第一手」追記
 - [x] /design-login → claude.ai/design push 完了（2026-07-05）。プロジェクト「草川たくやデザインシステム」projectId=`b84082a3-d0ff-40d6-a256-308e08910c3c`・20ファイル・カード10枚register済（v1_refinement_spec.mdはローカルのみ）。以後の更新は差分push（list_files→finalize_plan→write_files・wholesale replace禁止）
+- [x] **v2センス強化（2026-07-07・仕様=design_system/v2_sense_upgrade_spec.md）**: 「硬い・暗い・AIっぽい」の根因＝種4作品が全部Claude自作の閉ループと診断。①design-studio Step1を**参照駆動制作**に改修（外部参考2〜3枚収集必須・print-layout-architectに参照Read模写指示・素材コピー禁止ガード）②`foundations/styles/` **スタイルレシピ5種**新設（淡色イラスト/ダーク×ライム/インク節約/写真大胆/和風。外部良作分析ベース・カード5枚push済）③`assets/illustrations/` **イラスト素材庫**新設（nano-bananaプロンプトカード20枚・**草川のGemini生成待ち**・いらすとやは政治利用禁止規約のため不使用・白背景素材はmix-blend-mode:multiplyで合成）
 
 ## 構築時の発見（制作時に効く注意）
 - 市政報告レポートv22はブランド4色でなく「インク節約パレット」（緑#1f7a3a/深緑#0e4d27/金#c89211・ベタ塗り3%以下）。**1制作物1パレット・混用禁止**（colors.htmlに両パレット収録）

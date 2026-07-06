@@ -1,0 +1,69 @@
+<!-- @dsCard group="Foundations" name="スタイル: ダーク×ライム" subtitle="eスポーツ・若者向けイベント。既存ブランドの主戦場" -->
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>スタイルレシピ: ダーク×ライム</title>
+<style>
+  :root{
+    --dark:#111418;   /* 背景: ほぼ黒 */
+    --deep:#0f3d27;   /* 深緑: セクション地・グラデ相方 */
+    --lime:#c7ff4a;   /* ライム: 見出し・強調（ブランド核） */
+    --cream:#f3efe4;  /* クリーム: 本文文字 */
+    --green:#1f5a3a;  /* 中間緑: バッジ・補助 */
+  }
+  body{font-family:"Hiragino Kaku Gothic ProN",sans-serif;background:var(--dark);color:var(--cream);margin:0;padding:28px;line-height:1.7}
+  h1{font-size:22px;margin:0 0 4px;color:var(--lime)}
+  h2{font-size:15px;margin:26px 0 8px;display:inline-block;box-shadow:inset 0 -10px 0 rgba(199,255,74,.35)}
+  .sw{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .sw div{width:110px;border-radius:8px;padding:10px;font-size:11px;background:#1b2027}
+  .chip{height:44px;border-radius:6px;margin-bottom:6px}
+  table{border-collapse:collapse;font-size:12.5px;width:100%}
+  td,th{padding:6px 10px;border-bottom:1px solid #2a313a;text-align:left;vertical-align:top}
+  code{background:#232a33;border-radius:4px;padding:1px 6px;font-size:11.5px}
+  ul{margin:6px 0;padding-left:20px;font-size:13px}
+  .demo{background:linear-gradient(160deg,#111418 0%,#0f3d27 100%);border-radius:10px;padding:28px;margin-top:10px}
+  .demo .t{color:var(--lime);font-weight:800;font-size:28px;letter-spacing:-.01em;line-height:1.2}
+  .demo .badge{display:inline-block;background:var(--lime);color:#0f3d27;font-weight:700;border-radius:4px;padding:3px 12px;font-size:12px;margin-top:10px}
+</style>
+</head>
+<body>
+<h1>スタイルレシピ: ダーク×ライム</h1>
+<p style="font-size:13px">用途: eスポーツ・若者向けイベント・攻めた告知。既存ブランドの主戦場（正本テンプレ=templates/flyer_a4・原典=eスポーツflyer_a2）。<b>子ども・地域向けにはデフォルトで選ばない</b>（暗く硬くなる既知の失敗＝そちらは淡色イラスト系へ）。</p>
+
+<h2>配色</h2>
+<div class="sw">
+  <div><div class="chip" style="background:#111418;border:1px solid #2a313a"></div>#111418 背景ダーク</div>
+  <div><div class="chip" style="background:#0f3d27"></div>#0f3d27 深緑</div>
+  <div><div class="chip" style="background:#c7ff4a"></div>#c7ff4a ライム（核）</div>
+  <div><div class="chip" style="background:#f3efe4"></div>#f3efe4 クリーム文字</div>
+  <div><div class="chip" style="background:#1f5a3a"></div>#1f5a3a 中間緑</div>
+</div>
+
+<h2>フォント</h2>
+<table>
+<tr><th>見出し</th><td>ヒラギノ角ゴ W7〜W8（Hiragino Sans 900）・大きく・letter-spacing詰め気味で塊感</td></tr>
+<tr><th>本文</th><td>ヒラギノ角ゴ W3、クリーム #f3efe4（純白は眩しいので使わない）</td></tr>
+</table>
+
+<h2>装飾語彙 / CSSのコツ</h2>
+<ul>
+<li>ライム下線は <code>box-shadow: inset 0 -Npx 0 rgba(199,255,74,.35)</code>（gradient hard-stop禁止＝rules.md確定パターン）</li>
+<li>ダーク→深緑の対角グラデ地／ライムのソリッドバッジ（文字は深緑）／数字大強調（stat_numbersコンポーネント）</li>
+<li>ライムは面積を絞る（画面の10%以下）。全面ライムは安っぽくなる</li>
+</ul>
+
+<h2>NG</h2>
+<ul>
+<li>子ども・親子・敬老向け案件でのデフォルト採用（用途ミスマッチ）</li>
+<li>紫グラデ・浮き角丸カード等のAI製SaaS LP意匠（恒久禁止）／純白文字／ライム面積過多</li>
+</ul>
+
+<h2>ミニプレビュー</h2>
+<div class="demo">
+  <div class="t">SMASH BROS.<br>亀山CUP</div>
+  <div style="font-size:13px;margin-top:6px">7月26日（土）13:00 KICKOFF</div>
+  <span class="badge">参加無料・当日受付OK</span>
+</div>
+</body>
+</html>

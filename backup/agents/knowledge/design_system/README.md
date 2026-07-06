@@ -15,6 +15,16 @@ design_system/
     colors.html                  ブランド4色＋印刷インク節約パレット＋使い分け
     typography.html              種4作品から抽出したフォントスタック・サイズ階層
     rules.md                     デザイン制作の恒久ルール集（禁止意匠・CSS確定パターン・入稿手順）
+    styles/                      スタイルレシピ5種（v2で新設。配色hex・フォント・装飾語彙・構図・NGの正本）
+      style_bright_illustration.html  淡色水彩・明るいイラスト系（子育て・地域＝理想形）
+      style_dark_lime.html            ダーク×ライム（eスポーツ・若者向け。子ども向けにはデフォルト選択しない）
+      style_ink_saving_report.html    インク節約レポート系（木下v22系統）
+      style_photo_bold.html           写真大胆系（全面写真＋白帯。選挙・人物もの）
+      style_washu_calm.html           和風・落ち着き系（自治会・敬老。朱赤は藍/金茶で置換）
+  assets/
+    illustrations/               イラスト素材庫（v2で新設。自前nano-banana生成・政治利用セーフ）
+      README.md                    運用フロー（生成→投入→台帳化）・multiply合成のコツ
+      prompt_cards.md              生成プロンプトカード20枚（水彩花/季節/人物/フレーム/和風）
   components/                  ← 再利用部品（コピペ可能なCSS＋実演）
     lime_heading.html            ライムバー見出し（box-shadow inset下線。gradient hard-stop禁止の注記入り）
     qr_footer_block.html         QR＋連絡先フッター2パターン（討議資料表記含む）
@@ -84,3 +94,4 @@ grep -r "@dsCard" ~/.claude/agents/knowledge/design_system/ --include="*.html"
 ## 更新履歴
 
 - 2026-07-05 初版構築（foundations 3本／components 4本／templates 4種／種4作品から抽出）
+- 2026-07-07 v2センス強化（v2_sense_upgrade_spec.md）: foundations/styles/ 5種新設（外部良作分析ベース・design-inspiration-researcher）＋assets/illustrations/ 素材庫新設＋design-studio Step1を参照駆動制作に改修

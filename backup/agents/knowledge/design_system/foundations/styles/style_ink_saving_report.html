@@ -1,0 +1,77 @@
+<!-- @dsCard group="Foundations" name="スタイル: インク節約レポート系" subtitle="市政報告レポートA4両面。白地＋緑2階調＋金" -->
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>スタイルレシピ: インク節約レポート系</title>
+<style>
+  :root{
+    --paper:#ffffff;  /* 背景: 白（自宅印刷インク節約が前提） */
+    --green:#1f7a3a;  /* 主緑: 見出し・罫 */
+    --deep:#0e4d27;   /* 深緑: タイトル帯・強調文字 */
+    --gold:#c89211;   /* 金: 数字・アクセント */
+    --ink:#222222;    /* 本文 */
+  }
+  body{font-family:"Hiragino Kaku Gothic ProN",sans-serif;background:#f2f2ef;color:var(--ink);margin:0;padding:28px;line-height:1.7}
+  .paper{background:var(--paper);padding:26px;border:1px solid #ddd}
+  h1{font-size:22px;margin:0 0 4px;color:var(--deep)}
+  h2{font-size:15px;margin:26px 0 8px;color:var(--deep);border-left:5px solid var(--green);padding-left:.6em}
+  .sw{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .sw div{width:110px;border:1px solid #e2e2dc;padding:10px;font-size:11px;background:#fff}
+  .chip{height:44px;margin-bottom:6px}
+  table{border-collapse:collapse;font-size:12.5px;width:100%}
+  td,th{padding:6px 10px;border-bottom:1px solid #e2e2dc;text-align:left;vertical-align:top}
+  code{background:#f0f0ea;padding:1px 6px;font-size:11.5px}
+  ul{margin:6px 0;padding-left:20px;font-size:13px}
+  .demo{border:2px solid var(--green);margin-top:10px}
+  .demo .head{background:var(--deep);color:#fff;padding:10px 18px;font-weight:700;font-size:16px}
+  .demo .cols{display:flex;gap:14px;padding:16px 18px;font-size:12px}
+  .demo .num{font-size:30px;font-weight:800;color:var(--gold);line-height:1}
+</style>
+</head>
+<body>
+<div class="paper">
+<h1>スタイルレシピ: インク節約レポート系</h1>
+<p style="font-size:13px">用途: 市政報告レポートA4両面・議会報告・文字量多めの情報物（正本テンプレ=templates/report_a4_duplex・原典=木下v22）。自宅/ラクスル大量印刷前提で<b>ベタ面積を最小化</b>しつつ、緑2階調＋金の数字で退屈させない。</p>
+
+<h2>配色（白面積70%以上を維持）</h2>
+<div class="sw">
+  <div><div class="chip" style="background:#ffffff;border:1px solid #ddd"></div>#ffffff 白（節約の核）</div>
+  <div><div class="chip" style="background:#1f7a3a"></div>#1f7a3a 主緑・罫</div>
+  <div><div class="chip" style="background:#0e4d27"></div>#0e4d27 深緑・帯</div>
+  <div><div class="chip" style="background:#c89211"></div>#c89211 金・数字</div>
+  <div><div class="chip" style="background:#222222"></div>#222222 本文</div>
+</div>
+
+<h2>フォント</h2>
+<table>
+<tr><th>見出し</th><td>ヒラギノ角ゴ W6・深緑 #0e4d27。帯見出しは白抜き</td></tr>
+<tr><th>本文</th><td>ヒラギノ角ゴ W3・9.5〜10.5pt・2〜3段組（文字量勝負のレポートは段組が命）</td></tr>
+<tr><th>数字</th><td>W8＋金 #c89211 で大きく（stat_numbersコンポーネント＝2×2数字セル/5連ZEROグリッド）</td></tr>
+</table>
+
+<h2>装飾語彙 / CSSのコツ</h2>
+<ul>
+<li>ベタは帯見出しのみ（深緑）。地紋・背景色は張らない（インク節約）／緑5px左罫の小見出し</li>
+<li>数字ブロックで視線の休符を作る（3〜4カ所/面）／photo_text_row（同高flex・float禁止）で写真と本文を並べる</li>
+<li>QRフッター（components/qr_footer_block）＋「討議資料」表記を忘れない</li>
+</ul>
+
+<h2>NG</h2>
+<ul>
+<li>全面背景色・大面積ベタ（インク大量消費）／段組なしの1段ベタ流し（読まれない）</li>
+<li>写真の過小配置（切手サイズ写真の羅列＝素人化。使う写真は絞って大きく）</li>
+</ul>
+
+<h2>ミニプレビュー</h2>
+<div class="demo">
+  <div class="head">市政報告 vol.12 ── 6月議会のご報告</div>
+  <div class="cols">
+    <div style="flex:1">一般質問では中学校部活動の地域移行、スクールバス送迎、企業誘致の3本を取り上げました。</div>
+    <div><div class="num">3本</div><div>一般質問</div></div>
+    <div><div class="num">45分</div><div>質問時間</div></div>
+  </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!-- @dsCard group="Foundations" name="スタイル: 和風・落ち着き系" subtitle="自治会・敬老・伝統行事向け。和紙＋伝統色＋明朝" -->
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>スタイルレシピ: 和風・落ち着き系</title>
+<style>
+  :root{
+    --washi:#f3ece0;   /* 背景: 生成り和紙 */
+    --usuko:#e6dcc8;   /* ベース: 薄香（カード地） */
+    --tokiwa:#2a4b3c;  /* 主色: 常磐緑（草川グリーンの和トーン） */
+    --gunjo:#1c4286;   /* アクセント: 群青（藍） */
+    --yamabuki:#c9a227;/* アクセント: 山吹茶（金箔の代替） */
+    --sumi:#33302b;    /* 文字: 濃墨（純黒禁止） */
+  }
+  body{font-family:"Hiragino Mincho ProN",serif;background:var(--washi);color:var(--sumi);margin:0;padding:28px;line-height:1.9}
+  h1{font-size:22px;margin:0 0 4px;letter-spacing:.08em}
+  h2{font-size:15px;margin:26px 0 8px;letter-spacing:.1em;border-top:1px solid var(--yamabuki);padding-top:8px}
+  .sw{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .sw div{width:110px;padding:10px;font-size:11px;background:#faf6ec;font-family:"Hiragino Kaku Gothic ProN",sans-serif}
+  .chip{height:44px;margin-bottom:6px}
+  table{border-collapse:collapse;font-size:12.5px;width:100%}
+  td,th{padding:6px 10px;border-bottom:1px solid #d9cfb8;text-align:left;vertical-align:top}
+  code{background:#eee5d2;padding:1px 6px;font-size:11.5px;font-family:monospace}
+  ul{margin:6px 0;padding-left:20px;font-size:13px}
+  .demo{background:var(--washi);border:1px solid #d9cfb8;padding:34px 30px;margin-top:10px;display:flex;justify-content:space-between;min-height:200px}
+  .demo .vtitle{writing-mode:vertical-rl;font-size:24px;letter-spacing:.28em;border-right:1px solid var(--yamabuki);padding-right:14px;color:var(--tokiwa)}
+  .demo .body{font-size:13px;max-width:58%;align-self:center}
+  .demo .in{align-self:flex-end;width:34px;height:34px;border:2px solid var(--gunjo);color:var(--gunjo);display:flex;align-items:center;justify-content:center;font-size:11px;opacity:.85}
+</style>
+</head>
+<body>
+<h1>スタイルレシピ: 和風・落ち着き系</h1>
+<p style="font-size:13px;font-family:'Hiragino Kaku Gothic ProN',sans-serif">用途: 自治会総会・敬老行事・伝統行事・式典案内。和紙60% / 薄香＆常磐緑25% / 群青10% / 山吹茶5%。低彩度統一＋「間」が主役。朱赤は使わず藍/金茶/墨で置換。</p>
+
+<h2>配色（日本の伝統色から抽出）</h2>
+<div class="sw">
+  <div><div class="chip" style="background:#f3ece0;border:1px solid #d9cfb8"></div>#f3ece0 和紙・生成り</div>
+  <div><div class="chip" style="background:#e6dcc8"></div>#e6dcc8 薄香</div>
+  <div><div class="chip" style="background:#2a4b3c"></div>#2a4b3c 常磐緑</div>
+  <div><div class="chip" style="background:#1c4286"></div>#1c4286 群青</div>
+  <div><div class="chip" style="background:#c9a227"></div>#c9a227 山吹茶</div>
+  <div><div class="chip" style="background:#33302b"></div>#33302b 濃墨</div>
+</div>
+
+<h2>フォント</h2>
+<table>
+<tr><th>見出し</th><td>ヒラギノ明朝 ProN W6・大きめ＋<code>letter-spacing:.1em</code>。縦書き（<code>writing-mode:vertical-rl</code>）が映える</td></tr>
+<tr><th>本文</th><td>ヒラギノ明朝 ProN W3 / 游明朝 Medium・11〜12pt（年配層配慮でやや大きく）・行送り1.9</td></tr>
+<tr><th>禁止</th><td>丸ゴ・ポップ体は厳禁。角ゴは最小限</td></tr>
+</table>
+
+<h2>装飾語彙</h2>
+<ul>
+<li>和紙テクスチャ背景（<code>assets/illustrations/washi_texture_01</code>＋<code>background-blend-mode:multiply</code>で薄く）</li>
+<li>山吹茶の1px細罫のみで区切る（太線禁止）／縦組みタイトル＋脇に細縦罫</li>
+<li>青海波・七宝など和文様を隅に淡く小さく（<code>washi_pattern_01</code>）／短冊・色紙風カード（薄香地）</li>
+<li>落款風の角印は<b>藍or金茶</b>で（朱＝赤は草川NG）／余白（間）を大きく＝それ自体が装飾</li>
+</ul>
+
+<h2>構図</h2>
+<ul>
+<li>A型: 右に縦書き大見出し＋縦罫、左に横組み本文</li>
+<li>B型: 上部に常磐緑or群青の帯（格式）＋和紙地の案内＋右下に角印 — 式典・敬老向け</li>
+<li>C型: 中央寄せ縦書きタイトル・上下大余白・金茶細罫のみ — 招待状・案内状型</li>
+</ul>
+
+<h2>CSSのコツ / NG</h2>
+<ul>
+<li>字間 <code>letter-spacing:.08〜.12em</code> で「間」を演出／box-shadowはほぼ使わない（フラット・平面が正解）</li>
+<li><b>NG</b>: ゴシック主体・高彩度原色・影/グラデ/立体ボタン・朱赤の多用・余白を詰める・絵文字/アイコン多用（文様で代替）</li>
+</ul>
+
+<h2>ミニプレビュー</h2>
+<div class="demo">
+  <div class="body">謹啓　時下ますますご清祥のこととお慶び申し上げます。本年も左記のとおり敬老のつどいを開催いたします。</div>
+  <div class="in">印</div>
+  <div class="vtitle">敬老のつどい</div>
+</div>
+</body>
+</html>

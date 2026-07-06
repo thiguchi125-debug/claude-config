@@ -33,6 +33,8 @@ Canva以上のクオリティの印刷物デザイン制作を、Claude Code起�
 | デザインシステム正本 | `~/.claude/agents/knowledge/design_system/` |
 | テンプレート4種 | 同 `templates/{flyer_a4, poster, report_a4_duplex, leaflet_trifold}/` |
 | 部品 | 同 `components/`（ライムバー見出し・QRフッター・photo-text行・数字ブロック） |
+| スタイルレシピ5種 | 同 `foundations/styles/`（淡色イラスト/ダーク×ライム/インク節約レポート/写真大胆/和風落ち着き。配色・装飾語彙・CSSの正本） |
+| イラスト素材庫 | 同 `assets/illustrations/`（自前生成の透過PNG装飾。生成プロンプトカード＝同フォルダ prompt_cards.md） |
 | 恒久デザインルール | 同 `foundations/rules.md`（**実装前に必読**） |
 | ブランド色 | #c7ff4a／#1f5a3a／#0f3d27／#f3efe4（`foundations/colors.html`） |
 | クラウド正本ミラー | claude.ai/design「草川たくやデザインシステム」（DesignSync同期） |
@@ -44,21 +46,26 @@ Canva以上のクオリティの印刷物デザイン制作を、Claude Code起�
 AskUserQuestionで一括確認: ①種別（チラシ/ポスター/レポート/リーフレット/その他）②サイズ ③配布先・用途（対外配布か内部か）④印刷方法（自宅/ラクスル/コンビニ）⑤納期 ⑥素材の有無（写真・ロゴ・原稿）。
 既に発言に含まれる項目は聞き直さない。
 
-### Step 1: テンプレ選択
-1. `design_system/templates/` から該当種別の template.html＋README を確認
-2. **候補2〜3案を提示**（各案: どのテンプレ/部品構成か・完成イメージの言語化1〜2行）。過去類似案件が design_references にあれば挙げる
-3. 草川が claude.ai/design のカード一覧で見たい場合はプロジェクトURLを案内
-4. 草川選択 → 案件フォルダ作成: `~/publications/<YYYY-MM_案件名>/`（政治活動物）または drafts（試作）
+### Step 1: 参照＆方向性選択（旧テンプレ選択・2026-07-07拡張）
+1. `design_system/foundations/styles/` から案件に合う**スタイルレシピ**を特定（淡色イラスト系/ダーク×ライム/インク節約レポート/写真大胆/和風落ち着き）＋ `templates/` の該当 template.html＋README を確認
+2. **外部参照収集（標準経路では必須）**: design-inspiration-researcher（軽案件はインラインWebSearch）で案件系統に合う外部の参考デザイン2〜3枚を収集。ゼロからのHTML発明は硬く・暗くなる既知の失敗パターン（勝ちパターン=中庄夏祭り2026の「参照忠実再現」）
+3. **候補2〜3案を提示**（各案: 参照/テンプレ×スタイルの組み合わせ・完成イメージの言語化1〜2行）。過去類似案件が design_references にあれば挙げる
+4. 草川が claude.ai/design のカード一覧で見たい場合はプロジェクトURLを案内
+5. 草川選択 → 選ばれた参照画像は案件フォルダに保存 → 案件フォルダ作成: `~/publications/<YYYY-MM_案件名>/`（政治活動物）または drafts（試作）
+
+**参照の著作権ガード**: 参照から踏襲してよいのは**構図・配色・雰囲気・余白比率まで**。イラスト・写真・ロゴ素材そのもののコピー/トレースは禁止。装飾イラストが必要なら `design_system/assets/illustrations/` の自前素材庫（下記Step2）から使う。
 
 ### Step 2: 素材収集
 - 写真: photo-curator（草川本人= ZPERSON=18）。EXIF正規化（`PIL ImageOps.exif_transpose`＋strip）、`sips -Z 1500 -s formatOptions 90` で最適化
 - 文言・実績: **アーカイブgrep必須**（`kusagawa_archive/{01_council,02_publications,05_resources,06_election}` ＋草川独自語彙並列）
 - ロゴ等の定番: eスポーツ協会=`assets/esports_logo/logo_transparent.png` 等、rules.md の定番アセット表参照
+- 装飾イラスト（水彩花・季節モチーフ・キャラ・飾り罫）: `design_system/assets/illustrations/` の自前素材庫から。不足分は同フォルダのプロンプトカードでnano-banana生成を草川に依頼（**いらすとや等フリー素材は政治利用禁止規約があるため使わない**）
 - QR: 必要なら生成（誤り訂正H・ブランド緑）
 
 ### Step 3: 実装 — print-layout-architect
 template.html を案件フォルダへ複製し、print-layout-architect に委譲:
 - 指示に必ず含める: 「design_system/foundations/rules.md 準拠。Chrome headless実測（scrollHeight−clientHeight=0）→PNGを自分でReadして検品→修正のEYES-FIRSTループ。0ツール停止禁止・自分で実測ループ」
+- 指示に必ず含める（2026-07-07追加）: 「**Step1で選ばれた参照画像を最初に自分でReadし、構図・配色・余白比率・タイポ階層を模写する。ゼロからのHTML発明禁止**。適用スタイルレシピ=`foundations/styles/<該当>.html`（配色・装飾語彙はここから）。素材コピーは禁止（構図・配色・雰囲気の踏襲まで）」
 - 切れ字は固有名詞のみ個別 nowrap／lime下線は box-shadow inset
 
 ### Step 4: レビュー — natural-design-reviewer
@@ -94,7 +101,7 @@ template.html を案件フォルダへ複製し、print-layout-architect に委�
 - 認可エラー時: 草川に「/design-login を実行してください」と案内（一回きり）
 
 ## 短縮経路（急ぎ・小物）
-納期当日〜翌日 or 名刺サイズ等の小物: Step1のテンプレ候補は1案即決、Step4は1周のみ、Step7は省略可。**Step5安全ゲートは短縮経路でも削らない**。
+納期当日〜翌日 or 名刺サイズ等の小物: Step1の外部参照収集は省略し**スタイル棚（foundations/styles/）から1案即決**、Step4は1周のみ、Step7は省略可。**Step5安全ゲートは短縮経路でも削らない**。
 
 ## トークン規律（lean常時適用）
 - テンプレ・rules.md・過去参照の読み込みは必要ファイルのみ（design_system全読み禁止）
