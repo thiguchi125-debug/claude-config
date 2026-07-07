@@ -95,3 +95,4 @@ grep -r "@dsCard" ~/.claude/agents/knowledge/design_system/ --include="*.html"
 
 - 2026-07-05 初版構築（foundations 3本／components 4本／templates 4種／種4作品から抽出）
 - 2026-07-07 v2センス強化（v2_sense_upgrade_spec.md）: foundations/styles/ 5種新設（外部良作分析ベース・design-inspiration-researcher）＋assets/illustrations/ 素材庫新設＋design-studio Step1を参照駆動制作に改修
+- 2026-07-07 templates/report_qa_cards/ 昇格（v2初実走＝市政報告レポート2026夏号。西宮型骨格×Q&Aカード・カード1枚push。カード計16枚）
