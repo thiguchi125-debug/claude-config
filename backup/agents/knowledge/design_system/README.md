@@ -35,6 +35,7 @@ design_system/
     poster/                      イベントポスター（中庄夏祭り2026 正本・品質基準）
     report_a4_duplex/            市政報告レポートA4両面（木下v22 正本・インク節約）
     leaflet_trifold/             後援会リーフレットA4両面（選挙v3 正本・ブランド4色）
+    report_kameoka/              市政報告レポートA4両面（**市政報告の正**・かめおか型v2 2026-07-08。design_spec.md同梱・箱ゼロ/明朝×ゴシック/非対称グリッド）
 ```
 
 ## 使い方（3つのファイル種別）
@@ -95,4 +96,5 @@ grep -r "@dsCard" ~/.claude/agents/knowledge/design_system/ --include="*.html"
 
 - 2026-07-05 初版構築（foundations 3本／components 4本／templates 4種／種4作品から抽出）
 - 2026-07-07 v2センス強化（v2_sense_upgrade_spec.md）: foundations/styles/ 5種新設（外部良作分析ベース・design-inspiration-researcher）＋assets/illustrations/ 素材庫新設＋design-studio Step1を参照駆動制作に改修
-- 2026-07-07 templates/report_qa_cards/ 昇格（v2初実走＝市政報告レポート2026夏号。西宮型骨格×Q&Aカード・カード1枚push。カード計16枚）
+- 2026-07-07 templates/report_qa_cards/ 昇格（西宮型Q&Aカード）→ **同日草川却下・2026-07-08削除**
+- 2026-07-08 **templates/report_kameoka/ 昇格（市政報告の正テンプレ）**: 草川本人指定ベンチマーク=広報かめおか翻訳。design_spec.md同梱（罫線囲みゼロ・ベタ帯ゼロ・明朝×ゴシック・非対称グリッド・円形ヌメラル1点・warm paper）。旧qa_cardsはclaude.ai/designからも削除（カード計16枚）
