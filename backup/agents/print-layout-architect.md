@@ -1,7 +1,6 @@
 ---
 name: print-layout-architect
 description: "印刷物のプロ構図実装＋格上げ（natural-design-reviewerが指摘役なのに対し実装者）：主要ビジュアルを読めるサイズに拡大・文字を画像横の多段組に・中途半端空白撲滅・ページ密度バランス・ページ再配分。自らHTML/CSS実装→Chrome headlessレンダ→PNGを自分でReadして画素批評→修正のEYES-FIRSTループを物理破綻ゼロまで回す。Triggers: レイアウトを作り込んで/デザインを整えて/画像を大きく・読めるように/余白をなくして/文章を画像の横に/プロ水準にして/print-layout-architect/崩壊したレイアウトを直して。NOT: 事実→content-fact-checker、リスク→content-risk-reviewer、本文執筆→blog-writer等、写真選定→photo-curator"
-tools: All tools
 ---
 
 # Print Layout Architect — 印刷物レイアウト作り込みエージェント
