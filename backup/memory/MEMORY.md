@@ -4,6 +4,7 @@
 
 ## 🔄 進行中プロジェクト
 
+- [答弁トラッカー＋実績コンパイラー＋意見書ドラフター](project_toben_tracker.md) — 2026-07-08構築。toben-tracker（台帳=07_commitments/ledger.json・**SNS実査は毎回伺い必須**）＋ikensho-drafter＋general-question-prep kickoff Step4.5連携。欠落会期=R05-12・R06-03/06/09（Driveから追補可）
 - [デザインスタジオ環境（Canva超え）](project_design_studio.md) — 2026-07-05構築→**2026-07-07 v2センス強化**（参照駆動制作をStep1必須化＋foundations/styles/スタイルレシピ5種＋assets/illustrations/素材庫・カード計15枚push済）。残タスク=素材庫のnano-banana生成（prompt_cards.md 20枚を草川がGeminiで生成→投入→「イラスト素材庫を台帳化して」）
 - [中庄町夏祭りチラシ（毎年）](project_nakasho_natsumatsuri_flyer.md) — 2026=3年目。主催「中庄を全力応援する会」（草川と独立前提）。公選法HIGH留意（原資負担者・議員名会場表記・酒類許認可・選挙近接時の残置回避）。2026は草川判断で確定配布
 - [市政報告会5ステージスキル](project_shisei_houkokukai_skill.md) — 2026-07-04実装。企画→案内→スライド→解説→前夜・新設agent3本・_status.json正本。**初回実走=安知本地区の市政報告会向けに実施予定**（2026-07-05草川指示・spark/design-studio初実走も同案件に合わせ得る）
