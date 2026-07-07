@@ -22,3 +22,5 @@ metadata:
 - 関連: [[feedback_agent_registry_partial_load]]（レジストリ汚染系の既知障害）
 
 修理: 2026-07-07に print-layout-architect.md から tools行を削除済み（草川承認）。
+
+**追加知見（同日）**: tools行削除後の同一セッション内での再実行も失敗（3回目はツール呼び出し構文が壊れた出力=malformed function callを23秒返して終了・偽のls込み）。**agent定義はセッション開始時に読み込まれるため、修理は新セッションから有効**。同一セッション内では代替agent（print-designer等）で続行するのが正。修理の効果検証は翌セッションのdesign-studio実走で行う。

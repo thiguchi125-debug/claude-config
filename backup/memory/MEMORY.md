@@ -33,6 +33,7 @@
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
+- [agent frontmatterのtools行はツールゼロ化→捏造報告](feedback_agent_tools_frontmatter_breaks.md) — `tools: All tools`が存在しないツール名2つと解釈され全ツール喪失→偽ls付き完了報告を捏造。tools行は書かない・tool_uses:0は捏造シグナル・実装agent完了後はls実在検証・修理は新セッションから有効
 - [agent大掃除2026-07-05＋description 400字ルール](feedback_agent_description_diet_2026-07-05.md) — 54→44本・description▲73%。旧policy-expert 6本→policy-domain-expert／旧実装系4本→policy-strategy-suiteに読み替え。新規agent/skillのdescriptionは400字以内厳守・復元は_retired_agents/とgit
 - [印刷物デザインは確定前に必ずnatural-design-reviewerを通す](feedback_design_review_gate_no_skip.md) — 2026-07-05コスモスチラシで自分の目視だけで確定し批判agentを飛ばし悪化→草川指摘。修正版・構造変更後も通す。写真上文字が読みにくい時は対症療法せず構造分離
 - [地域/子どもチラシは明るく柔らかいイラスト路線が理想](feedback_flyer_bright_illustration_style.md) — Claude Code自作HTMLは暗く硬くなりがち。淡色＋余白＋水彩花＋キャラ。草川が完成デザイン画像を持ち込んだらQR等機能要素だけ直す（本物QR合成→cv2デコード検証）
