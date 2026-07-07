@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<style>
+@page{ size:216mm 303mm; margin:0; }
+*{ margin:0; padding:0; box-sizing:border-box; }
+:root{
+  --paper:#fbfaf6; --ink:#1a1a1a; --ink-sub:#4a4a4a;
+  --green-900:#14432b; --green-700:#1f5a3a; --green-500:#2f7a50; --green-100:#e7efe9;
+  --gold-700:#a8790a; --gold-500:#c89211; --gold-100:#f1e6c8;
+  --wash-green:rgba(31,90,58,.07); --wash-gold:rgba(200,146,17,.10); --hair:rgba(31,90,58,.34);
+  --mincho:"Hiragino Mincho ProN","Yu Mincho",serif;
+  --gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --num:"Helvetica Neue","Arial",sans-serif;
+}
+html,body{ background:#888; }
+.page{ width:216mm; height:303mm; background:var(--paper); position:relative;
+  overflow:hidden; padding:18mm 18mm 0; color:var(--ink);
+  font-family:var(--gothic); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+/* ---- SECTION DOOR ---- */
+.door{ position:relative; display:flex; gap:8mm; align-items:flex-start;
+  background:var(--wash-green); padding:4.5mm 5.5mm 4.5mm; }
+.door .txt{ flex:1; }
+.door .eyebrow{ font-family:var(--gothic); font-weight:700; font-size:9.5pt; letter-spacing:.16em; color:var(--green-700); }
+.door h1{ font-family:var(--mincho); font-weight:600; font-size:21pt; line-height:1.24;
+  letter-spacing:.02em; color:var(--green-900); margin-top:1mm; }
+.door .uline{ width:34mm; height:0; border-top:2px solid var(--gold-500); margin:2mm 0 2.4mm; }
+.door .lead{ font-family:var(--gothic); font-weight:300; font-size:9.6pt; line-height:1.66; color:var(--ink); max-width:96mm; }
+.door .photos{ flex:0 0 54mm; }
+.door .pmain{ width:54mm; height:39mm; overflow:hidden; }
+.door .pmain img{ width:100%; height:100%; object-fit:cover; object-position:50% 34%; display:block; }
+.door .cap{ font-family:var(--gothic); font-size:7.2pt; color:var(--ink-sub); line-height:1.4; margin-top:1mm; width:55mm; text-align:left; }
+
+/* ---- CARD GRID (asymmetric) ---- */
+.grid{ display:flex; gap:9mm; margin-top:6mm; align-items:flex-start; }
+.leftcol{ flex:0 0 98mm; width:98mm; display:flex; flex-direction:column; }
+.badge{ display:inline-block; font-family:var(--gothic); font-weight:700; font-size:8.4pt;
+  letter-spacing:.14em; padding:.9mm 2.6mm; line-height:1.2; }
+.b-adv{ background:var(--green-700); color:#fff; }
+.b-prop{ background:var(--gold-500); color:#fff; }
+.b-q{ background:transparent; color:var(--green-700); box-shadow:inset 0 0 0 1.4px var(--green-700); }
+.b-cont{ background:#6b6f6c; color:#fff; }
+.ctitle{ font-family:var(--mincho); font-weight:600; font-size:13.5pt; line-height:1.28;
+  color:var(--green-900); margin:1.6mm 0 .3mm; letter-spacing:.01em; }
+.qa{ font-family:var(--gothic); font-weight:300; font-size:8.7pt; line-height:1.62; color:var(--ink); }
+.qa .q,.qa .a{ display:block; margin-top:1.4mm; text-align:justify; }
+.qa .tag{ font-family:var(--gothic); font-weight:700; color:var(--green-700); margin-right:1mm; }
+.hitokoto{ font-family:var(--gothic); font-weight:600; font-size:8.7pt; line-height:1.55; color:var(--green-900);
+  padding-top:1.8mm; margin-top:2mm; border-top:1px solid var(--hair); }
+.hitokoto::before{ content:"▶"; color:var(--gold-500); margin-right:1.4mm; font-size:7.6pt; }
+
+/* main card */
+.main{ width:100%; background:var(--wash-gold); padding:4.5mm 5mm; position:relative; }
+.contrast{ clear:both; margin-top:2.6mm; padding-top:2.4mm; border-top:1px solid var(--hair);
+  font-family:var(--gothic); font-weight:300; font-size:8.5pt; line-height:1.6; color:var(--ink); }
+.contrast b{ font-weight:700; color:var(--gold-700); }
+.numeral{ float:right; width:33mm; margin:0 0 2mm 4mm; text-align:center; }
+.numeral .circ{ width:33mm; height:33mm; border-radius:50%; background:var(--green-700); color:#fff;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.numeral .circ b{ font-family:var(--num); font-weight:700; font-size:42pt; line-height:.86; letter-spacing:-.02em; }
+.numeral .circ small{ font-family:var(--gothic); font-size:7pt; margin-top:.8mm; letter-spacing:.02em; }
+.numeral .prev{ font-family:var(--num); font-size:8pt; color:var(--gold-700); font-weight:700; margin-top:1.4mm; line-height:1.3; }
+.numeral .prev span{ font-family:var(--gothic); }
+
+/* side cards */
+.side{ flex:1; }
+.scard{ padding:0; }
+.scard + .scard{ margin-top:2.8mm; border-top:1px solid var(--hair); padding-top:2.8mm; }
+
+/* ---- COLOPHON (vertical, flows below main card) ---- */
+.col-wrap{ margin-top:8mm; padding-left:2mm; display:flex; align-items:flex-start; gap:2mm; }
+.col-label{ font-family:var(--gothic); font-weight:700; font-size:8.4pt; letter-spacing:.22em;
+  color:var(--gold-700); writing-mode:vertical-rl; }
+.colophon{ writing-mode:vertical-rl; font-family:var(--mincho); font-weight:400; font-size:10pt;
+  line-height:1.9; letter-spacing:.05em; color:var(--green-900); height:52mm; }
+.colophon .k{ font-weight:700; color:var(--green-700); }
+
+.foot{ position:absolute; left:18mm; right:18mm; bottom:13mm; z-index:3; }
+.foot .hair{ border-top:1.4px solid var(--hair); margin-bottom:3mm; }
+.foot .row{ display:flex; align-items:center; justify-content:space-between; }
+.foot .disc{ display:inline-block; font-family:var(--gothic); font-weight:700; font-size:9pt;
+  letter-spacing:.1em; color:#fff; background:var(--green-700); padding:1.4mm 3.2mm; }
+.foot .pub{ font-family:var(--gothic); font-size:8.4pt; line-height:1.55; color:var(--ink-sub); margin-left:4mm; }
+.foot .pub b{ font-weight:700; color:var(--ink); font-size:9pt; }
+.foot .qrs{ display:flex; gap:5mm; }
+.foot .qr{ text-align:center; }
+.foot .qr img{ width:15mm; height:15mm; display:block; }
+.foot .qr span{ font-family:var(--gothic); font-size:7pt; color:var(--ink-sub); letter-spacing:.05em; }
+</style></head>
+<body>
+<div class="page">
+
+  <!-- SECTION DOOR -->
+  <div class="door">
+    <div class="txt">
+      <div class="eyebrow">市政の現場から</div>
+      <h1>6月議会、四つのご報告</h1>
+      <div class="uline"></div>
+      <div class="lead">本会議・委員会で取り上げた課題のうち、前に進んだもの・提言したもの・これから追いかけるものを、質問と答弁のかたちでご報告します。（質問はいずれも令和8年6月定例会）</div>
+    </div>
+    <div class="photos">
+      <div class="pmain"><img src="__DOOR__" alt=""></div>
+      <div class="cap">地域の里山整備に参加（2025.6）</div>
+    </div>
+  </div>
+
+  <!-- CARD GRID -->
+  <div class="grid">
+    <!-- LEFT COLUMN : 草津線 提言 card + colophon -->
+    <div class="leftcol">
+    <div class="main">
+      <div class="numeral">
+        <div class="circ"><b>978</b><small>人/日（2024）</small></div>
+        <div class="prev">1987年<span> 4,294人/日</span> →</div>
+      </div>
+      <span class="badge b-prop">提 言</span>
+      <div class="ctitle">草津線直通<br>――亀山から京都へ「乗り換えなし」を</div>
+      <div class="qa">
+        <span class="q"><span class="tag">Q.</span>京都直通を、亀山の交通政策の旗印に。関西本線の輸送密度は1987年度の4,294人/日から、2024年度は978人/日へ（三重県会議資料）。</span>
+        <span class="a"><span class="tag">A.</span>（市長）JR西日本の管轄を越えた難しさに触れつつ、草津線・関西線・紀勢本線の流れを「極めて戦略的に重要」と認識。</span>
+      </div>
+      <div class="contrast">関西本線の輸送密度は、この37年で<b>約4分の1</b>にまで落ち込みました（1987年度 4,294人/日 → 2024年度 978人/日）。乗り換えなしの直通は、その流れを変える一手です。</div>
+      <div class="hitokoto">2025年秋には観光列車「はなあかり」が京都〜関駅を実走しました。道すじは、現実に引けます。</div>
+    </div>
+    <!-- COLOPHON (vertical) -->
+    <div class="col-wrap">
+      <div class="col-label">編集後記</div>
+      <div class="colophon"><span class="k">現場から、確認と提案を。</span>　お困りごとは、いつでもお寄せください。ひとつずつ、確かに動かしてまいります。</div>
+    </div>
+    </div>
+    <!-- SIDE CARDS -->
+    <div class="side">
+      <div class="scard">
+        <span class="badge b-adv">前 進</span>
+        <div class="ctitle">井田川駅前の浸水<br>――原因がようやく特定</div>
+        <div class="qa">
+          <span class="q"><span class="tag">Q.</span>大雨のたびロータリーの一部が冠水。市はどこまで把握し、原因は何か。</span>
+          <span class="a"><span class="tag">A.</span>（建設部長）カメラ調査で、排水流末管がマンホールから約5mの箇所で閉塞と判明。今年度に測量・設計、次年度以降の施工を目指す。</span>
+        </div>
+        <div class="hitokoto">数年来の課題が動き出します。早期の根本改善を継続確認します。</div>
+      </div>
+      <div class="scard">
+        <span class="badge b-q">質 疑</span>
+        <div class="ctitle">太陽光条例<br>――「許可制」を、条例で質す</div>
+        <div class="qa">
+          <span class="a">市内の野立て太陽光は約140件。条例案は一定規模以上に、三重県内の自治体で初めての許可制と住民説明会の開催義務を課すもので、ここは率直に評価します。撤去費用を確実に回収する仕組みと、許可後の検証（報告・立入調査）を宿題として指摘しました。</span>
+        </div>
+        <div class="hitokoto">撤去費用の確実な回収と、許可後の検証を、引き続き確かめます。</div>
+      </div>
+      <div class="scard">
+        <span class="badge b-cont">継 続</span>
+        <div class="ctitle">亀山駅前の送迎環境<br>――2023年の提案から3年</div>
+        <div class="qa">
+          <span class="a">図書館駐車場の送迎活用を2023年6月に提案。市は当時「教委と協議してまいりたい」と答弁したまま3年。利用率の把握と送迎待機スペースの方針を、あらためて質問しました。</span>
+        </div>
+        <div class="hitokoto">まちの毎日に直結する課題。教育民生委員会で追いかけます。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="hair"></div>
+    <div class="row">
+      <div style="display:flex;align-items:center;">
+        <span class="disc">討議資料</span>
+        <span class="pub"><b>発行：草川たくや（亀山市議会議員）</b><br>ご意見・ご相談は、右のご意見箱・公式LINEからいつでもお寄せください。</span>
+      </div>
+      <div class="qrs">
+        <div class="qr"><img src="__QR_IKEN__" alt=""><span>ご意見箱</span></div>
+        <div class="qr"><img src="__QR_LINE__" alt=""><span>公式LINE</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body></html>

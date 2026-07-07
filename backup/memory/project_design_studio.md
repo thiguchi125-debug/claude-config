@@ -40,6 +40,7 @@ claude.ai/design のテンプレート群を「正本」とし、既存デザイ
 - [x] design-studioスキル作成（登録済・トリガー「チラシ作って」等）
 - [x] CLAUDE.md・print-designer/print-layout-architect「テンプレ第一手」追記
 - [x] /design-login → claude.ai/design push 完了（2026-07-05）。プロジェクト「草川たくやデザインシステム」projectId=`b84082a3-d0ff-40d6-a256-308e08910c3c`・20ファイル・カード10枚register済（v1_refinement_spec.mdはローカルのみ）。以後の更新は差分push（list_files→finalize_plan→write_files・wholesale replace禁止）
+- [x] **v2初実走の顛末（2026-07-07〜08・最重要教訓）**: 市政報告レポート試作で「参照駆動」の初版（西宮市議の自作紙面を模写）を草川が「素人以下のAI臭さ。プロのデザイナーが作ったようなデザインが必要」と**却下**。教訓＝**参照の質が出力の天井**（プロ制作物のみ参照可・SKILL.mdに質ゲート恒久追記済み）。草川本人が広報かめおか見開きをベンチマーク指定→design-director仕様書（design_spec_kameoka.md・罫線囲みゼロ/ベタ帯ゼロ/明朝×ゴシック/ジャンプ率4倍+/非対称グリッド/円形ヌメラル1点/warm paper #fbfaf6）→かめおか型v2で組み直し→レビュー合格。**AI臭の正体＝箱の集合・ベタ帯反復・単一ゴシック・均等グリッド・純白+中央寄せ**（仕様書§0に却下理由5点明文化）。以後の印刷物はこの水準が基準。プロ参照は references_pro/（かめおか表紙+見開き・保持）
 - [x] **v2センス強化（2026-07-07・仕様=design_system/v2_sense_upgrade_spec.md）**: 「硬い・暗い・AIっぽい」の根因＝種4作品が全部Claude自作の閉ループと診断。①design-studio Step1を**参照駆動制作**に改修（外部参考2〜3枚収集必須・print-layout-architectに参照Read模写指示・素材コピー禁止ガード）②`foundations/styles/` **スタイルレシピ5種**新設（淡色イラスト/ダーク×ライム/インク節約/写真大胆/和風。外部良作分析ベース・カード5枚push済）③`assets/illustrations/` **イラスト素材庫**新設（nano-bananaプロンプトカード20枚・**草川のGemini生成待ち**・いらすとやは政治利用禁止規約のため不使用・白背景素材はmix-blend-mode:multiplyで合成）
 
 ## 構築時の発見（制作時に効く注意）

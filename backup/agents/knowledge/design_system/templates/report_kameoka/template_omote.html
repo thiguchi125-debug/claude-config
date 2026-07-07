@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<style>
+@page{ size:216mm 303mm; margin:0; }
+*{ margin:0; padding:0; box-sizing:border-box; }
+:root{
+  --paper:#fbfaf6; --ink:#1a1a1a; --ink-sub:#4a4a4a;
+  --green-900:#14432b; --green-700:#1f5a3a; --green-500:#2f7a50; --green-100:#e7efe9;
+  --gold-700:#a8790a; --gold-500:#c89211; --gold-100:#f1e6c8;
+  --wash-green:rgba(31,90,58,.07); --wash-gold:rgba(200,146,17,.10); --hair:rgba(31,90,58,.34);
+  --mincho:"Hiragino Mincho ProN","Yu Mincho",serif;
+  --gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --num:"Helvetica Neue","Arial",sans-serif;
+}
+html,body{ background:#888; }
+.page{ width:216mm; height:303mm; background:var(--paper); position:relative;
+  overflow:hidden; padding:18mm 18mm 0; color:var(--ink);
+  font-family:var(--gothic); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+/* ---------- ZONE A : MASTHEAD ---------- */
+.mast{ display:flex; align-items:flex-start; gap:9mm; }
+.mast .lead-col{ width:18mm; flex:0 0 18mm; }
+.tabflag{ width:18mm; height:26mm; padding-top:2.4mm; background:var(--gold-500); color:#fff;
+  font-family:var(--gothic); font-weight:700; font-size:11pt; letter-spacing:.16em;
+  text-align:center; line-height:1.05; writing-mode:vertical-rl; margin:0 auto;
+  clip-path:polygon(0 0,100% 0,100% 90%,50% 100%,0 90%); }
+.datecol{ margin-top:2.5mm; color:var(--green-700); font-family:var(--num); text-align:center; }
+.datecol .yr{ font-size:9pt; font-weight:700; letter-spacing:.06em; }
+.datecol .sea{ font-family:var(--mincho); font-weight:600; font-size:25pt; line-height:1.0; color:var(--green-900); }
+.datecol .iss{ font-family:var(--gothic); font-size:6.8pt; font-weight:700; color:var(--green-700);
+  margin-top:.6mm; letter-spacing:.02em; line-height:1.3; }
+.mast .name-col{ flex:1; padding-top:1mm; }
+.mast .role{ font-family:var(--gothic); font-weight:700; font-size:10.5pt; color:var(--green-700); letter-spacing:.16em; }
+.mast .title{ font-family:var(--mincho); font-weight:600; font-size:39pt; line-height:1.0;
+  letter-spacing:.05em; color:var(--green-900); margin-top:1mm; }
+.mast .rule{ height:0; border-top:2px solid var(--green-700); margin:2mm 0 1.5mm; }
+.mast .subrow{ display:flex; justify-content:space-between; align-items:center; }
+.mast .subeng{ font-family:var(--num); font-size:8.2pt; letter-spacing:.16em; color:var(--green-500); }
+.pill{ display:inline-block; font-family:var(--gothic); font-weight:700; font-size:9pt;
+  letter-spacing:.1em; color:#fff; background:var(--green-700); padding:1.3mm 3.4mm; }
+
+/* ---------- ZONE B : HERO ---------- */
+.hero{ display:flex; gap:8mm; margin-top:5mm; align-items:flex-start; }
+.hero .photo{ position:relative; flex:0 0 60mm; width:60mm; height:62mm; overflow:hidden; }
+.hero .photo img{ width:100%; height:100%; object-fit:cover; object-position:48% 40%; display:block; }
+.brush{ position:absolute; left:4mm; top:3.5mm; text-align:left; }
+.brush .cap{ font-family:var(--mincho); font-weight:600; font-size:24pt; color:#fff; line-height:1.16;
+  letter-spacing:.03em; text-shadow:0 1px 5px rgba(0,0,0,.55), 0 0 2px rgba(0,0,0,.4); }
+.hero .titlecol{ flex:1; padding-top:2mm; }
+.hero .issue{ font-family:var(--mincho); font-weight:600; font-size:23pt; line-height:1.24;
+  letter-spacing:.02em; color:var(--green-900); }
+.hero .issue em{ font-style:normal; color:var(--gold-700); }
+.hero .lead{ font-family:var(--gothic); font-weight:300; font-size:10.5pt; line-height:1.78;
+  margin-top:5mm; color:var(--ink); }
+
+/* ---------- ZONE C : TOP ARTICLE ---------- */
+.art{ margin-top:5mm; }
+.kicker{ font-family:var(--gothic); font-weight:700; font-size:10pt; letter-spacing:.14em; color:var(--green-700); }
+.h-mincho{ font-family:var(--mincho); font-weight:600; font-size:19.5pt; line-height:1.3;
+  letter-spacing:.01em; color:var(--green-900); margin-top:1.2mm; }
+.h-mincho .sub{ display:block; font-size:14pt; margin-top:.8mm; color:var(--ink); letter-spacing:.01em; }
+.twocol{ column-count:2; column-gap:8mm; margin-top:3mm; }
+.twocol p{ font-family:var(--gothic); font-weight:300; font-size:9pt; line-height:1.62;
+  color:var(--ink); text-align:justify; }
+.twocol p+p{ margin-top:2.2mm; }
+.gmark{ font-family:var(--gothic); font-weight:600; color:var(--gold-700);
+  border-bottom:1.4px solid var(--gold-500); padding-bottom:.2px; }
+
+/* ---------- ZONE D : ARTICLE2 + NUMBER RAIL ---------- */
+.split{ display:flex; gap:9mm; margin-top:4mm; }
+.split .body{ flex:1; }
+.split .body .onecol p{ font-family:var(--gothic); font-weight:300; font-size:9pt; line-height:1.62; text-align:justify; }
+.split .body .onecol p+p{ margin-top:2.2mm; }
+.rail{ flex:0 0 52mm; width:52mm; background:var(--wash-green); padding:3mm 4.5mm 2.2mm; }
+.rail h4{ font-family:var(--gothic); font-weight:700; font-size:9.6pt; letter-spacing:.06em;
+  color:var(--green-700); padding-bottom:1.3mm; border-bottom:1.2px solid var(--hair); }
+.rail .row{ padding:1.2mm 0 1.1mm; border-bottom:1px solid var(--hair); display:flex; align-items:baseline; gap:3mm; }
+.rail .row:last-child{ border-bottom:0; }
+.rail .num{ font-family:var(--num); font-weight:700; font-size:22pt; line-height:.86; color:var(--gold-700);
+  flex:0 0 auto; letter-spacing:-.01em; }
+.rail .num .u{ font-size:9pt; font-weight:700; letter-spacing:0; }
+.rail .lbl{ font-family:var(--gothic); font-weight:400; font-size:7.1pt; line-height:1.3; color:var(--ink-sub); }
+
+/* ---------- ZONE E : FOOTER ---------- */
+.foot{ position:absolute; left:18mm; right:18mm; bottom:13mm; }
+.foot .hair{ border-top:1.4px solid var(--hair); margin-bottom:3mm; }
+.foot .row{ display:flex; align-items:center; justify-content:space-between; }
+.foot .disc{ display:inline-block; font-family:var(--gothic); font-weight:700; font-size:9pt;
+  letter-spacing:.1em; color:#fff; background:var(--green-700); padding:1.4mm 3.2mm; }
+.foot .pub{ font-family:var(--gothic); font-size:8.4pt; line-height:1.55; color:var(--ink-sub); margin-left:4mm; }
+.foot .pub b{ font-weight:700; color:var(--ink); font-size:9pt; }
+.foot .qrs{ display:flex; gap:5mm; }
+.foot .qr{ text-align:center; }
+.foot .qr img{ width:15mm; height:15mm; display:block; }
+.foot .qr span{ font-family:var(--gothic); font-size:7pt; color:var(--ink-sub); letter-spacing:.05em; }
+</style></head>
+<body>
+<div class="page">
+
+  <!-- ZONE A MASTHEAD -->
+  <div class="mast">
+    <div class="lead-col">
+      <div class="tabflag">市政報告</div>
+      <div class="datecol">
+        <div class="yr">2026</div>
+        <div class="sea">夏</div>
+        <div class="iss">6月議会<br>報告号</div>
+      </div>
+    </div>
+    <div class="name-col">
+      <div class="role">亀山市議会議員</div>
+      <div class="title">草川たくや</div>
+      <div class="rule"></div>
+      <div class="subrow">
+        <div class="subeng">KUSAKAWA TAKUYA ── KAMEYAMA CITY COUNCIL REPORT</div>
+        <div class="pill">声を、チカラに。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZONE B HERO -->
+  <div class="hero">
+    <div class="photo">
+      <img src="__HERO__" alt="">
+      <div class="brush">
+        <div class="cap">家庭へ、<br>前もって。</div>
+      </div>
+    </div>
+    <div class="titlecol">
+      <div class="issue">6月議会、<br>四つの現場を<br><em>問いました。</em></div>
+      <div class="lead">6月15日の本会議一般質問で、部活動・給食・浸水対策・交通と産業の未来を問いました。その中身を抜粋してご報告します。</div>
+    </div>
+  </div>
+
+  <!-- ZONE C TOP ARTICLE -->
+  <div class="art">
+    <div class="kicker">特集｜部活動の地域展開</div>
+    <div class="h-mincho">「12月末までに、来年の情報を家庭へ」
+      <span class="sub">――明言を引き出しました</span>
+    </div>
+    <div class="twocol">
+      <p>令和9年秋以降、休日の学校部活動は行わない方針が決まっています。私は「誰が支えるのか・中身をどう伝えるのか・受け皿は足りるのか・いつまでに決まるのか」の順で質問しました。あわせて、①情報を一か所で見られる常設プラットフォーム（先進例＝四日市市「みんなのブカツ」）、②検討会に財政部局を入れた全庁体制、③前年のうちに情報を届ける逆算スケジュールを提案しています。</p>
+      <p>教育長は「本年<span class="gmark">12月末をめど</span>に、保護者へ令和9年秋以降の取組を説明できるよう制度設計する」と答弁。市長も「保護者の財政面・送迎等の負担はしっかりサポートする」「<span class="gmark">全庁挙げて対応</span>する」と明言しました。文化部（吹奏楽）の場所・楽器・指導者の課題も指摘し、「関係団体と協議中」との答弁を得ています。</p>
+    </div>
+  </div>
+
+  <!-- ZONE D ARTICLE2 + RAIL -->
+  <div class="split">
+    <div class="body">
+      <div class="kicker">中学校給食</div>
+      <div class="h-mincho" style="font-size:16.5pt;">「足りる・足りない」を数字で語れるように</div>
+      <div class="onecol" style="margin-top:2.6mm;">
+        <p>全員給食の開始は、大きな前進です。その上で私は、量と栄養が本当に足りているかを、本会議と6月18日の教育民生委員会で質問しました。独自のSNSアンケート（80件）では「少し少ないと感じる」が46％。国の基準は中学生1食あたり約830kcalですが、市の答弁は「平均カロリーの数字は持ち合わせていない」というものでした。</p>
+        <p>委員会では、亀山中・中部中の4〜5月の残食率が4.3％（業者報告）であることも引き出しました。横浜市が導入する条件付きの補食を「第三の道」として提案し、教育民生委員会で継続してフォローします。</p>
+        <p>まずは実際のカロリーを測り、献立で「見える化」すること。数字で語れてこそ、次の一手が打てます。</p>
+      </div>
+    </div>
+    <div class="rail">
+      <h4>数字で見る 6月議会</h4>
+      <div class="row"><div class="num">46<span class="u">%</span></div><div class="lbl">給食「少し少ない」<br>独自SNSアンケート・80件</div></div>
+      <div class="row"><div class="num">4.3<span class="u">%</span></div><div class="lbl">残食率<br>亀山中・中部中 4〜5月・業者報告</div></div>
+      <div class="row"><div class="num" style="font-size:16.5pt;">830<span class="u">kcal</span></div><div class="lbl">国基準の中学生1食<br>平均・約</div></div>
+      <div class="row"><div class="num">5<span class="u">回</span></div><div class="lbl">部活動の在り方検討会<br>R6.1〜R7年度</div></div>
+    </div>
+  </div>
+
+  <!-- ZONE E FOOTER -->
+  <div class="foot">
+    <div class="hair"></div>
+    <div class="row">
+      <div style="display:flex;align-items:center;">
+        <span class="disc">討議資料</span>
+        <span class="pub"><b>発行：草川たくや（亀山市議会議員）</b><br>ご意見・ご相談は、右のご意見箱・公式LINEからいつでもお寄せください。</span>
+      </div>
+      <div class="qrs">
+        <div class="qr"><img src="__QR_IKEN__" alt=""><span>ご意見箱</span></div>
+        <div class="qr"><img src="__QR_LINE__" alt=""><span>公式LINE</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body></html>
