@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  :root{
+    --green:#1f7a3a; --deep:#0e4d27; --gold:#c89211; --ink:#222; --rule:#cfe6d4;
+  }
+  html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif; color:var(--ink); }
+  .page{
+    width:794px; height:1123px; padding:28px 34px 20px; overflow:hidden;
+    display:flex; flex-direction:column; background:#fff; position:relative;
+  }
+  /* ---- top bar ---- */
+  .topbar{ display:flex; align-items:center; gap:14px; border-bottom:3px solid var(--deep); padding-bottom:8px; }
+  .label{ border:2px solid var(--deep); color:var(--deep); font-weight:800; font-size:16px;
+          letter-spacing:.32em; padding:4px 8px 4px 14px; }
+  .issue{ color:var(--deep); font-weight:700; font-size:13.5px; }
+  .pub{ margin-left:auto; font-size:11px; color:#555; }
+  /* ---- hero ---- */
+  .hero{ display:flex; gap:18px; margin-top:14px; align-items:stretch; }
+  .photo{ width:190px; height:248px; object-fit:cover; object-position:center 18%;
+          border:3px solid var(--deep); flex:none; }
+  .heroR{ flex:1; display:flex; flex-direction:column; }
+  .role{ font-size:16px; color:var(--green); font-weight:700; letter-spacing:.04em; }
+  .name{ font-size:56px; font-weight:800; color:var(--deep); line-height:1.02; letter-spacing:.05em; margin-top:2px; }
+  .name small{ font-size:28px; }
+  .slogan{ display:inline-block; align-self:flex-start; background:var(--deep); color:#fff;
+           font-weight:700; font-size:15px; letter-spacing:.14em; padding:5px 16px; margin-top:11px; }
+  .lead{ margin-top:12px; border:1.5px solid var(--rule); border-left:5px solid var(--green);
+         padding:12px 15px; font-size:13px; line-height:1.78; color:#1c1c1c; }
+  /* ---- section band ---- */
+  .band{ background:var(--deep); color:#fff; font-weight:800; font-size:15.5px; letter-spacing:.01em;
+         padding:9px 15px; margin-top:15px; display:flex; align-items:center; gap:10px; }
+  .band::before{ content:""; width:11px; height:11px; background:var(--gold); flex:none; }
+  .sub{ font-size:14.5px; font-weight:800; color:#161616; margin:11px 0 5px; }
+  .sub::before{ content:"■ "; color:var(--green); }
+  .body{ font-size:12.4px; line-height:1.84; color:#222; }
+  .body p{ margin-bottom:8px; }
+  .mark{ font-weight:800; color:var(--deep); box-shadow:inset 0 -0.5em 0 #f2e2b4;
+         -webkit-box-decoration-break:clone; box-decoration-break:clone; }
+  /* ---- article1 row with numeric rail ---- */
+  .row{ display:flex; gap:16px; margin-top:2px; }
+  .row .col{ flex:1; }
+  .numbox{ width:246px; flex:none; border:1.5px solid var(--green); align-self:flex-start; }
+  .numtitle{ background:var(--deep); color:#fff; font-weight:800; font-size:13px; letter-spacing:.04em; padding:7px 12px; }
+  .numrow{ display:flex; align-items:baseline; gap:10px; padding:9px 12px; border-bottom:1px solid #dbe8dd; }
+  .numrow:last-child{ border-bottom:none; }
+  .num{ font-size:27px; font-weight:800; color:var(--gold); line-height:1; min-width:86px; }
+  .num u{ font-size:14px; text-decoration:none; }
+  .numlab{ font-size:11px; color:#333; line-height:1.38; }
+  /* ---- article2 two column ---- */
+  .body2{ column-count:2; column-gap:22px; font-size:12.3px; line-height:1.86; margin-top:6px; text-align:justify; }
+  .body2 p{ margin-bottom:8px; }
+  /* ---- footer ---- */
+  .footer{ margin-top:auto; }
+  .footwrap{ border-top:2.5px solid var(--deep); padding-top:9px; display:flex; align-items:center; gap:14px; }
+  .disc{ border:1.5px solid var(--deep); color:var(--deep); font-weight:800; font-size:12px; letter-spacing:.1em; padding:4px 11px; flex:none; }
+  .pubinfo{ font-size:11.3px; color:#333; line-height:1.5; flex:1; }
+  .pubinfo b{ color:var(--deep); font-size:12px; }
+  .qrs{ display:flex; gap:12px; flex:none; }
+  .qr{ text-align:center; font-size:9px; color:#333; line-height:1.3; }
+  .qr img{ width:58px; height:58px; display:block; margin:0 auto 2px; border:1px solid #ddd; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <div class="label">市政報告</div>
+    <div class="issue">2026年 夏号 ／ 6月議会報告</div>
+    <div class="pub">【2026年7月 発行】</div>
+  </div>
+
+  <div class="hero">
+    <img class="photo" src="__H1__" alt="草川たくや">
+    <div class="heroR">
+      <div class="role">亀山市議会議員</div>
+      <div class="name">草川 <small>たくや</small></div>
+      <div class="slogan">声を、チカラに。</div>
+      <div class="lead">
+        6月15日の本会議一般質問で、<b>部活動・給食・浸水対策・交通と産業の未来</b>を問いました。
+        現場の声を市政に届け、答弁として引き出した「約束」を、その中身とともに抜粋してご報告します。
+      </div>
+    </div>
+  </div>
+
+  <div class="band">部活動の地域展開 ―― 「12月末までに来年の情報を家庭へ」を引き出す</div>
+  <div class="sub">「誰が支え・どう伝え・受け皿は足りるか・いつ決まるか」を順に質しました</div>
+  <div class="row">
+    <div class="col body">
+      <p>令和9年秋以降、休日の学校部活動は行わない方針が決まっています。私は「誰が支えるのか」「中身をどう伝えるのか」「受け皿は足りるのか」「いつまでに決まるのか」の順で質問しました。あわせて、<b>①情報を一か所で見られる常設プラットフォーム</b>（先進例＝四日市市「みんなのブカツ」）、<b>②検討会に財政部局を入れた全庁体制</b>、<b>③前年のうちに情報を届ける逆算スケジュール</b>の3点を提案しています。</p>
+      <p>教育長は「本年<span class="mark">12月末をめど</span>に、保護者へ令和9年秋以降の取組を説明できるよう制度設計する」と答弁。市長も、保護者の財政面・送迎等の負担は「しっかりサポートする」「<span class="mark">全庁挙げて対応</span>する」と明言しました。文化部（吹奏楽）の場所・楽器・指導者の課題も指摘し、「関係団体と協議中」との答弁を得ています。</p>
+    </div>
+    <div class="numbox">
+      <div class="numtitle">数字で見る 6月議会</div>
+      <div class="numrow"><div class="num">46<u>%</u></div><div class="numlab">給食が「少し少ない」と感じる<br>（独自SNSアンケート・80件）</div></div>
+      <div class="numrow"><div class="num">4.3<u>%</u></div><div class="numlab">残食率（亀山中・中部中／<br>4-5月・業者報告）</div></div>
+      <div class="numrow"><div class="num">830<u>kcal</u></div><div class="numlab">国基準の中学生1食<br>（平均・約）</div></div>
+      <div class="numrow"><div class="num">5<u>回</u></div><div class="numlab">部活動の在り方検討会<br>（R6.1〜R7年度）</div></div>
+    </div>
+  </div>
+
+  <div class="band">中学校給食 ―― 「足りる・足りない」を数字で語れるように</div>
+  <div class="sub">全員給食のスタートを評価した上で、量と栄養を問いました</div>
+  <div class="body2">
+    <p>全員給食の開始は、大きな前進です。その上で私は、量と栄養が本当に足りているかを、本会議と6月18日の教育民生委員会で質問しました。</p>
+    <p>独自のSNSアンケート（80件）では、「少し少ないと感じる」が<span class="mark">46%</span>。国の基準は中学生1食あたり約830kcalですが、市の答弁は「平均カロリーの数字は持ち合わせていない」というものでした。まずは実測と見える化を求めています。</p>
+    <p>委員会では、亀山中・中部中の4〜5月の残食率が<span class="mark">4.3%</span>（業者報告）であることも引き出しました。あわせて、横浜市が導入する条件付きの補食（主食中心・衛生ルールを定める方式）を「第三の道」として提案し、教育民生委員会で継続してフォローしていきます。</p>
+  </div>
+
+  <div class="footer">
+    <div class="footwrap">
+      <div class="disc">討議資料</div>
+      <div class="pubinfo">
+        <b>発行：草川たくや（亀山市議会議員）</b><br>
+        ご意見・ご相談は、右のご意見箱・公式LINEからいつでもお寄せください。
+      </div>
+      <div class="qrs">
+        <div class="qr"><img src="__QR_IKEN__" alt="ご意見箱QR">ご意見箱</div>
+        <div class="qr"><img src="__QR_LINE__" alt="公式LINE QR">公式LINE</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
