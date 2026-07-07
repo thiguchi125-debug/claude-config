@@ -112,6 +112,7 @@
 - [選挙リーフレットv3 ファイル群](reference_senkyo_leaflet_v3_files.md) — 制作物の入口。HTML/PDF/画像/再生成コマンド
 - [朝の街頭活動場所9拠点](reference_morning_street_locations.md) — 阿野田公民館/みずきが丘・菅内・亀田・関・和田交差点/田村ミニストップ/商工会議所前/川合9号線前
 - [一般質問 制作物のDrive保存先](reference_ippan_shitsumon_seisaku_drive.md) — `ZZ_一般質問制作/R0X/YYYY-MM_◯月議会/`（01通告書/02原稿/03写真/04完成品）
+- [Discordチャンネル起動フラグ](reference_discord_channel_launch_flag.md) — 正=`claude --channels plugin:discord@claude-plugins-official`（`:discord`区切りは受信全捨て）。診断はmcp-logs-plugin-discord-discordの「Channel notifications skipped」
 
 ## 🏛 主要DB／システム参照（呼出時のみ詳細を取りに行く）
 
