@@ -1,0 +1,10 @@
+{
+  "meta": {
+    "version": 1,
+    "description": "草川たくや 答弁・約束台帳（正本）。1約束=1レコード。スキーマはSCHEMA.md。書込はtoben-tracker経由・草川承認後のみ。",
+    "created": "2026-07-08",
+    "last_updated": "2026-07-08",
+    "notion_mirror_page_id": null
+  },
+  "records": []
+}
