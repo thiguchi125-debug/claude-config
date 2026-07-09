@@ -13,6 +13,8 @@ metadata:
 
 **SNS実査は毎回伺い必須（草川指示・恒久）**: Instagram/Threads/XのChrome実査は実行のたびに明示承認を取る。無断でログイン済みセッションに触らない。読み取り専用。
 
+**Todoist回収タスクは自動提案しない（2026-07-09草川指示・恒久）**: 台帳由来のリマインドをこちらからTodoistに載せる提案は不要（初回提案2件も削除済）。登録は草川の明示依頼時のみ。回収の締めは会期kickoff連携（general-question-prep Step4.5）に一本化。草川の本ニーズは「予定イベントからの逆算で漏れタスクを拾う」方向（→逆算スキル別途構築）。
+
 **ikensho-drafter**（agent）: 99条議会意見書＋市への要望書。様式知識=`agents/knowledge/ikensho/ikensho_yoshiki.md`。名義整理→アーカイブ接地→安全ゲート→txt納品。
 
 **kickoff連携**: general-question-prep SKILL.mdにStep 4.5追加（ledger.jsonから今会期の回収候補を自動提示）。
