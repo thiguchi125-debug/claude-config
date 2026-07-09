@@ -4,7 +4,7 @@
 
 ## 🔄 進行中プロジェクト
 
-- [AIくさかわ（AI代役ショート動画）](project_ai_kusakawa.md) — 2026-07-09設計承認。イラストキャラ×ElevenLabs本人声クローン×ローカルffmpeg合成で完成動画まで自動・AI明記必須。設計書=~/.claude/scripts/ai-kusakawa/docs/。次=実装計画→草川手番（録音3-5分＋ElevenLabs登録＋キャラ生成）
+- [AIくさかわ（AI代役ショート動画）](project_ai_kusakawa.md) — 2026-07-09実装完了（13テストPASS・E2E動画目視済）。skills/ai-kusakawa＋scripts/ai-kusakawa。**草川手番待ち**=①ElevenLabs登録（SETUP_ELEVENLABS.md・聴取サンプル5本）②nano-bananaキャラ生成（prompt_cards.md）。それまでdevプレビューのみ・投稿不可
 - [gyakusanスキル（イベント逆算・準備漏れ拾い）](project_gyakusan_skill.md) — 2026-07-09構築。Calendar＋Notion3DB＋Todoist突合・60日二層フィルタ・提案止まり→承認分のみtd.py登録・月曜ohayo自動・却下は_declined.json。**toben-trackerのTodoist自動提案は草川指示で恒久撤去済**。初回実運用フィードバック待ち
 - [答弁トラッカー＋実績コンパイラー＋意見書ドラフター](project_toben_tracker.md) — 2026-07-08構築。toben-tracker（台帳=07_commitments/ledger.json・**SNS実査は毎回伺い必須**）＋ikensho-drafter＋general-question-prep kickoff Step4.5連携。欠落会期=R05-12・R06-03/06/09（Driveから追補可）
 - [📷写真ストックシステム](project_photo_stock_system.md) — 2026-07-08構築。Googleフォトのアルバム「📷議員活動」に草川が2タップ選別→月一「写真ストック整理して」でClaudeがChrome回収→Drive📷写真ストック整理・台帳・wishlist照合。**草川手番=アルバム作成が未**。全自動同期は容量負担で不採用

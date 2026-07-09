@@ -21,4 +21,8 @@ metadata:
 
 **草川の手番**: ①クリア独り語り録音3〜5分＋ElevenLabsアカウント（Starter $5/月から）②nano-bananaキャラ生成（プロンプトカードはClaude作成・口3態＋表情差分）。
 
-**状況**: 設計承認済→実装計画待ち。関連: [[project-photo-post-skill]] [[feedback_flyer_bright_illustration_style]]
+**状況**: 2026-07-09実装完了（全13テストPASS・devモードE2E動画目視済）。スキル=~/.claude/skills/ai-kusakawa/・エンジン=~/.claude/scripts/ai-kusakawa/。**草川手番待ち2つ**: ①声=ElevenLabs登録（手順=docs/SETUP_ELEVENLABS.md・聴取サンプル5本=~/outputs/ai-kusakawa/_voice_candidates/）②キャラ=nano-banana生成（カード=assets/character/prompt_cards.md・参照写真3枚Desktop配置済）。それまで仮キャラ＋devモードでプレビュー可・投稿不可。
+
+**実装メモ**: このMacのffmpeg 8.1.1はass/subtitles/drawtextフィルタ非搭載→字幕は「Chrome headlessで透過PNGシート1回レンダ→ffmpeg crop＋overlay」方式（subtitles.py/compose.py）。口パクはRMS 2しきい値＋3フレーム中央値平滑。実キャラ投入時はconfig.pyのMOUTH_POS/MOUTH_SIZEだけ調整。
+
+関連: [[project-photo-post-skill]] [[feedback_flyer_bright_illustration_style]]

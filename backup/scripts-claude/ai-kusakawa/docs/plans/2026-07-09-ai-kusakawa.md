@@ -940,6 +940,16 @@ chmod 600 ~/.config/elevenlabs/*
 
 ---
 
+## 実装時の逸脱記録（2026-07-09 実行済・全タスク完了）
+
+- **字幕方式変更**: このMacのffmpeg 8.1.1はass/subtitles/drawtextフィルタ非搭載と実行時に判明。
+  ASS焼き込み（Task 3/5の当初設計）を「Chrome headlessで全フレーズ透過PNGシート1回レンダ→
+  ffmpeg側でcrop＋enable=between overlay」方式に変更（subtitles.build_subs_html/render_subs_sheet、
+  compose.subs_overlay_chain）。テストも同時に置換済。字幕帯y1240-1460・INTRO_SECオフセットの契約は不変。
+- **口領域座標**: 仮キャラの顔円（中心540,720・r200）に収めるため MOUTH_POS=(440,750)・
+  MOUTH_SIZE=(200,130) に変更（当初410,760/260×170は顎からはみ出すため）。
+- 最終結果: 全13テストPASS・devモードE2E動画をフレーム抽出目視で確認済。
+
 ## Self-Review 結果
 
 - **Spec coverage**: 設計書§1パイプライン=Task 2-5,7,8／§2初期構築=Task 6,8,9／§3合成エンジン仕様=Task 2-5／§4 AI明記ルール=Task 6(intro/badge焼き込み)+Task 8(SKILL.mdガードルール節)／§5コスト・初回テスト=Task 9／§6スコープ外=どのタスクにも含めていない。ギャップなし。
