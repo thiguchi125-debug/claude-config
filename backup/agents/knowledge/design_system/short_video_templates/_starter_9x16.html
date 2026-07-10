@@ -1,0 +1,38 @@
+<!doctype html>
+<!--
+  ショート動画 挿入画像 9:16 スターターテンプレ（正本構造）
+  正本ルール: short-video-image-designer.md L72/L136（2026-07-04草川承認）
+  ▼この3ゾーン固定構造を必ず守る（中身の量が変わっても帯位置は不変）:
+    .top    = y0    - y1240  … 主役・見出し・キーメッセージ
+    帯      = y1240 - y1460  … 字幕セーフ帯。空ける（要素を置かない）
+    .bottom = y1460 - y1920  … CTA・出典など従
+  ▼禁止: body に justify-content:center を書かない（帯位置がズレる元凶）
+  ▼制作後: check_subtitle_band.py を必ず通す（🚨FAILなら詰め直す）
+  草川カラー: #c7ff4a(ライム) / #1f5a3a(中緑) / #0f3d27(濃緑) / #f3efe4(生成り)
+-->
+<html lang="ja"><head><meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1920px; }
+  body {
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans",sans-serif;
+    background:#f3efe4; color:#0f3d27; position:relative; overflow:hidden;
+    /* ← ここに justify-content:center を書かない！ */
+  }
+  .top { position:absolute; top:0; left:0; right:0; height:1240px;
+         display:flex; flex-direction:column; align-items:center; padding:120px 90px 0; }
+  /* 字幕セーフ帯 y1240-1460：要素を置かない */
+  .bottom { position:absolute; top:1460px; left:0; right:0; bottom:0;
+            display:flex; flex-direction:column; align-items:center; padding:44px 90px 0; }
+  .cap { position:absolute; bottom:70px; left:0; right:0; text-align:center;
+         font-size:34px; font-weight:700; color:#5b6b5f; }
+</style></head>
+<body>
+  <div class="top">
+    <!-- 主役・見出し・キーメッセージ（帯の上で完結させる） -->
+  </div>
+  <div class="bottom">
+    <!-- CTA・問いかけなど従の要素 -->
+  </div>
+  <div class="cap"><!-- 出典（任意） --></div>
+</body></html>

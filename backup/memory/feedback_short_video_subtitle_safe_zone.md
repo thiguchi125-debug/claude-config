@@ -23,4 +23,6 @@ metadata:
 
 **How to apply**: short-video-image-designer / HTML→PNG説明図制作 / nanobanana-prompt-designer 起動時に「字幕帯 y1240〜1460 を固定座標で空ける・全画像共通・中央寄せ禁止」を構図制約として必ず指示。レンダ後のRead採点で3枚の区切り線が同一y座標に揃っているか確認。[[feedback_short_video_infographic_html_to_png]]の草川カラーと併用。
 
+**機械ゲート化（2026-07-10・再発防止／[[feedback_system_closing_loops_rot]]の締め）**: ルールがagentのmd内にしか無く、agentを経由しない手書きHTML制作ルートでは効かず違反が再発（2026-07-06図書館100万人4枚で発覚＝a2/a4が禁止の`justify-content:center`使用・全4枚が帯に主役テキスト流入）。対策として**帯検証は人の目視でなくスクリプトで自動判定**する。①`~/.claude/agents/knowledge/design_system/short_video_templates/check_subtitle_band.py`＝PNGのy1240-1460に前景画素が閾値(1.5%)超あれば🚨FAIL・exit1（複数枚の帯重心yバラつきも警告）。制作後は必ず`python3 check_subtitle_band.py *.png`を通す。②同dirの`_starter_9x16.html`＝3ゾーン固定構造の正本スターター（bodyに中央寄せを書けない土台）。新規挿入画像はこれをコピーして作る。どの制作ルート（agent経由でも手書きでも）でもこのゲートを通す。
+
 **安っぽさ回避7信号**（同セッションで確立・[[feedback_short_video_image_designer_agent]]の補強）: ①ベタ塗り→多ストップ繊細グラデ ②質感ゼロ→**全画面に微細グレイン/ノイズ(feTurbulence)** ③2トーン陰影→3〜4トーン＋接地の暗がり＋一貫光源 ④平面→空気遠近＋多層レイヤー ⑤記号的人物=最大の弱点→有機ベジェ・布のしわ・二次ディテールで棒人間感を消す ⑥無加工の縁→内側シャドウ・ビネット・エッジ微光 ⑦素な構図→意図的非対称・焦点階層。情景型（人物なし・b1黄昏校庭が良見本）が最も「画」になりやすく、フラット図形の人物カットが最も安く見える。
