@@ -48,6 +48,7 @@ description: 毎朝「おはよう」「おはよ」「morning」「朝のブリ
 - `_pipeline_status.json` の `discord_intake` キーを確認。`error` なら🚨表示＋「原本はDiscordに保全済・`~/.claude/scripts/sns-routine/_intake.log` 確認→手動再実行 `~/.claude/scripts/sns-routine/nightly_intake.sh`」を案内。
 - **キーが存在しない、または `updated` が26h超** → `🚨 discord-intake夜間ジョブが動いていない可能性（launchctl list | grep discord-intake 確認→kickstart）` を表示（drive-pipelineが2:30にstatusを全書き換えするため、3:10のジョブが走らなかった夜はキー自体が消える）。
 - `~/.claude/scripts/sns-routine/_notion_queue.jsonl` が存在し1行以上あれば、**queue flush**を実行: 各行の `dest` に従いNotionへ保存（市民意見→c2c34bd8- / 未分類→391cf503-a68f-8191-b218-e80fdc7aedeb / ledger→当日nichijo日次ログ / critical→草川に内容提示して指示を仰ぐ）→ 保存済み行を削除 → 件数をブリーフィングに表示。
+- 日曜朝は `sns_audit` キーも確認。`error`なら🚨＋`~/.claude/scripts/sns-routine/_audit_report.md` の内容を表示（未処理メッセージ=迷子候補）。
 
 ## §2 昨夜のまとめ（Notion 2call）
 

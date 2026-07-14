@@ -10,7 +10,8 @@
 
 ## 構成ファイル
 
-- `discord_api.py` — Discord REST薄ラッパー（fetch/react/post/advance）
+- `discord_api.py` — Discord REST薄ラッパー（fetch/react/post/advance/audit）
+- `sunday_audit.sh` — 日曜監査（迷子ゼロ締め工程。`discord_api.py audit 7`で直近7日の生メッセージ全件取得→草川本人の未リアクションメッセージを検出。0件なら`sns_audit ok`、N件なら`sns_audit error`＋`_audit_report.md`に詳細出力。AUDIT_FLOOR（2026-07-14 00:00 JST）より古い履歴＝運用開始前カーソル初期化スキップ分は対象外。Claude起動なし・トークンゼロ。launchd `com.kusagawa.sns-audit`（日曜3:20）。2026-07-14新規）
 - `nightly_intake.sh` — 毎晩実行される本体（3ステージ順次実行。詳細は上記）
 - `triage_prompt.md` — ステージ1振り分けプロンプト（SNS便・タスク提案への短い返信はreact okのみで保存対象外にするルール2026-07-14追記）
 - `pack_prompt.md` — ステージ2候補パック生成プロンプト（voice-dna圧縮・リスク8軸・禁止表現・PF別体裁を生成ガイド節に、アーカイブgrep接地済み候補を本日の候補節に書く。2026-07-14新規）
