@@ -44,6 +44,10 @@ description: 毎朝「おはよう」「おはよ」「morning」「朝のブリ
 
 ニュースRoutine死活は§6で判定（当日レコード0件＋最終登録26h超 → `🚨 ニュース収集Routineが落ちている可能性: https://claude.ai/code/routines/`）。
 
+### Discord投げ込み監視（SNSルーティンv2 Phase1・2026-07-14〜）
+- `_pipeline_status.json` の `discord_intake` キーを確認。`error` なら🚨表示＋「原本はDiscordに保全済・`~/.claude/scripts/sns-routine/_intake.log` 確認→手動再実行 `~/.claude/scripts/sns-routine/nightly_intake.sh`」を案内。
+- `~/.claude/scripts/sns-routine/_notion_queue.jsonl` が存在し1行以上あれば、**queue flush**を実行: 各行の `dest` に従いNotionへ保存（市民意見→c2c34bd8- / 未分類→391cf503-a68f-8191-b218-e80fdc7aedeb / ledger→当日nichijo日次ログ / critical→草川に内容提示して指示を仰ぐ）→ 保存済み行を削除 → 件数をブリーフィングに表示。
+
 ## §2 昨夜のまとめ（Notion 2call）
 
 oyasumiデイリーサマリを取得する。**⚠️ notion-searchはセマンティック検索で「最新順」を保証しない**（2026-07-06に7/4を最新と誤認し7/5を取りこぼす誤報が発生）。必ず以下の手順で**昨夜の日付を名指しで**引く：
