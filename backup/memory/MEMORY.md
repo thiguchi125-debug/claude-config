@@ -4,6 +4,8 @@
 
 ## 🔄 進行中プロジェクト
 
+- [content-pipelineに発信ビジュアル統合](project_content_pipeline_visual_expansion.md) — 2026-07-14拡張。記事URL＋写真→ブログ→安全ゲート→Notion→**サムネ(1200×630)＋SNS7種＋インスタReel(9:16)**を1パス。ブログモードは自動判定→提案。レシピ正本=skills/content-pipeline/references/visual-assets-playbook.md。サムネは着手前に元写真有無を確認
+
 - [後援会入会フォームシステム](project_koenkai_intake_form.md) — 2026-07-14稼働。URL1本→フォーム→GAS自動返信（LINE誘導＋紹介テンプレ）→名簿CSV(00_名簿区画)→週次「後援会取り込み」でSubstack CSV。正本README=Drive 06_フォーム運用配下。告示後(10/18)拡散停止テーブルあり
 
 - [SNS発信ルーティンv2（Discord投げ込み→朝夕プッシュ）](project_sns_routine_v2.md) — Phase1-3完了2026-07-14。①DM投げ込み→毎晩3:10振り分け ②news-briefing v4=7カテゴリ8〜15件 ③朝6:45/夕16:30に候補メニュー→返信で**ブログ+4PF納品**（全ローカルlaunchd・クラウドはdiscord接続不可で撤回・返信文法に「出し直して」あり）。次=Phase4週次深掘り+学習ループ
@@ -43,6 +45,7 @@
 - [agent frontmatterのtools行はツールゼロ化→捏造報告](feedback_agent_tools_frontmatter_breaks.md) — `tools: All tools`が存在しないツール名2つと解釈され全ツール喪失→偽ls付き完了報告を捏造。tools行は書かない・tool_uses:0は捏造シグナル・実装agent完了後はls実在検証・修理は新セッションから有効
 - [agent大掃除2026-07-05＋description 400字ルール](feedback_agent_description_diet_2026-07-05.md) — 54→44本・description▲73%。旧policy-expert 6本→policy-domain-expert／旧実装系4本→policy-strategy-suiteに読み替え。新規agent/skillのdescriptionは400字以内厳守・復元は_retired_agents/とgit
 - [サムネ・SNS画像・図解は最初からプロ級和文タイポで組む](feedback_thumbnail_pro_typography_default.md) — palt約物詰め＋カギ括弧ぶら下げ(text-indent負)＋Hiragino Sans実ウェイトW8/W9＋見出しlh1.16＋不要影削除。「後でプロ級にして」の往復を防ぐ。勝負所はdesign-director
+- [サムネ制作は元になる草川の写真を先に求める](feedback_thumbnail_ask_base_photo_first.md) — アイキャッチ/OGP着手の第一手＝base写真の有無を1回確認。ありならphoto-curatorで写真主役、無し選択ならタイポ＋モチーフ（[[feedback_thumbnail_pro_typography_default]]）。EYES-FIRST共通
 - [印刷物デザインは確定前に必ずnatural-design-reviewerを通す](feedback_design_review_gate_no_skip.md) — 2026-07-05コスモスチラシで自分の目視だけで確定し批判agentを飛ばし悪化→草川指摘。修正版・構造変更後も通す。写真上文字が読みにくい時は対症療法せず構造分離
 - [地域/子どもチラシは明るく柔らかいイラスト路線が理想](feedback_flyer_bright_illustration_style.md) — Claude Code自作HTMLは暗く硬くなりがち。淡色＋余白＋水彩花＋キャラ。草川が完成デザイン画像を持ち込んだらQR等機能要素だけ直す（本物QR合成→cv2デコード検証）
 - [自作スキルは ~/.claude/skills/ のみ（plugins cache禁止）](feedback_skills_home_not_plugin_cache.md) — 2026-07-03プラグイン自動更新でcache同居の8スキル消失→git 41ab43bから復旧。sync-to-git.shにガット検知ガード実装済
