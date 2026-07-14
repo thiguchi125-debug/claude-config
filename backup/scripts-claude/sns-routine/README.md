@@ -10,6 +10,8 @@
 - `update_status.py` — `_pipeline_status.json` の `discord_intake` キー更新
 - `_state.json` — `dm_channel_id` と `last_processed_id`（カーソル。全件処理成功時のみ前進）
 - `_notion_queue.jsonl` — Notion書込不能時のフォールバック退避（ohayoが翌朝flush）
+- `_pending_tasks.jsonl` — タスク化候補の提案控え（草川のDiscord返信「①OK」等と翌夜突合→Todoist登録後に消し込み）
+- `test_discord_api.py` — discord_api.py のオフラインunittest（`python3 test_discord_api.py -v`）
 - `_intake.log` / `_launchd_stdout.log` / `_launchd_stderr.log` — 実行ログ
 
 ## launchd スケジューリング
