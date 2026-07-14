@@ -25,7 +25,7 @@ fi
 echo "[$(TS)] $COUNT new messages (pending=$PENDING) -> claude -p" >> "$LOG"
 cd "$HOME"
 if "$CLAUDE_BIN" -p "$(cat "$DIR/triage_prompt.md")" \
-    --allowedTools "Read,Write,Edit,Bash(python3 $DIR/discord_api.py *),Bash(python3 $HOME/.claude/scripts/todoist/td.py *),mcp__claude_ai_Notion__*" \
+    --allowedTools "Read,Write,Edit,Bash(python3 $DIR/discord_api.py *),Bash(python3 $HOME/.claude/scripts/todoist/td.py *),mcp__claude_ai_Notion__*,mcp__claude_ai_Todoist__*" \
     >> "$LOG" 2>&1; then
   python3 "$DIR/update_status.py" discord_intake ok "${COUNT}件処理"
   echo "[$(TS)] done" >> "$LOG"
