@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Discord REST薄ラッパー（SNSルーティンv2 Phase1+3）
+"""Discord REST薄ラッパー（SNSルーティンv2 Phase1+3・ローカル便Phase3拡張）
 Token: ~/.claude/channels/discord/.env の DISCORD_BOT_TOKEN
 State: ./_state.json（env SNS_ROUTINE_STATE で上書き可）
 Usage:
   discord_api.py fetch                    新着（草川本人のみ・昇順）JSON出力。カーソルは進めない
+  discord_api.py read <after_msg_id>      after_msg_id以降の全メッセージ（bot含む・is_userフラグで区別）を
+                                           昇順JSON出力。読み取り専用・カーソル/リアクションには一切触れない
   discord_api.py react <msg_id> <ok|warn|eye>
-  discord_api.py post "<text>"
+  discord_api.py post "<text>"            送信成功時、作成メッセージidをstdoutに1行出力する
   discord_api.py advance <msg_id>         全件処理成功後にのみ呼ぶ（単調増加）
   discord_api.py audit [days]             直近days日分（既定7）の生メッセージをbefore/afterページングで全件取得し、
                                            草川本人メッセージのうちreactionsが1つも付いていないものをJSON出力（日曜監査用）。
@@ -115,6 +117,24 @@ def fetch():
         ensure_ascii=False, indent=1))
 
 
+def read(after_id):
+    """after_id以降の全メッセージ（bot含む）を昇順JSON出力。読み取り専用（カーソル・リアクション不変更）。
+    is_user=True のものが草川本人の発言（authorがbot自身のものはis_user=False）。"""
+    ch = dm_channel_id()
+    q = "?limit=50"
+    if after_id:
+        q += "&after=" + str(after_id)
+    msgs = _call("GET", "/channels/%s/messages%s" % (ch, q)) or []
+    out = [{
+        "id": m["id"],
+        "ts": m["timestamp"],
+        "content": m["content"],
+        "is_user": m.get("author", {}).get("id") == USER_ID,
+    } for m in msgs]
+    out.sort(key=lambda m: int(m["id"]))
+    print(json.dumps(out, ensure_ascii=False, indent=1))
+
+
 def react(msg_id, kind):
     ch = dm_channel_id()
     emoji = urllib.parse.quote(EMOJI[kind])
@@ -123,7 +143,10 @@ def react(msg_id, kind):
 
 def post(text):
     ch = dm_channel_id()
-    _call("POST", "/channels/%s/messages" % ch, {"content": text[:1900]})
+    resp = _call("POST", "/channels/%s/messages" % ch, {"content": text[:1900]})
+    if resp and resp.get("id"):
+        print(resp["id"])
+    return resp
 
 
 def audit(days=7):
@@ -167,6 +190,8 @@ if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "fetch":
         fetch()
+    elif cmd == "read":
+        read(sys.argv[2] if len(sys.argv) > 2 else None)
     elif cmd == "react":
         react(sys.argv[2], sys.argv[3])
     elif cmd == "post":

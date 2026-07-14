@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.kusagawa.sns-morning-reply</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/kusakawatakuya/.local/bin/kusagawa-pipeline-bash</string>
+    <string>/Users/kusakawatakuya/.claude/scripts/sns-routine/sns_leg.sh</string>
+    <string>morning_reply</string>
+  </array>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/kusakawatakuya/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>HOME</key>
+    <string>/Users/kusakawatakuya</string>
+  </dict>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>7</integer>
+    <key>Minute</key>
+    <integer>30</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/kusakawatakuya/.claude/scripts/sns-routine/_sns_legs_launchd_stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/kusakawatakuya/.claude/scripts/sns-routine/_sns_legs_launchd_stderr.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>
