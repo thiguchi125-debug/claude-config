@@ -159,7 +159,7 @@ https://www.threads.com/@kusagawatakuya?igshid=NTc4MTIwNjQ2YQ==
 
 https://depth-interview-kusagawa.vercel.app/interview/kameyama_shisei_zenpan
 
-※本システムは安野貴博氏（参院議員/AIエンジニア）が開発したdepth interviewのプログラムを元にしたプロトタイプの試験的な利用になります。有賀啓介氏（コンサルタント）のご支援で実施しています。
+※本システムは安野貴博氏（参議院議員/AIエンジニア）が開発したdepth interviewのプログラムを元にしたプロトタイプの試験的な利用になります。有賀啓介氏（コンサルタント）のご支援で実施しています。
 ※個人情報や機密情報の入力は禁止です。
 ```
 

@@ -100,7 +100,7 @@ SNS投稿原稿そのものを📣SNS投稿管理DBへも残し、投稿履歴�
 - 「ai-interview-sns-poster」
 
 ## クレジット必須
-- 安野貴博氏（参院議員/AIエンジニア）depth interview ベース
+- 安野貴博氏（参議院議員/AIエンジニア）depth interview ベース
 - 有賀啓介氏（コンサルタント）支援
 - 個人情報禁止注意書き
 - 参加URL: `https://depth-interview-kusagawa.vercel.app/interview/kameyama_sougoukeikaku_bousai`
