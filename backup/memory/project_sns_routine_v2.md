@@ -72,9 +72,25 @@ news-briefingをv4化：4カテゴリ5〜7件（亀山中心）→**7カテゴ�
 - 実走テスト済（8件・重複ゼロ・WebSearch要約の偽記事3件をハルシネーション検証ゲートが検出排除）
 - `活用=SNS`フラグがPhase 3朝夕プッシュの発信候補選定の参照元になる
 
+## Phase 3（完了・2026-07-14）朝夕SNSプッシュ
+
+**運用の形**: 朝6:45／夕16:30にDiscord DMへ発信候補メニュー2〜3本（🎬動画フラグ付き）→草川が返信→7:30／17:15の返信便が**ブログ（アンカー記事）＋X/Threads/Instagram/Facebookの5点セット**を生成してDM納品＋📣投稿管理DB保存＋drafts保存（D1）。
+
+- **実行基盤＝全部ローカルMac launchd**（当初クラウドRoutine設計だったが、**クラウド実行環境がdiscord.com接続を組織ポリシーで403ブロック**することが実走で判明→ローカル化。Macはsleep=0常時稼働で問題なし。トークンも`~/.claude/channels/discord/.env`のみ＝Notion設定ページからは撤去済み）
+- **launchd 6本**: com.kusagawa.sns-morning-push(6:45)／sns-morning-reply(7:30)／sns-evening-push(16:30)／sns-evening-reply(17:15)／sns-audit(日曜3:20)／discord-intake(3:10・Phase1)。実体=`~/.claude/scripts/sns-routine/sns_leg.sh <leg名>`＋`leg_*.md`プロンプト4本
+- **返信文法**: 「1で」「2、〇〇だけ直して」「1と3両方」「1を動画で」「パス」「出し直して」（切り口一新の再提案・実走フィードバックで追加）「別テーマ:〇〇」「N 承知で」（HIGHリスク承諾）。返信なし=生成ゼロで繰越
+- **候補優先順位**: ①投げ込み（📮候補パック）＞②ニュースSNSフラグ（📰ダイジェスト）＞③💡ストック
+- **固定ページ**: 📮候補パック=39dcf503-a68f-8101-beac-c2883ed87e70（夜間Mac第2ステージが全置換・生成ガイド=voice-dnaコア/リスク8軸/禁止表現/PF+ブログ体裁）／📮SNS便ステータス=39dcf503-a68f-811b-bdd3-cce4e418187a（メニュー・処理済みID・動画リクエスト・履歴）／🔧設定=39dcf503-a68f-811c-8238-f94a57bf4513（トークンは撤去済み・ID控えのみ）
+- **動画**: 「Nを動画で」→即時台本+撮影メモDM→夜間Mac第3ステージ（_video_queue.txt経由）がshort-video-createフル制作
+- **監査**: 日曜3:20にDiscord7日履歴vs リアクション突合（floor=2026-07-14以前は対象外）→`sns_audit`キー→ohayoが日曜朝表示
+- **クラウドRoutine 4本は作成済みだが無効化**（trig_01LHVnzjsr5ohwLWRbRXecWw／01BReLaJQcMdC74RcfGj395q／01N7rnm9BUzhh7XfKXEoMKZa／01VBgiUKQVpFbH1kzmExFdpS・claude.ai/code/routinesで削除可・プロンプト保全=_routines_phase3/）
+- **E2E実績（2026-07-14）**: メニュー配信→「どれも微妙」→聞き返し→「出し直して」×2→議会実績接地の再提案→「1」選択→体育館空調0%（2024年12月議会）に接地した4PF納品＋📣保存まで本番経路で完走。ブログ標準装備は草川フィードバックで即日追加
+- **禁止表現の学び**: voice-dna抽出物に「届かない最後の100m」（距離比喩=禁止）が混入していた→pack_prompt.mdに「voice-dnaコアにも禁止表現を含めない」明文化＋距離比喩を全面禁止に格上げ
+- 便を止めたい時: `launchctl bootout gui/$(id -u)/com.kusagawa.sns-<leg名>`（再開はbootstrap）
+
 ## Phase進捗
 
 - **Phase 1（完了 2026-07-14）**: Discord投げ込み→夜間自動振り分け
 - **Phase 2（完了 2026-07-14）**: ニュース収集v2 — 国政・6ドメイン・県政・選挙（news-briefing v4）
-- **Phase 3（次）**: 朝夕SNSプッシュ（クラウド・Discord Webhook/RESTポーリング・候補パック）
-- **Phase 4**: 週次深掘り＋学習ループ
+- **Phase 3（完了 2026-07-14）**: 朝夕SNSプッシュ（ローカルlaunchd・ブログ+4PF・出し直し対応・日曜監査）
+- **Phase 4（次）**: 週次深掘り（土曜・上位2テーマ→🎯政策・質問ネタDB）＋学習ループ（選択/パス傾向の候補選定への反映）
