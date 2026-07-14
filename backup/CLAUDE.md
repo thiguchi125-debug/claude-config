@@ -53,7 +53,7 @@
   - HIGH以上のリスク検出時は草川にASK_USERで問いかけ、本人判断を仰いでから保存・投稿。
   - CRITICAL検出時は即停止し草川に通知。AIの判断で進めない。
 - **ブログ作成の省力フロー（必須・トークン節約のため）**:
-  - **D1 完全保管原則**: blog-writer の出力は**一字一句そのまま** `~/.claude/projects/-Users-kusakawatakuya/drafts/<日付>_<テーマ>_v1.md` に Write する。冒頭挨拶・タイトル形式・末尾の定型フッター（◆ご意見箱／◆公式LINE／◆Threads）を**省略しない**。後段で「フッター抜け」が発覚すると追加save呼び出し（30K+トークン）が発生する。
+  - **D1 完全保管原則**: blog-writer の出力は**一字一句そのまま** `~/.claude/projects/-Users-kusakawatakuya/drafts/<日付>_<テーマ>_v1.md` に Write する。冒頭挨拶・タイトル形式・末尾の定型フッター（◆ご意見箱／◆公式LINE／◆Threads／◆AIインタビュー[https://depth-interview-kusagawa.vercel.app/interview/kameyama_shisei_zenpan]）を**省略しない**。後段で「フッター抜け」が発覚すると追加save呼び出し（30K+トークン）が発生する。
   - **D2 承認後保存原則**: fact-checker / risk-reviewer の指摘がある状態で Notion 保存しない。**草川承認 → 修正 → 1回でNotion保存** の流れにする。「とりあえず v1 保存 → 後で v2 上書き」は往復2回で80K+トークン無駄になる。
   - **D3 タイトル50字以内**: blog-writer.md の規定通り。`【草川たくや 亀山市】〜——〜` パターンで50字オーバー時は短縮版を提示してから save。
   - **D4 PDFバイナリは pdftotext**: WebFetchがPDFを「バイナリで読めない」と返した場合、必ず `pdftotext -layout <path> -` で抽出してから検証。「読めない＝ハルシネーション疑い」と判定するのは禁止（2026-05-04 内閣府shiryo2.pdfで実際に発生した誤判定）。

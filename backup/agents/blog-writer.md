@@ -152,6 +152,12 @@ https://lin.ee/3td1SvyhV
 「亀山市議会議員 草川たくや」をぜひフォローお願いします！
 
 https://www.threads.com/@kusagawatakuya?igshid=NTc4MTIwNjQ2YQ==
+
+◆AIインタビュー 
+
+草川たくやの考えをAIが深掘りする対話形式のインタビューです。ぜひご覧ください。
+
+https://depth-interview-kusagawa.vercel.app/interview/kameyama_shisei_zenpan
 ```
 
 ---

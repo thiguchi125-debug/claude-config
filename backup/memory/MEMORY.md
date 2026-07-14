@@ -60,6 +60,7 @@
 - [コンテンツ生成は常時lean full-agentがデフォルト](feedback_content_generation_default_flow.md) — 主担当agent省略禁止、lean毎回適用、目標90〜170K
 - [「次の議会で追及」型表現を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞禁止、「継続的フォロー」「対話を重ねる」で表現
 - [issues返信は記録不要](feedback_issues_response_no_log.md) — 「賛成」「反対」冒頭の意見はNotion保存/タスク化省略、返信3案だけ
+- [ブログ定型フッターに◆AIインタビュー常設](feedback_blog_footer_ai_interview_link.md) — Threadsの後にdepth-interview-kusagawa（kameyama_shisei_zenpan）リンク追加。blog-writer/normal実装済
 - [コピペ前提原稿は納品形式を先に伺う](feedback_copypaste_draft_delivery.md) — コードブロックは左余白が入る。既定はtxt書出し→open -e（TextEdit全選択コピー）。「余白入らない」と断定しない
 - [Notion内部リンクは mention-page タグ必須](feedback_notion_link_deeplink.md) — `<mention-page url="...">タイトル</mention-page>`（markdownリンクはモバイルでブラウザに飛ぶ）
 - Notion update_content/DSLの罠 — [落とし穴](feedback_notion_update_content_pitfalls.md)一括置換サイレント失敗・fetch検証必須／[罠v2](feedback_notion_update_content_pitfalls_v2.md)timeout後も適用済・即リトライ禁止／[DSLステータスフィルタ書込不可](feedback_notion_dsl_status_filter_limitation.md)
