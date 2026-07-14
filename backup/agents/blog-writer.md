@@ -145,14 +145,6 @@ voice-dna.md §0 に基づく、草川たくやらしさの核心となる構成
 
 https://lin.ee/3td1SvyhV
 
-◆Threads 
-
-最新の亀山市の市政情報などさまざまな情報を発信しています。
-
-「亀山市議会議員 草川たくや」をぜひフォローお願いします！
-
-https://www.threads.com/@kusagawatakuya?igshid=NTc4MTIwNjQ2YQ==
-
 ◆AIインタビュー 
 
 あなたの声をAIが対話形式で深掘りするインタビューです。伺ったご意見は草川たくやのもとに届き、市政に活かしていきます。AIを活用した「新しい民主主義」を、ぜひ体験してください。
@@ -161,6 +153,14 @@ https://depth-interview-kusagawa.vercel.app/interview/kameyama_shisei_zenpan
 
 ※本システムは安野貴博氏（参議院議員/AIエンジニア）が開発したdepth interviewのプログラムを元にしたプロトタイプの試験的な利用になります。有賀啓介氏（コンサルタント）のご支援で実施しています。
 ※個人情報や機密情報の入力は禁止です。
+
+◆Threads 
+
+最新の亀山市の市政情報などさまざまな情報を発信しています。
+
+「亀山市議会議員 草川たくや」をぜひフォローお願いします！
+
+https://www.threads.com/@kusagawatakuya?igshid=NTc4MTIwNjQ2YQ==
 ```
 
 ---
