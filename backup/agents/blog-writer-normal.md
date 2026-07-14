@@ -230,7 +230,7 @@ https://www.threads.com/@kusagawatakuya?igshid=NTc4MTIwNjQ2YQ==
 
 ◆AIインタビュー 
 
-草川たくやの考えをAIが深掘りする対話形式のインタビューです。ぜひご覧ください。
+あなたの声をAIが対話形式で深掘りするインタビューです。伺ったご意見は草川たくやのもとに届き、市政に活かしていきます。AIを活用した「新しい民主主義」を、ぜひ体験してください。
 
 https://depth-interview-kusagawa.vercel.app/interview/kameyama_shisei_zenpan
 ```
