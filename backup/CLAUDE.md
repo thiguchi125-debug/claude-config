@@ -90,6 +90,7 @@
 | 〇〇地区の報告会準備 / 報告会の企画・案内レポート・スライド・解説・前夜チェック | **shisei-houkokukai**（5ステージ制プロデュース・進捗は_status.json正本・急ぎは短縮経路） |
 | チラシ作って / ポスター作って / リーフレット作って / 印刷物作って / デザイン制作 | **design-studio**（design_systemテンプレ候補提示→print-layout-architect実装→natural-design-reviewer→安全ゲート→PDF→保存→テンプレ昇格還元。勝負所のみdesign-director追加） |
 | 逆算チェック / 準備漏れ確認 / 漏れタスクチェック / イベント逆算 | **gyakusan**（Calendar＋Notion＋Todoist突合・60日先まで二層逆算→不足タスクのみ提案→承認分だけtd.py登録。月曜ohayoで自動候補表示） |
+| 後援会取り込み | **後援会入会フォーム週次バッチ**（正本手順=Drive `06_フォーム・アンケート運用/後援会入会フォーム/README.md`・回答シート新着→名簿マスタCSV更新→Substack用import.csv→Todoist締め登録→「インポートした」で消込。詳細memory=project_koenkai_intake_form） |
 
 詳細トリガーは Notion「スキルトリガー一覧」「エージェントトリガー一覧」（MEMORY.md参照）。
 

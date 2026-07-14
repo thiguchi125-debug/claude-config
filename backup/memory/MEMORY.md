@@ -4,7 +4,9 @@
 
 ## 🔄 進行中プロジェクト
 
-- [SNS発信ルーティンv2（Discord投げ込み→朝夕プッシュ）](project_sns_routine_v2.md) — Phase1完了2026-07-14（DM投げ込み→毎晩3:10自動振り分け・✅⚠️👀レシート・タスクは提案→返信→登録）。次=Phase2ニュース収集v2→Phase3朝夕プッシュ
+- [後援会入会フォームシステム](project_koenkai_intake_form.md) — 2026-07-14稼働。URL1本→フォーム→GAS自動返信（LINE誘導＋紹介テンプレ）→名簿CSV(00_名簿区画)→週次「後援会取り込み」でSubstack CSV。正本README=Drive 06_フォーム運用配下。告示後(10/18)拡散停止テーブルあり
+
+- [SNS発信ルーティンv2（Discord投げ込み→朝夕プッシュ）](project_sns_routine_v2.md) — Phase1+2完了2026-07-14（DM投げ込み→毎晩3:10自動振り分け・✅⚠️👀レシート／news-briefing v4=7カテゴリ8〜15件・国政/ドメイン/県政/選挙・Gmail接続でiJAMP復活・ロールバック=_routine_news_v3_backup.md）。次=Phase3朝夕プッシュ
 - [AIくさかわ（AI代役ショート動画）](project_ai_kusakawa.md) — 2026-07-09実装完了（13テストPASS・E2E動画目視済）。skills/ai-kusakawa＋scripts/ai-kusakawa。**草川手番待ち**=①ElevenLabs登録（SETUP_ELEVENLABS.md・聴取サンプル5本）②nano-bananaキャラ生成（prompt_cards.md）。それまでdevプレビューのみ・投稿不可
 - [gyakusanスキル（イベント逆算・準備漏れ拾い）](project_gyakusan_skill.md) — 2026-07-09構築。Calendar＋Notion3DB＋Todoist突合・60日二層フィルタ・提案止まり→承認分のみtd.py登録・月曜ohayo自動・却下は_declined.json。**toben-trackerのTodoist自動提案は草川指示で恒久撤去済**。初回実運用フィードバック待ち
 - [答弁トラッカー＋実績コンパイラー＋意見書ドラフター](project_toben_tracker.md) — 2026-07-08構築。toben-tracker（台帳=07_commitments/ledger.json・**SNS実査は毎回伺い必須**）＋ikensho-drafter＋general-question-prep kickoff Step4.5連携。欠落会期=R05-12・R06-03/06/09（Driveから追補可）
