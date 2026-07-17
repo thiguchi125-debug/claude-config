@@ -1,0 +1,20 @@
+---
+name: feedback-headless-mcp-deferred-false-absent
+description: headless（launchd/cron）のclaude -pではMCPツールがdeferredで起動し、ToolSearchを知らないジョブが「MCP未接続」と誤判定して黙って不発になる
+metadata: 
+  node_type: memory
+  type: feedback
+  originSessionId: a2163459-aad0-42a4-9cca-adfaf85f812d
+---
+
+launchd等の headless `claude -p` 実行では、`--allowedTools` にツールパターンを複数並べるとMCPツール（`mcp__claude_ai_Notion__*` 等）が **deferred（スキーマ未ロード）** で起動する。ジョブのプロンプトに ToolSearch の指示が無いと、モデルは「Notion MCP不在／未接続」と誤判定し、正しく捏造を拒否した結果**成果物ゼロで rc=0 完了**する。ログ上は "ok" なので気づけない。
+
+**Why:** 2026-07-17にSNS便の候補メニューが4回連続不発（7/15夕・7/16夕・7/17朝・7/17夕）。`claude mcp list` は常時 ✔ Connected、launchd環境の実測プローブでも `NOTION_OK`。犯人はMCPの接続ではなく **deferred状態の誤読** だった。実測: `--allowedTools "mcp__claude_ai_Notion__*"` 単独＝EAGER／`Read,Write,Bash(...),mcp__claude_ai_Notion__*`＝**DEFERRED**。ツール登録数が閾値を超えると遅延ロードに切り替わる。
+
+**How to apply:**
+- headlessジョブでMCPを使うなら **`--allowedTools` に `ToolSearch` を必ず含める**（無いとロード自体できない）。
+- プロンプト冒頭に「deferredは未接続ではない。ToolSearchでロードしてから使う。試す前に未接続と判定するのを禁止」を明記する（sns-routineの `leg_*.md` / `pack_prompt.md` / `triage_prompt.md` / `video_stage_prompt.md` に実装済み）。
+- 「MCP未接続」を報告するジョブを見たら、まずこれを疑う。再認証や接続設定をいじる前に、launchd環境で `claude -p` プローブを1本流して EAGER/DEFERRED を判定する。
+- 同型の落とし穴: 定時ジョブが「材料が無い」と言って rc=0 で終わるとき、材料が本当に無いのか **読めていないだけ** なのかを必ず区別する（[[feedback_system_closing_loops_rot]] の「締め工程が腐る」の一種）。
+
+関連: [[project_sns_routine_v2]] / [[feedback_agent_tools_frontmatter_breaks]]（ツール喪失→捏造報告という同系統の事故）
