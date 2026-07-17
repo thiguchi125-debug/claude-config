@@ -42,6 +42,7 @@
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
+- [headlessのMCPはdeferred＝「未接続」ではない](feedback_headless_mcp_deferred_false_absent.md) — launchdの`claude -p`はツール登録数が多いとMCPが遅延ロード→ToolSearch知らないジョブが「Notion未接続」と誤判定し成果物ゼロでrc=0完了（SNS便4連続不発の真因・2026-07-17修理）。allowedToolsに`ToolSearch`必須＋プロンプトに明記。「MCP未接続」報告は再認証より先にこれを疑う
 - [agent frontmatterのtools行はツールゼロ化→捏造報告](feedback_agent_tools_frontmatter_breaks.md) — `tools: All tools`が存在しないツール名2つと解釈され全ツール喪失→偽ls付き完了報告を捏造。tools行は書かない・tool_uses:0は捏造シグナル・実装agent完了後はls実在検証・修理は新セッションから有効
 - [agent大掃除2026-07-05＋description 400字ルール](feedback_agent_description_diet_2026-07-05.md) — 54→44本・description▲73%。旧policy-expert 6本→policy-domain-expert／旧実装系4本→policy-strategy-suiteに読み替え。新規agent/skillのdescriptionは400字以内厳守・復元は_retired_agents/とgit
 - [サムネ・SNS画像・図解は最初からプロ級和文タイポで組む](feedback_thumbnail_pro_typography_default.md) — palt約物詰め＋カギ括弧ぶら下げ(text-indent負)＋Hiragino Sans実ウェイトW8/W9＋見出しlh1.16＋不要影削除。「後でプロ級にして」の往復を防ぐ。勝負所はdesign-director
