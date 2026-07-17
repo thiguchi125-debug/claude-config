@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.kusagawa.probe-launchd</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/kusakawatakuya/.local/bin/kusagawa-pipeline-bash</string>
+    <string>/Users/kusakawatakuya/.claude/scripts/sns-routine/_probe_launchd.sh</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/kusakawatakuya/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>HOME</key>
+    <string>/Users/kusakawatakuya</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
