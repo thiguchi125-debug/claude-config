@@ -13,7 +13,7 @@ Usage:
                                            草川本人メッセージのうちreactionsが1つも付いていないものをJSON出力（日曜監査用）。
                                            AUDIT_FLOOR より古いメッセージ（カーソル初期化前の意図的スキップ分）は対象外。
 """
-import json, os, sys, time, urllib.parse, urllib.request
+import json, os, socket, sys, time, urllib.error, urllib.parse, urllib.request
 from datetime import datetime
 
 BASE = "https://discord.com/api/v10"
@@ -35,17 +35,50 @@ def _token():
     raise RuntimeError("DISCORD_BOT_TOKEN not found in " + ENV_PATH)
 
 
+# 一時的な障害（起床直後のDNS未起動・回線瞬断・Discord側5xx/429）のリトライ設定。
+# 3:10のlaunchd起動はMacが寝ている/起きた直後に当たることがあり、
+# getaddrinfo が即failして夜間ジョブが丸ごと落ちる事故が実際に発生した（2026-07-17 03:11）。
+_RETRY_MAX = 5              # 初回＋4回の再試行
+_RETRY_BACKOFF = [5, 15, 45, 90]  # 秒。合計 約2.5分まで粘る
+_SLEEP = time.sleep         # テストから差し替え可能
+
+
+def _is_transient(err):
+    """再試行する価値のある一時障害か（恒久的なトークン誤り等は即座に諦める）"""
+    if isinstance(err, urllib.error.HTTPError):
+        # 429=レート制限, 5xx=Discord側の一時障害。401/403/404は再試行しても無駄
+        return err.code == 429 or 500 <= err.code < 600
+    if isinstance(err, urllib.error.URLError):
+        return True         # DNS未解決・接続不可・タイムアウト等
+    return isinstance(err, (socket.timeout, socket.gaierror, ConnectionError))
+
+
 def _call(method, path, body=None):
-    req = urllib.request.Request(BASE + path, method=method)
-    req.add_header("Authorization", "Bot " + _token())
-    req.add_header("User-Agent", "kusagawa-sns-routine/1.0")
     data = None
     if body is not None:
-        req.add_header("Content-Type", "application/json")
         data = json.dumps(body, ensure_ascii=False).encode("utf-8")
-    with urllib.request.urlopen(req, data, timeout=30) as r:
-        raw = r.read()
-        return json.loads(raw) if raw else None
+
+    last_err = None
+    for attempt in range(_RETRY_MAX):
+        req = urllib.request.Request(BASE + path, method=method)
+        req.add_header("Authorization", "Bot " + _token())
+        req.add_header("User-Agent", "kusagawa-sns-routine/1.0")
+        if body is not None:
+            req.add_header("Content-Type", "application/json")
+        try:
+            with urllib.request.urlopen(req, data, timeout=30) as r:
+                raw = r.read()
+                return json.loads(raw) if raw else None
+        except Exception as err:
+            if not _is_transient(err) or attempt == _RETRY_MAX - 1:
+                raise
+            last_err = err
+            wait = _RETRY_BACKOFF[min(attempt, len(_RETRY_BACKOFF) - 1)]
+            sys.stderr.write(
+                "[discord_api] 一時障害のため再試行 %d/%d (%ds待機): %s\n"
+                % (attempt + 1, _RETRY_MAX - 1, wait, err))
+            _SLEEP(wait)
+    raise last_err
 
 
 def load_state():

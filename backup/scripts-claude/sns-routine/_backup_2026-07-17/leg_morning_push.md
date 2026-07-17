@@ -2,23 +2,6 @@
 
 毎朝6:45にSNS発信候補の見出し2〜3案を草川のDiscord DMへ届ける。**先に、昨夕便メニューへの深夜返信が未処理なら返信処理を実行**してから、朝のメニューを送る。
 
-## 🔌 MCPツールの扱い（最優先・スキップ禁止）
-
-このジョブは launchd の headless 実行のため、`mcp__claude_ai_Notion__*` は **deferred（スキーマ未ロード）の状態で起動する**。
-**deferred は「未接続」ではない。** スキーマが見えないだけで、ロードすれば通常どおり使える。
-
-Notionを触る前に、必ず1回だけ ToolSearch を呼んでスキーマをロードすること:
-
-```
-ToolSearch query="select:mcp__claude_ai_Notion__notion-fetch,mcp__claude_ai_Notion__notion-search,mcp__claude_ai_Notion__notion-update-page,mcp__claude_ai_Notion__notion-create-pages,mcp__claude_ai_Notion__notion-query-database-view"
-```
-
-**ToolSearch を試す前に「Notion未接続」「MCP不在」と判定して候補生成を中止することを禁止する。**
-ToolSearch でロードした後、実際に notion-fetch を呼んでエラーが返った場合にのみ、本物の接続障害として扱ってよい。
-
-> 経緯（2026-07-17）: この誤判定により朝夕便が4回連続（7/15夕・7/16夕・7/17朝・7/17夕）でメニュー不発になった。
-> `claude mcp list` では常時 ✔ Connected であり、ToolSearch を呼べば到達できることを実測で確認済み。
-
 # 共通セットアップ（毎回最初に実行）
 
 1. Bashで `TZ=Asia/Tokyo date '+%Y-%m-%d (%a) %H:%M'` を実行し本日・曜日・時刻を取得。

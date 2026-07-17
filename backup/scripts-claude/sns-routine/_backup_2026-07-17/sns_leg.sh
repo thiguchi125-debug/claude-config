@@ -27,9 +27,7 @@ esac
 
 STATUS_KEY="sns_${LEG_ARG}"
 PROMPT_FILE="$DIR/leg_${LEG_ARG}.md"
-# ToolSearch は必須: headless実行ではNotion MCPがdeferredで起動するため、
-# ToolSearchでスキーマをロードしないと「Notion未接続」と誤判定してメニューが不発になる（2026-07-17修理）
-ALLOWED_TOOLS="Read,Write,Bash(python3 $DIR/discord_api.py *),Bash(grep *),Bash(date *),ToolSearch,mcp__claude_ai_Notion__*"
+ALLOWED_TOOLS="Read,Write,Bash(python3 $DIR/discord_api.py *),Bash(grep *),Bash(date *),mcp__claude_ai_Notion__*"
 
 echo "[$(TS)] ---- sns_leg ${LEG_ARG} start ----" >> "$LOG"
 

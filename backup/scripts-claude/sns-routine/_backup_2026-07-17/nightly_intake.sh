@@ -26,7 +26,7 @@ else
   echo "[$(TS)] $COUNT new messages (pending=$PENDING) -> claude -p" >> "$LOG"
   cd "$HOME"
   if "$CLAUDE_BIN" -p "$(cat "$DIR/triage_prompt.md")" \
-      --allowedTools "Read,Write,Edit,Bash(python3 $DIR/discord_api.py *),Bash(python3 $HOME/.claude/scripts/todoist/td.py *),ToolSearch,mcp__claude_ai_Notion__*,mcp__claude_ai_Todoist__*" \
+      --allowedTools "Read,Write,Edit,Bash(python3 $DIR/discord_api.py *),Bash(python3 $HOME/.claude/scripts/todoist/td.py *),mcp__claude_ai_Notion__*,mcp__claude_ai_Todoist__*" \
       >> "$LOG" 2>&1; then
     python3 "$DIR/update_status.py" discord_intake ok "${COUNT}件処理"
     echo "[$(TS)] stage1 done" >> "$LOG"
@@ -44,7 +44,7 @@ if [ "$COUNT" -gt 0 ] || [ "$PENDING" -eq 1 ] || [ "$DOW" = "1" ]; then
   echo "[$(TS)] stage2 pack -> claude -p (dow=$DOW)" >> "$LOG"
   cd "$HOME"
   if "$CLAUDE_BIN" -p "$(cat "$DIR/pack_prompt.md")" \
-      --allowedTools "Read,Write,Bash(grep *),ToolSearch,mcp__claude_ai_Notion__*" \
+      --allowedTools "Read,Write,Bash(grep *),mcp__claude_ai_Notion__*" \
       >> "$LOG" 2>&1; then
     python3 "$DIR/update_status.py" sns_pack ok "候補パック生成完了"
     echo "[$(TS)] stage2 done" >> "$LOG"
@@ -63,7 +63,7 @@ if [ -s "$VQ" ]; then
   echo "[$(TS)] stage3 video -> claude -p" >> "$LOG"
   cd "$HOME"
   if "$CLAUDE_BIN" -p "$(cat "$DIR/video_stage_prompt.md")" \
-      --allowedTools "Read,Write,Edit,Bash(python3 /Users/kusakawatakuya/.claude/agents/knowledge/design_system/*),Bash(grep *),Bash(cp *),Bash(mkdir *),Bash(/Applications/Google Chrome.app/Contents/MacOS/Google Chrome *),ToolSearch,mcp__claude_ai_Notion__*" \
+      --allowedTools "Read,Write,Edit,Bash(python3 /Users/kusakawatakuya/.claude/agents/knowledge/design_system/*),Bash(grep *),Bash(cp *),Bash(mkdir *),Bash(/Applications/Google Chrome.app/Contents/MacOS/Google Chrome *),mcp__claude_ai_Notion__*" \
       >> "$LOG" 2>&1; then
     python3 "$DIR/update_status.py" sns_video ok "動画リクエスト処理完了"
     echo "[$(TS)] stage3 done" >> "$LOG"

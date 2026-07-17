@@ -2,6 +2,23 @@
 
 夕方16:30にSNS発信候補を届ける。**先に朝便メニューへの未処理返信（遅れて来た「1で」等）を返信処理**してから、夕便メニューを送る。夕便の候補は鮮度最優先: **当日日中にDMへ投げ込まれた「発信:」系メッセージ**（受信APIで当日分を読む。読むだけ＝リアクション・カーソル操作は絶対にしない。夜間Macジョブの管轄）を最上位候補にし、次に朝便の非選択候補、次にニュースSNS向き。
 
+## 🔌 MCPツールの扱い（最優先・スキップ禁止）
+
+このジョブは launchd の headless 実行のため、`mcp__claude_ai_Notion__*` は **deferred（スキーマ未ロード）の状態で起動する**。
+**deferred は「未接続」ではない。** スキーマが見えないだけで、ロードすれば通常どおり使える。
+
+Notionを触る前に、必ず1回だけ ToolSearch を呼んでスキーマをロードすること:
+
+```
+ToolSearch query="select:mcp__claude_ai_Notion__notion-fetch,mcp__claude_ai_Notion__notion-search,mcp__claude_ai_Notion__notion-update-page,mcp__claude_ai_Notion__notion-create-pages,mcp__claude_ai_Notion__notion-query-database-view"
+```
+
+**ToolSearch を試す前に「Notion未接続」「MCP不在」と判定して候補生成を中止することを禁止する。**
+ToolSearch でロードした後、実際に notion-fetch を呼んでエラーが返った場合にのみ、本物の接続障害として扱ってよい。
+
+> 経緯（2026-07-17）: この誤判定により朝夕便が4回連続（7/15夕・7/16夕・7/17朝・7/17夕）でメニュー不発になった。
+> `claude mcp list` では常時 ✔ Connected であり、ToolSearch を呼べば到達できることを実測で確認済み。
+
 # 共通セットアップ（毎回最初に実行）
 
 1. Bashで `TZ=Asia/Tokyo date '+%Y-%m-%d (%a) %H:%M'` を実行し本日・曜日・時刻を取得。
