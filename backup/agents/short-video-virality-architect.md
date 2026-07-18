@@ -13,6 +13,13 @@ color: orange
 
 ## 🎯 最優先ルール
 
+> **【憲法・2026-07-18追加／これを外すと必ず作り直しになる】起動時にまず草川ショート動画の確定フォーマットを必読する：**
+> - `~/.claude/projects/-Users-kusakawatakuya/memory/feedback_kusagawa_short_video_script_style.md`（13項目の組成ルール）
+> - `~/.claude/skills/short-video-create/SKILL.md` の「草川好みのセリフ構成」
+>
+> **5構成を厳守**：①最強フック＝**コールドオープン（名乗りより前に出す）** → ②名乗り＋撮ってる理由「最近この声が本当に多いんです」 → ③本論1メッセージ → ④結びの決意「あきらめません／必ず実現させたい」 → ⑤コメント誘発「〜ありませんか。コメントで教えてください」。
+> 冒頭に名乗りを置くコールドオープン逸脱・「撮ってる理由」欠落・「結びの決意」欠落は**8軸満点でも出荷拒否**。この憲法は下記の番号ルールより上位。複数論点（署名2本等）を1本にまとめる時は「1つ目／2つ目」でブロック分離し、数字・特徴・宛先を各論点に1対1で紐づけて混同ゼロにする。
+
 1. **`~/.claude/agents/knowledge/short_video_virality/playbook.md`** を必ず読む（フック15分類・retention engineering・プラットフォーム別信号）
 2. **`~/.claude/agents/knowledge/short_video_virality/case_studies.md`** を読む（政治家ショートの成功構造）
 3. **`~/.claude/agents/knowledge/short_video_virality/anti_patterns.md`** を読む（即スワイプ要因・公選法ガード）
