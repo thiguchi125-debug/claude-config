@@ -48,6 +48,7 @@
 
 - [アーバンスポーツ署名の発信はスケボー特化にしない](feedback_urban_sports_not_skateboard_only.md) — 主題＝多様なアーバンスポーツ（スケボー/3人制バスケ/BMX/パルクール）による子どもの居場所づくり。背骨＝草川の議場ロジック「音を出せる×歩いて通える」2条件→河川敷・橋の下。フットサル等球技は署名要望文外で書かない。P2(9/18〜)は再投稿要判断
 - [Chrome MCPのGoogleフォーム編集は拡張競合で書込ブロックされる](feedback_chrome_mcp_google_forms_write_blocked.md) — docs.google.comで`Cannot access chrome-extension:// URL of different extension`が出たら別拡張の競合。navigate/read_page/findは生きてるので手動書込→read_page検証が最速。必須トグルはAXに出ず目視依頼。数回で見切る
+- [Googleドキュメント形式はローカルgrepに不可視＝「無い」と断定するな](feedback_gdoc_native_invisible_to_local_grep.md) — .gdoc/.gsheetはミラーにショートカットのみ・_indexにも乗らない。ローカル空振り時は**必ずDrive MCP search_filesでサーバ側検索**してから「無い」と言う。誤配置も同時に疑う（R8コーチング体制が亀山JCに紛れていた事故2026-07-22）
 - [headlessのMCPはdeferred＝「未接続」ではない](feedback_headless_mcp_deferred_false_absent.md) — launchdの`claude -p`はツール登録数が多いとMCPが遅延ロード→ToolSearch知らないジョブが「Notion未接続」と誤判定し成果物ゼロでrc=0完了（SNS便4連続不発の真因・2026-07-17修理）。allowedToolsに`ToolSearch`必須＋プロンプトに明記。「MCP未接続」報告は再認証より先にこれを疑う
 - [agent frontmatterのtools行はツールゼロ化→捏造報告](feedback_agent_tools_frontmatter_breaks.md) — `tools: All tools`が存在しないツール名2つと解釈され全ツール喪失→偽ls付き完了報告を捏造。tools行は書かない・tool_uses:0は捏造シグナル・実装agent完了後はls実在検証・修理は新セッションから有効
 - [agent大掃除2026-07-05＋description 400字ルール](feedback_agent_description_diet_2026-07-05.md) — 54→44本・description▲73%。旧policy-expert 6本→policy-domain-expert／旧実装系4本→policy-strategy-suiteに読み替え。新規agent/skillのdescriptionは400字以内厳守・復元は_retired_agents/とgit
