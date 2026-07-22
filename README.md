@@ -13,8 +13,11 @@ Claude Code CLI のカスタムエージェント・スキル・設定・記憶�
 | `backup/commands/` | `~/.claude/commands/` | slash コマンド |
 | `backup/settings/` | `~/.claude/settings.json`, `settings.local.json` | Claude Code 設定 |
 | `backup/memory/` | `~/.claude/projects/-Users-kusakawatakuya/memory/` | MEMORY.md と記憶ファイル |
-| `backup/skills/` | `~/.claude/plugins/.../skill-creator/unknown/` | ohayo / nichijo / content-pipeline などカスタムスキル |
+| `backup/skills/` | `~/.claude/skills/` | ohayo / nichijo / content-pipeline などカスタムスキル（2026-07-04〜 正本はここ。旧plugins cache配置は廃止） |
 | `backup/plugins-meta/` | `~/.claude/plugins/installed_plugins.json` ほか | インストール済プラグイン一覧 |
+| `backup/scripts-claude/` | `~/.claude/scripts/` | td.py（タスク管理エンジン）・sns-routine・議会だよりパイプライン等 |
+| `backup/CLAUDE.md` | `~/CLAUDE.md` | 起動時自動読込の安定ルール正本 |
+| `backup/launchd/` | `~/Library/LaunchAgents/com.kusagawa.*` + `~/.local/bin/kusagawa-pipeline-bash` | 夜間Driveパイプライン・SNS便などの自動化定義 |
 
 ## 自動同期の仕組み
 
@@ -59,7 +62,17 @@ git clone git@github.com:<YOUR_GH_USER>/claude-config.git
 ~/claude-config/scripts/restore.sh
 ```
 
-これで `~/.claude/` 配下にエージェント・スキル・設定・記憶が展開される。
+これで `~/.claude/` 配下にエージェント・スキル・設定・記憶・スクリプト、
+`~/CLAUDE.md`、launchd 自動化定義が展開される。
+
+さらに新PCでは以下の手動セットアップが必要（restore.sh 末尾にも表示される）:
+
+1. **Todoist トークン**: `~/.config/todoist/token` に再配置（意図的に git 外）
+2. **Google Drive Desktop** をインストールし t.higuchi125@gmail.com でログイン
+   （一次資料アーカイブのミラー。`_drive` symlink も再作成）
+3. **kusagawa-pipeline-bash に FDA 付与** ＋ `launchctl load` で自動化を再開
+4. **drafts / publications / outputs** は Drive の「💾ローカルミラー」から回収
+   （夜間パイプラインが毎晩 rsync している）
 
 ### 4. Claude Code を再起動して動作確認
 

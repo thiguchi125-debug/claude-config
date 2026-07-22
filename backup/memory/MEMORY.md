@@ -4,6 +4,8 @@
 
 ## 🔄 進行中プロジェクト
 
+- [ファイル管理監査2026-07-22](project_file_audit_2026-07-22.md) — Drive直下4フォルダ正規形・重複日常資料アーカイブ統合・💾Macローカルミラー新設・restore.sh修理済。**残=パイプラインv4承認（PROPOSED_v4.sh）・Time Machine未設定・trash_pending承認**。openrsyncは--iconv非対応
+
 - [市政報告レポート川合町版＝チラシ完成形](project_shisei_report_kawaicho_complete_form.md) — 2026-07-18完成。report_kameokaテンプレの勝ちパターン（実筆跡挨拶／告知ブロック／現場実写／数字レール／円形ヌメラル／AIインタビューQR）。ネットプリント可・家庭用は[[feedback_home_printer_ink_saving_variant]]。QR検証は必ずpyzbar
 
 - [content-pipelineに発信ビジュアル統合](project_content_pipeline_visual_expansion.md) — 2026-07-14拡張。記事URL＋写真→ブログ→安全ゲート→Notion→**サムネ(1200×630)＋SNS7種＋インスタReel(9:16)**を1パス。ブログモードは自動判定→提案。レシピ正本=skills/content-pipeline/references/visual-assets-playbook.md。サムネは着手前に元写真有無を確認

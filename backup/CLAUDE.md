@@ -80,7 +80,7 @@
 | ニュース教えて | news-briefing |
 | 政策アップデート | policy-update |
 | 〜から記事/投稿作って | content-pipeline |
-| **ドライブ資料取り込んで** / Drive取り込んで / 取り込んで / 資料取り込んで | **drive-intake**（4モード自動順次実行・通常はlaunchdが朝7時/夜22時に無人実行） |
+| **ドライブ資料取り込んで** / Drive取り込んで / 取り込んで / 資料取り込んで | **drive-intake**（4モード自動順次実行。⚠️launchd無人実行は現在なし＝夜間2:30の機械振分で判定不能だった分はこれを手動起動して処理。ohayoの`_pipeline_status.json`でundecided>0が続いたら起動する） |
 | ショート動画作って / TikTokセット / 動画作って画像も | short-video-create（セリフ→fact-check→risk-review→nano-banana画像プロンプト→📣SNS投稿管理DB保存を1パス） |
 | 写真ストック整理して / 写真整理して / 写真回収して | **📷写真ストック月次整理**（Chromeでphotos.google.comアルバム「📷議員活動」新着回収→目利き選抜→catalog台帳→wishlist照合。正本=Drive `📷写真ストック/README.md`・詳細memory=project_photo_stock_system） |
 | 節約で〜 / 節約モードで / 燃費よく / leanで | lean-mode（品質そのまま・無駄だけ削るトークン節約プレイブック。安全ゲート・主担当agent・アーカイブgrepは削らない） |
@@ -113,7 +113,8 @@
 | 過去資料の長期保管（iCloud外） | `~/Archive/`（旧Documents倉庫14GB・録音・Takeout等） |
 | 削除候補 | `~/Archive/_trash_pending_<日付>/` へ移動→草川承認後に削除（即rm禁止） |
 
-- Drive直下（マイドライブ直下）への野良ファイル置き禁止。迷ったら `_INBOX_daily/` へ。
+- Drive直下（マイドライブ直下）への野良ファイル置き禁止。迷ったら `_INBOX_daily/` へ。マイドライブ直下の正規フォルダは**4つだけ**：`草川たくや 議会質問アーカイブ`／`📷写真ストック`／`📱動画素材`／`💾Macローカルミラー`（2026-07-22新設・drafts/outputs/publications/~scriptsの引き継ぎ用ミラー）。これ以外が直下に現れたら野良。
+- 「日常資料アーカイブ」「議会資料アーカイブ」は**`草川たくや 議会質問アーカイブ` の中**が正本（2026-07-22にマイドライブ直下の重複「日常資料アーカイブ」を統合済み。後援会名簿マスタ・後援会入会フォーム正本もアーカイブ内 00_名簿/06_フォーム運用 に移動済）。
 - Documentsはほぼ空運用（ObsidianVault・kameyama-research のみ）。iCloud容量温存のため大容量物を置かない。
 - 夜間パイプライン監視: ohayoが毎朝 `_pipeline_status.json` を表示。🚨が出たら reference_storage_map.md のトラブル手順（FDA付与/launchctl）で対処。
 
