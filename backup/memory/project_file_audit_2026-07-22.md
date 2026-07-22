@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 00d1106b-200d-4ede-baa7-e258a7dadeab
-  modified: 2026-07-22T04:02:28.416Z
+  modified: 2026-07-22T05:03:09.637Z
 ---
 
 # ファイル管理監査 2026-07-22（実施済み＋残タスク）
@@ -23,11 +23,12 @@ metadata:
 - 一次資料はDriveが正本で安全。生成物はミラー新設でカバー。
 - **残る唯一の大穴=Time Machine未設定**: `~/Archive` 17GB（録音・Takeout・資料倉庫）・Movies 1.9GB・Photosライブラリはこのマシン単独保有。
 
-## 残タスク（承認待ち・要対応）
-- [ ] 夜間パイプラインv4化（Phase4=入れ子.claude自動隔離／Phase5=夜間ミラー）: 提案ファイル=`99_raw/_scripts/_daily_drive_pipeline_PROPOSED_v4.sh`。launchd実行物のためclassifierブロック→草川承認後に本体置換。**未適用の間はミラーは手動・入れ子.claudeは再発し続ける**。
-- [ ] Time Machine設定（外付けSSD）
-- [ ] `~/Archive/_trash_pending_2026-07-05/07-09/07-18/07-22` 削除承認、`_要確認_20260702`（38MB・19件）レビュー
+## 残タスク（要対応）
+- [x] 夜間パイプラインv4化 — 2026-07-22草川承認済・本体適用済（構文チェックPASS・今夜2:30から稼働）
+- [ ] バックアップ最後の穴: **~/Archive 17GB・Movies 1.9GBはiCloudにもDriveにも入っていない**（Desktop/DocumentsはiCloud同期ON確認済16GB・drafts/outputs/publicationsはDriveミラー済）。写真AppのiCloud写真ON/OFFは未確認。草川は「iCloudに入ってるのでは」と認識→事実を伝えたが対応方針は未決（TM or ArchiveのDriveミラー追加はDrive容量次第）
+- [ ] `~/Archive/_trash_pending_*` 4フォルダ: 2026-07-22に中身一覧を提示済み・削除判断待ちのまま保留。`_要確認_20260702`（38MB・19件）も未レビュー
 - [ ] SNSニュース収集WebFetch 403が5日連続（クラウド側・7/17修理タスク未解決）／日曜Discord監査(sunday_audit)が7/19失敗／update_status.pyのtmpファイルバグ
+- サマーキャンプ報告書7/24は提出済み（タスク不要・2026-07-22草川回答）
 
 ## 既知の無害物
 - `~/docs`=superpowersスキル作業場、`~/nichijo-mobile-project-instructions.md`=ホーム直下野良（軽微）、Desktop=スクショ10枚+写真候補3フォルダ（30日で自動スイープ対象）、`~/Archive/claude-config-full-history-20260705.bundle` 730MB=git履歴の保険。
