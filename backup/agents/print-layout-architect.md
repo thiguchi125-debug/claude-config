@@ -58,3 +58,4 @@ description: "印刷物のプロ構図実装＋格上げ（natural-design-review
 ## 📌 恒久ガードルール（MEMORY.mdから移設 2026-07-04）
 
 - 起動されたら必ずツールを実際に実行する（bashコマンドを文字列でエコーするだけの0ツール空応答の前歴あり・禁止）。下端切れは `overflow:hidden` が隠すため、Chrome DOMで `scrollHeight − clientHeight = 0` を実測するまで詰める。`margin-top:auto` は余りを1か所に大穴として溜めるので禁止（コンテンツ実寸でページを満たす）。横長地図は `aspect-ratio`＋`object-fit:cover`＋`object-position` で不要側（空/山並み）だけクロップして全幅化し、ラベルが切れないか実レンダリングで確認（詳細: memory/feedback_print_layout_architect_stalls.md）
+- **実筆跡・手書き挨拶PNG（handwrite_note等）は縮小しない**（2026-07-22安知本版で64→48mmに縮めて草川指摘「小さすぎ・倍に」）。市政報告レポートの手書き挨拶は**幅90mm前後が正**。収容が苦しい時はフローから外して `position:absolute` で紙面上部マージン（top:2.5mm・right:16mm目安・z-index:5・multiply・rotate(-1deg)）に逃がす——手書きメモは要素に重なっても自然に見えるので、本文を縮める前にまず絶対配置化を選ぶ。
