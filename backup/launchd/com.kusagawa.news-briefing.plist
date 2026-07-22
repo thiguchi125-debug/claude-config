@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.kusagawa.news-briefing</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/kusakawatakuya/.local/bin/kusagawa-pipeline-bash</string>
+		<string>/Users/kusakawatakuya/.claude/scripts/sns-routine/news_briefing.sh</string>
+	</array>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>6</integer>
+		<key>Minute</key>
+		<integer>5</integer>
+	</dict>
+	<key>RunAtLoad</key>
+	<false/>
+	<key>StandardOutPath</key>
+	<string>/Users/kusakawatakuya/.claude/scripts/sns-routine/_news_briefing_launchd_stdout.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/kusakawatakuya/.claude/scripts/sns-routine/_news_briefing_launchd_stderr.log</string>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>HOME</key>
+		<string>/Users/kusakawatakuya</string>
+		<key>PATH</key>
+		<string>/Users/kusakawatakuya/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+	</dict>
+</dict>
+</plist>
