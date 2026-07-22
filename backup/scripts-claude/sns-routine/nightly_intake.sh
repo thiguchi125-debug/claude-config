@@ -8,10 +8,31 @@ CLAUDE_BIN="/Users/kusakawatakuya/.local/bin/claude"
 TS() { date "+%Y-%m-%d %H:%M:%S"; }
 echo "[$(TS)] ---- start ----" >> "$LOG"
 
+# ネットワーク疎通待ち（スリープ復帰直後のWi-Fi未接続対策・最大3分）
+# 2026-07-18〜21にENOTFOUND/Connection closedで4夜連続失敗した再発防止（2026-07-23追加）
+wait_net() {
+  local i
+  for i in $(seq 1 18); do
+    curl -s -m 5 -o /dev/null "https://discord.com/api/v10/gateway" && return 0
+    sleep 10
+  done
+  echo "[$(TS)] net wait timeout (3min)" >> "$LOG"
+  return 1
+}
+
 NEW_JSON="$DIR/_new_messages.json"
-if ! python3 "$DIR/discord_api.py" fetch > "$NEW_JSON" 2>>"$LOG"; then
-  echo "[$(TS)] FETCH_ERROR" >> "$LOG"
-  python3 "$DIR/update_status.py" discord_intake error "Discord API取得失敗（原本はDiscordに保全）"
+FETCH_OK=0
+for ATTEMPT in 1 2; do
+  wait_net
+  if python3 "$DIR/discord_api.py" fetch > "$NEW_JSON" 2>>"$LOG"; then
+    FETCH_OK=1
+    break
+  fi
+  echo "[$(TS)] FETCH_ERROR (attempt $ATTEMPT)" >> "$LOG"
+  [ "$ATTEMPT" = "1" ] && { echo "[$(TS)] retrying fetch in 30min" >> "$LOG"; sleep 1800; }
+done
+if [ "$FETCH_OK" = "0" ]; then
+  python3 "$DIR/update_status.py" discord_intake error "Discord API取得失敗（2回試行・原本はDiscordに保全）"
   exit 1
 fi
 
@@ -25,14 +46,22 @@ if [ "$COUNT" -eq 0 ] && [ "$PENDING" -eq 0 ]; then
 else
   echo "[$(TS)] $COUNT new messages (pending=$PENDING) -> claude -p" >> "$LOG"
   cd "$HOME"
-  if "$CLAUDE_BIN" -p "$(cat "$DIR/triage_prompt.md")" \
-      --allowedTools "Read,Write,Edit,Bash(python3 $DIR/discord_api.py *),Bash(python3 $HOME/.claude/scripts/todoist/td.py *),ToolSearch,mcp__claude_ai_Notion__*,mcp__claude_ai_Todoist__*" \
-      >> "$LOG" 2>&1; then
+  TRIAGE_OK=0
+  for ATTEMPT in 1 2; do
+    if "$CLAUDE_BIN" -p "$(cat "$DIR/triage_prompt.md")" \
+        --allowedTools "Read,Write,Edit,Bash(python3 $DIR/discord_api.py *),Bash(python3 $HOME/.claude/scripts/todoist/td.py *),ToolSearch,mcp__claude_ai_Notion__*,mcp__claude_ai_Todoist__*" \
+        >> "$LOG" 2>&1; then
+      TRIAGE_OK=1
+      break
+    fi
+    echo "[$(TS)] TRIAGE_ERROR (attempt $ATTEMPT)" >> "$LOG"
+    [ "$ATTEMPT" = "1" ] && { echo "[$(TS)] retrying triage in 30min" >> "$LOG"; sleep 1800; wait_net; }
+  done
+  if [ "$TRIAGE_OK" = "1" ]; then
     python3 "$DIR/update_status.py" discord_intake ok "${COUNT}件処理"
     echo "[$(TS)] stage1 done" >> "$LOG"
   else
-    echo "[$(TS)] TRIAGE_ERROR" >> "$LOG"
-    python3 "$DIR/update_status.py" discord_intake error "triage失敗（${COUNT}件・原本保全済・翌夜再処理）"
+    python3 "$DIR/update_status.py" discord_intake error "triage失敗（${COUNT}件・2回試行・原本保全済・翌夜再処理）"
     echo "[$(TS)] ---- end (triage error, stage2/3 skipped) ----" >> "$LOG"
     exit 1
   fi

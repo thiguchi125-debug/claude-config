@@ -60,7 +60,7 @@
 - [自作スキルは ~/.claude/skills/ のみ（plugins cache禁止）](feedback_skills_home_not_plugin_cache.md) — 2026-07-03プラグイン自動更新でcache同居の8スキル消失→git 41ab43bから復旧。sync-to-git.shにガット検知ガード実装済
 - [Notion SQLクエリはプラン限定ブロック](feedback_notion_sql_plan_gate.md) — query-data-sources(SQL)使用禁止・viewはフィルタ欠落の罠。定常一覧は自己管理固定ページ（newsのdedupインデックス/ダイジェスト）パターンで
 - [システムの法則＝自動トリガー有=生/記憶依存の締め=腐る](feedback_system_closing_loops_rot.md) — 締め工程を定時トリガーに載せる・機械可読な一次情報から自動導出
-- [Google Keep→EOD貼り付けで日次ログ1パス処理](feedback_keep_eod_daily_log_intake.md) — 夜に全文コピペ→記号別振り分け（☐=タスク/☑=完了/発信:=spark/声:=市民意見/会った:=接触）→1回提示承認→一括保存→🔖台帳
+- [日中メモの捕捉面はDiscord bot DM一本](feedback_daily_capture_discord_dm.md) — Keep EOD貼り付けは2026-07-23廃止（やれなかった）。スマホからDMに投げるだけ→夜間3:10 triageが自動振り分け（タスク:/声:/発信:/素の行=日次ログ）。fetch/triageに30分後リトライ＋ネット疎通待ち実装済
 - [市政報告会の声の自動記録](feedback_shisei_houkokukai_voice_capture.md) — 「記録：〇〇報告会で△△の声」で🎤報告会DB「主な意見・要望」欄＋Todoist「〇〇地区フォロー」箱(要整理ラベル)
 - [親子で米づくり事業の正しい主催表記](project_oyakode_kometukuri.md) — 亀山JC主催・草川がJC理事長時代に企画。「個人主催」表記禁止
 - [昼生お花見コミバス企画の主催表記](feedback_ohanami_hanyu_shusai_attribution.md) — 主催=昼生地区まちづくり協議会×市地域社会振興会。草川は参加・つなぎ役、手柄横取り印象回避／市民実名は対外伏せる
