@@ -5,13 +5,29 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 9ee7574d-5bcc-4598-a986-151d530e598a
+  modified: 2026-07-23T01:31:09.295Z
 ---
 
-# SNS発信ルーティンv2
+# SNS発信ルーティンv2→v3
 
 ## 参照
-- 仕様書: `~/.claude/projects/-Users-kusakawatakuya/specs/2026-07-14-sns-routine-v2-design.md`
+- 仕様書v3: `~/.claude/projects/-Users-kusakawatakuya/specs/2026-07-23-sns-routine-v3-design.md`（正）
+- 仕様書v2: `~/.claude/projects/-Users-kusakawatakuya/specs/2026-07-14-sns-routine-v2-design.md`
 - 計画書: `~/.claude/projects/-Users-kusakawatakuya/plans/2026-07-14-sns-routine-v2-phase1.md`
+
+## 🆕 v3（2026-07-23実装・完成原稿直接納品）
+
+**v2失敗診断**: ①メニュー返信ゼロ→生成ゼロ（7/15以降返信ほぼ0＝投稿ゼロ）②WebFetch403で候補が在庫劣化（7/18-22）③素の活動メモがSNS素材に未活用④振り分け先が見えず「記録が溜まる実感がない」。
+
+**v3の形**: push便が**完成短文原稿（X/Threads/FB＋写真日はInsta）をDM直接納品**。返信は修正時のみ（「Bで」「〇〇直して」「ブログ化」「動画で」「パス」「承知で」「別テーマ:」）。朝6:45／朝返信7:30／**夕19:30**／**夕返信20:15**（夕は当日活動を夜まで拾うため後ろ倒し）。夕便の本命=当日投げ込みの活動メモ・写真（タグ不問）。素材ゼロでも必ず1本（在庫由来は明記）。
+
+**品質**: 新風枠毎便1本必須（直近3日ホット話題×亀山接地・WebSearch2-3本可）／ニュースは一次記事WebFetch本文調査必須／`_theme_history.json` 14日クールダウン（ステータスページにミラー）／iJAMPはGmail `from:ijamp.jiji.com newer_than:1d` 全見出しスキャン→採用時は公開一次情報乗り換え必須（**サイトスクレイピングは2026-04-27決定通り恒久禁止**）。
+
+**見える化**: 📮投げ込み台帳DB（data_source `7a444c29-ef25-4139-9033-c24e9bd78528`）にtriageが全件記録＋毎夜🧾レシートDM（保存先リンク付き）。
+
+**障害耐性**: DM納品をNotion障害と切り離し（queue退避）／claude -p失敗15分リトライ／ネット疎通待ち／`_delivery_state.json`に単純化。allowedToolsに`WebSearch,WebFetch,mcp__claude_ai_Gmail__*`追加。discord_api.pyにattachments＋downloadコマンド追加（Insta写真・必ずRead確認）。
+
+**不変**: 夜間intake3:10の振り分け先／news-briefing6:00／日曜監査／D1 drafts保存／安全ゲート毎便必須。v2ファイルは`_backup_2026-07-23_v3/`。
 
 ## Phase 1（完了・2026-07-14）
 

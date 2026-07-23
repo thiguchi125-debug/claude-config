@@ -1,6 +1,20 @@
-# sns-routine — Discord投げ込み夜間自動振り分け＋候補パック生成＋動画夜間フル制作＋SNS便4本（SNSルーティンv2 Phase1+3）
+# sns-routine — Discord投げ込み夜間自動振り分け＋候補パック生成＋動画夜間フル制作＋SNS便4本（SNSルーティン**v3**）
 
-2026-07-14構築。Phase3（候補パック夜間生成／triage返信スキップ／動画夜間実行）2026-07-14追加。詳細は memory `project_sns_routine_v2.md`、仕様書 `~/.claude/projects/-Users-kusakawatakuya/specs/2026-07-14-sns-routine-v2-design.md` を参照。
+2026-07-14構築（v2）→ **2026-07-23 v3化（完成原稿直接納品）**。詳細は memory `project_sns_routine_v2.md`、仕様書 v3=`~/.claude/projects/-Users-kusakawatakuya/specs/2026-07-23-sns-routine-v3-design.md`／v2=`2026-07-14-sns-routine-v2-design.md` を参照。
+
+## 🆕 v3の要点（2026-07-23〜）
+
+v2の「候補メニュー→返信で選ぶ→45分後納品」は返信ゼロ→生成ゼロで滞ったため廃止。**push便が完成短文原稿（X/Threads/FB＋写真日はInsta）をDMへ直接納品**し、返信は修正したい時だけ。
+
+- **時刻**: 朝納品6:45／朝返信7:30／**夕納品19:30**（16:30から変更・当日の活動投げ込みを夜まで拾うため）／**夕返信20:15**
+- **品質メカニズム**: 新風枠毎便1本必須（WebSearch追加探索可）／一次記事WebFetch本文調査必須／`_theme_history.json` 14日クールダウン（ステータスページ「テーマ履歴ミラー」節に写し）／iJAMPはGmail経由スキャン（`from:ijamp.jiji.com newer_than:1d`・サイトスクレイピング禁止・原文転載禁止・公開一次情報乗り換え必須）
+- **見える化**: triageが📮投げ込み台帳DB（data_source `7a444c29-ef25-4139-9033-c24e9bd78528`・DBページ 48d0d7b4a68f4fc587536be382efecec）へ全件記録＋毎夜「🧾今夜の振り分け」レシートDM
+- **障害耐性**: DM納品はNotion障害と切り離し（Notion分はqueue退避）／claude -p失敗15分後1回リトライ／起動時ネット疎通待ち／`_menu_state.json`→`_delivery_state.json`（`{"leg","date","delivery_msg_id"}`）に単純化
+- **allowedTools追加**: `WebSearch,WebFetch,mcp__claude_ai_Gmail__*`（sns_leg.sh）
+- **discord_api.py追加**: fetch/readに`attachments`フィールド、`download <msg_id> <dir>`コマンド（Insta用写真取得）
+- v2ファイル一式のバックアップ: `_backup_2026-07-23_v3/`
+
+以下はv2時代の記述（3ステージ夜間intake・監査・復元手順は現役。「メニュー」「16:30/17:15」表記は上記v3が正）。
 
 ## ⚠️ SNS便4本はローカルMac launchd化済み（2026-07-14・クラウドRoutineは無効化）
 

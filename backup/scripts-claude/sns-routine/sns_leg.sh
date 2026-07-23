@@ -1,24 +1,26 @@
 #!/bin/bash
-# SNSルーティンv2 Phase3ローカル化: SNS便4本（morning_push/morning_reply/evening_push/evening_reply）共通ランナー
+# SNSルーティンv3: SNS便4本（morning_push/morning_reply/evening_push/evening_reply）共通ランナー
+# v3（2026-07-23）: メニュー選択制を廃止し、push便が完成原稿をDMへ直接納品する。
+#   - push便=毎回 claude -p 起動（朝6:45／夕19:30）
+#   - reply便=修正返信の処理専用（朝7:30／夕20:15）。_delivery_state.json（当日のpush便が書く）が
+#     無い/古い/leg不一致、または本人の新規返信が0件なら claude を起動せず即 ok で終了（ゼロコストガード）
+#   - claude -p 失敗時は15分後に1回だけ再試行（2026-07-22朝便ENOTFOUND対策）
+#   - 起動時にネットワーク疎通待ち（スリープ復帰直後のWi-Fi未接続対策・最大3分）
 # クラウドRoutineがdiscord.comへの接続をブロックする（CONNECT 403確認済・2026-07-14）ため
 # Macのlaunchdでローカル実行する。Macはsleep=0で夜間も稼働しトークンはローカル.envのみに留まる。
-#
-# reply系はゼロコストガード: _menu_state.json（当日のpush便が書く）が無い/古い/leg不一致、
-# または本人の新規返信が0件なら claude を起動せず即 ok で終了する。
-# push系は毎回 claude -p を起動する。
 set -u
 DIR="$HOME/.claude/scripts/sns-routine"
 LOG="$DIR/_sns_legs.log"
-MENU_STATE="$DIR/_menu_state.json"
+DELIVERY_STATE="$DIR/_delivery_state.json"
 CLAUDE_BIN="/Users/kusakawatakuya/.local/bin/claude"
 TS() { date "+%Y-%m-%d %H:%M:%S"; }
 
 LEG_ARG="${1:-}"
 case "$LEG_ARG" in
-  morning_push)   IS_PUSH=1; EXPECT_LEG="morning"; LABEL="朝便プッシュ 6:45" ;;
-  evening_push)   IS_PUSH=1; EXPECT_LEG="evening"; LABEL="夕便プッシュ 16:30" ;;
+  morning_push)   IS_PUSH=1; EXPECT_LEG="morning"; LABEL="朝納品便 6:45" ;;
+  evening_push)   IS_PUSH=1; EXPECT_LEG="evening"; LABEL="夕納品便 19:30" ;;
   morning_reply)  IS_PUSH=0; EXPECT_LEG="morning"; LABEL="朝返信処理 7:30" ;;
-  evening_reply)  IS_PUSH=0; EXPECT_LEG="evening"; LABEL="夕返信処理 17:15" ;;
+  evening_reply)  IS_PUSH=0; EXPECT_LEG="evening"; LABEL="夕返信処理 20:15" ;;
   *)
     echo "usage: sns_leg.sh <morning_push|morning_reply|evening_push|evening_reply>" >&2
     exit 2
@@ -27,50 +29,63 @@ esac
 
 STATUS_KEY="sns_${LEG_ARG}"
 PROMPT_FILE="$DIR/leg_${LEG_ARG}.md"
-# ToolSearch は必須: headless実行ではNotion MCPがdeferredで起動するため、
-# ToolSearchでスキーマをロードしないと「Notion未接続」と誤判定してメニューが不発になる（2026-07-17修理）
-ALLOWED_TOOLS="Read,Write,Bash(python3 $DIR/discord_api.py *),Bash(grep *),Bash(date *),ToolSearch,mcp__claude_ai_Notion__*"
+# ToolSearch は必須: headless実行ではNotion/Gmail MCPがdeferredで起動するため、
+# ToolSearchでスキーマをロードしないと「未接続」と誤判定して納品が不発になる（2026-07-17修理）
+# v3追加: WebSearch/WebFetch=新風枠・一次記事の本文調査、Gmail MCP=iJAMPスキャン（規約適合ルート）
+ALLOWED_TOOLS="Read,Write,Bash(python3 $DIR/discord_api.py *),Bash(grep *),Bash(date *),ToolSearch,WebSearch,WebFetch,mcp__claude_ai_Notion__*,mcp__claude_ai_Gmail__*"
 
 echo "[$(TS)] ---- sns_leg ${LEG_ARG} start ----" >> "$LOG"
+
+# ネットワーク疎通待ち（最大3分）。タイムアウトしてもclaude側リトライに賭けて続行する
+wait_net() {
+  local i
+  for i in $(seq 1 18); do
+    curl -s -m 5 -o /dev/null "https://discord.com/api/v10/gateway" && return 0
+    sleep 10
+  done
+  echo "[$(TS)] net wait timeout (3min) -> continue anyway" >> "$LOG"
+  return 1
+}
+wait_net
 
 if [ "$IS_PUSH" -eq 0 ]; then
   # ---- reply系ゼロコストガード ----
   TODAY=$(TZ=Asia/Tokyo date +%Y-%m-%d)
 
-  if [ ! -f "$MENU_STATE" ]; then
-    echo "[$(TS)] no _menu_state.json -> skip (no claude launch)" >> "$LOG"
-    python3 "$DIR/update_status.py" "$STATUS_KEY" ok "メニューなし"
+  if [ ! -f "$DELIVERY_STATE" ]; then
+    echo "[$(TS)] no _delivery_state.json -> skip (no claude launch)" >> "$LOG"
+    python3 "$DIR/update_status.py" "$STATUS_KEY" ok "納品なし"
     echo "[$(TS)] ---- sns_leg ${LEG_ARG} end (skipped) ----" >> "$LOG"
     exit 0
   fi
 
-  MENU_LEG=$(python3 -c "import json,sys
+  DLV_LEG=$(python3 -c "import json
 try:
-    d=json.load(open('$MENU_STATE'))
+    d=json.load(open('$DELIVERY_STATE'))
     print(d.get('leg',''))
 except Exception:
     print('')" 2>>"$LOG")
-  MENU_DATE=$(python3 -c "import json,sys
+  DLV_DATE=$(python3 -c "import json
 try:
-    d=json.load(open('$MENU_STATE'))
+    d=json.load(open('$DELIVERY_STATE'))
     print(d.get('date',''))
 except Exception:
     print('')" 2>>"$LOG")
-  MENU_MSG_ID=$(python3 -c "import json,sys
+  DLV_MSG_ID=$(python3 -c "import json
 try:
-    d=json.load(open('$MENU_STATE'))
-    print(d.get('menu_msg_id',''))
+    d=json.load(open('$DELIVERY_STATE'))
+    print(d.get('delivery_msg_id',''))
 except Exception:
     print('')" 2>>"$LOG")
 
-  if [ "$MENU_DATE" != "$TODAY" ] || [ "$MENU_LEG" != "$EXPECT_LEG" ] || [ -z "$MENU_MSG_ID" ]; then
-    echo "[$(TS)] _menu_state.json stale/mismatch (date=$MENU_DATE leg=$MENU_LEG expect=$EXPECT_LEG today=$TODAY) -> skip" >> "$LOG"
-    python3 "$DIR/update_status.py" "$STATUS_KEY" ok "メニューなし"
+  if [ "$DLV_DATE" != "$TODAY" ] || [ "$DLV_LEG" != "$EXPECT_LEG" ] || [ -z "$DLV_MSG_ID" ]; then
+    echo "[$(TS)] _delivery_state.json stale/mismatch (date=$DLV_DATE leg=$DLV_LEG expect=$EXPECT_LEG today=$TODAY) -> skip" >> "$LOG"
+    python3 "$DIR/update_status.py" "$STATUS_KEY" ok "納品なし"
     echo "[$(TS)] ---- sns_leg ${LEG_ARG} end (skipped) ----" >> "$LOG"
     exit 0
   fi
 
-  READ_JSON=$(python3 "$DIR/discord_api.py" read "$MENU_MSG_ID" 2>>"$LOG")
+  READ_JSON=$(python3 "$DIR/discord_api.py" read "$DLV_MSG_ID" 2>>"$LOG")
   READ_RC=$?
   if [ $READ_RC -ne 0 ]; then
     echo "[$(TS)] discord_api.py read failed (rc=$READ_RC)" >> "$LOG"
@@ -87,8 +102,8 @@ except Exception:
     print(0)")
 
   if [ "$USER_COUNT" -eq 0 ]; then
-    echo "[$(TS)] 0 user replies since menu_msg_id=$MENU_MSG_ID -> skip (no claude launch)" >> "$LOG"
-    python3 "$DIR/update_status.py" "$STATUS_KEY" ok "返信なし"
+    echo "[$(TS)] 0 user replies since delivery_msg_id=$DLV_MSG_ID -> skip (no claude launch)" >> "$LOG"
+    python3 "$DIR/update_status.py" "$STATUS_KEY" ok "返信なし（納品原稿はそのまま有効）"
     echo "[$(TS)] ---- sns_leg ${LEG_ARG} end (skipped) ----" >> "$LOG"
     exit 0
   fi
@@ -97,16 +112,26 @@ except Exception:
 fi
 
 # ---- push系は常に、reply系は新規返信ありのときだけここに到達 ----
+# claude -p 失敗時は15分後に1回だけ再試行（ネットワーク瞬断・API一時障害対策）
 cd "$HOME"
-if "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
-    --allowedTools "$ALLOWED_TOOLS" \
-    >> "$LOG" 2>&1; then
+CLAUDE_OK=0
+for ATTEMPT in 1 2; do
+  if "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
+      --allowedTools "$ALLOWED_TOOLS" \
+      >> "$LOG" 2>&1; then
+    CLAUDE_OK=1
+    break
+  fi
+  RC=$?
+  echo "[$(TS)] claude -p failed (rc=$RC, attempt $ATTEMPT)" >> "$LOG"
+  [ "$ATTEMPT" = "1" ] && { echo "[$(TS)] retrying in 15min" >> "$LOG"; sleep 900; wait_net; }
+done
+
+if [ "$CLAUDE_OK" = "1" ]; then
   python3 "$DIR/update_status.py" "$STATUS_KEY" ok "${LABEL} 実行完了"
   echo "[$(TS)] ---- sns_leg ${LEG_ARG} end (ok) ----" >> "$LOG"
 else
-  RC=$?
-  echo "[$(TS)] claude -p failed (rc=$RC)" >> "$LOG"
-  python3 "$DIR/update_status.py" "$STATUS_KEY" error "${LABEL} 失敗（ログ確認・翌便が繰越処理）"
+  python3 "$DIR/update_status.py" "$STATUS_KEY" error "${LABEL} 失敗（2回試行・ログ確認・翌便が繰越処理）"
   echo "[$(TS)] ---- sns_leg ${LEG_ARG} end (error) ----" >> "$LOG"
   exit 1
 fi

@@ -12,6 +12,8 @@ Usage:
   discord_api.py audit [days]             直近days日分（既定7）の生メッセージをbefore/afterページングで全件取得し、
                                            草川本人メッセージのうちreactionsが1つも付いていないものをJSON出力（日曜監査用）。
                                            AUDIT_FLOOR より古いメッセージ（カーソル初期化前の意図的スキップ分）は対象外。
+  discord_api.py download <msg_id> <dir>  msg_idの添付ファイル（写真等）を<dir>へ保存し、保存パスのJSONリストを出力。
+                                           読み取り専用（カーソル・リアクション不変更）。v3納品便のInsta写真取得用。
 """
 import json, os, socket, sys, time, urllib.error, urllib.parse, urllib.request
 from datetime import datetime
@@ -137,6 +139,13 @@ def find_unprocessed(messages, user_id=USER_ID, floor_id=None):
     return sorted(out, key=lambda m: int(m["id"]))
 
 
+def _atts(m):
+    """メッセージの添付情報を軽量JSON化（写真投げ込みの検出用）"""
+    return [{"filename": a.get("filename", ""),
+             "content_type": a.get("content_type", ""),
+             "url": a.get("url", "")} for a in m.get("attachments", [])]
+
+
 def fetch():
     st = load_state()
     ch = dm_channel_id()
@@ -146,7 +155,8 @@ def fetch():
     msgs = _call("GET", "/channels/%s/messages%s" % (ch, q)) or []
     new = filter_new(msgs, st.get("last_processed_id"))
     print(json.dumps(
-        [{"id": m["id"], "ts": m["timestamp"], "content": m["content"]} for m in new],
+        [{"id": m["id"], "ts": m["timestamp"], "content": m["content"],
+          "attachments": _atts(m)} for m in new],
         ensure_ascii=False, indent=1))
 
 
@@ -163,9 +173,29 @@ def read(after_id):
         "ts": m["timestamp"],
         "content": m["content"],
         "is_user": m.get("author", {}).get("id") == USER_ID,
+        "attachments": _atts(m),
     } for m in msgs]
     out.sort(key=lambda m: int(m["id"]))
     print(json.dumps(out, ensure_ascii=False, indent=1))
+
+
+def download(msg_id, outdir):
+    """msg_idの添付ファイルをoutdirへ保存し、保存パスのJSONリストを出力（読み取り専用）。
+    Discord CDNの添付URLは署名付きで期限があるため、当日中の利用を前提とする。"""
+    ch = dm_channel_id()
+    m = _call("GET", "/channels/%s/messages/%s" % (ch, msg_id))
+    os.makedirs(outdir, exist_ok=True)
+    saved = []
+    for i, a in enumerate(m.get("attachments", [])):
+        name = a.get("filename") or ("attachment_%d" % i)
+        # パス直下固定（filenameのディレクトリ表記は無害化）
+        name = os.path.basename(name)
+        dest = os.path.join(outdir, "%s_%s" % (msg_id, name))
+        req = urllib.request.Request(a["url"], headers={"User-Agent": "kusagawa-sns-routine/1.0"})
+        with urllib.request.urlopen(req, timeout=60) as r, open(dest, "wb") as f:
+            f.write(r.read())
+        saved.append(dest)
+    print(json.dumps(saved, ensure_ascii=False, indent=1))
 
 
 def react(msg_id, kind):
@@ -233,5 +263,7 @@ if __name__ == "__main__":
         advance(sys.argv[2])
     elif cmd == "audit":
         audit(int(sys.argv[2]) if len(sys.argv) > 2 else 7)
+    elif cmd == "download":
+        download(sys.argv[2], sys.argv[3])
     else:
         sys.exit(__doc__)
