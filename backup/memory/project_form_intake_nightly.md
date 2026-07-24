@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 127e63c0-a431-4d43-83f1-008de904dd92
-  modified: 2026-07-24T15:35:36.236Z
+  modified: 2026-07-24T16:05:31.995Z
 ---
 
 2026-07-25構築。ご意見箱フォーム回答シート3枚の新着を毎晩3:30に自動取込（launchd `com.kusagawa.form-intake` → `~/.claude/scripts/form-intake/form_intake.sh` → claude -p → **form-intakeスキル**が正本手順）。手動フォールバック=「フォーム取り込んで」。
@@ -14,7 +14,8 @@ metadata:
 - **重要経緯**: ohayo§9が2026-05-11から既に毎朝同シートをポーリングしていた（[[project_form_intake_db]]のGAS断念→手動コピペ運用の後に追加されていた）。本システムはその夜間前倒しで、state=`iken_poller_state.json`を共用（`last_processed_timestamp`=Notion登録済み／`etl_last_row`=ETL追記済み行数の2トラック）。ohayo§9はシート直接ポーリング廃止・結果表示＋死活監視のみに書換済み。
 - **落とし穴**: Drive `read_file_content`は古いキャッシュを返す→`download_file_content`＋base64デコード必須。headlessはToolSearch必須（[[feedback_headless_mcp_deferred_false_absent]]）。
 - 設計書: `~/claude-config/specs/2026-07-25-form-intake-design.md`
-- **残タスク**: 初回キャッチアップ実行（etl_last_row初期値=ETL 2026-05-06時点のため、2026-05以降の未追記分＋7月新着があれば初回にまとめて処理。「フォーム取り込んで」で対話実行し草川目視確認が推奨）。
+- **初回キャッチアップ**: ETL側は2026-07-25完了（バックログ44件追記・359→403件。S3はETL漏れ22件=2025/03〜2026/04も回収）。**残=Notion登録6件のみ**（Notion MCP認証切れで停止中→草川が/mcpで再認証→「フォーム取り込んで」。Todoist登録済み・E2Eテストで検出/フィルタ/state保守処理は動作確認済）。新着6件の対応タスクはTodoist登録済（図書館聞き取り事案=緊急ほか計6本）。
+- ohayo§9はタスク化候補同時提示（承認制）も実装済（表示だけでは声が落ちる穴の締め・2026-07-25）。
 
 **Why:** 手動コピペの投函負担をゼロにし、報告会の声と同様「届いた声が行方不明になる」事故を構造的に防ぐ（[[feedback_system_closing_loops_rot]]=締め工程は定時トリガーに載せる）。
 
