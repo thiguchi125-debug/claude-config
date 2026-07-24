@@ -27,7 +27,7 @@ description: 毎朝「おはよう」「おはよ」「morning」「朝のブリ
 6. 今朝のニュース＋過去発言grep
 7. 議会・選挙カウントダウン
 8. 発信テーマ提案（街頭3案＋ブログ/SNS）
-9. 市民意見フォーム新規回答処理
+9. ご意見箱フォーム新着表示（夜間form-intake結果）
 10. シグナル欄（policy-radar承認待ち／📥未分類インテーク件数／Drive新規資料／月初のみ全体地図チェック）
 
 各項目の実行後にチェック。スキップは「⊘ skipped: 理由」を記録し、未実行があればチャット末尾に「⚠️ N件未実行」。全10完了後に §F（ダッシュボード3セクション更新）→ 最終出力。
@@ -49,6 +49,11 @@ description: 毎朝「おはよう」「おはよ」「morning」「朝のブリ
 - **キーが存在しない、または `updated` が26h超** → `🚨 discord-intake夜間ジョブが動いていない可能性（launchctl list | grep discord-intake 確認→kickstart）` を表示（drive-pipelineが2:30にstatusを全書き換えするため、3:10のジョブが走らなかった夜はキー自体が消える）。
 - `~/.claude/scripts/sns-routine/_notion_queue.jsonl` が存在し1行以上あれば、**queue flush**を実行: 各行の `dest` に従いNotionへ保存（市民意見→c2c34bd8- / 未分類→391cf503-a68f-8191-b218-e80fdc7aedeb / ledger→当日nichijo日次ログ / critical→草川に内容提示して指示を仰ぐ）→ 保存済み行を削除 → 件数をブリーフィングに表示。
 - 日曜朝は `sns_audit` キーも確認。`error`なら🚨＋`~/.claude/scripts/sns-routine/_audit_report.md` の内容を表示（未処理メッセージ=迷子候補）。
+
+### ご意見箱フォーム取込監視（form-intake・2026-07-25〜）
+- `_pipeline_status.json` の `form_intake` キーを確認。`error` なら🚨表示＋「state未更新=取りこぼしなし・`~/.claude/scripts/form-intake/_intake.log` 確認→手動『フォーム取り込んで』」を案内。
+- **キーが存在しない、または `updated` が26h超** → `🚨 form-intake夜間ジョブ（3:30）が動いていない可能性（launchctl list | grep form-intake 確認→kickstart）` を表示（drive-pipelineが2:30にstatusを全書き換えするため、走らなかった夜はキー自体が消える）。
+- 新着内容の表示は§9（`_form_status.json`）が担当。ここは死活のみ。
 
 ## §2 昨夜のまとめ（Notion 2call）
 
@@ -102,13 +107,13 @@ oyasumiデイリーサマリを取得する。**⚠️ notion-searchはセマン
 3. 出力: 🎤街頭演説3案（A深掘り/B共感/C攻め・テーマ単位・本文は生成しない）＋📝ブログ・SNSテーマ2〜3本（レーン付き）。分野は5ドメイン分散・選挙文脈は引っ込める（[[feedback_street_speech_topic_diversity]]他）。
 4. トリガー条件成立時のみ末尾に「💫 今日はフルパッケージ作る？（daily-content-generator）」を1行（自動連結禁止・[[feedback_ohayo_daily_content_generator_prompt]]）。
 
-## §9 市民意見フォーム新規回答処理（締め工程・状態ファイル駆動）
+## §9 市民意見フォーム新着表示（2026-07-25〜 夜間form-intakeジョブの結果表示・ローカルRead 1回）
 
-状態ファイル: `~/.claude/projects/-Users-kusakawatakuya/iken_poller_state.json`
-1. state の対象フォーム回答シート（Google Sheets 3本）を `last_processed_timestamp` 以降で確認。
-2. **テスト投稿フィルタ**: 名前に test_keywords／連絡先に kusagawa_test_emails／本文10字未満／spam_keywords → スキップ（「⊘ テスト投稿スキップ: …」1行・stateのみ更新）。
-3. 実回答 → 📝市民意見リスト（`c2c34bd8-1e16-492e-aab0-d3f497d18d4d`）へ登録＋返信要ならGmail下書き（宛先無ければ `kusakawa.taku@gmail.com`＋件名【TO要修正】）→ チャットに「📋 昨夜届いた市民意見 N件」表示。
-4. state の `last_processed_timestamp` を更新。0件なら「新規意見なし」1行。
+取込処理本体は夜間launchd `com.kusagawa.form-intake`（3:30）＝form-intakeスキルへ移管済み（stateは従来と同じ `iken_poller_state.json` を共用）。朝は**結果表示のみ**：
+
+1. `~/.claude/scripts/form-intake/_form_status.json` をRead。
+2. `date` が今日（=今朝3:30実行分）→ `new_count` 0件なら「📮 ご意見箱: 新着なし」1行。1件以上なら「📮 ご意見箱 新着N件」として items の各行（行ID・地区・緊急度・1行要約・NotionURL）を表示。`urgent: true` があれば⚠️付きで最上部。末尾に「返信案が必要なら『◯番の返信案作って』（→ ikenフロー）」を添える。
+3. `date` が今日でない・ファイル無し・`_pipeline_status.json` の `form_intake` キーがerror or updated 26h超 → `🚨 ご意見箱取込ジョブが動いていません（launchctl list | grep form-intake 確認）→「フォーム取り込んで」で手動実行` を表示。**ohayo内でシート直接ポーリングはしない**（手動form-intakeに一本化・二重登録防止）。
 
 ## §10 シグナル欄（軽量・各1call以内）
 

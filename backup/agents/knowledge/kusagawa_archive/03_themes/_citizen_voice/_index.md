@@ -1,6 +1,7 @@
 # 市民の声 ETL Index
 
 **ETL日時**: 2026-05-06
+**増分取込**: 2026-07-25（S1-41〜48/S2-196〜210/S3-125〜148・テスト3件除外）
 **ETL実施者**: Claude Code subagent (general-purpose)
 **ミッション**: Step A v2 施策発掘の素材整理
 
@@ -8,23 +9,23 @@
 
 | # | タイトル | fileId | 期間 | 件数 |
 |---|---|---|---|---|
-| 1 | 【2025アンケート】市政へのご意見（回答） | 1F-zNtaJPyD8XRM_UYcajsSGnuONG9afEX5VfBBsth5k | 2025/7〜2026/4 | 40件 |
-| 2 | 市政へのご意見（アンケートなし）（回答） | 1sJzr4TGsO963wyIsFbSeBM18e5Oy8xhHVbTmRshmDXo | 2022〜継続 | 195件 |
-| 3 | 市政へのご意見（アンケートあり）（回答） | 1Lqj24se04T-q6VkF3RayAk0ZHy9Ym9OD8541EHjn8ec | 2021〜継続 | 124件 |
-| **計** | | | **2021/06〜2026/04** | **359件** |
+| 1 | 【2025アンケート】市政へのご意見（回答） | 1F-zNtaJPyD8XRM_UYcajsSGnuONG9afEX5VfBBsth5k | 2025/7〜2026/7 | 48件 |
+| 2 | 市政へのご意見（アンケートなし）（回答） | 1sJzr4TGsO963wyIsFbSeBM18e5Oy8xhHVbTmRshmDXo | 2022〜継続 | 210件（うちテスト2件は取込対象外） |
+| 3 | 市政へのご意見（アンケートあり）（回答） | 1Lqj24se04T-q6VkF3RayAk0ZHy9Ym9OD8541EHjn8ec | 2021〜継続 | 148件（うちテスト1件は取込対象外） |
+| **計** | | | **2021/06〜2026/07** | **403件（=359＋増分44・テスト3件除外）** |
 
 ## ドメイン別件数
 
 | ドメイン | 件数 | ファイル |
 |---|---|---|
-| childcare_education（子育て・教育） | 153 | childcare_education.md |
-| urbanplanning_industry（都市計画・産業誘致） | 39 | urbanplanning_industry.md |
-| transport_infrastructure（交通・インフラ） | 60 | transport_infrastructure.md |
-| disaster_safety（防災・安全・水道） | 32 | disaster_safety.md |
-| dx_administrative（行政DX・市役所運営・市政情報発信） | 59 | dx_administrative.md |
-| healthcare_welfare（医療・福祉） | 15 | healthcare_welfare.md |
+| childcare_education（子育て・教育） | 167 | childcare_education.md |
+| urbanplanning_industry（都市計画・産業誘致） | 52 | urbanplanning_industry.md |
+| transport_infrastructure（交通・インフラ） | 66 | transport_infrastructure.md |
+| disaster_safety（防災・安全・水道） | 38 | disaster_safety.md |
+| dx_administrative（行政DX・市役所運営・市政情報発信） | 62 | dx_administrative.md |
+| healthcare_welfare（医療・福祉） | 17 | healthcare_welfare.md |
 | _other（その他） | 1 | _other.md |
-| **合計** | **359** | |
+| **合計** | **403** | |
 
 ## 個人情報配慮
 

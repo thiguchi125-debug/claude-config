@@ -4,6 +4,8 @@
 
 ## 🔄 進行中プロジェクト
 
+- [ご意見箱フォーム夜間自動取込](project_form_intake_nightly.md) — 2026-07-25構築。launchd 3:30→form-intakeスキル→📝市民意見リスト＋_citizen_voice追記→朝ohayo表示。旧ohayo§9の夜間前倒し・state=iken_poller_state.json共用。**残=初回キャッチアップ（「フォーム取り込んで」）**。Drive read_file_contentはキャッシュ腐りで使用禁止
+
 - [ファイル管理監査2026-07-22](project_file_audit_2026-07-22.md) — Drive直下4フォルダ正規形・重複日常資料アーカイブ統合・💾Macローカルミラー新設・restore.sh修理済。**残=パイプラインv4承認（PROPOSED_v4.sh）・Time Machine未設定・trash_pending承認**。openrsyncは--iconv非対応
 
 - [市政報告レポート川合町版＝チラシ完成形](project_shisei_report_kawaicho_complete_form.md) — 2026-07-18完成。report_kameokaテンプレの勝ちパターン（実筆跡挨拶／告知ブロック／現場実写／数字レール／円形ヌメラル／AIインタビューQR）。ネットプリント可・家庭用は[[feedback_home_printer_ink_saving_variant]]。QR検証は必ずpyzbar

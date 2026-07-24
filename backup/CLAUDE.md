@@ -84,6 +84,7 @@
 | ショート動画作って / TikTokセット / 動画作って画像も | short-video-create（セリフ→fact-check→risk-review→nano-banana画像プロンプト→📣SNS投稿管理DB保存を1パス） |
 | 写真ストック整理して / 写真整理して / 写真回収して | **📷写真ストック月次整理**（Chromeでphotos.google.comアルバム「📷議員活動」新着回収→目利き選抜→catalog台帳→wishlist照合。正本=Drive `📷写真ストック/README.md`・詳細memory=project_photo_stock_system） |
 | 節約で〜 / 節約モードで / 燃費よく / leanで | lean-mode（品質そのまま・無駄だけ削るトークン節約プレイブック。安全ゲート・主担当agent・アーカイブgrepは削らない） |
+| フォーム取り込んで / ご意見箱取り込んで / フォーム新着確認 | **form-intake**（ご意見箱シート3枚の新着→📝市民意見リスト登録＋_citizen_voice追記。毎晩3:30 launchd自動実行の手動フォールバック。返信案は「◯番の返信案作って」でikenへ） |
 | 会議メモ: / これ保存して / メモ: / 〇〇と話した（保存先指定なしの情報投入全般） | **smart-intake モードA**（判定→確認1回→一括保存→🔖台帳） |
 | 〇〇どこ？ / あれどこだっけ / 〇〇探して | **smart-intake モードB**（Notion・Drive・drafts・outputs・移動ログ・Todoist横断検索） |
 | 発信ネタ: / ひらめき: / これ発信できる？ / ネタにして / この記事から何か作れる？ | **spark**（小さな種→接地→切り口2〜3案→選択分だけ生成→安全ゲート→保存。「貯めて」で📣SNS投稿管理DBに💡ストック） |
