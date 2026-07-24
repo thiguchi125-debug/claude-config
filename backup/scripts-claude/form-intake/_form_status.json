@@ -1,0 +1,16 @@
+{
+  "date": "2026-07-25",
+  "new_count": 6,
+  "registered_count": 0,
+  "items": [
+    {"row_id": "S1-48", "date": "2026/07/16", "district": "井田川小学校区", "domain": "childcare_education", "urgency": "中", "summary": "和田保育園の園庭に先生方の車が駐車され子どもが遊べない懸念。職員駐車場の確保を要望", "notion_url": null, "skipped": false, "urgent": false, "registered": false},
+    {"row_id": "S2-206", "date": "2026/07/08", "district": "不明（忍山神社付近）", "domain": "transport_infrastructure", "urgency": "中", "summary": "忍山神社と鈴鹿スチール工場の間の草木で交差点の見通しが悪く危険。剪定・見通し改善を要望", "notion_url": null, "skipped": false, "urgent": false, "registered": false},
+    {"row_id": "S2-207", "date": "2026/07/08", "district": "不明", "domain": "_other", "urgency": "低", "summary": "「カラオケがほしい」（8字・min_opinion_length未満→フィルタ対象。ただしstate未更新のため確定処理は翌夜）", "notion_url": null, "skipped": true, "urgent": false, "registered": false},
+    {"row_id": "S2-208", "date": "2026/07/08", "district": "みずきが丘", "domain": "transport_infrastructure", "urgency": "中", "summary": "みずきが丘入口交差点の信号を右折矢印付きに変更してほしい（右折困難）", "notion_url": null, "skipped": false, "urgent": false, "registered": false},
+    {"row_id": "S2-209", "date": "2026/07/24", "district": "不明", "domain": "healthcare_welfare", "urgency": "中", "summary": "子ども医療費の18歳まで無償化を要望（高校生の子にアレルギーがあり治療費が高額）", "notion_url": null, "skipped": false, "urgent": false, "registered": false},
+    {"row_id": "S2-210", "date": "2026/07/24", "district": "不明（図書館）", "domain": "disaster_safety", "urgency": "高", "summary": "図書館で高校生の息子がスーツ姿の男性2人（警察手帳様のもの提示・「亀山市生活〜」と名乗る）に氏名・学校名を聞かれカバン確認された。不審者ではと不安・事実確認要", "notion_url": null, "skipped": false, "urgent": true, "registered": false}
+  ],
+  "errors": [
+    "Notion MCP未認証（claude.ai connector要再認証・非対話セッションのためOAuth不可）。新着6件を検出したがNotion登録・重複ガード実行不可。iken_poller_state.jsonは据え置き（翌夜または手動「フォーム取り込んで」で再処理）。ETL新着は0件（etl_last_row変更なし）。対処: claude.aiのコネクタ設定でNotionを再認証してください。"
+  ]
+}
