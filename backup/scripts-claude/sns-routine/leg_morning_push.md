@@ -97,6 +97,7 @@ ToolSearch でロードした後、実際に呼んでエラーが返った場合
 4. **投げ込み由来の場合**: 📮投げ込み台帳DB（data_source `7a444c29-`）を notion-search（query=投げ込み内容の要点、またはmsg_id）で探し、該当行の「SNS採用」を __YES__ に更新（見つからなければ省略可）。
 5. **ステータスページ**: 「本日の納品」節を全置換（便名・送信時刻・納品msg_id・テーマ・由来・予備見出し・接地情報）。「履歴（直近7日）」節に「朝便納品〈テーマ〉」を1行追記。
 6. Notionが不通の場合: 1〜5のNotion分は `~/.claude/scripts/sns-routine/_notion_queue.jsonl` に `{"date":"...","type":"sns_delivery","content":"<保存内容の要約とdraftsパス>","dest":"📣投稿管理DB"}` を追記して翌朝ohayoに委ねる（drafts保存とテーマ履歴はローカルなので必ず実行）。
+7. **queueフラッシュ**: Notionが使えるなら `_notion_queue.jsonl` を確認し、type=sns_delivery / sns_pack_* の行を保存先に反映して該当行を削除（他typeの行はohayo管轄なので触らない。draftsパスから原稿を読んで📣DBに保存）。
 
 # 返信文法（Step 0の繰越処理用・返信便と同一）
 

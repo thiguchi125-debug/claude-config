@@ -17,10 +17,10 @@ TS() { date "+%Y-%m-%d %H:%M:%S"; }
 
 LEG_ARG="${1:-}"
 case "$LEG_ARG" in
-  morning_push)   IS_PUSH=1; EXPECT_LEG="morning"; LABEL="朝納品便 6:45" ;;
-  evening_push)   IS_PUSH=1; EXPECT_LEG="evening"; LABEL="夕納品便 19:30" ;;
-  morning_reply)  IS_PUSH=0; EXPECT_LEG="morning"; LABEL="朝返信処理 7:30" ;;
-  evening_reply)  IS_PUSH=0; EXPECT_LEG="evening"; LABEL="夕返信処理 20:15" ;;
+  morning_push)   IS_PUSH=1; EXPECT_LEG="morning"; LABEL="朝納品便 6:45";  SCHED_MIN=405  ;;
+  evening_push)   IS_PUSH=1; EXPECT_LEG="evening"; LABEL="夕納品便 19:30"; SCHED_MIN=1170 ;;
+  morning_reply)  IS_PUSH=0; EXPECT_LEG="morning"; LABEL="朝返信処理 7:30"; SCHED_MIN=450 ;;
+  evening_reply)  IS_PUSH=0; EXPECT_LEG="evening"; LABEL="夕返信処理 20:15"; SCHED_MIN=1215 ;;
   *)
     echo "usage: sns_leg.sh <morning_push|morning_reply|evening_push|evening_reply>" >&2
     exit 2
@@ -29,6 +29,37 @@ esac
 
 STATUS_KEY="sns_${LEG_ARG}"
 PROMPT_FILE="$DIR/leg_${LEG_ARG}.md"
+
+# ---- 遅延発火ガード（v3.1・2026-07-25追加）----
+# Macがバッテリー駆動やスリープで定時に発火できず、数時間遅れて起動した便は見送る。
+# 遅延便が翌便と並走して同テーマを二重納品した事故（7/23夕便が7/24朝便と並走）の再発防止。
+# 120分以内の遅れは通常運転（多少遅れても納品する価値がある）。
+NOW_MIN=$(( 10#$(TZ=Asia/Tokyo date +%H) * 60 + 10#$(TZ=Asia/Tokyo date +%M) ))
+LATE_MIN=$(( NOW_MIN - SCHED_MIN ))
+if [ "$LATE_MIN" -gt 120 ] || [ "$LATE_MIN" -lt -30 ]; then
+  echo "[$(TS)] stale start (scheduled=${SCHED_MIN}min now=${NOW_MIN}min late=${LATE_MIN}min) -> skip" >> "$LOG"
+  python3 "$DIR/update_status.py" "$STATUS_KEY" error "${LABEL} 遅延発火のため見送り（Mac電源/スリープ確認・次の定時便が繰越）"
+  exit 0
+fi
+
+# ---- 排他ロック（v3.1・mkdirロック=macOSにflockが無いため）----
+# 便同士の並走を防ぐ。5時間超の残置ロックは異常終了の遺物とみなして奪取。
+LOCK="$DIR/_leg.lock.d"
+WAITED=0
+while ! mkdir "$LOCK" 2>/dev/null; do
+  if [ -d "$LOCK" ] && [ -n "$(find "$LOCK" -maxdepth 0 -mmin +300 2>/dev/null)" ]; then
+    echo "[$(TS)] stale lock (>5h) -> steal" >> "$LOG"
+    rmdir "$LOCK" 2>/dev/null || rm -rf "$LOCK"
+    continue
+  fi
+  if [ "$WAITED" -ge 600 ]; then
+    echo "[$(TS)] another leg still running (lock wait 10min timeout) -> skip" >> "$LOG"
+    python3 "$DIR/update_status.py" "$STATUS_KEY" error "${LABEL} 他便実行中のため見送り"
+    exit 0
+  fi
+  sleep 30; WAITED=$((WAITED+30))
+done
+trap 'rmdir "$LOCK" 2>/dev/null' EXIT
 # ToolSearch は必須: headless実行ではNotion/Gmail MCPがdeferredで起動するため、
 # ToolSearchでスキーマをロードしないと「未接続」と誤判定して納品が不発になる（2026-07-17修理）
 # v3追加: WebSearch/WebFetch=新風枠・一次記事の本文調査、Gmail MCP=iJAMPスキャン（規約適合ルート）
@@ -116,7 +147,8 @@ fi
 cd "$HOME"
 CLAUDE_OK=0
 for ATTEMPT in 1 2; do
-  if "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
+  # caffeinate -i: 実行中のアイドルスリープを抑止（バッテリー駆動時の蓋閉じスリープまでは防げない）
+  if /usr/bin/caffeinate -i "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
       --allowedTools "$ALLOWED_TOOLS" \
       >> "$LOG" 2>&1; then
     CLAUDE_OK=1

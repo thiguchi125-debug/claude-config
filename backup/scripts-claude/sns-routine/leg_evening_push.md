@@ -91,6 +91,7 @@ ToolSearch でロードした後、実際に呼んでエラーが返った場合
 4. 投げ込み由来の場合: 📮投げ込み台帳DB該当行の「SNS採用」を __YES__ に更新（見つからなければ省略可）。
 5. ステータスページ「本日の納品」節を全置換＋「履歴（直近7日）」に1行追記。
 6. Notion不通時: Notion分は `_notion_queue.jsonl` にqueue退避（type="sns_delivery"）。drafts・テーマ履歴はローカルなので必ず実行。
+7. **queueフラッシュ**: Notionが使えるなら `_notion_queue.jsonl` を確認し、type=sns_delivery / sns_pack_* の行を保存先に反映して該当行を削除（他typeの行はohayo管轄なので触らない。draftsパスから原稿を読んで📣DBに保存）。
 
 # 返信文法（Step 0の繰越処理用・返信便と同一）
 

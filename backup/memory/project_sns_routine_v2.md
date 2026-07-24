@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 9ee7574d-5bcc-4598-a986-151d530e598a
-  modified: 2026-07-23T01:31:09.295Z
+  modified: 2026-07-24T19:01:59.484Z
 ---
 
 # SNS発信ルーティンv2→v3
@@ -28,6 +28,12 @@ metadata:
 **障害耐性**: DM納品をNotion障害と切り離し（queue退避）／claude -p失敗15分リトライ／ネット疎通待ち／`_delivery_state.json`に単純化。allowedToolsに`WebSearch,WebFetch,mcp__claude_ai_Gmail__*`追加。discord_api.pyにattachments＋downloadコマンド追加（Insta写真・必ずRead確認）。
 
 **不変**: 夜間intake3:10の振り分け先／news-briefing6:00／日曜監査／D1 drafts保存／安全ゲート毎便必須。v2ファイルは`_backup_2026-07-23_v3/`。
+
+## v3.1（2026-07-25・遅延並走事故の修理）
+
+実走2日で判明: ①7/23夕便がスリープ凍結→翌朝7/24朝便と並走し同テーマ二重納品 ②7/24夜はバッテリー駆動（9%→3%）でスリープ連発→22:55遅延 ③`_auto_intake.sh`のwrite_statusが全置換で毎晩2:30にsns_*監視キーを消していた ④Notionトークン失効（7/24夜〜）。
+
+対策: sns_leg.shに**120分超遅延の見送りガード＋mkdir排他ロック（macOSにflock無し）＋caffeinate -i**、_auto_intake.shをマージ書込み化。**運用前提=Macは電源接続**（バッテリー時はスリープで便が止まる・遅延分はガードが安全に見送り翌便が繰越）。Notion失効時もDM納品は完走しqueue退避が機能した（設計通り）。
 
 ## Phase 1（完了・2026-07-14）
 
