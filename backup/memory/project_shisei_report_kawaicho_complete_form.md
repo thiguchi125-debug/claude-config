@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 4c9fb8c3-5796-4437-9720-ccf29ae20913
+  modified: 2026-07-24T06:33:45.268Z
 ---
 
 2026-07-18 完成。川合町版 市政報告レポート（A4両面）が、[[project_design_studio]] の `report_kameoka` テンプレ（広報かめおか文法）を使った**市政報告チラシデザインの一つの完成形**と草川本人が承認。「ネットプリントで印刷する場合はこのデザインでOK」。
@@ -24,3 +25,4 @@ metadata:
 - Googleマップを配布物に使うなら**正式クレジット「地図データ ©YYYY Google, ZENRIN」を可視で残す**（「※Googleマップを引用」の言い換えは規約不足）。選挙前の全戸配布ではグレーなので本人判断を仰ぐ。
 - 家庭用プリンタで刷る回は**インク節約版**（背景白＋大面積の濃色ベタを削減）を別途用意する。詳細は[[feedback_home_printer_ink_saving_variant]]。
 - ドキュメント正本: skill=design-studio／agent=kameoka-grammar-shisei-report／テンプレ=`design_system/templates/report_kameoka/design_spec.md`。
+- **裏面プロフィールの正本は安知本版のフル版**（2026-07-24草川指示・和田町版で修正）: 「…衆議院議員 小池百合子（現・東京都知事）秘書を経て2018年初当選。亀山市消防団第３分団員・亀山飲食業組合顧問・亀山市eスポーツ協会事務局長。」まで含める。川合版の短縮プロフィール（秘書名・現役職なし）を次回地区版にコピーしない。手書き挨拶は幅90mm（64mmは小さいと指摘あり）。
