@@ -1,81 +1,21 @@
 {
-  "date": "2026-07-25",
-  "new_count": 5,
-  "registered_count": 5,
+  "date": "2026-07-27",
+  "new_count": 1,
+  "registered_count": 1,
   "items": [
     {
-      "row_id": "S1-48",
-      "date": "2026/07/16",
-      "district": "井田川",
-      "domain": "childcare_education",
-      "urgency": "中",
-      "summary": "和田保育園の園庭に先生の車が駐車され子どもが遊べない懸念、職員駐車場の確保要望（匿名・30代）",
-      "notion_url": "https://app.notion.com/p/3a7cf503a68f812b942bc7a3bf5e80f5",
-      "skipped": false,
-      "urgent": false,
-      "registered": true
-    },
-    {
-      "row_id": "S2-206",
-      "date": "2026/07/08",
-      "district": "亀山",
-      "domain": "transport_infrastructure",
-      "urgency": "中",
-      "summary": "忍山神社〜鈴鹿スチール工場間の草木で交差点の見通しが悪く危険、剪定要望（あゆみ様・30代）",
-      "notion_url": "https://app.notion.com/p/3a7cf503a68f810eb2d1c29c81070e0a",
-      "skipped": false,
-      "urgent": false,
-      "registered": true
-    },
-    {
-      "row_id": "S2-207",
-      "date": "2026/07/08",
+      "row_id": "S2-211",
+      "date": "2026/07/25",
       "district": "",
-      "domain": "",
-      "urgency": "",
-      "summary": "⊘ テスト投稿スキップ（本文8字＜min_opinion_length 10字：「カラオケがほしい」80代）",
-      "notion_url": "",
-      "skipped": true,
-      "urgent": false,
-      "registered": false
-    },
-    {
-      "row_id": "S2-208",
-      "date": "2026/07/08",
-      "district": "井田川",
-      "domain": "transport_infrastructure",
+      "domain": "urbanplanning_industry",
       "urgency": "中",
-      "summary": "みずきが丘入口交差点に右折矢印信号を要望（マックスバリュ側からの車で右折不能・みずきが丘住民様・40代）",
-      "notion_url": "https://app.notion.com/p/3a7cf503a68f8194923de87b204c6bab",
+      "summary": "亀山市立図書館に水飲み場の設置を要望。子どもから高齢者まで長時間利用する施設で夏場の脱水・熱中症リスクに配慮を（笠間様・40代）",
+      "notion_url": "https://app.notion.com/p/3a9cf503a68f81b1a807dbb74d560647",
       "skipped": false,
       "urgent": false,
-      "registered": true
-    },
-    {
-      "row_id": "S2-209",
-      "date": "2026/07/24",
-      "district": "",
-      "domain": "childcare_education",
-      "urgency": "中",
-      "summary": "子ども医療費18歳まで無償化の後押し要望（息子がアレルギーで医療費高額・匿名・40代）",
-      "notion_url": "https://app.notion.com/p/3a7cf503a68f8119a6a7e1a4351b5ebc",
-      "skipped": false,
-      "urgent": false,
-      "registered": true
-    },
-    {
-      "row_id": "S2-210",
-      "date": "2026/07/24",
-      "district": "",
-      "domain": "_other",
-      "urgency": "高",
-      "summary": "図書館でスーツ姿の男性2人が高校生に学校名・氏名を聞きカバン確認。「亀山市生活○○」名乗り＝実在部署の巡回か不審者か確認要（はるか様・40代）",
-      "notion_url": "https://app.notion.com/p/3a7cf503a68f811492baec9f6de01c39",
-      "skipped": false,
-      "urgent": true,
       "registered": true
     }
   ],
   "errors": [],
-  "note": "前夜の「Notion MCP未認証」積み残し6件を今回正常処理（登録5件＋テストスキップ1件）。ETL新着0件（etl_last_rowが各シート現行行数と一致のためETL追記なし）。stateのlast_processed_timestampをS1=2026-07-16T22:59:27+09:00／S2=2026-07-24T20:12:19+09:00に前進。S3は新着なし。"
+  "note": "7/26夜のlaunchd実行はネットワーク障害（ENOTFOUND／接続断）で2回とも失敗していたため、今回の実行で7/25〜7/26分をキャッチアップ。新着はS2-211の1件のみでNotion登録・ETL追記とも完了。重複ガード：IKN-140（2026-06-20・学生10代「図書館にゴミ箱と給水機を」）と同趣旨だが別人・別投稿のため新規登録し、対応メモに相互参照を記載。S1（48行）・S3（148行）は新着なし。ETLはurbanplanning_industry.mdへ#53として追記（前例S2-204の図書館要望と同ドメイン）、_index.md合計403→404に更新。"
 }
