@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: b7d0e233-9752-4f54-a171-99e2d6cec3a1
-  modified: 2026-07-27T02:26:42.020Z
+  modified: 2026-07-27T02:27:05.121Z
 ---
 
 2026-06-02 に「.mdが実在するのにレジストリ未登録」のエージェント多数（council-material-creator / citizen-inquiry-responder / print-designer / photo-curator / policy-archive-miner / policy-synthesizer 等）を確認。**2026-07-02 に根本原因を特定し修理済み**。
@@ -18,6 +18,25 @@ metadata:
 3. あわせて不要エージェント4本削除（bug-quality-checker / skill-validator / design-doc-reviewer / video-content-strategist）・廃止スキル2本削除（council-materials-intake / council-mode-toggle）。
 
 **Why:** `~/.claude/agents/` は再帰走査され、frontmatterにname/descriptionを持つ.mdは何でもエージェント登録される。知識アーカイブがagents/配下にある限り、サブエージェントの作業cwd次第で同じ汚染が再発しうる。
+
+## 🔁 再発（2026-07-27）— 予測どおり25日で再発した
+
+図書館の給水環境ブログ制作でサブエージェント4本（kameyama-researcher / policy-researcher / content-fact-checker / content-risk-reviewer）をアーカイブgrep中心に走らせたところ、**同じ入れ子が2箇所に再生成**された。
+
+- `~/.claude/agents/knowledge/kusagawa_archive/.claude/agent-memory/`（08:36生成。content-fact-checker が10:43にメモリ3件を書き込み）
+- `~/.claude/agents/.claude/agent-memory/agenda-analyzer/`（空）
+
+セッション開始時のAvailable一覧には偽エージェント3件（`feedback-esports-mail-meigi-separation` / `feedback-form-riyou-mokuteki-scope` / `project-esports-linear-cup-mail-review`）が混入していた。**この3件の元.mdは調査時点ですでに実在せず**、セッション起動時のスナップショットに残っていただけだった＝レジストリは起動時に固まるので、掃除の効果は次セッションから出る。
+
+**再発時の対処（2026-07-27に実施した手順・そのまま再利用可）:**
+1. `find ~/.claude/agents -type d -name .claude` で入れ子を全部出す（**knowledge配下だけでなく `agents/` 直下も見る**。7/2の記録はknowledge配下しか書いておらず、`agents/.claude` を見落とす罠がある）
+2. 入れ子内の.mdを正規の `~/.claude/agent-memory/<agent>/` へ `mv`、各MEMORY.mdへ索引行を**追記**（上書き禁止・既存索引を消さない）
+3. 空になった入れ子ディレクトリを `~/Archive/_trash_pending_<日付>/` へ `mv`（CLAUDE.mdの即rm禁止に従う）
+4. `ls ~/.claude/agents/*.md | wc -l` で正規エージェント数（2026-07-27時点=48本）を確認
+
+**サインの見分け方（更新）:** Available一覧に `feedback-` `project-` `guard-` `reference-` で始まるケバブケースの日本語説明エージェントが並んでいたら100%汚染。正規エージェントはすべて役割名（`blog-writer` `policy-researcher` 等）。
+
+**恒久策が未実施であることの明記:** 上記「How to apply 4」の移設（`~/.claude/agents/knowledge/` → `~/.claude/knowledge/`）は**まだやっていない**。やらない限り、サブエージェントを archive grep 中心で走らせるたびに再発する。救出→隔離は対症療法にすぎない。次に再発したら移設の実施を草川に提案すること。
 
 **How to apply:**
 1. `Agent type not found` が再発したら、まず `find ~/.claude/agents/knowledge -type d -name .claude` で入れ子汚染を疑う。あれば中身救出→隔離→再起動。
