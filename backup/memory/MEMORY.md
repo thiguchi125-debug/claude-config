@@ -50,7 +50,7 @@
 
 - [Todoist期限切れの真因はInboxの動詞なし生メモ](feedback_todoist_inbox_verbless_memo_rot.md) — 2026-07-27棚卸し92件の実測=4割がタスクの形をしていない声メモ・1割が終了イベントの残骸・残りは日付が切れただけ。棚卸しは①死んだ箱②動詞なしメモ③期限切れ実タスクに割る。②は書き換え案を全件出し草川は3択のみ。声の正本はTodoistでなく📝市民意見リスト
 - [けんろう版v3の労務費「2026年4月告示」は誤り](feedback_kenro_v3_romuhi_date_error.md) — 正=2025年12月国策定・84.7万円は東京都の例。v3流用時は必ず修正
-- [アーバンスポーツ署名の発信はスケボー特化にしない](feedback_urban_sports_not_skateboard_only.md) — 主題＝多様なアーバンスポーツ（スケボー/3人制バスケ/BMX/パルクール）による子どもの居場所づくり。背骨＝草川の議場ロジック「音を出せる×歩いて通える」2条件→河川敷・橋の下。フットサル等球技は署名要望文外で書かない。P2(9/18〜)は再投稿要判断
+- [アーバンスポーツ署名の発信はスケボー特化にしない](feedback_urban_sports_not_skateboard_only.md) — 主題＝多様なアーバンスポーツ（スケボー/3人制バスケ/BMX/パルクール）による子どもの居場所づくり。背骨＝草川の議場ロジック「音を出せる×歩いて通える」2条件→河川敷・橋の下。フットサル等球技は署名要望文外で書かない。**署名①の提出先＝亀山市長＋かわまちづくり協議会会長の2者**（紙が正・発信が誤だった/2026-07-28修正）。P2(9/18〜)は再投稿要判断
 - [Chrome MCPのGoogleフォーム編集は拡張競合で書込ブロックされる](feedback_chrome_mcp_google_forms_write_blocked.md) — docs.google.comで`Cannot access chrome-extension:// URL of different extension`が出たら別拡張の競合。navigate/read_page/findは生きてるので手動書込→read_page検証が最速。必須トグルはAXに出ず目視依頼。数回で見切る
 - [Googleドキュメント形式はローカルgrepに不可視＝「無い」と断定するな](feedback_gdoc_native_invisible_to_local_grep.md) — .gdoc/.gsheetはミラーにショートカットのみ・_indexにも乗らない。ローカル空振り時は**必ずDrive MCP search_filesでサーバ側検索**してから「無い」と言う。誤配置も同時に疑う（R8コーチング体制が亀山JCに紛れていた事故2026-07-22）
 - [headlessのMCPはdeferred＝「未接続」ではない](feedback_headless_mcp_deferred_false_absent.md) — launchdの`claude -p`はツール登録数が多いとMCPが遅延ロード→ToolSearch知らないジョブが「Notion未接続」と誤判定し成果物ゼロでrc=0完了（SNS便4連続不発の真因・2026-07-17修理）。allowedToolsに`ToolSearch`必須＋プロンプトに明記。「MCP未接続」報告は再認証より先にこれを疑う
