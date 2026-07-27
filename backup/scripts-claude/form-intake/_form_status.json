@@ -1,21 +1,8 @@
 {
-  "date": "2026-07-27",
-  "new_count": 1,
-  "registered_count": 1,
-  "items": [
-    {
-      "row_id": "S2-211",
-      "date": "2026/07/25",
-      "district": "",
-      "domain": "urbanplanning_industry",
-      "urgency": "中",
-      "summary": "亀山市立図書館に水飲み場の設置を要望。子どもから高齢者まで長時間利用する施設で夏場の脱水・熱中症リスクに配慮を（笠間様・40代）",
-      "notion_url": "https://app.notion.com/p/3a9cf503a68f81b1a807dbb74d560647",
-      "skipped": false,
-      "urgent": false,
-      "registered": true
-    }
-  ],
+  "date": "2026-07-28",
+  "new_count": 0,
+  "registered_count": 0,
+  "items": [],
   "errors": [],
-  "note": "7/26夜のlaunchd実行はネットワーク障害（ENOTFOUND／接続断）で2回とも失敗していたため、今回の実行で7/25〜7/26分をキャッチアップ。新着はS2-211の1件のみでNotion登録・ETL追記とも完了。重複ガード：IKN-140（2026-06-20・学生10代「図書館にゴミ箱と給水機を」）と同趣旨だが別人・別投稿のため新規登録し、対応メモに相互参照を記載。S1（48行）・S3（148行）は新着なし。ETLはurbanplanning_industry.mdへ#53として追記（前例S2-204の図書館要望と同ドメイン）、_index.md合計403→404に更新。"
+  "note": "新着0件。S1=48行（last_processed 2026/07/16 22:59:27・etl_last_row 48）、S2=211行（last_processed 2026/07/25 17:35:29・etl_last_row 211）、S3=148行（last_processed 2026/06/28 14:12:36・etl_last_row 148）。3枚とも全行スキャンでウォーターマーク超過行ゼロ＝Notion新着0・ETL新着0。規定どおりNotion・_citizen_voice・iken_poller_state.jsonには一切書き込みなし。"
 }
