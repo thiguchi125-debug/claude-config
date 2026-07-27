@@ -1,10 +1,11 @@
 ---
 name: feedback_agent_registry_partial_load
-description: エージェント部分ロードの根本原因はagents/knowledge配下に入れ子生成された.claude/agent-memoryがレジストリを汚染していたこと。2026-07-02に隔離修理済み・再発監視ポイントあり
+description: エージェント部分ロードの根本原因はagents/knowledge配下に入れ子生成された.claude/agent-memoryがレジストリを汚染していたこと。2026-07-02に隔離修理・2026-07-27に再発を確認して再隔離（恒久策は未実施）
 metadata: 
   node_type: memory
   type: feedback
   originSessionId: b7d0e233-9752-4f54-a171-99e2d6cec3a1
+  modified: 2026-07-27T02:26:42.020Z
 ---
 
 2026-06-02 に「.mdが実在するのにレジストリ未登録」のエージェント多数（council-material-creator / citizen-inquiry-responder / print-designer / photo-curator / policy-archive-miner / policy-synthesizer 等）を確認。**2026-07-02 に根本原因を特定し修理済み**。
