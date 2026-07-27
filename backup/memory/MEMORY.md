@@ -111,6 +111,8 @@
 - 禁止表現集 — [「届かないを終わらせる」](feedback_phrase_todokanai_owaraseru.md)／[「届かなくても届く」](feedback_phrase_todokanakutemo_todoku.md)／[距離比喩100m/1マイル](feedback_metric_distance_metaphor_avoid.md)／[抽象・詩的比喩](feedback_no_abstract_poetic_phrases.md)／[つくり話冒頭](feedback_no_halfbaked_story_openings.md)／[空虚な問いかけ風](feedback_no_hollow_rhetorical_questions.md) — いずれも全面禁止・断定と行為語で書く
 - [「亀山42% vs 100%」は介護保険・子育てではない](feedback_kameyama_42pct_kaigo_not_childcare.md) — 子育て・保育・教育文脈で絶対使用禁止
 - [子育てDX「遅れ」フレームは前面禁止](feedback_kosodate_dx_delay_risky_frame.md) — 亀山子育てDXは進んでいる側。運用ピンポイント（現金集金3費目/コドモン26機能）に絞る「制度はある。問題は運用」
+- [SNS1行目に免責文を置くとフックが死ぬ](feedback_sns_disclaimer_kills_hook.md) — 冒頭は必ずフック（数字・具体名詞）・長い個人情報文は末尾・短い主体分離だけ冒頭に残す。7PF同一原稿禁止（信号がPF別＝X:リポスト/Threads:返信/IG:保存/TikTok:完視聴）。「名簿として保管しません」は署名簿保管の自縄自縛
+- [LINE公式で第三者団体の署名・動員を呼びかけない](feedback_line_koenkai_no_third_party_mobilization.md) — 免責文が塞ぐのは署名→後援会だけ。後援会→署名の逆流は未担保で「議員が後援会を動員した署名」と評価され要望書の説得力を自ら削る。2026-07-28草川判断で配信見送り
 - [発信物で絵文字を使わない（AI臭い）](feedback_no_emoji_ai_smell.md) — 絵文字禁止、見出し装飾はCSSライムバー/角マーカー/ピル、制作後にコードポイント検査
 - [フォーム回答の属性帰属はoperational contextで判定](feedback_form_response_no_attribution_guess.md) — 主語なし自由回答は運営文脈で自然な主体を選び即対応、過剰な「念のため確認」は信頼損なう
 - [ご意見箱の声の引用は属性を付けない](feedback_goikenbako_quote_no_attributes.md) — フォームは「対応に必要な用途のみに使用」と明記＝年代・地域を添えず本文のみ引用。動画逐語は字幕に「ご意見箱に届いた市民の声（◯年）」併記
