@@ -4,24 +4,25 @@
 
 ## 🔄 進行中プロジェクト
 
-- [ご意見箱フォーム夜間自動取込](project_form_intake_nightly.md) — 2026-07-25構築。launchd3:30→📝市民意見リスト＋_citizen_voice→朝ohayo表示。**残=初回キャッチアップ**。Drive read_file_contentはキャッシュ腐りで使用禁止
-- [ファイル管理監査2026-07-22](project_file_audit_2026-07-22.md) — Drive直下4フォルダ正規形・💾Macローカルミラー新設・restore.sh修理済。**残=パイプラインv4承認(PROPOSED_v4.sh)・Time Machine未設定・trash_pending承認**
-- [市政報告レポート川合町版＝チラシ完成形](project_shisei_report_kawaicho_complete_form.md) — 2026-07-18完成。report_kameokaテンプレの勝ちパターン正本。家庭用は[[feedback_home_printer_ink_saving_variant]]。QR検証は必ずpyzbar
-- [content-pipelineに発信ビジュアル統合](project_content_pipeline_visual_expansion.md) — 2026-07-14拡張。記事URL＋写真→ブログ→**サムネ(1200×630)＋SNS7種＋Reel(9:16)**を1パス。サムネは着手前に元写真の有無を確認
-- [後援会入会フォームシステム](project_koenkai_intake_form.md) — 2026-07-14稼働。フォーム→GAS自動返信→名簿CSV(00_名簿区画)→週次「後援会取り込み」でSubstack CSV。告示後(10/18)拡散停止
-- [SNS発信ルーティンv3](project_sns_routine_v2.md) — 2026-07-23 v3。朝6:45/夕19:30に完成短文セットをDM直接納品。新風枠毎便必須・14日クールダウン・iJAMPはGmail経由（スクレイピング禁止）・📮投げ込み台帳(7a444c29-)。次=Phase4
+- [ご意見箱フォーム夜間自動取込](project_form_intake_nightly.md) — launchd3:30→📝市民意見リスト＋_citizen_voice→朝ohayo。**残=初回キャッチアップ**。Drive read_file_contentは使用禁止
+- [ファイル管理監査2026-07-22](project_file_audit_2026-07-22.md) — Drive直下4フォルダ正規形・💾Macミラー新設。**残=v4承認(PROPOSED_v4.sh)・Time Machine未設定・trash_pending承認**
+- [市政報告レポート川合町版＝チラシ完成形](project_shisei_report_kawaicho_complete_form.md) — report_kameokaテンプレの勝ちパターン正本。家庭用は[[feedback_home_printer_ink_saving_variant]]。QR検証はpyzbar
+- [content-pipelineに発信ビジュアル統合](project_content_pipeline_visual_expansion.md) — 記事URL＋写真→ブログ→**サムネ1200×630＋SNS7種＋Reel 9:16**を1パス。サムネは着手前に元写真の有無を確認
+- [後援会入会フォームシステム](project_koenkai_intake_form.md) — フォーム→GAS自動返信→名簿CSV(00_名簿区画)→週次「後援会取り込み」でSubstack CSV。告示後(10/18)拡散停止
+- [SNS発信ルーティンv3](project_sns_routine_v2.md) — 朝6:45/夕19:30に完成短文セットをDM直接納品。新風枠毎便必須・14日クールダウン・iJAMPはGmail経由・📮台帳(7a444c29-)。次=Phase4
 - [AIくさかわ（AI代役ショート動画）](project_ai_kusakawa.md) — 2026-07-09実装完了。**草川手番=①ElevenLabs登録②nano-bananaキャラ生成**。それまで投稿不可
-- [gyakusanスキル](project_gyakusan_skill.md) — 2026-07-09構築。60日二層・提案止まり→承認分のみtd.py登録・月曜ohayo自動。**toben-trackerのTodoist自動提案は恒久撤去済**
-- [答弁トラッカー＋実績コンパイラー＋意見書ドラフター](project_toben_tracker.md) — 2026-07-08構築。台帳=07_commitments/ledger.json・**SNS実査は毎回伺い必須**。欠落会期=R05-12・R06-03/06/09
-- [📷写真ストックシステム](project_photo_stock_system.md) — 2026-07-08構築。Googleフォト「📷議員活動」→月一Chrome回収→Drive整理。**草川手番=アルバム作成が未**
-- [デザインスタジオ環境](project_design_studio.md) — 2026-07-07 v2。参照駆動制作がStep1必須＋スタイルレシピ5種。残=素材庫のnano-banana生成20枚（草川手番）
-- [中庄町夏祭りチラシ（毎年）](project_nakasho_natsumatsuri_flyer.md) — 2026=3年目。主催「中庄を全力応援する会」（草川と独立前提）。公選法HIGH留意（原資負担者・議員名会場表記・酒類許認可）
-- [市政報告会5ステージスキル](project_shisei_houkokukai_skill.md) — 2026-07-04実装。_status.json正本。**初回実走=安知本地区**（spark/design-studio初実走も同案件に合わせ得る）
-- [Notion全体整理2026-07-05](project_notion_reorg_2026-07-05.md) — **🎯政策・質問ネタDB(`42716725`)が唯一の書込先／旧政策候補DB(6f1895ac)凍結**。🤖AIハブ(394cf503-8126)・🗄️旧アーカイブv2(394cf503-8150)一元化・自動追加3本
+- [gyakusanスキル](project_gyakusan_skill.md) — 60日二層・承認分のみtd.py登録・月曜ohayo自動。**toben-trackerのTodoist自動提案は恒久撤去済**
+- [答弁トラッカー＋実績コンパイラー＋意見書ドラフター](project_toben_tracker.md) — 台帳=07_commitments/ledger.json・**SNS実査は毎回伺い必須**。欠落会期=R05-12・R06-03/06/09
+- [📷写真ストックシステム](project_photo_stock_system.md) — Googleフォト「📷議員活動」→月一Chrome回収→Drive整理。**草川手番=アルバム作成が未**
+- [デザインスタジオ環境](project_design_studio.md) — 参照駆動制作がStep1必須＋スタイルレシピ5種。残=素材庫のnano-banana生成20枚（草川手番）
+- [中庄町夏祭りチラシ（毎年）](project_nakasho_natsumatsuri_flyer.md) — 主催「中庄を全力応援する会」（草川と独立前提）。公選法HIGH留意（原資負担者・議員名会場表記・酒類許認可）
+- [市政報告会5ステージスキル](project_shisei_houkokukai_skill.md) — _status.json正本。**初回実走=安知本地区**（spark/design-studio初実走も同案件）
+- [Notion全体整理2026-07-05](project_notion_reorg_2026-07-05.md) — **🎯政策・質問ネタDB(`42716725`)が唯一の書込先／旧政策候補DB(6f1895ac)凍結**。🗄️旧アーカイブv2(394cf503-8150)一元化
 - [2026年6月議会 一般質問prep](project_ippan_shitsumon_2026-06_resume.md) — 通告書6/2提出済・骨子v7確定（①部活②送迎③シャープ）。次=counter-argument-simulator
 - [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案完成・保管中。公約設計で必要になったら「3本柱v0見せて」
+- 初回実運用FB待ちスキル — [spark](project_spark_skill.md)種→接地→切り口案→生成→安全ゲート／[photo-post](project_photo_post_skill.md)文→画像1:1+9:16→動画・spark連携PAIRモード
 - 構築完了・参照のみ — [Notion大改修v3＋smart-intake](project_notion_ohayo_news_v3_renewal.md)／[議会だより制作](project_gikai_dayori_creator.md)会議録→650字→提出docx＋引用マークdocx／[PJプラットフォーム](project_notion_project_platform.md)page=37a71464・ds=8975c6a9・Todoist=実行/Notion=蓄積／[Todoist移行](project_todoist_task_migration.md)td.py・Notion✅🗂️は参照のみ／[AI環境マップ](project_ai_env_map_notion_embed.md)🤖AIハブ(394cf503-8126)にembed・「作業環境マップ更新して」で再デプロイ
-- [クラウドRoutine棚卸し2026-07](project_routine_cleanup_2026-07.md) — 停止4本・修理1本（oyasumi夜間=Todoist読取専用化）・現役4本。議会資料管理Phase1-4はDrive v3に吸収済[[project_council_materials_management]]
+- [クラウドRoutine棚卸し2026-07](project_routine_cleanup_2026-07.md) — 停止4本・修理1本（oyasumi夜間=Todoist読取専用化）・現役4本。議会資料管理はDrive v3に吸収済[[project_council_materials_management]]
 
 ## 📦 移設済みルール束（2026-07-04・詳細は各agent/SKILL末尾「📌恒久ガードルール」節）
 
@@ -45,7 +46,7 @@
 - [「次の議会で追及」型表現を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞禁止、「継続的フォロー」「対話を重ねる」で
 - [議会・他議員への提言は対外発信で避ける](feedback_no_council_directed_proposals.md) — 提案宛先は執行部に限定。他自治体議会事例は中立紹介でOK
 - [他議員の名前は対外発信物に載せない](feedback_no_other_council_members_names.md) — スライド/SNS/ブログ/印刷物で禁止、汎用表記に。内部資料はOK
-- [SNS1行目に免責文を置くとフックが死ぬ](feedback_sns_disclaimer_kills_hook.md) — 冒頭は必ずフック（数字・具体名詞）・長い個人情報文は末尾・短い主体分離だけ冒頭。**7PF同一原稿禁止**（信号がPF別＝X:リポスト/Threads:返信/IG:保存/TikTok:完視聴）
+- [SNS1行目に免責文を置くとフックが死ぬ](feedback_sns_disclaimer_kills_hook.md) — 冒頭は必ずフック・長い個人情報文は末尾・短い主体分離だけ冒頭。**7PF同一原稿禁止**（信号がPF別＝X:リポスト/Threads:返信/IG:保存/TikTok:完視聴）
 - [ブログ定型フッターに◆AIインタビュー常設](feedback_blog_footer_ai_interview_link.md) — Threadsの後にdepth-interview-kusagawa（kameyama_shisei_zenpan）リンク
 - [声のDNA抽出時の注意](feedback_voice_dna_extraction.md) — サンプル不足時にAI生成の定型句を真の声と誤認しない
 - [アーカイブgrepは話題ワード＋草川独自表現を並列で](feedback_archive_grep_keyword_expansion.md) — 「乗って残す」等の草川語彙を引き忘れない
@@ -62,19 +63,19 @@
 - [子育てDX「遅れ」フレームは前面禁止](feedback_kosodate_dx_delay_risky_frame.md) — 亀山は進んでいる側。「制度はある。問題は運用」に絞る
 - 中学校給食 — [既に実施開始済（過渡期フレーム禁止）](feedback_kameyama_chugakko_kyushoku_already_started.md)／[選択制回帰の切り取り注意](feedback_kyushoku_sentakusei_kaiki_misread_guard.md)土台肯定＋「後戻りしません」／[SNS/AI先行調査](feedback_kyushoku_sns_research_first.md)
 - [けんろう版v3の労務費「2026年4月告示」は誤り](feedback_kenro_v3_romuhi_date_error.md) — 正=2025年12月国策定・84.7万円は東京都の例。v3流用時は必ず修正
-- [アーバンスポーツ署名の発信はスケボー特化にしない](feedback_urban_sports_not_skateboard_only.md) — 主題＝多様なアーバンスポーツによる子どもの居場所。背骨＝「音を出せる×歩いて通える」→河川敷・橋の下。球技は書かない。**署名①提出先＝亀山市長＋かわまちづくり協議会会長**。P2(9/18〜)は再投稿要判断
+- [アーバンスポーツ署名の発信はスケボー特化にしない](feedback_urban_sports_not_skateboard_only.md) — 主題＝多様なアーバンスポーツによる子どもの居場所。背骨＝「音を出せる×歩いて通える」→河川敷・橋の下。球技は書かない。**署名①提出先＝亀山市長＋かわまちづくり協議会会長**。P2は再投稿要判断
 
 ### 個人情報・同意・公選法
 - [団体名義SNSの同意を個人政治ブログに移植すると射程がズレる](feedback_consent_scope_org_to_personal_blog.md) — 器が変われば「政治ブログに実名で載せる」と明示して取り直す。中和一文＋立場明示
 - [ご意見箱の声の引用は属性を付けない](feedback_goikenbako_quote_no_attributes.md) — 年代・地域を添えず本文のみ。動画逐語は字幕に「ご意見箱に届いた市民の声（◯年）」併記
 - [フォーム回答の属性帰属はoperational contextで判定](feedback_form_response_no_attribution_guess.md) — 主語なし自由回答は運営文脈で自然な主体を選び即対応、過剰な確認は信頼損なう
-- [LINE公式で第三者団体の署名・動員を呼びかけない](feedback_line_koenkai_no_third_party_mobilization.md) — 免責文が塞ぐのは署名→後援会だけ。後援会→署名の逆流は未担保で「議員が後援会を動員した署名」と評価され要望書の説得力を自ら削る
+- [LINE公式で第三者団体の署名・動員を呼びかけない](feedback_line_koenkai_no_third_party_mobilization.md) — 免責文が塞ぐのは署名→後援会だけ。後援会→署名の逆流は未担保＝「議員が後援会を動員した署名」と評価され要望書の説得力を削る
 
 ### 制作フロー・品質ゲート
 - [コンテンツ生成は常時lean full-agentがデフォルト](feedback_content_generation_default_flow.md) — 主担当agent省略禁止、lean毎回適用、目標90〜170K
 - [印刷物デザインは確定前に必ずnatural-design-reviewerを通す](feedback_design_review_gate_no_skip.md) — 修正版・構造変更後も通す。写真上文字が読みにくい時は対症療法せず構造分離
 - [サムネ・SNS画像・図解は最初からプロ級和文タイポで組む](feedback_thumbnail_pro_typography_default.md) — palt約物詰め＋カギ括弧ぶら下げ＋Hiragino W8/W9＋見出しlh1.16。勝負所はdesign-director
-- [サムネ制作は元になる草川の写真を先に求める](feedback_thumbnail_ask_base_photo_first.md) — 第一手＝base写真の有無を1回確認。ありならphoto-curator、無しならタイポ＋モチーフ
+- [サムネ制作は元になる草川の写真を先に求める](feedback_thumbnail_ask_base_photo_first.md) — 第一手＝base写真の有無を1回確認。ありならphoto-curator、無しならタイポ＋モチーフ[[feedback_thumbnail_pro_typography_default]]
 - [地域/子どもチラシは明るく柔らかいイラスト路線](feedback_flyer_bright_illustration_style.md) — 自作HTMLは暗く硬くなりがち。淡色＋余白＋水彩花＋キャラ。持込デザインはQR等機能要素だけ直す（cv2デコード検証）
 - [家庭用プリンタで刷る回はインク節約版を別途用意](feedback_home_printer_ink_saving_variant.md) — CSS配色だけ差し替え本文レイアウトは触らない。ネット印刷用フル配色版と両保管
 - [写真＋動画入力はphoto-postフルを最初から回す](feedback_photo_video_input_run_full_pipeline.md) — テキスト仕上げで止めるな。写真は必ずRead確認（全景/ヘリ取り違え事故防止）
@@ -123,9 +124,9 @@
 
 ## 🔗 外部参照ポインタ
 
-- [ファイル管理システムv4 保存先マップ](reference_storage_map.md) — 用途→正規置き場の正本。夜間パイプラインv4(FDAランナー必須)・00_名簿区画・~/Archive・週次スイープ・_relocation_logロールバック
+- [ファイル管理システムv4 保存先マップ](reference_storage_map.md) — 用途→正規置き場の正本。夜間パイプラインv4(FDAランナー必須)・00_名簿区画・週次スイープ・_relocation_logロールバック
 - [R8.6.15半導体の世界の亀山 議場確定事実](reference_r8615_handotai_floor_facts.md) — 「半導体の世界の亀山」は櫻井市長の旗・草川は後押し役。国支援額は発信で10兆規模補正
-- [防災発信の定番リンク集5本](reference_bosai_link_collection.md) — 気象庁(亀山2421000)/川の防災/防災みえ/名阪国道規制/中電停電。台風大雨警報の発信に毎回添える
+- [防災発信の定番リンク集5本](reference_bosai_link_collection.md) — 気象庁(亀山2421000)/川の防災/防災みえ/名阪国道規制/中電停電。台風大雨警報に毎回添える
 - [草川議会質問アーカイブv3構造](reference_drive_archive_kusagawa.md) — 学習層1088件、grep対象は01_council〜06_election
 - [claude-configバックアップ](reference_claude_config_backup.md) — GitHub thiguchi125-debug/claude-config、復元はrestore.sh
 - [スキルトリガー一覧Notion](reference_skill_triggers.md) — 草川用スキル早見表（Notion a0631315配下）／[エージェントトリガー一覧](reference_agent_triggers.md) — 18本の発火ワード早見表
@@ -137,7 +138,7 @@
 - [亀山市議会 一般質問の標準時間](reference_kameyama_general_question_time.md) — 答弁込み45分。時間配分の基準値
 - [太岡寺自治会 太陽光要望書（R5.12.12）](reference_taikoji_yobosho_taiyoko.md) — 村山竹則会長／太陽光規制条例の早期策定要請。市内でいち早く市長に直接届けた先見事例
 - [亀山市新庁舎 開庁=令和18年度（2036）](reference_shincho_kaicho_r18.md) — 発信物は必ずR18年度。「令和12年度」は旧計画＝誤り（教訓は[[feedback_stale_authoritative_doc_vs_policy_change]]）
-- [次期ごみ処理施設](reference_jiki_gomi_shori_shisetsu.md) — R8.6.17基本構想(案)。現炉R14年度末終了（R12.3は旧計画・使用禁止）→次期R15年度稼働・48t/日・総額271〜307億・**建設地は未定**・道野自治会は搬入口交差点/通学路が主戦場
+- [次期ごみ処理施設](reference_jiki_gomi_shori_shisetsu.md) — R8.6.17基本構想(案)。現炉R14年度末終了（R12.3は旧計画・誤）→次期R15年度稼働・48t/日・271〜307億・**建設地未定**・道野自治会は搬入口交差点/通学路
 - [選挙リーフレットv3 ファイル群](reference_senkyo_leaflet_v3_files.md) — 制作物の入口。HTML/PDF/画像/再生成コマンド
 - [朝の街頭活動場所9拠点](reference_morning_street_locations.md) — 阿野田公民館/みずきが丘・菅内・亀田・関・和田交差点/田村ミニストップ/商工会議所前/川合9号線前
 - [一般質問 制作物のDrive保存先](reference_ippan_shitsumon_seisaku_drive.md) — `ZZ_一般質問制作/R0X/YYYY-MM_◯月議会/`（01通告書/02原稿/03写真/04完成品）
