@@ -17,22 +17,52 @@ ALLOWED_TOOLS="Read,Write,Bash(date *),Bash(grep *),ToolSearch,WebSearch,WebFetc
 
 echo "[$(TS)] ---- news_briefing start ----" >> "$LOG"
 
+# ネットワーク疎通待ち（スリープ復帰直後のWi-Fi未接続対策・最大3分）
+# nightly_intake.sh と同じ実装。2026-07-26にENOTFOUNDで落ちた再発防止（2026-07-27追加）
+wait_net() {
+  local i
+  for i in $(seq 1 18); do
+    curl -s -m 5 -o /dev/null "https://api.anthropic.com/" && return 0
+    sleep 10
+  done
+  echo "[$(TS)] net wait timeout (3min)" >> "$LOG"
+  return 1
+}
+
 cd "$HOME"
-if "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
-    --allowedTools "$ALLOWED_TOOLS" \
-    >> "$LOG" 2>&1; then
-  # rc=0でも「🚨中止」で終わるケース（Notion MCP本物の不在）を検出してstatusに反映
-  if tail -5 "$LOG" | grep -q '🚨 news-briefing'; then
-    python3 "$DIR/update_status.py" news_briefing error "ニュース収集 6:05 中止（Notion MCP不在等・ログ確認）"
-    echo "[$(TS)] ---- news_briefing end (aborted) ----" >> "$LOG"
+RUN_OK=0
+for ATTEMPT in 1 2; do
+  wait_net
+  if "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
+      --allowedTools "$ALLOWED_TOOLS" \
+      >> "$LOG" 2>&1; then
+    # rc=0でも「🚨中止」で終わるケース（Notion MCP本物の不在）を検出してstatusに反映
+    # 認証系の不在はリトライでは直らないため、ここでは再試行せず即中止する
+    if tail -5 "$LOG" | grep -q '🚨 news-briefing'; then
+      python3 "$DIR/update_status.py" news_briefing error "ニュース収集 6:05 中止（Notion MCP不在等・ログ確認）"
+      echo "[$(TS)] ---- news_briefing end (aborted) ----" >> "$LOG"
+      exit 1
+    fi
+    RUN_OK=1
+    break
+  fi
+  RC=$?
+  echo "[$(TS)] claude -p failed (rc=$RC, attempt $ATTEMPT)" >> "$LOG"
+  # ログイン切れ（Not logged in）はリトライしても直らないので即抜ける
+  if tail -5 "$LOG" | grep -q 'Not logged in'; then
+    echo "[$(TS)] not logged in -> no retry" >> "$LOG"
+    python3 "$DIR/update_status.py" news_briefing error "ニュース収集 6:05 失敗（claude CLI未ログイン・対話セッションで /login が必要）"
+    echo "[$(TS)] ---- news_briefing end (error) ----" >> "$LOG"
     exit 1
   fi
+  [ "$ATTEMPT" = "1" ] && { echo "[$(TS)] retrying in 10min" >> "$LOG"; sleep 600; }
+done
+
+if [ "$RUN_OK" = "1" ]; then
   python3 "$DIR/update_status.py" news_briefing ok "ニュース収集 6:05 完了"
   echo "[$(TS)] ---- news_briefing end (ok) ----" >> "$LOG"
 else
-  RC=$?
-  echo "[$(TS)] claude -p failed (rc=$RC)" >> "$LOG"
-  python3 "$DIR/update_status.py" news_briefing error "ニュース収集 6:05 失敗（ログ確認・朝便はアーカイブ由来で継続）"
+  python3 "$DIR/update_status.py" news_briefing error "ニュース収集 6:05 失敗（2回試行・ログ確認・朝便はアーカイブ由来で継続）"
   echo "[$(TS)] ---- news_briefing end (error) ----" >> "$LOG"
   exit 1
 fi

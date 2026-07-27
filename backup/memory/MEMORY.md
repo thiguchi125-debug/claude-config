@@ -75,6 +75,7 @@
 - [一般質問設計の専任エージェント](feedback_general_question_architect_agent.md) — general-question-architect。時間逆算＋逃げ封じ（先に認めてから刺す）＋重複/既決チェック。出力＝設計書
 - [議案質疑/一般質問の本番原稿化](feedback_bill_scrutiny_scriptwriter_agent.md) — bill-scrutiny-scriptwriter＋honban_genko_craft_v1.md＋GOLD_太陽光条例。設計→原稿化→counter-sim
 - [コンテンツ生成は常時lean full-agentがデフォルト](feedback_content_generation_default_flow.md) — 主担当agent省略禁止、lean毎回適用、目標90〜170K
+- [SNS投稿文案で草川の行動を言い切らない](feedback_sns_no_action_promise_assertions.md) — Discord朝夕便の原稿は「議会のテーブルに載せます」「取り上げます」「確かめます」等の約束を断定で書かない→「〜と考えています」「〜したい」。事実・数字の断定は可。leg_morning/evening_push.md＋pack_prompt.mdに実装済
 - [「次の議会で追及」型表現を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞禁止、「継続的フォロー」「対話を重ねる」で表現
 - [issues返信は記録不要](feedback_issues_response_no_log.md) — 「賛成」「反対」冒頭の意見はNotion保存/タスク化省略、返信3案だけ
 - [ブログ定型フッターに◆AIインタビュー常設](feedback_blog_footer_ai_interview_link.md) — Threadsの後にdepth-interview-kusagawa（kameyama_shisei_zenpan）リンク追加。blog-writer/normal実装済
