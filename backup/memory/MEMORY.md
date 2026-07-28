@@ -42,7 +42,7 @@
 - ショート動画7本 → short-video-virality-architect/image-designer/short-video-create（feedback_short_video_*等。字幕帯はy1240-1460に正本統一済2026-07-04）
 - 印刷物17本 → print-designer/print-layout-architect（feedback_print_*・leaflet・design_quality_bar・esports_logo・rakusuru・手書き挨拶は幅90mm前後で縮小禁止等）
 - ブログ6本 → blog-writer/blog-writer-normal（feedback_blog_*・深掘りは02_publications/blog実物と型合わせ必須=絵文字/詩的抽象排除・具体密度・草川たくやの視点実務節）
-- SNS/AIインタビュー8本 → sns-content-creator/polisher/ai-interview-sns-poster（2026-07-28追加＝[[feedback_sns_blog_link_required]]連動ブログありならLINE本文・Threads/Xのリプにブログlink必須／[[feedback_line_ai_interview_over_form]]公式LINEの意見導線はご意見箱でなくAIインタビュー）（feedback_x_*・feedback_sns_*・feedback_ai_interview_*等。旧X140字記述は2026-07-04掃除済）
+- SNS/AIインタビュー8本 → sns-content-creator/polisher/ai-interview-sns-poster（2026-07-28追加＝[[feedback_sns_blog_link_required]]連動ブログありならLINE本文・Threads/Xのリプにブログlink必須／[[feedback_line_ai_interview_over_form]]公式LINEの意見導線はご意見箱でなくAIインタビュー／[[feedback_line_500chars_no_hashtag]]LINEは500字以内(URL込み)・タグなし）（feedback_x_*・feedback_sns_*・feedback_ai_interview_*等。旧X140字記述は2026-07-04掃除済）
 - news-briefing 5本 → news-briefing SKILL.md（feedback_news_*）
 - 街頭演説4本 → daily-street-speech（feedback_street_speech_*）
 
