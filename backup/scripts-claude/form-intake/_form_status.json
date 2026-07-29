@@ -1,25 +1,8 @@
 {
-  "date": "2026-07-29",
-  "new_count": 1,
-  "registered_count": 1,
-  "items": [
-    {
-      "row_id": "S2-212",
-      "date": "2026/07/28",
-      "district": "未記入",
-      "domain": "childcare_education",
-      "urgency": "中",
-      "summary": "市内小中学校の体育館に冷房をつけてほしい（30代・匿名・連絡先なし）",
-      "notion_url": "https://app.notion.com/p/3abcf503a68f81d09709d67a2e38708d",
-      "skipped": false,
-      "urgent": false
-    }
-  ],
+  "date": "2026-07-30",
+  "new_count": 0,
+  "registered_count": 0,
+  "items": [],
   "errors": [],
-  "note": "新着1件（S2-212・7/28 13:58）。S1=48行・S3=148行は新着0。S2は212行目が新規＝Notion📝市民意見リスト登録＋childcare_education.md #168へETL追記（連絡先なし・氏名空欄のためマスク対象なし）。重複ガード：既登録に同一フォーム投稿なし（体育館エアコンは城東報告会由来の政策ネタが別DBに存在するが本件とは別レコード）。",
-  "manual_recheck": {
-    "at": "2026-07-29 08:10",
-    "new_count": 0,
-    "detail": "手動「フォーム取り込んで」で再確認。S1=48行/S2=212行/S3=148行はいずれもstate（last_processed_timestamp・etl_last_row）と一致＝追加の新着ゼロ。Notion・ETL・stateへの書き込みなし。"
-  }
+  "note": "新着0件。夜間launchd form-intake（headless）で3シートをdownload_file_content＋base64デコードして全行確認：S1=48行/S2=212行/S3=148行、末尾行のタイムスタンプ（S1 2026/07/16 22:59:27・S2 2026/07/28 13:58:06・S3 2026/06/28 14:12:36）がいずれもstateのlast_processed_timestampと完全一致、行数もetl_last_rowと一致＝Notion新着・ETL新着ともゼロ。Notion・ETLファイル・stateへの書き込みは一切なし（Step1-5の規定どおり終了）。"
 }
