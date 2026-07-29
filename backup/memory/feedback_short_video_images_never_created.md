@@ -1,0 +1,22 @@
+---
+name: feedback-short-video-images-never-created
+description: ショート動画の挿入画像が「未作成＝伝播対象なし」で永久に作られない穴と、その塞ぎ方
+metadata: 
+  node_type: memory
+  type: feedback
+  originSessionId: ed7cfea5-ca1a-472f-9ff9-e9c108bae0ca
+  modified: 2026-07-29T17:43:01.805Z
+---
+
+会話の流れで台本をv1→v2→v3と直し続けた案件は、short-video-create スキルが**一度も起動していない**。その結果 Step 5（挿入ビジュアル生成）が丸ごと飛び、さらに Mode R が「infographics 未作成 → 伝播対象なし」と書いて閉じるため、台本だけが版を重ねて画像は永久に生まれない。2026-07-30 JR亀山駅前送迎環境で発覚（v3確定から2日、画像は26カット中1枚だけ）。
+
+**Why:** Mode R の伝播表は「既にある画像の焼き込み文言を直す」工程しか想定しておらず、ゼロ件のときの分岐が無かった。ゼロ件は「直すものが無い」ではなく「Step 5 が未実行」のシグナル。
+
+**How to apply:**
+- 台本に「agent未起動・手動検証」「未伝播」「該当ディレクトリなし」と書かれていたら、それが未起動の痕跡。その場で Step 3〜5（fact-checker / risk-reviewer / 挿入画像）を回収する。
+- 画像の枚数は草川に聞かず**カット表が決める**。「テロップ全画面」「◯◯図解」「編集の絶対条件が付いたテロップ」「結びの2段まとめ」「サムネ」は全部作る。逐語の答弁はCapCut手打ちに任せない（打ち間違いが致命的）。
+- **編集の絶対条件が付いたテロップ（例：2行を1枚で同時表示）は最優先で1枚のPNGに焼く。**そうすれば編集で物理的に分割できず、リスク緩和策がファイルとして担保される。運用ルールを人の記憶に預けない。
+- 台本の「草川判断の記録」に表記ルール（例：「50台」単独表記は避けA・Bの内訳を添える）があれば、**画像とサムネにも同じルールを適用**。台本本文だけ守って画像で破るのが最頻の抜け（同案件のサムネ初稿で実際に発生）。
+- SKILL.md（short-video-create）の Step 5・Mode R R-3・恒久ガードルールに実装済み（2026-07-30）。
+
+関連: [[feedback_short_video_infographic_html_to_png]] [[feedback_thumbnail_ask_base_photo_first]] [[feedback_system_closing_loops_rot]]
