@@ -95,6 +95,7 @@
 - [架空エピソード・つくり話禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
 - [アーカイブgrepは話題ワード＋草川独自表現を並列で](feedback_archive_grep_keyword_expansion.md) — 「乗って残す」等の草川語彙を引き忘れない
 - [返信文でのおうむ返し禁止](feedback_no_parroting_in_replies.md) — 自分の反応→決意→約束で組み立てる
+- [確認は最初に1回束ねる・入力にある情報は最初から反映](feedback_ask_bundling_and_upfront_reflection.md) — 2026-07-31草川「台本遅いよ、なんで最初から反映しないの」。単位不明の数値は勝手に落とさず初回確認に混ぜる／安全ゲート指摘は自分で潰せる分を潰してから出す／締切当日案件は確認1回まで
 - [タスク登録は保存先＋期限を提示→本人回答後に保存](feedback_ask_destination_and_deadline_before_register.md) — 既定値で勝手に登録しない（[[feedback_task_deadline_3days]]の+3日は推奨案に降格）
 - [✅タスクDB Pending／保留系3区分](feedback_task_db_pending_status.md) — Pending/Wish List/Waiting
 - [brainstormingのトークン浪費パターン](feedback_brainstorming_token_efficiency.md) — 同内容md多重生成禁止、design docは3000字以内
