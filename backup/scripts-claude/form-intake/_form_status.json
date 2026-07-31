@@ -1,10 +1,8 @@
 {
-  "date": "2026-07-31",
+  "date": "2026-08-01",
   "new_count": 0,
   "registered_count": 0,
   "items": [],
-  "errors": [
-    "【要確認・form-intake本体とは別件】update_status.py 実行時に _pipeline_status.json（99_raw/_scripts/）がJSON破損で読めなかった。短い書き込みが長い旧内容を上書きした際の切り詰め漏れで、末尾に余剰バイト '6-07-26T06:36:29\"\\n }\\n}' が残留（sns_audit直後）。raw_decodeで有効部分（16キー全て健在）を救出して修復済み・原本は _pipeline_status.json.corrupt_2026-07-31.bak に退避。以後 form_intake の記録は正常。犯人は update_status.py 以外（同スクリプトはtmp+os.replaceで安全）＝別の書き込み経路を要調査。"
-  ],
-  "note": "新着0件。夜間launchd form-intake（headless）で3シートをdownload_file_content＋base64デコード（read_file_contentは不使用）し、末尾だけでなく全行をタイムスタンプでパース比較：S1=48行/S2=212行/S3=148行、各シートの最大タイムスタンプ（S1 2026/07/16 22:59:27・S2 2026/07/28 13:58:06・S3 2026/06/28 14:12:36）がstateのlast_processed_timestampと完全一致＝Notion新着ゼロ。データ行数もetl_last_row（48/212/148）と一致＝ETL新着ゼロ。パース失敗行0件（偽の0件でないことを確認）。テスト投稿フィルタ該当なし。Notion・_citizen_voice/・iken_poller_state.json への書き込みは一切なし（Step1-5の規定どおり終了）。"
+  "errors": [],
+  "note": "新着0件。夜間launchd form-intake（headless・3:30起動）で3シートを download_file_content + base64デコード（read_file_content は不使用）で取得し、末尾だけでなく全行を csv.DictReader でパースして比較：S1=48行 / S2=212行 / S3=148行。各シートの最大タイムスタンプ（S1 2026/07/16 22:59:27・S2 2026/07/28 13:58:06・S3 2026/06/28 14:12:36）が state の last_processed_timestamp と完全一致＝Notion新着ゼロ。データ行数も etl_last_row（48/212/148）と一致＝ETL新着ゼロ。タイムスタンプのパース失敗行は0件、column_map の全列がヘッダに存在することも確認済みで、解釈エラーによる偽の0件ではない。テスト投稿・spamフィルタ該当なし。Notion 📝市民意見リスト・_citizen_voice/ 各ドメインファイル・iken_poller_state.json への書き込みは一切なし（SKILL.md Step1-5の規定どおり終了）。前夜(7/31)に記録した _pipeline_status.json のJSON破損は修復済みで、今夜は正常に読み書きできた。"
 }
