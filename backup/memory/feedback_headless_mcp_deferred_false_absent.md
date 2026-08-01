@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: a2163459-aad0-42a4-9cca-adfaf85f812d
-  modified: 2026-08-01T20:04:17.435Z
+  modified: 2026-08-01T20:06:19.202Z
 ---
 
 launchd等の headless `claude -p` 実行では、`--allowedTools` にツールパターンを複数並べるとMCPツール（`mcp__claude_ai_Notion__*` 等）が **deferred（スキーマ未ロード）** で起動する。ジョブのプロンプトに ToolSearch の指示が無いと、モデルは「Notion MCP不在／未接続」と誤判定し、正しく捏造を拒否した結果**成果物ゼロで rc=0 完了**する。ログ上は "ok" なので気づけない。
@@ -20,4 +20,6 @@ launchd等の headless `claude -p` 実行では、`--allowedTools` にツール�
 
 **逆パターンもある（2026-08-02実測）:** ToolSearch自体は使えるのに、MCPツールが**1本も登録されていない**夜がある。夜間triageで `select:mcp__claude_ai_Notion__notion-fetch,...` も keyword検索 `+notion` も両方 "No matching deferred tools found" を返し、deferred一覧の中身が `CronCreate/WebFetch/TaskCreate/...` の20本のみでMCPがゼロだった。この場合は**本物の不在**なので、ToolSearchを何度も叩き直さずに queue フォールバック（`_notion_queue.jsonl`）へ即座に降りてよい。判定手順は「①exact `select:` ②keyword ③deferred一覧にMCPが1本でもあるか」の3点確認。①だけの空振りで不在と断定しない（そこが7/17の事故）。
 
-関連: [[project_sns_routine_v2]] / [[feedback_agent_tools_frontmatter_breaks]]（ツール喪失→捏造報告という同系統の事故）
+**同夜に form-intake でも再現＋容疑者(2026-08-02 03:59):** 夜間 form-intake も全く同じ「MCPゼロ登録」に当たった（ToolSearch6回＝exact `select:` ＋ `+notion` / `+drive` / キーワード4種、すべて空振り）。**相関する唯一の異常が discordプラグイン**で、`claude mcp list` は claude.ai系5本すべて ✔ Connected なのに `plugin:discord:discord` だけ「connection timed out after 30000ms」で ✘、セッション起動時のsystem-reminderでも discord だけが "still connecting" 表示だった。→ **ローカルpluginのMCPサーバが起動ハングすると、セッションのMCP初期化を巻き込んで claude.ai系サーバのツール登録が丸ごと落ちる**疑い（未確定・要検証）。夜間ジョブが原因不明の「MCP不在」で連続するなら、再認証より先に `~/.claude/plugins/cache/claude-plugins-official/discord/` を一時無効化して切り分ける。この夜の form-intake は SKILL.md 規定どおり state 未更新（S1=48/S2=212/S3=148 据え置き）・Notion/ETL書き込みゼロで終了しており、取りこぼしは無い（翌夜または手動「フォーム取り込んで」で拾い直せる）。
+
+関連: [[project_sns_routine_v2]] / [[project_form_intake_nightly]] / [[feedback_agent_tools_frontmatter_breaks]]（ツール喪失→捏造報告という同系統の事故）
