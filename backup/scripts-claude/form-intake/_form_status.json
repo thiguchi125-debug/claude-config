@@ -1,8 +1,12 @@
 {
-  "date": "2026-08-01",
-  "new_count": 0,
+  "date": "2026-08-02",
+  "status": "error",
+  "new_count": null,
   "registered_count": 0,
   "items": [],
-  "errors": [],
-  "note": "新着0件。夜間launchd form-intake（headless・3:30起動）で3シートを download_file_content + base64デコード（read_file_content は不使用）で取得し、末尾だけでなく全行を csv.DictReader でパースして比較：S1=48行 / S2=212行 / S3=148行。各シートの最大タイムスタンプ（S1 2026/07/16 22:59:27・S2 2026/07/28 13:58:06・S3 2026/06/28 14:12:36）が state の last_processed_timestamp と完全一致＝Notion新着ゼロ。データ行数も etl_last_row（48/212/148）と一致＝ETL新着ゼロ。タイムスタンプのパース失敗行は0件、column_map の全列がヘッダに存在することも確認済みで、解釈エラーによる偽の0件ではない。テスト投稿・spamフィルタ該当なし。Notion 📝市民意見リスト・_citizen_voice/ 各ドメインファイル・iken_poller_state.json への書き込みは一切なし（SKILL.md Step1-5の規定どおり終了）。前夜(7/31)に記録した _pipeline_status.json のJSON破損は修復済みで、今夜は正常に読み書きできた。"
+  "errors": [
+    "MCP不通：Drive/Notion MCPツールが本セッションのツールレジストリに未登録のため、シート取得・Notion登録を一切実行できず。SKILL.mdエラーハンドリング規定どおり state 未更新で終了（取りこぼしなし・翌夜3:30に自動再試行）。",
+    "new_count は null（0ではない）＝新着有無そのものが未確認。シートを一度も読めていないため『新着0件』とは報告できない。"
+  ],
+  "note": "2026-08-02 夜間launchd form-intake（03:59起動）。Step 0 でToolSearchを計6回実行（`select:mcp__claude_ai_Google_Drive__download_file_content,mcp__claude_ai_Notion__notion-create-pages,mcp__claude_ai_Notion__search` の完全名指定＋『notion』『drive』『google drive download file content』『notion create pages update page fetch data source』等のキーワード検索）したが、いずれも No matching deferred tools found。ロードできたdeferredツールは WebFetch/WebSearch/Cron/Monitor/LSP/DesignSync/RemoteTrigger/Task系 と plugin:discord:discord のみで、mcp__claude_ai_* 系は1本も出現しなかった。→『ToolSearch前にMCP未接続と判定した』誤りではなく、ToolSearch後も本当に存在しないケース。 / 切り分け: `claude mcp list` では claude.ai Google Drive・Notion・Gmail・Calendar・Todoist すべて ✔ Connected（サーバ側とOAuthは生存）。一方 plugin:discord:discord は『connection timed out after 30000ms』で ✘ Failed。セッション起動時のsystem-reminderでも discord のみが『still connecting』と表示されていた。→ サーバ障害でも認証切れでもなく、本セッションのMCP初期化段階で claude.ai 系サーバがツール登録されなかった事象。discordプラグインの起動ハングが初期化を巻き込んだ可能性が疑われる（未確定・要検証）。 / 実行しなかったこと: iken_poller_state.json は last_processed_timestamp・etl_last_row とも一切更新せず（S1=48 / S2=212 / S3=148 のまま）。Notion 📝市民意見リスト・_citizen_voice/ 各ドメインファイルへの書き込みもゼロ。よって新着が実在した場合も翌夜または手動実行で確実に拾い直せる。 / 朝の対処: ①`~/.claude/scripts/form-intake/_intake.log` を確認 ②手動で『フォーム取り込んで』を実行（対話セッションならMCPは正常にロードされるはず）③再発するなら discordプラグイン（~/.claude/plugins/cache/claude-plugins-official/discord/0.0.4）の起動ハングを疑い、一時的に無効化して夜間バッチのMCP登録が回復するか検証。"
 }

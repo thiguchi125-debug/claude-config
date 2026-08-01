@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: a2163459-aad0-42a4-9cca-adfaf85f812d
+  modified: 2026-08-01T20:04:17.435Z
 ---
 
 launchd等の headless `claude -p` 実行では、`--allowedTools` にツールパターンを複数並べるとMCPツール（`mcp__claude_ai_Notion__*` 等）が **deferred（スキーマ未ロード）** で起動する。ジョブのプロンプトに ToolSearch の指示が無いと、モデルは「Notion MCP不在／未接続」と誤判定し、正しく捏造を拒否した結果**成果物ゼロで rc=0 完了**する。ログ上は "ok" なので気づけない。
@@ -16,5 +17,7 @@ launchd等の headless `claude -p` 実行では、`--allowedTools` にツール�
 - プロンプト冒頭に「deferredは未接続ではない。ToolSearchでロードしてから使う。試す前に未接続と判定するのを禁止」を明記する（sns-routineの `leg_*.md` / `pack_prompt.md` / `triage_prompt.md` / `video_stage_prompt.md` に実装済み）。
 - 「MCP未接続」を報告するジョブを見たら、まずこれを疑う。再認証や接続設定をいじる前に、launchd環境で `claude -p` プローブを1本流して EAGER/DEFERRED を判定する。
 - 同型の落とし穴: 定時ジョブが「材料が無い」と言って rc=0 で終わるとき、材料が本当に無いのか **読めていないだけ** なのかを必ず区別する（[[feedback_system_closing_loops_rot]] の「締め工程が腐る」の一種）。
+
+**逆パターンもある（2026-08-02実測）:** ToolSearch自体は使えるのに、MCPツールが**1本も登録されていない**夜がある。夜間triageで `select:mcp__claude_ai_Notion__notion-fetch,...` も keyword検索 `+notion` も両方 "No matching deferred tools found" を返し、deferred一覧の中身が `CronCreate/WebFetch/TaskCreate/...` の20本のみでMCPがゼロだった。この場合は**本物の不在**なので、ToolSearchを何度も叩き直さずに queue フォールバック（`_notion_queue.jsonl`）へ即座に降りてよい。判定手順は「①exact `select:` ②keyword ③deferred一覧にMCPが1本でもあるか」の3点確認。①だけの空振りで不在と断定しない（そこが7/17の事故）。
 
 関連: [[project_sns_routine_v2]] / [[feedback_agent_tools_frontmatter_breaks]]（ツール喪失→捏造報告という同系統の事故）
