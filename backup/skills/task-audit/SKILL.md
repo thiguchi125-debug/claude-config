@@ -74,6 +74,7 @@ description: 草川たくや（亀山市議会議員）のTodoistタスク全体
   - 次の一手タスク自動提案（PJページ要約から「初動」タスク1件をドラフト→承認後 `td.py add --project <箱>`）
   - PJ箱のクローズ提案（完了 or 中止 → Todoist MCP `project-management` でアーカイブ・草川承認後のみ）
   - 既存の散在タスクを箱へ移動提案（Todoist MCP `update-tasks`/`project-move`）
+  - 🗓 **期限つきで登録する場合は task-add の突合手順を通す**（想定所要を1hセッション換算→カレンダー突合→✅/⚠️/🚫判定→承認）。突合なしの `td.py add --due` は PreToolUse hook が deny する。期限なしの登録はこれまで通り。既存タスクの期限付け替え（reschedule）はゲート対象外。
 
 ### 5. 🟣 PJ化候補
 - Inbox直下タスク全件（`td.py list Inbox`）をローカルクラスタリング：
