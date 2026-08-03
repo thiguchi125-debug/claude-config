@@ -75,7 +75,7 @@
 - [「次の議会で追及」型表現を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞禁止
 - [issues返信は記録不要](feedback_issues_response_no_log.md) — 「賛成」「反対」冒頭の意見は保存/タスク化省略、返信3案だけ
 - [ブログ定型フッターに◆AIインタビュー常設](feedback_blog_footer_ai_interview_link.md) — Threadsの後にdepth-interview-kusagawaリンク
-- [コピペ前提原稿は納品形式を先に伺う](feedback_copypaste_draft_delivery.md) — 既定はtxt書出し→open -e
+- [コピペ前提原稿は毎回コピペ即可の書式で出す](feedback_copypaste_draft_delivery.md) — 形式を聞き返さない。既定=drafts/に1案1txt→open -e＋チャットは`>`や・なしのフラット塊
 - [Notion内部リンクは mention-page タグ必須](feedback_notion_link_deeplink.md) — markdownリンクはモバイルでブラウザに飛ぶ
 - Notion update_content/DSLの罠 — [落とし穴](feedback_notion_update_content_pitfalls.md)／[罠v2](feedback_notion_update_content_pitfalls_v2.md)timeout後も適用済・即リトライ禁止／[DSLステータスフィルタ書込不可](feedback_notion_dsl_status_filter_limitation.md)
 - [notion-saver保存後は漢字化け実体確認必須](feedback_notion_saver_kanji_garble_verify.md) — お風呂→お風坂等の実体破損あり。fetch検証→replace_content全置換

@@ -148,8 +148,10 @@ Todoistへタスクを登録するとき、期限日を「今日+3日」等の�
 |---|---|---|
 | `Bash` | commandに `td.py add` を含み、かつ `--due` がある | `--due` 無し／`done`／`rm`／`list`／`projects`／`morning` 等 |
 | `mcp__claude_ai_Todoist__add-tasks` | `dueString` または `deadlineDate` がある | 期限なし |
-| `mcp__claude_ai_Todoist__reschedule-tasks` | 変更後の日付が**明日以降** | 今日への付け替え |
-| `mcp__claude_ai_Todoist__update-tasks` | `dueString`/`deadlineDate` を明日以降に設定 | 期限に触れない更新 |
+
+**新規登録（add）のみをゲートする。** 既存タスクの期限変更（`reschedule-tasks`／`update-tasks`）はゲートしない。理由は2つ。①朝の繰越は朝ブリーフィングで予定を見た上での再判断であり、突合の付加価値が小さい ②これらのtool入力にはタスクIDしか無くタスク内容が含まれないため、突合記録との照合が期限日だけの弱い一致になる。
+
+既知の穴として「期限なしで登録してから期限変更する」経路はゲートを通らない。v1では許容する（草川の運用では発生しない経路であり、塞ぐと朝の繰越が毎回ブロックされる副作用の方が大きい）。
 
 その他のTodoist操作（完了・削除・プロジェクト操作・検索）は一切ゲートしない。
 
@@ -192,7 +194,8 @@ hookは `permissionDecision: "deny"` と `permissionDecisionReason` を返す。
 
 業務が止まることを防ぐため、以下は**通す**。
 
-- Google Calendar MCP が応答しない場合: skillが `calendar_ok: false` で記録を書き、hookは通す。ただし提案・登録時に「⚠️ カレンダー未確認で登録」と明示する
+- Google Calendar MCP が応答しない場合: skillが `calendar_ok: false` で記録を書けば通る。hookは `calendar_ok` の値で分岐しない（記録があれば通す）。ただし skill は提案・登録時に「⚠️ カレンダー未確認で登録」と明示する
+- 突合済みの場合、hookは**何も出力せず exit 0** する（`permissionDecision: "allow"` を返すと通常の許可フローを飛ばしてしまうため、判断を委ねる）
 - `_verified.json` が存在しない・壊れている場合: **deny する**（フェイルクローズ）。未突合なのだから止めるのが正しく、素通しすると仕組みが空洞化する
 - hookスクリプト自体が例外で落ちた場合: exit 0 で通す（hookのバグで登録が全面停止する事態を避ける）
 
@@ -220,7 +223,9 @@ CLAUDE.md のトリガー早見表に追記する。
 |---|---|
 | `~/.claude/skills/task-add/SKILL.md` | 新規。frontmatter（name/description）＋手順＋所要テーブル＋恒久ガードルール |
 | `~/.claude/hooks/todoist_calendar_guard.py` | 新規。PreToolUse hook本体 |
+| `~/.claude/hooks/tests/test_todoist_calendar_guard.py` | 新規。stdlib unittest によるテスト |
 | `~/.claude/settings.json` | `hooks.PreToolUse` を追記（既存 `Stop` は保持） |
+| `~/claude-config/scripts/sync-to-git.sh` | **`~/.claude/hooks/` を同期対象に追加**。現状 hooks/ はバックアップ対象外で、settings.json だけが復元されると hook のパスが存在せず壊れた状態になる |
 | `~/CLAUDE.md` | トリガー早見表に1行追記＋タスク登録手順の節にカレンダー突合を追記 |
 | `~/.claude/skills/task-add/_verified.json` | 実行時生成。事前作成は不要（ファイルが存在しない＝未突合として deny される正常系） |
 
