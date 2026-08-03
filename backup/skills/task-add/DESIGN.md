@@ -201,13 +201,20 @@ hookは `permissionDecision: "deny"` と `permissionDecisionReason` を返す。
 
 ## 7. 他スキルとの関係
 
+**`td.py add ... --due` を直接叩いているスキルが7本ある。hookを入れると全部ブロックされるため、登録経路を task-add に通す改修が必須。**
+
 | スキル | 関係 |
 |---|---|
-| `gyakusan` | イベントから逆算した不足タスクを提案する。承認後の登録経路として task-add を通す（gyakusan は既にカレンダーを見ているため、突合結果を引き継いで二度取得しない） |
-| `task-audit` | 棚卸し側。停滞タスクへの期限**設定**は task-add を通す |
-| `iken` / `citizen-inquiry-responder` | 市民相談の次アクション登録も task-add を通す。ただし15分級の軽量タスクが多く、判定は即✅になることが多い |
-| `ohayo` | 朝の繰越（期限を今日に付け替え）はゲート対象外。従来通り |
+| `gyakusan` | イベントから逆算した不足タスクを提案する。承認後の登録は task-add を通す。ただし gyakusan は既に60日分のカレンダーを取得済みのため、そのイベント一覧を渡して `list_events` を再取得させない |
+| `ohayo` | 「🧾 タスク登録候補の承認」からの登録が該当。朝の繰越（既存タスクの期限付け替え）はゲート対象外で従来通り |
+| `nichijo` | 記録から抽出した「やること」の登録が該当 |
+| `iken` / `citizen-inquiry-responder` | 市民相談の次アクション登録が該当。15分級の軽量タスクが多く、判定は即✅になることが多い |
+| `smart-intake` | 判定ツリー7番「やること・行動」の登録が該当 |
+| `task-audit` | 停滞タスクへの期限**設定**・再連絡タスクの登録が該当 |
+| `shisei-houkokukai` | Stage2〜5の推奨日タスク登録が該当 |
 | `oyasumi` | 期限据え置きのため関与しない |
+
+hookのdenyメッセージが「task-addを起動せよ」と教えるため、改修を怠っても最終的には自己修復する（deny→task-add起動→登録成功）。ただし毎回1往復を無駄にするので、常道の経路を先に正しくしておく。
 
 ## 8. トリガー
 
@@ -241,3 +248,5 @@ CLAUDE.md のトリガー早見表に追記する。
 6-3. 空きが8時間ある1日があっても、同一タスクにはその日最大2セッションしか計上されない
 7. `_verified.json` の TTL 超過後に同じ登録を試みると deny される
 8. 既存の Stop hook（sync-to-git.sh）が壊れていない
+9. `td.py add` を叩く既存7スキル（gyakusan／ohayo／nichijo／iken／smart-intake／task-audit／shisei-houkokukai）に task-add 経由の但し書きが入っている
+10. `~/claude-config/backup/hooks/` に hook 本体がバックアップされ、`_verified.json` はバックアップされていない

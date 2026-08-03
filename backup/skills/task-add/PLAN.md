@@ -859,7 +859,66 @@ rm ~/.claude/skills/task-add/_verified.json
 
 ---
 
-### Task 7: CLAUDE.md への追記
+### Task 7: 既存スキル7本の登録経路を task-add に通す
+
+**Files:**
+- Modify: `~/.claude/skills/gyakusan/SKILL.md`
+- Modify: `~/.claude/skills/ohayo/SKILL.md`
+- Modify: `~/.claude/skills/nichijo/SKILL.md`
+- Modify: `~/.claude/skills/iken/SKILL.md`
+- Modify: `~/.claude/skills/smart-intake/SKILL.md`
+- Modify: `~/.claude/skills/task-audit/SKILL.md`
+- Modify: `~/.claude/skills/shisei-houkokukai/SKILL.md`
+
+これら7本は `td.py add ... --due` を直接叩く。hook を入れた時点で**全部ブロックされる**ため、登録経路を task-add に通す。
+
+hook の deny メッセージが「task-add を起動せよ」と教えるので、編集を怠っても最終的には自己修復する（denyされる→task-addを起動する→登録できる）。ただし毎回1往復を無駄にするため、常道の経路を先に正しくしておく。
+
+- [ ] **Step 1: 現状の呼び出し箇所を確認**
+
+```bash
+grep -rn "td.py add" ~/.claude/skills/ | grep -v task-add
+```
+Expected: 7スキルにまたがる箇所が列挙される（この一覧を編集対象とする）
+
+- [ ] **Step 2: 各スキルに同一の1行を追加**
+
+7本すべてに、`td.py add` を説明している箇所の直近に**次の1行をそのまま**入れる（文言を各スキルで変えない。揺れると後で grep できなくなる）:
+
+```markdown
+- 🗓 **期限つきで登録する場合は task-add の突合手順を通す**（想定所要を1hセッション換算→カレンダー突合→✅/⚠️/🚫判定→承認）。突合なしの `td.py add --due` は PreToolUse hook が deny する。期限なしの登録はこれまで通り。
+```
+
+挿入位置:
+
+| スキル | 挿入位置 |
+|---|---|
+| `gyakusan/SKILL.md` | 「## Step 5: 提案→承認→登録」の項目3の直後 |
+| `ohayo/SKILL.md` | 69行目「🧾 タスク登録候補の承認」節の末尾 |
+| `nichijo/SKILL.md` | 85行目「🔴 登録先は全て Todoist」の直後 |
+| `iken/SKILL.md` | 15行目「次アクションのタスク化提案の登録先は…」の直後 |
+| `smart-intake/SKILL.md` | 28行目の判定ツリー表の直後 |
+| `task-audit/SKILL.md` | 74行目「次の一手タスク自動提案」の直後 |
+| `shisei-houkokukai/SKILL.md` | 139行目「Todoistへ期限付きタスク登録を提案」の直後 |
+
+- [ ] **Step 3: gyakusan だけ二重取得を避ける追記をする**
+
+gyakusan は Step 1 で既に60日分のカレンダーを取っている。上の1行に続けて、gyakusan にだけ次を足す:
+
+```markdown
+  - gyakusan は Step 1 で既にカレンダーを取得済みのため、task-add に**そのイベント一覧を渡して `list_events` を再取得させない**。判定（セッション換算・3値判定・`_verified.json` 書込）だけを task-add の手順で行う。
+```
+
+- [ ] **Step 4: 7本すべてに入ったことを確認**
+
+```bash
+grep -rln "期限つきで登録する場合は task-add の突合手順を通す" ~/.claude/skills/ | sort
+```
+Expected: 7ファイルが列挙される（gyakusan / ohayo / nichijo / iken / smart-intake / task-audit / shisei-houkokukai）
+
+---
+
+### Task 8: CLAUDE.md への追記
 
 **Files:**
 - Modify: `~/CLAUDE.md`
@@ -889,7 +948,7 @@ Expected: `2` 以上
 
 ---
 
-### Task 8: 受け入れ条件の通し確認
+### Task 9: 受け入れ条件の通し確認
 
 **Files:** なし（検証のみ）
 
@@ -919,8 +978,15 @@ mk 'td.py morning' | python3 $H
 
 echo "--- 8) Stop hook が残っている"
 python3 -c "import json,os; d=json.load(open(os.path.expanduser('~/.claude/settings.json'))); print('Stop:', 'Stop' in d['hooks'])"
+
+echo "--- 9) 既存7スキルに但し書きが入っている（7と出るのが正）"
+grep -rln "期限つきで登録する場合は task-add の突合手順を通す" ~/.claude/skills/ | wc -l
+
+echo "--- 10) hooks がバックアップされ、_verified.json はされていない"
+ls ~/claude-config/backup/hooks/todoist_calendar_guard.py
+ls ~/claude-config/backup/skills/task-add/_verified.json 2>&1 | tail -1
 ```
-Expected: 1) は deny のJSON／3) 4) は無出力／8) は `Stop: True`
+Expected: 1) は deny のJSON／3) 4) は無出力／8) は `Stop: True`／9) は `7`／10) は hook が存在し `_verified.json` は "No such file"
 
 - [ ] **Step 3: 判定ロジックを SKILL.md の手順どおり手で1回流す**
 
