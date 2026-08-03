@@ -81,6 +81,7 @@ if [ -d "$SKILL_SRC" ]; then
       --exclude 'evals/results' \
       --exclude '*.log' \
       --exclude 'output/' \
+      --exclude '_verified.json' \
       "$SKILL_SRC/" "$DST/skills/" \
       || warn "skills/ rsync had errors (continuing)"
   else
@@ -107,6 +108,18 @@ if [ -d "$SRC/scripts" ]; then
     --exclude '*.log' \
     "$SRC/scripts/" "$DST/scripts-claude/" \
     || warn "scripts/ rsync had errors (continuing)"
+fi
+
+# 6.5.1) hooks/ (PreToolUse等のhook本体)
+# 2026-08-03 追加: settings.json は同期されるのに hooks/ が同期されておらず、
+# 復元すると settings.json が存在しないスクリプトを指す壊れた状態になっていた。
+if [ -d "$SRC/hooks" ]; then
+  rsync "${rsync_opts[@]}" \
+    --exclude '__pycache__' \
+    --exclude '*.pyc' \
+    --exclude '*.log' \
+    "$SRC/hooks/" "$DST/hooks/" \
+    || warn "hooks/ rsync had errors (continuing)"
 fi
 
 # 6.6) ホーム直下の CLAUDE.md 現行版 (起動時自動読込される安定ルールの正本)

@@ -17,6 +17,18 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|mcp__claude_ai_Todoist__add-tasks",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/hooks/todoist_calendar_guard.py",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {
