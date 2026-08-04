@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: aec522ed-d6b7-4b01-b322-5a398531ce3c
-  modified: 2026-08-03T02:24:36.518Z
+  modified: 2026-08-04T14:38:03.144Z
 ---
 
 2026-08-03 構築・稼働中。期限付きTodoist登録の前にGoogleカレンダーと突合し、実施可能性を判定してから登録する仕組み。
@@ -27,8 +27,13 @@ metadata:
 
 **運用上の注意**
 - `list_events` は2週間分でも7万字超でコンテキストに載らない。自動保存されたファイルのパスをそのまま `sessions.py` に渡す（読み下さない）
-- ゲート対象は**新規登録（add）のみ**。reschedule/update は対象外（朝の繰越をブロックしないため）
-- 既知の穴＝「期限なしで登録→後で期限変更」はゲートを通らない。v1では許容
+- **ゲート対象は add だけではない**（2026-08-04 実装確認・旧記述「reschedule/update は対象外」は誤り）。settings.json の matcher = `Bash | add-tasks | update-tasks | reschedule-tasks`
+  - `td.py add --due` / MCP `add-tasks` → 期限があれば常にゲート
+  - MCP `update-tasks` → **件名と期限の両方を渡した時だけ**ゲート。件名を渡さず期限だけ更新する呼び出しは照合不能なので素通し（`need_content=True`・意図的）
+  - MCP `reschedule-tasks` → **明後日以降への移動だけ**ゲート。今日・明日への移動＝朝の繰越・即日対応は素通し（`CARRYOVER_GRACE_DAYS=1`）
+  - 期限を外す指定（remove/none/null/空）は方向が逆なので素通し
+- 突合記録の照合方式: add/update は「件名＋期限日」の一致、**reschedule は件名を持たないので期限日の一致のみ**。TTL 30分
+- **残る穴＝「期限なしで登録 → `update-tasks` に id と期限だけ渡す」**（件名を省くと素通しする）。旧記述の穴は塞がっておらず、位置が変わっただけ。v1では許容
 - `td.py add --due` を叩く既存7スキル（gyakusan/ohayo/nichijo/iken/smart-intake/task-audit/shisei-houkokukai）には task-add 経由の但し書きを入れ済み
 - hooks/ は当初 sync-to-git.sh のバックアップ対象外だった→6.5.1節を追加して同期済み。`_verified.json` は除外
 
