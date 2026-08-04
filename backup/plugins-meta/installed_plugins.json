@@ -7,8 +7,8 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown",
         "version": "unknown",
         "installedAt": "2026-04-11T11:06:44.242Z",
-        "lastUpdated": "2026-08-04T03:46:24.514Z",
-        "gitCommitSha": "7217edcd2b0922a1f411e9c92b5b4e2eb6d43604"
+        "lastUpdated": "2026-08-04T13:22:52.063Z",
+        "gitCommitSha": "b7e93a4e7c950ba5b22a2bdb9a61e2631f75a51e"
       }
     ],
     "frontend-design@claude-plugins-official": [
@@ -17,8 +17,8 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:18:12.636Z",
-        "lastUpdated": "2026-08-04T03:46:24.516Z",
-        "gitCommitSha": "7217edcd2b0922a1f411e9c92b5b4e2eb6d43604"
+        "lastUpdated": "2026-08-04T13:22:52.047Z",
+        "gitCommitSha": "b7e93a4e7c950ba5b22a2bdb9a61e2631f75a51e"
       }
     ],
     "playwright@claude-plugins-official": [
@@ -27,8 +27,8 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/playwright/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:18:55.495Z",
-        "lastUpdated": "2026-08-04T03:46:24.511Z",
-        "gitCommitSha": "7217edcd2b0922a1f411e9c92b5b4e2eb6d43604"
+        "lastUpdated": "2026-08-04T13:22:52.042Z",
+        "gitCommitSha": "b7e93a4e7c950ba5b22a2bdb9a61e2631f75a51e"
       }
     ],
     "claude-code-setup@claude-plugins-official": [
@@ -46,8 +46,8 @@
         "installPath": "/Users/kusakawatakuya/.claude/plugins/cache/claude-plugins-official/plugin-dev/unknown",
         "version": "unknown",
         "installedAt": "2026-04-30T08:21:01.163Z",
-        "lastUpdated": "2026-08-04T03:46:24.555Z",
-        "gitCommitSha": "7217edcd2b0922a1f411e9c92b5b4e2eb6d43604"
+        "lastUpdated": "2026-08-04T13:22:52.092Z",
+        "gitCommitSha": "b7e93a4e7c950ba5b22a2bdb9a61e2631f75a51e"
       }
     ],
     "claude-md-management@claude-plugins-official": [

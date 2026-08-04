@@ -52,8 +52,16 @@ def all_tasks():
     return out
 
 def projects_map():
-    d = req("GET", "/projects")
-    return {p["id"]: p["name"] for p in d.get("results", [])}
+    out, cursor = {}, None
+    while True:
+        q = {"cursor": cursor} if cursor else None
+        d = req("GET", "/projects", query=q)
+        for p in d.get("results", []):
+            out[p["id"]] = p["name"]
+        cursor = d.get("next_cursor")
+        if not cursor:
+            break
+    return out
 
 def resolve_project(name):
     d = req("GET", "/projects")
@@ -78,6 +86,10 @@ def fmt(t, pm, show_proj=True):
     head = (flag + " ") if flag else ""
     return f"  {head}{t['content'][:46]}{labels}{proj}"
 
+# 期限が無いのが正常な置き場。ここの塩漬けを監査シグナルに数えると
+# 毎朝「期限なし⚠️」が鳴り続けて本物の盲点が埋もれる（2026-08-04 棚卸しで判明）
+NODUE_PARKED_PROJECTS = ("🗂 構想バックログ",)
+
 def buckets():
     today = datetime.date.today()
     tasks = all_tasks()
@@ -86,7 +98,9 @@ def buckets():
     for t in tasks:
         d = due_date(t)
         if d is None:
-            nod.append(t); continue
+            if pm.get(t["project_id"], "") not in NODUE_PARKED_PROJECTS:
+                nod.append(t)
+            continue
         try:
             dd = datetime.date.fromisoformat(d)
         except ValueError:
