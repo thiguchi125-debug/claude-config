@@ -70,6 +70,17 @@ oyasumiデイリーサマリを取得する。**⚠️ notion-searchはセマン
 
 - 🗓 **期限つきで登録する場合は task-add の突合手順を通す**（想定所要を1hセッション換算→カレンダー突合→✅/⚠️/🚫判定→承認）。突合なしの `td.py add --due`、Todoist MCP `update-tasks` での期限**後付け**、`reschedule-tasks` での**明後日以降への期限設定**は PreToolUse hook が deny する。今日・明日への移動（朝の繰越・即日対応）はゲート対象外。期限なしの登録はこれまで通り。朝の繰越は `reschedule-tasks` で**今日**へ動かす限りゲート対象外なので従来通り。
 
+**🗓 `@要期限` の期限確定（2026-08-04新設・必須）**: 夜間Discord triageは Google Calendar を持たないため、承認済みタスクを**期限なし＋`@要期限`ラベル**で登録し、期限の確定を朝に委ねている（案A）。§3でカレンダーを取得済みなので、そのまま確定まで進める。
+
+```bash
+python3 ~/.claude/scripts/todoist/td.py list 2>/dev/null | grep -n "要期限"
+```
+
+1. 各タスクの desc に `期限案 YYYY-MM-DD（未突合）` が入っている。**この期限案を鵜呑みにせず**、task-add の手順で想定所要を出し §3 のカレンダーと突合して ✅/⚠️/🚫 を判定する
+2. 判定つきで草川に提示 → 承認を得る（🚫なら代替期限2案）
+3. 承認分のみ `_verified.json` を書いてから期限を設定し、`@要期限` ラベルを外す
+4. **前夜のtriageが動いた朝は必ずこのチェックを回す。**放置すると期限なしタスクが溜まり、`td.py audit` の「期限なし」件数だけが増えていく
+
 ## §3 今日の予定＋予定コンテキスト連動
 
 1. Google Calendar `list_events`（calendarId: **`kusakawa.taku@gmail.com` のみ**・今日0:00〜23:59）

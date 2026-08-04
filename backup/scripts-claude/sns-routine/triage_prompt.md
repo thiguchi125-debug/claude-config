@@ -41,9 +41,22 @@ ToolSearch でロードした後、実際に notion-fetch を呼んでエラー�
    - ページ本文に投げ込み全文をそのまま収める（個人情報を含む場合は本文でも伏せ字化）。
    - Notion不通時はqueueへ（type="ledger_db"）。この登録は「溜まっていく実感」のための一覧正本なので黙殺禁止。
 5. **タスク化候補**: 登録せず、全候補をまとめて1通だけDiscordへ提案を送る:
-   `python3 ~/.claude/scripts/sns-routine/discord_api.py post "📋タスク化候補: ①〈内容〉（🏛議員活動・期限+3日案）②… → 『①OK』『①は期限来週で』『②不要』のように返信してください。返信分を翌夜登録します"`
+   `python3 ~/.claude/scripts/sns-routine/discord_api.py post "📋タスク化候補: ①〈内容〉（🏛議員活動・期限+3日案）②… → 『①OK』『①は期限来週で』『②不要』のように返信してください。返信分を翌夜Todoistへ登録します（期限は翌朝ohayoでカレンダー突合のうえ確定）"`
    同内容を `_pending_tasks.jsonl` に追記（1候補1行・`source_msg_id` を必ず含める）。**追記前に既存行の `source_msg_id` を確認し、同一メッセージ由来の候補が既にあれば重複追記しない**（再処理夜の二重提案防止）。
-6. **前夜提案への返信処理**: `_pending_tasks.jsonl` に未処理行があれば、今夜の新着メッセージ中の返信（「OK」「①OK」「①は期限〇〇」「不要」等）と突合し、承認分だけ `python3 ~/.claude/scripts/todoist/td.py add "<内容>" --due <期限> --project <プロジェクト>` で登録（プロジェクト名は事前に `td.py projects` で実在確認）。登録済み・不要分は行を消し込み、返信メッセージに react ok。**td.pyのBash実行が権限拒否された場合は、Todoist MCP（mcp__claude_ai_Todoist__add-tasks）で同内容を登録し、descに「Discord返信承認（YYYY-MM-DD・①OK）」と承認経緯を記す**（headless文脈でtd.pyが拒否される事象は2026-07-14 E2Eで実証済み）。返信が読み取れない場合は行を残す（2晩連続で無応答の行は📥未分類インテークへ退避して消し込み・handled扱い）。
+6. **前夜提案への返信処理**: `_pending_tasks.jsonl` に未処理行があれば、今夜の新着メッセージ中の返信（「OK」「①OK」「①は期限〇〇」「不要」等）と突合し、承認分だけ登録する（プロジェクト名は事前に `td.py projects` で実在確認）。登録済み・不要分は行を消し込み、返信メッセージに react ok。返信が読み取れない場合は行を残す（2晩連続で無応答の行は📥未分類インテークへ退避して消し込み・handled扱い）。
+
+   🔴 **期限は付けずに登録する（2026-08-04〜・案A）。** この夜間ジョブは Google Calendar を持たないためカレンダー突合ができず、`--due` を付けた登録は PreToolUse hook（`todoist_calendar_guard.py`）が **deny する**。承認された内容は必ずTodoistに落とし、期限だけを翌朝ohayoに委ねる。
+
+   ```
+   python3 ~/.claude/scripts/todoist/td.py add "<内容>" --project <プロジェクト> --label 要期限 \
+     --desc "Discord返信承認（YYYY-MM-DD・①OK）／期限案 YYYY-MM-DD（未突合・翌朝ohayoでtask-add突合のうえ確定）／出典msg_id=<source_msg_id>"
+   ```
+
+   - **`--due` は絶対に付けない。** `--label 要期限` と desc の「期限案」で、翌朝どの期限を意図していたかが分かるようにする。
+   - 期限案は消さずに desc に残す（草川が返信で「①は期限来週で」と指定した場合はその値を期限案として書く）。
+   - `_pending_tasks.jsonl` の該当行は `status: "registered_no_due"`・`todoist_id`・`due_proposed` を記録して消し込む。
+   - td.pyのBash実行が権限拒否された場合は Todoist MCP（`add-tasks`）で同内容を登録する。**この場合も `dueString`・`deadlineDate` は渡さない**（渡すと同じくhookが deny する）。
+   - 保存レシートDM（手順9）では「→Todoist登録済（期限は翌朝確定）」と書く。
 7. **カーソル前進**: 全メッセージが「保存成功・未分類行き・queue退避」のいずれかで処理済みになった場合**のみ**、最終メッセージidで `python3 ~/.claude/scripts/sns-routine/discord_api.py advance <最終id>` を実行。1件でも未処理があればadvanceしない（翌夜、原本から再処理される）。
 8. **要配慮**: 個人情報（実名＋相談内容等）はNotion登録時に伏せ字化。機密・法的リスクを感じる内容は保存せずqueueへ（type="critical"）＋👀。
 9. **保存レシートDM（v3・処理があった夜は必須）**: 全メッセージの処理完了後、振り分け結果のまとめを1通だけDMに送る:
