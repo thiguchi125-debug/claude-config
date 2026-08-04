@@ -20,7 +20,7 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "Bash|mcp__claude_ai_Todoist__add-tasks",
+        "matcher": "Bash|mcp__claude_ai_Todoist__add-tasks|mcp__claude_ai_Todoist__update-tasks|mcp__claude_ai_Todoist__reschedule-tasks",
         "hooks": [
           {
             "type": "command",

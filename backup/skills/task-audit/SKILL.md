@@ -54,7 +54,7 @@ description: 草川たくや（亀山市議会議員）のTodoistタスク全体
 - `td.py overdue` を叩き、ローカルで `期限 < 今日-4日` でフィルタ
 - 4日以上放置されている期限超過タスクを抽出
 - 推奨スタンス：
-  - 期限再設定（今日+3日・Todoist MCP `reschedule-tasks`）
+  - 期限再設定（今日+3日・Todoist MCP `reschedule-tasks`）※**明後日以降の日付はtask-addの突合が必須**（未突合はhookがdeny）
   - Done判定確認（実は完了済の可能性 → `td.py done <id>`）
   - @結果待ち／@保留 ラベル退避（相手のボール化・要検討化。Todoist MCP `update-tasks`）
 
@@ -74,7 +74,7 @@ description: 草川たくや（亀山市議会議員）のTodoistタスク全体
   - 次の一手タスク自動提案（PJページ要約から「初動」タスク1件をドラフト→承認後 `td.py add --project <箱>`）
   - PJ箱のクローズ提案（完了 or 中止 → Todoist MCP `project-management` でアーカイブ・草川承認後のみ）
   - 既存の散在タスクを箱へ移動提案（Todoist MCP `update-tasks`/`project-move`）
-  - 🗓 **期限つきで登録する場合は task-add の突合手順を通す**（想定所要を1hセッション換算→カレンダー突合→✅/⚠️/🚫判定→承認）。突合なしの `td.py add --due` は PreToolUse hook が deny する。期限なしの登録はこれまで通り。既存タスクの期限付け替え（reschedule）はゲート対象外。
+  - 🗓 **期限つきで登録する場合は task-add の突合手順を通す**（想定所要を1hセッション換算→カレンダー突合→✅/⚠️/🚫判定→承認）。突合なしの `td.py add --due`、Todoist MCP `update-tasks` での期限**後付け**、`reschedule-tasks` での**明後日以降への期限設定**は PreToolUse hook が deny する。今日・明日への移動（朝の繰越・即日対応）はゲート対象外。期限なしの登録はこれまで通り。今日・明日への繰越はゲート対象外。
 
 ### 5. 🟣 PJ化候補
 - Inbox直下タスク全件（`td.py list Inbox`）をローカルクラスタリング：
@@ -120,7 +120,7 @@ D. 今回はスキップ
 ```
 
 ### Step 5: 一括実行
-草川承認後に実行：完了=`td.py done <id>`、期限設定=Todoist MCP `reschedule-tasks`、ラベル退避=Todoist MCP `update-tasks`、PJ新設=Todoist MCP `add-projects`＋タスク移動、削除=草川が明示指定した分のみ `td.py rm`。旧Notion✅タスクDB・旧🗂️プロジェクトDBへの書込は一切行わない。
+草川承認後に実行：完了=`td.py done <id>`、期限設定=Todoist MCP `reschedule-tasks`（**明後日以降はtask-add突合→`_verified.json`書込を先に済ませる**）、ラベル退避=Todoist MCP `update-tasks`、PJ新設=Todoist MCP `add-projects`＋タスク移動、削除=草川が明示指定した分のみ `td.py rm`。旧Notion✅タスクDB・旧🗂️プロジェクトDBへの書込は一切行わない。
 
 ### Step 6: 結果サマリ
 処理件数を集計してチャット出力（処理後の `td.py audit` 件数を添える）＋メモリログ追記。Notionの「📔 タスク監査ログ」ページに月次蓄積。

@@ -137,7 +137,7 @@ description: >
 1. 二次相談で確定したテーマ・順番を企画シートに反映。
 2. 逆算スケジュールを確定し `_status.json` に記録。
 3. **Todoistへ期限付きタスク登録を提案**（Stage2/3/4/5の各推奨日）。登録は `python3 ~/.claude/scripts/todoist/td.py add "内容" --due <日付> --project 議員活動` で、**草川承認後にのみ**実行する。承認前に勝手に登録しない。
-   - 🗓 **期限つきで登録する場合は task-add の突合手順を通す**（想定所要を1hセッション換算→カレンダー突合→✅/⚠️/🚫判定→承認）。突合なしの `td.py add --due` は PreToolUse hook が deny する。期限なしの登録はこれまで通り。
+   - 🗓 **期限つきで登録する場合は task-add の突合手順を通す**（想定所要を1hセッション換算→カレンダー突合→✅/⚠️/🚫判定→承認）。突合なしの `td.py add --due`、Todoist MCP `update-tasks` での期限**後付け**、`reschedule-tasks` での**明後日以降への期限設定**は PreToolUse hook が deny する。今日・明日への移動（朝の繰越・即日対応）はゲート対象外。期限なしの登録はこれまで通り。
 4. Notionミラー: 🎤市政報告会DBに該当ページが無ければStage1で新規作成（開催日・開催地区・開催自治会relation・会場・形態を設定）し、「## 準備ステージ進捗」を反映（ベストエフォート）。`notion_page_url` を `_status.json` に記録。
 5. `_status.json` の `stage1.status = "done"`・`completed_at`・`artifacts`（企画シートのパス）・`themes`（確定テーマ）を更新して終了。
 
