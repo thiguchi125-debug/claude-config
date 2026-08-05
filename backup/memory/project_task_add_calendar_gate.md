@@ -1,11 +1,11 @@
 ---
 name: project-task-add-calendar-gate
-description: task-addスキル＋PreToolUse hookによるTodoist登録のカレンダー突合ゲート（2026-08-03構築）。判定は30分コマ換算・終日予定は原則ブロックしない
+description: task-addスキル＋PreToolUse hookによるTodoist登録のカレンダー突合ゲート（2026-08-03構築・2026-08-05にv3作業ブロック追加）。判定は30分コマ換算・終日予定は原則ブロックしない・時間の正本はカレンダー側
 metadata: 
   node_type: memory
   type: project
   originSessionId: aec522ed-d6b7-4b01-b322-5a398531ce3c
-  modified: 2026-08-04T14:38:03.144Z
+  modified: 2026-08-05T12:12:13.583Z
 ---
 
 2026-08-03 構築・稼働中。期限付きTodoist登録の前にGoogleカレンダーと突合し、実施可能性を判定してから登録する仕組み。
@@ -14,7 +14,15 @@ metadata:
 - `~/.claude/skills/task-add/SKILL.md` — 手順（所要見積→カレンダー取得→判定→提案→承認→`_verified.json`書込→`td.py add`）
 - `~/.claude/skills/task-add/sessions.py` — 空き枠算出と3値判定の実装。**手計算禁止・必ずこれを使う**
 - `~/.claude/hooks/todoist_calendar_guard.py` — PreToolUse hook。突合なしの `td.py add --due` / MCP `add-tasks` を deny
-- テスト: hook 40件・sessions 12件（`python3 -m unittest discover`）
+- テスト: hook 40件・sessions 20件（`python3 -m unittest discover`）。**hook側テストは9件がエラーのまま**＝v2改修で `extract_mcp_add`→`extract_mcp_tasks` に改名した際にテストを追わなかった腐り。hook本体は動作するがdeny判定の自動検証が効いていない（2026-08-05発見・未修理）
+
+**v3 作業ブロック（2026-08-05・草川指摘「日付の終日で登録されているだけで時間を細かくスケジュールに反映できていない」への対応）**
+- v1〜v2は空き枠を「コマ数」に潰して可否判定にだけ使い、**どの時間帯が空いているかを捨てていた**。だからTodoistに終日の期限日しか残らなかった
+- 対処は **Todoistに時刻を入れるのではなくカレンダー側に作業ブロックを置く**。Todoistに時刻＋durationを持たせる案は「hookのdue literal比較が壊れる／CLAUDE.mdの軽さの源設計に反する／時間の正本が二重化する」の3点で却下
+- `sessions.py --plan --plan-json <path> --plan-title "<内容>"` が割り付ける。1ブロック最大60分・1空き区間に1ブロック・1日あたり✅なら2コマ/⚠️🚫なら4コマ・**昼12-13時は置かない（配置専用規則で判定値は不変）**・置き切れない分は`⚠️ 未割付Nコマ`で明示
+- カレンダーには `【作業】<タスク内容>` で1ブロック=1予定（colorId=8・BUSY）。`eventType: FOCUS_TIME` は招待自動辞退の副作用があるので使わない
+- ブロックは時間指定予定なので**次回の `sessions.py` が自動的に埋まりとして扱う**＝二重予約しない自己修復が効く
+- 既知の穴: `td.py done` はカレンダーを触らないので**前倒し完了しても`【作業】`予定が残る**。「作業ブロック消して」で search_events→delete_event の手動一括削除
 
 **判定モデル**
 - 1コマ=30分、1セッション=1時間=2コマ、**1日に同一タスクへ割けるのは最大4コマ**

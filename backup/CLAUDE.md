@@ -62,7 +62,7 @@
 - **タスク・プロジェクトはTodoistに一本化（必須・2026-06-14〜・最上位）**: 草川のタスク／プロジェクトの**登録・参照・更新・完了はすべてTodoist**で行う。Notion ✅タスクDB(292cf503)・🗂️プロジェクトDB(292c_fe)は**新規登録に使わない**（過去データの参照のみ可）。
   - **エンジン**: `python3 ~/.claude/scripts/todoist/td.py <cmd>`（token=`~/.config/todoist/token`・API必ず `/api/v1/`・旧v2/v9は410廃止）。主要cmd＝`morning`(朝の3ブロック+監査)／`add "内容" [--due 2026-07-01|today|tomorrow] [--project 議員活動] [--priority 1-4(4最高)] [--label 結果待ち] [--desc ...]`／`today`／`overdue`／`week`／`audit`／`list [PROJECT]`／`done <id>`／`rm <id>`／`projects`。詳細は td.py 冒頭doc と [[project_todoist_task_migration]]。
   - **構成**: 主プロジェクト＝Inbox／🏛 議員活動／🗳 選挙2026／🎪 地域・イベント／🎮 eスポーツ／📣 発信／🏡 家族・プライベート／🗂 構想バックログ＋案件別サブPJ多数（登録前に `td.py projects` で実在名を確認。「📋 政策・一般質問」は実在しない＝2026-07-05確認）。ラベル＝@結果待ち（相手のボール）／@保留（やる方向だが要検討）／@アイデア（いつか）／@読む。状態管理は「進行中/今週中」専用フォルダを作らず**期限＋"今日"ビュー＋ラベル**で表現（軽さの源）。
-  - **新規タスク登録手順（2026-06-15確定・2026-08-03カレンダー突合を追加）**: ①まず「記録で足りるか、タスク化が要るか」を振り分け（方針・状況は記録に残すだけ＝タスクにしない）②タスク化候補は **task-add スキル**を通し、保存先＋期限案（推奨=今日+3日）に加えて**カレンダー突合による実施可能性判定（✅/⚠️/🚫＋🚫なら代替期限2案）**をセットで提示③**草川の回答を得てから**登録。既定値で勝手に確定登録しない（[[feedback_ask_destination_and_deadline_before_register]]が[[feedback_task_deadline_3days]]を上書き）。領域に応じ `--project` 指定。相手待ち＝@結果待ち、要検討＝@保留。期限付きの登録は PreToolUse hook（`~/.claude/hooks/todoist_calendar_guard.py`）が突合済みかを検査し、未突合なら deny する。
+  - **新規タスク登録手順（2026-06-15確定・2026-08-03カレンダー突合を追加）**: ①まず「記録で足りるか、タスク化が要るか」を振り分け（方針・状況は記録に残すだけ＝タスクにしない）②タスク化候補は **task-add スキル**を通し、保存先＋期限案（推奨=今日+3日）に加えて**カレンダー突合による実施可能性判定（✅/⚠️/🚫＋🚫なら代替期限2案）**と**作業ブロック案（いつやるか＝日付＋時間帯）**をセットで提示③**草川の回答を得てから**登録（承認分は `td.py add` ＋カレンダーへ `【作業】` 予定を作成。Todoist側は終日の期限のまま＝時間の正本はカレンダー）。既定値で勝手に確定登録しない（[[feedback_ask_destination_and_deadline_before_register]]が[[feedback_task_deadline_3days]]を上書き）。領域に応じ `--project` 指定。相手待ち＝@結果待ち、要検討＝@保留。期限付きの登録は PreToolUse hook（`~/.claude/hooks/todoist_calendar_guard.py`）が突合済みかを検査し、未突合なら deny する。
   - **ohayo/oyasumi のタスク処理は td.py**: ohayo朝タスク＝`td.py morning`、監査＝`td.py audit`。繰越は oyasumi では期限据え置き・翌朝 morning で草川承認分のみ `--due today` 付け替え（SKILL.md本体は2026-07-04にtd.py化修理済み・旧override不要）。
   - 市民相談の次アクション・会話中に出たやること・プロジェクト化候補も、**登録先はすべてTodoist**（重いNotion DBは使わない）。
 - **タスク登録時のプロジェクト化判定（必須）**: 単発で完結しないタスクは、以下基準A〜Eのいずれか1つ以上該当時に必ずプロジェクト化要否を草川に問いかけ→**Todoistプロジェクト**（🏛議員活動配下のサブプロジェクト等）登録まで1パスで実行（旧🗂️プロジェクトDBは使わない）：
@@ -91,7 +91,7 @@
 | 〇〇地区の報告会準備 / 報告会の企画・案内レポート・スライド・解説・前夜チェック | **shisei-houkokukai**（5ステージ制プロデュース・進捗は_status.json正本・急ぎは短縮経路） |
 | チラシ作って / ポスター作って / リーフレット作って / 印刷物作って / デザイン制作 | **design-studio**（design_systemテンプレ候補提示→print-layout-architect実装→natural-design-reviewer→安全ゲート→PDF→保存→テンプレ昇格還元。勝負所のみdesign-director追加） |
 | 逆算チェック / 準備漏れ確認 / 漏れタスクチェック / イベント逆算 | **gyakusan**（Calendar＋Notion＋Todoist突合・60日先まで二層逆算→不足タスクのみ提案→承認分だけtd.py登録。月曜ohayoで自動候補表示） |
-| タスク登録して / これタスクにして / Todoistに入れて / 期限いつにする | **task-add**（想定所要を1hセッション換算→Googleカレンダー突合→✅/⚠️/🚫3値判定→🚫なら代替期限2案→承認分のみ `td.py add`。突合なしの期限付き登録はPreToolUse hookがdenyする） |
+| タスク登録して / これタスクにして / Todoistに入れて / 期限いつにする | **task-add**（想定所要を1hセッション換算→Googleカレンダー突合→✅/⚠️/🚫3値判定→🚫なら代替期限2案→**作業ブロック案（日付＋時間帯）**→承認分のみ `td.py add` ＋カレンダーへ`【作業】`予定登録。突合なしの期限付き登録はPreToolUse hookがdenyする） |
 | 後援会取り込み | **後援会入会フォーム週次バッチ**（正本手順=Drive `06_フォーム・アンケート運用/後援会入会フォーム/README.md`・回答シート新着→名簿マスタCSV更新→Substack用import.csv→Todoist締め登録→「インポートした」で消込。詳細memory=project_koenkai_intake_form） |
 
 詳細トリガーは Notion「スキルトリガー一覧」「エージェントトリガー一覧」（MEMORY.md参照）。
