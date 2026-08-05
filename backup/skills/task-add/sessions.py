@@ -24,6 +24,7 @@ MAX_SLOTS_PER_DAY = 4                    # 同一タスクには1日最大2セ�
 MIN_GAP = 30                             # 30分未満の隙間は使えないものとして捨てる
 SESSION_MAX = 60                         # 1ブロック = 最大1セッション = 60分
 LUNCH_START, LUNCH_END = 12 * 60, 13 * 60  # 作業ブロックを置かない時間帯（配置専用）
+BUFFER = 15                              # 前後の予定との間に空ける分（移動・片付け）
 
 # 終日予定のうち、実際に1日を拘束するとみなす語。
 # 草川のカレンダーでは終日予定の大半が「目印」（グラウンドゴルフ・憩いの場等）で
@@ -127,22 +128,58 @@ def split_lunch(free):
     return sorted(out)
 
 
-def plan_blocks(rows, need, max_per_day):
+def apply_buffer(free):
+    """予定と接している端を BUFFER 分だけ削る（配置専用）。
+
+    予定が終わった瞬間に次の作業を始められるわけではない。稼働帯の端
+    （9:00開始・21:00終了）は予定と接していないので削らない。
+    """
+    out = []
+    for s, e in free:
+        a = s + BUFFER if s > BAND_START else s
+        b = e - BUFFER if e < BAND_END else e
+        if b - a >= MIN_GAP:
+            out.append((a, b))
+    return out
+
+
+def clip_windows(free, windows):
+    """空き区間を「その日に置ける時間帯」で切る（役所は平日9-17時、等）。"""
+    out = []
+    for s, e in free:
+        for ws, we in windows:
+            a, b = max(s, ws), min(e, we)
+            if b - a >= MIN_GAP:
+                out.append((a, b))
+    return sorted(out)
+
+
+def plan_blocks(rows, need, max_per_day, window_fn=None):
     """必要コマ数を実際の時間帯（作業ブロック）へ割り付ける。
 
     1ブロック = 最大1セッション(60分)。1つの空き区間には1ブロックしか置かず、
     日をまたいで散らす。予定の密な日に押し込むより、細く長く進める運用に合う。
-    昼(12:00-13:00)は配置対象から外す。コマ数の算出側では昼を除いていないので、
-    ここで避けても ✅/⚠️/🚫 の判定は変わらない（配置だけの規則）。
+    昼(12:00-13:00)・前後の予定とのバッファ・許可時間帯(window_fn)は配置対象から
+    外す。コマ数の算出側ではこれらを除いていないので、避けても ✅/⚠️/🚫 の判定は
+    変わらない（配置だけの規則）。
+
+    window_fn は「その日に置ける時間帯」を返す関数（task_windows.window_fn）。
+    役所への照会は平日9-17時しか置かない、等の現実性を効かせるために使う。
+    None なら制限なし。
     戻り値: ([(日付, 開始分, 終了分), ...], 割り付けられなかったコマ数)
     """
     plan, left = [], need
     for d, n, _why, free in rows:
         if left <= 0:
             break
+        usable = apply_buffer(split_lunch(free))
+        if window_fn is not None:
+            usable = clip_windows(usable, window_fn(d))
+        if not usable:
+            continue
         quota = min(n, max_per_day, left)
         placed = 0
-        for s, e in split_lunch(free):
+        for s, e in usable:
             if placed >= quota:
                 break
             avail = ((e - s) // SLOT) * SLOT

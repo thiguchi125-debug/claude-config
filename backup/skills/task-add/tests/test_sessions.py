@@ -1,10 +1,14 @@
 import importlib.util
 import json
 import os
+import sys
 import tempfile
 import unittest
 
-_SCRIPT = os.path.expanduser("~/.claude/skills/task-add/sessions.py")
+_SKILL_DIR = os.path.expanduser("~/.claude/skills/task-add")
+if _SKILL_DIR not in sys.path:            # task_windows を PYTHONPATH 無しで import する
+    sys.path.insert(0, _SKILL_DIR)
+_SCRIPT = os.path.join(_SKILL_DIR, "sessions.py")
 _spec = importlib.util.spec_from_file_location("sessions", _SCRIPT)
 sessions = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(sessions)
@@ -138,8 +142,8 @@ class TestPlanBlocks(unittest.TestCase):
         self.assertEqual(len({d for d, _, _ in plan}), 4)
 
     def test_lunch_is_not_used_for_blocks(self):
-        # 11:30-13:30 しか空いていない日。昼を避けると 13:00-13:30 に置かれる
-        rows = self._rows([(3, 4, [(11 * 60 + 30, 13 * 60 + 30)])])
+        # 昼前の空きが10分しかない日。昼を避けて 13時以降に置かれる
+        rows = self._rows([(3, 4, [(11 * 60 + 50, 15 * 60)])])
         plan, _ = sessions.plan_blocks(rows, need=1, max_per_day=4)
         self.assertEqual(len(plan), 1)
         start, end = plan[0][1], plan[0][2]
@@ -152,16 +156,126 @@ class TestPlanBlocks(unittest.TestCase):
         self.assertEqual(plan[0][0].day, 4)
 
     def test_reports_unplaced_slots_instead_of_silently_dropping(self):
-        rows = self._rows([(3, 1, [(9 * 60, 9 * 60 + 30)])])
-        plan, left = sessions.plan_blocks(rows, need=8, max_per_day=4)
+        rows = self._rows([(3, 4, [(9 * 60, 21 * 60)])])
+        plan, left = sessions.plan_blocks(rows, need=8, max_per_day=2)
         self.assertEqual(len(plan), 1)
-        self.assertEqual(left, 7)
+        self.assertEqual(left, 6)
+
+    def test_thirty_minute_gap_between_events_is_not_used_for_placement(self):
+        # コマ数としては1コマと数えるが、前後に予定が接しているので実際には置けない
+        # （移動・片付けのバッファ。2026-08-06 の見直しで追加）
+        rows = self._rows([(3, 1, [(10 * 60, 10 * 60 + 30)])])
+        plan, left = sessions.plan_blocks(rows, need=1, max_per_day=4)
+        self.assertEqual(plan, [])
+        self.assertEqual(left, 1)
 
     def test_thirty_minute_task_gets_thirty_minute_block(self):
         rows = self._rows([(3, 4, [(9 * 60, 21 * 60)])])
         plan, left = sessions.plan_blocks(rows, need=1, max_per_day=2)
         self.assertEqual(plan[0][2] - plan[0][1], 30)
         self.assertEqual(left, 0)
+
+
+class TestRealismFilters(unittest.TestCase):
+    """現実性フィルタ（2026-08-06 の失敗を受けて追加）。
+
+    空き時間があるという理由だけで、日曜の市役所照会や18時以降の照会を
+    置いてしまった。相手がいる時間かどうかを配置側で効かせる。
+    """
+
+    def _rows(self, specs):
+        import datetime
+        return [(datetime.date(2026, 8, d), n, "", free) for d, n, free in specs]
+
+    def test_buffer_is_taken_from_edges_touching_events(self):
+        # 10:00-11:00 が空き（前後に予定あり）→ 前後15分ずつ削れて10:15-10:45
+        self.assertEqual(sessions.apply_buffer([(10 * 60, 11 * 60)]),
+                         [(10 * 60 + 15, 10 * 60 + 45)])
+
+    def test_buffer_not_taken_from_band_edges(self):
+        # 稼働帯の端は予定と接していないので削らない
+        self.assertEqual(sessions.apply_buffer([(sessions.BAND_START, sessions.BAND_END)]),
+                         [(sessions.BAND_START, sessions.BAND_END)])
+
+    def test_buffer_drops_intervals_that_become_too_short(self):
+        self.assertEqual(sessions.apply_buffer([(10 * 60, 10 * 60 + 45)]), [])
+
+    def test_clip_windows_restricts_to_office_hours(self):
+        self.assertEqual(
+            sessions.clip_windows([(9 * 60, 21 * 60)], [(9 * 60, 17 * 60)]),
+            [(9 * 60, 17 * 60)])
+
+    def test_clip_windows_empty_means_no_placement(self):
+        self.assertEqual(sessions.clip_windows([(9 * 60, 21 * 60)], []), [])
+
+    def test_office_task_gets_nothing_on_sunday(self):
+        import task_windows
+        # 2026-08-09 は日曜。役所タスクは置けず、翌10日(月)へ流れる
+        rows = self._rows([(9, 4, [(9 * 60, 21 * 60)]), (10, 4, [(9 * 60, 21 * 60)])])
+        kind, skip = task_windows.classify("学校教育課へ照会")
+        self.assertIsNone(skip)
+        plan, left = sessions.plan_blocks(rows, 2, 2,
+                                          window_fn=task_windows.window_fn(kind))
+        self.assertEqual(left, 0)
+        self.assertEqual(plan[0][0].day, 10)
+
+    def test_office_task_is_not_placed_after_seventeen(self):
+        import task_windows
+        # 月曜だが17:30以降しか空いていない → 置けない
+        rows = self._rows([(10, 4, [(17 * 60 + 30, 21 * 60)])])
+        kind, _ = task_windows.classify("建設部へ照会")
+        plan, left = sessions.plan_blocks(rows, 2, 2,
+                                          window_fn=task_windows.window_fn(kind))
+        self.assertEqual(plan, [])
+        self.assertEqual(left, 2)
+
+    def test_desk_task_may_use_the_evening(self):
+        import task_windows
+        rows = self._rows([(9, 4, [(17 * 60 + 30, 21 * 60)])])
+        kind, _ = task_windows.classify("菅内版市政報告レポート作成")
+        self.assertEqual(kind.key, "desk")
+        plan, _ = sessions.plan_blocks(rows, 2, 2,
+                                       window_fn=task_windows.window_fn(kind))
+        self.assertTrue(plan)
+
+
+class TestTaskWindows(unittest.TestCase):
+    def test_waiting_label_is_skipped(self):
+        import task_windows
+        kind, skip = task_windows.classify("段差の件", labels=["結果待ち"])
+        self.assertIsNone(kind)
+        self.assertIn("結果待ち", skip)
+
+    def test_waiting_in_title_is_skipped(self):
+        import task_windows
+        for title in ("国1バイパス側道の段差 連絡待ち",
+                      "油流出事故対応は川合自治会の協議待ち"):
+            kind, skip = task_windows.classify(title)
+            self.assertIsNone(kind, msg=title)
+
+    def test_office_beats_contact_when_both_match(self):
+        import task_windows
+        # 「担当課へ連絡」は連絡でもあるが、窓口が開いている時間の制約が勝つ
+        kind, _ = task_windows.classify("担当課へ連絡して状況を確認")
+        self.assertEqual(kind.key, "office")
+
+    def test_field_check_is_daylight_all_week(self):
+        import task_windows
+        kind, _ = task_windows.classify("交差点の草木見通し不良を現地確認")
+        self.assertEqual(kind.key, "field")
+        self.assertEqual(kind.end, 18 * 60)
+
+    def test_resident_contact_allows_weekend_evening(self):
+        import task_windows
+        kind, _ = task_windows.classify("宮村さんへ制度案内を回答")
+        self.assertEqual(kind.key, "contact")
+        self.assertEqual(kind.end, 20 * 60)
+
+    def test_unknown_task_defaults_to_desk(self):
+        import task_windows
+        kind, skip = task_windows.classify("のど自慢事業")
+        self.assertIsNone(skip)
+        self.assertEqual(kind.key, "desk")
 
 
 class TestSplitLunch(unittest.TestCase):

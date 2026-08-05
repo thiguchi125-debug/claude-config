@@ -28,6 +28,15 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "matcher": "mcp__claude_ai_Notion__notion-create-pages|mcp__claude_ai_Notion__notion-update-page",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/hooks/content_safety_gate.py"
+          }
+        ]
       }
     ]
   },
