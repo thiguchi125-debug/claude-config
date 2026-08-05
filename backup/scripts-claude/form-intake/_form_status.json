@@ -1,9 +1,9 @@
 {
-  "date": "2026-08-03",
+  "date": "2026-08-06",
   "status": "ok",
   "new_count": 0,
   "registered_count": 0,
   "items": [],
   "errors": [],
-  "note": "2026-08-03 夜間launchd form-intake。Step 0のToolSearchで claude.ai Google Drive / Notion のMCPツールが正常にロードでき、前夜(2026-08-02)のMCP不通は解消。シート3枚とも download_file_content（text/csv・base64デコード）で取得し全行を突合した結果、Notion新着・ETL新着とも0件。S1=48行(最終 2026/07/16 22:59:27)／S2=212行(最終 2026/07/28 13:58:06)／S3=148行(最終 2026/06/28 14:12:36) で、いずれも state の last_processed_timestamp・etl_last_row と完全一致。前夜の未処理分の取りこぼしも無かったことをこの突合で確認済み。SKILL.md規定どおり Notion 📝市民意見リスト・_citizen_voice/ 各ファイルへの書き込みはゼロ、state も更新なし。"
+  "note": "2026-08-06 夜間launchd form-intake。Step 0のToolSearchで claude.ai Google Drive / Notion のMCPツールを正常ロード（deferred起動のため事前ロード必須・MCP不通ではない）。シート3枚とも download_file_content（text/csv・base64デコード）で取得しCSVパースで全行突合。S1=48行(最終 2026/07/16 22:59:27)／S2=212行(最終 2026/07/28 13:58:06)／S3=148行(最終 2026/06/28 14:12:36)。各行のタイムスタンプを last_processed_timestamp と比較してNotion新着0件、データ行数と etl_last_row を比較してETL新着0件。タイムスタンプのパース不能行ゼロ、テスト投稿フィルタ該当なし。SKILL.md規定どおり Notion 📝市民意見リスト・_citizen_voice/ 各ファイルへの書き込みはゼロ、iken_poller_state.json も更新なし。7/28以降フォーム新着なしの状態が9日継続。"
 }
