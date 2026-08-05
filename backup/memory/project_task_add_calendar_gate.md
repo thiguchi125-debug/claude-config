@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: aec522ed-d6b7-4b01-b322-5a398531ce3c
-  modified: 2026-08-05T12:12:13.583Z
+  modified: 2026-08-05T12:24:54.718Z
 ---
 
 2026-08-03 構築・稼働中。期限付きTodoist登録の前にGoogleカレンダーと突合し、実施可能性を判定してから登録する仕組み。
@@ -14,7 +14,8 @@ metadata:
 - `~/.claude/skills/task-add/SKILL.md` — 手順（所要見積→カレンダー取得→判定→提案→承認→`_verified.json`書込→`td.py add`）
 - `~/.claude/skills/task-add/sessions.py` — 空き枠算出と3値判定の実装。**手計算禁止・必ずこれを使う**
 - `~/.claude/hooks/todoist_calendar_guard.py` — PreToolUse hook。突合なしの `td.py add --due` / MCP `add-tasks` を deny
-- テスト: hook 40件・sessions 20件（`python3 -m unittest discover`）。**hook側テストは9件がエラーのまま**＝v2改修で `extract_mcp_add`→`extract_mcp_tasks` に改名した際にテストを追わなかった腐り。hook本体は動作するがdeny判定の自動検証が効いていない（2026-08-05発見・未修理）
+- テスト: hook 60件・sessions 20件（`python3 -m unittest discover`）。両方グリーン
+- **2026-08-05にhook側テストの腐りを修理。** v2改修（`extract_mcp_add`→`extract_mcp_tasks`／`gated_tasks`に`today`追加／reschedule-tasksをゲート対象化）にテストが追随しておらず9件エラーだった。危険だったのは改名より **`test_reschedule_tool_is_not_gated` が v1の「ゲートしない」という古い仕様をassertし続けていた**こと。v2仕様（繰越は素通し・明後日以降はゲート）で書き直し、reschedule抽出・update件名条件・match_due_only照合のテストを新設。**変異テスト4種（CARRYOVER_GRACE_DAYS改変・need_content無効化・match_due_only無効化・update経路のゼロ化）で全て検出されることを確認済み**＝空振りしないテストになっている
 
 **v3 作業ブロック（2026-08-05・草川指摘「日付の終日で登録されているだけで時間を細かくスケジュールに反映できていない」への対応）**
 - v1〜v2は空き枠を「コマ数」に潰して可否判定にだけ使い、**どの時間帯が空いているかを捨てていた**。だからTodoistに終日の期限日しか残らなかった
