@@ -19,14 +19,14 @@ VERIFIED_PATH = os.path.expanduser("~/.claude/skills/task-add/_verified.json")
 # ゲート対象のMCPツール
 # add-tasks    = 新規登録
 # update-tasks = 既存タスクへの期限「後付け」。期限なしで登録してから付ける抜け道を塞ぐ
-# reschedule-tasks は対象外（朝の繰越＝既に ohayo で承認済みの経路。ここを塞ぐと毎朝の
-# 繰越に突合が要り日課が回らなくなる）。CLAUDE.md「繰越は翌朝 morning で承認分のみ」参照。
 MCP_ADD_TOOLS = {"mcp__claude_ai_Todoist__add-tasks"}
 MCP_UPDATE_TOOLS = {"mcp__claude_ai_Todoist__update-tasks"}
 
-# reschedule-tasks は content を持たず date だけなので、件名照合ができない。
-# 「今日・明日へ動かす」＝朝の繰越／即日対応は素通しし、それより先の日付＝計画判断
-# （task-audit の 期限なし→今日+3日 など）だけを日付一致でゲートする。
+# reschedule-tasks は v2（2026-08-04）でゲート対象に入れた。v1では対象外だったが、
+# task-audit の「期限なし→今日+3日」がこのツールを使っており、主要な迂回路だった。
+# content を持たず date だけなので件名照合ができない。そこで「今日・明日へ動かす」
+# ＝朝の繰越／即日対応は素通しし（CLAUDE.md「繰越は翌朝 morning で承認分のみ」）、
+# それより先の日付＝計画判断だけを日付一致でゲートする。
 MCP_RESCHEDULE_TOOLS = {"mcp__claude_ai_Todoist__reschedule-tasks"}
 CARRYOVER_GRACE_DAYS = 1
 
