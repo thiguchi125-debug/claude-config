@@ -41,6 +41,7 @@
 
 ## 📌 恒久ガードルール（実運用で効く feedback）
 
+- [成果物を作ったら指示されなくてもフォルダを開く](feedback_open_folder_after_generating_files.md) — 2026-08-06草川指摘。画像・PDF・動画素材を作ったら必ず `open <dir>`。チャットへの貼付とフォルダ表示は両方やる。「フォルダ表示して」と言わせない
 - [発信物を書く前に担当agent/SKILLの定義ファイルを必ずRead](feedback_read_agent_spec_before_writing.md) — 2026-08-05。agent起動不可でも仕様は読める。読まずに書いて憲法5構成を3つ外し、さらに存在しない「X≤140字」を捏造して自分を縛った。規定と内容が衝突したら内容を削る前に草川判断（ブログは超過可＝徹底解説モード新設）。機械判定＝`check_content_limits.py`
 - [発信物のNotion保存も「発信」＝保存前に安全ゲート必須](feedback_safety_gates_before_notion_save.md) — 2026-08-05草川指摘。「保存するだけ」「前セッションで通過済」「FINAL付き」は例外にならない。fact→riskを自分で通した時だけ「通過済」と書ける。他地域の災害を導入に使った原稿は[[feedback_disaster_rescue_phase_no_local_pivot]]と地元タグ例外を必ず当てる
 - [Xは必ずハッシュタグ・Instagramは5つ](feedback_hashtag_policy_x_instagram.md) — 2026-07-30草川指示。標準は`#亀山市 #草川たくや`＋テーマ/地区タグ。**例外＝他地域の災害・事故の投稿では地元ブランドタグを使わない**（リーチ拡大先が自分の有権者になる）。判断基準「被災地に届けるためか、自分に届かせるためか」。LINEはタグなしが正なので取り違えない

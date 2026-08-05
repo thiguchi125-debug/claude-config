@@ -57,13 +57,13 @@ def check_html(path):
         out.append((False, f"見出し級（{MIN_H1}px以上）が無い"))
     # 行間
     # 大数字（100px以上）は詰めた行間が正（正本テンプレも .year 114px/lh1.06）。
-    # 行間を見るのは 30〜99px の本文・見出し級のみ。
+    # 行間を見るのは 30〜79px の本文級のみ（80px以上は表示用数字とみなす）。
     rules = re.findall(r"\{([^}]*)\}", css)
     tight = []
     for r in rules:
         m = re.search(r"font-size\s*:\s*([\d.]+)px", r)
         l = re.search(r"line-height\s*:\s*([\d.]+)\s*[;}]?", r)
-        if m and l and 30 <= float(m.group(1)) < 100 and float(l.group(1)) < MIN_LH_HEAD:
+        if m and l and 30 <= float(m.group(1)) < 80 and float(l.group(1)) < MIN_LH_HEAD:
             tight.append(float(l.group(1)))
     out.append((not tight, f"行間 {MIN_LH_HEAD}未満 {len(tight)}件 {sorted(set(tight)) if tight else ''}"))
     # 下部ゾーンの開始位置
