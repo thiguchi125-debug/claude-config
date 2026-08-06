@@ -90,10 +90,15 @@ def check_blog(text):
     body = re.split(r"◆亀山市政や", body)[0]
     n = n_chars(re.sub(r"^#.*$", "", body, flags=re.M))
     tier = next((t for t, lo, hi in BLOG_TIERS if lo <= n <= hi), None)
+    exc = re.findall(r"FORMAT-EXCEPTION:\s*(\S+)", text)   # 承認済み逸脱の明示マーカー
+    lo0, hi0 = BLOG_TIERS[0][1], BLOG_TIERS[-1][2]
     if tier:
         out.append((True, f"本文 {n}字 → {tier}モード"))
+    elif n > hi0 and "字数" in " ".join(exc):
+        # 草川が「字数上限を理由に内容を削るな」と明示承認した回だけ通す。
+        # 承認は本文冒頭の <!-- FORMAT-EXCEPTION: 字数 / 承認日 / 理由 --> で記録する。
+        out.append((True, f"本文 {n}字 ⚠承認済み例外（規定 上限{hi0}字）"))
     else:
-        lo0, hi0 = BLOG_TIERS[0][1], BLOG_TIERS[-1][2]
         out.append((False, f"本文 {n}字（{lo0}〜{hi0}字の範囲外）"))
     heads = re.findall(r"^(?:##\s*|■\s*)(.+)$", body, flags=re.M)
     out.append((len(heads) >= 4, f"見出し {len(heads)}本（5段構成の骨格が要る）"))
