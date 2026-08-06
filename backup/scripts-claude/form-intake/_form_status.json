@@ -1,9 +1,18 @@
 {
-  "date": "2026-08-06",
-  "status": "ok",
-  "new_count": 0,
-  "registered_count": 0,
-  "items": [],
-  "errors": [],
-  "note": "2026-08-06 夜間launchd form-intake。Step 0のToolSearchで claude.ai Google Drive / Notion のMCPツールを正常ロード（deferred起動のため事前ロード必須・MCP不通ではない）。シート3枚とも download_file_content（text/csv・base64デコード）で取得しCSVパースで全行突合。S1=48行(最終 2026/07/16 22:59:27)／S2=212行(最終 2026/07/28 13:58:06)／S3=148行(最終 2026/06/28 14:12:36)。各行のタイムスタンプを last_processed_timestamp と比較してNotion新着0件、データ行数と etl_last_row を比較してETL新着0件。タイムスタンプのパース不能行ゼロ、テスト投稿フィルタ該当なし。SKILL.md規定どおり Notion 📝市民意見リスト・_citizen_voice/ 各ファイルへの書き込みはゼロ、iken_poller_state.json も更新なし。7/28以降フォーム新着なしの状態が9日継続。"
+  "date": "2026-08-07",
+  "new_count": 1,
+  "items": [
+    {
+      "row_id": "S2-213",
+      "date": "2026/08/06",
+      "district": "未記入",
+      "domain": "childcare_education",
+      "urgency": "中",
+      "summary": "病児保育を使ってほしい（20代・匿名・連絡先なし）",
+      "notion_url": "https://app.notion.com/p/3b4cf503a68f8155aa48d0be63a32c25?pvs=204",
+      "skipped": false,
+      "urgent": false
+    }
+  ],
+  "errors": []
 }
