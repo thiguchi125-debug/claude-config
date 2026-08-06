@@ -78,7 +78,10 @@ def check_sns(text):
         if key == "X" and not has_tag:
             out.append((False, f"{name}: Xにハッシュタグなし（規定=必須）"))
     if "<BLOG_URL>" in text:
-        out.append((False, "プレースホルダ <BLOG_URL> が残っている（投稿前に実URLへ）"))
+        # 下書き保存の時点では正常。実URLへの差し替えが要るのは「投稿」の直前で、
+        # 投稿は各PFで草川が手作業で行うためチェッカーからは強制できない。
+        # よってFAILではなく警告として可視化する（見落とし防止）。
+        out.append((True, "⚠ プレースホルダ <BLOG_URL> あり — **投稿前に実URLへ差し替えること**"))
     return out
 
 def check_blog(text):

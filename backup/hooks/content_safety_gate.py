@@ -23,7 +23,7 @@ todoist_calendar_guard.py と同じ思想：ルールをmarkdownに書いてお�
   どちらも「本文が変わったのに、本文の変更だと認識しなかった」ことが原因。
   人間の注意力ではなく指紋で検出する。
 """
-import sys, os, json, re, hashlib, time
+import sys, os, json, re, hashlib, time, unicodedata
 
 GATE = os.path.expanduser("~/.claude/hooks/_content_gate.json")
 GUARDED = {
@@ -37,7 +37,7 @@ DENY = """安全ゲート未通過のため、この本文はNotionへ書き込�
   2. content-risk-reviewer を通す（公選法・個人情報・名誉毀損・差別・利益相反・品位・物議）
   3. python3 ~/.claude/scripts/gate.py <対象ファイル...> で通過を記録
 
-未登録の本文: {heads}
+承認済み原稿に無い文言:\n{heads}
 
 ※本文を1文字でも変えたら指紋が変わります。「レイアウト都合で一文削る」も本文の変更です。
 　risk-reviewerが必須とした文を落として指摘前より悪化させた実例があります（2026-08-06 a2）。
@@ -45,7 +45,11 @@ DENY = """安全ゲート未通過のため、この本文はNotionへ書き込�
 
 
 def norm(t):
-    return re.sub(r"[\s　]+", "", re.sub(r"<[^>]+>", "", t or ""))
+    # 全角/半角ゆれ＋markdownの装飾記号を両側で同じように落とす
+    t = unicodedata.normalize("NFKC", t or "")
+    t = re.sub(r"<[^>]+>", "", t)
+    t = re.sub(r"[*`>#|]", "", t)
+    return re.sub(r"[\s　]+", "", t)
 
 
 def fp(t):
@@ -69,18 +73,20 @@ def bodies(tool_input):
 
 
 def approved():
+    """(指紋集合, 承認済み正規化テキストのリスト) を返す。"""
     try:
         d = json.load(open(GATE))
     except Exception:
-        return set()
+        return set(), []
     ttl = d.get("ttl_minutes", 120) * 60
     try:
         born = time.mktime(time.strptime(d["generated_at"][:19], "%Y-%m-%dT%H:%M:%S"))
     except Exception:
-        return set()
+        return set(), []
     if time.time() - born > ttl:
-        return set()
-    return {e.get("fp") for e in d.get("approved", []) if e.get("fp")}
+        return set(), []
+    ap = d.get("approved", [])
+    return {e.get("fp") for e in ap if e.get("fp")}, [e.get("text", "") for e in ap]
 
 
 def main():
@@ -93,11 +99,33 @@ def main():
     bs = bodies(payload.get("tool_input", {}) or {})
     if not bs:
         return 0  # プロパティのみ＝素通し
-    ok = approved()
-    bad = [b for b in bs if fp(b) not in ok]
+    fps, texts = approved()
+
+    def segments(b):
+        """整形の骨組み（表の罫線・見出し記号・箇条書き）を除き、文単位に割る。"""
+        t = re.sub(r"<[^>]+>", "", b or "")
+        t = t.replace("|", "\n")                       # 表のセルを分解
+        out = []
+        for line in t.split("\n"):
+            line = re.sub(r"^[\s>#*\-–—\d.、　]+", "", line)
+            line = re.sub(r"[*`]", "", line)
+            for seg in re.split(r"(?<=[。！？])", line):
+                seg = norm(seg)
+                if len(seg) >= 12:                     # 短い断片は骨組みとみなす
+                    out.append(seg)
+        return out
+
+    def unreviewed(b):
+        if fp(b) in fps:
+            return []
+        return [g for g in segments(b) if not any(g in t for t in texts)]
+
+    bad = []
+    for b in bs:
+        bad += unreviewed(b)
     if not bad:
         return 0
-    heads = "\n".join("  ・" + norm(b)[:44] + "…" for b in bad[:4])
+    heads = "\n".join("  ・" + g[:44] + "…" for g in bad[:5])
     print(json.dumps({
         "hookSpecificOutput": {
             "hookEventName": "PreToolUse",

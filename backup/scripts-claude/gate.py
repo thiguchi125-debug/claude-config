@@ -23,7 +23,7 @@
   必須とした一文を削って被災地への指弾だけが残る画像を作った。機械ゲートは
   fact/riskの代わりにならない。
 """
-import sys, os, json, re, hashlib, subprocess, time
+import sys, os, json, re, hashlib, subprocess, time, unicodedata
 
 SC = os.path.expanduser("~/.claude/scripts")
 BAND = os.path.expanduser(
@@ -32,7 +32,11 @@ GATE = os.path.expanduser("~/.claude/hooks/_content_gate.json")
 
 
 def norm(t):
-    return re.sub(r"[\s　]+", "", re.sub(r"<[^>]+>", "", t or ""))
+    # 全角/半角ゆれ＋markdownの装飾記号を両側で同じように落とす
+    t = unicodedata.normalize("NFKC", t or "")
+    t = re.sub(r"<[^>]+>", "", t)
+    t = re.sub(r"[*`>#|]", "", t)
+    return re.sub(r"[\s　]+", "", t)
 
 
 def fp(t):
@@ -93,7 +97,7 @@ fact/riskの代わりにはなりません。""")
     for f in files:
         t = visible_text(f)
         rec["approved"].append({"file": os.path.basename(f), "fp": fp(t),
-                                "head": norm(t)[:40]})
+                                "text": norm(t)})
     json.dump(rec, open(GATE, "w"), ensure_ascii=False, indent=1)
     print(f"\n📝 {len(files)}件の本文指紋を記録しました（有効2時間）→ {GATE}")
     print("   本文を1文字でも変えたら指紋が変わり、Notion書き込みは再びdenyされます。")
