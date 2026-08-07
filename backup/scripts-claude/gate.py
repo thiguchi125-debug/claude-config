@@ -23,7 +23,7 @@
   必須とした一文を削って被災地への指弾だけが残る画像を作った。機械ゲートは
   fact/riskの代わりにならない。
 """
-import sys, os, json, re, hashlib, subprocess, time, unicodedata
+import sys, os, json, re, glob, hashlib, subprocess, time, unicodedata
 
 SC = os.path.expanduser("~/.claude/scripts")
 BAND = os.path.expanduser(
@@ -77,6 +77,30 @@ def main(argv):
                 if os.path.exists(os.path.splitext(h)[0] + ".png")]
         if pngs and os.path.exists(BAND):
             c, o = run(["python3", BAND] + pngs)
+            print(o); fail += (c != 0)
+
+    # --- 禁止語スイープ ---
+    # 「削除を決めた語が別ファイル・画像HTMLに残る」事故（2026-08-06 card_timeline）対策。
+    # 対象mdと同じディレクトリの *_banned.txt を台帳とし、対象ファイル＋
+    # md本文が参照する ~/outputs/ 配下のアセットディレクトリをまとめて掃く。
+    banned = set()
+    for f in files:
+        d = os.path.dirname(os.path.abspath(f)) or "."
+        for b in glob.glob(os.path.join(d, "*_banned.txt")):
+            prefix = os.path.basename(b)[:-len("_banned.txt")]
+            if any(os.path.basename(x).startswith(prefix) for x in files):
+                banned.add(b)
+    if banned:
+        sweep = list(files)
+        for f in mds:
+            for m in re.findall(r"~/outputs/[^\s`）)」]+", open(f, encoding="utf-8").read()):
+                p = os.path.expanduser(m.rstrip("/（。、"))
+                d = p if os.path.isdir(p) else os.path.dirname(p)
+                if os.path.isdir(d):
+                    sweep.append(d)
+        for b in sorted(banned):
+            c, o = run(["python3", os.path.join(SC, "check_banned_terms.py"), b]
+                       + sorted(set(sweep)))
             print(o); fail += (c != 0)
 
     if fail:
