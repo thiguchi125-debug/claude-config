@@ -29,6 +29,7 @@ SNS_LIMITS = {  # 表示名の接頭辞 -> (下限, 上限)  ※上限Noneは字
 }
 MAX_TAGS = {"X": 4, "Instagram": 5}   # ハッシュタグ上限
 BLOG_TIERS = [("標準", 1500, 2500), ("深掘り", 2500, 4500), ("徹底解説", 4500, 8000)]
+NORMAL_TIER = ("ノーマル", 800, 1500)  # blog-writer-normal.md（市民向け活動報告・5段構成の縛りなし）
 BLOG_STAGES = ["現場の声", "全国", "制度", "亀山", "締め"]  # 5段構成の手がかり
 VIDEO_MIN_SEC, VIDEO_MAX_SEC = 35, 45
 VIDEO_CHARS_PER_SEC = 7.0        # 日本語ナレの上限目安
@@ -42,6 +43,9 @@ def kind_of(path):
     if "SNS" in b:  return "sns"
     if "動画" in b: return "video"
     return "blog"
+
+def is_normal_blog(path):
+    return "ノーマル" in os.path.basename(path)
 
 def check_sns(text):
     out = []
@@ -84,24 +88,34 @@ def check_sns(text):
         out.append((True, "⚠ プレースホルダ <BLOG_URL> あり — **投稿前に実URLへ差し替えること**"))
     return out
 
-def check_blog(text):
+def check_blog(text, normal_mode=False):
     out = []
     body = re.split(r"\n【出典】|\n### 出典|\n## 出典", text)[0]
     body = re.split(r"◆亀山市政や", body)[0]
     n = n_chars(re.sub(r"^#.*$", "", body, flags=re.M))
-    tier = next((t for t, lo, hi in BLOG_TIERS if lo <= n <= hi), None)
     exc = re.findall(r"FORMAT-EXCEPTION:\s*(\S+)", text)   # 承認済み逸脱の明示マーカー
-    lo0, hi0 = BLOG_TIERS[0][1], BLOG_TIERS[-1][2]
-    if tier:
-        out.append((True, f"本文 {n}字 → {tier}モード"))
-    elif n > hi0 and "字数" in " ".join(exc):
-        # 草川が「字数上限を理由に内容を削るな」と明示承認した回だけ通す。
-        # 承認は本文冒頭の <!-- FORMAT-EXCEPTION: 字数 / 承認日 / 理由 --> で記録する。
-        out.append((True, f"本文 {n}字 ⚠承認済み例外（規定 上限{hi0}字）"))
+    if normal_mode:
+        # blog-writer-normal.md：市民向け活動報告。5段構成の縛りはなく、800-1500字。
+        _, lo0, hi0 = NORMAL_TIER
+        if lo0 <= n <= hi0:
+            out.append((True, f"本文 {n}字 → ノーマルモード"))
+        else:
+            out.append((False, f"本文 {n}字（ノーマルモード規定 {lo0}〜{hi0}字の範囲外）"))
+        heads = re.findall(r"^(?:##\s*|■\s*)(.+)$", body, flags=re.M)
+        out.append((len(heads) >= 2, f"見出し {len(heads)}本（ノーマルモードは2本以上）"))
     else:
-        out.append((False, f"本文 {n}字（{lo0}〜{hi0}字の範囲外）"))
-    heads = re.findall(r"^(?:##\s*|■\s*)(.+)$", body, flags=re.M)
-    out.append((len(heads) >= 4, f"見出し {len(heads)}本（5段構成の骨格が要る）"))
+        tier = next((t for t, lo, hi in BLOG_TIERS if lo <= n <= hi), None)
+        lo0, hi0 = BLOG_TIERS[0][1], BLOG_TIERS[-1][2]
+        if tier:
+            out.append((True, f"本文 {n}字 → {tier}モード"))
+        elif n > hi0 and "字数" in " ".join(exc):
+            # 草川が「字数上限を理由に内容を削るな」と明示承認した回だけ通す。
+            # 承認は本文冒頭の <!-- FORMAT-EXCEPTION: 字数 / 承認日 / 理由 --> で記録する。
+            out.append((True, f"本文 {n}字 ⚠承認済み例外（規定 上限{hi0}字）"))
+        else:
+            out.append((False, f"本文 {n}字（{lo0}〜{hi0}字の範囲外）"))
+        heads = re.findall(r"^(?:##\s*|■\s*)(.+)$", body, flags=re.M)
+        out.append((len(heads) >= 4, f"見出し {len(heads)}本（5段構成の骨格が要る）"))
     first = body.strip().split("\n")
     named = any("草川たくやです" in l for l in first[:4])
     out.append((named, "冒頭の名乗り"))
@@ -161,7 +175,10 @@ def main(argv):
         text = open(f, encoding="utf-8").read()
         k = kind_of(f)
         print(f"\n== {os.path.basename(f)}  [{k}] ==")
-        res = {"sns": check_sns, "blog": check_blog, "video": check_video}[k](text)
+        if k == "blog":
+            res = check_blog(text, normal_mode=is_normal_blog(f))
+        else:
+            res = {"sns": check_sns, "video": check_video}[k](text)
         for ok, msg in res:
             print(("  ✅ " if ok else "  🚨 ") + msg)
             if not ok: fail += 1
