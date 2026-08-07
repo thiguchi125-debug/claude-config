@@ -61,7 +61,8 @@ def main():
             skipped.append({**t, "skip": skip})
             continue
 
-        rows = s.daily_slots(days, today_str, min(t["due"], horizon_str), now_minute)
+        rows = s.daily_slots(days, today_str, min(t["due"], horizon_str), now_minute,
+                             band=kind.band())
         # その日の総ブロック上限に達している日は、このタスクには使わせない
         rows = [(d, 0 if used.get(d.isoformat(), 0) >= cap_for(d) else n, w, f)
                 for d, n, w, f in rows]
@@ -76,7 +77,7 @@ def main():
 
         blocks, unplaced = s.plan_blocks(
             rows, need, 2 if verdict == "✅" else s.MAX_SLOTS_PER_DAY,
-            window_fn=task_windows.window_fn(kind))
+            window_fn=task_windows.window_fn(kind), band=kind.band())
         for d, st, en in blocks:
             k = d.isoformat()
             days.setdefault(k, {"busy": [], "allday": []})["busy"].append((st, en))

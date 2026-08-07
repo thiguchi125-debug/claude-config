@@ -278,6 +278,45 @@ class TestTaskWindows(unittest.TestCase):
         self.assertEqual(kind.key, "desk")
 
 
+class TestGreetingReserve(unittest.TestCase):
+    """挨拶回り優先枠 15:00-18:30（2026-08-07 草川指示）。"""
+
+    def _rows(self, specs):
+        import datetime
+        return [(datetime.date(2026, 8, d), n, "", free) for d, n, free in specs]
+
+    def test_split_greeting_removes_the_window(self):
+        self.assertEqual(sessions.split_greeting([(9 * 60, 21 * 60)]),
+                         [(9 * 60, 15 * 60), (18 * 60 + 30, 21 * 60)])
+
+    def test_no_block_lands_in_greeting_window(self):
+        rows = self._rows([(10, 4, [(9 * 60, 21 * 60)])])
+        plan, _ = sessions.plan_blocks(rows, need=4, max_per_day=4)
+        for _d, s, e in plan:
+            self.assertFalse(s < sessions.GREETING_END and e > sessions.GREETING_START)
+
+    def test_day_with_only_greeting_window_free_gets_nothing(self):
+        rows = self._rows([(10, 4, [(15 * 60, 18 * 60 + 30)])])
+        plan, left = sessions.plan_blocks(rows, need=2, max_per_day=4)
+        self.assertEqual(plan, [])
+        self.assertEqual(left, 2)
+
+    def test_explicit_override_opens_the_window(self):
+        # 草川が「今日はこの時間に作業を入れられる」と言った日だけ開ける
+        rows = self._rows([(10, 4, [(15 * 60, 18 * 60 + 30)])])
+        plan, left = sessions.plan_blocks(rows, need=2, max_per_day=4,
+                                          reserve_greeting=False)
+        self.assertTrue(plan)
+        self.assertEqual(left, 0)
+
+    def test_evening_after_greeting_window_is_still_usable(self):
+        # 18:30以降は空いているので、夜の連絡タスクは置ける
+        rows = self._rows([(10, 4, [(18 * 60 + 30, 21 * 60)])])
+        plan, left = sessions.plan_blocks(rows, need=2, max_per_day=4)
+        self.assertTrue(plan)
+        self.assertEqual(left, 0)
+
+
 class TestSplitLunch(unittest.TestCase):
     def test_interval_spanning_lunch_is_split(self):
         self.assertEqual(sessions.split_lunch([(9 * 60, 21 * 60)]),
@@ -290,3 +329,44 @@ class TestSplitLunch(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestEarlyMorningDesk(unittest.TestCase):
+    """早朝5:00-7:00の机上作業帯（2026-08-07 草川指示）。"""
+
+    def _rows(self, specs, band):
+        import datetime
+        return [(datetime.date(2026, 8, d), n, "", free) for d, n, free in specs]
+
+    def test_desk_kind_opens_the_early_band(self):
+        import task_windows
+        kind, _ = task_windows.classify("菅内版市政報告レポート作成")
+        self.assertEqual(kind.key, "desk")
+        self.assertTrue(kind.early)
+        self.assertEqual(kind.band(), (5 * 60, 21 * 60))
+
+    def test_office_kind_does_not_open_the_early_band(self):
+        import task_windows
+        kind, _ = task_windows.classify("建設部へ照会")
+        self.assertFalse(kind.early)
+        self.assertEqual(kind.band(), (9 * 60, 21 * 60))
+
+    def test_desk_block_can_land_before_seven(self):
+        import task_windows, datetime
+        kind, _ = task_windows.classify("レポート作成")
+        rows = [(datetime.date(2026, 8, 10), 4, "", [(5 * 60, 7 * 60)])]
+        plan, left = sessions.plan_blocks(rows, 2, 2,
+                                          window_fn=task_windows.window_fn(kind),
+                                          band=kind.band())
+        self.assertEqual(left, 0)
+        self.assertLess(plan[0][1], 7 * 60)
+
+    def test_office_task_cannot_use_the_early_band(self):
+        import task_windows, datetime
+        kind, _ = task_windows.classify("学校教育課へ照会")
+        rows = [(datetime.date(2026, 8, 10), 4, "", [(5 * 60, 7 * 60)])]
+        plan, left = sessions.plan_blocks(rows, 2, 2,
+                                          window_fn=task_windows.window_fn(kind),
+                                          band=kind.band())
+        self.assertEqual(plan, [])
+        self.assertEqual(left, 2)

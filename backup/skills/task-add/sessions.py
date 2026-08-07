@@ -19,11 +19,17 @@ import sys
 from datetime import date, datetime, timedelta
 
 BAND_START, BAND_END = 9 * 60, 21 * 60   # 稼働帯 9:00-21:00（全曜日）
+# 早朝のデスクワーク帯。相手のいない机上作業だけがここを使える（2026-08-07 指示）。
+# 6:30の街頭活動・7:00のあまね朝準備が入る日はカレンダー側で自動的に除かれる。
+EARLY_START, EARLY_END = 5 * 60, 7 * 60
 SLOT = 30                                # 1コマ = 30分
 MAX_SLOTS_PER_DAY = 4                    # 同一タスクには1日最大2セッション = 4コマ
 MIN_GAP = 30                             # 30分未満の隙間は使えないものとして捨てる
 SESSION_MAX = 60                         # 1ブロック = 最大1セッション = 60分
 LUNCH_START, LUNCH_END = 12 * 60, 13 * 60  # 作業ブロックを置かない時間帯（配置専用）
+# 挨拶回り優先枠。草川の最優先活動なので、作業ブロックで埋めない（2026-08-07 指示）。
+# 「今日はこの時間に作業を入れられる」と明示された日だけ reserve_greeting=False で開ける。
+GREETING_START, GREETING_END = 15 * 60, 18 * 60 + 30
 BUFFER = 15                              # 前後の予定との間に空ける分（移動・片付け）
 
 # 終日予定のうち、実際に1日を拘束するとみなす語。
@@ -59,12 +65,18 @@ def load_days(path):
     return days
 
 
-def slots_for_day(info, from_minute=BAND_START):
+def slots_for_day(info, from_minute=None, band=None):
     """その日に確保できる30分コマ数・理由・使える空き区間を返す。
 
     空き区間（[(開始分, 終了分), ...]）まで返すのは、コマ数だけ数えて捨てると
     「いつやるか」をカレンダーに書き戻せないため（作業ブロック生成で使う）。
+
+    band で稼働帯を差し替えられる。机上作業だけは早朝5:00から使えるので、
+    タスク種別ごとに違う帯を渡す（相手のいる用事の容量を早朝で水増ししない）。
     """
+    band_start, band_end = band or (BAND_START, BAND_END)
+    if from_minute is None:
+        from_minute = band_start
     if info:
         for title in info.get("allday", []):
             if BLOCKING_ALLDAY.search(title):
@@ -76,30 +88,31 @@ def slots_for_day(info, from_minute=BAND_START):
             merged[-1] = (merged[-1][0], max(merged[-1][1], e))
         else:
             merged.append((s, e))
-    free, cursor = [], max(BAND_START, from_minute)
+    free, cursor = [], max(band_start, from_minute)
     for s, e in merged:
         if s > cursor:
-            free.append((cursor, min(s, BAND_END)))
+            free.append((cursor, min(s, band_end)))
         cursor = max(cursor, e)
-        if cursor >= BAND_END:
+        if cursor >= band_end:
             break
-    if cursor < BAND_END:
-        free.append((cursor, BAND_END))
+    if cursor < band_end:
+        free.append((cursor, band_end))
     usable = [(a, b) for a, b in free if b - a >= MIN_GAP]
     slots = sum((b - a) // SLOT for a, b in usable)
     total = sum(b - a for a, b in usable)
     return min(MAX_SLOTS_PER_DAY, slots), "空き{}分".format(total), usable
 
 
-def daily_slots(days, start, end, now_minute=None):
+def daily_slots(days, start, end, now_minute=None, band=None):
     """start〜end の各日について (日付, コマ数, 理由, 空き区間) を返す。"""
+    band_start = (band or (BAND_START, BAND_END))[0]
     out = []
     cur = date.fromisoformat(start)
     last = date.fromisoformat(end)
     while cur <= last:
         key = cur.isoformat()
-        from_minute = now_minute if (now_minute and key == start) else BAND_START
-        n, why, free = slots_for_day(days.get(key), from_minute)
+        from_minute = now_minute if (now_minute and key == start) else band_start
+        n, why, free = slots_for_day(days.get(key), from_minute, band)
         out.append((cur, n, why, free))
         cur += timedelta(days=1)
     return out
@@ -128,16 +141,27 @@ def split_lunch(free):
     return sorted(out)
 
 
-def apply_buffer(free):
+def split_greeting(free):
+    """空き区間から挨拶回り優先枠(15:00-18:30)を差し引く（配置専用）。"""
+    out = []
+    for s, e in free:
+        for a, b in ((s, min(e, GREETING_START)), (max(s, GREETING_END), e)):
+            if b - a >= MIN_GAP:
+                out.append((a, b))
+    return sorted(out)
+
+
+def apply_buffer(free, band=None):
     """予定と接している端を BUFFER 分だけ削る（配置専用）。
 
     予定が終わった瞬間に次の作業を始められるわけではない。稼働帯の端
-    （9:00開始・21:00終了）は予定と接していないので削らない。
+    （帯の開始・終了）は予定と接していないので削らない。
     """
+    band_start, band_end = band or (BAND_START, BAND_END)
     out = []
     for s, e in free:
-        a = s + BUFFER if s > BAND_START else s
-        b = e - BUFFER if e < BAND_END else e
+        a = s + BUFFER if s > band_start else s
+        b = e - BUFFER if e < band_end else e
         if b - a >= MIN_GAP:
             out.append((a, b))
     return out
@@ -154,14 +178,17 @@ def clip_windows(free, windows):
     return sorted(out)
 
 
-def plan_blocks(rows, need, max_per_day, window_fn=None):
+def plan_blocks(rows, need, max_per_day, window_fn=None, reserve_greeting=True,
+                band=None):
     """必要コマ数を実際の時間帯（作業ブロック）へ割り付ける。
 
     1ブロック = 最大1セッション(60分)。1つの空き区間には1ブロックしか置かず、
     日をまたいで散らす。予定の密な日に押し込むより、細く長く進める運用に合う。
-    昼(12:00-13:00)・前後の予定とのバッファ・許可時間帯(window_fn)は配置対象から
-    外す。コマ数の算出側ではこれらを除いていないので、避けても ✅/⚠️/🚫 の判定は
-    変わらない（配置だけの規則）。
+    昼(12:00-13:00)・挨拶回り優先枠(15:00-18:30)・前後の予定とのバッファ・
+    許可時間帯(window_fn)は配置対象から外す。コマ数の算出側ではこれらを除いて
+    いないので、避けても ✅/⚠️/🚫 の判定は変わらない（配置だけの規則）。
+    reserve_greeting=False にすると挨拶回り枠にも置く（草川が「今日はこの時間に
+    作業を入れられる」と明示した日だけ）。
 
     window_fn は「その日に置ける時間帯」を返す関数（task_windows.window_fn）。
     役所への照会は平日9-17時しか置かない、等の現実性を効かせるために使う。
@@ -172,7 +199,10 @@ def plan_blocks(rows, need, max_per_day, window_fn=None):
     for d, n, _why, free in rows:
         if left <= 0:
             break
-        usable = apply_buffer(split_lunch(free))
+        usable = split_lunch(free)
+        if reserve_greeting:
+            usable = split_greeting(usable)
+        usable = apply_buffer(usable, band)
         if window_fn is not None:
             usable = clip_windows(usable, window_fn(d))
         if not usable:

@@ -17,14 +17,25 @@ ALLDAYS = {0, 1, 2, 3, 4, 5, 6}
 
 
 class Kind:
-    def __init__(self, key, label, days, start, end, why):
+    def __init__(self, key, label, days, start, end, why, early=False):
         self.key, self.label = key, label
         self.days, self.start, self.end = days, start * 60, end * 60
         self.why = why
+        # 早朝5:00-7:00を使えるか。相手のいない机上作業だけ True（2026-08-07 指示）
+        self.early = early
 
     def windows_for(self, d):
         """その日付で使える時間帯。使えない日は空リスト。"""
-        return [(self.start, self.end)] if d.weekday() in self.days else []
+        if d.weekday() not in self.days:
+            return []
+        w = [(self.start, self.end)]
+        if self.early:
+            w.insert(0, (5 * 60, 7 * 60))
+        return w
+
+    def band(self):
+        """コマ数を数えるときの稼働帯。早朝が使えるなら5:00から。"""
+        return (5 * 60, 21 * 60) if self.early else (9 * 60, 21 * 60)
 
 
 # 相手の都合で時間帯が決まるものから順に判定する（上が優先）
@@ -35,7 +46,8 @@ FIELD = Kind("field", "現地確認", ALLDAYS, 9, 18,
 CONTACT = Kind("contact", "住民・関係者への連絡", ALLDAYS, 9, 20,
                "個人宅への電話は夜遅くにかけられない")
 DESK = Kind("desk", "机上作業", ALLDAYS, 9, 21,
-            "原稿・資料作成は相手がいないので時間帯を選ばない")
+            "原稿・資料作成は相手がいないので時間帯を選ばない。早朝5:00-7:00も使える",
+            early=True)
 
 # 自分の手番でない＝作業ブロックを作らない
 WAIT_LABELS = {"結果待ち", "保留"}

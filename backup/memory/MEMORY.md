@@ -87,6 +87,8 @@
 - 他議員の誤帰属ガード — [対外発信に名前を載せない](feedback_no_other_council_members_names.md)（内部資料はOK）／[5/27子ども医療費](feedback_kodomo_iryohi_sns_misattribution.md)（3月議会医療費質疑は福沢議員）／[濁り水断水の給水描写](feedback_fukami_water_distribution_misattribution.md)（深水議員3番。2,700世帯/11月/12月は草川由来OK）
 - スライド制作 — [通常はNotebookLM経由必須](feedback_slide_generation_via_notebooklm.md)／[市政報告会のみClaude Code HTML/CSS→PDF](feedback_shisei_houkokukai_slides_claude_code.md)
 - [架空エピソード・つくり話禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
+- [早朝5:00-7:00は机上作業に使える](feedback_early_morning_desk_band.md) — 2026-08-07草川指示。**机上作業限定**（役所・連絡・現地は不可＝電話をかけない）。task_windows.py `Kind.early`／`band()`で容量の数え方から分離。挨拶回り枠で失った20コマを25コマ回復し差引プラス
+- [15:00-18:30は挨拶回り優先枠](feedback_greeting_rounds_time_reserve.md) — 2026-08-07草川指示。作業ブロックで埋めない（sessions.py `GREETING_START/END`実装済）。例外は「今日はこの時間に作業を入れられる」と明示された日だけ。実働は平日午前＋13:15-14:45＋18:45以降に集約され容量は約1/4減る
 - [確認事項は1件1問の選択式で出す](feedback_ask_one_by_one_choices.md) — 2026-08-06草川「まとめて指示するのは手間」。自由記述でまとめて答えさせずAskUserQuestionでタップ回答に。**束ねるのはラウンド数・分けるのは設問**（[[feedback_ask_bundling_and_upfront_reflection]]と両立）。1回最大4問
 - [確認は最初に1回束ねる・入力にある情報は最初から反映](feedback_ask_bundling_and_upfront_reflection.md) — 2026-07-31草川「台本遅いよ、なんで最初から反映しないの」。単位不明の数値は勝手に落とさず初回確認に混ぜる／安全ゲート指摘は自分で潰せる分を潰してから出す／締切当日案件は確認1回まで
 - タスク登録 — [保存先＋期限を提示→本人回答後に保存](feedback_ask_destination_and_deadline_before_register.md)（既定値で勝手に登録しない・[[feedback_task_deadline_3days]]の+3日は推奨案に降格）／[✅タスクDB Pending系3区分](feedback_task_db_pending_status.md)（Pending/Wish List/Waiting）
