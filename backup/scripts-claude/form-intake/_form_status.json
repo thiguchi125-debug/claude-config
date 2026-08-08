@@ -1,18 +1,11 @@
 {
-  "date": "2026-08-07",
-  "new_count": 1,
-  "items": [
-    {
-      "row_id": "S2-213",
-      "date": "2026/08/06",
-      "district": "未記入",
-      "domain": "childcare_education",
-      "urgency": "中",
-      "summary": "病児保育を使ってほしい（20代・匿名・連絡先なし）",
-      "notion_url": "https://app.notion.com/p/3b4cf503a68f8155aa48d0be63a32c25?pvs=204",
-      "skipped": false,
-      "urgent": false
-    }
-  ],
-  "errors": []
+  "date": "2026-08-09",
+  "status": "error",
+  "new_count": 0,
+  "items": [],
+  "errors": [
+    "MCP不通のため新着検出ができず未実行。Drive/Notion MCPのツールが本セッションのツールレジストリに未ロード（ToolSearchを複数クエリで確認：mcp__claude_ai_Google_Drive__* / mcp__claude_ai_Notion__* ともに0件。deferred一覧は組込ツールのみ）。CLIの `claude mcp list` では Google Drive・Notion ともに ✔ Connected のため、サーバ側ではなくheadlessセッションへのMCPツール注入が効いていない。",
+    "回避策なし：フォーム回答シートはGoogleネイティブ形式のためDrive Desktopミラーは.gsheetスタブ（データなし）、ローカルにSheets APIの認証情報もなし。",
+    "state（iken_poller_state.json）・Notion 📝市民意見リスト・_citizen_voice/ はいずれも未更新＝取りこぼしなし。翌夜の自動再試行、または対話で「フォーム取り込んで」で再処理可能。"
+  ]
 }
