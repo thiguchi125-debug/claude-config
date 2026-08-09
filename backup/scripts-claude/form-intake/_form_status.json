@@ -1,8 +1,8 @@
 {
-  "date": "2026-08-09",
+  "date": "2026-08-10",
   "status": "ok",
   "new_count": 0,
   "items": [],
   "errors": [],
-  "note": "シート3枚とも新着0件（S1: 48行/最終2026-07-16、S2: 213行/最終2026-08-06、S3: 148行/最終2026-06-28）。Notion・_citizen_voice・stateはいずれも未更新（新着0件の夜は書き込まない規定どおり）。本日先行実行分の『MCP不通』errorは誤判定で、ToolSearchでDrive/Notion MCPをロードして再実行し解消済み。"
+  "note": "シート3枚とも新着0件（S1: 48行/最終2026-07-16 22:59、S2: 213行/最終2026-08-06 12:35、S3: 148行/最終2026-06-28 14:12）。3枚ともdownload_file_content＋base64デコードで実データを確認（read_file_content未使用）。データ行数=etl_last_row・最終タイムスタンプ=last_processed_timestamp が全シート一致のためNotion登録・ETL追記・state更新はいずれも実施せず。"
 }
