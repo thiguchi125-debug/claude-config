@@ -1,11 +1,8 @@
 {
   "date": "2026-08-09",
-  "status": "error",
+  "status": "ok",
   "new_count": 0,
   "items": [],
-  "errors": [
-    "MCP不通のため新着検出ができず未実行。Drive/Notion MCPのツールが本セッションのツールレジストリに未ロード（ToolSearchを複数クエリで確認：mcp__claude_ai_Google_Drive__* / mcp__claude_ai_Notion__* ともに0件。deferred一覧は組込ツールのみ）。CLIの `claude mcp list` では Google Drive・Notion ともに ✔ Connected のため、サーバ側ではなくheadlessセッションへのMCPツール注入が効いていない。",
-    "回避策なし：フォーム回答シートはGoogleネイティブ形式のためDrive Desktopミラーは.gsheetスタブ（データなし）、ローカルにSheets APIの認証情報もなし。",
-    "state（iken_poller_state.json）・Notion 📝市民意見リスト・_citizen_voice/ はいずれも未更新＝取りこぼしなし。翌夜の自動再試行、または対話で「フォーム取り込んで」で再処理可能。"
-  ]
+  "errors": [],
+  "note": "シート3枚とも新着0件（S1: 48行/最終2026-07-16、S2: 213行/最終2026-08-06、S3: 148行/最終2026-06-28）。Notion・_citizen_voice・stateはいずれも未更新（新着0件の夜は書き込まない規定どおり）。本日先行実行分の『MCP不通』errorは誤判定で、ToolSearchでDrive/Notion MCPをロードして再実行し解消済み。"
 }
