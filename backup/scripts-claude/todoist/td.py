@@ -90,6 +90,55 @@ def fmt(t, pm, show_proj=True):
 # 毎朝「期限なし⚠️」が鳴り続けて本物の盲点が埋もれる（2026-08-04 棚卸しで判明）
 NODUE_PARKED_PROJECTS = ("🗂 構想バックログ",)
 
+# 実行窓ラベルごとの「その日もう間に合わない時刻」。task_windows.py の Kind と揃える。
+WINDOW_END = {"役所": 17 * 60, "現地": 18 * 60, "夜電話": 20 * 60, "机上": 21 * 60}
+
+
+def turn_split(sel):
+    """今日の一覧を「自分の手番 / 催促する / 保留」に割る。
+
+    Todoistの期限は1種類しかないので、@結果待ちに持たせた「催促日」と
+    自分の実作業が同じ列に並ぶ。2026-08-10 の一覧は9件中6件が相手のボール、
+    残り3件も前提未達か動詞なしで、実際に今日やる想定のものが無かった。
+    毎朝「今日やれないこと」を見せられると一覧そのものが信用されなくなる。
+    """
+    own, waiting, hold = [], [], []
+    for t in sel:
+        labels = t.get("labels", [])
+        if "結果待ち" in labels:
+            waiting.append(t)
+        elif "保留" in labels:
+            hold.append(t)
+        else:
+            own.append(t)
+    return own, waiting, hold
+
+
+def window_closed(t, now_minute):
+    """その実行窓が今日はもう閉じているか（役所は17時、夜電話は20時など）。"""
+    ends = [WINDOW_END[l] for l in t.get("labels", []) if l in WINDOW_END]
+    return bool(ends) and now_minute > max(ends)
+
+
+def print_today(pm, td_):
+    now = datetime.datetime.now()
+    now_minute = now.hour * 60 + now.minute
+    own, waiting, hold = turn_split(td_)
+    live = [t for t in own if not window_closed(t, now_minute)]
+    closed = [t for t in own if window_closed(t, now_minute)]
+
+    print(f"\n📍 今日やる・自分の手番（{len(live)}件）")
+    print("\n".join(fmt(t, pm) for t in live) if live else "  なし")
+    if closed:
+        print(f"\n⏰ 今日は窓が閉じた（{len(closed)}件・明日以降へ）")
+        print("\n".join(fmt(t, pm) for t in closed))
+    if waiting:
+        print(f"\n📮 催促する・相手のボール（{len(waiting)}件）")
+        print("\n".join(fmt(t, pm) for t in waiting))
+    if hold:
+        print(f"\n⏸ 保留（{len(hold)}件）")
+        print("\n".join(fmt(t, pm) for t in hold))
+
 def buckets():
     today = datetime.date.today()
     tasks = all_tasks()
@@ -120,8 +169,7 @@ def cmd_morning():
     print("✅ 今日のタスク（Todoist）")
     print(f"\n⚠️ 期限超過（{len(ov)}件）")
     print("\n".join(fmt(t, pm) for t in ov) if ov else "  なし")
-    print(f"\n📍 本日期限（{len(td_)}件）")
-    print("\n".join(fmt(t, pm) for t in td_) if td_ else "  なし")
+    print_today(pm, td_)
     print(f"\n🗓 今週中・明日〜+7日（{len(wk)}件）")
     print("\n".join(fmt(t, pm) for t in wk) if wk else "  なし")
     # 監査シグナル
@@ -137,8 +185,12 @@ def cmd_morning():
 
 def cmd_simple(which):
     pm, ov, td_, wk, nod, tasks = buckets()
-    sel = {"today": td_, "overdue": ov, "week": wk, "nodue": nod}[which]
-    label = {"today":"本日期限","overdue":"期限超過","week":"今週中","nodue":"期限なし"}[which]
+    if which == "today":          # 今日だけは手番・催促・保留に分けて出す
+        print(f"本日期限（{len(td_)}件）")
+        print_today(pm, td_)
+        return
+    sel = {"overdue": ov, "week": wk, "nodue": nod}[which]
+    label = {"overdue":"期限超過","week":"今週中","nodue":"期限なし"}[which]
     print(f"{label}（{len(sel)}件）")
     print("\n".join(fmt(t, pm) for t in sel) if sel else "  なし")
 
