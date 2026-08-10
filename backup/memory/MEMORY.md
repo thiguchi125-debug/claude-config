@@ -27,6 +27,7 @@
 - [議会だより制作エージェント](project_gikai_dayori_creator.md) — 整備完了。トリガー「議会だより作って」
 - [Notionプロジェクト・プラットフォーム](project_notion_project_platform.md) — Todoist=実行/Notion=蓄積。初期17PJ投入済
 - [Todoistへタスク管理移行](project_todoist_task_migration.md) — 完了。td.py使用・Notion✅/🗂️は参照のみ
+- [実行窓ラベル＋バッチ枠](project_task_window_labels.md) — @役所/@現地/@夜電話/@机上。2026-08-10に**期限超過61→0件**。task_windowsはラベルを正規表現より優先
 - [task-add カレンダー突合ゲート](project_task_add_calendar_gate.md) — 期限付き登録は突合必須（hookがdeny）。**終日予定は一律ブロックしない・判定は30分コマ**。v3で`--plan`＝作業ブロックをカレンダーに登録（時間の正本はカレンダー側）
 - [2026年6月議会 一般質問prep](project_ippan_shitsumon_2026-06_resume.md) — 骨子v7確定。次=counter-argument-simulator
 - [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案保管中。必要時「3本柱v0見せて」
@@ -91,6 +92,7 @@
 - スライド制作 — [通常はNotebookLM経由必須](feedback_slide_generation_via_notebooklm.md)／[市政報告会のみClaude Code HTML/CSS→PDF](feedback_shisei_houkokukai_slides_claude_code.md)
 - [架空エピソード・つくり話禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
 - [早朝5:00-7:00は机上作業に使える](feedback_early_morning_desk_band.md) — 2026-08-07草川指示。**机上作業限定**（役所・連絡・現地は不可＝電話をかけない）。task_windows.py `Kind.early`／`band()`で容量の数え方から分離。挨拶回り枠で失った20コマを25コマ回復し差引プラス
+- [固定曜日・固定時刻の作業枠は成立しない](feedback_fixed_weekly_blocks_dont_hold.md) — 2026-08-10実測。平日10時台は12回中2回・日曜午前は4回中0回しか空かない。安定は**早朝5:00-6:30だけ**（月金6:30の街頭活動で切る）。総空き197hは粗の数字で、挨拶枠・昼・バッファを除くと1日2ブロック
 - [15:00-18:30は挨拶回り優先枠](feedback_greeting_rounds_time_reserve.md) — 2026-08-07草川指示。作業ブロックで埋めない（sessions.py `GREETING_START/END`実装済）。例外は「今日はこの時間に作業を入れられる」と明示された日だけ。実働は平日午前＋13:15-14:45＋18:45以降に集約され容量は約1/4減る
 - [確認事項は1件1問の選択式で出す](feedback_ask_one_by_one_choices.md) — 2026-08-06草川「まとめて指示するのは手間」。自由記述でまとめて答えさせずAskUserQuestionでタップ回答に。**束ねるのはラウンド数・分けるのは設問**（[[feedback_ask_bundling_and_upfront_reflection]]と両立）。1回最大4問
 - [確認は最初に1回束ねる・入力にある情報は最初から反映](feedback_ask_bundling_and_upfront_reflection.md) — 2026-07-31草川「台本遅いよ、なんで最初から反映しないの」。単位不明の数値は勝手に落とさず初回確認に混ぜる／安全ゲート指摘は自分で潰せる分を潰してから出す／締切当日案件は確認1回まで
