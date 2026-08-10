@@ -27,6 +27,7 @@
 - [議会だより制作エージェント](project_gikai_dayori_creator.md) — 整備完了。トリガー「議会だより作って」
 - [Notionプロジェクト・プラットフォーム](project_notion_project_platform.md) — Todoist=実行/Notion=蓄積。初期17PJ投入済
 - [Todoistへタスク管理移行](project_todoist_task_migration.md) — 完了。td.py使用・Notion✅/🗂️は参照のみ
+- [Todoist「今日」ビューは4列に分ける](feedback_todoist_today_view_three_columns.md) — 2026-08-10。期限は1種類しかなく手番/催促日/前提待ちが混ざる。td.py実装済。**削除前にidと件名を突き合わせる**（誤削除やらかし有）
 - [実行窓ラベル＋バッチ枠](project_task_window_labels.md) — @役所/@現地/@夜電話/@机上。2026-08-10に**期限超過61→0件**。task_windowsはラベルを正規表現より優先
 - [task-add カレンダー突合ゲート](project_task_add_calendar_gate.md) — 期限付き登録は突合必須（hookがdeny）。**終日予定は一律ブロックしない・判定は30分コマ**。v3で`--plan`＝作業ブロックをカレンダーに登録（時間の正本はカレンダー側）
 - [2026年6月議会 一般質問prep](project_ippan_shitsumon_2026-06_resume.md) — 骨子v7確定。次=counter-argument-simulator
