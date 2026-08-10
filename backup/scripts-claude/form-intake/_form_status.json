@@ -1,8 +1,8 @@
 {
-  "date": "2026-08-10",
+  "date": "2026-08-11",
   "status": "ok",
   "new_count": 0,
   "items": [],
   "errors": [],
-  "note": "シート3枚とも新着0件（S1: 48行/最終2026-07-16 22:59、S2: 213行/最終2026-08-06 12:35、S3: 148行/最終2026-06-28 14:12）。3枚ともdownload_file_content＋base64デコードで実データを確認（read_file_content未使用）。データ行数=etl_last_row・最終タイムスタンプ=last_processed_timestamp が全シート一致のためNotion登録・ETL追記・state更新はいずれも実施せず。"
+  "note": "シート3枚とも新着0件（S1: 48行/最終2026-07-16 22:59:27、S2: 213行/最終2026-08-06 12:35:12、S3: 148行/最終2026-06-28 14:12:36）。3枚ともdownload_file_content（text/csv）＋base64デコードで全行をCSVパースし、タイムスタンプ突合とデータ行数突合の両方を実施（read_file_content未使用）。Notion新着・ETL新着ともに0件のため、📝市民意見リスト・_citizen_voice/・iken_poller_state.json はいずれも未変更。"
 }
