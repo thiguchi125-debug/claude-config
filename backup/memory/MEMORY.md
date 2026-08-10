@@ -67,6 +67,7 @@
 - [自作スキルは ~/.claude/skills/ のみ](feedback_skills_home_not_plugin_cache.md) — plugins cache禁止。sync-to-git.shにガード実装済
 - [Notion SQLクエリはプラン限定ブロック](feedback_notion_sql_plan_gate.md) — query-data-sources(SQL)使用禁止・viewはフィルタ欠落の罠
 - [Discord夜間triageの途中死は登録済み×カーソル未前進を残す](feedback_discord_triage_partial_write_resume.md) — 再処理夜は📮投げ込み台帳(7a444c29-)をmsg_idで引く
+- [Discordのタスク提案は返信2晩なしで退避＝緊急案件ほど消える](feedback_discord_task_proposal_retire_loses_urgent.md) — 2026-08-11発覚。「投げたやつどこ？」には**必ず`_pending_tasks.jsonl`と`_notion_queue.jsonl`を開く**。台帳の「Todoist提案中」は誰も読まない
 - [システムの法則＝自動トリガー有=生/記憶依存の締め=腐る](feedback_system_closing_loops_rot.md) — 締め工程を定時トリガーに載せる
 - [日中メモの捕捉面はDiscord bot DM一本](feedback_daily_capture_discord_dm.md) — 夜間3:10 triageが自動振り分け。Keep EOD貼り付けは廃止
 - [市政報告会の声の自動記録](feedback_shisei_houkokukai_voice_capture.md) — 🎤報告会DB「主な意見・要望」欄＋Todoist「〇〇地区フォロー」箱(要整理ラベル)
