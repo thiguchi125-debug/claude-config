@@ -1,6 +1,8 @@
 # Memory Index
 
-> 進行中案件 / 反復で効くガードルール / 外部参照ポインタ のみ常駐。詳細は各トピックファイル。過去ログは `_backup_<日付>/`。1行/エントリ厳守（~120字以内）。同系統は束ね行。
+> 進行中案件 / 常時効く横断ルール / 外部参照ポインタ のみ常駐。1行/エントリ厳守（~120字以内）。
+> **タスク別ガードルール（印刷物・動画・Notion・議会・市民対応・基盤の罠・個別案件）は `~/.claude/GUARDRAILS.md`** に分離（2026-08-11・トークン削減）。該当タスクに入る前にRead。
+> **運用詳細手順は `~/.claude/OPERATIONS.md`**。過去ログは `_backup_<日付>/`。
 
 ## 🔄 進行中プロジェクト
 
@@ -45,73 +47,30 @@
 - SNS/AIインタビュー8本 → sns-content-creator/polisher/ai-interview-sns-poster（[[feedback_sns_blog_link_required]]／[[feedback_line_ai_interview_over_form]]／[[feedback_line_500chars_no_hashtag]]）
 - news-briefing 5本 → news-briefing SKILL.md／街頭演説4本 → daily-street-speech
 
-## 📌 恒久ガードルール（実運用で効く feedback）
+## 📌 常時効く横断ルール（毎ターン効く分だけ・タスク別は GUARDRAILS.md）
 
-- [成果物を作ったら指示されなくてもフォルダを開く](feedback_open_folder_after_generating_files.md) — 2026-08-06草川指摘。画像・PDF・動画素材を作ったら必ず `open <dir>`。チャットへの貼付とフォルダ表示は両方やる。「フォルダ表示して」と言わせない
-- [発信物を書く前に担当agent/SKILLの定義ファイルを必ずRead](feedback_read_agent_spec_before_writing.md) — 2026-08-05。agent起動不可でも仕様は読める。読まずに書いて憲法5構成を3つ外し、さらに存在しない「X≤140字」を捏造して自分を縛った。規定と内容が衝突したら内容を削る前に草川判断（ブログは超過可＝徹底解説モード新設）。機械判定＝`check_content_limits.py`
-- [安全ゲート記録は並行ジョブで消し合う](feedback_content_gate_json_concurrent_clobber.md) — 2026-08-07。_content_gate.jsonは上書き方式。denyされたら記録中のファイル名が自分のものか先に確認。相手ジョブ実行中の再記録は相手を壊す
-- [発信物のNotion保存も「発信」＝保存前に安全ゲート必須](feedback_safety_gates_before_notion_save.md) — 「保存するだけ」は例外にならない。fact→riskを自分で通した時だけ「通過済」と書ける。**レビュアーへの依頼でスコープを絞らない（全テキスト＋全画像＋メモを毎回渡す）**。削除を決めた語は`<案件>_banned.txt`→gate.pyが画像HTML含め機械スイープ。Notion本文は手打ち禁止＝draftからコピペ。レビューは全修正後の完成パッケージに1回（判断確定→一括反映→レビュー→機械ゲート→保存の順を崩さない）
-- [Xは必ずハッシュタグ・Instagramは5つ](feedback_hashtag_policy_x_instagram.md) — 2026-07-30草川指示。標準は`#亀山市 #草川たくや`＋テーマ/地区タグ。**例外＝他地域の災害・事故の投稿では地元ブランドタグを使わない**（リーチ拡大先が自分の有権者になる）。判断基準「被災地に届けるためか、自分に届かせるためか」。LINEはタグなしが正なので取り違えない
-- [他地域の災害・救助フェーズ中は被災地の文章だけ](feedback_disaster_rescue_phase_no_local_pivot.md) — 2026-07-28熊本地震で確立。亀山の備え・政策・実績を同居させず、地元記事は被災地への言及を全削除して独立させる。「まもなく72時間」書き出し／無過失の強調／未確認の情景／「できることは多くありません」型の弁解は禁止
-- [ショート動画の挿入画像が永久に作られない穴](feedback_short_video_images_never_created.md) — 2026-07-30 JR亀山駅前で発覚。会話で台本を直し続けた案件はスキル未起動＝Step5が飛ぶ→Mode Rが「未作成＝伝播対象なし」で閉じる。画像枚数はカット表が決める（テロップ全画面・図解・**編集の絶対条件付きテロップは1枚に焼いて分割不能にする**・サムネ）。台本の表記ルールは画像とサムネにも適用。SKILL.md実装済
-- [Todoist期限切れの真因はInboxの動詞なし生メモ](feedback_todoist_inbox_verbless_memo_rot.md) — 棚卸しは①死んだ箱②動詞なしメモ③期限切れ実タスクに割る。声の正本はTodoistでなく📝市民意見リスト
-- [けんろう版v3の労務費「2026年4月告示」は誤り](feedback_kenro_v3_romuhi_date_error.md) — 正=2025年12月国策定・84.7万円は東京都の例
-- [アーバンスポーツ署名はスケボー特化にしない](feedback_urban_sports_not_skateboard_only.md) — 背骨＝「音を出せる×歩いて通える」2条件。**署名①提出先＝市長＋かわまちづくり協議会会長の2者**
-- [Chrome MCPのGoogleフォーム編集は拡張競合でブロック](feedback_chrome_mcp_google_forms_write_blocked.md) — navigate/read_page/findは生きてる。手動書込→read_page検証が最速
-- [Googleドキュメント形式はローカルgrepに不可視](feedback_gdoc_native_invisible_to_local_grep.md) — ローカル空振り時は**必ずDrive MCP search_files**してから「無い」と言う
-- [headlessのMCPはdeferred＝「未接続」ではない](feedback_headless_mcp_deferred_false_absent.md) — allowedToolsに`ToolSearch`必須。「MCP未接続」報告は再認証より先にこれを疑う
-- agent基盤の罠 — [frontmatterのtools行はツールゼロ化→捏造報告](feedback_agent_tools_frontmatter_breaks.md)（tools行は書かない・tool_uses:0は捏造シグナル）／[大掃除＋description 400字ルール](feedback_agent_description_diet_2026-07-05.md)（policy-domain-expert／policy-strategy-suiteへ統合）
-- agent登録の罠 — [部分ロードの根本原因](feedback_agent_registry_partial_load.md)（原因=knowledge配下の入れ子.claude・`find ~/.claude/agents/knowledge -type d -name .claude`）／[content-pipeline配下もグローバル登録必須](feedback_content_pipeline_agent_registration.md)（~/.claude/agents/ 配置）
-- サムネ制作 — [プロ級和文タイポで組む](feedback_thumbnail_pro_typography_default.md)（palt約物詰め＋カギ括弧ぶら下げ＋Hiragino W8/W9＋見出しlh1.16）／[元写真を先に求める](feedback_thumbnail_ask_base_photo_first.md)（第一手＝base写真の有無を1回確認・EYES-FIRST共通）
-- 印刷物 — [確定前に必ずnatural-design-reviewerを通す](feedback_design_review_gate_no_skip.md)（修正版・構造変更後も）／[家庭用プリンタ回はインク節約版を別途](feedback_home_printer_ink_saving_variant.md)（CSS配色だけ差替）／[地域・子どもチラシは明るく柔らかいイラスト路線](feedback_flyer_bright_illustration_style.md)（QRは本物合成→cv2デコード検証）
-- [自作スキルは ~/.claude/skills/ のみ](feedback_skills_home_not_plugin_cache.md) — plugins cache禁止。sync-to-git.shにガード実装済
-- [Notion SQLクエリはプラン限定ブロック](feedback_notion_sql_plan_gate.md) — query-data-sources(SQL)使用禁止・viewはフィルタ欠落の罠
-- [Discord夜間triageの途中死は登録済み×カーソル未前進を残す](feedback_discord_triage_partial_write_resume.md) — 再処理夜は📮投げ込み台帳(7a444c29-)をmsg_idで引く
-- [Discordのタスク提案は返信2晩なしで退避＝緊急案件ほど消える](feedback_discord_task_proposal_retire_loses_urgent.md) — 2026-08-11発覚。「投げたやつどこ？」には**必ず`_pending_tasks.jsonl`と`_notion_queue.jsonl`を開く**。台帳の「Todoist提案中」は誰も読まない
-- [システムの法則＝自動トリガー有=生/記憶依存の締め=腐る](feedback_system_closing_loops_rot.md) — 締め工程を定時トリガーに載せる
-- [日中メモの捕捉面はDiscord bot DM一本](feedback_daily_capture_discord_dm.md) — 夜間3:10 triageが自動振り分け。Keep EOD貼り付けは廃止
-- [市政報告会の声の自動記録](feedback_shisei_houkokukai_voice_capture.md) — 🎤報告会DB「主な意見・要望」欄＋Todoist「〇〇地区フォロー」箱(要整理ラベル)
-- 主催表記 — [親子で米づくり事業](project_oyakode_kometukuri.md)（亀山JC主催・「個人主催」表記禁止）／[昼生お花見コミバス](feedback_ohanami_hanyu_shusai_attribution.md)（主催=昼生地区まちづくり協議会×市地域社会振興会・草川は参加/つなぎ役）
-- [市民意見DBはc2c34bd8に一本化](feedback_shimin_iken_db_consolidation_c2c34bd8.md) — 旧📋受付BOX`354432ec-`廃止
-- 市民返信の確定スタイル — [「経過報告」型メール](feedback_citizen_reply_progress_report_style.md)（txt→open -e／冒頭フルネーム＋様・署名なし・【】見出し）／[SNS DM](feedback_citizen_dm_reply_finalize_style.md)（無知露呈禁止・遅延は冒頭お詫び・「本会議で」明示）／[おうむ返し禁止](feedback_no_parroting_in_replies.md)（自分の反応→決意→約束で組む）
-- 一般質問/議案の専任 — [general-question-architect](feedback_general_question_architect_agent.md)（時間逆算＋逃げ封じ）／[bill-scrutiny-scriptwriter](feedback_bill_scrutiny_scriptwriter_agent.md)（honban_genko_craft_v1.md＋GOLD_太陽光条例）
-- [コンテンツ生成は常時lean full-agentがデフォルト](feedback_content_generation_default_flow.md) — 主担当agent省略禁止、目標90〜170K
+- [成果物を作ったら指示されなくてもフォルダを開く](feedback_open_folder_after_generating_files.md) — 画像・PDF・動画素材を作ったら必ず `open <dir>`。貼付とフォルダ表示は両方
+- [発信物を書く前に担当agent/SKILLの定義ファイルを必ずRead](feedback_read_agent_spec_before_writing.md) — agent起動不可でも仕様は読める。規定と内容が衝突したら内容を削る前に草川判断（ブログは超過可＝徹底解説モード）。機械判定＝`check_content_limits.py`
+- [発信物のNotion保存も「発信」＝保存前に安全ゲート必須](feedback_safety_gates_before_notion_save.md) — 「保存するだけ」は例外にならない。**レビュアーへの依頼でスコープを絞らない（全テキスト＋全画像＋メモを毎回渡す）**。削除を決めた語は`<案件>_banned.txt`→gate.pyが機械スイープ。Notion本文は手打ち禁止＝draftからコピペ。レビューは全修正後の完成パッケージに1回
+- [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出し装飾はCSSライムバー/角マーカー/ピル
+- 禁止表現集 — [「届かないを終わらせる」](feedback_phrase_todokanai_owaraseru.md)／[「届かなくても届く」](feedback_phrase_todokanakutemo_todoku.md)／[距離比喩](feedback_metric_distance_metaphor_avoid.md)／[抽象・詩的比喩](feedback_no_abstract_poetic_phrases.md)／[つくり話冒頭](feedback_no_halfbaked_story_openings.md)／[空虚な問いかけ風](feedback_no_hollow_rhetorical_questions.md) — 全面禁止・断定と行為語で書く
+- [架空エピソード・つくり話禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
 - [SNS投稿文案で草川の行動を言い切らない](feedback_sns_no_action_promise_assertions.md) — 「取り上げます」等の約束を断定で書かない→「〜したい」。事実・数字の断定は可
 - [「次の議会で追及」型表現を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞禁止
-- [issues返信は記録不要](feedback_issues_response_no_log.md) — 「賛成」「反対」冒頭の意見は保存/タスク化省略、返信3案だけ
-- [ブログ定型フッターに◆AIインタビュー常設](feedback_blog_footer_ai_interview_link.md) — Threadsの後にdepth-interview-kusagawaリンク
-- [コピペ前提原稿は毎回コピペ即可の書式で出す](feedback_copypaste_draft_delivery.md) — 形式を聞き返さない。既定=drafts/に1案1txt→open -e＋チャットは`>`や・なしのフラット塊
-- Notion書き込みの罠 — [内部リンクはmention-page必須](feedback_notion_link_deeplink.md)（markdownはモバイルでブラウザに飛ぶ）／[notion-saver後は漢字化け実体確認](feedback_notion_saver_kanji_garble_verify.md)（お風呂→お風坂・fetch検証→replace_content全置換）
-- Notion update_content/DSLの罠 — [落とし穴](feedback_notion_update_content_pitfalls.md)／[罠v2](feedback_notion_update_content_pitfalls_v2.md)timeout後も適用済・即リトライ禁止／[DSLステータスフィルタ書込不可](feedback_notion_dsl_status_filter_limitation.md)
-- ブログ/SNS DBステータス＆URL — [選択肢3種](feedback_blog_sns_db_status_options.md)／[3DB view_url](feedback_3db_view_url_correction.md)／[SNS DB v2 ds=1bd98deb](feedback_3db_view_url_correction_v2.md)
-- [仕上げモードU4後に日次ログ追記必須](feedback_nichijo_finalize_log_append.md)／[会議体マスタの網羅性不足対策](feedback_meeting_master_coverage.md)
-- [議会公務の会議資料は📅ミーティングノートDB配下](feedback_council_meeting_db_placement.md) — 期別フォルダでなくMTGノートDB＋会議体マスタ紐付け
-- [声のDNA抽出時の注意](feedback_voice_dna_extraction.md) — AI生成の定型句を真の声と誤認しない
-- [市民相談→タスク登録連携](feedback_citizen_inquiry_task_registration.md)／[禁止用語リスト（現在は空）](feedback_forbidden_words.md)
-- [写真＋動画入力はphoto-postフルを最初から回す](feedback_photo_video_input_run_full_pipeline.md) — 写真は必ずRead確認（取り違え防止）
-- [Notion会議ページ→カレンダー登録時は元ページ削除まで自走](feedback_notion_meeting_to_calendar.md)
-- アーカイブ探索 — [議事録は草川発言＋市回答のみ抽出](feedback_giji_kusagawa_response_only.md)（voice-dna汚染防止＋トークン節約）／[grepは話題ワード＋草川独自表現を並列で](feedback_archive_grep_keyword_expansion.md)（「乗って残す」等を引き忘れない）
+- [Xは必ずハッシュタグ・Instagramは5つ](feedback_hashtag_policy_x_instagram.md) — 標準は`#亀山市 #草川たくや`＋テーマ/地区タグ。**例外＝他地域の災害・事故では地元ブランドタグを使わない**。LINEはタグなしが正
 - 他議員の誤帰属ガード — [対外発信に名前を載せない](feedback_no_other_council_members_names.md)（内部資料はOK）／[5/27子ども医療費](feedback_kodomo_iryohi_sns_misattribution.md)（3月議会医療費質疑は福沢議員）／[濁り水断水の給水描写](feedback_fukami_water_distribution_misattribution.md)（深水議員3番。2,700世帯/11月/12月は草川由来OK）
-- スライド制作 — [通常はNotebookLM経由必須](feedback_slide_generation_via_notebooklm.md)／[市政報告会のみClaude Code HTML/CSS→PDF](feedback_shisei_houkokukai_slides_claude_code.md)
-- [架空エピソード・つくり話禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
-- [早朝5:00-7:00は机上作業に使える](feedback_early_morning_desk_band.md) — 2026-08-07草川指示。**机上作業限定**（役所・連絡・現地は不可＝電話をかけない）。task_windows.py `Kind.early`／`band()`で容量の数え方から分離。挨拶回り枠で失った20コマを25コマ回復し差引プラス
-- [固定曜日・固定時刻の作業枠は成立しない](feedback_fixed_weekly_blocks_dont_hold.md) — 2026-08-10実測。平日10時台は12回中2回・日曜午前は4回中0回しか空かない。安定は**早朝5:00-6:30だけ**（月金6:30の街頭活動で切る）。総空き197hは粗の数字で、挨拶枠・昼・バッファを除くと1日2ブロック
-- [15:00-18:30は挨拶回り優先枠](feedback_greeting_rounds_time_reserve.md) — 2026-08-07草川指示。作業ブロックで埋めない（sessions.py `GREETING_START/END`実装済）。例外は「今日はこの時間に作業を入れられる」と明示された日だけ。実働は平日午前＋13:15-14:45＋18:45以降に集約され容量は約1/4減る
-- [確認事項は1件1問の選択式で出す](feedback_ask_one_by_one_choices.md) — 2026-08-06草川「まとめて指示するのは手間」。自由記述でまとめて答えさせずAskUserQuestionでタップ回答に。**束ねるのはラウンド数・分けるのは設問**（[[feedback_ask_bundling_and_upfront_reflection]]と両立）。1回最大4問
-- [確認は最初に1回束ねる・入力にある情報は最初から反映](feedback_ask_bundling_and_upfront_reflection.md) — 2026-07-31草川「台本遅いよ、なんで最初から反映しないの」。単位不明の数値は勝手に落とさず初回確認に混ぜる／安全ゲート指摘は自分で潰せる分を潰してから出す／締切当日案件は確認1回まで
+- [議会・他議員への提言は対外発信で避ける](feedback_no_council_directed_proposals.md) — 提案宛先は執行部に限定
+- [確認事項は1件1問の選択式で出す](feedback_ask_one_by_one_choices.md) — AskUserQuestionでタップ回答に。**束ねるのはラウンド数・分けるのは設問**。1回最大4問
+- [確認は最初に1回束ねる・入力にある情報は最初から反映](feedback_ask_bundling_and_upfront_reflection.md) — 単位不明の数値は勝手に落とさず初回確認に混ぜる／安全ゲート指摘は自分で潰せる分を潰してから出す／締切当日案件は確認1回まで
+- [コピペ前提原稿は毎回コピペ即可の書式で出す](feedback_copypaste_draft_delivery.md) — 形式を聞き返さない。既定=drafts/に1案1txt→open -e＋チャットは`>`や・なしのフラット塊
+- [コンテンツ生成は常時lean full-agentがデフォルト](feedback_content_generation_default_flow.md) — 主担当agent省略禁止、目標90〜170K
 - タスク登録 — [保存先＋期限を提示→本人回答後に保存](feedback_ask_destination_and_deadline_before_register.md)（既定値で勝手に登録しない・[[feedback_task_deadline_3days]]の+3日は推奨案に降格）／[✅タスクDB Pending系3区分](feedback_task_db_pending_status.md)（Pending/Wish List/Waiting）
+- [早朝5:00-7:00は机上作業に使える](feedback_early_morning_desk_band.md) — **机上作業限定**（役所・連絡・現地は不可＝電話をかけない）。task_windows.py `Kind.early`／`band()`で容量の数え方から分離
+- [固定曜日・固定時刻の作業枠は成立しない](feedback_fixed_weekly_blocks_dont_hold.md) — 2026-08-10実測。安定は**早朝5:00-6:30だけ**（月金6:30の街頭活動で切る）。挨拶枠・昼・バッファを除くと1日2ブロック
+- [15:00-18:30は挨拶回り優先枠](feedback_greeting_rounds_time_reserve.md) — 作業ブロックで埋めない（sessions.py `GREETING_START/END`）。実働は平日午前＋13:15-14:45＋18:45以降
 - [brainstormingのトークン浪費パターン](feedback_brainstorming_token_efficiency.md) — 同内容md多重生成禁止、design docは3000字以内
 - [「亀山」typo再発防止](feedback_kameyama_kanji_typo_guard.md) — JSONのunicode escape禁止・日本語は直接書く
-- [議会・他議員への提言は対外発信で避ける](feedback_no_council_directed_proposals.md) — 提案宛先は執行部に限定
 - [草川 役職・所属委員会マスタ](feedback_kusagawa_role_committee_master.md) — 教育民生委員会の委員（確定）
-- 禁止表現集 — [「届かないを終わらせる」](feedback_phrase_todokanai_owaraseru.md)／[「届かなくても届く」](feedback_phrase_todokanakutemo_todoku.md)／[距離比喩](feedback_metric_distance_metaphor_avoid.md)／[抽象・詩的比喩](feedback_no_abstract_poetic_phrases.md)／[つくり話冒頭](feedback_no_halfbaked_story_openings.md)／[空虚な問いかけ風](feedback_no_hollow_rhetorical_questions.md) — 全面禁止・断定と行為語で書く
-- 子育て/教育フレーム — [「亀山42% vs 100%」は介護保険限定](feedback_kameyama_42pct_kaigo_not_childcare.md)（子育て・保育・教育で使用禁止）／[子育てDX「遅れ」フレームは前面禁止](feedback_kosodate_dx_delay_risky_frame.md)（「制度はある。問題は運用」に絞る）
-- [SNS1行目に免責文を置くとフックが死ぬ](feedback_sns_disclaimer_kills_hook.md) — 冒頭は必ずフック・7PF同一原稿禁止
-- [LINE公式で第三者団体の署名・動員を呼びかけない](feedback_line_koenkai_no_third_party_mobilization.md) — 後援会→署名の逆流は未担保
-- [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出し装飾はCSSライムバー/角マーカー/ピル
-- 市民の声の扱い — [属性帰属はoperational contextで判定](feedback_form_response_no_attribution_guess.md)（過剰な「念のため確認」は信頼損なう）／[ご意見箱の引用は属性を付けない](feedback_goikenbako_quote_no_attributes.md)（年代・地域を添えず本文のみ）／[団体名義SNSの同意を個人ブログに移植しない](feedback_consent_scope_org_to_personal_blog.md)（器が変われば取り直す）
-- 中学校給食 — [既に実施開始済](feedback_kameyama_chugakko_kyushoku_already_started.md)／[選択制回帰の切り取り注意](feedback_kyushoku_sentakusei_kaiki_misread_guard.md)／[SNS/AI先行調査](feedback_kyushoku_sns_research_first.md)
-- 議会準備 — [通告書ドラフト→確定版の推敲パターン](feedback_tsukokusho_finalization_pattern.md)（議案質疑は簡潔・名詞止め／一般質問は答弁者を具体指定）／[テーマ選定の優先序列](feedback_ippan_shitsumon_theme_priority.md)（地域と約束＞会派協議中＞市民の声＞当事者性）
 
 ## 🔗 外部参照ポインタ
 
