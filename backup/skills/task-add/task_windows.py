@@ -64,6 +64,13 @@ _CONTACT = re.compile(
     r"相談者へ|さんへ|さんに|自治会長|会長へ|住民|訪問|届ける")
 
 
+# Todoist の実行窓ラベル。正規表現より優先する（2026-08-10 棚卸しで追加）。
+# 正規表現は実行時にその場で判定するだけなので、外したときに直す手段がなかった。
+# 実際、棚卸し時点で23件を取り違えていた（「校長に確認」「いじめ対応どうなったのか」
+# を机上、「合同点検の結果リストを確認」を現地、など）。ラベルは草川が見て直せる。
+LABEL_KINDS = {"役所": OFFICE, "現地": FIELD, "夜電話": CONTACT, "机上": DESK}
+
+
 def classify(content, labels=()):
     """(Kind, skip_reason) を返す。skip_reason があればブロックを作らない。"""
     if set(labels) & WAIT_LABELS:
@@ -71,6 +78,10 @@ def classify(content, labels=()):
             "／@".join(sorted(set(labels) & WAIT_LABELS)))
     if WAIT_TEXT.search(content):
         return None, "件名が「待ち」＝相手の手番"
+    # 明示ラベルがあればそれが正。複数付いている場合は相手の都合がきつい順に採る。
+    for name in ("役所", "現地", "夜電話", "机上"):
+        if name in labels:
+            return LABEL_KINDS[name], None
     for kind, pattern in ((OFFICE, _OFFICE), (FIELD, _FIELD), (CONTACT, _CONTACT)):
         if pattern.search(content):
             return kind, None
