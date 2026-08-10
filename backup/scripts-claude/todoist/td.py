@@ -77,14 +77,30 @@ def due_date(t):
     s = due.get("date", "")
     return s[:10] if s else None
 
-def fmt(t, pm, show_proj=True):
+WD = "月火水木金土日"
+
+
+def due_label(t):
+    """08/13(木) 形式。複数日にまたがる一覧で「いつの分か」を出すために使う。"""
+    d = due_date(t)
+    if not d:
+        return "  --/--   "
+    try:
+        dd = datetime.date.fromisoformat(d)
+    except ValueError:
+        return "  --/--   "
+    return f"{dd.month:02d}/{dd.day:02d}({WD[dd.weekday()]}) "
+
+
+def fmt(t, pm, show_proj=True, show_due=False):
     pr = 5 - t.get("priority", 1)           # API4=P1
     flag = f"P{pr}" if pr <= 2 else ""
     labels = "".join(" @" + l for l in t.get("labels", []))
     proj = f" 〔{pm.get(t['project_id'],'?')}〕" if show_proj else ""
-    d = due_date(t) or "—"
+    # 週ビューのように複数日が混ざる一覧でだけ日付を出す（今日ビューには不要）
+    day = due_label(t) if show_due else ""
     head = (flag + " ") if flag else ""
-    return f"  {head}{t['content'][:46]}{labels}{proj}"
+    return f"  {day}{head}{t['content'][:46]}{labels}{proj}"
 
 # 期限が無いのが正常な置き場。ここの塩漬けを監査シグナルに数えると
 # 毎朝「期限なし⚠️」が鳴り続けて本物の盲点が埋もれる（2026-08-04 棚卸しで判明）
@@ -139,6 +155,24 @@ def print_today(pm, td_):
         print(f"\n⏸ 保留（{len(hold)}件）")
         print("\n".join(fmt(t, pm) for t in hold))
 
+
+def print_week(pm, wk):
+    """今週中も今日と同じ割り方で出す（2026-08-10 草川指示）。
+
+    窓が閉じたかの判定は入れない。未来日はまだどの窓も開いているため。
+    代わりに日付を出す。7日分が混ざるので、日付が無いと山の位置が読めない。
+    """
+    own, waiting, hold = turn_split(wk)
+    print(f"\n🗓 今週中・自分の手番（{len(own)}件）")
+    print("\n".join(fmt(t, pm, show_due=True) for t in own) if own else "  なし")
+    if waiting:
+        print(f"\n📮 今週中・催促する（{len(waiting)}件）")
+        print("\n".join(fmt(t, pm, show_due=True) for t in waiting))
+    if hold:
+        print(f"\n⏸ 今週中・保留（{len(hold)}件）")
+        print("\n".join(fmt(t, pm, show_due=True) for t in hold))
+
+
 def buckets():
     today = datetime.date.today()
     tasks = all_tasks()
@@ -170,8 +204,8 @@ def cmd_morning():
     print(f"\n⚠️ 期限超過（{len(ov)}件）")
     print("\n".join(fmt(t, pm) for t in ov) if ov else "  なし")
     print_today(pm, td_)
-    print(f"\n🗓 今週中・明日〜+7日（{len(wk)}件）")
-    print("\n".join(fmt(t, pm) for t in wk) if wk else "  なし")
+    print(f"\n──── 明日〜+7日（{len(wk)}件）────")
+    print_week(pm, wk)
     # 監査シグナル
     stale = [t for t in nod]
     print("\n🧹 監査シグナル")
@@ -185,12 +219,16 @@ def cmd_morning():
 
 def cmd_simple(which):
     pm, ov, td_, wk, nod, tasks = buckets()
-    if which == "today":          # 今日だけは手番・催促・保留に分けて出す
+    if which == "today":          # 今日・今週は手番・催促・保留に分けて出す
         print(f"本日期限（{len(td_)}件）")
         print_today(pm, td_)
         return
-    sel = {"overdue": ov, "week": wk, "nodue": nod}[which]
-    label = {"overdue":"期限超過","week":"今週中","nodue":"期限なし"}[which]
+    if which == "week":
+        print(f"今週中（{len(wk)}件）")
+        print_week(pm, wk)
+        return
+    sel = {"overdue": ov, "nodue": nod}[which]
+    label = {"overdue":"期限超過","nodue":"期限なし"}[which]
     print(f"{label}（{len(sel)}件）")
     print("\n".join(fmt(t, pm) for t in sel) if sel else "  なし")
 
