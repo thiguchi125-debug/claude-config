@@ -27,6 +27,7 @@ window.addEventListener('load',function(){
  var footTop=foot?((foot.getBoundingClientRect().top-pr.top)/mm):null;
  var prof=document.querySelector('.prof');
  var profTop=prof?((prof.getBoundingClientRect().top-pr.top)/mm):null;
+ var profBottom=prof?((prof.getBoundingClientRect().bottom-pr.top)/mm):null;
  var last=null, lastB=0;
  document.querySelectorAll('.page > div').forEach(function(el){
    if(el.classList.contains('foot')||el.classList.contains('prof')||el.classList.contains('echo'))return;
@@ -43,7 +44,8 @@ window.addEventListener('load',function(){
  var d=document.createElement('div'); d.id='_M_';
  d.textContent=JSON.stringify({lastBlock:last,lastBottom:+lastB.toFixed(1),
    footTop:footTop!==null?+footTop.toFixed(1):null,
-   profTop:profTop!==null?+profTop.toFixed(1):null, edges:edges});
+   profTop:profTop!==null?+profTop.toFixed(1):null,
+   profBottom:profBottom!==null?+profBottom.toFixed(1):null, edges:edges});
  document.body.appendChild(d);
 });
 </script>
@@ -78,6 +80,13 @@ def gate_layout(d, prefix):
         slack = limit - r["lastBottom"]
         ok1 = slack >= 3.0
         print(f"  [{side}] 下端余裕 {slack:.1f}mm （最終={r['lastBlock']} {r['lastBottom']}mm ／ 下限={limit}mm） {'OK' if ok1 else 'NG(3mm以上必要)'}")
+        # 1-b) プロフィール帯とフッターの干渉
+        if r.get("profBottom") is not None and r["footTop"] is not None:
+            gap = r["footTop"] - r["profBottom"]
+            okp = gap >= 1.5
+            print(f"  [{side}] プロフィール下端→フッター {gap:.1f}mm {'OK' if okp else 'NG(1.5mm以上必要)'}")
+            if not okp:
+                ng.append(side)
         # 2) 右端の一致
         rights = [e["r"] for e in r["edges"] if e["cls"] not in ("leftcol",)]
         ref = max(set(rights), key=rights.count)
