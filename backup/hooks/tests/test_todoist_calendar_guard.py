@@ -9,6 +9,16 @@ guard = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(guard)
 
 
+def core(tasks):
+    """突合判定に使うフィールドだけを取り出す。
+
+    抽出結果には除外判定用の id / labels_after も載るが、それらは
+    「どのタスクをゲートするか」の答えではないので比較から外す。
+    """
+    keys = ("content", "due", "match_due_only")
+    return [{k: t[k] for k in keys if k in t} for t in tasks]
+
+
 class TestParseBashAdd(unittest.TestCase):
     def test_add_with_due_is_gated(self):
         cmd = 'python3 ~/.claude/scripts/todoist/td.py add "原稿を書く" --due 2026-08-10'
@@ -55,26 +65,26 @@ class TestExtractMcpTasks(unittest.TestCase):
     def test_due_string_is_gated(self):
         ti = {"tasks": [{"content": "スライド作成", "dueString": "2026-08-12"}]}
         self.assertEqual(
-            guard.extract_mcp_tasks(ti, need_content=False),
+            core(guard.extract_mcp_tasks(ti, need_content=False)),
             [{"content": "スライド作成", "due": "2026-08-12"}],
         )
 
     def test_deadline_date_is_gated(self):
         ti = {"tasks": [{"content": "入稿", "deadlineDate": "2026-08-20"}]}
         self.assertEqual(
-            guard.extract_mcp_tasks(ti, need_content=False),
+            core(guard.extract_mcp_tasks(ti, need_content=False)),
             [{"content": "入稿", "due": "2026-08-20"}],
         )
 
     def test_no_due_is_not_gated(self):
         self.assertEqual(
-            guard.extract_mcp_tasks({"tasks": [{"content": "いつか"}]},
-                                    need_content=False), [])
+            core(guard.extract_mcp_tasks({"tasks": [{"content": "いつか"}]},
+                                    need_content=False)), [])
 
     def test_flat_single_task_shape(self):
         ti = {"content": "電話する", "dueString": "2026-08-05"}
         self.assertEqual(
-            guard.extract_mcp_tasks(ti, need_content=False),
+            core(guard.extract_mcp_tasks(ti, need_content=False)),
             [{"content": "電話する", "due": "2026-08-05"}],
         )
 
@@ -83,14 +93,14 @@ class TestExtractMcpTasks(unittest.TestCase):
         for value in ("remove", "none", "null", "", "  "):
             ti = {"tasks": [{"content": "X", "dueString": value}]}
             self.assertEqual(
-                guard.extract_mcp_tasks(ti, need_content=False), [],
+                core(guard.extract_mcp_tasks(ti, need_content=False)), [],
                 msg="dueString={!r} がゲートされた".format(value))
 
     def test_add_gates_even_without_content(self):
         # add-tasks は need_content=False。件名が無くても期限があれば止める
         ti = {"tasks": [{"dueString": "2026-08-10"}]}
         self.assertEqual(
-            guard.extract_mcp_tasks(ti, need_content=False),
+            core(guard.extract_mcp_tasks(ti, need_content=False)),
             [{"content": "", "due": "2026-08-10"}],
         )
 
@@ -98,20 +108,20 @@ class TestExtractMcpTasks(unittest.TestCase):
         # update-tasks は件名が無いと照合不能。ここで止めると期限に無関係な
         # 更新（ラベル退避等）まで全部deny されるので意図的に素通しする
         ti = {"tasks": [{"id": "1", "dueString": "2026-08-10"}]}
-        self.assertEqual(guard.extract_mcp_tasks(ti, need_content=True), [])
+        self.assertEqual(core(guard.extract_mcp_tasks(ti, need_content=True)), [])
 
     def test_update_with_content_is_gated(self):
         ti = {"tasks": [{"id": "1", "content": "後付け",
                          "dueString": "2026-08-10"}]}
         self.assertEqual(
-            guard.extract_mcp_tasks(ti, need_content=True),
+            core(guard.extract_mcp_tasks(ti, need_content=True)),
             [{"content": "後付け", "due": "2026-08-10"}],
         )
 
     def test_non_dict_entries_are_skipped(self):
         ti = {"tasks": ["ゴミ", None, {"content": "X", "dueString": "2026-08-10"}]}
         self.assertEqual(
-            guard.extract_mcp_tasks(ti, need_content=False),
+            core(guard.extract_mcp_tasks(ti, need_content=False)),
             [{"content": "X", "due": "2026-08-10"}],
         )
 
@@ -128,23 +138,23 @@ class TestExtractMcpReschedule(unittest.TestCase):
 
     def test_move_to_today_is_not_gated(self):
         ti = {"tasks": [{"id": "1", "date": "2026-08-03"}]}
-        self.assertEqual(guard.extract_mcp_reschedule(ti, self.today), [])
+        self.assertEqual(core(guard.extract_mcp_reschedule(ti, self.today)), [])
 
     def test_move_to_tomorrow_is_not_gated(self):
         ti = {"tasks": [{"id": "1", "date": "2026-08-04"}]}
-        self.assertEqual(guard.extract_mcp_reschedule(ti, self.today), [])
+        self.assertEqual(core(guard.extract_mcp_reschedule(ti, self.today)), [])
 
     def test_move_beyond_tomorrow_is_gated(self):
         # task-audit の「期限なし → 今日+3日」がここを通る
         ti = {"tasks": [{"id": "1", "date": "2026-08-06"}]}
         self.assertEqual(
-            guard.extract_mcp_reschedule(ti, self.today),
+            core(guard.extract_mcp_reschedule(ti, self.today)),
             [{"content": "", "due": "2026-08-06", "match_due_only": True}],
         )
 
     def test_past_date_is_not_gated(self):
         ti = {"tasks": [{"id": "1", "date": "2026-07-20"}]}
-        self.assertEqual(guard.extract_mcp_reschedule(ti, self.today), [])
+        self.assertEqual(core(guard.extract_mcp_reschedule(ti, self.today)), [])
 
     def test_datetime_value_is_truncated_to_date(self):
         ti = {"tasks": [{"id": "1", "date": "2026-08-06T09:00:00"}]}
@@ -154,11 +164,11 @@ class TestExtractMcpReschedule(unittest.TestCase):
     def test_relative_expression_is_not_gated(self):
         # 「来週」等の解釈できない値はフェイルオープン
         ti = {"tasks": [{"id": "1", "date": "next monday"}]}
-        self.assertEqual(guard.extract_mcp_reschedule(ti, self.today), [])
+        self.assertEqual(core(guard.extract_mcp_reschedule(ti, self.today)), [])
 
     def test_missing_date_is_not_gated(self):
         self.assertEqual(
-            guard.extract_mcp_reschedule({"tasks": [{"id": "1"}]}, self.today), [])
+            core(guard.extract_mcp_reschedule({"tasks": [{"id": "1"}]}, self.today)), [])
 
 
 class TestGatedTasks(unittest.TestCase):
@@ -170,14 +180,14 @@ class TestGatedTasks(unittest.TestCase):
     def test_bash_routes_to_parse_bash_add(self):
         ti = {"command": 'td.py add "X" --due 2026-08-10'}
         self.assertEqual(
-            guard.gated_tasks("Bash", ti, self.today),
+            core(guard.gated_tasks("Bash", ti, self.today)),
             [{"content": "X", "due": "2026-08-10"}],
         )
 
     def test_add_tasks_tool_is_gated(self):
         ti = {"tasks": [{"content": "X", "dueString": "2026-08-10"}]}
         self.assertEqual(
-            guard.gated_tasks("mcp__claude_ai_Todoist__add-tasks", ti, self.today),
+            core(guard.gated_tasks("mcp__claude_ai_Todoist__add-tasks", ti, self.today)),
             [{"content": "X", "due": "2026-08-10"}],
         )
 
@@ -185,14 +195,14 @@ class TestGatedTasks(unittest.TestCase):
         # 「期限なしで登録 → 後から期限を付ける」抜け道を塞ぐ経路
         ti = {"tasks": [{"id": "1", "content": "X", "dueString": "2026-08-10"}]}
         self.assertEqual(
-            guard.gated_tasks("mcp__claude_ai_Todoist__update-tasks", ti, self.today),
+            core(guard.gated_tasks("mcp__claude_ai_Todoist__update-tasks", ti, self.today)),
             [{"content": "X", "due": "2026-08-10"}],
         )
 
     def test_update_tasks_without_content_is_not_gated(self):
         ti = {"tasks": [{"id": "1", "dueString": "2026-08-10"}]}
         self.assertEqual(
-            guard.gated_tasks("mcp__claude_ai_Todoist__update-tasks", ti, self.today),
+            core(guard.gated_tasks("mcp__claude_ai_Todoist__update-tasks", ti, self.today)),
             [],
         )
 
@@ -201,31 +211,31 @@ class TestGatedTasks(unittest.TestCase):
         # v2（2026-08-04）でゲート対象に入れた
         ti = {"tasks": [{"id": "1", "date": "2026-08-10"}]}
         self.assertEqual(
-            guard.gated_tasks("mcp__claude_ai_Todoist__reschedule-tasks", ti,
-                              self.today),
+            core(guard.gated_tasks("mcp__claude_ai_Todoist__reschedule-tasks", ti,
+                              self.today)),
             [{"content": "", "due": "2026-08-10", "match_due_only": True}],
         )
 
     def test_reschedule_carryover_is_not_gated(self):
         ti = {"tasks": [{"id": "1", "date": "2026-08-04"}]}
         self.assertEqual(
-            guard.gated_tasks("mcp__claude_ai_Todoist__reschedule-tasks", ti,
-                              self.today),
+            core(guard.gated_tasks("mcp__claude_ai_Todoist__reschedule-tasks", ti,
+                              self.today)),
             [],
         )
 
     def test_complete_tool_is_not_gated(self):
         self.assertEqual(
-            guard.gated_tasks("mcp__claude_ai_Todoist__complete-tasks",
-                              {"tasks": []}, self.today), []
+            core(guard.gated_tasks("mcp__claude_ai_Todoist__complete-tasks",
+                              {"tasks": []}, self.today)), []
         )
 
     def test_edit_tool_is_not_gated(self):
         self.assertEqual(
-            guard.gated_tasks("Edit", {"file_path": "/tmp/a"}, self.today), [])
+            core(guard.gated_tasks("Edit", {"file_path": "/tmp/a"}, self.today)), [])
 
     def test_none_tool_input_does_not_crash(self):
-        self.assertEqual(guard.gated_tasks("Bash", None, self.today), [])
+        self.assertEqual(core(guard.gated_tasks("Bash", None, self.today)), [])
 
 
 class TestContentMatches(unittest.TestCase):
@@ -434,6 +444,58 @@ class TestHookEndToEnd(unittest.TestCase):
                               capture_output=True, text=True)
         self.assertEqual(proc.returncode, 0)
         self.assertEqual(proc.stdout.strip(), "")
+
+
+class TestWaitingLabelExemption(unittest.TestCase):
+    """@結果待ち／@保留 の日付は催促日であって作業期限ではない（2026-08-11）。"""
+
+    def setUp(self):
+        self._orig = guard._task_labels
+        self.looked_up = []
+
+    def tearDown(self):
+        guard._task_labels = self._orig
+
+    def _stub_labels(self, labels):
+        def fake(task_id):
+            self.looked_up.append(task_id)
+            return labels
+        guard._task_labels = fake
+
+    def test_waiting_label_on_server_is_exempt(self):
+        self._stub_labels({"結果待ち"})
+        self.assertTrue(guard.is_waiting_task({"id": "1", "due": "2026-08-24"}))
+        self.assertEqual(self.looked_up, ["1"])
+
+    def test_hold_label_on_server_is_exempt(self):
+        self._stub_labels({"保留"})
+        self.assertTrue(guard.is_waiting_task({"id": "1", "due": "2026-08-24"}))
+
+    def test_own_turn_task_is_still_gated(self):
+        self._stub_labels({"役所"})
+        self.assertFalse(guard.is_waiting_task({"id": "1", "due": "2026-08-24"}))
+
+    def test_labels_in_payload_win_over_server(self):
+        """同じ呼び出しで結果待ちを外す＝手番に戻す。実作業なので突合を課す。"""
+        self._stub_labels({"結果待ち"})
+        self.assertFalse(guard.is_waiting_task(
+            {"id": "1", "due": "2026-08-24", "labels_after": ["役所"]}))
+        self.assertEqual(self.looked_up, [], "payload があればAPIを引かない")
+
+    def test_labels_in_payload_keeping_waiting_is_exempt(self):
+        self._stub_labels(None)
+        self.assertTrue(guard.is_waiting_task(
+            {"id": "1", "due": "2026-08-24", "labels_after": ["結果待ち"]}))
+
+    def test_lookup_failure_keeps_the_gate(self):
+        """ラベルが引けない時は除外を諦める＝従来どおりゲートする。"""
+        self._stub_labels(None)
+        self.assertFalse(guard.is_waiting_task({"id": "1", "due": "2026-08-24"}))
+
+    def test_missing_id_keeps_the_gate(self):
+        self._stub_labels({"結果待ち"})
+        self.assertFalse(guard.is_waiting_task({"due": "2026-08-24"}))
+        self.assertEqual(self.looked_up, [])
 
 
 if __name__ == "__main__":

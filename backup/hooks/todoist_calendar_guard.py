@@ -33,6 +33,15 @@ CARRYOVER_GRACE_DAYS = 1
 # 期限を「外す」指定。付ける方向だけをゲートする
 REMOVE_VALUES = {"remove", "none", "null", ""}
 
+# 相手のボールを示すラベル。ここに載るタスクの日付は「作業をいつやるか」ではなく
+# 「いつ催促するか」なので、カレンダーに作業ブロックを置く前提が成り立たない。
+# 突合を課すと素通しできる今日・明日へ寄せるしか手が無くなり、2026-08-10 の
+# 「61件を8/10〜8/12へ一括push→翌朝また超過」を機械的に再生産する（2026-08-11 草川指示）。
+WAITING_LABELS = {"結果待ち", "保留"}
+API_TASK_URL = "https://api.todoist.com/api/v1/tasks/{}"
+TOKEN_PATH = os.path.expanduser("~/.config/todoist/token")
+API_TIMEOUT_SEC = 3
+
 _KEEP = re.compile(r"[^0-9A-Za-z぀-ヿ一-鿿]")
 _SEGMENT = re.compile(r"&&|\|\||;|\n")
 
@@ -110,7 +119,12 @@ def extract_mcp_tasks(tool_input, need_content):
         content = task.get("content") or ""
         if need_content and not content.strip():
             continue
-        out.append({"content": content, "due": str(due)})
+        out.append({
+            "content": content,
+            "due": str(due),
+            "id": task.get("id"),
+            "labels_after": task.get("labels"),
+        })
     return out
 
 
@@ -133,8 +147,45 @@ def extract_mcp_reschedule(tool_input, today):
             continue
         if (target - today).days <= CARRYOVER_GRACE_DAYS:
             continue  # 今日・明日への移動＝繰越。素通し
-        out.append({"content": "", "due": date[:10], "match_due_only": True})
+        out.append({
+            "content": "",
+            "due": date[:10],
+            "match_due_only": True,
+            "id": task.get("id"),
+        })
     return out
+
+
+def _task_labels(task_id):
+    """タスクの現在のラベルを引く。引けなければ None（＝除外判定を諦めゲートを残す）。"""
+    try:
+        import urllib.request
+
+        token = open(TOKEN_PATH, encoding="utf-8").read().strip()
+        req = urllib.request.Request(API_TASK_URL.format(task_id))
+        req.add_header("Authorization", "Bearer " + token)
+        with urllib.request.urlopen(req, timeout=API_TIMEOUT_SEC) as resp:
+            return set(json.loads(resp.read().decode()).get("labels") or [])
+    except Exception:
+        return None
+
+
+def is_waiting_task(task):
+    """相手待ちラベルが付いていて、その呼び出しで外してもいないか。
+
+    同じ呼び出しでラベルを外して手番に戻すケース（誤ラベルの修正）は、
+    その時点で実作業になるので除外しない＝通常どおり突合を課す。
+    """
+    task_id = task.get("id")
+    if not task_id:
+        return False
+    labels_after = task.get("labels_after")
+    if labels_after is not None:
+        return bool(WAITING_LABELS & set(labels_after))
+    labels = _task_labels(task_id)
+    if labels is None:
+        return False
+    return bool(WAITING_LABELS & labels)
 
 
 def gated_tasks(tool_name, tool_input, today):
@@ -218,6 +269,9 @@ def main():
     tasks = gated_tasks(
         payload.get("tool_name", ""), payload.get("tool_input"), now.date()
     )
+    if not tasks:
+        return
+    tasks = [t for t in tasks if not is_waiting_task(t)]
     if not tasks:
         return
     data = load_verified(VERIFIED_PATH)
