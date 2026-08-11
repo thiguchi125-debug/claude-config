@@ -1,0 +1,66 @@
+{
+ "flushed_at": "2026-08-11T20:47:47",
+ "count": 12,
+ "results": [
+  {
+   "type": "toben_ledger",
+   "dest": "kusagawa_archive/07_commitments/ledger.json（toben-tracker管轄）",
+   "result": "✅ ledger.json に R0506-07 として追記（①は R0506-04 と重複のため追記せず）"
+  },
+  {
+   "type": "ledger",
+   "dest": "nichijo日次ログ 2026-08-01",
+   "result": "✅ 該当日の日次ログ／デイリーサマリへ🔖台帳行を書込"
+  },
+  {
+   "type": "ledger",
+   "dest": "📔 2026-08-06（木）デイリーサマリ https://app.notion.com/p/3b4cf503a68f",
+   "result": "✅ 該当日の日次ログ／デイリーサマリへ🔖台帳行を書込"
+  },
+  {
+   "type": "ledger",
+   "dest": "nichijo日次ログ 2026-08-07",
+   "result": "✅ 該当日の日次ログ／デイリーサマリへ🔖台帳行を書込"
+  },
+  {
+   "type": "sns_status_page",
+   "dest": "📮SNS便ステータス page 39dcf503-a68f-811b-bdd3-cce4e418187a",
+   "result": "✅ 📮SNS便ステータスへ統合反映（本日の納品=8/11朝便・欠落4便を参考節へ・履歴5行追記）"
+  },
+  {
+   "type": "sns_delivery",
+   "dest": "📣投稿管理DB data_source 1bd98deb-624f-402c-aeb3-bdaa4782b389",
+   "result": "🗑 破棄（8/9夕便Facebook 1,122字・上限800字超過・2日経過で鮮度切れ・草川判断）"
+  },
+  {
+   "type": "sns_status_page",
+   "dest": "📮SNS便ステータス page 39dcf503-a68f-811b-bdd3-cce4e418187a",
+   "result": "✅ 📮SNS便ステータスへ統合反映（本日の納品=8/11朝便・欠落4便を参考節へ・履歴5行追記）"
+  },
+  {
+   "type": "sns_status_page",
+   "dest": "📮SNS便ステータス page 39dcf503-a68f-811b-bdd3-cce4e418187a",
+   "result": "✅ 📮SNS便ステータスへ統合反映（本日の納品=8/11朝便・欠落4便を参考節へ・履歴5行追記）"
+  },
+  {
+   "type": "sns_status_page",
+   "dest": "39dcf503-a68f-811b-bdd3-cce4e418187a",
+   "result": "✅ 📮SNS便ステータスへ統合反映（本日の納品=8/11朝便・欠落4便を参考節へ・履歴5行追記）"
+  },
+  {
+   "type": "ledger",
+   "dest": "nichijo日次ログ 2026-08-10 page 3b8cf503-a68f-810c-a53f-e4b19b91",
+   "result": "✅ 該当日の日次ログ／デイリーサマリへ🔖台帳行を書込"
+  },
+  {
+   "type": "unclassified_intake",
+   "dest": "📥未分類インテーク page 391cf503-a68f-8191-b218-e80fdc7aedeb",
+   "result": "✅ 📥未分類インテークへ『解決済』として記録（タスクは登録済のため未処理扱いにしない）"
+  },
+  {
+   "type": "sns_status_page",
+   "dest": "📮SNS便ステータス 39dcf503-a68f-811b-bdd3-cce4e418187a",
+   "result": "✅ 📮SNS便ステータスへ統合反映（本日の納品=8/11朝便・欠落4便を参考節へ・履歴5行追記）"
+  }
+ ]
+}

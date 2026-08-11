@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 248b953f-2726-48b0-9092-1ff21ee621ad
-  modified: 2026-08-11T02:12:52.307Z
+  modified: 2026-08-11T11:48:31.835Z
 ---
 
 夜間triage（`~/.claude/scripts/sns-routine/triage_prompt.md` 手順5〜6）はタスクを**登録せず提案だけ**してDiscordへDMを送り、「①OK」の返信を待つ。返信が2晩無いと `retire_no_reply` で📥未分類インテークへ退避する。この導線は**緊急度を一切見ていない**ので、最重要案件ほど静かに消える。
@@ -16,7 +16,8 @@ metadata:
 1. `triage_prompt.md` 手順5を**A系／B系**に分割。**A系＝待っている人がいる／時間切れがある**（市民の声由来・相手が返信を待っている・期日のある行事や議会日程・安全防災交通）は**提案を待たずその夜に `td.py add --label 要期限` で即登録**。既存の「夜間は期限なしで登録→翌朝ohayoが期限確定」レールに乗せた。B系（草川自身の思いつき・調べもの）だけ従来どおり提案→返信待ち。
 2. 手順6の**無応答退避はB系限定**に変更。A系は退避せず `status: escalated` で行を保持。退避先に書けなかった行は消し込まない（書けないのに handled 扱いが一番危ない）。
 3. `~/.claude/scripts/sns-routine/pending_status.py` を新設。滞留・退避済み・queue詰まりを1回で吐く。**ohayo §1 に組み込み済み**（チェックリスト11項目目・最終出力にも欄を追加）。2日以上の滞留に🚨が付く。
-4. 未修理：`content_safety_gate.py` が📥未分類インテークへの追記まで deny する件。内部専用ページの narrow exemption を入れようとしたが、セキュリティhookの緩和のため自動承認でブロックされた。草川の許可待ち。
+4. `content_safety_gate.py` に**内部運用ログの除外**を追加（草川承認）。`EXEMPT_PAGES`＝📥未分類インテーク／📮SNS便ステータスのページID＋「本文が🔖台帳行だけ」の形判定。**「🔖を含む行」で判定してはいけない**（各行の頭に🔖を付ければブログが通る＝テストで実際に抜けた）。時刻・矢印・保存先語彙・行長120字・本文800字で締めた。回帰テスト＝`python3 ~/.claude/hooks/tests/test_content_safety_gate.py`（16件）。既知の残存＝散文を28字に切って台帳形式に整形すれば通る（取り違え事故ではこの形にならないため許容・塞ぐなら台帳をプロパティかローカルへ移す）。
+5. 5晩詰まっていた `_notion_queue.jsonl` 12件を全処理してゼロに（うち5件は既に書けていたのに行が残っていただけ＝キューは水増しされる）。処理記録＝`_queue_flush_2026-08-11.json`。
 
 **How to apply:**
 - 「Discordに投げた〇〇どこ？」と聞かれたら、Notion検索だけで終わらせず **必ず `~/.claude/scripts/sns-routine/_pending_tasks.jsonl` と `_notion_queue.jsonl` を開く**。Notionに市民意見・ネタDBが出来ていても、タスクだけ提案止まりで死んでいることがある
