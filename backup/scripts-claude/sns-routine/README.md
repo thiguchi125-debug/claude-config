@@ -244,12 +244,17 @@ Botは既にサーバー `kusakawatakuya` に参加済み（招待不要）。�
 
 1. Discordアプリでサーバー `kusakawatakuya` を開く
 2. テキストチャンネルを3つ作る: `投げ込み` / `納品` / `ログ`
-3. 以下を実行（名前から用途を自動判定して `_channels.json` に書き込む）
+3. 以下を1回実行（検出→設定→各チャンネルへ疎通確認の1通、まで自動）
 
 ```bash
-python3 ~/.claude/scripts/sns-routine/discord_api.py discover --apply
+bash ~/.claude/scripts/sns-routine/setup_channels.sh
 ```
 
-4. 確認: `python3 ~/.claude/scripts/sns-routine/discord_api.py channels`
+**別ルート:** Botに MANAGE_CHANNELS を与えるなら、下のURLを1回開いて認証すればチャンネル作成から自動でできる。
+`https://discord.com/oauth2/authorize?client_id=1499353373080555620&scope=bot&permissions=117840`
+そのうえで `bash ~/.claude/scripts/sns-routine/setup_channels.sh --create`。
+Botの権限が1つ増える（この非公開サーバー内のみ）ので、手で3つ作るほうが安心ならそちらでよい。
+
+Bot現在の権限（2026-08-11実測）= VIEW_CHANNEL／SEND_MESSAGES／READ_MESSAGE_HISTORY／ADD_REACTIONS／ATTACH_FILES。MANAGE_CHANNELSは無し（403確認済み）。
 
 DM運用へ戻したいときは `discord_api.py channels --inbox - --delivery - --log -`。
