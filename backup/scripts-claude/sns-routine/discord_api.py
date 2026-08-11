@@ -7,7 +7,13 @@ Usage:
   discord_api.py read <after_msg_id>      after_msg_id以降の全メッセージ（bot含む・is_userフラグで区別）を
                                            昇順JSON出力。読み取り専用・カーソル/リアクションには一切触れない
   discord_api.py react <msg_id> <ok|warn|eye>
-  discord_api.py post "<text>"            送信成功時、作成メッセージidをstdoutに1行出力する
+  discord_api.py post [--to inbox|delivery|log] [--reply-to <msg_id>] "<text>"
+                                          送信成功時、作成メッセージidをstdoutに1行出力する。
+                                          --to 省略時は log（未設定チャンネルはDMへ落ちる）
+  discord_api.py channels [--inbox ID] [--delivery ID] [--log ID]
+                                          用途別チャンネルの表示／設定。IDに '-' でDMへ戻す
+  discord_api.py discover [--apply]       Botが入っているサーバーのチャンネルを一覧し名前から用途を推定。
+                                          --apply で _channels.json に書き込む（サーバー作成後に1回）
   discord_api.py advance <msg_id>         全件処理成功後にのみ呼ぶ（単調増加）
   discord_api.py audit [days]             直近days日分（既定7）の生メッセージをbefore/afterページングで全件取得し、
                                            草川本人メッセージのうちreactionsが1つも付いていないものをJSON出力（日曜監査用）。
@@ -24,6 +30,52 @@ STATE_PATH = os.environ.get("SNS_ROUTINE_STATE") or os.path.join(DIR, "_state.js
 ENV_PATH = os.path.expanduser("~/.claude/channels/discord/.env")
 USER_ID = "1122069094166958121"  # 草川のDiscordユーザーID（access.json allowFrom と一致）
 EMOJI = {"ok": "✅", "warn": "⚠️", "eye": "👀"}
+
+# ── 用途別チャンネル（2026-08-11〜）────────────────────────────────
+# それまでは全部を1本のBot DMに流していた。実測（直近14日）でシステム→草川が156件・
+# 約81,000字、草川→システムが9件・約1,000字＝17対1。草川の投げ込み（市民相談の転送など）が
+# SNS原稿の壁に埋もれ、8/7の育休退園の相談が見落とされる原因になった。
+#
+#   #投げ込み  草川→システム専用。受領レシートと問いかけだけを元メッセージへの返信で返す
+#   #納品      コピペ用の完成原稿（X／Threads／Facebook）だけ
+#   #ログ      安全ゲート記録・予備・繰越・稼働状況・異常
+#
+# 未設定（null）なら従来どおりDMに出す。サーバー作成前でも壊れない。
+CHANNELS_PATH = os.path.join(DIR, "_channels.json")
+KINDS = ("inbox", "delivery", "log")
+
+
+def channels():
+    """{'inbox': id|None, 'delivery': id|None, 'log': id|None}"""
+    conf = {k: None for k in KINDS}
+    if os.path.exists(CHANNELS_PATH):
+        try:
+            saved = json.load(open(CHANNELS_PATH))
+            for k in KINDS:
+                v = saved.get(k)
+                conf[k] = str(v) if v else None
+        except Exception:
+            pass
+    return conf
+
+
+def out_channel(kind="log"):
+    """送信先。未設定の用途はDMへ落とす（後方互換）。"""
+    return channels().get(kind) or dm_channel_id()
+
+
+def in_channels():
+    """読み取り対象＝草川が書き込みうる場所すべて。#ログは書き専用なので読まない。
+    #納品を含めるのは、SNS便への返信（「Bで」「パス」「〇〇直して」）がそこに来るため。
+    DMは常に読む（サーバーを作った後も草川がDMで送る可能性を潰さない）。
+    Discordのメッセージidは時刻順の通し番号なので、afterカーソルは1本で全チャンネルに使える。
+    ノイズが増えるのは機械の側だけで、filter_new が草川本人の発言だけに絞る。"""
+    conf = channels()
+    out = [c for c in (conf.get("inbox"), conf.get("delivery")) if c]
+    dm = dm_channel_id()
+    if dm not in out:
+        out.append(dm)
+    return out
 
 DISCORD_EPOCH_MS = 1420070400000  # 2015-01-01T00:00:00.000Z
 # 2026-07-14以前は運用開始前のカーソル初期化で意図的にスキップした履歴のため監査対象外
@@ -146,44 +198,61 @@ def _atts(m):
              "url": a.get("url", "")} for a in m.get("attachments", [])]
 
 
+def _collect(after_id, limit):
+    """読み取り対象チャンネルすべてから after_id 以降を集める（channelを付けて返す）。"""
+    got = []
+    for ch in in_channels():
+        q = "?limit=%d" % limit
+        if after_id:
+            q += "&after=" + str(after_id)
+        for m in (_call("GET", "/channels/%s/messages%s" % (ch, q)) or []):
+            m["_channel"] = ch
+            got.append(m)
+    return got
+
+
 def fetch():
     st = load_state()
-    ch = dm_channel_id()
-    q = "?limit=100"
-    if st.get("last_processed_id"):
-        q += "&after=" + st["last_processed_id"]
-    msgs = _call("GET", "/channels/%s/messages%s" % (ch, q)) or []
-    new = filter_new(msgs, st.get("last_processed_id"))
+    after = st.get("last_processed_id")
+    new = filter_new(_collect(after, 100), after)
     print(json.dumps(
         [{"id": m["id"], "ts": m["timestamp"], "content": m["content"],
-          "attachments": _atts(m)} for m in new],
+          "channel": m.get("_channel"), "attachments": _atts(m)} for m in new],
         ensure_ascii=False, indent=1))
 
 
 def read(after_id):
     """after_id以降の全メッセージ（bot含む）を昇順JSON出力。読み取り専用（カーソル・リアクション不変更）。
     is_user=True のものが草川本人の発言（authorがbot自身のものはis_user=False）。"""
-    ch = dm_channel_id()
-    q = "?limit=50"
-    if after_id:
-        q += "&after=" + str(after_id)
-    msgs = _call("GET", "/channels/%s/messages%s" % (ch, q)) or []
     out = [{
         "id": m["id"],
         "ts": m["timestamp"],
         "content": m["content"],
         "is_user": m.get("author", {}).get("id") == USER_ID,
+        "channel": m.get("_channel"),
         "attachments": _atts(m),
-    } for m in msgs]
+    } for m in _collect(after_id, 50)]
     out.sort(key=lambda m: int(m["id"]))
     print(json.dumps(out, ensure_ascii=False, indent=1))
+
+
+def locate(msg_id):
+    """msg_idがどの読み取りチャンネルにあるかを探す。#投げ込みとDMの両方を見る。"""
+    last = None
+    for ch in in_channels():
+        try:
+            m = _call("GET", "/channels/%s/messages/%s" % (ch, msg_id))
+            if m:
+                return ch, m
+        except Exception as err:
+            last = err
+    raise last or RuntimeError("message %s not found in %s" % (msg_id, in_channels()))
 
 
 def download(msg_id, outdir):
     """msg_idの添付ファイルをoutdirへ保存し、保存パスのJSONリストを出力（読み取り専用）。
     Discord CDNの添付URLは署名付きで期限があるため、当日中の利用を前提とする。"""
-    ch = dm_channel_id()
-    m = _call("GET", "/channels/%s/messages/%s" % (ch, msg_id))
+    ch, m = locate(msg_id)
     os.makedirs(outdir, exist_ok=True)
     saved = []
     for i, a in enumerate(m.get("attachments", [])):
@@ -199,41 +268,89 @@ def download(msg_id, outdir):
 
 
 def react(msg_id, kind):
-    ch = dm_channel_id()
+    ch, _ = locate(msg_id)
     emoji = urllib.parse.quote(EMOJI[kind])
     _call("PUT", "/channels/%s/messages/%s/reactions/%s/@me" % (ch, msg_id, emoji))
 
 
-def post(text):
-    ch = dm_channel_id()
-    resp = _call("POST", "/channels/%s/messages" % ch, {"content": text[:1900]})
+def post(text, kind="log", reply_to=None):
+    """kind= inbox（レシート・問いかけ）／delivery（コピペ用原稿）／log（それ以外）。
+    reply_to を渡すと元メッセージへの返信として送る（#投げ込みで何への返事か迷わせないため）。"""
+    if kind not in KINDS:
+        raise SystemExit("post: kind は %s のいずれか（指定=%r）" % ("/".join(KINDS), kind))
+    ch = out_channel(kind)
+    body = {"content": text[:1900]}
+    if reply_to:
+        # fail_if_not_exists=False: 元メッセージが消えていても送信自体は通す
+        body["message_reference"] = {"message_id": str(reply_to), "fail_if_not_exists": False}
+    resp = _call("POST", "/channels/%s/messages" % ch, body)
     if resp and resp.get("id"):
         print(resp["id"])
     return resp
 
 
+NAME_HINTS = {                      # チャンネル名に含まれていれば用途を自動判定
+    "inbox": ("投げ込み", "なげこみ", "inbox"),
+    "delivery": ("納品", "のうひん", "delivery"),
+    "log": ("ログ", "log"),
+}
+
+
+def discover(apply=False):
+    """Botが参加しているサーバーのチャンネルを一覧し、名前から用途を推定する。
+    草川がサーバーを作ってBotを招待した後、これを --apply 付きで1回叩けば設定が済む。"""
+    found, guess = [], {}
+    for g in (_call("GET", "/users/@me/guilds") or []):
+        for c in (_call("GET", "/guilds/%s/channels" % g["id"]) or []):
+            if c.get("type") != 0:      # 0 = テキストチャンネル
+                continue
+            name = c.get("name", "")
+            kind = next((k for k, hints in NAME_HINTS.items()
+                         if any(h in name for h in hints)), None)
+            found.append({"guild": g.get("name"), "channel": name,
+                          "id": c["id"], "推定用途": kind or "-"})
+            if kind and kind not in guess:
+                guess[kind] = c["id"]
+    result = {"見つかったチャンネル": found, "推定": guess, "適用": False}
+    if apply and guess:
+        set_channels(**guess)
+        result["適用"] = True
+        result["設定後"] = channels()
+    return result
+
+
+def set_channels(**kw):
+    """discord_api.py channels [--inbox ID] [--delivery ID] [--log ID] で設定。引数なしなら表示のみ。"""
+    conf = channels()
+    for k, v in kw.items():
+        if v is not None:
+            conf[k] = str(v) if v != "-" else None   # '-' でDMへ戻す
+    json.dump(conf, open(CHANNELS_PATH, "w"), ensure_ascii=False, indent=1)
+    return conf
+
+
 def audit(days=7):
     """直近days日分の生メッセージ（reactions含む）をbeforeページングで全件取得し、
     草川本人の未リアクションメッセージ（AUDIT_FLOOR以降のみ）をJSON出力。カーソルは一切操作しない（読むだけ）。"""
-    ch = dm_channel_id()
     days_floor = snowflake_from_ms(int(time.time() * 1000) - int(days) * 86400 * 1000)
     fixed_floor = audit_floor_snowflake()
     floor_id = str(max(int(days_floor), int(fixed_floor)))
 
     messages = []
-    before = None
-    while True:
-        q = "?limit=100"
-        if before:
-            q += "&before=" + before
-        batch = _call("GET", "/channels/%s/messages%s" % (ch, q)) or []
-        if not batch:
-            break
-        messages.extend(batch)
-        oldest_id = min(int(m["id"]) for m in batch)
-        before = str(oldest_id)
-        if oldest_id <= int(floor_id) or len(batch) < 100:
-            break
+    for ch in in_channels():        # #投げ込みとDMの両方を監査する
+        before = None
+        while True:
+            q = "?limit=100"
+            if before:
+                q += "&before=" + before
+            batch = _call("GET", "/channels/%s/messages%s" % (ch, q)) or []
+            if not batch:
+                break
+            messages.extend(batch)
+            oldest_id = min(int(m["id"]) for m in batch)
+            before = str(oldest_id)
+            if oldest_id <= int(floor_id) or len(batch) < 100:
+                break
 
     unprocessed = find_unprocessed(messages, USER_ID, floor_id)
     print(json.dumps(
@@ -258,7 +375,30 @@ if __name__ == "__main__":
     elif cmd == "react":
         react(sys.argv[2], sys.argv[3])
     elif cmd == "post":
-        post(sys.argv[2])
+        args, kind, reply_to = sys.argv[2:], "log", None
+        rest = []
+        i = 0
+        while i < len(args):
+            if args[i] == "--to" and i + 1 < len(args):
+                kind = args[i + 1]; i += 2
+            elif args[i] == "--reply-to" and i + 1 < len(args):
+                reply_to = args[i + 1]; i += 2
+            else:
+                rest.append(args[i]); i += 1
+        if not rest:
+            sys.exit("post: 本文がありません")
+        post(rest[0], kind=kind, reply_to=reply_to)
+    elif cmd == "discover":
+        print(json.dumps(discover("--apply" in sys.argv), ensure_ascii=False, indent=1))
+    elif cmd == "channels":
+        kw = {}
+        a = sys.argv[2:]
+        for i in range(0, len(a) - 1, 2):
+            if a[i].startswith("--"):
+                kw[a[i][2:]] = a[i + 1]
+        conf = set_channels(**kw) if kw else channels()
+        print(json.dumps({"channels": conf, "dm": dm_channel_id(),
+                          "reading": in_channels()}, ensure_ascii=False, indent=1))
     elif cmd == "advance":
         advance(sys.argv[2])
     elif cmd == "audit":

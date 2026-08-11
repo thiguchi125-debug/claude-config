@@ -20,7 +20,14 @@ ToolSearch でロードした後、実際に呼んでエラーが返った場合
 
 1. Bashで `TZ=Asia/Tokyo date '+%Y-%m-%d (%a) %H:%M'` を実行し本日・曜日・時刻を取得。
 2. Discord送受信は `python3 ~/.claude/scripts/sns-routine/discord_api.py` を使う:
-   - 送信: `post "<text>"`（stdoutに送信msg_id）
+   - 送信: `post [--to inbox|delivery|log] "<text>"`（stdoutに送信msg_id）
+     **用途別チャンネル（2026-08-11〜）。`--to` を必ず付ける。** 未設定の用途は自動でDMに落ちるので、サーバー未作成でも従来どおり動く。
+     | 送るもの | `--to` |
+     |---|---|
+     | ヘッダ・【X】【Threads】【Facebook】【Instagram】・最終通（予備＋操作案内） | `delivery` |
+     | 草川の返事が要る問いかけ（A/B/C選択・HIGH判断・タスク化の可否） | `inbox` |
+     | 安全ゲート記録・稼働状況・エラー・その他の記録 | `log` |
+     草川の投げ込み（市民相談の転送など）がSNS原稿の壁に埋もれて見落とされた事故（2026-08-07 育休退園）を構造的に防ぐための分離。**読むだけのものを `delivery` や `inbox` に混ぜない。**
    - 受信: `read <after_msg_id>`（is_user=trueが草川本人。attachments配列に写真等の添付情報）
    - 添付保存: `download <msg_id> <dir>`（写真を保存しパスを出力）
    トークンはスクリプト内部で処理されるため一切扱わない・出力しない。

@@ -12,6 +12,7 @@
 - [市政報告レポート川合町版＝チラシ完成形](project_shisei_report_kawaicho_complete_form.md) — report_kameokaテンプレの勝ちパターン。QR検証は必ずpyzbar
 - [content-pipelineに発信ビジュアル統合](project_content_pipeline_visual_expansion.md) — 記事URL＋写真→ブログ→サムネ＋SNS7種＋Reelを1パス。サムネは着手前に元写真有無を確認
 - [後援会入会フォームシステム](project_koenkai_intake_form.md) — URL1本→GAS自動返信→名簿CSV→週次でSubstack CSV。告示後(10/18)拡散停止テーブルあり
+- [Discord用途別3チャンネル分離](project_discord_channel_split.md) — 実装済・**草川手番=アプリで`投げ込み/納品/ログ`を作る→`discord_api.py discover --apply`**。未設定でもDMに落ちて壊れない
 - [SNS発信ルーティンv3](project_sns_routine_v2.md) — 朝6:45/夕19:30に完成短文をDM直接納品。新風枠毎便必須・iJAMPはGmail経由。次=Phase4週次深掘り
 - [AIくさかわ（AI代役ショート動画）](project_ai_kusakawa.md) — 実装完了。**草川手番待ち**=①ElevenLabs登録②nano-bananaキャラ生成。それまで投稿不可
 - [gyakusanスキル](project_gyakusan_skill.md) — Calendar＋Notion＋Todoist突合・60日二層逆算・承認分のみ登録。初回実運用待ち
