@@ -29,8 +29,9 @@ description: 毎朝「おはよう」「おはよ」「morning」「朝のブリ
 8. 発信テーマ提案（街頭3案＋ブログ/SNS）
 9. ご意見箱フォーム新着表示（夜間form-intake結果）
 10. シグナル欄（policy-radar承認待ち／📥未分類インテーク件数／Drive新規資料／月初のみ全体地図チェック）
+11. 📋 Todoist提案の滞留＋無応答で退避された分（§1後半・`pending_status.py`）
 
-各項目の実行後にチェック。スキップは「⊘ skipped: 理由」を記録し、未実行があればチャット末尾に「⚠️ N件未実行」。全10完了後に §F（ダッシュボード3セクション更新）→ 最終出力。
+各項目の実行後にチェック。スキップは「⊘ skipped: 理由」を記録し、未実行があればチャット末尾に「⚠️ N件未実行」。全11完了後に §F（ダッシュボード3セクション更新）→ 最終出力。
 
 ---
 
@@ -48,6 +49,19 @@ description: 毎朝「おはよう」「おはよ」「morning」「朝のブリ
 - `_pipeline_status.json` の `discord_intake` キーを確認。`error` なら🚨表示＋「原本はDiscordに保全済・`~/.claude/scripts/sns-routine/_intake.log` 確認→手動再実行 `~/.claude/scripts/sns-routine/nightly_intake.sh`」を案内。
 - **キーが存在しない、または `updated` が26h超** → `🚨 discord-intake夜間ジョブが動いていない可能性（launchctl list | grep discord-intake 確認→kickstart）` を表示（drive-pipelineが2:30にstatusを全書き換えするため、3:10のジョブが走らなかった夜はキー自体が消える）。
 - `~/.claude/scripts/sns-routine/_notion_queue.jsonl` が存在し1行以上あれば、**queue flush**を実行: 各行の `dest` に従いNotionへ保存（市民意見→c2c34bd8- / 未分類→391cf503-a68f-8191-b218-e80fdc7aedeb / ledger→当日nichijo日次ログ / critical→草川に内容提示して指示を仰ぐ）→ 保存済み行を削除 → 件数をブリーフィングに表示。
+  - **flushできなかった行は必ず件数を出す。** `content_safety_gate.py` に deny された行を黙って残すと、キューが「毎朝flushしている」外見のまま無限に積み上がる（2026-08-11時点で17件滞留していた）。deny された行は `⚠️ queue flush不可 N件（ゲート未通過）` として理由つきで表示する。
+
+### 📋 Todoist提案の滞留チェック（2026-08-11新設・必須・ローカル1call）
+
+夜間triageのB系タスク提案は「①OK」の返信が無いと誰の手番にも乗らない。**放置を可視化しないと、返信しなかったというだけの理由で仕事が消える**（→ [[feedback_discord_task_proposal_retire_loses_urgent]]）。
+
+```bash
+python3 ~/.claude/scripts/sns-routine/pending_status.py --json
+```
+
+- 出力が `clean` 以外なら、**そのままブリーフィングに転記**（整形し直さない）。滞留2日以上の行には🚨が付く。
+- 🗑「無応答で退避された分」が出たら、内容を読んで**復活させるか草川に1回確認する**。交通安全・市民相談が混じっていたら必ず名指しで出す。捨てた事実を毎朝見せ続けるのがこの欄の役目なので、件数が減らないことを異常と扱わない。
+- 承認されたものを期限つきで登録する場合は §3 で取得済みのカレンダーを使い task-add の突合手順を通す。
 - 日曜朝は `sns_audit` キーも確認。`error`なら🚨＋`~/.claude/scripts/sns-routine/_audit_report.md` の内容を表示（未処理メッセージ=迷子候補）。
 
 ### ご意見箱フォーム取込監視（form-intake・2026-07-25〜）
@@ -163,6 +177,7 @@ python3 ~/.claude/scripts/todoist/td.py list 2>/dev/null | grep -n "要期限"
 🏛🗳 カウントダウン（議会/選挙）
 🎤 街頭演説3案＋📝発信テーマ
 📋 市民意見（あれば）
+📋 Todoist提案の滞留 ＋ 🗑 無応答で退避された分（pending_status.py・cleanなら省略）
 📡/📥/📂 シグナル欄（各1行）
 （💫フルパッケージ提案・条件成立時のみ）
 ```
