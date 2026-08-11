@@ -20,6 +20,7 @@
 - [📷写真ストックシステム](project_photo_stock_system.md) — Googleフォト「📷議員活動」→月一でChrome回収→Drive整理。**草川手番=アルバム作成が未**
 - [デザインスタジオ環境](project_design_studio.md) — v2センス強化済。残=素材庫のnano-banana生成20枚
 - [かめやま建築コンテスト2026（マイクラ）](project_kameyama_building_contest.md) — 8/29みらい・小中10名。**Minecraftは主名称にできない／Switch・PSはワールド書出不可**。草川手番=会場確保・スポンサー掲載可否・協会合意
+- [任天堂タイトルの催しを協会名義で開く制約](project_nintendo_tournament_license.md) — **団体主催は規模不問で個別許諾申請必須／大会名に「eスポーツ」不可／スポンサー不可／出場料は会計公開義務**。9/19は「かめやまゲーム交流会」へ改称
 - [eスポーツ協会スポンサー10社ロゴ](project_esports_sponsor_logos.md) — 掲載順は草川指定で固定・年間スポンサー表記。BUARTSは黄色地のまま。素材は0919案内フォルダが正本
 - [中庄町夏祭りチラシ](project_nakasho_natsumatsuri_flyer.md) — 主催「中庄を全力応援する会」（草川と独立前提）。公選法HIGH留意
 - [市政報告会5ステージスキル](project_shisei_houkokukai_skill.md) — _status.json正本。**初回実走=安知本地区**
