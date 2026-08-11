@@ -14,6 +14,7 @@
 - [後援会入会フォームシステム](project_koenkai_intake_form.md) — URL1本→GAS自動返信→名簿CSV→週次でSubstack CSV。告示後(10/18)拡散停止テーブルあり
 - [Discord用途別3チャンネル分離](project_discord_channel_split.md) — **2026-08-11開通・運用中**（投げ込み/納品/ログ）。ログは書き専用・読取は投げ込み+納品+DM
 - [SNS発信ルーティンv3](project_sns_routine_v2.md) — 朝6:45/夕19:30に完成短文をDM直接納品。新風枠毎便必須・iJAMPはGmail経由。次=Phase4週次深掘り
+- [発信候補パック夜間ジョブが安全ゲートでdeny](project_hakushin_pack_gate_deny.md) — パックページはEXEMPT外。_pack_body_<日付>.txt→fact/risk→gate.py --pass で書く。8/11分は未更新のまま落ちた
 - [AIくさかわ（AI代役ショート動画）](project_ai_kusakawa.md) — 実装完了。**草川手番待ち**=①ElevenLabs登録②nano-bananaキャラ生成。それまで投稿不可
 - [gyakusanスキル](project_gyakusan_skill.md) — Calendar＋Notion＋Todoist突合・60日二層逆算・承認分のみ登録。初回実運用待ち
 - [答弁トラッカー＋実績コンパイラー](project_toben_tracker.md) — 台帳=07_commitments/ledger.json。**SNS実査は毎回伺い必須**。欠落会期=R05-12・R06-03/06/09
