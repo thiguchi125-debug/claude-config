@@ -156,6 +156,25 @@ def print_today(pm, td_):
         print("\n".join(fmt(t, pm) for t in hold))
 
 
+def print_overdue(pm, ov):
+    """期限超過も手番／催促／保留に割る（2026-08-11 草川指示）。
+
+    @結果待ちは相手が動くまで自分にできることが無いので、期限が過ぎても
+    それは「サボり」ではなく「催促すべき日が来た」でしかない。同じ列に混ぜると
+    超過件数が実態を指さなくなる（8/10に61→0にしたのに翌朝また9件のうち
+    5件が相手待ちで埋まった）。⚠️は自分の手番だけを数える。
+    """
+    own, waiting, hold = turn_split(ov)
+    print(f"\n⚠️ 期限超過・自分の手番（{len(own)}件）")
+    print("\n".join(fmt(t, pm, show_due=True) for t in own) if own else "  なし")
+    if waiting:
+        print(f"\n📮 催促日が過ぎた・相手のボール（{len(waiting)}件）")
+        print("\n".join(fmt(t, pm, show_due=True) for t in waiting))
+    if hold:
+        print(f"\n⏸ 保留のまま期限が過ぎた（{len(hold)}件）")
+        print("\n".join(fmt(t, pm, show_due=True) for t in hold))
+
+
 def print_week(pm, wk):
     """今週中も今日と同じ割り方で出す（2026-08-10 草川指示）。
 
@@ -201,8 +220,7 @@ def buckets():
 def cmd_morning():
     pm, ov, td_, wk, nod, tasks = buckets()
     print("✅ 今日のタスク（Todoist）")
-    print(f"\n⚠️ 期限超過（{len(ov)}件）")
-    print("\n".join(fmt(t, pm) for t in ov) if ov else "  なし")
+    print_overdue(pm, ov)
     print_today(pm, td_)
     print(f"\n──── 明日〜+7日（{len(wk)}件）────")
     print_week(pm, wk)
@@ -227,20 +245,33 @@ def cmd_simple(which):
         print(f"今週中（{len(wk)}件）")
         print_week(pm, wk)
         return
-    sel = {"overdue": ov, "nodue": nod}[which]
-    label = {"overdue":"期限超過","nodue":"期限なし"}[which]
-    print(f"{label}（{len(sel)}件）")
-    print("\n".join(fmt(t, pm) for t in sel) if sel else "  なし")
+    if which == "overdue":
+        print(f"期限超過（{len(ov)}件）")
+        print_overdue(pm, ov)
+        return
+    print(f"期限なし（{len(nod)}件）")
+    print("\n".join(fmt(t, pm) for t in nod) if nod else "  なし")
 
 def cmd_audit():
     pm, ov, td_, wk, nod, tasks = buckets()
     waiting = [t for t in tasks if "結果待ち" in t.get("labels", [])]
     hold = [t for t in tasks if "保留" in t.get("labels", [])]
+    ov_own, ov_wait, _ = turn_split(ov)
+    # 滞留日数は added_at 基準。60日超は「登録して以来一度も判断していない」の意。
+    today = datetime.date.today()
+    def age(t):
+        try: return (today - datetime.date.fromisoformat(t.get("added_at","")[:10])).days
+        except ValueError: return 0
+    stale_wait = [t for t in waiting if age(t) >= 60]
     print("🧹 タスク監査シグナル（Todoist）")
-    print(f"  ├ 期限超過: {len(ov)}件")
+    print(f"  ├ 期限超過（自分の手番）: {len(ov_own)}件")
+    print(f"  ├ 催促日超過（相手のボール）: {len(ov_wait)}件")
     print(f"  ├ 期限なし: {len(nod)}件 " + ("⚠️" if len(nod) > 5 else "✅"))
-    print(f"  ├ @結果待ち: {len(waiting)}件")
+    print(f"  ├ @結果待ち: {len(waiting)}件（うち滞留60日超 {len(stale_wait)}件"
+          + ("⚠️" if stale_wait else "") + "）")
     print(f"  └ @保留: {len(hold)}件")
+    if stale_wait:
+        print('\n  👉 「タスク棚卸し」で滞留@結果待ちの撤退ライン確認を推奨')
 
 def cmd_list(args):
     pm = projects_map()
