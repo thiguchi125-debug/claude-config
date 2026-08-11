@@ -30,6 +30,41 @@ GUARDED = {
     "mcp__claude_ai_Notion__notion-create-pages",
     "mcp__claude_ai_Notion__notion-update-page",
 }
+
+# ── 内部運用ログの除外（2026-08-11・草川承認）────────────────────────────
+# このゲートは「市民が読む文章」を止めるためのもの。ところが本文を書く操作
+# すべてにかかっていたため、内部の運用ログまで止めていた。
+#
+#   夜間triageが📥未分類インテークへ退避しようとして deny され、退避先に
+#   書けないまま消し込まれ、育休退園の市民相談が宙に浮いた（相談者は8/7から
+#   返信待ち）。同じ理由で🔖台帳とSNS便ステータスが5晩連続で書けず、
+#   キューに10件溜まっていた。安全網を書く行為が安全ゲートに阻まれていた。
+#
+# 除外するのは「対外公開されない」「草川本人しか見ない」置き場だけ。
+# ブログ・SNS原稿・レポート・市民意見の本文は一切変わらず従来どおり止まる。
+# 追加するときは、そのページが公開経路を持たないことを必ず確認すること。
+EXEMPT_PAGES = {
+    "391cf503a68f8191b218e80fdc7aedeb",  # 📥未分類インテーク（smart-intakeの締めループ）
+    "39dcf503a68f811bbdd3cce4e418187a",  # 📮SNS便ステータス（朝夕便の納品記録）
+}
+
+# nichijo日次ログ／デイリーサマリはページIDが毎日変わるので、ID では押さえられない。
+# 代わりに「本文が🔖台帳行だけで構成されている」という形で判定する。
+#
+# ⚠️ 「🔖 が含まれる行」で判定してはいけない。各行の頭に🔖を付ければ
+#    ブログ本文がそのまま通ってしまう（2026-08-11のテストで実際に抜けた）。
+#    時刻・矢印・行長まで含めた台帳の「形」で判定する。
+LEDGER_LINE = re.compile(r"^[-\s#>*・]*🔖\s*\d{1,2}:\d{2}\s+(?P<sum>[^→]{1,30})→\s*(?P<dest>.+)$")
+LEDGER_HEAD = re.compile(r"^[-\s#>*・]*🔖\s*(登録)?台帳")
+LEDGER_MAX = 120   # 1行の上限。これを超える「台帳行」は散文とみなす
+LEDGER_BODY_MAX = 800  # 本文全体の上限。台帳の追記は数行で済む。ブログは必ず超える
+
+# 台帳行の「→」の右側は保存先の名前でなければならない。ここを自由文にすると、
+# 散文を「🔖 06:00 〈文〉 → 日次ログ」の形に整形するだけで通ってしまう。
+DESTS = ("市民意見", "政策", "質問ネタ", "投げ込み台帳", "Todoist", "日次ログ",
+         "未分類", "SNS投稿管理", "市政報告会", "ミーティングノート", "Drive",
+         "デイリーサマリ", "議事録", "プロジェクト")
+# ─────────────────────────────────────────────────────────────────
 DENY = """安全ゲート未通過のため、この本文はNotionへ書き込めません。
 
 本文（市民が読む文章）を書き込む前に、必ず次を済ませてください。
@@ -89,6 +124,28 @@ def approved():
     return {e.get("fp") for e in ap if e.get("fp")}, [e.get("text", "") for e in ap]
 
 
+def exempt_page(tool_input):
+    """更新先が内部運用ログのページなら True。create-pages は対象外（新規は必ず検査）。"""
+    pid = re.sub(r"[^0-9a-f]", "", str(tool_input.get("page_id") or "").lower())
+    return bool(pid) and pid in EXEMPT_PAGES
+
+
+def ledger_only(b):
+    """本文が🔖台帳行だけで出来ているなら True。散文が1行でも混ざれば False。"""
+    lines = [l.strip() for l in (b or "").split("\n") if norm(l)]
+    if not lines or len(norm(b)) > LEDGER_BODY_MAX:
+        return False
+    for l in lines:
+        if len(norm(l)) > LEDGER_MAX:
+            return False
+        if LEDGER_HEAD.match(l):
+            continue
+        m = LEDGER_LINE.match(l)
+        if not m or not any(d in m.group("dest") for d in DESTS):
+            return False
+    return True
+
+
 def main():
     try:
         payload = json.load(sys.stdin)
@@ -96,9 +153,12 @@ def main():
         return 0
     if payload.get("tool_name") not in GUARDED:
         return 0
-    bs = bodies(payload.get("tool_input", {}) or {})
+    tool_input = payload.get("tool_input", {}) or {}
+    if exempt_page(tool_input):
+        return 0  # 内部運用ログのページ＝素通し
+    bs = [b for b in bodies(tool_input) if not ledger_only(b)]
     if not bs:
-        return 0  # プロパティのみ＝素通し
+        return 0  # プロパティのみ／🔖台帳行のみ＝素通し
     fps, texts = approved()
 
     def segments(b):
