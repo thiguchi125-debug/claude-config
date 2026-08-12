@@ -52,6 +52,7 @@
 
 ## 📌 常時効く横断ルール（毎ターン効く分だけ・タスク別は GUARDRAILS.md）
 
+- [印刷物は参照ライブラリから入る・破綻ゼロは合格ではない](feedback_design_reference_library_first.md) — 2026-08-12新設。templates/でなく`design_system/references/`から参照1本を選び画像を自分でRead→造形5軸の数値を実装者へ→出力と参照を並べて採点（4/5軸で合格）
 - [成果物を作ったら指示されなくてもフォルダを開く](feedback_open_folder_after_generating_files.md) — 画像・PDF・動画素材を作ったら必ず `open <dir>`。貼付とフォルダ表示は両方
 - [発信物を書く前に担当agent/SKILLの定義ファイルを必ずRead](feedback_read_agent_spec_before_writing.md) — agent起動不可でも仕様は読める。規定と内容が衝突したら内容を削る前に草川判断（ブログは超過可＝徹底解説モード）。機械判定＝`check_content_limits.py`
 - [発信物のNotion保存も「発信」＝保存前に安全ゲート必須](feedback_safety_gates_before_notion_save.md) — 「保存するだけ」は例外にならない。**レビュアーへの依頼でスコープを絞らない（全テキスト＋全画像＋メモを毎回渡す）**。削除を決めた語は`<案件>_banned.txt`→gate.pyが機械スイープ。Notion本文は手打ち禁止＝draftからコピペ。レビューは全修正後の完成パッケージに1回
