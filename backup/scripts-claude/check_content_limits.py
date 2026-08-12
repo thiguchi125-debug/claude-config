@@ -42,6 +42,11 @@ def kind_of(path):
     b = os.path.basename(path)
     if "SNS" in b:  return "sns"
     if "動画" in b: return "video"
+    # 内部資料（聞き取り様式・相談カンペ・作業メモ）は対外発信物ではないので、
+    # 冒頭の名乗り・定型フッター・5段構成といったブログ規定の対象外。
+    # 字数だけ数えて通す。fact-checker / risk-reviewer の2段ゲートは従来どおり必須。
+    if any(k in b for k in ("メモ", "聞き取り", "様式", "memo", "hearing")):
+        return "internal"
     return "blog"
 
 def is_normal_blog(path):
@@ -166,6 +171,19 @@ def check_video(text):
                 + (f" 例:「{longs[0][:34]}…」" if longs else "")))
     return out
 
+def check_internal(text):
+    """内部資料。ブログ規定は当てない。事故が起きやすい点だけ見る。"""
+    out = []
+    out.append((True, f"本文 {n_chars(text)}字（内部資料＝字数上限なし）"))
+    # 内部資料に実名・電話番号が生で入ったまま共有物に化ける事故を防ぐ。
+    # 空欄の様式なら当然ゼロ。記入後にこのチェックを再実行すれば引っかかる。
+    tel = re.findall(r"0\d{1,4}-\d{1,4}-\d{3,4}", text)
+    tel = [t for t in tel if t not in ("0595-96-8822", "0595-82-8180")]  # 市の公開窓口は除外
+    out.append((not tel, "市の公開窓口以外の電話番号 "
+                + (f"{len(tel)}件（記入済みならDrive 00_名簿・個人情報/へ。Notionには置かない）"
+                   if tel else "なし")))
+    return out
+
 def main(argv):
     files = argv
     if not files:
@@ -177,6 +195,8 @@ def main(argv):
         print(f"\n== {os.path.basename(f)}  [{k}] ==")
         if k == "blog":
             res = check_blog(text, normal_mode=is_normal_blog(f))
+        elif k == "internal":
+            res = check_internal(text)
         else:
             res = {"sns": check_sns, "video": check_video}[k](text)
         for ok, msg in res:
