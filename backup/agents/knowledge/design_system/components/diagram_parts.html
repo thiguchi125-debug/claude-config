@@ -1,0 +1,165 @@
+<!-- @dsCard group="Components" name="図解パーツ4種" subtitle="メーター／ピクトグラム／関連図／年度タイムライン（印刷用・色分けしない設計）" -->
+<!doctype html>
+<meta charset="utf-8">
+<title>図解パーツ4種</title>
+<style>
+  :root{
+    --ink:#0f3d27; --green:#1f5a3a; --lime:#c7ff4a; --paper:#f3efe4;
+    --track:#dde5de;      /* 同一ランプの淡いトラック（未達側） */
+    --hair:#c9d2ca;       /* ヘアライン罫 */
+    --muted:#6b7a70;
+  }
+  body{ margin:0; padding:30px 34px 40px; background:var(--paper);
+        font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; color:var(--ink); }
+  h1{ font-size:19px; margin:0 0 4px; letter-spacing:.04em; }
+  .lead{ font-size:12.5px; line-height:1.75; color:#4a5b50; margin:0 0 24px; max-width:66em; }
+  .sec{ margin:26px 0 12px; font-size:14px; font-weight:700;
+        box-shadow:inset 0 -8px 0 var(--lime); display:inline-block; padding:0 2px; }
+  .card{ background:#fff; border:1px solid #dcd7c8; padding:20px 22px; }
+  .row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .cap{ font-size:11px; color:var(--muted); margin:10px 0 0; line-height:1.65; }
+  .note{ font-size:12px; line-height:1.8; color:#4a5b50; max-width:66em; }
+  .note b{ color:var(--ink); }
+  code{ background:#fff; border:1px solid #dcd7c8; padding:1px 5px; font-size:11px; }
+  pre{ background:#fff; border:1px solid #dcd7c8; padding:12px 14px; font-size:11px;
+       line-height:1.6; overflow-x:auto; margin:8px 0 0; }
+
+  /* ---- A: メーター（単一比率） ---- */
+  .meter-h{ font-size:12.5px; font-weight:700; letter-spacing:.02em; }
+  .hero{ font-size:64px; font-weight:800; line-height:1; letter-spacing:-.02em; margin:6px 0 2px; }
+  .hero small{ font-size:24px; font-weight:700; margin-left:2px; }
+  .meter{ height:14px; background:var(--track); position:relative; margin:12px 0 0; }
+  .meter > i{ display:block; height:100%; background:var(--green);
+              border-radius:0 4px 4px 0; }         /* 4px rounded data-end */
+  .meter.zero > i{ width:0; }
+  .meter .goal{ position:absolute; top:-5px; bottom:-5px; width:2px; background:var(--ink); }
+  .meterlab{ display:flex; justify-content:space-between; font-size:10.5px;
+             color:var(--muted); margin-top:6px; }
+
+  /* ---- B: ピクトグラム ---- */
+  .picto{ display:flex; gap:4px; flex-wrap:wrap; margin:12px 0 0; }
+  .picto span{ width:22px; height:26px; background:var(--track); display:block; }
+  .picto span.on{ background:var(--green); }
+  .picto span.hl{ background:var(--lime); box-shadow:inset 0 0 0 1.5px var(--green); }
+
+  /* ---- D: タイムライン ---- */
+  .tl{ position:relative; margin:22px 0 4px; padding-top:2px; }
+  .tl .axis{ height:1px; background:var(--hair); position:absolute; left:0; right:0; top:26px; }
+  .tl ul{ list-style:none; margin:0; padding:0; display:grid;
+          grid-template-columns:repeat(4,1fr); position:relative; }
+  .tl li{ text-align:center; padding-top:40px; position:relative; font-size:11px; line-height:1.6; }
+  .tl li::before{ content:""; position:absolute; top:20px; left:50%; margin-left:-5px;
+                  width:10px; height:10px; background:#fff;
+                  box-shadow:inset 0 0 0 2px var(--green); }
+  .tl li.now::before{ background:var(--lime); box-shadow:inset 0 0 0 2px var(--ink); width:16px; height:16px;
+                      margin-left:-8px; top:17px; }
+  .tl li .y{ display:block; font-weight:800; font-size:13px; letter-spacing:.02em; }
+  .tl li.now .y{ font-size:15px; }
+  .tl li.dim{ color:var(--muted); }
+</style>
+
+<h1>図解パーツ 4種</h1>
+<p class="lead">
+  市政報告レポート・三つ折りで、数値を本文に埋めずに見せるための印刷用パーツ。
+  参照 <code>trifold/tri05</code>（数値・関係を図解1点にまとめる型）に対応する。
+  <b>すべて色で分類しない設計</b>——理由は末尾の検証結果のとおり、草川の緑2色は
+  色覚が正常な読者でも見分けられないため。分類は<b>位置・ラベル・ハッチ</b>で行い、色は強調1点に使う。
+</p>
+
+<div class="sec">A. メーター（1つの比率を目標と並べる）</div>
+<div class="row">
+  <div class="card">
+    <div class="meter-h">小中学校 体育館の空調設置率</div>
+    <div class="hero">0<small>%</small></div>
+    <div class="meter zero"><i></i><div class="goal" style="right:0"></div></div>
+    <div class="meterlab"><span>令和6年12月 議会時点</span><span>12か所すべて未設置</span></div>
+    <p class="cap">単一の比率は<b>円グラフにしない</b>。数字そのものを主役（ヒーロー数値）にし、
+      同じランプの細いトラックで達成度を添える。0%は「棒が無い」ことが最も雄弁。</p>
+  </div>
+  <div class="card">
+    <div class="meter-h">コミバス・のりかめさん 収支率</div>
+    <div class="hero">4.8<small>%</small></div>
+    <div class="meter"><i style="width:4.8%"></i><div class="goal" style="right:0"></div></div>
+    <div class="meterlab"><span>令和3年度</span><span>目標 100%</span></div>
+    <p class="cap">小さい比率ほどトラック全長との対比が効く。棒は 4px の丸端で終端を示す。
+      目標線は 2px の実線（破線にしない）。</p>
+  </div>
+</div>
+
+<div class="sec">B. ピクトグラム（少ない個数の内訳）</div>
+<div class="card">
+  <div class="meter-h">指定避難所になっている小中学校の体育館 12か所のうち、空調があるのは</div>
+  <div class="hero">0<small>か所</small></div>
+  <div class="picto">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="meterlab" style="justify-content:flex-start;gap:20px">
+    <span><i style="display:inline-block;width:11px;height:11px;background:var(--green);vertical-align:-1px;margin-right:5px"></i>空調あり ＝ 0</span>
+    <span><i style="display:inline-block;width:11px;height:11px;background:var(--track);vertical-align:-1px;margin-right:5px"></i>空調なし ＝ 12</span>
+  </div>
+  <p class="cap">
+    12〜30程度の実数は、割合に変換せず<b>1個＝1施設のまま並べる</b>のが最も速く伝わる。
+    塊の間は 2px 空ける（枠線で区切らない）。凡例は必ず添える（塗りの濃淡だけに頼らない）。
+  </p>
+</div>
+
+<div class="sec">C. 関連図（3つまで・色で分けない）</div>
+<div class="card">
+  <svg width="660" height="216" viewBox="-12 -2 672 216" font-family="Hiragino Kaku Gothic ProN, sans-serif">
+    <line x1="196" y1="106" x2="286" y2="106" stroke="#c9d2ca" stroke-width="1.5"/>
+    <line x1="424" y1="106" x2="514" y2="106" stroke="#c9d2ca" stroke-width="1.5"/>
+    <circle cx="130" cy="106" r="62" fill="#fff" stroke="#1f5a3a" stroke-width="2"/>
+    <text x="130" y="99"  text-anchor="middle" font-size="14" font-weight="700" fill="#0f3d27">災害時の</text>
+    <text x="130" y="118" text-anchor="middle" font-size="14" font-weight="700" fill="#0f3d27">避難所</text>
+    <circle cx="355" cy="106" r="68" fill="#c7ff4a" stroke="#0f3d27" stroke-width="2.5"/>
+    <text x="355" y="99"  text-anchor="middle" font-size="15" font-weight="800" fill="#0f3d27">体育館の</text>
+    <text x="355" y="119" text-anchor="middle" font-size="15" font-weight="800" fill="#0f3d27">エアコン</text>
+    <circle cx="580" cy="106" r="62" fill="#fff" stroke="#1f5a3a" stroke-width="2"/>
+    <text x="580" y="99"  text-anchor="middle" font-size="14" font-weight="700" fill="#0f3d27">夏の</text>
+    <text x="580" y="118" text-anchor="middle" font-size="14" font-weight="700" fill="#0f3d27">部活動</text>
+    <text x="241" y="98"  text-anchor="middle" font-size="10.5" fill="#6b7a70">兼ねる</text>
+    <text x="469" y="98"  text-anchor="middle" font-size="10.5" fill="#6b7a70">使う</text>
+  </svg>
+  <p class="cap">
+    円は<b>3つまで</b>（4つ以上は総当たりで見分けがつかなくなる）。
+    識別は位置とラベルで行い、<b>ライムは主役1つだけ</b>に使う。
+    ライムは地色とのコントラストが 1.15:1 しかないため、<b>必ず濃緑の文字と枠線を重ねる</b>。
+    つなぎ線はヘアライン実線＋関係を表す短い動詞。
+  </p>
+</div>
+
+<div class="sec">D. 年度タイムライン（工程の現在地）</div>
+<div class="card">
+  <div class="tl">
+    <div class="axis"></div>
+    <ul>
+      <li class="dim"><span class="y">令和6年12月</span>議会で設置率0%と確認</li>
+      <li class="now"><span class="y">令和8年8月</span>WBGTの分散測定<br>いま ここ</li>
+      <li class="dim"><span class="y">令和9年度</span>特別教室の空調が<br>使えるようになる予定</li>
+      <li class="dim"><span class="y">その先</span>体育館の工程表を<br>議会で求める</li>
+    </ul>
+  </div>
+  <p class="cap">
+    軸は 1px の実線ヘアライン（破線にしない＝「予定」の意味に誤読される）。
+    強調は<b>「いま ここ」1点だけ</b>。全部の節目を同じ大きさにすると現在地が消える。
+  </p>
+</div>
+
+<div class="sec">なぜ色で分類しないのか（検証結果）</div>
+<p class="note">
+  ブランド3色を分類用パレットとして検証した結果（dataviz の <code>validate_palette.js</code>）。
+</p>
+<pre>Palette (light, surface #fcfcfb, categorical): 3 slots
+  [FAIL] Lightness band      outside band: #0f3d27 0.322 / #1f5a3a 0.42 / #c7ff4a 0.93
+  [FAIL] Chroma floor        below floor (reads gray): #0f3d27 0.063 / #1f5a3a 0.082
+  [PASS] CVD separation      worst adjacent #1f5a3a↔#0f3d27 ΔE 9.8 (deutan)
+  [FAIL] Normal-vision floor worst adjacent #1f5a3a↔#0f3d27 ΔE 9.9 (normal) — below 15
+  [WARN] Contrast vs surface #c7ff4a 1.15 — 相対的に見えない。可視ラベル必須</pre>
+<p class="note" style="margin-top:12px">
+  <b>結論3つ。</b>
+  ① <b>濃緑と緑を「別のもの」として使い分けない</b>——読者には同じ色に見える（ΔE 9.9・境界は15）。
+  階層は色でなく<b>大きさ・位置・余白</b>で作る。
+  ② <b>ライムを文字色にしない</b>（コントラスト 1.15:1）。ライムは面のアクセント、その上に濃緑の文字を置く。
+  ③ 分類がどうしても要るときは、色でなく <b>45°のハッチ</b>で分ける（印刷はテクスチャの正当な用途）。
+</p>

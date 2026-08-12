@@ -38,6 +38,8 @@ design_system/
     qr_footer_block.html         QR＋連絡先フッター2パターン（討議資料表記含む）
     photo_text_row.html          text-beside-image 2カラム行（float禁止・同高flex）
     stat_numbers.html            数字強調ブロック（2×2数字セル／5連ZEROグリッド）
+    icons_policy.html            **政策アイコン8種**（子育て/防災/医療/交通/まちづくり/DX/環境/対話。SVGコピペ可・24〜56px）
+    diagram_parts.html           **図解パーツ4種**（メーター/ピクトグラム/関連図/年度タイムライン。色分けしない設計・根拠の検証結果同梱）
   templates/                   ← 完成テンプレ4種（各: template.html=正本verbatim / preview.html=カード用縮図 / README.md=運用手引）
     flyer_a4/                    イベントチラシ（eスポーツ flyer_a2 正本・ダーク×ライム）
     poster/                      イベントポスター（中庄夏祭り2026 正本・品質基準）
