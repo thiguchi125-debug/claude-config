@@ -58,6 +58,7 @@
 - [成果物を作ったら指示されなくてもフォルダを開く](feedback_open_folder_after_generating_files.md) — 画像・PDF・動画素材を作ったら必ず `open <dir>`。貼付とフォルダ表示は両方
 - [発信物を書く前に担当agent/SKILLの定義ファイルを必ずRead](feedback_read_agent_spec_before_writing.md) — agent起動不可でも仕様は読める。規定と内容が衝突したら内容を削る前に草川判断（ブログは超過可＝徹底解説モード）。機械判定＝`check_content_limits.py`
 - [発信物のNotion保存も「発信」＝保存前に安全ゲート必須](feedback_safety_gates_before_notion_save.md) — 「保存するだけ」は例外にならない。**レビュアーへの依頼でスコープを絞らない（全テキスト＋全画像＋メモを毎回渡す）**。削除を決めた語は`<案件>_banned.txt`→gate.pyが機械スイープ。Notion本文は手打ち禁止＝draftからコピペ。レビューは全修正後の完成パッケージに1回
+- [顔ぼかしは草川本人を除外・漏れは検出器＋目視の二段で潰す](feedback_face_blur_exclude_kusagawa_and_verify.md) — 2026-08-12新設。静止画1枚で子どもの顔が無加工のまま残っていた。動画は中央50%のLaplacianでランク→上位を目視
 - [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出し装飾はCSSライムバー/角マーカー/ピル
 - 禁止表現集 — [「届かないを終わらせる」](feedback_phrase_todokanai_owaraseru.md)／[「届かなくても届く」](feedback_phrase_todokanakutemo_todoku.md)／[距離比喩](feedback_metric_distance_metaphor_avoid.md)／[抽象・詩的比喩](feedback_no_abstract_poetic_phrases.md)／[つくり話冒頭](feedback_no_halfbaked_story_openings.md)／[空虚な問いかけ風](feedback_no_hollow_rhetorical_questions.md) — 全面禁止・断定と行為語で書く
 - [架空エピソード・つくり話禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
