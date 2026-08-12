@@ -52,6 +52,8 @@
 
 ## 📌 常時効く横断ルール（毎ターン効く分だけ・タスク別は GUARDRAILS.md）
 
+- [資産価値直結の手続相談は二層分離＋照会の性格を記録](feedback_shisan_kachi_tetsuzuki_gaikan_kanri.md) — 2026-08-12新設。農振除外・農地転用等。氏名はDrive名簿区画1か所／Todoist件名・カレンダーも相談IDに／締切ものは行動制約3点＋制度上の帰結で書く
+- [gate.pyは並行セッションで承認記録を消し合う](feedback_gate_json_concurrent_overwrite.md) — deny時はまず本文でなく`_content_gate.json`の中身を疑う。通し直して同一ターンで書く。内部資料はファイル名に「メモ」を入れる
 - [印刷物は参照ライブラリから入る・破綻ゼロは合格ではない](feedback_design_reference_library_first.md) — 2026-08-12新設。templates/でなく`design_system/references/`から参照1本を選び画像を自分でRead→造形5軸の数値を実装者へ→出力と参照を並べて採点（4/5軸で合格）
 - [成果物を作ったら指示されなくてもフォルダを開く](feedback_open_folder_after_generating_files.md) — 画像・PDF・動画素材を作ったら必ず `open <dir>`。貼付とフォルダ表示は両方
 - [発信物を書く前に担当agent/SKILLの定義ファイルを必ずRead](feedback_read_agent_spec_before_writing.md) — agent起動不可でも仕様は読める。規定と内容が衝突したら内容を削る前に草川判断（ブログは超過可＝徹底解説モード）。機械判定＝`check_content_limits.py`
@@ -81,6 +83,7 @@
 - [景観保全作物の種子配付／田園環境保全事業の廃止年度](reference_keikan_hozen_seed_haishi.md) — 廃止は**令和7年度**・申請は**農業者要件**（要件を誤ると利益相反の説明が崩れる）・昼生7自治会は「神向谷」表記
 - [ファイル管理システムv4 保存先マップ](reference_storage_map.md) — 用途→正規置き場の正本。夜間パイプラインv4・00_名簿区画・週次スイープ
 - [カレンダー終日枠の正体＝Todoist同期](reference_todoist_gcal_sync_allday.md) — 期限付きタスクが全部終日イベント化。時間の正本は【作業】ブロック側。表示OFFはサイドバーのチェック
+- [農振除外は5要件でなく6要件](reference_noshin_jogai_6yoken.md) — 令和5年4月施行で「地域計画の達成に支障なし」が**第2号**に新設し号がずれた。**目標地図の位置づけは第2号に直結**／8年は第6号／亀山の受付は例年2月末・8月末
 - 亀山の確定事実 — [半導体R8.6.15議場](reference_r8615_handotai_floor_facts.md)（旗は櫻井市長・草川は後押し役）／[新庁舎開庁=令和18年度](reference_shincho_kaicho_r18.md)（「令和12年度」は旧計画＝誤り）／[次期ごみ処理施設](reference_jiki_gomi_shori_shisetsu.md)（R15年度稼働・48t/日・271〜307億・**建設地は未定**）／[太岡寺自治会 太陽光要望書R5.12.12](reference_taikoji_yobosho_taiyoko.md)（村山竹則会長）
 - [防災発信の定番リンク集5本](reference_bosai_link_collection.md) — 気象庁(亀山2421000)/川の防災/防災みえ/名阪国道規制/中電停電
 - [草川議会質問アーカイブv3構造](reference_drive_archive_kusagawa.md) — 学習層1088件、grep対象は01_council〜06_election
