@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "profiles": {
+    "a4-bleed3": {
+      "kind": "print",
+      "width_mm": 216,
+      "height_mm": 303,
+      "trim_width_mm": 210,
+      "trim_height_mm": 297,
+      "bleed_mm": 3,
+      "expected_pages": 2
+    },
+    "a1-bleed3": {
+      "kind": "print",
+      "width_mm": 600,
+      "height_mm": 847,
+      "trim_width_mm": 594,
+      "trim_height_mm": 841,
+      "bleed_mm": 3,
+      "expected_pages": 1
+    },
+    "instagram-4x5": {
+      "kind": "digital",
+      "width_px": 1080,
+      "height_px": 1350
+    }
+  },
+  "templates": {
+    "poster_a1": {
+      "profile": "a1-bleed3",
+      "entry": "templates/poster_a1/template.html"
+    },
+    "instagram_4x5": {
+      "profile": "instagram-4x5",
+      "entry": "digital_templates/instagram_4x5/template.html"
+    },
+    "illustrator_handoff": {
+      "kind": "svg",
+      "entry": "handoff/illustrator/starter.svg"
+    }
+  }
+}

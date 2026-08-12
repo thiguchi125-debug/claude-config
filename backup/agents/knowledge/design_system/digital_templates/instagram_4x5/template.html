@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>草川たくや Instagram 4:5スターター</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 1080px; height: 1350px; margin: 0; overflow: hidden; }
+    body {
+      color: #f3efe4;
+      background: #0f3d27;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    }
+    .stage { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: #0f3d27; }
+    .stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .18;
+      background-image: radial-gradient(circle at 2px 2px, #f3efe4 1px, transparent 1.5px);
+      background-size: 22px 22px;
+    }
+    .lime-plane {
+      position: absolute;
+      right: -130px;
+      top: 70px;
+      width: 620px;
+      height: 890px;
+      background: #c7ff4a;
+      transform: rotate(8deg);
+    }
+    .photo {
+      position: absolute;
+      right: -42px;
+      top: 145px;
+      width: 550px;
+      height: 760px;
+      overflow: hidden;
+      transform: rotate(-2deg);
+      border: 14px solid #f3efe4;
+      background: linear-gradient(150deg, #d7ded7, #718c7a);
+      box-shadow: 22px 25px 0 #0f3d27;
+    }
+    .photo::after {
+      content: "PORTRAIT";
+      position: absolute;
+      left: 36px;
+      bottom: 34px;
+      color: #f3efe4;
+      font: 900 34px/1 Arial, sans-serif;
+      letter-spacing: .18em;
+    }
+    .kicker {
+      position: absolute;
+      left: 72px;
+      top: 86px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font: 800 26px/1 Arial, sans-serif;
+      letter-spacing: .18em;
+    }
+    .kicker::before { content: ""; width: 72px; height: 8px; background: #c7ff4a; }
+    h1 {
+      position: absolute;
+      left: 66px;
+      top: 190px;
+      z-index: 4;
+      width: 650px;
+      margin: 0;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-size: 118px;
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -.07em;
+    }
+    h1 span { color: #0f3d27; background: #c7ff4a; box-shadow: 18px 0 0 #c7ff4a, -8px 0 0 #c7ff4a; }
+    .issue {
+      position: absolute;
+      left: 72px;
+      top: 548px;
+      z-index: 5;
+      width: 410px;
+      padding-top: 24px;
+      border-top: 3px solid #f3efe4;
+      font-size: 31px;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+    .number {
+      position: absolute;
+      left: 67px;
+      bottom: 235px;
+      font: 900 214px/.8 Arial, sans-serif;
+      letter-spacing: -.08em;
+      color: #c7ff4a;
+    }
+    .number small {
+      display: block;
+      margin: 26px 0 0 10px;
+      color: #f3efe4;
+      font-size: 29px;
+      letter-spacing: .16em;
+    }
+    .footer {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 155px;
+      padding: 40px 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #0f3d27;
+      background: #f3efe4;
+    }
+    .name { font-family: "Hiragino Mincho ProN", "Yu Mincho", serif; font-size: 54px; font-weight: 900; }
+    .role { font-size: 24px; font-weight: 800; letter-spacing: .08em; }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <div class="lime-plane"></div>
+    <div class="photo"></div>
+    <div class="kicker">KAMEYAMA CIVIC REPORT</div>
+    <h1>市政を、<br><span>もっと近く。</span></h1>
+    <div class="issue">活動の要点を一枚一メッセージで伝える、Instagram 4:5の編集型スターターです。</div>
+    <div class="number">01<small>ISSUE / REPORT</small></div>
+    <footer class="footer"><div class="name">草川たくや</div><div class="role">亀山市議会議員</div></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     width="216mm" height="303mm" viewBox="0 0 216 303">
+  <title>草川たくや A4塗り足し付き Illustrator受け渡しスターター</title>
+  <g inkscape:groupmode="layer" inkscape:label="background" id="background">
+    <rect x="0" y="0" width="216" height="303" fill="#f3efe4"/>
+    <rect x="0" y="0" width="72" height="303" fill="#0f3d27"/>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="photo" id="photo">
+    <rect x="82" y="35" width="112" height="136" fill="#d7ded7" stroke="#0f3d27" stroke-width="2"/>
+    <text x="138" y="106" text-anchor="middle" font-family="Arial" font-size="6" font-weight="700" fill="#0f3d27">PHOTO</text>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="decoration" id="decoration">
+    <rect x="72" y="22" width="92" height="5" fill="#c7ff4a"/>
+    <circle cx="180" cy="212" r="24" fill="#c7ff4a"/>
+    <path d="M72 188 H200" stroke="#1f5a3a" stroke-width="1.2"/>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="text" id="text">
+    <text x="16" y="45" font-family="Hiragino Kaku Gothic ProN, sans-serif" font-size="5" font-weight="700" fill="#c7ff4a" transform="rotate(90 16 45)">KAMEYAMA CIVIC REPORT</text>
+    <text x="82" y="195" font-family="Hiragino Mincho ProN, serif" font-size="15" font-weight="900" fill="#0f3d27">草川たくや</text>
+    <text x="82" y="207" font-family="Hiragino Kaku Gothic ProN, sans-serif" font-size="5" font-weight="700" fill="#1f5a3a">亀山市議会議員</text>
+    <text x="82" y="232" font-family="Hiragino Mincho ProN, serif" font-size="12" font-weight="900" fill="#0f3d27">暮らしの声を、市政の力に。</text>
+    <text x="82" y="245" font-family="Hiragino Kaku Gothic ProN, sans-serif" font-size="4.2" fill="#0f3d27">Illustratorで文字・写真・装飾を個別に編集できます。</text>
+  </g>
+  <g inkscape:groupmode="layer" inkscape:label="trim-marks" id="trim-marks" fill="none" stroke="#111" stroke-width="0.15">
+    <path d="M0 3 H2 M3 0 V2 M214 3 H216 M213 0 V2 M0 300 H2 M3 301 V303 M214 300 H216 M213 301 V303"/>
+    <rect x="3" y="3" width="210" height="297" stroke="#00a0e9" stroke-dasharray="1 1" opacity="0.55"/>
+    <rect x="8" y="8" width="200" height="287" stroke="#e60012" stroke-dasharray="1 1" opacity="0.35"/>
+  </g>
+</svg>
