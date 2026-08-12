@@ -1,0 +1,140 @@
+<!-- @dsCard group="Components" name="政策アイコン8種" subtitle="市政報告・リーフレットの政策ブロック用ラインアイコン（SVG・コピペ可）" -->
+<!doctype html>
+<meta charset="utf-8">
+<title>政策アイコン8種</title>
+<style>
+  :root{
+    --green-900:#0f3d27; --green-700:#1f5a3a; --lime:#c7ff4a; --paper:#f3efe4;
+  }
+  body{
+    margin:0; padding:32px 36px; background:var(--paper);
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; color:var(--green-900);
+  }
+  h1{ font-size:19px; letter-spacing:.04em; margin:0 0 4px; }
+  .lead{ font-size:12.5px; line-height:1.7; color:#4a5b50; margin:0 0 26px; max-width:64em; }
+  .grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px 16px; }
+  .cell{ background:#fff; border:1px solid #dcd7c8; padding:16px 12px 13px; text-align:center; }
+  .cell svg{ display:block; margin:0 auto 9px; }
+  .nm{ font-size:12.5px; font-weight:700; letter-spacing:.02em; }
+  .id{ font-size:10px; color:#8b9490; margin-top:3px; font-family:ui-monospace,monospace; }
+  .sec{ margin:30px 0 10px; font-size:14px; font-weight:700;
+        box-shadow:inset 0 -8px 0 var(--lime); display:inline-block; padding:0 2px; }
+  .note{ font-size:12px; line-height:1.75; color:#4a5b50; max-width:64em; }
+  .note code{ background:#fff; border:1px solid #dcd7c8; padding:1px 5px; font-size:11px; }
+  .sizes{ display:flex; align-items:flex-end; gap:26px; background:#fff;
+          border:1px solid #dcd7c8; padding:16px 20px; margin:10px 0 0; }
+  .sizes div{ text-align:center; font-size:10px; color:#8b9490; }
+  .onink{ background:var(--green-900); }
+  .onink .nm{ color:#fff; } .onink .id{ color:#8fa398; }
+</style>
+
+<h1>政策アイコン 8種</h1>
+<p class="lead">
+  市政報告レポート・後援会リーフレットの政策ブロック（「01 子育て・教育」等）に添えるラインアイコン。
+  参照 <code>trifold/tri06〜09</code>（議員リーフレット見本）が番号付き政策ボックスにアイコンを添えている型に対応する。
+  すべて単色ストローク＋ライムのアクセント1点。<b>絵文字・丸バッジ・ピル型は使わない</b>（AI製SaaS LP風の禁止意匠）。
+</p>
+
+<div class="grid">
+
+  <div class="cell">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#1f5a3a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 20C26 15 16 13.5 9 16.5V47C16 44 26 45.5 32 50.5" />
+      <path d="M32 20c6-5 16-6.5 23-3.5V47c-7-3-17-1.5-23 3.5" />
+      <path d="M32 20v30.5" />
+      <path d="M32 17c0-5-3.5-8.5-8.5-8.5C23.5 13.5 27 17 32 17Z" fill="#c7ff4a" stroke="none"/>
+      <path d="M32 17c0-5-3.5-8.5-8.5-8.5C23.5 13.5 27 17 32 17Z" />
+    </svg>
+    <div class="nm">子育て・教育</div><div class="id">ico_kosodate</div>
+  </div>
+
+  <div class="cell">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#1f5a3a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 7 54 15v16c0 12-9.5 20.5-22 25C19.5 51.5 10 43 10 31V15Z" />
+      <path d="M22 35 32 26l10 9" fill="#c7ff4a" stroke="none"/>
+      <path d="M22 35 32 26l10 9" />
+      <path d="M24.5 35v10h15V35" />
+    </svg>
+    <div class="nm">防災・安全</div><div class="id">ico_bosai</div>
+  </div>
+
+  <div class="cell">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#1f5a3a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 52S9 37.5 9 23.5C9 15.5 15 10 22 10c4.5 0 8 2.3 10 5.6C34 12.3 37.5 10 42 10c7 0 13 5.5 13 13.5C55 37.5 32 52 32 52Z" />
+      <path d="M14 27h9l4-7 6 14 4-7h11" stroke="#c7ff4a" stroke-width="3.6"/>
+    </svg>
+    <div class="nm">医療・福祉</div><div class="id">ico_iryo</div>
+  </div>
+
+  <div class="cell">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#1f5a3a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 56 21 15h22l14 41" />
+      <path d="M18 15h28" stroke-width="2.6"/>
+      <path d="M32 21v5" stroke="#c7ff4a" stroke-width="3"/>
+      <path d="M32 32v6" stroke="#c7ff4a" stroke-width="4.2"/>
+      <path d="M32 44v8" stroke="#c7ff4a" stroke-width="5.6"/>
+    </svg>
+    <div class="nm">交通・インフラ</div><div class="id">ico_kotsu</div>
+  </div>
+
+  <div class="cell">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#1f5a3a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 54V31h13v23" />
+      <path d="M25 15h15v10H25Z" fill="#c7ff4a" stroke="none"/>
+      <path d="M25 54V15h15v39" />
+      <path d="M44 54V26h12v28" />
+      <path d="M12 38h5M12 46h5" stroke-width="2.8"/>
+      <path d="M48 34h4M48 43h4" stroke-width="2.8"/>
+      <path d="M5 54h54" />
+    </svg>
+    <div class="nm">まちづくり・産業</div><div class="id">ico_machi</div>
+  </div>
+
+  <div class="cell">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#1f5a3a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="12" width="48" height="32" rx="3" />
+      <path d="M32 44v8M24 52h16" />
+      <path d="M21 28.5 29 36l14-14" stroke="#c7ff4a" stroke-width="4.4"/>
+    </svg>
+    <div class="nm">行政DX</div><div class="id">ico_dx</div>
+  </div>
+
+  <div class="cell">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#1f5a3a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 49C15 29 31 14 51 14c0 20-15 35-35 35Z" />
+      <path d="M21 44 44 21" stroke="#c7ff4a" stroke-width="3.6"/>
+      <path d="M13 55c1.5-4 3.5-7.5 6-11" />
+    </svg>
+    <div class="nm">環境・エネルギー</div><div class="id">ico_kankyo</div>
+  </div>
+
+  <div class="cell">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#1f5a3a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 14h30v20H19l-8 8v-8H7Z" />
+      <path d="M27 28h30v20h-4v8l-8-8H27Z" fill="#c7ff4a" stroke="none"/>
+      <path d="M27 28h30v20h-4v8l-8-8H27Z" />
+    </svg>
+    <div class="nm">市民参加・対話</div><div class="id">ico_taiwa</div>
+  </div>
+
+</div>
+
+<div class="sec">使い方</div>
+<p class="note">
+  SVGを丸ごとコピーして紙面のHTMLへ貼る。色は <code>stroke="#1f5a3a"</code>（線）と
+  <code>#c7ff4a</code>（アクセント）を差し替えるだけで反転版になる。
+  濃緑地に置く場合は線を <code>#f3efe4</code>、アクセントはライムのまま。
+</p>
+
+<div class="sizes">
+  <div><svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="#1f5a3a" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="48" height="32" rx="3"/><path d="M32 44v8M24 52h16"/><path d="M21 28.5 29 36l14-14" stroke="#c7ff4a" stroke-width="5.6"/></svg><br>24px 本文横</div>
+  <div><svg width="36" height="36" viewBox="0 0 64 64" fill="none" stroke="#1f5a3a" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="48" height="32" rx="3"/><path d="M32 44v8M24 52h16"/><path d="M21 28.5 29 36l14-14" stroke="#c7ff4a" stroke-width="4.8"/></svg><br>36px 政策ボックス</div>
+  <div><svg width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#1f5a3a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="48" height="32" rx="3"/><path d="M32 44v8M24 52h16"/><path d="M21 28.5 29 36l14-14" stroke="#c7ff4a" stroke-width="4.4"/></svg><br>56px 見出し併置</div>
+  <div class="cell onink" style="padding:14px 18px;border:none;"><svg width="36" height="36" viewBox="0 0 64 64" fill="none" stroke="#f3efe4" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="48" height="32" rx="3"/><path d="M32 44v8M24 52h16"/><path d="M21 28.5 29 36l14-14" stroke="#c7ff4a" stroke-width="4.8"/></svg><div class="nm" style="font-size:10px;margin-top:6px;">濃緑地・反転</div></div>
+</div>
+
+<div class="sec">禁止</div>
+<p class="note">
+  丸バッジの中にアイコンを入れない／絵文字で代用しない／アイコンごとに色を変えない（緑＋ライムで統一）／
+  線幅を 2px 未満にしない（印刷でかすれる。最小 24px 表示なら stroke-width 4.4 相当まで太らせる）。
+</p>
