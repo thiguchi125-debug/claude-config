@@ -90,6 +90,7 @@
 - [カレンダー終日枠の正体＝Todoist同期](reference_todoist_gcal_sync_allday.md) — 期限付きタスクが全部終日イベント化。時間の正本は【作業】ブロック側。表示OFFはサイドバーのチェック
 - [農振除外は5要件でなく6要件](reference_noshin_jogai_6yoken.md) — 令和5年4月施行で「地域計画の達成に支障なし」が**第2号**に新設し号がずれた。**目標地図の位置づけは第2号に直結**／8年は第6号／亀山の受付は例年2月末・8月末
 - 亀山の確定事実 — [半導体R8.6.15議場](reference_r8615_handotai_floor_facts.md)（旗は櫻井市長・草川は後押し役）／[新庁舎開庁=令和18年度](reference_shincho_kaicho_r18.md)（「令和12年度」は旧計画＝誤り）／[次期ごみ処理施設](reference_jiki_gomi_shori_shisetsu.md)（R15年度稼働・48t/日・271〜307億・**建設地は未定**）／[太岡寺自治会 太陽光要望書R5.12.12](reference_taikoji_yobosho_taiyoko.md)（村山竹則会長）
+- [通学路交通安全プログラムの対象範囲](reference_tsugakuro_program_scope.md) — 対象は**小中学校の通学路のみ**。園種二分法は認定こども園移行で崩れる／「市は見ていない」は令和4年6月答弁で否／地元要望LoGoフォームが別ルートで実在
 - [防災発信の定番リンク集5本](reference_bosai_link_collection.md) — 気象庁(亀山2421000)/川の防災/防災みえ/名阪国道規制/中電停電
 - [草川議会質問アーカイブv3構造](reference_drive_archive_kusagawa.md) — 学習層1088件、grep対象は01_council〜06_election
 - [claude-configバックアップ](reference_claude_config_backup.md) — GitHub thiguchi125-debug/claude-config、復元はrestore.sh／[Discordチャンネル起動フラグ](reference_discord_channel_launch_flag.md) — 正=`claude --channels plugin:discord@claude-plugins-official`
