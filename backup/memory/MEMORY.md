@@ -55,7 +55,8 @@
 - [資産価値直結の手続相談は二層分離＋照会の性格を記録](feedback_shisan_kachi_tetsuzuki_gaikan_kanri.md) — 2026-08-12新設。農振除外・農地転用等。氏名はDrive名簿区画1か所／Todoist件名・カレンダーも相談IDに／締切ものは行動制約3点＋制度上の帰結で書く
 - [gate.pyは並行セッションで承認記録を消し合う](feedback_gate_json_concurrent_overwrite.md) — deny時はまず本文でなく`_content_gate.json`の中身を疑う。通し直して同一ターンで書く。内部資料はファイル名に「メモ」を入れる
 - [印刷物は参照ライブラリから入る・破綻ゼロは合格ではない](feedback_design_reference_library_first.md) — 2026-08-12新設。templates/でなく`design_system/references/`から参照1本を選び画像を自分でRead→造形5軸の数値を実装者へ→出力と参照を並べて採点（4/5軸で合格）
-- [成果物を作ったら指示されなくてもフォルダを開く](feedback_open_folder_after_generating_files.md) — 画像・PDF・動画素材を作ったら必ず `open <dir>`。貼付とフォルダ表示は両方
+- [成果物は古い版を閉じてから新しい版だけを開く](feedback_open_folder_after_generating_files.md) — 旧プレビューを閉じ新版だけopen＋`open <dir>`。実装＝`~/.claude/scripts/show_latest.sh`
+- [案件フォルダは番号付き構成＋README.md](feedback_project_folder_numbered_structure.md) — 01_最新PDF/02_原稿/03_参照/99_過去バージョン。中間物を直下に散らかさない・assetsはリネーム禁止
 - [発信物を書く前に担当agent/SKILLの定義ファイルを必ずRead](feedback_read_agent_spec_before_writing.md) — agent起動不可でも仕様は読める。規定と内容が衝突したら内容を削る前に草川判断（ブログは超過可＝徹底解説モード）。機械判定＝`check_content_limits.py`
 - [発信物のNotion保存も「発信」＝保存前に安全ゲート必須](feedback_safety_gates_before_notion_save.md) — 「保存するだけ」は例外にならない。**レビュアーへの依頼でスコープを絞らない（全テキスト＋全画像＋メモを毎回渡す）**。削除を決めた語は`<案件>_banned.txt`→gate.pyが機械スイープ。Notion本文は手打ち禁止＝draftからコピペ。レビューは全修正後の完成パッケージに1回
 - [顔ぼかしは草川本人を除外・漏れは検出器＋目視の二段で潰す](feedback_face_blur_exclude_kusagawa_and_verify.md) — 2026-08-12新設。静止画1枚で子どもの顔が無加工のまま残っていた。動画は中央50%のLaplacianでランク→上位を目視
