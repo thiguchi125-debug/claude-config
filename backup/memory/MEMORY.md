@@ -40,6 +40,9 @@
 - [3本柱 v0 ハンドオフ](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — v0草案保管中。必要時「3本柱v0見せて」
 - [クラウドRoutine棚卸し2026-07](project_routine_cleanup_2026-07.md) — 停止4本・修理1本・現役4本
 
+- [令和8年熊本地震・JC支援物資](project_jc_kumamoto_shien_busshi.md) — **地震は2026-07-28発生**（素の知識に無い）。7/30-8/1の3日間・草川事務所が受入場所・主導は草川だが名義は亀山青年会議所。集計は公表可
+- [三寺コスモス畑の再生](project_mitsudera_cosmos_saisei.md) — 2026-07-20種まき80人・三寺町2.4ha・実行委中心＝まちのミライ亀山（代表草川）。10/17まつり。満開写真の原寸は捜索中
+
 ## 📦 移設済みルール束（詳細は各agent/SKILL末尾「📌恒久ガードルール」節）
 
 - [運用規約：タスク特化ルールは担当agent/SKILL常駐](feedback_rules_reside_in_agents.md) — 新feedbackは対象agent/SKILL末尾へ。横断ルールだけ個別行
