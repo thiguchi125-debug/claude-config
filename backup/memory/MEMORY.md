@@ -57,6 +57,7 @@
 
 - [資産価値直結の手続相談は二層分離＋照会の性格を記録](feedback_shisan_kachi_tetsuzuki_gaikan_kanri.md) — 2026-08-12新設。農振除外・農地転用等。氏名はDrive名簿区画1か所／Todoist件名・カレンダーも相談IDに／締切ものは行動制約3点＋制度上の帰結で書く
 - [gate.pyは並行セッションで承認記録を消し合う](feedback_gate_json_concurrent_overwrite.md) — deny時はまず本文でなく`_content_gate.json`の中身を疑う。通し直して同一ターンで書く。内部資料はファイル名に「メモ」を入れる
+- [update_status.pyは_pipeline_status.json破損で死活記録ごと落ちる](feedback_pipeline_status_json_corruption.md) — 2026-08-14 form-intakeで実発生。JSONDecodeErrorなら本文でなくこのファイルを疑い、bak取得→`raw_decode`で有効プレフィックス救出→再実行
 - [印刷物は参照ライブラリから入る・破綻ゼロは合格ではない](feedback_design_reference_library_first.md) — 2026-08-12新設。templates/でなく`design_system/references/`から参照1本を選び画像を自分でRead→造形5軸の数値を実装者へ→出力と参照を並べて採点（4/5軸で合格）
 - [成果物は古い版を閉じてから新しい版だけを開く](feedback_open_folder_after_generating_files.md) — 旧プレビューを閉じ新版だけopen＋`open <dir>`。実装＝`~/.claude/scripts/show_latest.sh`
 - [案件フォルダは番号付き構成＋README.md](feedback_project_folder_numbered_structure.md) — 01_最新PDF/02_原稿/03_参照/99_過去バージョン。中間物を直下に散らかさない・assetsはリネーム禁止
