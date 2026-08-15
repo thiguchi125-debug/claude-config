@@ -1,6 +1,10 @@
 {
-  "date": "2026-08-14",
+  "date": "2026-08-16",
   "new_count": 0,
   "items": [],
-  "errors": []
+  "errors": [
+    "Drive/Notion MCP不通のため取込未実行。ToolSearchを4通り（select:mcp__claude_ai_Google_Drive__download_file_content等／notion／drive／google workspace）試したが mcp__claude_ai_* は1件も存在せず。deferredツール一覧にもMCPは plugin:discord のみ。~/.claude/daemon-auth-status.json = auth_required、8/15の_intake.logも 'OAuth session expired and could not be refreshed'。claude.aiコネクタの再認証（claude /mcp もしくは再ログイン）が必要。",
+    "state（iken_poller_state.json）は未更新のため取りこぼしなし。再認証後に手動「フォーム取り込んで」で S1(49行)/S2(213行)/S3(148行) 以降の新着を再処理できる。",
+    "本夜は Notion・_citizen_voice/・iken_poller_state.json に一切書き込んでいない。"
+  ]
 }

@@ -7,7 +7,7 @@
 ## 🔄 進行中プロジェクト
 
 - [小中学校体育館エアコン アクション](project_taiikukan_aircon_action.md) — 8月WBGT分散測定→9月議会で柱1本→選挙後に署名。**「リース期間R9-R19だから2033年に間に合わない」は誤り**＝整備はR9完了
-- [ご意見箱フォーム夜間自動取込](project_form_intake_nightly.md) — launchd 3:30→📝市民意見リスト＋_citizen_voice。**残=初回キャッチアップ**。Drive read_file_contentはキャッシュ腐りで使用禁止
+- [ご意見箱フォーム夜間自動取込](project_form_intake_nightly.md) — launchd 3:30→📝市民意見リスト＋_citizen_voice。**8/15・8/16停止中＝claude.aiコネクタOAuth期限切れ・草川手番＝/mcp再認証**。Drive read_file_contentはキャッシュ腐りで使用禁止
 - [ファイル管理監査2026-07-22](project_file_audit_2026-07-22.md) — Drive直下4フォルダ正規形・💾Macローカルミラー新設。**残=パイプラインv4承認・Time Machine未設定・trash_pending承認**
 - [市政報告レポート川合町版＝チラシ完成形](project_shisei_report_kawaicho_complete_form.md) — report_kameokaテンプレの勝ちパターン。QR検証は必ずpyzbar
 - [content-pipelineに発信ビジュアル統合](project_content_pipeline_visual_expansion.md) — 記事URL＋写真→ブログ→サムネ＋SNS7種＋Reelを1パス。サムネは着手前に元写真有無を確認
