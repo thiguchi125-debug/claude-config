@@ -54,5 +54,33 @@
   },
   "effortLevel": "high",
   "theme": "auto",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "autoMode": {
+    "environment": [
+      "### Org-wide",
+      "**Organization**: None configured",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: assume private unless the remote host and repo name indicate otherwise, or a visibility check in the transcript shows public — no git remotes found for this working directory (not a git repository)",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: None configured",
+      "**Default / protected branches**: not queryable — no remotes/origin found for this directory (it is not a git repository)",
+      "**CI/CD deploy targets**: None configured",
+      "**Network posture**: None configured",
+      "**Source control**: no git remotes found for this working directory — treat as not a source-controlled project; the sibling repos found under home (~/claude-config, ~/projects/kameyama-kodomo-calendar) are unvetted candidates only, not adopted into scope",
+      "**Trusted internal domains**: None configured",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: www.city.kameyama.mie.jp (亀山市公式サイト — contacted repeatedly in this project's usage, informational/government reference site, not a write target)",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: personal/constituent data under this home directory's councillor-office workflow (e.g. 名簿・個人情報 folders, citizen inquiry records, meeting notes referencing named residents) — treat as personal data of named individuals; share only with audiences the user explicitly clears",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any host/namespace containing 'prod' or 'production' as a whole segment (none observed in this project's usage)",
+      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries 'prod' or 'production' as a whole word or name segment",
+      "### User-specific",
+      "**Primary use of Claude Code**: personal/administrative office work for a sitting city councillor (constituent correspondence, council-question drafting, SNS/blog content, meeting-note filing) — not software development",
+      "**Trusted repo**: none — this working directory (/Users/kusakawatakuya) is not a git repository (no remotes, 0 tracked files); treat file writes here as local personal-workspace operations, not repo commits/pushes",
+      "**Org-specific CLIs**: None configured",
+      "**Routine under /Users/kusakawatakuya/ prefix**: local file organization into the documented storage map (Drive intake folders, ~/outputs/, ~/publications/, ~/Archive/) as described in this directory's CLAUDE.md is routine personal file management, not deployment"
+    ]
+  }
 }
