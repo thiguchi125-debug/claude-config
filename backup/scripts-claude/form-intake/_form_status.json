@@ -1,10 +1,18 @@
 {
-  "date": "2026-08-16",
-  "new_count": 0,
-  "items": [],
-  "errors": [
-    "Drive/Notion MCP不通のため取込未実行。ToolSearchを4通り（select:mcp__claude_ai_Google_Drive__download_file_content等／notion／drive／google workspace）試したが mcp__claude_ai_* は1件も存在せず。deferredツール一覧にもMCPは plugin:discord のみ。~/.claude/daemon-auth-status.json = auth_required、8/15の_intake.logも 'OAuth session expired and could not be refreshed'。claude.aiコネクタの再認証（claude /mcp もしくは再ログイン）が必要。",
-    "state（iken_poller_state.json）は未更新のため取りこぼしなし。再認証後に手動「フォーム取り込んで」で S1(49行)/S2(213行)/S3(148行) 以降の新着を再処理できる。",
-    "本夜は Notion・_citizen_voice/・iken_poller_state.json に一切書き込んでいない。"
-  ]
+  "date": "2026-08-18",
+  "new_count": 1,
+  "items": [
+    {
+      "row_id": "S1-50",
+      "date": "2026/08/17",
+      "district": "亀山南小学校区（亀山地区）",
+      "domain": "urbanplanning_industry",
+      "urgency": "低",
+      "summary": "コストコ誘致とリニアに疑問（雇用は非正規中心・素通り懸念）。道路整備先行にも異議。リニアより関西本線の名古屋まで完全電化・時間短縮・増便を。新庁舎の御幸町立地に水害懸念、AI活用で職員・議員定数の削減を（70代・とぶんだ様・連絡先記入なし）",
+      "notion_url": "https://app.notion.com/p/3bfcf503a68f81ecb1d8c5d0400e7009?pvs=204",
+      "skipped": false,
+      "urgent": false
+    }
+  ],
+  "errors": []
 }
