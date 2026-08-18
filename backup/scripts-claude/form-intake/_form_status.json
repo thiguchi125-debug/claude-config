@@ -1,15 +1,15 @@
 {
-  "date": "2026-08-18",
+  "date": "2026-08-19",
   "new_count": 1,
   "items": [
     {
-      "row_id": "S1-50",
-      "date": "2026/08/17",
-      "district": "亀山南小学校区（亀山地区）",
-      "domain": "urbanplanning_industry",
+      "row_id": "S1-51",
+      "date": "2026/08/18",
+      "district": "昼生",
+      "domain": "dx_administrative",
       "urgency": "低",
-      "summary": "コストコ誘致とリニアに疑問（雇用は非正規中心・素通り懸念）。道路整備先行にも異議。リニアより関西本線の名古屋まで完全電化・時間短縮・増便を。新庁舎の御幸町立地に水害懸念、AI活用で職員・議員定数の削減を（70代・とぶんだ様・連絡先記入なし）",
-      "notion_url": "https://app.notion.com/p/3bfcf503a68f81ecb1d8c5d0400e7009?pvs=204",
+      "summary": "市議会だよりの議会用語が難しく解説の拡充を要望（あわせて亀山健康弁当の継続販売要望）・匿名40代・昼生小学校区・連絡先なし",
+      "notion_url": "https://app.notion.com/p/3c0cf503a68f8132ac34db4c4f445e36?pvs=204",
       "skipped": false,
       "urgent": false
     }

@@ -56,6 +56,24 @@ def main():
             json.dump(seen, f)
     except OSError:
         pass
+    prune(STATE_DIR)
+
+
+def prune(d, days=14):
+    """終了済みセッションの状態ファイルを溜めない。"""
+    import time
+    cutoff = time.time() - days * 86400
+    try:
+        names = os.listdir(d)
+    except OSError:
+        return
+    for n in names:
+        p = os.path.join(d, n)
+        try:
+            if os.path.getmtime(p) < cutoff:
+                os.remove(p)
+        except OSError:
+            pass
 
 
 if __name__ == "__main__":

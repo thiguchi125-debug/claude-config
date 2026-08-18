@@ -37,6 +37,28 @@
             "command": "python3 $HOME/.claude/hooks/content_safety_gate.py"
           }
         ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/hooks/image_reread_guard.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/hooks/context_budget_notice.py",
+            "timeout": 10
+          }
+        ]
       }
     ]
   },
