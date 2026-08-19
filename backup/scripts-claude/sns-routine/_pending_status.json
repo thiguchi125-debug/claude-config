@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-19T08:41:13",
+ "updated": "2026-08-20T07:28:52",
  "waiting": [],
  "retired": [
   {
@@ -9,7 +9,7 @@
    "project": "🏛 議員活動",
    "due_proposed": "2026-07-27",
    "priority": "通常",
-   "age_days": 26,
+   "age_days": 27,
    "status": "retired_no_reply"
   },
   {
@@ -19,7 +19,7 @@
    "project": "🏛 議員活動",
    "due_proposed": "2026-07-27",
    "priority": "通常",
-   "age_days": 26,
+   "age_days": 27,
    "status": "retired_no_reply"
   }
  ],
@@ -27,7 +27,15 @@
   {
    "dest": "sns_delivery",
    "title": ""
+  },
+  {
+   "dest": "sns_delivery",
+   "title": ""
+  },
+  {
+   "dest": "sns_delivery",
+   "title": ""
   }
  ],
- "text": "🗑 無応答で退避された分 2件（内容を見て復活させるか判断）\n  ・26日前の提案 亀山市にも同じ制度がスタートしていることをPRするSNS投稿文を作成（対象制度は元記事要確認）（🏛 議員活動）\n  ・26日前の提案 熱中症対策の亀山市の取組・できることのネタ収集（街頭演説・ブログ用）（🏛 議員活動）\n📦 Notion書込待ちキュー 1件（_notion_queue.jsonl・flush要）\n  ・sns_delivery: \n→ 「①OK」「①は期限来週で」「②不要」で処理。期限を付けるものは task-add（カレンダー突合）を通します。"
+ "text": "🗑 無応答で退避された分 2件（内容を見て復活させるか判断）\n  ・27日前の提案 亀山市にも同じ制度がスタートしていることをPRするSNS投稿文を作成（対象制度は元記事要確認）（🏛 議員活動）\n  ・27日前の提案 熱中症対策の亀山市の取組・できることのネタ収集（街頭演説・ブログ用）（🏛 議員活動）\n📦 Notion書込待ちキュー 3件（_notion_queue.jsonl・flush要）\n  ・sns_delivery: \n  ・sns_delivery: \n  ・sns_delivery: \n→ 「①OK」「①は期限来週で」「②不要」で処理。期限を付けるものは task-add（カレンダー突合）を通します。"
 }
