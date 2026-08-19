@@ -46,6 +46,7 @@ GUARDED = {
 EXEMPT_PAGES = {
     "391cf503a68f8191b218e80fdc7aedeb",  # 📥未分類インテーク（smart-intakeの締めループ）
     "39dcf503a68f811bbdd3cce4e418187a",  # 📮SNS便ステータス（朝夕便の納品記録）
+    "722beb9e9827421aa5dbbef67c1c4688",  # 🌅朝のダッシュボード（ohayoの3セクション・公開経路なし）
 }
 
 # nichijo日次ログ／デイリーサマリはページIDが毎日変わるので、ID では押さえられない。
