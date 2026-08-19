@@ -81,6 +81,7 @@
 - **画像は溜め込まない**: 1枚約1,500トークンを**セッション終了まで**占有する。8月の画像Read 602件のうち**38%が同一ファイルの2度読み**だった。中身が変わっていない画像の再Readは PreToolUseフック `image_reread_guard.py` が deny する（再レンダ後＝mtimeが動いた読み直しは通る）。
 - **画像を伴う反復作業はサブエージェントへ隔離**: デザイン実装ループ（print-layout-architect／natural-design-reviewer）・Chrome自動化は、スクショが親セッションに残らないようAgent側で回す。
 - **探索はBash（grep/sed/head）を優先**: Readは全文が文脈に残る。必要な箇所だけ `sed -n` で抜く。
+- **効果測定**: `python3 ~/.claude/scripts/token_report.py 14`（日別・集中度・画像2度読み率・起動時文脈）。第2引数に `MM-DD` で対策前後の比較。
 
 ## 新セッション再開時
 「いま何をしていて、どこまで進んだか」を1-2文で伝えれば追従可。MEMORY.md は自動読込。
