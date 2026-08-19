@@ -1,18 +1,6 @@
 {
-  "date": "2026-08-19",
-  "new_count": 1,
-  "items": [
-    {
-      "row_id": "S1-51",
-      "date": "2026/08/18",
-      "district": "昼生",
-      "domain": "dx_administrative",
-      "urgency": "低",
-      "summary": "市議会だよりの議会用語が難しく解説の拡充を要望（あわせて亀山健康弁当の継続販売要望）・匿名40代・昼生小学校区・連絡先なし",
-      "notion_url": "https://app.notion.com/p/3c0cf503a68f8132ac34db4c4f445e36?pvs=204",
-      "skipped": false,
-      "urgent": false
-    }
-  ],
+  "date": "2026-08-20",
+  "new_count": 0,
+  "items": [],
   "errors": []
 }
