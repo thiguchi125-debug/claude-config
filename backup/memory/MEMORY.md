@@ -51,6 +51,8 @@
 ## 📌 常時効く横断ルール（タスク別は GUARDRAILS.md）
 
 - [資産価値直結の手続相談は二層分離](feedback_shisan_kachi_tetsuzuki_gaikan_kanri.md) — 農振除外・農地転用。氏名は名簿区画1か所
+- [無人oyasumiは安全ゲートでNotion作成できない](feedback_oyasumi_blocked_by_content_gate.md) — create-pagesは免除対象外・ローカル退避
+- [市民意見リストDBに「対応状況」は無い](feedback_iken_db_no_taio_status.md) — 未対応集計は「未完了（要対応）」ビュー
 - [gate.pyは並行セッションで承認記録を消し合う](feedback_gate_json_concurrent_overwrite.md) — deny時はまず`_content_gate.json`を疑う
 - [update_status.pyは_pipeline_status.json破損で落ちる](feedback_pipeline_status_json_corruption.md) — JSONDecodeErrorはこれ
 - [印刷物は参照ライブラリから入る](feedback_design_reference_library_first.md) — `design_system/references/`から参照1本を自分でRead
