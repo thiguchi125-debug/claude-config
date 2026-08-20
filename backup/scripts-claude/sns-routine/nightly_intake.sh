@@ -8,6 +8,22 @@ CLAUDE_BIN="/Users/kusakawatakuya/.local/bin/claude"
 TS() { date "+%Y-%m-%d %H:%M:%S"; }
 echo "[$(TS)] ---- start ----" >> "$LOG"
 
+# ---- 朝デッドライン（2026-08-21追加） ----
+# 夜間ジョブが retry のスリープを跨いで朝の混雑帯（news-briefing 6:05 / SNS便 6:45）に
+# 着地し、5セッション同時稼働でトークンを一気に焼く事故の再発防止。
+# 05:30を過ぎたらその夜は打ち切る。Discord原本と _pending_tasks.jsonl は残るので翌夜に回る。
+MORNING_DEADLINE=530
+past_deadline() {
+  local now; now=$((10#$(date +%H%M)))
+  [ "$now" -ge "$MORNING_DEADLINE" ] && [ "$now" -lt 1200 ]
+}
+abort_morning() {
+  echo "[$(TS)] ABORT: 朝デッドライン($MORNING_DEADLINE)超過のため中断（$1）。翌夜に持ち越し" >> "$LOG"
+  python3 "$DIR/update_status.py" discord_intake error "朝デッドライン超過で中断（$1）・翌夜再処理"
+  exit 0
+}
+past_deadline && abort_morning "起動時点で既に朝"
+
 # ネットワーク疎通待ち（スリープ復帰直後のWi-Fi未接続対策・最大3分）
 # 2026-07-18〜21にENOTFOUND/Connection closedで4夜連続失敗した再発防止（2026-07-23追加）
 wait_net() {
@@ -29,7 +45,7 @@ for ATTEMPT in 1 2; do
     break
   fi
   echo "[$(TS)] FETCH_ERROR (attempt $ATTEMPT)" >> "$LOG"
-  [ "$ATTEMPT" = "1" ] && { echo "[$(TS)] retrying fetch in 30min" >> "$LOG"; sleep 1800; }
+  [ "$ATTEMPT" = "1" ] && { echo "[$(TS)] retrying fetch in 5min" >> "$LOG"; sleep 300; past_deadline && abort_morning "fetch retry待ちで朝になった"; }
 done
 if [ "$FETCH_OK" = "0" ]; then
   python3 "$DIR/update_status.py" discord_intake error "Discord API取得失敗（2回試行・原本はDiscordに保全）"
@@ -55,7 +71,7 @@ else
       break
     fi
     echo "[$(TS)] TRIAGE_ERROR (attempt $ATTEMPT)" >> "$LOG"
-    [ "$ATTEMPT" = "1" ] && { echo "[$(TS)] retrying triage in 30min" >> "$LOG"; sleep 1800; wait_net; }
+    [ "$ATTEMPT" = "1" ] && { echo "[$(TS)] retrying triage in 5min" >> "$LOG"; sleep 300; past_deadline && abort_morning "triage retry待ちで朝になった"; wait_net; }
   done
   if [ "$TRIAGE_OK" = "1" ]; then
     python3 "$DIR/update_status.py" discord_intake ok "${COUNT}件処理"
@@ -67,9 +83,17 @@ else
   fi
 fi
 
+past_deadline && abort_morning "stage1完了時点で朝"
+
 # ---- ステージ2: 候補パック生成（新着/pending処理があった夜、または週1回月曜は新着0件でも必ず） ----
 DOW=$(date +%u)
-if [ "$COUNT" -gt 0 ] || [ "$PENDING" -eq 1 ] || [ "$DOW" = "1" ]; then
+# 2026-08-21: 停止中。起動条件が「Discord新着の有無」であって「💡候補の在庫」ではないため、
+# ネタDBが空のまま15夜連続で0件パックを生成し続け、1夜あたり約2.7Mトークンを空焼きしていた。
+# 仕組みの再設計が済むまでフラグで止める。再開は _pack_disabled を消すだけ。
+if [ -f "$DIR/_pack_disabled" ]; then
+  echo "[$(TS)] stage2 skipped (_pack_disabled: 再設計待ち)" >> "$LOG"
+  python3 "$DIR/update_status.py" sns_pack ok "停止中（再設計待ち）"
+elif [ "$COUNT" -gt 0 ] || [ "$PENDING" -eq 1 ] || [ "$DOW" = "1" ]; then
   echo "[$(TS)] stage2 pack -> claude -p (dow=$DOW)" >> "$LOG"
   cd "$HOME"
   if "$CLAUDE_BIN" -p "$(cat "$DIR/pack_prompt.md")" \
@@ -87,6 +111,7 @@ else
 fi
 
 # ---- ステージ3: 動画夜間フル制作（_video_queue.txt が非空の時だけ起動・0件夜はclaude起動なし） ----
+past_deadline && abort_morning "stage2完了時点で朝"
 VQ="$DIR/_video_queue.txt"
 if [ -s "$VQ" ]; then
   echo "[$(TS)] stage3 video -> claude -p" >> "$LOG"
