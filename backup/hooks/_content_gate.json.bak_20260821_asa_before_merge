@@ -1,0 +1,11 @@
+{
+ "generated_at": "2026-08-21T06:48:53",
+ "ttl_minutes": 120,
+ "approved": [
+  {
+   "file": "2026-08-21_公共交通SNS7PF_メモ_v5メタ更新.md",
+   "fp": "f18f820946d3dc63",
+   "text": "状態(2026-08-21時点):content-fact-checker✅→content-risk-reviewer✅。v4→v5でTikTok・LINE公式の片面性を解消(新規MEDIUM2件・LOW2件を反映済み。HIGH・CRITICALなし)。残置・再利用の運用注記(投稿日2026-08-21/P1通常期・投票日まで65日)"
+  }
+ ]
+}
