@@ -1,33 +1,6 @@
 ---
 name: daily-content-generator
-description: |
-  草川たくや（亀山市議会議員）の**当日発信フルパッケージ**を1パスで生成する日次オーケストレータースキル。
-  Notion（🎯政策・質問ネタDB（統一・42716725）／📣SNS投稿管理DB／📋市民意見受付BOX／📰ニュースDB／📒nichijo日次ログ）から
-  当日テーマ候補を棚卸し→2〜3本を4軸スコアリングで選定→事実検証→
-  ブログ＋7SNS（X単発/Xスレッド/Threads/Instagram/Facebook/LINE/YouTube/TikTok）＋
-  ショート動画原稿＋差し込み画像プロンプトを一括生成、安全ゲート（content-fact-checker→content-risk-reviewer）通過後に
-  `~/outputs/daily-content/<日付>/`（絶対パス・cwd非依存）へ揃える。
-
-  「今日の発信」「日次配信」「daily content」「今日のフルパッケージ」「全チャネル回して」「daily-content-generator」
-  「ブログとSNSと動画まとめて」「今日の発信ネタ選んで全部作って」等で起動。
-  ohayoスキルで朝の3案提案を確認→草川承認→本スキルでフル展開、という連結運用が標準。
-
-  本スキルは**薄いオーケストレーター**で、実装は既存資産にフル委譲する：
-  - テーマ候補棚卸し: Notion MCP直接クエリ
-  - 事実検証: policy-researcher / kameyama-researcher 並列
-  - ブログ生成: blog-writer（深掘り）or blog-writer-normal（市民向け）
-  - SNS生成（7PF）: sns-content-creator
-  - ショート動画: short-video-virality-architect
-  - 画像プロンプト: nanobanana-prompt-designer
-  - 安全ゲート: content-fact-checker → content-risk-reviewer（CLAUDE.md必須）
-  - Notion保存: notion-saver
-
-  Do NOT use when:
-  - 単発テーマだけ深掘りしたい（→ content-pipeline 直接起動）
-  - 録音/文字起こし素材から1記事だけ作る（→ content-pipeline）
-  - 議会答弁書・委員会資料（→ council-material-creator）
-  - 当日の活動記録からコンテンツ抽出（→ nichijo の「今日のコンテンツ抽出」モード）
-  - ショート動画1本だけ（→ short-video-create）
+description: 当日の発信フルパッケージを1パスで生成する日次オーケストレーター。Notion（🎯政策・質問ネタDB／📣SNS投稿管理DB／📋市民意見受付BOX／📰ニュースDB／📒nichijo日次ログ）から当日テーマを棚卸し→4軸スコアリングで2〜3本選定→事実検証→ブログ＋7SNS＋ショート動画原稿＋差し込み画像プロンプトを一括生成→安全ゲート（content-fact-checker→content-risk-reviewer）通過後に `~/outputs/daily-content/<日付>/` へ揃える。実装は既存agentへ全委譲（委譲先の対応表は本文「用途｜委譲先」節）。ohayoの朝3案→草川承認→本スキルでフル展開が標準の連結運用。Triggers: 今日の発信/日次配信/daily content/今日のフルパッケージ/全チャネル回して/daily-content-generator/ブログとSNSと動画まとめて/今日の発信ネタ選んで全部作って。NOT: 単発テーマの深掘り・録音/文字起こしから1記事→content-pipeline、議会答弁書・委員会資料→council-material-creator、当日の活動記録からの抽出→nichijoの「今日のコンテンツ抽出」モード、ショート動画1本→short-video-create
 ---
 
 # Daily Content Generator
