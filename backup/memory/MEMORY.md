@@ -40,6 +40,8 @@
 - [クラウドRoutine棚卸し](project_routine_cleanup_2026-07.md) — 停止4・修理1・現役4
 - [熊本地震JC支援物資](project_jc_kumamoto_shien_busshi.md) — **地震は2026-07-28発生**（素の知識に無い）
 - [三寺コスモス畑の再生](project_mitsudera_cosmos_saisei.md) — 10/17まつり。代表＝草川
+- [トークン削減2026-08-20](project_token_reduction_2026-08-20.md) — 真因は印刷物の画像積み上げ。25枚でdenyするhook導入
+- [止まっていた自動化の復活](project_stalled_automation_revival_2026-08-20.md) — oyasumi毎晩23:30・gyakusan月曜6:30をlaunchd化
 
 ## 📦 移設済みルール束（詳細は各agent/SKILL末尾「📌恒久ガードルール」節）
 
