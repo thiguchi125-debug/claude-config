@@ -13,4 +13,6 @@ metadata:
 
 **How to apply:** 無人runでは create-pages を強行せず `~/outputs/oyasumi/<日付>/` にmd保存し、朝のダッシュボード（免除対象）の「📔 昨夜のまとめ」にローカルパスと要対応を書いて草川へ引き継ぐ。恒久解は EXEMPT_PAGES ではなく「親ページが 📔夜のまとめ `34ecf503-a68f-8182-99d3-fabb7e7c4c5e` / 📅週次レポート `34ecf503-a68f-81b0-9275-d34249f59cf6` の create-pages を免除する」条件を hook に足すこと（どちらも公開経路なし）。草川の承認が要る。
 
+**2026-08-21 追記（回避策の実測）:** `notion-create-pages` でも **content を渡さずプロパティだけ**なら gate は通る（hookのメッセージも「プロパティだけの更新は止めません」と明示）。無人runは①プロパティのみのレコード（📅ミーティングノートDB・📂Drive資料サマリDB・日次ルーティンログのシェル）はNotionに作る②本文は `~/outputs/oyasumi/<日付>/` のmdへ、で分ければ台帳の欠落は防げる。要約テキストは「プロパティ」なので通る。
+
 関連＝[[feedback-safety-gates-before-notion-save]]／[[feedback-gate-json-concurrent-overwrite]]
