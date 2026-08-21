@@ -14,6 +14,7 @@
 - [Discord3チャンネル分離](project_discord_channel_split.md) — 運用中（投げ込み/納品/ログ）
 - [SNS発信ルーティンv3](project_sns_routine_v2.md) — 朝6:45/夕19:30にDM納品。次＝Phase4
 - [発信候補パック夜間ジョブがゲートでdeny](project_hakushin_pack_gate_deny.md) — 未修理
+- [newsダイジェスト更新がゲートでdeny](project_news_briefing_digest_gate_deny.md) — 真因特定済・**草川手番＝除外2ID追加の承認**
 - [AIくさかわ](project_ai_kusakawa.md) — 実装済。**草川手番待ち**＝ElevenLabs登録・キャラ生成
 - [gyakusanスキル](project_gyakusan_skill.md) — 初回実運用待ち
 - [答弁トラッカー＋実績コンパイラー](project_toben_tracker.md) — SNS実査は毎回伺い必須
