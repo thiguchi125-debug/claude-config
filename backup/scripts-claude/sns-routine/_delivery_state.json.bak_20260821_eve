@@ -1,0 +1,18 @@
+{
+ "leg": "morning",
+ "date": "2026-08-21",
+ "delivery_msg_id": "1540122045793177600",
+ "morning_delivery_msg_id": "1540122045793177600",
+ "evening_delivery_msg_id": "1539949899385274459",
+ "delivery_msg_ids": {
+  "header": "1540122045793177600",
+  "inbox_question": "1540122139879809084"
+ },
+ "hold": {
+  "status": "HIGH_HOLD_AWAITING_APPROVAL",
+  "theme": "亀山市地域クラブ活動基本方針（8/20全員協議会）——休日の部活動、工程に日付が入った",
+  "draft": "~/.claude/projects/-Users-kusakawatakuya/drafts/2026-08-21_朝便SNS_地域クラブ活動基本方針_工程に日付が入った_v3.md",
+  "release_on": "承知で／保険なしで／待つ／パス"
+ },
+ "note": "8/21朝便。安全ゲート2段とも実起動。fact-checkerがREVISE（最大の発見＝8/20全員協議会資料『亀山市地域クラブ活動基本方針』の存在。6月答弁だけでは2か月古く、かつ『平日の部活動は残ります』が方針p.5・p.10に反する誤りだった）。risk-reviewerがASK_USER・HIGH1件（方針が市サイト未掲載＝市民が裏を取れない状態で議員SNSが第一報になる。全員協議会規程8条ただし書があるため当日の公開/非公開は草川本人しか確認できない）。規定どおり本文は出さず保留し、#delivery に保留通知・#inbox に1問を投げた。原稿v3は案A（MEDIUM/LOW全反映）で完成済み・字数もX152/Threads480/Facebook798で全PF規定内。承諾があれば返信便がそのまま出せる。"
+}
