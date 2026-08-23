@@ -15,4 +15,6 @@ metadata:
 
 **2026-08-21 追記（回避策の実測）:** `notion-create-pages` でも **content を渡さずプロパティだけ**なら gate は通る（hookのメッセージも「プロパティだけの更新は止めません」と明示）。無人runは①プロパティのみのレコード（📅ミーティングノートDB・📂Drive資料サマリDB・日次ルーティンログのシェル）はNotionに作る②本文は `~/outputs/oyasumi/<日付>/` のmdへ、で分ければ台帳の欠落は防げる。要約テキストは「プロパティ」なので通る。
 
+**2026-08-24 追記（news-briefing も同じ壁）:** 朝のニュース収集 v4-local も Step 4／Step 5 が同じ hook で deny された。止まるのは **📰今朝のニュースダイジェスト `391cf503-a68f-8194-be35-fec5aede8a5e` の replace_content** と **📰dedupインデックス `391cf503-a68f-8110-88a7-c5a70e6741c8` の update_content** の2つ。どちらも朝のダッシュボード配下だが、免除は親でなく**ページID単位**なので効かない。一方 **📰ニュースDBへの create-pages は通った**（見出し・概要・議会活用メモを全部 properties で渡しているため）。つまり news-briefing は「DB登録は生き、ohayo が読む出口だけ死ぬ」＝翌朝 ohayo が前日の古いダイジェストを読む、という一番わかりにくい壊れ方をする。退避先は `~/.claude/projects/-Users-kusakawatakuya/drafts/<日付>_news_digest.md` と `<日付>_dedup_index_rows.md`。**dedupインデックスが更新できないと翌日の重複判定が効かない**ので、退避したら草川に必ず知らせる。恒久解は上記2ページIDを EXEMPT_PAGES に足すこと（どちらも内部台帳で公開経路なし）。草川の承認が要る。
+
 関連＝[[feedback-safety-gates-before-notion-save]]／[[feedback-gate-json-concurrent-overwrite]]
