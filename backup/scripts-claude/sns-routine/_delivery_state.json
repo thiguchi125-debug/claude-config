@@ -9,8 +9,8 @@
   "X": "1541241777363755071",
   "Threads": "1541241787132285082",
   "Facebook": "1541241798171562106",
-  "final": "UNCONFIRMED_TIMEOUT",
-  "inbox_high_note": "UNCONFIRMED_TIMEOUT"
+  "final": "1541245482670489700",
+  "inbox_high_note": "1541246002537959554"
  },
  "hold": {
   "status": "HIGH_HOLD_AWAITING_APPROVAL",
@@ -25,5 +25,5 @@
   "8/23夕便 夕便ゲートA/B/C（夕便でも2エージェント実起動するか）＋_notion_queue.jsonl滞留4件の処理",
   "8/24朝便 risk HIGH＝Threadsの『亀山が遅れている』構図。A案を適用して納品済み。B/C/Dなら差し替え"
  ],
- "note": "8/24朝便。納品は6:45予定に対し約40分遅れ。DM投げ込みゼロ・繰越返信ゼロ（前回夕便納品以降の本人メッセージ0件）＝写真なしのためInstagramなし。📰ニュースダイジェストは本日分が未生成（6:19起動のまま終了行なし）だったため、亀山市公式・三重県報道発表一覧・iJAMP見出し(8/24)を自力で当たって素材収集。安全ゲートは content-fact-checker → content-risk-reviewer の順に実起動。fact=REVISE（重大1件=クマのマップ/アプリ開始時期の合成エラー、3PF全てに混入していたため全面修正）。risk=ASK_USER HIGH1・MEDIUM3・LOW4、HIGHはA案を適用のうえ納品しinboxで事後確認。最終通と確認DMはdiscord_api.pyのタイムアウトで送達未確認（要確認）。"
+ "note": "8/24朝便。納品は6:45予定に対し約40分遅れ。DM投げ込みゼロ・繰越返信ゼロ（前回夕便納品以降の本人メッセージ0件）＝写真なしのためInstagramなし。📰ニュースダイジェストは本日分が未生成（6:19起動のまま終了行なし）だったため、亀山市公式・三重県報道発表一覧・iJAMP見出し(8/24)を自力で当たって素材収集。安全ゲートは content-fact-checker → content-risk-reviewer の順に実起動。fact=REVISE（重大1件=クマのマップ/アプリ開始時期の合成エラー、3PF全てに混入していたため全面修正）。risk=ASK_USER HIGH1・MEDIUM3・LOW4、HIGHはA案を適用のうえ納品しinboxで事後確認。最終通と確認DMは初回送信がdiscord_api.pyの一時障害（Remote end closed connection・4回再試行後も失敗）で落ちたため個別に再送し送達確認済み。長文の連続postはタイムアウトしやすいので1通ずつ送るのが安全。"
 }

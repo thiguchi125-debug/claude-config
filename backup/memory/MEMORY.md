@@ -81,6 +81,7 @@
 - [15:00-18:30は挨拶回り優先枠](feedback_greeting_rounds_time_reserve.md) — 作業ブロックで埋めない
 - [brainstormingのトークン浪費](feedback_brainstorming_token_efficiency.md) — design docは3000字以内
 - [「亀山」typo再発防止](feedback_kameyama_kanji_typo_guard.md) — JSONのunicode escape禁止
+- [更新日は提供開始日ではない](feedback_koushinbi_is_not_start_date.md) — 案内ページの更新日で開始時期を代用しない（合成エラー）
 - [草川 役職・所属委員会マスタ](feedback_kusagawa_role_committee_master.md) — 教育民生委員会の委員
 
 ## 🔗 外部参照ポインタ
