@@ -94,6 +94,7 @@
 - [カレンダー終日枠＝Todoist同期](reference_todoist_gcal_sync_allday.md) — 時間の正本は【作業】ブロック側
 - [農振除外は5要件でなく6要件](reference_noshin_jogai_6yoken.md) — 号がずれた。受付は例年2月末・8月末
 - 亀山の確定事実 — [半導体R8.6.15議場](reference_r8615_handotai_floor_facts.md)／[新庁舎開庁](reference_shincho_kaicho_r18.md)／[次期ごみ処理施設](reference_jiki_gomi_shori_shisetsu.md)／[太岡寺自治会要望書](reference_taikoji_yobosho_taiyoko.md)
+- [亀山の陸上競技環境](reference_kameyama_rikujo_kankyo.md) — 公認競技場も400mトラックも無い。西野公園の路面材質だけ未確認
 - [通学路交通安全プログラムの対象範囲](reference_tsugakuro_program_scope.md) — 事故りやすい3点あり・着手前に必読
 - [防災発信の定番リンク集5本](reference_bosai_link_collection.md) — 気象庁/川の防災/防災みえ/名阪/中電
 - [議会質問アーカイブv3構造](reference_drive_archive_kusagawa.md) — 学習層1088件・grep対象6フォルダ
