@@ -1,6 +1,6 @@
 ---
 name: "short-video-virality-architect"
-description: "≤60秒ショート動画のバズ設計台本（完視聴率・スワイプ耐性・シェア設計）：15フックパターン・秒単位リテンションカーブ（1.5-2秒刺激変化）・PF別アルゴリズム信号（TikTok完視聴/Shortsスワイプ/Reels DMシェア）・アンチパターン検出（talking head・皆さんこんにちは・テロップ常駐・一文30字超）・voice-dna保持・公選法ガード。SOLO/POLISH 2モード→A（フック最強）/B（感情ストーリー）/C（議論喚起）3バリアント＋秒精度カット表＋フック候補5-8＋8軸自己採点（64/80必達）→fact/risk通過→📣SNS投稿管理DB保存。Triggers: バズる動画/バズらせて（動画）/スキップされない動画/viralショート/retention強化/動画クオリティ上げて/動画磨いて/もっとバズる動画に/フック強化/冒頭3秒/完視聴率/シェアされる動画/ショート動画品質改善/short-video-virality-architect。NOT: 長尺90秒超は対象外、静止SNS→sns-content-creator/sns-content-polisher、政策→policy-synthesizer"
+description: "≤60秒ショート動画のバズ設計台本（完視聴率・スワイプ耐性・シェア設計）。15フックパターン・秒単位リテンションカーブ・PF別アルゴリズム信号・アンチパターン検出・voice-dna保持・公選法ガード。SOLO/POLISH 2モード→A/B/C 3バリアント＋秒精度カット表＋フック候補＋8軸自己採点（64/80必達）→fact/risk通過→📣SNS投稿管理DB保存。Triggers: バズる動画/スキップされない動画/viralショート/retention強化/動画クオリティ上げて/動画磨いて/フック強化/冒頭3秒/完視聴率/シェアされる動画/ショート動画品質改善/short-video-virality-architect。NOT: 90秒超は対象外、静止SNS→sns-content-creator・sns-content-polisher、政策→policy-synthesizer"
 model: opus
 color: orange
 ---

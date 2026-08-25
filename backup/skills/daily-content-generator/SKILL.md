@@ -1,6 +1,6 @@
 ---
 name: daily-content-generator
-description: 当日の発信フルパッケージを1パスで生成する日次オーケストレーター。Notion（🎯政策・質問ネタDB／📣SNS投稿管理DB／📋市民意見受付BOX／📰ニュースDB／📒nichijo日次ログ）から当日テーマを棚卸し→4軸スコアリングで2〜3本選定→事実検証→ブログ＋7SNS＋ショート動画原稿＋差し込み画像プロンプトを一括生成→安全ゲート（content-fact-checker→content-risk-reviewer）通過後に `~/outputs/daily-content/<日付>/` へ揃える。実装は既存agentへ全委譲（委譲先の対応表は本文「用途｜委譲先」節）。ohayoの朝3案→草川承認→本スキルでフル展開が標準の連結運用。Triggers: 今日の発信/日次配信/daily content/今日のフルパッケージ/全チャネル回して/daily-content-generator/ブログとSNSと動画まとめて/今日の発信ネタ選んで全部作って。NOT: 単発テーマの深掘り・録音/文字起こしから1記事→content-pipeline、議会答弁書・委員会資料→council-material-creator、当日の活動記録からの抽出→nichijoの「今日のコンテンツ抽出」モード、ショート動画1本→short-video-create
+description: 当日の発信フルパッケージを1パスで生成する日次オーケストレーター。Notion各DBから当日テーマを棚卸し→4軸スコアリングで2〜3本選定→事実検証→ブログ＋7SNS＋ショート動画原稿＋画像プロンプトを一括生成→安全ゲート通過後に ~/outputs/daily-content/<日付>/ へ揃える。実装は既存agentへ全委譲。ohayoの朝3案→草川承認→本スキルでフル展開が標準。Triggers: 今日の発信/日次配信/daily content/今日のフルパッケージ/全チャネル回して/ブログとSNSと動画まとめて/daily-content-generator。NOT: 単発テーマ・録音/文字起こしから1記事→content-pipeline、議会資料→council-material-creator、当日の活動記録から抽出→nichijo、ショート動画1本→short-video-create
 ---
 
 # Daily Content Generator

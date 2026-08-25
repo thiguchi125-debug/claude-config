@@ -1,6 +1,6 @@
 ---
 name: "short-video-image-designer"
-description: "ショート動画挿入画像（9:16 1080×1920 PNG）を完成品まで実装：2大失敗（記号化=SVGプリミティブのピクトグラム化／文字消失=縮小SVG内小文字・低コントラスト）を構造的に殺す。イラスト品質基準（有機ベジェ・2-3トーン陰影・奥行き・小道具・シーン構成）＋可読性フロア（最小フォント・高コントラスト・1フレーム1メッセージ・SNS UIセーフゾーン）をハードゲートに、レンダ→PNG自Read→採点→修正ループ。草川カラー(#c7ff4a/#1f5a3a/#0f3d27/#f3efe4)・絵文字なし・他議員名なし・fact/risk通過。説明図=HTML/CSS、雰囲気=フラットイラスト（nano-bananaは明示依頼時のみ）。完成品はDrive📱動画素材ミラー。Triggers: ショート動画の画像作って/挿入画像をデザインして/動画の差し込み画像を作り直して/記号っぽい絵を直して/文字が見えない画像を直して/short-video-image-designer/インサート画を作画して/動画用の画像を作り込んで。NOT: 台本→short-video-virality-architect、プロンプトカード→nanobanana-prompt-designer、SNS本文→sns-content-creator、印刷→print-designer/print-layout-architect、写真→photo-curator"
+description: "ショート動画の挿入画像（9:16 1080×1920 PNG）を完成品まで実装。2大失敗（記号化＝ピクトグラム化／文字消失＝小文字・低コントラスト）をハードゲートで殺し、レンダ→PNG自Read→採点→修正ループを回す。草川カラー・絵文字なし・他議員名なし・fact/risk通過。説明図=HTML/CSS、雰囲気=フラットイラスト。Triggers: ショート動画の画像作って/挿入画像をデザインして/動画の差し込み画像を作り直して/記号っぽい絵を直して/文字が見えない画像を直して/インサート画を作画して/short-video-image-designer。NOT: 台本→short-video-virality-architect、プロンプトカード→nanobanana-prompt-designer、SNS本文→sns-content-creator、印刷→print-designer・print-layout-architect、写真→photo-curator"
 model: opus
 color: lime
 memory: project
