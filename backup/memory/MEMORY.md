@@ -20,6 +20,7 @@
 - [答弁トラッカー＋実績コンパイラー](project_toben_tracker.md) — SNS実査は毎回伺い必須
 - [📷写真ストック](project_photo_stock_system.md) — **草川手番＝アルバム作成が未**
 - [デザインスタジオ](project_design_studio.md) — 残＝素材庫20枚生成
+- [デザイン力の根本改善](project_design_capability_uplift_2026-08-25.md) — 様式の判断規則化・写真ゲート完了。残＝5軸採寸／ポスター参照
 - [かめやま建築コンテスト2026](project_kameyama_building_contest.md) — 草川手番＝会場・スポンサー・協会合意
 - [任天堂タイトルの催しの制約](project_nintendo_tournament_license.md) — 団体主催は個別許諾必須
 - [eスポーツ協会スポンサーロゴ](project_esports_sponsor_logos.md) — 掲載順は草川指定で固定
