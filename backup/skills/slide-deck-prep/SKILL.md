@@ -1,6 +1,6 @@
 ---
 name: slide-deck-prep
-description: 草川たくや（亀山市議会議員）の30〜90分プレゼン（市政報告会・自治会総会・業界団体集会・後援会総会・議会報告会）のスライドを、NotebookLM向けのソース束＋マスタープロンプトとして ~/outputs/slide-deck-prep/ に用意する。Marp/Slidev等での直接生成は禁止・必ずNotebookLM経由。他議員氏名は記載しない。安全ゲート通過必須。Triggers: スライド作って/〇〇のスライド/市政報告会のスライド/自治会総会のスライド/後援会総会のスライド/NotebookLM資料準備/プレゼン資料/報告会の資料/slide-deck-prep。NOT: 1〜10分の挨拶→aisatsu-prep、報告会の運営一式→shisei-houkokukai
+description: "草川たくや（亀山市議会議員）の30〜90分プレゼン（市政報告会・自治会総会・業界団体集会・後援会総会・議会報告会）のスライドを、NotebookLM向けのソース束＋マスタープロンプトとして ~/outputs/slide-deck-prep/ に用意する。Marp/Slidev等での直接生成は禁止・必ずNotebookLM経由。他議員氏名は記載しない。安全ゲート通過必須。Triggers: スライド作って/〇〇のスライド/市政報告会のスライド/自治会総会のスライド/後援会総会のスライド/NotebookLM資料準備/プレゼン資料/報告会の資料/slide-deck-prep。NOT: 1〜10分の挨拶→aisatsu-prep、報告会の運営一式→shisei-houkokukai"
 ---
 
 # slide-deck-prep スキル

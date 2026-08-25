@@ -1,6 +1,6 @@
 ---
 name: task-add
-description: 草川たくや（亀山市議会議員）のTodoistタスク登録の入口スキル。期限付き登録の前にGoogle Calendarと突合し、実施可能かを✅可能／⚠️タイト／🚫無理で判定→作業ブロック案も提示→草川承認分だけ td.py add ＋カレンダー登録。承認なしに登録しない（突合を飛ばすとhookがdeny）。他スキルが期限付きタスクを登録するときも本手順を通る。Triggers: タスク登録して/これタスクにして/Todoistに入れて/Todoistに追加/タスクにしといて/期限いつにする。NOT: イベント逆算で不足を洗い出す→gyakusan、既存タスクの棚卸し→task-audit、市民意見の記録→iken、期限なしのメモ的登録→smart-intake
+description: "草川たくや（亀山市議会議員）のTodoistタスク登録の入口スキル。期限付き登録の前にGoogle Calendarと突合し、実施可能かを✅可能／⚠️タイト／🚫無理で判定→作業ブロック案も提示→草川承認分だけ td.py add ＋カレンダー登録。承認なしに登録しない（突合を飛ばすとhookがdeny）。他スキルが期限付きタスクを登録するときも本手順を通る。Triggers: タスク登録して/これタスクにして/Todoistに入れて/Todoistに追加/タスクにしといて/期限いつにする。NOT: イベント逆算で不足を洗い出す→gyakusan、既存タスクの棚卸し→task-audit、市民意見の記録→iken、期限なしのメモ的登録→smart-intake"
 ---
 
 # task-add — カレンダー突合つきタスク登録

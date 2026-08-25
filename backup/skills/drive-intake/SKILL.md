@@ -1,6 +1,6 @@
 ---
 name: drive-intake
-description: 草川たくや（亀山市議会議員）のDrive→ローカル統合取込スキル。**メイントリガーは「ドライブ資料取り込んで」「Drive取り込んで」「取り込んで」「資料取り込んで」の一言**。Google Drive Desktop（v3 2026-05-28〜）により Drive→Local 同期はOS daemonが自動・リアルタイムで実行するため、本スキルの仕事は **「_INBOX_council/と_INBOX_daily/の新着を見て→pdftotext→カテゴリ判定→正規配置にmv→_indexにキャッシュ→必要ならNotion登録」**。後方互換: 「議会資料取り込んで」「daily取込」「取込確認」「Drive差分スキャン」「議会資料インテーク」「council-materials-intake」「drive-sync-review」も全て同じフローを起動。
+description: "草川たくや（亀山市議会議員）のDrive→ローカル統合取込スキル。**メイントリガーは「ドライブ資料取り込んで」「Drive取り込んで」「取り込んで」「資料取り込んで」の一言**。Google Drive Desktop（v3 2026-05-28〜）により Drive→Local 同期はOS daemonが自動・リアルタイムで実行するため、本スキルの仕事は **「_INBOX_council/と_INBOX_daily/の新着を見て→pdftotext→カテゴリ判定→正規配置にmv→_indexにキャッシュ→必要ならNotion登録」**。後方互換: 「議会資料取り込んで」「daily取込」「取込確認」「Drive差分スキャン」「議会資料インテーク」「council-materials-intake」「drive-sync-review」も全て同じフローを起動。"
 ---
 
 # Drive 統合取込（drive-intake v3）
