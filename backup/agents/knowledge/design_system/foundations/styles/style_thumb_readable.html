@@ -1,0 +1,120 @@
+<!-- @dsCard group="Foundations" name="スタイル: 親指可読系（SNS小判型）" subtitle="Instagram 4:5・9:16・1:1。0.5秒で止める。主役文字72px以上・1画面1メッセージ" -->
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>スタイルレシピ: 親指可読系（SNS小判型）</title>
+<style>
+  :root{
+    --deep:#0f3d27;   /* 最濃緑: 地の主色。小判はベタ地が基本 */
+    --green:#1f5a3a;  /* 濃緑: 第2の地・帯 */
+    --lime:#c7ff4a;   /* ライム: 面で使う。文字に使うなら濃緑地の上だけ */
+    --cream:#f3efe4;  /* 生成り: 文字・枠 */
+    --ink:#1a1a1c;
+  }
+  body{font-family:"Hiragino Kaku Gothic ProN",sans-serif;background:#f2f2ef;color:var(--ink);margin:0;padding:28px;line-height:1.7}
+  .paper{background:#fff;padding:26px;border:1px solid #ddd}
+  h1{font-size:22px;margin:0 0 4px;color:var(--deep)}
+  h2{font-size:15px;margin:26px 0 8px;color:var(--deep);border-left:5px solid var(--green);padding-left:.6em}
+  .sw{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .sw div{width:110px;border:1px solid #e2e2dc;padding:10px;font-size:11px;background:#fff}
+  .chip{height:44px;margin-bottom:6px}
+  table{border-collapse:collapse;font-size:12.5px;width:100%}
+  td,th{padding:6px 10px;border-bottom:1px solid #e2e2dc;text-align:left;vertical-align:top}
+  code{background:#f0f0ea;padding:1px 6px;font-size:11.5px}
+  ul{margin:6px 0;padding-left:20px;font-size:13px}
+  .ok{color:#1f5a3a;font-weight:700}
+  .ng{color:#a3312a;font-weight:700}
+  /* ミニプレビュー: 1080×1350 を 20% 表示（＝親指テストそのもの） */
+  .demo{display:flex;gap:20px;align-items:flex-start;margin-top:10px}
+  .stage{position:relative;width:216px;height:270px;background:var(--deep);overflow:hidden;flex:none}
+  .stage .plane{position:absolute;right:-26px;top:14px;width:124px;height:178px;background:var(--lime);transform:rotate(8deg)}
+  .stage .kicker{position:absolute;left:16px;top:22px;color:var(--lime);font-size:9px;font-weight:800;letter-spacing:.16em}
+  .stage .num{position:absolute;left:14px;top:56px;color:var(--cream);font-size:76px;font-weight:900;line-height:.86;letter-spacing:-.04em}
+  .stage .unit{position:absolute;left:118px;top:104px;color:var(--cream);font-size:15px;font-weight:800}
+  .stage .msg{position:absolute;left:16px;top:150px;width:150px;color:var(--cream);font-size:17px;font-weight:900;line-height:1.35}
+  .stage .foot{position:absolute;left:16px;bottom:34px;color:var(--cream);font-size:8px;opacity:.85}
+  .stage .ui{position:absolute;left:0;right:0;bottom:0;height:31px;background:repeating-linear-gradient(45deg,#00000022 0 6px,#00000000 6px 12px);border-top:1px dashed #ffffff55}
+  .note{font-size:12px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="paper">
+<h1>スタイルレシピ: 親指可読系（SNS小判型）</h1>
+<div class="pick" style="border:1px solid #cfcfc6;background:#fafaf6;padding:14px 16px;margin:14px 0 18px;font-size:12.5px;line-height:1.75">
+<div style="font-weight:700;font-size:13px;margin-bottom:8px">選択規則 — この様式を選ぶ判断</div>
+<table style="border-collapse:collapse;width:100%"><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">向く判型</th><td style="padding:4px 0;vertical-align:top">Instagram 4:5（1080×1350）／ストーリーズ・ショート動画の挿入画像 9:16（1080×1920）／1:1。<b>スクロール中の親指に0.5秒で判定される面</b>。実装の起点は <code>digital_templates/instagram_4x5/template.html</code> と <code>short_video_templates/_starter_9x16.html</code></td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">向く相手</th><td style="padding:4px 0;vertical-align:top">フォロワーと、まだ草川を知らない非フォロワー。<b>関心ゼロの状態から止める</b>のが仕事。読ませるのは止めた後（本文はキャプションへ回す）</td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">向かない場面</th><td style="padding:4px 0;vertical-align:top"><b>印刷物すべて</b>（RGBのライムは印刷で沈み、級数設計も別物）／文章を読ませたい面／議会・行政向け資料（→ <code>style_gov_formal</code>）。「作った画像を紙に流用」は毎回失敗する</td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">相性の良い参照</th><td style="padding:4px 0;vertical-align:top">brand01（Warren 2020＝写真もイラストも無いまま<b>タイポグラフィを絵にする</b>）、tri12（小判で1メッセージに絞る／ジャンプ率9倍／<b>写真の片側フェード</b>）、tri01（<b>1語で突きつける</b>／ジャンプ率8倍）</td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">外してはいけない1点</th><td style="padding:4px 0;vertical-align:top"><b>主役文字72px以上（1080px幅基準）・1画面1メッセージ</b>。20%に縮めて読めなければ、その画像は存在しないのと同じ</td></tr></table>
+<div style="margin-top:10px;padding-top:8px;border-top:1px solid #e2e2dc"><b>判断の一言:</b> 紙は「読ませる」、ここは「止める」。情報量で勝とうとした瞬間に負ける。</div>
+</div>
+<p style="font-size:13px">用途: SNSの小判型。紙の6様式は全て「読者がすでに紙を手に持っている」前提だが、ここだけは<b>手に取らせる前の勝負</b>。だから設計の主語がレイアウトではなく<b>可読性の床とセーフゾーン</b>になる。数値は short-video-image-designer の可読性フロアと同一（二重管理しない）。</p>
+
+<h2>判型とセーフゾーン（主役を置いてはいけない帯）</h2>
+<table>
+<tr><th style="width:12em">Instagram 4:5<br>1080×1350</th><td>上 <b>86px</b>・下 <b>155px</b> はUIとプロフィール表示の帯。ここに主役を置かない（<code>digital_templates/instagram_4x5/README.md</code>）</td></tr>
+<tr><th>9:16<br>1080×1920</th><td>上 <b>約100px</b>／下 <b>約250px</b>（キャプション・UI）／右 <b>約120px</b>（いいね・シェア）。加えて <b>y1240〜1460 は字幕セーフ帯</b>（2026-07-02確定・全画像共通）— 白字テロップを焼き込む前提なので<b>静かに保つ</b>。ただし「字幕帯＝大穴の言い訳」にしない。帯の上下は意図的に詰める</td></tr>
+<tr><th>1:1<br>1080×1080</th><td>4:5のセーフ帯を準用。ただし縦占有が小さく止まりにくいので、<b>4:5を第一候補</b>にする</td></tr>
+</table>
+
+<h2>文字サイズの床（1080px幅基準・階層は2つだけ）</h2>
+<table>
+<tr><th style="width:12em">主役メッセージ</th><td><b>72px以上</b>（推奨88〜120px）・weight 900。<b>1画面に主役は1つ</b></td></tr>
+<tr><th>支え（補足・ラベル）</th><td><b>44px以上</b></td></tr>
+<tr><th>出典・注釈</th><td><b>26px以上</b>。<b>ここに重要情報を入れてはいけない</b></td></tr>
+<tr><th>紙との違い</th><td>紙の様式はジャンプ率3〜8倍を作りにいくが、小判は<b>主役と支えの2階層だけ</b>。中間の見出しを作ると主役が埋もれる</td></tr>
+<tr><th>SVGの罠</th><td>読ませたい文字を<b>縮小表示されるSVGの中に置かない</b>。重要な語はHTMLレイヤーの特大テキストとして絵の上／外に置く</td></tr>
+</table>
+
+<h2>配色（読めるペアだけ使う）</h2>
+<div class="sw">
+  <div><div class="chip" style="background:#0f3d27"></div>#0f3d27 最濃緑・地</div>
+  <div><div class="chip" style="background:#1f5a3a"></div>#1f5a3a 濃緑・第2の地</div>
+  <div><div class="chip" style="background:#c7ff4a"></div>#c7ff4a ライム・面</div>
+  <div><div class="chip" style="background:#f3efe4"></div>#f3efe4 生成り・文字/枠</div>
+</div>
+<table>
+<tr><th style="width:5em"><span class="ok">使う</span></th><td>クリーム／白 × 濃緑（#0f3d27・#1f5a3a）｜濃緑 × ライム｜白 × 中緑｜ライム × 濃緑</td></tr>
+<tr><th><span class="ng">消える</span></th><td>ライム × クリーム｜ライム × ライム｜濃緑 × 濃緑｜淡色 × 淡色</td></tr>
+<tr><th>写真の上</th><td>文字に影を付けるか、<b>半透明の濃緑帯を1枚</b>敷いてコントラストを確保してから載せる</td></tr>
+</table>
+
+<h2>装飾語彙 / CSSのコツ</h2>
+<ul>
+<li><b>文字の下は必ず静かに</b>。ドット地紋・グレイン・写真のディテールを読みテキストの背後に敷かない（「背景が汚くて読めない」の正体）。質感は絵の領域だけに薄く乗せる</li>
+<li>帯を水平矩形で終わらせない（§1.5-3）。小判で最も効くのは<b>傾けた色面</b>（<code>transform:rotate(8deg)</code> のライム面＝4:5スターターの実装）</li>
+<li>写真は角版で切らない（§1.5-1）。<b>片側フェード</b>（<code>mask-image:linear-gradient()</code>）か、<b>太いクリーム枠＋濃緑のオフセット影</b>（<code>box-shadow:22px 25px 0 #0f3d27</code>＝スターター実装済み）</li>
+<li>数字を図版化する（§1.5-2）。小判は<b>数字1つを特大で置く</b>のが最強。単位と出典は支え・注釈の階層へ落とす</li>
+<li>見出し記号に<b>絵文字を使わない</b>。ライムバー・角マーカー・ピルで代替する</li>
+<li>実装は1080px実寸のHTMLで作り、Chrome headless でPNG化 → <b>PNGを20%に縮めて自分の目で見る（親指テスト）</b>。等倍で確認して合格にしない</li>
+</ul>
+
+<h2>NG</h2>
+<ul>
+<li>主役文字が72px未満／1画面に主役が2つ以上／情報を1枚に詰め込む（<b>割って複数枚にする</b>）</li>
+<li>ライム×クリーム・淡色×淡色などの消えるペア／薄い文字で雰囲気を作ること</li>
+<li>字幕セーフ帯（y1240〜1460）に主役・高コントラスト要素を置くこと</li>
+<li>印刷物への流用（→ <code>style_ink_saving_report</code> / <code>style_photo_bold</code> で作り直す）</li>
+<li>絵文字・浮きカード・紫グラデ（DESIGN_RULES §1）</li>
+</ul>
+
+<h2>ミニプレビュー（1080×1350 を20%表示＝親指テスト）</h2>
+<div class="demo">
+  <div class="stage">
+    <div class="plane"></div>
+    <div class="kicker">6月議会</div>
+    <div class="num">0</div>
+    <div class="unit">／12施設</div>
+    <div class="msg">避難所の体育館に、<br>空調はまだ無い。</div>
+    <div class="foot">市教委資料・2026年度</div>
+    <div class="ui"></div>
+  </div>
+  <div class="note">
+    この縮小サイズで<b>「0／12」と1行のメッセージだけ</b>が読めれば合格。<br>
+    ・主役＝数字1つ（実寸380px相当）／支え＝メッセージ（実寸85px相当）の<b>2階層のみ</b><br>
+    ・傾けたライム面で図形語彙を増やし、帯を水平矩形で終わらせていない<br>
+    ・斜線の帯＝下155pxのUIセーフゾーン。ここに主役も出典も置かない<br>
+    ・出典（実寸40px相当）は読めなくてよい。<b>読めなくてよい情報だけ</b>を注釈階層に置く
+  </div>
+</div>
+</div>
+</body>
+</html>
