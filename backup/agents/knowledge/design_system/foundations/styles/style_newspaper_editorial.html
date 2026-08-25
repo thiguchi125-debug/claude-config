@@ -1,0 +1,109 @@
+<!-- @dsCard group="Foundations" name="スタイル: 新聞体エディトリアル系" subtitle="文字量が多い紙面の第2の解。明朝＋多段組＋段間罫で密度を許す" -->
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>スタイルレシピ: 新聞体エディトリアル系</title>
+<style>
+  :root{
+    --paper:#f7f5ef;  /* 地: ごく淡い生成り。真っ白より紙らしく、密度を受け止める */
+    --deep:#0f3d27;   /* 最濃緑: 大見出し・題字帯 */
+    --green:#1f5a3a;  /* 濃緑: 小見出し・段間罫の主色 */
+    --gold:#c89211;   /* 金: 数字・囲み記事の見出し（アクセント1色のみ） */
+    --rule:#b9b3a4;   /* 罫: 段間・囲み */
+    --ink:#1a1a1a;    /* 本文（明朝） */
+  }
+  body{font-family:"Hiragino Kaku Gothic ProN",sans-serif;background:#f2f2ef;color:var(--ink);margin:0;padding:28px;line-height:1.7}
+  .paper{background:#fff;padding:26px;border:1px solid #ddd}
+  h1{font-size:22px;margin:0 0 4px;color:var(--deep)}
+  h2{font-size:15px;margin:26px 0 8px;color:var(--deep);border-left:5px solid var(--green);padding-left:.6em}
+  .sw{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .sw div{width:110px;border:1px solid #e2e2dc;padding:10px;font-size:11px;background:#fff}
+  .chip{height:44px;margin-bottom:6px}
+  table{border-collapse:collapse;font-size:12.5px;width:100%}
+  td,th{padding:6px 10px;border-bottom:1px solid #e2e2dc;text-align:left;vertical-align:top}
+  code{background:#f0f0ea;padding:1px 6px;font-size:11.5px}
+  ul{margin:6px 0;padding-left:20px;font-size:13px}
+  .demo{background:var(--paper);border:1px solid var(--rule);margin-top:10px;padding:18px 20px;font-family:"Hiragino Mincho ProN","Yu Mincho",serif}
+  .demo .kicker{font-size:11px;letter-spacing:.18em;color:var(--green);font-family:"Hiragino Kaku Gothic ProN",sans-serif;font-weight:700}
+  .demo .midashi{font-size:34px;font-weight:700;color:var(--deep);line-height:1.15;margin:4px 0 2px;letter-spacing:-.01em}
+  .demo .waki{font-size:14px;color:var(--green);margin-bottom:10px}
+  .demo .lead{font-size:13px;line-height:1.85;border-top:3px solid var(--deep);border-bottom:1px solid var(--rule);padding:10px 0;margin:0 0 12px}
+  .demo .cols{column-count:3;column-gap:18px;column-rule:1px solid var(--rule);font-size:12px;line-height:1.9;text-align:justify}
+  .demo .cols p{margin:0 0 10px}
+  .demo .kakomi{break-inside:avoid;border:1px solid var(--green);background:#fff;padding:10px 12px;margin-top:6px}
+  .demo .kakomi b{display:block;font-family:"Hiragino Kaku Gothic ProN",sans-serif;font-size:11.5px;color:var(--green);border-bottom:1px solid var(--rule);padding-bottom:4px;margin-bottom:6px}
+  .demo .num{font-family:"Hiragino Kaku Gothic ProN",sans-serif;font-size:26px;font-weight:800;color:var(--gold);line-height:1}
+</style>
+</head>
+<body>
+<div class="paper">
+<h1>スタイルレシピ: 新聞体エディトリアル系</h1>
+<div class="pick" style="border:1px solid #cfcfc6;background:#fafaf6;padding:14px 16px;margin:14px 0 18px;font-size:12.5px;line-height:1.75">
+<div style="font-weight:700;font-size:13px;margin-bottom:8px">選択規則 — この様式を選ぶ判断</div>
+<table style="border-collapse:collapse;width:100%"><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">向く判型</th><td style="padding:4px 0;vertical-align:top">A4両面レポートの<b>中面・裏面</b>／議会報告／一つの案件を経緯から説明する紙面／三つ折りの中面。<b>読者が5分以上そこに留まる</b>前提の面</td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">向く相手</th><td style="padding:4px 0;vertical-align:top">その案件の当事者・関心層（自治会役員、当該地区の住民、陳情の相手方）。<b>すでに関心がある人に経緯と数字を渡す</b>場面</td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">向かない場面</th><td style="padding:4px 0;vertical-align:top">イベント告知・子育て世帯向け／写真1枚で掴む表紙／スライド・SNS画像などデジタル面（明朝細字が画面で潰れる）。<b>関心のない人に最初に渡す1枚</b>にも使わない</td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">相性の良い参照</th><td style="padding:4px 0;vertical-align:top">rep01・rep02（しものせき／写真が少なく文字が多い面を変形色面と<b>山形ノッチ</b>で持たせる）、rep08（さかいで／数字と実績を並べる裏面の正）、tri04（中面が文字中心）</td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">外してはいけない1点</th><td style="padding:4px 0;vertical-align:top"><b>段を割る</b>（A4は3段・三つ折り1面は1〜2段）。1段ベタ流しにした時点でこの様式は死ぬ。加えて<b>大見出し／リード／本文の3階層</b>を必ず立てる</td></tr></table>
+<div style="margin-top:10px;padding-top:8px;border-top:1px solid #e2e2dc"><b>判断の一言:</b> 密度は敵ではない。読ませる構造が無いことが敵。<code>style_ink_saving_report</code> が「減らして白を残す」解なら、こちらは<b>「入れ切って段で仕切る」</b>解。</div>
+</div>
+<p style="font-size:13px">用途: 文字量の多い紙面の<b>第2の解</b>。角ゴ＋白70%の <code>style_ink_saving_report</code> 一択状態を崩すために置く。本文を明朝にして段間罫で仕切り、大見出しのジャンプ率（6〜8倍）で拾い読みの入口を作る。<b>写真が少ない案件</b>ほど効く。</p>
+
+<h2>ink_saving_report との使い分け（この様式の要）</h2>
+<table>
+<tr><th style="width:11em">文字量が多い、どちらを選ぶ？</th><td>読者が<b>まだ関心を持っていない</b>（全世帯配布の1枚目）→ <code>style_ink_saving_report</code>（減らす）。読者が<b>すでに当事者</b>で経緯を知りたい（中面・裏面・案件説明）→ <b>この様式</b>（入れ切る）</td></tr>
+<tr><th>白面積</th><td>ink_saving は白70%が絶対条件。<b>この様式は白50%前後まで許容する</b>。ただし埋めるのは本文と図版であって、装飾ではない</td></tr>
+<tr><th>書体</th><td>ink_saving は角ゴ一本。こちらは<b>本文明朝＋見出し/数字/キャプションだけ角ゴ</b>の混植。混植は2書体まで（DESIGN_RULES）</td></tr>
+<tr><th>和秋（washu_calm）との差</th><td>同じ明朝でも washu は<b>余白と格式</b>で急がせない紙面。こちらは<b>密度と速度</b>。目的が「格を保つ」なら washu、「経緯を渡す」ならこちら</td></tr>
+</table>
+
+<h2>配色（実質3色＋罫）</h2>
+<div class="sw">
+  <div><div class="chip" style="background:#f7f5ef;border:1px solid #ddd"></div>#f7f5ef 淡生成り・地</div>
+  <div><div class="chip" style="background:#0f3d27"></div>#0f3d27 最濃緑・大見出し</div>
+  <div><div class="chip" style="background:#1f5a3a"></div>#1f5a3a 濃緑・小見出し/罫</div>
+  <div><div class="chip" style="background:#c89211"></div>#c89211 金・数字（1色のみ）</div>
+  <div><div class="chip" style="background:#b9b3a4"></div>#b9b3a4 段間罫・囲み罫</div>
+  <div><div class="chip" style="background:#1a1a1a"></div>#1a1a1a 本文（明朝）</div>
+</div>
+
+<h2>フォント</h2>
+<table>
+<tr><th>大見出し</th><td>ヒラギノ明朝 W6 または 角ゴ W8・最濃緑・<b>本文の6〜8倍</b>。1面に1本だけ。字間 -0.01em で締める</td></tr>
+<tr><th>脇見出し（袖）</th><td>濃緑・本文の1.3倍。大見出しを1行で補足する（新聞の袖見出し）。ここで案件名・数字を出す</td></tr>
+<tr><th>リード</th><td>本文の1.1倍・行間1.85。<b>上を太罫3px／下を細罫</b>で挟んで本文と分ける</td></tr>
+<tr><th>本文</th><td>ヒラギノ明朝 W3・9〜10pt・行間1.9・<b>両端揃え（text-align:justify）</b>。段間は本文サイズの1.5倍以上</td></tr>
+<tr><th>数字・キャプション</th><td>角ゴ。数字は W8＋金。キャプションは10.5pt・写真直下に罫1本で留める</td></tr>
+</table>
+
+<h2>装飾語彙 / CSSのコツ</h2>
+<ul>
+<li>段組は <code>column-count</code> ＋ <code>column-rule:1px solid #b9b3a4</code>。段間罫があるだけで密度が「詰め込み」でなく「紙面」になる</li>
+<li>囲み記事は <code>break-inside:avoid</code> ＋ 白地＋緑1px。段の途中に置いて<b>読みの休符</b>を作る（1面2〜3か所）</li>
+<li>帯を水平矩形で終わらせない（§1.5-3）。<b>題字帯の下端を山形で切る</b>（rep01・rep02）か、幅違いで階段状に積む</li>
+<li>写真は角版で切らない（§1.5-1）。この様式なら<b>片側フェード</b>（<code>mask-image:linear-gradient()</code>）が段組と最も相性が良い</li>
+<li>数字は本文段落に埋めず、囲みか金の特大数字で図版化する（§1.5-2）</li>
+<li>約物半角・行頭禁則を確認。明朝＋両端揃えは<b>字間の破綻が目立つ</b>ので、Chrome実測PNGで必ず自分の目で見る</li>
+</ul>
+
+<h2>NG</h2>
+<ul>
+<li>1段ベタ流し（この様式の死因）／段数を面ごとにバラバラにする</li>
+<li>明朝細字の白抜き（濃緑ベタに明朝W3を白抜き＝印刷でつぶれる。白抜きは角ゴ太字のみ）</li>
+<li>アクセント色を金以外に増やす／罫の種類を2種以上使う（点線・二重罫の混在は素人化の典型）</li>
+<li>デジタル面への流用。スライド・SNS画像は <code>style_gov_formal</code> か <code>style_photo_bold</code> へ</li>
+</ul>
+
+<h2>ミニプレビュー</h2>
+<div class="demo">
+  <div class="kicker">6月議会 一般質問</div>
+  <div class="midashi">避難所の空調、<br>整備計画はいつ示すのか</div>
+  <div class="waki">市内12施設のうち設置済みは0──市は「検討中」を繰り返した</div>
+  <p class="lead">市内の小中学校体育館は、その全てが地域防災計画で避難所に指定されている。一方で空調設備の設置は進んでいない。6月議会では、整備計画の策定時期と国庫補助の適用可否を質した。</p>
+  <div class="cols">
+    <p>質問では、まず避難所指定と設置状況の食い違いを確認した。市は指定の事実を認めた上で、設置については「関係課と調整中」と述べるにとどまった。</p>
+    <p>次に、国庫補助の対象要件を満たすかどうかを問うた。設計に着手した後で要件を外れれば、市の一般財源で負担することになる。</p>
+    <div class="kakomi"><b>質問で確認できた数字</b><div class="num">0/12</div><span style="font-size:11.5px">避難所指定を受けた体育館のうち、空調設備が設置済みの施設数（市教委資料）</span></div>
+    <p>答弁は「検討中」で終わったが、次の議会までに整備計画の骨子を示すよう求めた。回収は9月議会で行う。</p>
+  </div>
+</div>
+</div>
+</body>
+</html>

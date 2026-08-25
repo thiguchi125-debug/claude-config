@@ -1,0 +1,105 @@
+<!-- @dsCard group="Foundations" name="スタイル: 官公庁フォーマル系" subtitle="議会・行政向け資料とデジタル面。白地＋濃緑2階調＋グレー罫、装飾ゼロ" -->
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>スタイルレシピ: 官公庁フォーマル系</title>
+<style>
+  :root{
+    --paper:#ffffff;  /* 地: 白。地紋・背景色は張らない */
+    --deep:#0f3d27;   /* 最濃緑: 見出し・タイトル帯 */
+    --green:#1f5a3a;  /* 濃緑: 小見出し・罫の主色 */
+    --rule:#d9d9d9;   /* 罫グレー: 表・区切り */
+    --sub:#595959;    /* 補助テキスト・キャプション */
+    --ink:#1a1a1c;    /* 本文 */
+    --lime:#c7ff4a;   /* 差し色: 1画面1か所・面積5%以下 */
+  }
+  body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;background:#f2f2ef;color:var(--ink);margin:0;padding:28px;line-height:1.7}
+  .paper{background:var(--paper);padding:26px;border:1px solid #ddd}
+  h1{font-size:22px;margin:0 0 4px;color:var(--deep)}
+  h2{font-size:15px;margin:26px 0 8px;color:var(--deep);border-left:5px solid var(--green);padding-left:.6em}
+  .sw{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .sw div{width:110px;border:1px solid #e2e2dc;padding:10px;font-size:11px;background:#fff}
+  .chip{height:44px;margin-bottom:6px}
+  table{border-collapse:collapse;font-size:12.5px;width:100%}
+  td,th{padding:6px 10px;border-bottom:1px solid #e2e2dc;text-align:left;vertical-align:top}
+  code{background:#f0f0ea;padding:1px 6px;font-size:11.5px}
+  ul{margin:6px 0;padding-left:20px;font-size:13px}
+  .demo{border:1px solid var(--rule);margin-top:10px}
+  .demo .head{background:var(--deep);color:#fff;padding:12px 20px;font-weight:700;font-size:16px;letter-spacing:.02em}
+  .demo .body{padding:18px 20px}
+  .demo .lead{font-size:13px;color:var(--sub);margin:0 0 14px}
+  .demo .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .demo .cell{border:1px solid var(--rule);border-top:3px solid var(--green);padding:12px 14px}
+  .demo .cell b{display:block;font-size:12px;color:var(--green);margin-bottom:6px}
+  .demo .cell span{font-size:12px;line-height:1.6}
+  .demo .num{font-size:28px;font-weight:800;color:var(--deep);line-height:1.1}
+  .demo .mark{background:linear-gradient(transparent 62%,var(--lime) 62%)}
+</style>
+</head>
+<body>
+<div class="paper">
+<h1>スタイルレシピ: 官公庁フォーマル系</h1>
+<div class="pick" style="border:1px solid #cfcfc6;background:#fafaf6;padding:14px 16px;margin:14px 0 18px;font-size:12.5px;line-height:1.75">
+<div style="font-weight:700;font-size:13px;margin-bottom:8px">選択規則 — この様式を選ぶ判断</div>
+<table style="border-collapse:collapse;width:100%"><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">向く判型</th><td style="padding:4px 0;vertical-align:top">議会・委員会の配付資料／政策提案資料／16:9スライド／Notion・PDFで画面で読ませるもの。<b>デジタル判型の第一候補</b>（他の4様式は全て紙前提）</td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">向く相手</th><td style="padding:4px 0;vertical-align:top">執行部・所管課・他会派・報道。<b>「この人の資料は数字が読める」</b>という信用が成果物の目的である場面</td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">向かない場面</th><td style="padding:4px 0;vertical-align:top">全世帯ポスティングのチラシ／イベント告知／後援会リーフレット（硬すぎて手に取られない）。<b>市の公式広報と誤認されうる対市民配布物には使わない</b>（下の「借りないもの」参照）</td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">相性の良い参照</th><td style="padding:4px 0;vertical-align:top">tri03（公的・清潔・単色／ジャンプ率4倍・色数3）、tri05（数値と関係性を図解1点に集約）、rep10（<b>写真0枚で図版60%</b>＝数字を図版化する手本）</td></tr><tr><th style="text-align:left;width:9.5em;padding:4px 10px 4px 0;vertical-align:top;font-weight:700;white-space:nowrap">外してはいけない1点</th><td style="padding:4px 0;vertical-align:top">本文と地の<b>コントラスト比4.5:1以上</b>を全要素で守る。装飾で格を作らず、余白・整列・数字の精度で作る</td></tr></table>
+<div style="margin-top:10px;padding-top:8px;border-top:1px solid #e2e2dc"><b>判断の一言:</b> 権威は装飾ではなく整列から出る。線を1本足す前に、揃っていない要素を1つ直す。</div>
+</div>
+<p style="font-size:13px">用途: 議会・行政向け資料とデジタル面。デジタル庁デザインシステムの<b>文法</b>（4/8pxの倍数で刻むスペーシング、Noto Sans JP、装飾ゼロ、アクセシブルなコントラスト）を借り、色は草川ブランド（濃緑2階調）に載せ替える。文字量が多くても<b>表と図解で構造を見せて</b>読ませる。</p>
+
+<h2>借りるもの / 借りないもの（この様式の要）</h2>
+<table>
+<tr><th style="width:8em">借りる</th><td>グリッドとスペーシング（4/8pxの倍数のみ・半端値を作らない）／Noto Sans JP 1書体で階層を作る／罫は細グレー1種／表・定義リスト・図解を主役にする／アイコンは単色線画のみ</td></tr>
+<tr><th>借りない</th><td><b>官公庁ブルー系の配色</b>。国・県・市の刊行物と同じ色調にすると、議員個人の資料が公式広報に見える。誤認は品位・公選法いずれの面でも取り返しがつかない。色は必ず <code>#0f3d27</code> / <code>#1f5a3a</code> に置換する（tri11・tri12 の政党色置換と同じ扱い）</td></tr>
+</table>
+
+<h2>配色（実質3色。差し色は1画面1か所）</h2>
+<div class="sw">
+  <div><div class="chip" style="background:#ffffff;border:1px solid #ddd"></div>#ffffff 地（地紋なし）</div>
+  <div><div class="chip" style="background:#0f3d27"></div>#0f3d27 最濃緑・帯</div>
+  <div><div class="chip" style="background:#1f5a3a"></div>#1f5a3a 濃緑・小見出し</div>
+  <div><div class="chip" style="background:#d9d9d9"></div>#d9d9d9 罫グレー</div>
+  <div><div class="chip" style="background:#595959"></div>#595959 補助テキスト</div>
+  <div><div class="chip" style="background:#c7ff4a"></div>#c7ff4a 差し色（5%以下）</div>
+</div>
+
+<h2>フォント</h2>
+<table>
+<tr><th>見出し</th><td>Noto Sans JP Bold（紙は ヒラギノ角ゴ W6）・最濃緑 #0f3d27。帯見出しは白抜き・字間 +0.02em</td></tr>
+<tr><th>本文</th><td>Noto Sans JP Regular・スライド18〜20pt／A4資料 10〜11pt・行間1.7。<b>ジャンプ率は2.5〜3倍に抑える</b>（8倍は他様式の仕事）</td></tr>
+<tr><th>数字</th><td>Bold・最濃緑。単位と出典（年度・調査名）を必ず数字の直下に小さく添える</td></tr>
+<tr><th>キャプション・注</th><td>#595959・11px以上。グレーを薄くしてコントラストを割らない</td></tr>
+</table>
+
+<h2>装飾語彙 / CSSのコツ</h2>
+<ul>
+<li>面の分割は<b>罫1本か余白</b>だけ。影・角丸カード・グラデーションは使わない（浮きカード禁止＝DESIGN_RULES §1）</li>
+<li>要素の上端3pxだけ濃緑で締める（<code>border-top:3px solid var(--green)</code>）。囲み枠を全周太くしない</li>
+<li><b>数字は図版化する</b>（§1.5-2）。3列グリッドの数字セル＋出典行を、原稿を流す<b>前</b>に確保する</li>
+<li>強調はライムのアンダーライン1か所のみ（<code>background:linear-gradient(transparent 62%,#c7ff4a 62%)</code>）。太字の乱発で階層を壊さない</li>
+<li>スライドは16:9・左右マージンを揃え、1画面1メッセージ。1画面に見出しは1つ</li>
+</ul>
+
+<h2>NG</h2>
+<ul>
+<li>官公庁ブルー・自治体ロゴ調の意匠（公式刊行物との誤認）／市章・市のマークの流用</li>
+<li>薄いグレー文字（#999以下）・小さい注記の多用でコントラストを割ること</li>
+<li>装飾で埋める（アイコンの飾り置き・意味のない罫・背景の淡色ベタ）。埋めたくなったら余白のまま残す</li>
+<li>写真の無理な挿入。この様式は<b>写真0枚で成立する</b>（rep10 が手本）。入れるなら図解の説明として1点</li>
+</ul>
+
+<h2>ミニプレビュー</h2>
+<div class="demo">
+  <div class="head">小中学校 体育館空調の整備状況（2026年8月時点）</div>
+  <div class="body">
+    <p class="lead">避難所指定を受けている市内の体育館について、空調設備の設置状況と国庫補助の適用可否を整理した。</p>
+    <div class="grid">
+      <div class="cell"><b>設置済み</b><div class="num">0</div><span>／12施設<br><span style="color:#595959;font-size:11px">市教委資料・2026年度</span></span></div>
+      <div class="cell"><b>避難所指定</b><div class="num">12</div><span>／12施設<br><span style="color:#595959;font-size:11px">地域防災計画</span></span></div>
+      <div class="cell"><b>論点</b><span>国庫補助の<span class="mark">対象要件</span>を満たすかを、設計着手前に確認する必要がある</span></div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
