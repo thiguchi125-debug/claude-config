@@ -1,11 +1,11 @@
 ---
 name: feedback_agent_registry_partial_load
-description: エージェント部分ロードの根本原因はagents/knowledge配下に入れ子生成された.claude/agent-memoryがレジストリを汚染していたこと。2026-07-02に隔離修理・2026-07-27に再発を確認して再隔離（恒久策は未実施）
+description: エージェント部分ロードの根本原因はagents/knowledge配下に入れ子生成された.claude/agent-memoryがレジストリを汚染していたこと。2026-07-02/07-27/08-20と3度再発したため2026-08-25に夜間自動統合を常設化（対症療法の自動化・生成自体は止まっていない）
 metadata: 
   node_type: memory
   type: feedback
   originSessionId: b7d0e233-9752-4f54-a171-99e2d6cec3a1
-  modified: 2026-07-27T02:27:05.121Z
+  modified: 2026-08-25T00:00:00.000Z
 ---
 
 2026-06-02 に「.mdが実在するのにレジストリ未登録」のエージェント多数（council-material-creator / citizen-inquiry-responder / print-designer / photo-curator / policy-archive-miner / policy-synthesizer 等）を確認。**2026-07-02 に根本原因を特定し修理済み**。
@@ -44,5 +44,17 @@ metadata:
 3. 月次棚卸し（task-audit時など）で上記findを1回走らせる。
 4. 恒久策候補: 知識アーカイブを `~/.claude/agents/knowledge/` から `~/.claude/knowledge/` へ移す案があるが、CLAUDE.md・多数のagent定義・スキルがパスを参照しているため影響大。やるなら一括置換で別途実施。
 5. 未登録agentへの即時回避策（従来通り）: general-purposeに該当.mdをReadさせて成り代わらせる。
+
+
+## ✅ 恒久策（2026-08-25）— 手作業をやめて夜間自動統合にした
+
+07-02 → 07-27 → 08-20 と3度手作業で直し、**08-20の修理から5日で再発**（08-25時点で入れ子15箇所・89ファイル、うち**67件は正本に存在しない=content-risk-reviewer/content-fact-checkerの記憶が実際に欠落していた**）。手作業では追いつかないため自動化した。
+
+- **スクリプト**: `~/.claude/scripts/consolidate_agent_memory.py`（`--dry-run` あり）。入れ子 `.claude/agent-memory` を正本 `~/.claude/agent-memory/<agent>/` へ統合し、MEMORY.md索引は**行単位ユニオンで追記**（上書きしない）、内容が違う同名ファイルは `__nested.md` として温存、統合後に入れ子ディレクトリを削除。
+- **常設化**: 夜間2:30の `_daily_drive_pipeline.sh` に **Phase 6** として組み込み済み（launchd `com.kusagawa.daily-drive-pipeline`）。
+- **効果と限界**: 生成自体は止まらない（cwdがアーカイブ配下になるsubagentが作り続ける）。**溜まるのは最大1日分**になるので、偽agent混入もレジストリ圧迫も実害レベルまで落ちる。恒久的に止めるには knowledge の移設が要る（未実施・影響大）。
+- **発生源の実測**: `agents/knowledge/kusagawa_archive/`（アーカイブgrepするagent全般）と `projects/.../drafts/`。このセッション中だけで2箇所再生成された＝**発生頻度は日単位でなく時間単位**。
+
+**How to apply（更新）:** 偽agentを見かけたら手で直さず `python3 ~/.claude/scripts/consolidate_agent_memory.py` を1回叩く。レジストリは起動時に固まるので**効果は次セッションから**。夜間ジョブが動いていれば通常は不要。
 
 関連: [[reference_agent_triggers]] / [[feedback_content_pipeline_agent_registration]] / [[feedback_system_closing_loops_rot]]
