@@ -23,10 +23,13 @@ design_system/
     colors.html                  ブランド4色＋印刷インク節約パレット＋使い分け
     typography.html              種4作品から抽出したフォントスタック・サイズ階層
     rules.md                     デザイン制作の恒久ルール集（禁止意匠・CSS確定パターン・入稿手順）
-    styles/                      スタイルレシピ5種（v2で新設。配色hex・フォント・装飾語彙・構図・NGの正本）
+    styles/                      スタイルレシピ7種（v2で新設。配色hex・フォント・装飾語彙・構図・NGの正本）
+      _INDEX.md                       条件→様式の判断表。**参照を選ぶ前にここで様式を1枚決める**
       style_bright_illustration.html  淡色水彩・明るいイラスト系（子育て・地域＝理想形）
       style_dark_lime.html            ダーク×ライム（eスポーツ・若者向け。子ども向けにはデフォルト選択しない）
+      style_gov_formal.html           官公庁フォーマル系（議会・行政資料／スライド等デジタル面の第一候補）
       style_ink_saving_report.html    インク節約レポート系（木下v22系統）
+      style_newspaper_editorial.html  新聞体エディトリアル系（文字量が多い中面・裏面の第2の解）
       style_photo_bold.html           写真大胆系（全面写真＋白帯。選挙・人物もの）
       style_washu_calm.html           和風・落ち着き系（自治会・敬老。朱赤は藍/金茶で置換）
   assets/
