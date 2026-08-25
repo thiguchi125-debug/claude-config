@@ -1,6 +1,6 @@
 ---
 name: design-studio
-description: 草川たくや（亀山市議会議員）のチラシ・ポスター・市政報告レポート・リーフレット等の印刷物デザインを「テンプレ選択→素材収集→実装（Chrome実測EYES-FIRST）→物理破綻レビュー→安全ゲート→PDF→正規保存→テンプレ昇格還元」まで1パスで完結させるデザイン制作オーケストレータースキル。「チラシ作って」「〇〇のチラシ」「ポスター作って」「リーフレット作って」「市政報告レポート作って」「デザイン制作」「design-studio」「印刷物作って」等で必ず起動。正本テンプレート集は ~/.claude/agents/knowledge/design_system/（claude.ai/design「草川たくやデザインシステム」とDesignSyncで同期）にあり、制作は必ず参照ライブラリ（同 references/）から参照1本を選び画像を自分でReadすることから始め、テンプレ候補2〜3提示→草川選択と続く。実装はprint-layout-architect（HTML/CSS→Chrome headless実測ループ）、レビューはnatural-design-reviewer（物理破綻・新規指摘のみ）、対外配布物はcontent-fact-checker→content-risk-reviewer必須通過、design-director（8軸プロ昇格）は選挙物・大判ポスター等の勝負所のみ草川承認制で追加起動。完成PDFは自動openし、保存先マップ準拠（~/publications/ or Drive正規置き場）＋出来が良ければテンプレ昇格提案→design systemへ部品化→claude.ai/design再pushの還元ループまで回す。Canva以上の品質を毎回再現するための構造。※ショート動画挿入画像→short-video-image-designer、スライド→slide-deck-prep/shisei-houkokukai、写真選定のみ→photo-curatorが正で本スキルは反応しない。
+description: 草川たくや（亀山市議会議員）の印刷物デザイン制作オーケストレーター。テンプレ選択→素材収集→実装（Chrome実測EYES-FIRST）→物理破綻レビュー→安全ゲート→PDF→正規保存→テンプレ昇格還元まで1パス。Triggers: チラシ作って/〇〇のチラシ/ポスター作って/リーフレット作って/市政報告レポート作って/印刷物作って/デザイン制作/design-studio。NOT: 地区名を冠したレポート→chiku-report、ショート動画挿入画像→short-video-image-designer、スライド→slide-deck-prep・shisei-houkokukai、写真選定のみ→photo-curator
 ---
 
 # design-studio スキル
@@ -51,7 +51,7 @@ AskUserQuestionで一括確認: ①種別（チラシ/ポスター/レポート/
 1. **様式を1枚決める（skip禁止・参照選びより先）**
    - `design_system/foundations/styles/_INDEX.md` の判断表を読む。第一手＝「誰に・何のために」、第二手＝制約（実写真の有無／家庭用プリンタ／文字量と読者の関心度／イラスト素材の有無／緊急性／高齢者／**紙か画面か**／**市民配布物か行政向け資料か**）。**衝突したら制約が勝つ**
    - 決めた様式カード `style_*.html` を**自分でRead**する。冒頭の「選択規則」で向かない場面に当たっていないかを確認し、配色・フォント・装飾語彙・NGをそのまま実装制約として持ち越す
-   - 該当なしのときは既存7枚へ無理に寄せない（`_INDEX.md` 4章の手順：外す様式を先に決める→一番近い1枚をベースに変更を1〜2点に絞る→3点以上いじったら新様式としてStep 7-1で昇格）
+   - 該当なしのときは既存8枚へ無理に寄せない（`_INDEX.md` 4章の手順：外す様式を先に決める→一番近い1枚をベースに変更を1〜2点に絞る→3点以上いじったら新様式としてStep 7-1で昇格）
    - **様式を決めずに参照選びへ進まない**。禁止則（紫グラデ・絵文字・浮きカード）を守るだけでは「無難で弱い」に着地する。禁止は事故を防ぐだけで造形の強さを作らない
    - あわせて `templates/` の該当 template.html＋README を確認
 2. **参照の確定（標準経路では必須。ここを飛ばした制作は不可）**

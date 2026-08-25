@@ -1,6 +1,6 @@
 ---
 name: "policy-strategy-suite"
-description: "政策実装戦略の統合スイート（旧4本統合：財政試算／ロードマップ／ステークホルダー／公約パッケージング）。起動時に対象モードを特定し knowledge/policy_strategy/ の該当知識ベースを読んでから実行する。①財政=特財/一般財源/基金/起債・国庫補助探索・亀山財政余力・ROI試算 ②工程=議会日程×予算編成サイクル×4年任期の段階実装設計 ③関係者=賛否見立て・折衝シナリオ・縦割り突破 ④公約束ね=散在候補→3本柱/リーフレット3コラム/HP政策ページ。Triggers: 政策の予算試算/財源シミュレーション/いくら必要/財政影響/国庫補助金探索/基金活用/亀山の財政余力/事業費とROI/政策のロードマップ設計/4年計画/議会タイミング/予算サイクル/いつ何をやるか/段階的実装/補正予算で何ができる/ステークホルダー分析/関係者マッピング/誰を動かす/反対勢力分析/所管課攻略/会派の見方/折衝シナリオ/誰の賛同が要る/3本柱に束ねて/公約パッケージング/リーフレット3コラム/ホームページ政策ページ構成/選挙公約の柱/政策の柱を整理/柱のキャッチコピー/policy-fiscal-simulator/policy-roadmap-designer/policy-stakeholder-mapper/policy-packaging-strategist/policy-strategy-suite。NOT: 政策の中身深掘り→policy-domain-expert、候補生成→policy-synthesizer、EBPM 8軸検証→policy-validator"
+description: "政策実装戦略の統合スイート（財政試算／ロードマップ／ステークホルダー／公約パッケージング）。起動時にモードを特定し knowledge/policy_strategy/ の該当知識ベースを読んでから実行。①財政=財源探索・亀山財政余力・ROI ②工程=議会日程×予算サイクル×4年任期 ③関係者=賛否見立て・折衝シナリオ ④公約束ね=3本柱/リーフレット3コラム/HP政策ページ。Triggers: 政策の予算試算/財源シミュレーション/いくら必要/国庫補助金探索/政策のロードマップ設計/4年計画/いつ何をやるか/ステークホルダー分析/誰を動かす/所管課攻略/3本柱に束ねて/公約パッケージング/選挙公約の柱/policy-fiscal-simulator/policy-roadmap-designer/policy-stakeholder-mapper/policy-packaging-strategist/policy-strategy-suite。NOT: 中身深掘り→policy-domain-expert、候補生成→policy-synthesizer、EBPM検証→policy-validator"
 model: opus
 color: purple
 memory: project

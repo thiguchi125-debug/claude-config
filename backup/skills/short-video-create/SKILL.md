@@ -1,6 +1,6 @@
 ---
 name: short-video-create
-description: 草川たくや（亀山市議会議員）のショート動画を「セリフ生成→ファクトチェック→リスクレビュー→nano-banana画像プロンプト生成→**全7プラットフォーム投稿文生成**→📣SNS投稿管理DB保存」まで1パスで完結させるオーケストレータースキル。「ショート動画作って」「動画作って画像も」「TikTokセット作って」「Reels一式」「セリフから画像までセットで」「ショート動画フルパッケージ」「動画と投稿文一式」「動画＋SNS全部」「short-video-create」等で起動。テーマだけ与えればshort-video-virality-architectでセリフを生成（35〜45秒・冒頭名乗り＋決意型）、既存セリフがあればそれを使い、いずれの場合もcontent-fact-checker→content-risk-reviewer→挿入ビジュアル生成（**説明図＝HTML/CSS→PNGで草川カラー制作／雰囲気イメージのみnano-banana**）→sns-content-creator（7PF同時生成）を直列で通し、最後に📣SNS投稿管理DB(1bd98deb-)へタイトル先頭🎬・各PFをセクション化して1ページに保存する。完成PNGはスマホ編集用にDriveミラー📱動画素材へ配置。**既存パッケージのセリフ修正は改訂モード（Mode R）**で処理する（「セリフ直して」「これで完成させて」「全部直して」／会話途中でセリフに修正が入った時も自動）。Mode Rはセリフ→カット表の秒数→挿入画像HTMLの再レンダ→SNS7種→Notionの5面へ差分を一括伝播し、安全ゲートを再実行する。サイズ指定忘れ・公選法チェック漏れ・Notion保存先迷子・画像プロンプト後追い忘れ・SNS展開後追い忘れ・**改訂時の版割れ（画像に旧文言が残る）**を構造的に防ぐ。
+description: 草川たくや（亀山市議会議員）のショート動画を、セリフ生成→content-fact-checker→content-risk-reviewer→挿入ビジュアル→全7プラットフォーム投稿文→📣SNS投稿管理DB保存まで1パスで作るオーケストレーター。既存パッケージのセリフ修正は改訂モード（Mode R）でセリフ・カット表・画像・SNS・Notionの5面へ差分伝播。Triggers: ショート動画作って/動画作って画像も/TikTokセット作って/Reels一式/ショート動画フルパッケージ/動画と投稿文一式/セリフ直して/short-video-create。NOT: AIキャラ動画→ai-kusakawa、写真投稿→photo-post、挿入イラスト単体→short-video-image-designer、台本のみ→short-video-virality-architect
 ---
 
 # short-video-create スキル
