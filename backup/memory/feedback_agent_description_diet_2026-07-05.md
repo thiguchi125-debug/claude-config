@@ -21,3 +21,13 @@ metadata:
 1. **新規agent/skillのdescriptionは400字以内**（役割1文＋トリガー語＋NOT境界のみ。能力の詳細説明は本体に書く）。
 2. 復元手段: `~/.claude/agents/_description_archive_2026-07-05.md`（原文全文）／GitHub claude-config `sync: 2026-07-05 17:10:38`（圧縮前）・`17:41:37`（完了後）／退役原本は `~/.claude/_retired_agents/`。
 3. 旧policy-expert-*・旧実装系4本への参照を見たら、[[project-todoist-task-migration]]同様「統合先（policy-domain-expert / policy-strategy-suite）に読み替える」。
+
+## 第2次ダイエット（2026-08-25）＋ YAMLの罠
+
+400字ルールは決めただけで守られておらず、agent 14本・skill 16本が超過（超過合計3,870字）。重い上位10本を圧縮し **28,086字 → 25,183字（-2,903字/セッション）**。
+
+**圧縮の原則**: descriptionの仕事は「いつ起動するか／しないか」のルーティングだけ。実装手順・保存先のNotion ID・ファイルパス・agent直列の内訳は**本文にあるのでdescriptionから落とす**。逆に Triggers と NOT は起動精度そのものなので削らない。
+
+**⚠️ YAMLの罠（今回踏んだ）**: skillのdescriptionは無引用のプレーンスカラーで書かれている。そこへ `Triggers: ` のような**コロン＋スペース**を入れると YAML として不正になり `yaml.safe_load` が落ちる（ハーネスは寛容に読めてしまうので気づかない）。**descriptionを書き換えたら必ず `"` で囲む**。今回この不正は drive-intake / daily-content-generator に**以前から潜在していた**（自分の編集前から壊れていた）ので、編集後は全73本を `yaml.safe_load` で通して確認すること。
+
+**残り**: policy-domain-expert(458字)・policy-strategy-suite(509字)は統合agentでトリガー網羅が要るため400字超のまま許容。未着手の超過は agent 12本・skill 14本（合計約1,000字）。
