@@ -58,6 +58,7 @@
 - [oyasumiの会議体マスタIDが古い](feedback_oyasumi_kaigitai_master_id_stale.md) — 46414643- は not found・会議体は毎回未紐付け
 - [市民意見リストDBに「対応状況」は無い](feedback_iken_db_no_taio_status.md) — 未対応集計は「未完了（要対応）」ビュー
 - [gate.pyは並行セッションで承認記録を消し合う](feedback_gate_json_concurrent_overwrite.md) — deny時はまず`_content_gate.json`を疑う
+- [ニュースダイジェストはgate.pyでブログ誤判定](feedback_news_digest_gate_blog_misdetect.md) — 本文は`.txt`で渡す。dedup追記も同手順
 - [update_status.pyは_pipeline_status.json破損で落ちる](feedback_pipeline_status_json_corruption.md) — JSONDecodeErrorはこれ
 - [印刷物は参照ライブラリから入る](feedback_design_reference_library_first.md) — `design_system/references/`から参照1本を自分でRead
 - [成果物は古い版を閉じて新版だけ開く](feedback_open_folder_after_generating_files.md) — `~/.claude/scripts/show_latest.sh`
