@@ -6,9 +6,10 @@
 <title>スタイルレシピ: 新聞体エディトリアル系</title>
 <style>
   :root{
-    --paper:#f7f5ef;  /* 地: ごく淡い生成り。真っ白より紙らしく、密度を受け止める */
-    --deep:#0f3d27;   /* 最濃緑: 大見出し・題字帯 */
-    --green:#1f5a3a;  /* 濃緑: 小見出し・段間罫の主色 */
+    /* 既定＝家庭用プリンタ配布（インク節約パレット）。本刷り版は「配色」節の表を参照 */
+    --paper:#ffffff;  /* 地: 白。ベタ塗り総面積3%以下を守る */
+    --deep:#0e4d27;   /* 報告レポート深緑: 大見出し・題字帯 */
+    --green:#1f7a3a;  /* 報告レポート緑: 小見出し・段間罫の主色 */
     --gold:#c89211;   /* 金: 数字・囲み記事の見出し（アクセント1色のみ） */
     --rule:#b9b3a4;   /* 罫: 段間・囲み */
     --ink:#1a1a1a;    /* 本文（明朝） */
@@ -54,11 +55,16 @@
 <tr><th>和秋（washu_calm）との差</th><td>同じ明朝でも washu は<b>余白と格式</b>で急がせない紙面。こちらは<b>密度と速度</b>。目的が「格を保つ」なら washu、「経緯を渡す」ならこちら</td></tr>
 </table>
 
-<h2>配色（実質3色＋罫）</h2>
+<h2>配色（実質3色＋罫・<b>2パレットを混ぜない</b>）</h2>
+<p style="font-size:12.5px;margin:6px 0">この様式は<b>印刷方法でパレットが切り替わる</b>。1制作物1パレット（<code>foundations/colors.html</code>）。混ぜた時点で事故。</p>
+<table>
+<tr><th style="width:11em">家庭用プリンタ配布<br>（既定）</th><td><b>インク節約パレット</b>。地＝白 <code>#ffffff</code>／大見出し <code>#0e4d27</code>／小見出し・段間罫 <code>#1f7a3a</code>／数字 金 <code>#c89211</code>。<b>ベタ塗り総面積3%以下</b>・地に色を敷かない</td></tr>
+<tr><th>ラクスル等の本刷り</th><td><b>ブランド4色</b>。地＝生成り <code>#f3efe4</code>／大見出し <code>#0f3d27</code>／小見出し・段間罫 <code>#1f5a3a</code>／アクセント＝ライム <code>#c7ff4a</code>（<b>下線・帯・影としてのみ</b>。数字や本文の文字色にはしない＝可読性）</td></tr>
+</table>
 <div class="sw">
-  <div><div class="chip" style="background:#f7f5ef;border:1px solid #ddd"></div>#f7f5ef 淡生成り・地</div>
-  <div><div class="chip" style="background:#0f3d27"></div>#0f3d27 最濃緑・大見出し</div>
-  <div><div class="chip" style="background:#1f5a3a"></div>#1f5a3a 濃緑・小見出し/罫</div>
+  <div><div class="chip" style="background:#ffffff;border:1px solid #ddd"></div>#ffffff 地（既定）</div>
+  <div><div class="chip" style="background:#0e4d27"></div>#0e4d27 大見出し</div>
+  <div><div class="chip" style="background:#1f7a3a"></div>#1f7a3a 小見出し/罫</div>
   <div><div class="chip" style="background:#c89211"></div>#c89211 金・数字（1色のみ）</div>
   <div><div class="chip" style="background:#b9b3a4"></div>#b9b3a4 段間罫・囲み罫</div>
   <div><div class="chip" style="background:#1a1a1a"></div>#1a1a1a 本文（明朝）</div>
@@ -66,8 +72,8 @@
 
 <h2>フォント</h2>
 <table>
-<tr><th>大見出し</th><td>ヒラギノ明朝 W6 または 角ゴ W8・最濃緑・<b>本文の6〜8倍</b>。1面に1本だけ。字間 -0.01em で締める</td></tr>
-<tr><th>脇見出し（袖）</th><td>濃緑・本文の1.3倍。大見出しを1行で補足する（新聞の袖見出し）。ここで案件名・数字を出す</td></tr>
+<tr><th>大見出し</th><td>ヒラギノ明朝 W6 または 角ゴ W8・大見出しの緑（既定 <code>#0e4d27</code>／本刷り <code>#0f3d27</code>）・<b>本文の6〜8倍</b>。1面に1本だけ。字間 -0.01em で締める</td></tr>
+<tr><th>脇見出し（袖）</th><td>小見出しの緑（既定 <code>#1f7a3a</code>／本刷り <code>#1f5a3a</code>）・本文の1.3倍。大見出しを1行で補足する（新聞の袖見出し）。ここで案件名・数字を出す</td></tr>
 <tr><th>リード</th><td>本文の1.1倍・行間1.85。<b>上を太罫3px／下を細罫</b>で挟んで本文と分ける</td></tr>
 <tr><th>本文</th><td>ヒラギノ明朝 W3・9〜10pt・行間1.9・<b>両端揃え（text-align:justify）</b>。段間は本文サイズの1.5倍以上</td></tr>
 <tr><th>数字・キャプション</th><td>角ゴ。数字は W8＋金。キャプションは10.5pt・写真直下に罫1本で留める</td></tr>
@@ -75,6 +81,8 @@
 
 <h2>装飾語彙 / CSSのコツ</h2>
 <ul>
+<li><b>質感</b>: 本刷りなら<b>紙目グレインをごく薄く</b>。<b>家庭用プリンタ配布なら乗せない</b>（既定はこちら）</li>
+<li><b>躍動</b>: <b>題字帯の山形・階段のみ</b>（rep01・rep02）。<b>本文段は水平厳守</b>——段を傾けた時点で読めない</li>
 <li>段組は <code>column-count</code> ＋ <code>column-rule:1px solid #b9b3a4</code>。段間罫があるだけで密度が「詰め込み」でなく「紙面」になる</li>
 <li>囲み記事は <code>break-inside:avoid</code> ＋ 白地＋緑1px。段の途中に置いて<b>読みの休符</b>を作る（1面2〜3か所）</li>
 <li>帯を水平矩形で終わらせない（§1.5-3）。<b>題字帯の下端を山形で切る</b>（rep01・rep02）か、幅違いで階段状に積む</li>
@@ -86,8 +94,9 @@
 <h2>NG</h2>
 <ul>
 <li>1段ベタ流し（この様式の死因）／段数を面ごとにバラバラにする</li>
-<li>明朝細字の白抜き（濃緑ベタに明朝W3を白抜き＝印刷でつぶれる。白抜きは角ゴ太字のみ）</li>
-<li>アクセント色を金以外に増やす／罫の種類を2種以上使う（点線・二重罫の混在は素人化の典型）</li>
+<li>明朝細字の白抜き（緑ベタに明朝W3を白抜き＝印刷でつぶれる。白抜きは角ゴ太字のみ）</li>
+<li>アクセント色を1色より増やす／罫の種類を2種以上使う（点線・二重罫の混在は素人化の典型）</li>
+<li><b>2パレットの混在</b>（ブランド4色の濃緑 × インク節約パレットの金 など）。印刷方法を先に決めてから配色する</li>
 <li>デジタル面への流用。スライド・SNS画像は <code>style_gov_formal</code> か <code>style_photo_bold</code> へ</li>
 </ul>
 
