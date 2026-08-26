@@ -17,6 +17,7 @@
 - [SNS発信ルーティン](project_sns_routine_v2.md) — 2026-08-26簡素化。夕19:30の1本のみ・差し替え禁止。Phase4は着手しない
 - [発信候補パック夜間ジョブがゲートでdeny](project_hakushin_pack_gate_deny.md) — 未修理
 - [newsダイジェスト更新がゲートでdeny](project_news_briefing_digest_gate_deny.md) — 草川承認済だが**分類器が編集をブロック**・未修理
+- [夜間ジョブにAgent/Taskが無く安全ゲートを実起動できない](project_nightly_jobs_missing_agent_tool.md) — キュー滞留の真因・**未修理**
 - [AIくさかわ](project_ai_kusakawa.md) — 実装済。**草川手番待ち**＝ElevenLabs登録・キャラ生成
 - [gyakusanスキル](project_gyakusan_skill.md) — 初回実運用待ち
 - [答弁トラッカー＋実績コンパイラー](project_toben_tracker.md) — SNS実査は毎回伺い必須
