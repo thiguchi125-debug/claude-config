@@ -13,10 +13,10 @@
 - [content-pipeline発信ビジュアル統合](project_content_pipeline_visual_expansion.md) — 記事URL＋写真→1パス
 - [後援会入会フォーム](project_koenkai_intake_form.md) — 告示後(10/18)の拡散停止テーブルあり
 - [後援会名簿は2系統](project_koenkai_roster_two_systems.md) — Notion 94件とDrive 60名が氏名ゼロ重複。管理CSVは00_名簿・個人情報/
-- [Discord3チャンネル分離](project_discord_channel_split.md) — 運用中（投げ込み/納品/ログ）
-- [SNS発信ルーティンv3](project_sns_routine_v2.md) — 朝6:45/夕19:30にDM納品。次＝Phase4
+- [Discordは投げ込み専用](project_discord_channel_split.md) — 2026-08-26縮小。配信は全廃（INBOX_ONLY）・原稿はdrafts＋📣DB
+- [SNS発信ルーティン](project_sns_routine_v2.md) — 2026-08-26簡素化。夕19:30の1本のみ・差し替え禁止。Phase4は着手しない
 - [発信候補パック夜間ジョブがゲートでdeny](project_hakushin_pack_gate_deny.md) — 未修理
-- [newsダイジェスト更新がゲートでdeny](project_news_briefing_digest_gate_deny.md) — 真因特定済・**草川手番＝除外2ID追加の承認**
+- [newsダイジェスト更新がゲートでdeny](project_news_briefing_digest_gate_deny.md) — 草川承認済だが**分類器が編集をブロック**・未修理
 - [AIくさかわ](project_ai_kusakawa.md) — 実装済。**草川手番待ち**＝ElevenLabs登録・キャラ生成
 - [gyakusanスキル](project_gyakusan_skill.md) — 初回実運用待ち
 - [答弁トラッカー＋実績コンパイラー](project_toben_tracker.md) — SNS実査は毎回伺い必須
@@ -56,7 +56,7 @@
 ## 📌 常時効く横断ルール（タスク別は GUARDRAILS.md）
 
 - [資産価値直結の手続相談は二層分離](feedback_shisan_kachi_tetsuzuki_gaikan_kanri.md) — 農振除外・農地転用。氏名は名簿区画1か所
-- [無人oyasumiは安全ゲートでNotion作成できない](feedback_oyasumi_blocked_by_content_gate.md) — 本文はローカル退避／プロパティのみなら通る
+- [oyasumiのNotion本文denyは解消](feedback_oyasumi_blocked_by_content_gate.md) — 2026-08-26 EXEMPT_PARENTS追加。news側は未修理
 - [oyasumiの会議体マスタIDが古い](feedback_oyasumi_kaigitai_master_id_stale.md) — 46414643- は not found・会議体は毎回未紐付け
 - [市民意見リストDBに「対応状況」は無い](feedback_iken_db_no_taio_status.md) — 未対応集計は「未完了（要対応）」ビュー
 - [gate.pyは並行セッションで承認記録を消し合う](feedback_gate_json_concurrent_overwrite.md) — deny時はまず`_content_gate.json`を疑う

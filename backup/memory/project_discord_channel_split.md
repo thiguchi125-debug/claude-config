@@ -30,3 +30,21 @@ Bot現在の権限（2026-08-11実測・67584＋@everyone）= VIEW_CHANNEL／SEN
 - 呼び出し側は `triage_prompt.md`（レシート・タスク提案→inbox）と `leg_morning_push.md`／`leg_evening_push.md`（原稿→delivery・記録→log）に振り分け表を記載済み。
 
 詳細手順は `~/.claude/scripts/sns-routine/README.md` の「用途別チャンネル」節。関連: [[feedback_discord_task_proposal_retire_loses_urgent]] / [[project_sns_routine_v2]]
+
+---
+
+## 2026-08-26 投げ込み専用に縮小（草川指示・現在の運用）
+
+**3チャンネル分離では足りなかった。** 分離後も配信量が減らず、8/26夕便1回で **9通・約6,800字**、
+うちFacebook原稿が3バージョン（原案→差し替え版→最終版）届いた。草川からの返信は **8/24以降ゼロ**で、
+問いかけと承認待ちだけが溜まっていた。草川の言葉＝「discordで長文章を送られても読む気がしない」。
+
+**現在の形＝Discordは草川→システムの投げ込み口だけ。**
+- `discord_api.py` に `INBOX_ONLY = True` / `POST_ALLOWED = ("inbox",)` を追加。
+  `post --to delivery` と `--to log` は **スクリプトが SystemExit で拒否する**（rc=1・実送信なし）。
+  送れるのは `--to inbox`（投げ込みへの受領レシート・`--reply-to` 付き）だけ。
+- 完成原稿の受け渡しは **drafts/ と 📣投稿管理DB のみ**。Discordには流さない。
+- 夜間intake 3:10（`triage_prompt.md`）は inbox にしか post していないので、そのまま動く。
+- 戻すときは `INBOX_ONLY = False`。バックアップ＝`discord_api.py.bak_20260826`。
+
+関連: [[project_sns_routine_v2]]

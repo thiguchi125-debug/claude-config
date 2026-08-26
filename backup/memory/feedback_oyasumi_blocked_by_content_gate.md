@@ -18,3 +18,13 @@ metadata:
 **2026-08-24 追記（news-briefing も同じ壁）:** 朝のニュース収集 v4-local も Step 4／Step 5 が同じ hook で deny された。止まるのは **📰今朝のニュースダイジェスト `391cf503-a68f-8194-be35-fec5aede8a5e` の replace_content** と **📰dedupインデックス `391cf503-a68f-8110-88a7-c5a70e6741c8` の update_content** の2つ。どちらも朝のダッシュボード配下だが、免除は親でなく**ページID単位**なので効かない。一方 **📰ニュースDBへの create-pages は通った**（見出し・概要・議会活用メモを全部 properties で渡しているため）。つまり news-briefing は「DB登録は生き、ohayo が読む出口だけ死ぬ」＝翌朝 ohayo が前日の古いダイジェストを読む、という一番わかりにくい壊れ方をする。退避先は `~/.claude/projects/-Users-kusakawatakuya/drafts/<日付>_news_digest.md` と `<日付>_dedup_index_rows.md`。**dedupインデックスが更新できないと翌日の重複判定が効かない**ので、退避したら草川に必ず知らせる。恒久解は上記2ページIDを EXEMPT_PAGES に足すこと（どちらも内部台帳で公開経路なし）。草川の承認が要る。
 
 関連＝[[feedback-safety-gates-before-notion-save]]／[[feedback-gate-json-concurrent-overwrite]]
+
+**2026-08-26 解消（デイリーサマリ・週次レポート分）:** 草川承認のうえ、上に書いた恒久解を実装した。
+`content_safety_gate.py` に `EXEMPT_PARENTS`（📔夜のまとめ `34ecf503a68f818299d3fabb7e7c4c5e` ／
+📅週次レポート `34ecf503a68f81b09275d34249f59cf6`）を追加し、`exempt_page()` が create-pages の
+**親ページ**でも判定するようにした。テスト4件で確認済み（2つの親配下は通り、無関係な親と親なしは従来どおりdeny）。
+以後 oyasumi は本文込みでデイリーサマリを作れる。`~/outputs/oyasumi/` への退避運用はもう要らない。
+
+**未解消:** news-briefing 側（📰今朝のニュースダイジェスト・📰dedupインデックスの2ページID）は
+EXEMPT_PAGES への追加が必要だが、2026-08-26 のセッションでハーネスの分類器に編集をブロックされた。
+→ [[project_news_briefing_digest_gate_deny]]

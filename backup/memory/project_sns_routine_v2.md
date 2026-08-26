@@ -116,3 +116,22 @@ news-briefingをv4化：4カテゴリ5〜7件（亀山中心）→**7カテゴ�
 - **Phase 2（完了 2026-07-14）**: ニュース収集v2 — 国政・6ドメイン・県政・選挙（news-briefing v4）
 - **Phase 3（完了 2026-07-14）**: 朝夕SNSプッシュ（ローカルlaunchd・ブログ+4PF・出し直し対応・日曜監査）
 - **Phase 4（次）**: 週次深掘り（土曜・上位2テーマ→🎯政策・質問ネタDB）＋学習ループ（選択/パス傾向の候補選定への反映）
+
+## 2026-08-26 全面簡素化（草川指示「最低限のシンプルな運用にしてくれ」）
+
+**稼働は夕便1本だけになった。** Phase3で6本まで増えたlaunchdを整理。
+
+- **停止（`~/Library/LaunchAgents/_stopped_2026-08-26/` へ退避）**: sns-morning-push / sns-morning-reply /
+  sns-evening-reply / sns-audit。戻すときは plist を戻して `launchctl load` するだけ。
+- **稼働継続**: sns-evening-push（19:30）・discord-intake（3:10）・news-briefing（6:05）・
+  form-intake（3:30）・gyakusan（月6:30）・oyasumi（23:30）・daily-drive-pipeline（2:30）。
+- **`leg_evening_push.md` を全面書き直し**（旧版＝`leg_evening_push.md.bak_20260826`）。新しい5つの絶対ルール:
+  ①Discordに送らない ②差し替え禁止（機械チェック→安全ゲート→もう一度機械チェック、を通し切ってから
+  draftsに1ファイルだけ書く）③草川に質問しない（判断が要る要素は落として確定させる）
+  ④完了ログ5行以内 ⑤予備テーマ・Instagram・ブログ・iJAMPスキャンは作らない。
+- **Facebookは700字目安**に変更（上限800）。リスク対応で膨らんで2回弾かれ、差し替えが3通になった事故の対策。
+- **返信文法（「Bで」「ブログ化」「動画で」等）は全部廃止**。返信を待つ仕組みが無くなったため。
+
+**Phase 4（週次深掘り・学習ループ）は着手しない。** 増やす方向の計画はこの簡素化と両立しない。
+
+関連: [[project_discord_channel_split]]
