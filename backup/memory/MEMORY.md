@@ -84,6 +84,7 @@
 - [SNSで草川の行動を言い切らない](feedback_sns_no_action_promise_assertions.md) — 約束は断定しない。事実・数字は可
 - [「次の議会で追及」型を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞禁止
 - [Xはハッシュタグ必須・Instagramは5つ](feedback_hashtag_policy_x_instagram.md) — LINEはタグなしが正
+- [アーカイブに他議員混在の通し会議録がある](feedback_kusagawa_archive_multimember_files.md) — 日付だけのファイルは全議員分。話者行を必ず確認
 - 他議員の誤帰属ガード — [対外発信に名前を載せない](feedback_no_other_council_members_names.md)／[子ども医療費](feedback_kodomo_iryohi_sns_misattribution.md)／[濁り水断水](feedback_fukami_water_distribution_misattribution.md)
 - [議会・他議員への提言は対外発信で避ける](feedback_no_council_directed_proposals.md) — 提案宛先は執行部のみ
 - [確認事項は1件1問の選択式](feedback_ask_one_by_one_choices.md) — AskUserQuestion・1回最大4問

@@ -11,4 +11,6 @@ metadata:
 
 **Why:** 2026-08-26 の朝ジョブで実際に2回denyされた（ダイジェスト本文とdedupインデックス追記の両方がゲート対象）。dedupインデックスへの追記行も「本文」なので同じ手順が要る。`_content_gate.json` は上書き方式なので、ダイジェスト→dedupの順に1件ずつ記録して書き込む。
 
+**追記 2026-08-27:** `update_content` で**見出し行を差し替える**とき（例「## 直近登録（最終更新 2026-08-26）」→「…2026-08-27）」）、`new_str` 側の見出し文字列も承認txtに入っていないと deny される。追記する明細行だけをtxtに書いても足りない。**Notionへ送る new_str の全文をそのままtxtに含めてから gate.py を回す**こと。この日は見出し1行の欠落で1回denyされ、txtに1行足して再gateで通した。
+
 関連: [[feedback-gate-json-concurrent-overwrite]] [[feedback-safety-gates-before-notion-save]] [[feedback-oyasumi-blocked-by-content-gate]]
