@@ -54,3 +54,22 @@ task-auditで選挙補完PJ4本＋SKfeelBalletタスクを create_pages 時、�
 - 特に固有名詞（亀山／議会／葉書／受諾／見積書）と数字（年月日／軒数／月末）は目視ターゲット
 - 単純名詞の組み合わせより、新規生成の長文・専門用語混在文で発生率高い
 - 旧字体（議會／條／龜山）混入も警戒
+
+## 2026-08-27 追加事例：Notion本文のunicode escapeで「捏造」「指摘」が壊れた
+
+育休退園の挿入画v11をNotion🎬ページ§5に追記した際、tool引数をunicode escapeで書いて以下が混入：
+- 「捏造」→「捿适」（U+634F,U+9020 → U+637F,U+9002）
+- 「指摘」→「指摪」（U+6458 → U+646A）
+
+**この2件を捕まえたのは目視ではなく `content_safety_gate.py` だった。**
+このhookは書き込み本文を12字以上の文単位に割り、`_content_gate.json` の承認済み原稿と
+1文ずつ substring 照合する。文字が1つでも違えば「承認済み原稿に無い文言」として deny する。
+つまり**安全ゲートは事故防止だけでなく、文字化けの検出器としても働く**。
+
+**How to apply（強化）:**
+- Notion本文・AskUserQuestion等の日本語は **必ずリテラルで書く。unicode escapeは使わない**（既存ルールの再確認）
+- 長文をNotionへ書くときは、先に同じ文面をローカルの `.md`（名前に「メモ」を入れて internal 判定にする）へ書き出し、
+  `python3 ~/.claude/scripts/gate.py <files...> --pass` で承認 → その**ファイルから文面を機械的にコピー**して渡す。
+  手で打ち直すと escape 事故が復活する
+- deny の「承認済み原稿に無い文言」に見慣れない字が混ざっていたら、まず文字化けを疑う（原稿の差分ではない）
+- 関連：[[feedback_safety_gates_before_notion_save]] [[feedback_gate_kind_of_by_filename]]
