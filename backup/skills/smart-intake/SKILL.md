@@ -93,8 +93,9 @@ python3 …/_root_intake.py --file "<パス>"             # 承認後に実行
 2. **Notion横断** — notion-search（キーワード＋関連語。[[feedback_archive_grep_keyword_expansion]]の要領で草川語彙も並列）
 3. **Driveアーカイブ** — `grep -ril "<キーワード>" ~/.claude/agents/knowledge/kusagawa_archive/_index/` （PDFの中身まで検索できる高速キャッシュ）
 4. **ローカル生成物** — `ls`／`grep -rl` で `~/.claude/projects/-Users-kusakawatakuya/drafts/`・`~/outputs/`・`~/publications/`
-5. **移動履歴** — `grep "<キーワード>" ~/Archive/_relocation_log_*.csv`（2026-07-02の大整理で移動した267件＋以後の移動記録。「前はDesktopにあったのに」はここで解決）
-6. **Todoist** — `td.py list` 出力をgrep（タスク化されたものはここ）
+5. **夜間振り分けの台帳** — `grep "<キーワード>" ~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_intake_ledger.jsonl`（2026-08-26〜。マイドライブ直下から自動で振り分けた全ファイルの元パス・先パス・判定根拠。「Driveに入れたはずなのに直下に無い」はここで解決）
+6. **移動履歴** — `grep "<キーワード>" ~/Archive/_relocation_log_*.csv`（2026-07-02の大整理で移動した267件＋以後の移動記録。「前はDesktopにあったのに」はここで解決）
+7. **Todoist** — `td.py list` 出力をgrep（タスク化されたものはここ）
 
 ### 出力形式
 

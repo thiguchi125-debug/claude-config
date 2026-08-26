@@ -37,11 +37,11 @@
 - **Notion update_content**: 複数セクション一括置換は避け、fetch検証を挟む。固有名詞は手打ちせずコピペ。
 
 ## 📂 保存先マップ（要点・フル版＝OPERATIONS.md【E】／正本＝reference_storage_map.md）
-- 議会一次資料 → Drive `_INBOX_council/`／日常資料 → Drive `_INBOX_daily/`（夜間2:30に自動振分）
+- **資料はすべて Drive マイドライブ直下に置く**（2026-08-26 v5・投函口を一本化）。毎晩2:30に `_root_intake.py` がファイル名→中身（必要ならOCR）→AIの順で判定して正規配置へ。旧 `_INBOX_council/`・`_INBOX_daily/` も副次入口として有効
 - **名簿・個人情報** → Drive `日常資料アーカイブ/00_名簿・個人情報/`（grep対象外）
 - AI下書き → `~/.claude/projects/-Users-kusakawatakuya/drafts/`／スキル生成物 → `~/outputs/`（絶対パス）
 - 署名活動 → `~/publications/`／長期保管 → `~/Archive/`／削除候補 → `~/Archive/_trash_pending_<日付>/`（即rm禁止）
-- Desktop/Downloadsは一時作業場（恒久保管禁止）。Drive直下への野良置き禁止、迷ったら `_INBOX_daily/`。
+- Desktop/Downloadsは一時作業場（恒久保管禁止）。**Drive直下は野良置き禁止ではなく「投函口」**＝迷ったらそこへ置けばよい（翌朝には正規配置に入っている）。直下に残ってよいのは保護フォルダ4つ（`草川たくや 議会質問アーカイブ`／`📷写真ストック`／`📱動画素材`／`💾Macローカルミラー`）と `.gscript` だけ。
 
 ## トリガー早見
 | 言葉 | 起動 |

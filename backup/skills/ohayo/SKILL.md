@@ -39,10 +39,13 @@ description: 毎朝「おはよう」「おはよ」「morning」「朝のブリ
 ## §1 ステータス群（ローカルRead 1回＋判定・書込なし）
 
 `~/.claude/agents/knowledge/kusagawa_archive/99_raw/_scripts/_pipeline_status.json` をRead：
-- `error:"none"` → `📥 昨夜の取込: council N / daily M ✅`（0件でも1行＝生存確認）
-- `inbox_remaining > 0` → `⚠️ INBOX滞留 K件 —「取り込んで」で処理`
-- `error:"visibility_error"` → `🚨 取込パイプライン権限エラー（reference_storage_map.mdのトラブル手順参照）` を最上部表示
-- ファイル無し or last_run_atが48h超 → `🚨 取込パイプラインが動いていません（launchctl要確認）`
+- `root_intake_error:"none"` → `📥 昨夜の振り分け: N件（AI判定 X）✅`（0件でも1行＝生存確認）
+- `root_intake_personal > 0` → `🔒 個人情報として隔離 P件`（中身を読んで名簿と分かったものが含まれる＝草川に一言伝える）
+- `root_intake_unclassified > 0` → `⚠️ 未分類 U件 — `日常資料アーカイブ/📥未分類_YYYY-MM/` に待機。「未分類を片付けて」で処理`
+- `root_intake_error:"visibility_error"` → `🚨 取込パイプライン権限エラー（フルディスクアクセス未付与の疑い・reference_storage_map.mdのトラブル手順参照）` を最上部表示
+- `root_intake_error:"archive_not_visible"` → `🚨 Driveが見えていません（マウント確認）`
+- キー無し or `root_intake_last_run` が48h超 → `🚨 取込パイプラインが動いていません（launchctl list | grep daily-drive-pipeline）`
+- （旧v4キー `council_moved`/`daily_moved`/`inbox_remaining` は 2026-08-26 以降更新されない。残っていても無視する）
 
 ニュースRoutine死活は§6で判定（当日レコード0件＋最終登録26h超 → `🚨 ニュース収集Routineが落ちている可能性: https://claude.ai/code/routines/`）。
 
