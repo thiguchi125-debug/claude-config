@@ -110,6 +110,7 @@
 - [通学路交通安全プログラムの対象範囲](reference_tsugakuro_program_scope.md) — 事故りやすい3点あり・着手前に必読
 - [防災発信の定番リンク集5本](reference_bosai_link_collection.md) — 気象庁/川の防災/防災みえ/名阪/中電
 - [議会質問アーカイブv3構造](reference_drive_archive_kusagawa.md) — 学習層1088件・grep対象6フォルダ
+- [ルーティン運行表](reference_routine_unkohyo.md) — 日次ルーティン1枚。「運行表更新して」で再デプロイ
 - [claude-configバックアップ](reference_claude_config_backup.md)／[Discordチャンネル起動フラグ](reference_discord_channel_launch_flag.md)
 - [スキルトリガー一覧](reference_skill_triggers.md)／[エージェントトリガー一覧](reference_agent_triggers.md) — Notion早見表
 - [市民の声3シート＋分類済資産](reference_市民の声情報源.md) — 2021/06〜359件・6ドメイン
