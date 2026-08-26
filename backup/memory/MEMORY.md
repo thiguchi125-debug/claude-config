@@ -11,6 +11,7 @@
 - [市政報告レポート川合町版](project_shisei_report_kawaicho_complete_form.md) — チラシ完成形の勝ちパターン
 - [content-pipeline発信ビジュアル統合](project_content_pipeline_visual_expansion.md) — 記事URL＋写真→1パス
 - [後援会入会フォーム](project_koenkai_intake_form.md) — 告示後(10/18)の拡散停止テーブルあり
+- [後援会名簿は2系統](project_koenkai_roster_two_systems.md) — Notion 94件とDrive 60名が氏名ゼロ重複。管理CSVは00_名簿・個人情報/
 - [Discord3チャンネル分離](project_discord_channel_split.md) — 運用中（投げ込み/納品/ログ）
 - [SNS発信ルーティンv3](project_sns_routine_v2.md) — 朝6:45/夕19:30にDM納品。次＝Phase4
 - [発信候補パック夜間ジョブがゲートでdeny](project_hakushin_pack_gate_deny.md) — 未修理
