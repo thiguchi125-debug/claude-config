@@ -273,31 +273,11 @@ def react(msg_id, kind):
     _call("PUT", "/channels/%s/messages/%s/reactions/%s/@me" % (ch, msg_id, emoji))
 
 
-# ── 投げ込み専用モード（2026-08-26・草川指示）─────────────────────
-# それまではシステム→草川へ delivery/log の2チャンネルに大量投函していた。
-# 実測（8/26夕便1回分）で9通・約6,800字、うちFacebook原稿が3バージョン
-# （差し替え版→最終版）。読む気にならない量で、草川からの返信は8/24以降ゼロ。
-# 問いかけと承認待ちだけが溜まっていた。
-#
-# Discordは「草川→システムの投げ込み口」だけに戻す。システムから送ってよいのは
-# 投げ込みへの受領レシートだけ（inbox・元メッセージへの返信）。
-# 完成原稿は drafts/ と 📣投稿管理DB に置き、草川がそこから取る。
-# 解除する場合はこの定数を False にする。
-INBOX_ONLY = True
-POST_ALLOWED = ("inbox",)
-
-
 def post(text, kind="log", reply_to=None):
-    """kind= inbox（投げ込みへの受領レシート）のみ。
-    reply_to を渡すと元メッセージへの返信として送る（何への返事か迷わせないため）。"""
+    """kind= inbox（レシート・問いかけ）／delivery（コピペ用原稿）／log（それ以外）。
+    reply_to を渡すと元メッセージへの返信として送る（#投げ込みで何への返事か迷わせないため）。"""
     if kind not in KINDS:
         raise SystemExit("post: kind は %s のいずれか（指定=%r）" % ("/".join(KINDS), kind))
-    if INBOX_ONLY and kind not in POST_ALLOWED:
-        raise SystemExit(
-            "post: Discordは投げ込み専用です（--to %s は送れません）。\n"
-            "  完成原稿・解説・ゲート報告・稼働ログはDiscordに流さず、\n"
-            "  drafts/ と Notion（📣投稿管理DB／📮SNS便ステータス）に保存してください。\n"
-            "  送ってよいのは --to inbox の受領レシートだけです。" % kind)
     ch = out_channel(kind)
     body = {"content": text[:1900]}
     if reply_to:

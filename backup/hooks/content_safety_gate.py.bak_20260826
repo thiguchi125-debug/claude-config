@@ -49,16 +49,6 @@ EXEMPT_PAGES = {
     "722beb9e9827421aa5dbbef67c1c4688",  # 🌅朝のダッシュボード（ohayoの3セクション・公開経路なし）
 }
 
-# 夜間バッチが「毎晩新しいページ」を作る内部ログの親（2026-08-26・草川承認）。
-# oyasumi のデイリーサマリは create-pages なので page_id で除外できず、本文が
-# 毎晩 deny され、Notionにはタイトルだけ・本文は drafts/ に退避される状態が続いていた
-# （feedback_oyasumi_blocked_by_content_gate）。この2つの親配下は草川本人しか
-# 見ない置き場で公開経路を持たないため、EXEMPT_PAGES と同じ理由で除外する。
-EXEMPT_PARENTS = {
-    "34ecf503a68f818299d3fabb7e7c4c5e",  # 📔 夜のまとめ（oyasumi デイリーサマリの親）
-    "34ecf503a68f81b09275d34249f59cf6",  # 📅 週次レポート（金曜夜の週次の親）
-}
-
 # nichijo日次ログ／デイリーサマリはページIDが毎日変わるので、ID では押さえられない。
 # 代わりに「本文が🔖台帳行だけで構成されている」という形で判定する。
 #
@@ -136,21 +126,9 @@ def approved():
 
 
 def exempt_page(tool_input):
-    """更新先が内部運用ログのページなら True。
-
-    update-page は page_id、create-pages は parent（親ページ）で判定する。
-    親で判定するのは、夜間バッチが毎晩ID の変わる新規ページを作るため
-    （デイリーサマリ・週次レポート）。この2つの親配下は公開経路を持たない
-    内部ログなので、EXEMPT_PAGES と同じ理由で素通しする。
-    """
+    """更新先が内部運用ログのページなら True。create-pages は対象外（新規は必ず検査）。"""
     pid = re.sub(r"[^0-9a-f]", "", str(tool_input.get("page_id") or "").lower())
-    if pid and pid in EXEMPT_PAGES:
-        return True
-    parent = tool_input.get("parent")
-    if isinstance(parent, dict):
-        parent = parent.get("page_id") or ""
-    par = re.sub(r"[^0-9a-f]", "", str(parent or "").lower())
-    return bool(par) and par in EXEMPT_PARENTS
+    return bool(pid) and pid in EXEMPT_PAGES
 
 
 def ledger_only(b):

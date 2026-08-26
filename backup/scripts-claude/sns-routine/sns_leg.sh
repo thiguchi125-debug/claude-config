@@ -1,5 +1,12 @@
 #!/bin/bash
 # SNSルーティンv3: SNS便4本（morning_push/morning_reply/evening_push/evening_reply）共通ランナー
+#
+# ⚠️ 2026-08-26 簡素化: 稼働しているのは evening_push の1本だけ。
+#    morning_push / morning_reply / evening_reply は launchd を停止し
+#    ~/Library/LaunchAgents/_stopped_2026-08-26/ へ退避した（草川指示「最低限のシンプルな運用」）。
+#    Discordへの納品も廃止（discord_api.py の INBOX_ONLY で機械的に拒否）。
+#    完成原稿の受け渡しは drafts/ と 📣投稿管理DB のみ。このランナー自体は4本とも
+#    動かせる状態で残してあるので、戻すときは plist を戻すだけでよい。
 # v3（2026-07-23）: メニュー選択制を廃止し、push便が完成原稿をDMへ直接納品する。
 #   - push便=毎回 claude -p 起動（朝6:45／夕19:30）
 #   - reply便=修正返信の処理専用（朝7:30／夕20:15）。_delivery_state.json（当日のpush便が書く）が
