@@ -73,6 +73,7 @@
 - [「スプレッドシートで管理」＝ネイティブ＋機能まで](feedback_spreadsheet_deliverable_must_be_native_and_functional.md) — CSV置くだけは納品ではない
 - [案件フォルダは番号付き構成＋README](feedback_project_folder_numbered_structure.md) — assetsはリネーム禁止
 - [発信前に担当agent/SKILL定義をRead](feedback_read_agent_spec_before_writing.md) — 機械判定＝`check_content_limits.py`
+- [挿入画像の枠はみ出しはgate.pyだけが捕まえる](feedback_gate_py_bundles_overflow_check.md) — design/band/目視は全部通る
 - [報告会スライドの増減はソースHTMLを直す](feedback_houkokukai_slide_edit_via_source.md) — PDF直切り禁止・地区間流用は4点セット
 - [「レポート」がスライドを指すことがある](feedback_report_vs_slides_wording.md) — 紙は必ず2ページ・ページ数で判別
 - [Notion保存も「発信」＝保存前に安全ゲート](feedback_safety_gates_before_notion_save.md) — 本文は手打ち禁止・draftからコピペ
