@@ -62,6 +62,7 @@
 - [市民意見リストDBに「対応状況」は無い](feedback_iken_db_no_taio_status.md) — 未対応集計は「未完了（要対応）」ビュー
 - [gate.pyは並行セッションで承認記録を消し合う](feedback_gate_json_concurrent_overwrite.md) — deny時はまず`_content_gate.json`を疑う
 - [gate.pyの種別判定はファイル名だけ](feedback_gate_kind_of_by_filename.md) — Notion保管ページ本文は必ずblog誤判定。名前に「メモ」でinternal
+- [振り分け単体の🔖台帳はゲートで書けない](feedback_intake_ledger_blocked_by_gate.md) — 発信物が無い日は_intake_ledger.jsonlで代替
 - [ニュースダイジェストはgate.pyでブログ誤判定](feedback_news_digest_gate_blog_misdetect.md) — 本文は`.txt`で渡す。dedup追記も同手順
 - [update_status.pyは_pipeline_status.json破損で落ちる](feedback_pipeline_status_json_corruption.md) — JSONDecodeErrorはこれ
 - [印刷物は工程の順序を固定する](feedback_print_production_order_of_work.md) — 中身→事実確認→文章→収まり→ゲート→デザイン。④の数字を埋めるため素材を探さない
