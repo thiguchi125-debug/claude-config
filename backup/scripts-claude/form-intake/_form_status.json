@@ -1,1 +1,18 @@
-{"date": "2026-08-27", "new_count": 0, "items": [], "errors": []}
+{
+  "date": "2026-08-28",
+  "new_count": 1,
+  "items": [
+    {
+      "row_id": "S1-53",
+      "date": "2026/08/28",
+      "district": "亀山東小学校区（亀山地区）",
+      "domain": "childcare_education",
+      "urgency": "中",
+      "summary": "幼稚園の延長保育（預かり保育）実現／市内全幼稚園・保育園の給食無償化／大型商業施設の充実。3歳・1歳・生後3ヶ月を育てる30代保護者・連絡先メールあり＝返信要否の判断が必要",
+      "notion_url": "https://app.notion.com/p/3c9cf503a68f81cfad56d11d1a7f991e",
+      "skipped": false,
+      "urgent": false
+    }
+  ],
+  "errors": []
+}
