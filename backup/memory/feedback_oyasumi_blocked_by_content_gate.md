@@ -28,3 +28,15 @@ metadata:
 **未解消:** news-briefing 側（📰今朝のニュースダイジェスト・📰dedupインデックスの2ページID）は
 EXEMPT_PAGES への追加が必要だが、2026-08-26 のセッションでハーネスの分類器に編集をブロックされた。
 → [[project_news_briefing_digest_gate_deny]]
+
+**2026-08-29 追記（EXEMPT_PARENTS は半分しか効いていない）:** 同日10:38の追補runで再発を確認。
+`exempt_page()` は **`parent` を見るのが create-pages のときだけ**で、`update-page` は
+**`page_id` が `EXEMPT_PAGES` に載っているときしか通さない**。デイリーサマリのページIDは毎日変わるので
+`EXEMPT_PAGES` には永久に載らない。結果、**「新規作成はできるが、作った本人が本文を追記できない」**。
+再run・補足runがその日のサマリに追記しようとすると必ず deny される。
+
+回避（いま正しいやり方）＝**追補は 📔夜のまとめ 直下に別ページを create-pages で立てる**（親免除で通る）。
+8/22・8/27 に「補足run」が別ページで立っているのも同じ理由と思われる。本体サマリからはリンクで繋ぐ。
+
+恒久解＝`exempt_page()` で `update-page` のときも対象ページの親を引いて `EXEMPT_PARENTS` と照合する。
+草川の承認が要る。関連＝[[feedback-gate-kind-of-by-filename]]
