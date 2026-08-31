@@ -1,6 +1,19 @@
 {
-  "date": "2026-08-31",
-  "new_count": 0,
-  "items": [],
+  "date": "2026-09-01",
+  "new_count": 1,
+  "items": [
+    {
+      "row_id": "S3-150",
+      "date": "2026/08/31",
+      "district": "川崎小学校区",
+      "domain": "childcare_education",
+      "urgency": "中",
+      "summary": "公立幼稚園統合（井田川・みずほ台）について、園舎・園名・合同保育が決まらないまま統合だけが知らされ、保護者への説明・情報提供がないことへの強い不安と不信感",
+      "notion_url": "https://app.notion.com/p/3cdcf503a68f81fda341da13833b97f9?pvs=204",
+      "skipped": false,
+      "urgent": false,
+      "contact": false
+    }
+  ],
   "errors": []
 }
