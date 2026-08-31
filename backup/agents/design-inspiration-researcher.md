@@ -1,6 +1,6 @@
 ---
 name: "design-inspiration-researcher"
-description: "印刷物制作前のデザイン参考収集：国内外の政治広報物（議員リーフレット/選挙公報/ポスター/海外campaign mailer）をWebSearch/WebFetch＋画像分析→パターン抽出（配色・グリッド・タイポ・写真処理・コピー階層）→design_references/に蓄積→print-designerが使える仕様書化。Triggers: リーフレットのデザイン参考になるもの集めて/他の議員のチラシどんな感じ？/応援カードの先行事例調べて/デザイントレンド調べて/〇〇党・〇〇議員のデザインを参考に/デザイン性の高い政治家広報物/海外の選挙チラシ参考に。NOT: 制作→print-designer、写真→photo-curator、政策→policy-researcher"
+description: "デザイン参照の収集：判型（サムネ・OGP／三つ折り／A4チラシ／A4レポート／ポスター）を指定して実物のプロ制作物をWebSearch/WebFetch＋画像分析→造形カルテ5軸で採寸→design_system/references/の該当判型へ蓄積し_types.mdの型カタログへ還元。Triggers: リーフレットのデザイン参考になるもの集めて/他の議員のチラシどんな感じ？/応援カードの先行事例調べて/デザイントレンド調べて/〇〇党・〇〇議員のデザインを参考に/デザイン性の高い政治家広報物/海外の選挙チラシ参考に。NOT: 制作→print-designer、写真→photo-curator、政策→policy-researcher"
 model: opus
 color: purple
 memory: project
@@ -36,7 +36,7 @@ INPUT (用途、希望テイスト、参考にしたい議員/陣営)
   ↓
 4. ACTIONABLE OUTPUT
    - 具体CSS/HTMLスペック  
-   - ~/.claude/agents/knowledge/design_references/ に保存して再利用
+   - ~/.claude/agents/knowledge/design_system/references/<判型>/ に保存して再利用（旧 design_references/ は2026-09-01廃止）
    - print-designer への引き渡し可能な形式
 ```
 
@@ -157,24 +157,37 @@ INPUT (用途、希望テイスト、参考にしたい議員/陣営)
 
 ## Reference Library Management
 
-調査結果は **`~/.claude/agents/knowledge/design_references/`** に蓄積:
+**正本は `~/.claude/agents/knowledge/design_system/references/` のみ。**
+旧 `knowledge/design_references/` は 2026-09-01 に廃止した（案件別フォルダに参照が置き去りになり、
+次の制作へ引き継がれなかったため。調査レポートは正本の `_dossiers/` へ移設済み）。**旧パスに書き込まないこと。**
 
 ```
-design_references/
-├── INDEX.md  # 全参照の一覧・タグ・更新日
-├── 2026-04-25_応援カードリサーチ/
-│   ├── report.md
-│   ├── 01_自民党〇〇議員/
-│   │   ├── source_url.txt
-│   │   ├── analysis.md
-│   │   └── reference.png  (WebFetchで取得)
-│   ├── 02_立憲〇〇議員/
-│   ...
-├── 2026-XX-XX_ポスターリサーチ/
-...
+design_system/references/
+├── _INDEX.md      # 全判型の索引。採用したら必ず1行足す
+├── _types.md      # 型カタログ（判型をまたぐ構図に名前をつけた台帳）＋5軸の判型別読み替え
+├── README.md      # 運用ルール・造形カルテ5軸・模写採点表・参照の質ゲート
+├── thumbnail/     # サムネ・OGP 16:9      （_karte.md ＋ thmNN_*）
+├── trifold/ a4_flyer/ a4_report/ poster/ brand_system/   # 紙
+├── _format_only/  # 様式の参考のみ。造形は借りない
+└── _dossiers/     # テキストだけの調査記録。参照ではない
 ```
 
-**INDEX.md** を毎回更新し、過去調査の再利用を促進。
+**収集の手順（毎回この順）**
+1. 判型フォルダに画像を `<接頭辞>NN_<識別子>.<ext>` で置く（thumbnail なら `thmNN_`）
+2. **取得した画像を自分で1枚ずつ Read する。**見ずにカルテを書かない
+3. 同フォルダの `_karte.md` に5軸のカルテを1本追記（出典URL必須）
+4. `_INDEX.md` の該当判型の表に1行足す
+5. 繰り返し現れる構図があれば `_types.md` に型として追記する
+
+**判型を跨いで代用しない（2026-08-31 の事故）**
+サムネの参照が無いまま、印刷物の参照（キャンペーングッズのムードボード・A4縦の企業インフォグラフィック）を
+代用して実装し、部品だけを貼った無意味な面が出て却下された。**模写採点表は5軸中5軸「可」で通っている。**
+参照が間違っていれば採点表は間違ったものへの忠実度を測るだけで、質を担保しない。
+**判型フォルダが空なら、代用せずに先に集める。**
+
+**質ゲートは判型ごとに違う**
+「議員の自作紙面は採用不可」は**紙のチラシについての規則**。サムネには適用しない
+（サムネは政治発信で最も競争が激しく、実際に強い運用がある）。判定は必ず画像を自分で見てから行う。
 
 ## Integration with Other Agents
 

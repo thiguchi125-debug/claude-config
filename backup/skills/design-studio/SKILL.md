@@ -39,7 +39,7 @@ Canva以上のクオリティの印刷物デザイン制作を、Claude Code起�
 | 恒久デザインルール | 同 `foundations/rules.md`（**実装前に必読**） |
 | ブランド色 | #c7ff4a／#1f5a3a／#0f3d27／#f3efe4（`foundations/colors.html`） |
 | クラウド正本ミラー | claude.ai/design「草川たくやデザインシステム」（DesignSync同期） |
-| 過去制作の分析 | `~/.claude/agents/knowledge/design_references/` |
+| 過去制作の分析 | `~/.claude/agents/knowledge/design_system/references/_dossiers/` |
 
 ## パイプライン（標準経路）
 
@@ -61,7 +61,7 @@ AskUserQuestionで一括確認: ①種別（チラシ/ポスター/レポート/
    - ゼロからのHTML発明は硬く・暗くなる既知の失敗パターン（勝ちパターン=中庄夏祭り2026の「参照忠実再現」）
    - **参照の質ゲート（2026-07-07追加・必須）**: 参照は**プロ制作物のみ**（デザイン会社の制作実績・広報コンクール受賞紙面・誌面デザイン等）。議員の自作紙面・Wordっぽい紙面を参照にしない——参照を忠実に写すほど**天井が参照の質で決まる**（市政報告試作で「素人以下のAI臭さ」と評価された根因）。収集agentに「自分で画像をReadしてプロ制作か目利きしてから採用」を必ず指示する
    - **AI臭の構文（自己検品で禁止）**: 全要素を枠線の箱で囲む・均等グリッド・単一ゴシック・ベタ帯多用＝Wordテンプレ文法。プロは余白でゾーンを作り、明朝×ゴシック対比・裁ち落とし写真・非対称グリッドで組む
-3. **候補2〜3案を提示**（各案: 参照/テンプレ×スタイルの組み合わせ・完成イメージの言語化1〜2行）。過去類似案件が design_references にあれば挙げる
+3. **候補2〜3案を提示**（各案: 参照/テンプレ×スタイルの組み合わせ・完成イメージの言語化1〜2行）。過去類似案件が references/_dossiers/ にあれば挙げる
 4. 草川が claude.ai/design のカード一覧で見たい場合はプロジェクトURLを案内
 5. 草川選択 → 選ばれた参照画像は案件フォルダに保存 → 案件フォルダ作成: `~/publications/<YYYY-MM_案件名>/`（政治活動物）または drafts（試作）
 
@@ -156,7 +156,7 @@ template.html を案件フォルダへ複製し、print-layout-architect に委�
 
 **7-1. テンプレ昇格**: 完成品が既存テンプレに無い型・部品を含む場合、草川に1問: 「この○○（レイアウト/部品）をデザインシステムに昇格させる？」
 - 承認時: `design_system/` に template/component として追加（preview.html は自己完結・個人情報/人物写真なし・1行目に `<!-- @dsCard group="…" name="…" subtitle="…" -->`）
-- `design_references/` に制作レポート1本追記（何が効いたか・数値・反省）
+- `design_system/references/_dossiers/` に制作レポート1本追記（何が効いたか・数値・反省）。使った参照は判型フォルダに残し、案件フォルダに置き去りにしない
 - claude.ai/design へ差分push（下記）
 
 ## claude.ai/design 同期手順（DesignSyncツール）
