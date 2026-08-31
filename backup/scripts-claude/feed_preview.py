@@ -27,6 +27,18 @@ from PIL import Image, ImageDraw, ImageFont
 # 静止画: Xカード/LINE/ブログ一覧 ≒ 400px、モバイル一覧・グリッド ≒ 200px
 STILL_WIDTHS = [(400, "400px  Xカード・LINE・ブログ一覧"),
                 (200, "200px  モバイル一覧・グリッド")]
+
+# ── 配信面のクロップ（2026-08-31 調査。左右が切られ、縦は切られにくい）──
+# 1:1  = Yahoo!ニュース(実測・中央クロップ)/LINEダイジェスト/Google検索モバイル/SmartNews 1:1枠
+# 1.91:1 = X / Facebook / LINEプレビュー / NewsPicks
+# 4:3  = LINE DIGEST 記事面
+CROPS = [(1.0, "1:1  Yahoo・LINE・検索モバイル"),
+         (1.91, "1.91:1  X・Facebook"),
+         (4 / 3, "4:3  LINE DIGEST")]
+SAFE_SHRINK = 0.89   # 1:1中央クロップで残る正方形に、さらに4%ずつの余裕を見た比率
+BOTTOM_NOTEXT = 0.12  # 下端12%はXのカードでチップが重なる。文字を置かない
+MIN_W = 1200          # Google Discover の最小幅
+MIN_PX = 300_000      # 同 総画素
 # 動画カバー: TikTokプロフィールグリッド/YouTubeショート棚/IGリールタブ ≒ 180px
 SHORT_GRID_W = 180
 
@@ -84,29 +96,84 @@ def _scaled(img, width):
     return img.resize((width, max(1, round(img.height * width / img.width))), Image.LANCZOS)
 
 
+def safe_rect(W, H):
+    """1:1中央クロップに耐える安全域（中央の正方形）。返り値は (x0,y0,x1,y1)。"""
+    side = min(W, H) * SAFE_SHRINK
+    return ((W - side) / 2, (H - side) / 2, (W + side) / 2, (H + side) / 2)
+
+
 def build_still(paths, out):
     src = Image.open(paths[0]).convert("RGB")
+    W, H = src.size
+    ar = W / H
+
+    # ① 実表示サイズ
     thumbs = [(_scaled(src, w), label) for w, label in STILL_WIDTHS]
-    pad, gap, head = 28, 34, 40
-    W = pad * 2 + sum(t.width for t, _ in thumbs) + gap * (len(thumbs) - 1)
-    W = max(W, 640)
-    H = pad * 2 + head + max(t.height for t, _ in thumbs) + 30
-    sheet = Image.new("RGB", (W, H), BG)
+
+    # ② 安全域と下端ノーテキスト帯を重ねた原寸プレビュー
+    over = src.copy()
+    od = ImageDraw.Draw(over, "RGBA")
+    sx0, sy0, sx1, sy1 = safe_rect(W, H)
+    od.rectangle([0, 0, sx0, H], fill=(220, 40, 70, 60))          # 左の捨て代
+    od.rectangle([sx1, 0, W, H], fill=(220, 40, 70, 60))          # 右の捨て代
+    od.rectangle([sx0, sy0, sx1, sy1], outline=(40, 140, 90), width=6)
+    od.rectangle([0, H * (1 - BOTTOM_NOTEXT), W, H], fill=(240, 170, 40, 70))
+    prev = _scaled(over, 520)
+
+    # ③ 各配信面のクロップで残るもの
+    crops = []
+    for c_ar, label in CROPS:
+        if ar >= c_ar:                     # 元画像のほうが横長 → 左右を切る
+            cw, ch = H * c_ar, H
+        else:                              # 元画像のほうが縦長 → 上下を切る
+            cw, ch = W, W / c_ar
+        box = ((W - cw) / 2, (H - ch) / 2, (W + cw) / 2, (H + ch) / 2)
+        crops.append((_scaled(src.crop([int(v) for v in box]), 240), label))
+
+    pad, gap, head, lh = 28, 26, 38, 26
+    row1_h = max(t.height for t, _ in thumbs)
+    row2_h = max(prev.height, max(c.height for c, _ in crops))
+    Wt = pad * 2 + sum(t.width for t, _ in thumbs) + gap
+    Wc = pad * 2 + prev.width + gap + sum(c.width for c, _ in crops) + gap * (len(crops) - 1)
+    SW = max(Wt, Wc, 720)
+    SH = pad * 2 + head + row1_h + lh + 30 + head + row2_h + lh + 20
+    sheet = Image.new("RGB", (SW, SH), BG)
     d = ImageDraw.Draw(sheet)
-    d.text((pad, pad), "実表示サイズ（この縮尺で読めない文字は情報量ゼロ）",
-           font=_font(21), fill=INK)
-    x = pad
-    top = pad + head
+
+    d.text((pad, pad), "① 実表示サイズ（この縮尺で読めない文字は情報量ゼロ）", font=_font(21), fill=INK)
+    x, top = pad, pad + head
     for t, label in thumbs:
         sheet.paste(t, (x, top))
         d.rectangle([x, top, x + t.width - 1, top + t.height - 1], outline=(170, 175, 168))
-        d.text((x, top + t.height + 7), label, font=_font(15), fill=(90, 100, 92))
+        d.text((x, top + t.height + 6), label, font=_font(15), fill=(90, 100, 92))
         x += t.width + gap
+
+    y2 = top + row1_h + lh + 30
+    d.text((pad, y2), "② 安全域（緑枠の内側に主要素）と、各配信面で残るもの", font=_font(21), fill=INK)
+    y2 += head
+    sheet.paste(prev, (pad, y2))
+    d.text((pad, y2 + prev.height + 6), "赤=左右の捨て代 / 橙=下端12%は文字禁止",
+           font=_font(15), fill=(90, 100, 92))
+    x = pad + prev.width + gap
+    for c, label in crops:
+        sheet.paste(c, (x, y2))
+        d.rectangle([x, y2, x + c.width - 1, y2 + c.height - 1], outline=(170, 175, 168))
+        d.text((x, y2 + c.height + 6), label, font=_font(14), fill=(90, 100, 92))
+        x += c.width + gap
     sheet.save(out)
-    print(f"[still] {os.path.basename(paths[0])}  原寸 {src.width}×{src.height}"
-          f"  比率 {src.width / src.height:.2f}:1")
-    for w, label in STILL_WIDTHS:
-        print(f"  - {label} に縮小して収録")
+
+    print(f"[still] {os.path.basename(paths[0])}  {W}×{H}  比率 {ar:.3f}"
+          f"{'  ✓16:9' if abs(ar - 16 / 9) < 0.02 else ''}")
+    if W < MIN_W:
+        print(f"  ⚠幅 {W}px は Google Discover の最小幅 {MIN_W}px 未満。大画像で出ない")
+    if W * H < MIN_PX:
+        print(f"  ⚠総画素 {W*H:,} は Discover の下限 {MIN_PX:,} 未満")
+    if abs(ar - 16 / 9) >= 0.02:
+        print(f"  ・16:9（1.778）ではない。Discover公式の推奨比率は16:9")
+    print(f"  安全域（中央{SAFE_SHRINK:.0%}の正方形）= x {sx0:.0f}〜{sx1:.0f} / y {sy0:.0f}〜{sy1:.0f}"
+          f"  ＝ {sx1-sx0:.0f}×{sy1-sy0:.0f}px。主見出し・氏名・顔はこの内側に置く")
+    print(f"  下端ノーテキスト帯 = y {H*(1-BOTTOM_NOTEXT):.0f}〜{H}（Xのカードでチップが重なる）")
+    print("  左右の捨て代 = 各 {:.0f}px（1:1に切られると消える）".format(sx0))
     return sheet
 
 
