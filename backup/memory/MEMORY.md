@@ -95,6 +95,7 @@
 - [確認は最初に1回束ねる](feedback_ask_bundling_and_upfront_reflection.md) — 入力にある情報は最初から反映
 - [コピペ前提原稿はコピペ即可の書式で](feedback_copypaste_draft_delivery.md) — drafts/に1案1txt→`open -e`
 - [差分の蛍光マーカーHTMLを作らない](feedback_no_diff_marking_html.md) — 文字単位diffは塗る箇所が無意味・変更点は散文で数点に絞る
+- [フッターの【ご意見箱】は矢印なし＋半角スペース](feedback_blog_footer_iken_bako_no_arrow.md) — `【ご意見箱】 https://…`。正本＝blog-writer(-normal).md
 - [コンテンツ生成は常時lean full-agent](feedback_content_generation_default_flow.md) — 主担当agent省略禁止
 - タスク登録 — [保存先＋期限を提示→回答後に保存](feedback_ask_destination_and_deadline_before_register.md)／[+3日は推奨案](feedback_task_deadline_3days.md)／[Pending系3区分](feedback_task_db_pending_status.md)
 - [早朝5:00-7:00は机上作業限定](feedback_early_morning_desk_band.md) — 電話・役所・現地は不可
