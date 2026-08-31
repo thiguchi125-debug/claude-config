@@ -69,6 +69,7 @@
 - [印刷物は工程の順序を固定する](feedback_print_production_order_of_work.md) — 中身→事実確認→文章→収まり→ゲート→デザイン。④の数字を埋めるため素材を探さない
 - [市民の声は逐語か地の文か二択](feedback_citizen_quote_verbatim_or_narration.md) — 鉤括弧を外した要約を引用枠に入れるのは合成引用
 - [AskUserQuestionのpreviewは自由記述欄を消す](feedback_askuserquestion_preview_hides_freetext.md) — 判断だけの質問にpreviewを付けない
+- [参照は同じ判型の実物を使う](feedback_reference_must_match_format.md) — 別判型で代用すると部品貼りになる。採点表は通ってしまう
 - [印刷物は参照ライブラリから入る](feedback_design_reference_library_first.md) — `design_system/references/`から参照1本を自分でRead
 - [成果物は古い版を閉じて新版だけ開く](feedback_open_folder_after_generating_files.md) — `~/.claude/scripts/show_latest.sh`
 - [渡したDriveファイルをcp上書きしない](feedback_never_overwrite_delivered_drive_file.md) — 草川のクラウド側編集が黙って消える。直すなら別名
