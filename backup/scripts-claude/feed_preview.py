@@ -96,6 +96,40 @@ def _scaled(img, width):
     return img.resize((width, max(1, round(img.height * width / img.width))), Image.LANCZOS)
 
 
+def blank_pockets(img, cell=50):
+    """意図のない大きな空きポケットを検出する。
+
+    「中途半端な大余白を作らない」は目視では見落とすので機械で押さえる。
+    空セル（インクがほぼ無い升）だけで作れる最大の長方形を返す。
+    """
+    g = np.asarray(img.convert("L"), dtype=np.int16)
+    H, W = g.shape
+    e = (np.abs(np.diff(g, axis=1))[:-1, :] + np.abs(np.diff(g, axis=0))[:, :-1]) > EDGE_THRESHOLD
+    gh, gw = H // cell, W // cell
+    grid = np.zeros((gh, gw), bool)
+    for r in range(gh):
+        for c in range(gw):
+            grid[r, c] = e[r*cell:(r+1)*cell, c*cell:(c+1)*cell].mean() < 0.004
+    best, heights = (0, None), [0]*gw
+    for r in range(gh):
+        for c in range(gw):
+            heights[c] = heights[c] + 1 if grid[r, c] else 0
+        stack = []
+        for c in range(gw + 1):
+            h = heights[c] if c < gw else 0
+            start = c
+            while stack and stack[-1][1] > h:
+                st, hh = stack.pop()
+                if hh * (c - st) > best[0]:
+                    best = (hh * (c - st), (st, r-hh+1, c, r+1))
+                start = st
+            stack.append((start, h))
+    if not best[1]:
+        return None
+    x0, y0, x1, y1 = [v*cell for v in best[1]]
+    return (x0, y0, x1, y1, (x1-x0)*(y1-y0)/(W*H)*100)
+
+
 def safe_rect(W, H):
     """1:1中央クロップに耐える安全域（中央の正方形）。返り値は (x0,y0,x1,y1)。"""
     side = min(W, H) * SAFE_SHRINK
@@ -174,6 +208,13 @@ def build_still(paths, out):
           f"  ＝ {sx1-sx0:.0f}×{sy1-sy0:.0f}px。主見出し・氏名・顔はこの内側に置く")
     print(f"  下端ノーテキスト帯 = y {H*(1-BOTTOM_NOTEXT):.0f}〜{H}（Xのカードでチップが重なる）")
     print("  左右の捨て代 = 各 {:.0f}px（1:1に切られると消える）".format(sx0))
+    bp = blank_pockets(src)
+    if bp:
+        x0, y0, x1, y1, pct = bp
+        mark = "⚠" if pct >= 10 else "  "
+        print(f"{mark}最大の空きポケット = x{x0}〜{x1} / y{y0}〜{y1}"
+              f"（{x1-x0}×{y1-y0}px ＝ 画面の{pct:.0f}%）"
+              + ("　意図のない大余白は不合格。要素の再配分を指示すること" if pct >= 10 else ""))
     return sheet
 
 
