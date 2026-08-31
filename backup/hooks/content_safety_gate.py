@@ -52,7 +52,7 @@ EXEMPT_PAGES = {
 # 夜間バッチが「毎晩新しいページ」を作る内部ログの親（2026-08-26・草川承認）。
 # oyasumi のデイリーサマリは create-pages なので page_id で除外できず、本文が
 # 毎晩 deny され、Notionにはタイトルだけ・本文は drafts/ に退避される状態が続いていた
-# （feedback_oyasumi_blocked_by_content_gate）。この2つの親配下は草川本人しか
+# （feedback_oyasumi_blocked_by_content_gate）。これらの親配下は草川本人しか
 # 見ない置き場で公開経路を持たないため、EXEMPT_PAGES と同じ理由で除外する。
 EXEMPT_PARENTS = {
     "34ecf503a68f818299d3fabb7e7c4c5e",  # 📔 夜のまとめ（oyasumi デイリーサマリの親）
