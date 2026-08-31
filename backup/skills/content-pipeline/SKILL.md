@@ -478,6 +478,16 @@ Agent(subagent_type="content-risk-reviewer",
 3. ffmpeg で各セグメント（≈2.8秒・ゆるやかKen Burnsズーム）→ concat →前後フェード。重い4Kズームは避け `-preset veryfast` で。合成フレームのコンタクトを自Readして可読性確認（EYES-FIRST）。
 4. 音声は付けない（IGアプリ内で音楽追加を推奨と添える）。
 
+### 4-B2. 配信面ゲート（必須・skip禁止）
+
+原寸で破綻ゼロは合格の半分。**確定前に必ず縮小して読者の目で見る。**
+
+```bash
+python3 ~/.claude/scripts/feed_preview.py still <サムネ.png>      # 静止画
+python3 ~/.claude/scripts/feed_preview.py short <カバー.png> ...  # 9:16
+```
+→ 出た1枚を持って **`feed-visual-reviewer`** を起動し `PASS` を取る。`FIX`／`REBUILD` なら直して再度通す。詳細＝`references/visual-assets-playbook.md` A-4。
+
 ### 4-C. 安全ゲート（サムネ・動画とも）
 - 画像・動画に載る**文言**は content-fact-checker → content-risk-reviewer を通す。ただしブログ（2.6/2.7）と**同一事実・同一表現の流用は継承可**（重複検証スキップ）。動画/画像独自の新規主張・人物写真の写り込み（他者の顔・実名のぼり以外の第三者）のみ重点確認。公選法の寄附/おもてなし表現・他議員名なしを最終確認。
 

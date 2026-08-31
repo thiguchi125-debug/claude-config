@@ -131,6 +131,10 @@ template.html を案件フォルダへ複製し、print-layout-architect に委�
 
 **勝負所判定**: 選挙関連物・A2以上の大判・長期掲示物・後援会リーフレットは design-director（8軸プロ昇格）の追加起動を草川に提案（承認制・トークン大）。
 
+#### Step 4-A2: 配信面 — feed-visual-reviewer（**画面に出す画像のときのみ**・skip禁止）
+
+サムネ・OGP・SNS投稿画像など**紙ではなくフィードに出る成果物**は、`natural-design-reviewer`（紙の物理破綻）だけでは不足。`python3 ~/.claude/scripts/feed_preview.py still <png>` で縮小コンタクトシートを作り、`feed-visual-reviewer` で `PASS` を取ってから Step 5 へ。印刷物だけの回はこのステップを飛ばす。
+
 ### Step 5: 安全ゲート（対外配布物は必須・skip禁止）
 1. content-fact-checker — 日付・場所・数値・固有名詞・主催表記（例: 親子で米づくり=亀山JC主催）を一次情報照合
 2. content-risk-reviewer — 公選法（政治活動物は「討議資料」表記）・個人情報・他議員氏名不掲載 等8軸
