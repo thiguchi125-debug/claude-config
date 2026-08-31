@@ -44,6 +44,7 @@
 - [2026年6月議会 一般質問prep](project_ippan_shitsumon_2026-06_resume.md) — 次＝counter-argument-simulator
 - [3本柱 v0](../../../agents/knowledge/kusagawa_archive/04_compass/3pillars/v0_handoff.md) — 「3本柱v0見せて」
 - [クラウドRoutine棚卸し](project_routine_cleanup_2026-07.md) — 停止4・修理1・現役4
+- [亀山JC親子で米づくり体験](project_jc_oyako_komezukuri.md) — 収穫米配布は書かない(199条の3)・農家代表者名は表記割れ・理事長名は市職員と同名
 - [熊本地震JC支援物資](project_jc_kumamoto_shien_busshi.md) — **地震は2026-07-28発生**（素の知識に無い）
 - [三寺コスモス畑の再生](project_mitsudera_cosmos_saisei.md) — 10/17まつり。代表＝草川
 - [トークン削減2026-08-20](project_token_reduction_2026-08-20.md) — 真因①印刷物の画像積み上げ(25枚deny hook)②34hセッション×並行×キャッシュ失効で上限到達
@@ -81,6 +82,7 @@
 - [顔ぼかしは草川本人を除外・二段で潰す](feedback_face_blur_exclude_kusagawa_and_verify.md) — 検出器＋目視
 - [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出しはCSSライムバー/角マーカー/ピル
 - 禁止表現 — [届かないを終わらせる](feedback_phrase_todokanai_owaraseru.md)／[届かなくても届く](feedback_phrase_todokanakutemo_todoku.md)／[距離比喩](feedback_metric_distance_metaphor_avoid.md)／[抽象・詩的比喩](feedback_no_abstract_poetic_phrases.md)／[つくり話冒頭](feedback_no_halfbaked_story_openings.md)／[空虚な問いかけ](feedback_no_hollow_rhetorical_questions.md)
+- [ゲートで削らせると未確認の情景で穴埋めされる](feedback_gate_deletion_refilled_with_invented_scenes.md) — 修正版は差分で洗う
 - [架空エピソード禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
 - [SNSで草川の行動を言い切らない](feedback_sns_no_action_promise_assertions.md) — 約束は断定しない。事実・数字は可
 - [「次の議会で追及」型を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞禁止
