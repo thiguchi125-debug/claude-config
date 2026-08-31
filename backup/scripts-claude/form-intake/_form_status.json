@@ -1,18 +1,6 @@
 {
-  "date": "2026-08-30",
-  "new_count": 1,
-  "items": [
-    {
-      "row_id": "S3-149",
-      "date": "2026/08/29",
-      "district": "関地区（関小学校区）",
-      "domain": "childcare_education",
-      "urgency": "中",
-      "summary": "子ども医療費の窓口負担なしを18歳まで拡大してほしい（4児のママ様・関小学校区・連絡先メールあり）",
-      "notion_url": "https://app.notion.com/p/3cbcf503a68f8145bb23fc31c8a39e47",
-      "skipped": false,
-      "urgent": false
-    }
-  ],
+  "date": "2026-08-31",
+  "new_count": 0,
+  "items": [],
   "errors": []
 }
