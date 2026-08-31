@@ -19,7 +19,7 @@ feed-visual-reviewer エージェント専用の入力生成ツール。
 
 ゾーン座標は「目安」であり各PFのUI更新で動く。調整はこのファイル冒頭の定数で行う。
 """
-import argparse, os, sys
+import argparse, os, re, sys, pathlib
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
@@ -162,12 +162,87 @@ def build_short(paths, out):
     return sheet
 
 
+# ── B-3: テロップの秒数 × 文字数 ────────────────────────────
+# 日本語の読み取り速度の目安。ナレーションと同時に読ませる補助テロップは遅くなる。
+RATE_SPOKEN = 7.0   # 字/秒: 発話と一致する字幕（音でも入るので速くて追える）
+RATE_SUPPL  = 5.0   # 字/秒: 発話と別内容の補助テロップ（※注記・出典など）
+
+_TIME = re.compile(r"(\d+(?:\.\d+)?)\s*[–\-—~〜]\s*(\d+(?:\.\d+)?)")
+
+
+def _count_ja(text):
+    """読む文字数。空白・改行は数えない。約物は0.5字として数える。"""
+    n = 0.0
+    for ch in text:
+        if ch.isspace():
+            continue
+        n += 0.5 if ch in "、。「」『』（）()・…—―:：/／※★" else 1.0
+    return n
+
+
+def check_telop(paths):
+    """カット表 / テロップ貼り付け用ファイルを読み、秒数に対して文字が多い行を名指しする。
+
+    対応形式:
+      1) セリフ表    `0.0–3.3<TAB>本文`             → 発話と一致 → RATE_SPOKEN
+      2) テロップ表  `【T2】20.7-24.7` の次行以降が本文 → 補助     → RATE_SUPPL
+    """
+    rows, bad = [], 0
+    for path in paths:
+        lines = pathlib.Path(path).read_text().splitlines()
+        i = 0
+        while i < len(lines):
+            ln = lines[i]
+            m = _TIME.search(ln)
+            if not m:
+                i += 1
+                continue
+            t0, t1 = float(m.group(1)), float(m.group(2))
+            dur = max(0.1, t1 - t0)
+            head = ln[:m.start()]
+            supplemental = "【" in head or "T" in head.upper() and "【" in ln
+            tail = ln[m.end():].strip(" \t　")
+            # 見出し語（上部固定/★必須 等）は本文ではない
+            tail = re.sub(r"^(上部固定|全編.*|★.*)$", "", tail).strip()
+            body = tail
+            if not body:
+                j = i + 1
+                buf = []
+                while j < len(lines) and lines[j].strip() and not _TIME.search(lines[j]) \
+                        and not lines[j].startswith("──") and not lines[j].startswith("挿入画"):
+                    buf.append(lines[j].strip())
+                    j += 1
+                body = " ".join(buf)
+                i = j
+            else:
+                i += 1
+            if not body:
+                continue
+            n = _count_ja(body)
+            rate = RATE_SUPPL if supplemental else RATE_SPOKEN
+            allowed = dur * rate
+            over = n > allowed
+            bad += over
+            rows.append((os.path.basename(path), t0, t1, dur, n, allowed,
+                         "補助" if supplemental else "発話", over, body))
+
+    print(f"== B-3 テロップ 秒数×文字数（発話 {RATE_SPOKEN}字/秒 / 補助 {RATE_SUPPL}字/秒）==")
+    for f, t0, t1, dur, n, allowed, kind, over, body in rows:
+        mark = "⚠OVER" if over else "  ok "
+        head = body if len(body) <= 34 else body[:33] + "…"
+        print(f"{mark} {t0:5.1f}–{t1:5.1f} ({dur:4.1f}s) {kind} {n:5.1f}字 / 上限{allowed:5.1f}字  {head}")
+    print(f"\n判定対象 {len(rows)} 行 / 超過 {bad} 行")
+    return bad
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("mode", choices=["still", "short"])
+    ap.add_argument("mode", choices=["still", "short", "telop"])
     ap.add_argument("images", nargs="+")
     ap.add_argument("-o", "--out", default=None)
     a = ap.parse_args()
+    if a.mode == "telop":
+        return 1 if check_telop(a.images) else 0
     out = a.out or os.path.join(os.path.dirname(os.path.abspath(a.images[0])),
                                 f"_feedcheck_{a.mode}.png")
     (build_still if a.mode == "still" else build_short)(a.images, out)
