@@ -165,7 +165,9 @@ def build_short(paths, out):
 # ── B-3: テロップの秒数 × 文字数 ────────────────────────────
 # 日本語の読み取り速度の目安。ナレーションと同時に読ませる補助テロップは遅くなる。
 RATE_SPOKEN = 7.0   # 字/秒: 発話と一致する字幕（音でも入るので速くて追える）
-RATE_SUPPL  = 5.0   # 字/秒: 発話と別内容の補助テロップ（※注記・出典など）
+RATE_SUPPL  = 5.0   # 字/秒: 発話と別内容の補助テロップ（読ませたい注記）
+# 出典・連絡先・免責は「読ませる」ものではなく「画面に示す」もの。速度で叩かず参考値だけ出す。
+NOTICE_PAT = re.compile(r"出典|ご確認ください|ご相談|お問い合わせ|問い合わせ|個別の可否")
 
 _TIME = re.compile(r"(\d+(?:\.\d+)?)\s*[–\-—~〜]\s*(\d+(?:\.\d+)?)")
 
@@ -189,7 +191,13 @@ def check_telop(paths):
     """
     rows, bad = [], 0
     for path in paths:
-        lines = pathlib.Path(path).read_text().splitlines()
+        raw = pathlib.Path(path).read_text().splitlines()
+        # 「挿入画の位置」以降は編集メモであってテロップではない
+        lines = []
+        for ln in raw:
+            if "挿入画の位置" in ln or ln.startswith("────"):
+                break
+            lines.append(ln)
         i = 0
         while i < len(lines):
             ln = lines[i]
@@ -219,19 +227,21 @@ def check_telop(paths):
             if not body:
                 continue
             n = _count_ja(body)
+            notice = bool(NOTICE_PAT.search(body))
             rate = RATE_SUPPL if supplemental else RATE_SPOKEN
             allowed = dur * rate
-            over = n > allowed
+            over = (n > allowed) and not notice
             bad += over
-            rows.append((os.path.basename(path), t0, t1, dur, n, allowed,
-                         "補助" if supplemental else "発話", over, body))
+            kind = "掲示" if notice else ("補助" if supplemental else "発話")
+            rows.append((os.path.basename(path), t0, t1, dur, n, allowed, kind, over, body))
 
     print(f"== B-3 テロップ 秒数×文字数（発話 {RATE_SPOKEN}字/秒 / 補助 {RATE_SUPPL}字/秒）==")
     for f, t0, t1, dur, n, allowed, kind, over, body in rows:
-        mark = "⚠OVER" if over else "  ok "
+        mark = "⚠OVER" if over else ("  --  " if kind == "掲示" else "  ok  ")
         head = body if len(body) <= 34 else body[:33] + "…"
         print(f"{mark} {t0:5.1f}–{t1:5.1f} ({dur:4.1f}s) {kind} {n:5.1f}字 / 上限{allowed:5.1f}字  {head}")
     print(f"\n判定対象 {len(rows)} 行 / 超過 {bad} 行")
+    print("※「掲示」＝出典・連絡先・免責。読ませる前提ではないので速度判定の対象外（参考値のみ表示）。")
     return bad
 
 
