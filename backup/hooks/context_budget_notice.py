@@ -72,12 +72,18 @@ def load_state(sf):
         return {"level": 0, "n": 0}
     try:
         d = json.loads(raw)
-        return {"level": int(d.get("level", 0)), "n": int(d.get("n", 0))}
     except ValueError:
+        d = None
+    # 旧形式は閾値の整数だけ（json.loads は int を返すので dict 判定が要る）
+    if isinstance(d, dict):
         try:
-            return {"level": int(raw), "n": 0}
-        except ValueError:
+            return {"level": int(d.get("level", 0)), "n": int(d.get("n", 0))}
+        except (TypeError, ValueError):
             return {"level": 0, "n": 0}
+    try:
+        return {"level": int(raw), "n": 0}
+    except ValueError:
+        return {"level": 0, "n": 0}
 
 
 def save_state(sf, level, n):
