@@ -38,16 +38,67 @@ VIDEO_MAX_SENTENCE = 30          # 一文30字超はanti-pattern
 def n_chars(t):
     return len(re.sub(r"\s", "", t))
 
-def kind_of(path):
+# --- 種別判定 -------------------------------------------------------------
+# 2026-09-02 修正: 以前はファイル名の部分文字列だけで種別を決めていた。そのため
+# SNS7種セットや動画台本を「SNS」「動画」を含まない名前で渡すと全部 blog 判定になり、
+# 「字数範囲外」「冒頭の名乗りがない」「定型フッター欠落」で必ず違反3件が出ていた。
+# gate.py は機械チェック全PASSを記録の前提にしているので指紋が残らず、
+# Notion書き込みが content_safety_gate.py に deny され続ける事故になっていた。
+# → ファイル名のヒントは残したうえで、決まらなければ中身を見て判定する。
+
+SNS_ALIASES = [   # 見出し表記のゆれ -> SNS_LIMITS のキー（長い名前を先に並べる）
+    ("公式LINE", "LINE"), ("X（旧Twitter）", "X"), ("X (旧Twitter)", "X"),
+    ("Threads", "Threads"), ("Instagram", "Instagram"), ("Facebook", "Facebook"),
+    ("LINE", "LINE"), ("X", "X"),
+]
+PF_HEAD_WORDS = ("Threads", "Instagram", "Facebook", "LINE", "YouTube", "TikTok",
+                 "公式LINE", "X（旧Twitter）", "X (旧Twitter)")
+INTERNAL_NAME_HINTS = ("メモ", "聞き取り", "様式", "memo", "hearing",
+                       "作業記録", "引き継ぎ", "HANDOFF", "handoff",
+                       "台帳", "ファクトシート", "factsheet", "_notion_body")
+
+def _norm_head(name):
+    """見出しから飾りを剥がす。『## 【Threads】論点＝…』→『Threads 論点＝…』"""
+    s = name.strip()
+    s = re.sub(r"^[^0-9A-Za-z぀-ヿ一-鿿]+", "", s)  # 先頭の記号・絵文字
+    return s.replace("【", "").replace("】", " ").strip()
+
+def sns_key(name):
+    """見出し名から SNS_LIMITS のキーを引く。見つからなければ None。"""
+    head = _norm_head(name)[:16]
+    for alias, key in SNS_ALIASES:
+        if head.startswith(alias):
+            return key
+    return None
+
+def kind_and_reason(path, text=None):
+    """(種別, 判定理由) を返す。理由も出すのは、誤判定に目で気づけるようにするため。"""
     b = os.path.basename(path)
-    if "SNS" in b:  return "sns"
-    if "動画" in b: return "video"
-    # 内部資料（聞き取り様式・相談カンペ・作業メモ）は対外発信物ではないので、
-    # 冒頭の名乗り・定型フッター・5段構成といったブログ規定の対象外。
-    # 字数だけ数えて通す。fact-checker / risk-reviewer の2段ゲートは従来どおり必須。
-    if any(k in b for k in ("メモ", "聞き取り", "様式", "memo", "hearing")):
-        return "internal"
-    return "blog"
+    # 1) ファイル名の明示指定を最優先（従来互換）
+    if "SNS" in b or "sns" in b:
+        return "sns", "ファイル名に SNS"
+    if "動画" in b or "video" in b:
+        return "video", "ファイル名に 動画/video"
+    if any(k in b for k in INTERNAL_NAME_HINTS):
+        return "internal", "ファイル名が内部資料"
+    # 2) ファイル名で決まらなければ中身を見る
+    if text is None:
+        try:
+            text = open(path, encoding="utf-8", errors="replace").read()
+        except OSError:
+            return "blog", "本文を読めずフォールバック"
+    heads = re.findall(r"^#{1,4}\s*(.+?)\s*$", text, flags=re.M)
+    pf_hits = sum(1 for h in heads
+                  if any(_norm_head(h)[:16].startswith(w) for w in PF_HEAD_WORDS))
+    if pf_hits >= 3:
+        return "sns", f"本文にプラットフォーム見出し{pf_hits}件"
+    if re.search(r"カット表|尺の内訳|セリフ連続版", text) or \
+       re.search(r"^\|\s*[A-Za-z]?\d+\s*\|\s*\d+:\d\d", text, flags=re.M):
+        return "video", "本文にカット表・尺の記述"
+    return "blog", "ファイル名・本文とも該当なし（既定＝ブログ）"
+
+def kind_of(path, text=None):
+    return kind_and_reason(path, text)[0]
 
 def is_normal_blog(path):
     return "ノーマル" in os.path.basename(path)
@@ -59,7 +110,7 @@ def check_sns(text):
         raw  = "\n".join(sec.split("\n")[1:])
         body = re.sub(r"^\s*\*\*\d/\d\*\*\s*$", "", raw, flags=re.M)  # スレッド番号除去（字数用）
         n = n_chars(body)
-        key = next((k for k in SNS_LIMITS if name.startswith(k)), None)
+        key = sns_key(name)   # 『## 【Threads】論点＝…』のような飾り付き見出しも拾う
         if key is None:
             continue
         lo, hi = SNS_LIMITS[key]
@@ -185,14 +236,26 @@ def check_internal(text):
     return out
 
 def main(argv):
-    files = argv
+    forced = None
+    files = []
+    for a in argv:
+        if a.startswith("--kind="):
+            forced = a.split("=", 1)[1].strip()
+        else:
+            files.append(a)
     if not files:
-        print("usage: check_content_limits.py <file.md> ..."); return 1
+        print("usage: check_content_limits.py [--kind=blog|sns|video|internal] <file.md> ...")
+        return 1
+    if forced and forced not in ("blog", "sns", "video", "internal"):
+        print(f"unknown --kind={forced}（blog|sns|video|internal のいずれか）"); return 1
     fail = 0
     for f in files:
         text = open(f, encoding="utf-8").read()
-        k = kind_of(f)
-        print(f"\n== {os.path.basename(f)}  [{k}] ==")
+        if forced:
+            k, why = forced, "--kind で明示指定"
+        else:
+            k, why = kind_and_reason(f, text)
+        print(f"\n== {os.path.basename(f)}  [{k}] ({why}) ==")
         if k == "blog":
             res = check_blog(text, normal_mode=is_normal_blog(f))
         elif k == "internal":
