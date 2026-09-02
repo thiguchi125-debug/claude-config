@@ -47,6 +47,7 @@
 - [亀山JC親子で米づくり体験](project_jc_oyako_komezukuri.md) — 収穫米配布は書かない(199条の3)・農家代表者名は表記割れ・理事長名は市職員と同名
 - [熊本地震JC支援物資](project_jc_kumamoto_shien_busshi.md) — **地震は2026-07-28発生**（素の知識に無い）
 - [三寺コスモス畑の再生](project_mitsudera_cosmos_saisei.md) — 10/17まつり。代表＝草川
+- [区切り運用の仕組み化](project_kugiri_session_split.md) — 真因は24.5h単一セッション。「区切り」→/clear→「再開」の3語
 - [トークン削減2026-08-20](project_token_reduction_2026-08-20.md) — 真因①印刷物の画像積み上げ(25枚deny hook)②34hセッション×並行×キャッシュ失効で上限到達
 - [止まっていた自動化の復活](project_stalled_automation_revival_2026-08-20.md) — oyasumi毎晩23:30・gyakusan月曜6:30をlaunchd化
 
