@@ -25,7 +25,7 @@ SNS_LIMITS = {  # 表示名の接頭辞 -> (下限, 上限)  ※上限Noneは字
     "Threads":        (300, 500),
     "Instagram":      (600, 1000),
     "Facebook":       (500, 800),
-    "LINE":           (200, 400),
+    "LINE":           (200, 500),   # 2026-09-02 草川確認: 上限は500字（feedback_line_500chars_no_hashtag）
 }
 MAX_TAGS = {"X": 4, "Instagram": 5}   # ハッシュタグ上限
 BLOG_TIERS = [("標準", 1500, 2500), ("深掘り", 2500, 4500), ("徹底解説", 4500, 8000)]
