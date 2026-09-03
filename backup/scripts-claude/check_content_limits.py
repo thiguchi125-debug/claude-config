@@ -94,6 +94,11 @@ def kind_and_reason(path, text=None):
     # 発信物として判定されると、対外発信の規定（憲法5構成・字数）が当たって落ちるため。
     if any(k in b for k in INTERNAL_NAME_HINTS):
         return "internal", "ファイル名が内部資料"
+    # 2026-09-04: ショート動画の「キャプション（投稿文）」は台本でもブログでもない。
+    # 名前に tiktok/shorts が入れば video、入らなければ blog と判定され、
+    # 尺・カット表・定型フッターを要求されてどちらでも必ず落ちていた。
+    if b.lower().startswith("caption") or "キャプション" in b:
+        return "sns", "キャプション（投稿文）＝SNS規定で検査"
     if "SNS" in b or "sns" in b:
         return "sns", "ファイル名に SNS"
     if "動画" in b or "video" in b:
