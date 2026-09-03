@@ -79,6 +79,8 @@
 - [渡したDriveファイルをcp上書きしない](feedback_never_overwrite_delivered_drive_file.md) — 草川のクラウド側編集が黙って消える。直すなら別名
 - [「スプレッドシートで管理」＝ネイティブ＋機能まで](feedback_spreadsheet_deliverable_must_be_native_and_functional.md) — CSV置くだけは納品ではない
 - [案件フォルダは番号付き構成＋README](feedback_project_folder_numbered_structure.md) — assetsはリネーム禁止
+- [キャプションは型判定に枠が無い](feedback_gate_no_slot_for_caption_files.md) — 2026-09-04に追加。見出しがPF名でないと実質ノーチェック
+- [圧縮すると但し書きだけ落ちる](feedback_compression_drops_safety_clauses.md) — 短尺版・PF別版は元版と同じ強度で再ゲート
 - [発信物は.txtでもgate.pyに通す](feedback_gate_kind_of_by_filename.md) — 2026-09-02まで.txtは機械チェック0件のまま--passで指紋記録されていた
 - [「だから、撮っています」は恒久禁止](feedback_no_totteimasu_line.md) — 憲法②「撮っている理由」ごと廃止。checkerは禁止検出に反転済み
 - [ショート動画台本はvirality-architectが主担当](feedback_short_video_use_virality_architect_first.md) — 35〜45秒厳守。2026-09-03に仕様の60秒表記を是正＋保存時deny hook新設
