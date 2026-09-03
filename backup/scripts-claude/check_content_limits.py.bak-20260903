@@ -79,11 +79,6 @@ def kind_and_reason(path, text=None):
         return "sns", "ファイル名に SNS"
     if "動画" in b or "video" in b:
         return "video", "ファイル名に 動画/video"
-    # ショート動画原稿は出力ファイル名に「動画」が入らない経路がある
-    # （例: sns-content-creator の 7枠目 tiktok_shorts.txt）。PF名でも video と判定する。
-    bl = b.lower()
-    if any(k in bl for k in ("tiktok", "shorts", "reels", "short_video", "short-video")) or "ショート" in b:
-        return "video", "ファイル名にショート動画PF名"
     if any(k in b for k in INTERNAL_NAME_HINTS):
         return "internal", "ファイル名が内部資料"
     # 2) ファイル名で決まらなければ中身を見る
@@ -100,9 +95,6 @@ def kind_and_reason(path, text=None):
     if re.search(r"カット表|尺の内訳|セリフ連続版", text) or \
        re.search(r"^\|\s*[A-Za-z]?\d+\s*\|\s*\d+:\d\d", text, flags=re.M):
         return "video", "本文にカット表・尺の記述"
-    # 【台本 58秒】形式のショート動画原稿（YouTube長尺の『約5分30秒』表記とは一致しない）
-    if re.search(r"【[^】]*台本[^】]*\s(\d{1,3})秒】", text):
-        return "video", "本文が【台本 NN秒】形式のショート動画原稿"
     return "blog", "ファイル名・本文とも該当なし（既定＝ブログ）"
 
 def kind_of(path, text=None):

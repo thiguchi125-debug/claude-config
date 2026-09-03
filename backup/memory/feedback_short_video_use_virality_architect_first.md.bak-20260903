@@ -19,9 +19,3 @@ metadata:
 **Why**: ショート動画は完視聴率が命。長い＝即離脱＝アルゴリズム不利。専門エージェントは8軸自己診断（64/80でship）と retention curve 設計を持つ。
 
 **How to apply**: 「ショート動画作って」「動画の原稿」系の依頼、および short-video-create / daily-content-generator のショート動画工程では、セリフ生成の主担当を必ず short-video-virality-architect にする。素朴生成→後で短縮は二度手間（2026-05-27は v1長尺→ファクト精査多数→本人NG→作り直しで往復が膨らんだ）。関連: [[feedback_kusagawa_short_video_script_style]] [[project_short_video_create_system]]
-
-**2026-09-02 再発（周産期通院支援）**: SNS7種一括生成で `sns-content-creator` が7枠目のTikTok台本を自前生成し、58秒・数値羅列7種の原稿を納品。
-真因は「ルールを忘れた」ではなく **経路にルールが無かった**こと — 本ルールは short-video-virality-architect.md 末尾（＝呼ばれなかったagent）にしか無く、
-実際に走った sns-content-creator.md §7 は逆に「30〜60秒／46〜60秒で行動宣言」と書いていた。仕様に忠実に従うと必ず違反する状態だった。
-対策（2026-09-03 実施）: ①sns-content-creator.md §7 を委譲指示に書き換え・30〜60秒表記を35〜45秒へ是正・チェックリストに尺と数値羅列を追加
-②content-pipeline SKILL.md の生成メディアを6種に変更し、7枠目は architect へ委譲する節を追加 ③MEMORY.md索引に個別行を露出。

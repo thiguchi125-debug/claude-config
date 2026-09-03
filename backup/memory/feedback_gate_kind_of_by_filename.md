@@ -26,3 +26,6 @@ metadata:
 - 長いコマンドを `!` で草川に実行してもらうと、**`python3` の位置で改行が入って途中で切れる**。`sh ~/g.sh` のような短い1行で済むようスクリプトにまとめてから渡す。使用後は `rm` する。
 
 関連：[[feedback_gate_json_concurrent_overwrite]]（並行セッションが `_content_gate.json` を上書きし合う。登録できたら**すぐ**書き込む）／[[feedback_safety_gates_before_notion_save]]
+
+**2026-09-03 追記（ショート動画の取りこぼし）**: `tiktok_shorts.txt` は「動画」を含まないため **blog判定**になり、35〜45秒ゲートが一度も走らなかった（走らせても無関係なブログ指摘4件が出るだけ）。`kind_and_reason()` に PF名ヒント（tiktok/shorts/reels/short_video/ショート）と本文ヒント（`【台本 NN秒】`）を追加して解消。
+**未修理**: 1PF=1ファイル保存（`facebook.txt` `x.txt` `threads.txt` `line.txt` `instagram.txt`）も同じ理由で**全部blog判定**＝SNS字数・ハッシュタグゲートが走っていない。SNS側は `## <PF名>` 見出しが3つ以上ある1ファイル形式でしか検査されない。
