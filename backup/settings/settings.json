@@ -50,6 +50,15 @@
             "command": "python3 $HOME/.claude/hooks/image_budget_guard.py"
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/hooks/short_video_limits_gate.py"
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -60,6 +69,15 @@
             "type": "command",
             "command": "python3 $HOME/.claude/hooks/context_budget_notice.py",
             "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/hooks/short_video_limits_gate.py"
           }
         ]
       }
