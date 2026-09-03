@@ -135,6 +135,7 @@
 - [スキルトリガー一覧](reference_skill_triggers.md)／[エージェントトリガー一覧](reference_agent_triggers.md) — Notion早見表
 - [市民の声3シート＋分類済資産](reference_市民の声情報源.md) — 2021/06〜359件・6ドメイン
 - [コミバス運賃](reference_kameyama_combus_fare.md)／[コミバス収支](reference_kameyama_combus_revenue.md)
+- [小中高生コミバス無料キャンペーン2026](reference_kameyama_kombus_muryo_campaign_2026.md) — 市実施7/21〜9/30・全7路線。8/26時点900名弱は伝聞・未確認
 - [✅タスクDB クイック登録](reference_task_db_quick_create.md) — 参照のみ（新規登録はTodoist）
 - [自治会・地区別報告会スライドWF](reference_jichikai_shisei_houkokukai_playbook.md) — 地区別ニュース62本
 - 一般質問 — [標準時間](reference_kameyama_general_question_time.md)／[制作物のDrive保存先](reference_ippan_shitsumon_seisaku_drive.md)
