@@ -32,6 +32,7 @@
 - **市政報告会の声の自動記録（必須）**: 「記録：〇〇報告会で△△の声」で起動。🎤市政報告会DBの「主な意見・要望」追記＋📝市民意見リスト登録＋Todoist「〇〇地区フォロー」箱。**詳細＝OPERATIONS.md【A】**
 - **議会公務会議の資料Notionページ配置（必須）**: 個別の会議体イベントページは期別議会フォルダでなく **📅ミーティングノートDB（`26d7848d-ad1a-4e84-806f-a8dbccb1872b`）配下**。**詳細＝OPERATIONS.md【D】**
 - **ブログ作成の省力フロー（必須）**: D1完全保管（フッター省略禁止）／D2承認後1回保存／D3タイトル50字／D4 PDFは`pdftotext -layout`／D5リサーチスコープ厳守。**詳細＝OPERATIONS.md【C】**
+- **外部調査は台帳を先にgrep（必須）**: 他自治体・国・県の一次情報をAgentで調べる前に必ず `grep -rl "<KW>" ~/.claude/agents/knowledge/research_ledger/`。ヒットしたら読んで、足りない差分だけ投げる。調査後は最終報告を要約せず `<日付>_<テーマ>.md` で同フォルダへ回収する。正本＝`research_ledger/INDEX.md`（2026-09-03に同じ問いを2回調べて約265M重複させた）。
 - **市民相談**: citizen-inquiry-responder で3パターン返信案＋次アクション→**Todoist**登録候補まで1パス（`td.py add`）。
 - **印刷物**: 入口は **design-studioスキル**。テンプレ正本=`~/.claude/agents/knowledge/design_system/`。実装層は print-layout-architect／print-designer＋photo-curator（草川 ZPERSON=18）。
 - **Notion update_content**: 複数セクション一括置換は避け、fetch検証を挟む。固有名詞は手打ちせずコピペ。
