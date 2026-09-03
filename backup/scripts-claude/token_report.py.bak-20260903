@@ -64,37 +64,11 @@ def main():
     since = (datetime.date.today() - datetime.timedelta(days=days)).isoformat()
 
     sess = []
-    byid = {}
     for f in glob.glob(D + "/*.jsonl"):
         s = scan(f)
         if s["calls"] and s["day"] >= since:
             s["id"] = os.path.basename(f)[:8]
-            s["sub"] = 0
-            s["subcalls"] = 0
             sess.append(s)
-            byid[os.path.basename(f)[:-6]] = s
-
-    # サブエージェントは <session>/subagents/*.jsonl に別置きされる。ここを数えて
-    # いなかったため、2026-09-03 の実測は 100M と出ていたが実際は 435M だった
-    # （77%がサブエージェント側）。親セッションに合算する。
-    for f in glob.glob(D + "/*/subagents/*.jsonl"):
-        x = scan(f)
-        if not x["calls"] or x["day"] < since:
-            continue
-        parent = os.path.basename(os.path.dirname(os.path.dirname(f)))
-        s = byid.get(parent)
-        if s is None:
-            s = dict(day=x["day"], started=x["started"], first=x["first"],
-                     last=0, calls=0, total=0, imgreads=[],
-                     id=parent[:8], sub=0, subcalls=0)
-            sess.append(s)
-            byid[parent] = s
-        s["sub"] += x["total"]
-        s["subcalls"] += x["calls"]
-    for s in sess:
-        s["total"] += s["sub"]
-        s["calls"] += s["subcalls"]
-
     if not sess:
         print("対象セッションなし")
         return
@@ -112,12 +86,7 @@ def main():
 
     TOT = sum(s["total"] for s in sess)
     TC = sum(s["calls"] for s in sess)
-    SUB = sum(s["sub"] for s in sess)
-    SUBC = sum(s["subcalls"] for s in sess)
     print(f"\n合計 {TOT/1e6:.0f}M トークン / {TC} 呼び出し / {len(sess)} セッション")
-    if SUB:
-        print(f"  うちサブエージェント {SUB/1e6:.0f}M / {SUBC} 呼び出し"
-              f"（トークンの {SUB/TOT*100:.0f}%）")
 
     sess.sort(key=lambda s: -s["total"])
     print("\n=== 集中度（ここが偏るほど「区切り」が効く）")
@@ -127,10 +96,9 @@ def main():
             print(f"  上位{k:2d}セッション = 全トークンの {sum(x['total'] for x in sub)/TOT*100:4.1f}%"
                   f"（呼び出しでは {sum(x['calls'] for x in sub)/TC*100:4.1f}%）")
     print("\n=== 重いセッション上位5")
-    print("  日付        ID       呼出  総トークン  到達文脈  うちサブ")
+    print("  日付        ID       呼出  総トークン  到達文脈")
     for s in sess[:5]:
-        print(f"  {s['day']} {s['id']} {s['calls']:5d} {s['total']/1e6:8.1f}M  "
-              f"{s['last']/1000:7.0f}K {s['sub']/1e6:8.1f}M")
+        print(f"  {s['day']} {s['id']} {s['calls']:5d} {s['total']/1e6:8.1f}M  {s['last']/1000:7.0f}K")
 
     allimg = [p for s in sess for p in s["imgreads"]]
     dup = sum(v - 1 for s in sess for v in collections.Counter(s["imgreads"]).values() if v > 1)

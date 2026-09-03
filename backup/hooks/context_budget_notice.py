@@ -23,6 +23,7 @@ CHECK_EVERY = 4             # 文脈の再計測はNツール呼び出しに1回
 REPEAT_RED = 40             # 200K台では40呼び出しごとに鳴らし直す
 REPEAT_STOP = 15            # 300K超では15呼び出しごとに鳴らし直す
 BIG_RESULT_CHARS = 120_000  # 1回のツール結果がこれを超えたら警告（≒30Kトークン）
+SUB_STEP = 30_000_000       # サブエージェント累計がこの刻みを越えるたびに鳴らす
 
 
 def last_context(path):
@@ -120,6 +121,61 @@ def big_result_msg(inp):
             "要約だけ返させる。")
 
 
+def sub_spend(tpath, sid, cache):
+    """このセッションのサブエージェントが累計で何トークン使ったかを返す。
+
+    サブエージェントは <transcript_dir>/<session_id>/subagents/*.jsonl に別置きされ、
+    本体の文脈には一切現れない。2026-09-03 の実測では 05e764db が本体文脈111Kのまま
+    サブエージェント側で232Mを燃やし、文脈サイズを見る警告は原理的に鳴らなかった。
+    終わったサブエージェントのファイルは増えないので、サイズが変わらない分は
+    キャッシュを使い回して走査を避ける。
+    """
+    import glob
+    d = os.path.join(os.path.dirname(tpath), sid, "subagents")
+    total = 0
+    fresh = {}
+    for f in glob.glob(os.path.join(d, "*.jsonl")):
+        try:
+            size = os.path.getsize(f)
+        except OSError:
+            continue
+        hit = cache.get(f)
+        if hit and hit[0] == size:
+            fresh[f] = hit
+            total += hit[1]
+            continue
+        t = 0
+        try:
+            for line in open(f, encoding="utf-8", errors="replace"):
+                try:
+                    o = json.loads(line)
+                except ValueError:
+                    continue
+                m = o.get("message")
+                u = m.get("usage") if isinstance(m, dict) else None
+                if not u:
+                    continue
+                t += ((u.get("input_tokens") or 0)
+                      + (u.get("cache_creation_input_tokens") or 0)
+                      + (u.get("cache_read_input_tokens") or 0))
+        except OSError:
+            continue
+        fresh[f] = [size, t]
+        total += t
+    cache.clear()
+    cache.update(fresh)
+    return total
+
+
+def sub_msg(spend, n_agents):
+    m = spend // 1_000_000
+    return (f"\U0001f9e8 このセッションのサブエージェントが累計 {m}M トークン"
+            f"（{n_agents}本）。本体の文脈は小さいままなので⛔は鳴らない。\n"
+            "   Agent の fan-out は本体の何倍も燃える。"
+            "本数を絞るか、範囲を狭めて投げ直す。\n"
+            "   実測は `python3 ~/.claude/scripts/token_report.py 2`。")
+
+
 def context_msg(ctx, level):
     k = ctx // 1000
     ahead = k * 100 // 1000  # この先100回分のM
@@ -158,6 +214,23 @@ def main():
 
     sid = inp.get("session_id") or "unknown"
     tpath = inp.get("transcript_path")
+    # サブエージェントが返ってきた直後だけ、裏で燃えた分を数える
+    if tpath and inp.get("tool_name") in ("Agent", "Task", "Workflow"):
+        sf2 = os.path.join(STATE_DIR, f"{sid}.sub")
+        try:
+            st2 = json.load(open(sf2))
+        except (OSError, ValueError):
+            st2 = {"level": 0, "files": {}}
+        cache = st2.get("files") or {}
+        spend = sub_spend(tpath, sid, cache)
+        lv = spend // SUB_STEP
+        if lv > st2.get("level", 0):
+            msgs.append(sub_msg(spend, len(cache)))
+        os.makedirs(STATE_DIR, exist_ok=True)
+        try:
+            json.dump({"level": lv, "files": cache}, open(sf2, "w"))
+        except OSError:
+            pass
     # サブエージェントの呼び出しでは何もしない。本体と同じ session_id を持つのに
     # 通知は草川に見えないサブエージェント側へ入り、状態だけが進んで本体が
     # 永久に沈黙する（2026-09-03 f1035c7e：332Kまで⛔が一度も出なかった真因）。

@@ -62,6 +62,7 @@
 - [oyasumiのNotion本文denyは解消](feedback_oyasumi_blocked_by_content_gate.md) — 2026-08-26 EXEMPT_PARENTS追加。news側は未修理
 - [oyasumiの会議体マスタIDが古い](feedback_oyasumi_kaigitai_master_id_stale.md) — 46414643- は not found・会議体は毎回未紐付け
 - [市民意見リストDBに「対応状況」は無い](feedback_iken_db_no_taio_status.md) — 未対応集計は「未完了（要対応）」ビュー
+- [トークン実測はサブエージェントを数えていなかった](feedback_token_report_blind_to_subagents.md) — 消費の68%が不可視。主因はAgentのfan-out
 - [区切り警告の一発通知は永久沈黙する](feedback_ctx_notice_oneshot_silence.md) — 2026-09-03修理。サブエージェント側で鳴ると本体が黙る
 - [gate.pyは並行セッションで承認記録を消し合う](feedback_gate_json_concurrent_overwrite.md) — 2026-09-03マージ化で修理済。deny時はまず指紋不一致を疑う
 - [gate.py --passは保存役が名乗らない](feedback_gate_pass_not_by_saver.md) — notion-saverがdeny復旧で自己承認。hookで遮断済み
