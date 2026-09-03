@@ -79,6 +79,7 @@
 - [「スプレッドシートで管理」＝ネイティブ＋機能まで](feedback_spreadsheet_deliverable_must_be_native_and_functional.md) — CSV置くだけは納品ではない
 - [案件フォルダは番号付き構成＋README](feedback_project_folder_numbered_structure.md) — assetsはリネーム禁止
 - [発信物は.txtでもgate.pyに通す](feedback_gate_kind_of_by_filename.md) — 2026-09-02まで.txtは機械チェック0件のまま--passで指紋記録されていた
+- [「だから、撮っています」は恒久禁止](feedback_no_totteimasu_line.md) — 憲法②「撮っている理由」ごと廃止。checkerは禁止検出に反転済み
 - [ショート動画台本はvirality-architectが主担当](feedback_short_video_use_virality_architect_first.md) — 35〜45秒厳守。2026-09-03に仕様の60秒表記を是正＋保存時deny hook新設
 - [発信前に担当agent/SKILL定義をRead](feedback_read_agent_spec_before_writing.md) — 機械判定＝`check_content_limits.py`
 - [挿入画像の枠はみ出しはgate.pyだけが捕まえる](feedback_gate_py_bundles_overflow_check.md) — design/band/目視は全部通る

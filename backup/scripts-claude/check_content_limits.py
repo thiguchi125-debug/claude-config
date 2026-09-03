@@ -225,8 +225,12 @@ def check_video(text):
         out.append((False, "冒頭が名乗り＝コールドオープン逸脱（憲法・出荷拒否）"))
     else:
         out.append((True, "コールドオープン"))
-    out.append((("多いんです" in body or "撮って" in body or "公表しました" in body),
-                "「撮っている理由」（憲法・出荷拒否）"))
+    # 2026-09-03 草川指示：「だから、撮っています」型の一言は今後一切使わない。
+    # 旧実装はこれを憲法の必須要素として要求していた（無いと出荷拒否）。要求→禁止に反転。
+    _m = re.search(r"##\s*セリフ[^\n]*\n(.*?)(?=\n---|\n##\s)", body, flags=re.S)
+    _serifu = _m.group(1) if _m else body
+    out.append((not re.search(r"撮(って|っている|影して)います", _serifu),
+                "「撮っています」型の一言（2026-09-03 草川指示で恒久禁止）"))
     out.append((("必ず実現" in body or "あきらめません" in body),
                 "結びの決意（憲法・出荷拒否）"))
     out.append((("コメントで教えてください" in body), "コメント誘発CTA"))
