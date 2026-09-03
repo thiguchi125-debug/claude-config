@@ -123,14 +123,60 @@ def main(argv):
 fact/riskの代わりにはなりません。""")
         return 0
 
-    rec = {"generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
-           "ttl_minutes": 120, "approved": []}
-    for f in files:
-        t = visible_text(f)
-        rec["approved"].append({"file": os.path.basename(f), "fp": fp(t),
-                                "text": norm(t)})
-    json.dump(rec, open(GATE, "w"), ensure_ascii=False, indent=1)
+    # 2026-09-03: 全書き換え→マージに変更。
+    # 旧実装は json.dump(..., open(GATE,"w")) で丸ごと上書きしていたため、
+    # 並行セッションが互いの承認記録を消し合っていた（本日、実際に別セッションの
+    # 記録を消して deny を誘発。詳細 memory/feedback_gate_json_concurrent_overwrite.md）。
+    # 以後：期限切れだけを落とし、同じファイルの古い記録だけを置き換え、他は残す。
+    now = time.time()
+    stamp = time.strftime("%Y-%m-%dT%H:%M:%S")
+    TTL_MIN = 120
+
+    def _born(e, d):
+        for v in (e.get("at"), d.get("generated_at")):
+            try:
+                return time.mktime(time.strptime(str(v)[:19], "%Y-%m-%dT%H:%M:%S"))
+            except Exception:
+                continue
+        return 0.0
+
+    lock = open(GATE + ".lock", "w")
+    try:
+        import fcntl
+        fcntl.flock(lock, fcntl.LOCK_EX)
+    except Exception:
+        pass
+    try:
+        try:
+            old = json.load(open(GATE))
+        except Exception:
+            old = {}
+        kept = []
+        names = {os.path.basename(f) for f in files}
+        for e in old.get("approved", []):
+            if e.get("file") in names:
+                continue                      # 同じファイルは新しい記録で置き換える
+            ttl = e.get("ttl_minutes", old.get("ttl_minutes", TTL_MIN)) * 60
+            if now - _born(e, old) <= ttl:
+                kept.append(e)                # 他セッションの生きた記録は残す
+        fresh = []
+        for f in files:
+            t = visible_text(f)
+            fresh.append({"file": os.path.basename(f), "fp": fp(t), "text": norm(t),
+                          "at": stamp, "ttl_minutes": TTL_MIN,
+                          "session": os.environ.get("CLAUDE_SESSION_ID", "")})
+        rec = {"generated_at": stamp, "ttl_minutes": TTL_MIN, "approved": kept + fresh}
+        tmp = GATE + ".tmp"
+        json.dump(rec, open(tmp, "w"), ensure_ascii=False, indent=1)
+        os.replace(tmp, GATE)
+    finally:
+        try:
+            lock.close()
+        except Exception:
+            pass
     print(f"\n📝 {len(files)}件の本文指紋を記録しました（有効2時間）→ {GATE}")
+    if kept:
+        print(f"   併存：他に生きている承認記録 {len(kept)}件は消さずに残しました。")
     print("   本文を1文字でも変えたら指紋が変わり、Notion書き込みは再びdenyされます。")
     return 0
 

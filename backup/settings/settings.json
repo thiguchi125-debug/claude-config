@@ -59,6 +59,15 @@
             "command": "python3 $HOME/.claude/hooks/short_video_limits_gate.py"
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/hooks/gate_pass_guard.py"
+          }
+        ]
       }
     ],
     "PostToolUse": [

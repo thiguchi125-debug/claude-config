@@ -62,8 +62,15 @@ def main(argv):
     files = [a for a in argv if not a.startswith("--")]
     if not files:
         print(__doc__); return 1
-    mds = [f for f in files if f.endswith(".md")]
+    # .txt も対象（SNS成果物は ~/outputs/sns/<日付>_<テーマ>/threads.txt 等の .txt で保存される。
+    # 2026-09-02、.md しか見ていなかったため7本とも機械チェック0件のまま --pass で指紋記録された）
+    mds = [f for f in files if f.endswith((".md", ".txt"))]
     htmls = [f for f in files if f.endswith(".html")]
+    unchecked = [f for f in files if not f.endswith((".md", ".txt", ".html"))]
+    if unchecked:
+        print("⚠ 機械チェック未対応の拡張子（--pass を付けても中身は検査されていない）:")
+        for f in unchecked:
+            print("   - " + os.path.basename(f))
     fail = 0
 
     if mds:

@@ -125,27 +125,15 @@ def approved():
         d = json.load(open(GATE))
     except Exception:
         return set(), []
-    # 2026-09-03: 期限判定をファイル単位→レコード単位に変更。
-    # gate.py がマージ方式になり、1ファイルに複数セッションの記録が併存するため、
-    # 先頭の generated_at だけで全部を無効化すると他セッションの記録を巻き込む。
-    def _born(e):
-        for v in (e.get("at"), d.get("generated_at")):
-            try:
-                return time.mktime(time.strptime(str(v)[:19], "%Y-%m-%dT%H:%M:%S"))
-            except Exception:
-                continue
-        return None
-
-    now = time.time()
-    live = []
-    for e in d.get("approved", []):
-        b = _born(e)
-        if b is None:
-            continue
-        ttl = e.get("ttl_minutes", d.get("ttl_minutes", 120)) * 60
-        if now - b <= ttl:
-            live.append(e)
-    return {e.get("fp") for e in live if e.get("fp")}, [e.get("text", "") for e in live]
+    ttl = d.get("ttl_minutes", 120) * 60
+    try:
+        born = time.mktime(time.strptime(d["generated_at"][:19], "%Y-%m-%dT%H:%M:%S"))
+    except Exception:
+        return set(), []
+    if time.time() - born > ttl:
+        return set(), []
+    ap = d.get("approved", [])
+    return {e.get("fp") for e in ap if e.get("fp")}, [e.get("text", "") for e in ap]
 
 
 def exempt_page(tool_input):

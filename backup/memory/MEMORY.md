@@ -62,7 +62,8 @@
 - [oyasumiのNotion本文denyは解消](feedback_oyasumi_blocked_by_content_gate.md) — 2026-08-26 EXEMPT_PARENTS追加。news側は未修理
 - [oyasumiの会議体マスタIDが古い](feedback_oyasumi_kaigitai_master_id_stale.md) — 46414643- は not found・会議体は毎回未紐付け
 - [市民意見リストDBに「対応状況」は無い](feedback_iken_db_no_taio_status.md) — 未対応集計は「未完了（要対応）」ビュー
-- [gate.pyは並行セッションで承認記録を消し合う](feedback_gate_json_concurrent_overwrite.md) — deny時はまず`_content_gate.json`を疑う
+- [gate.pyは並行セッションで承認記録を消し合う](feedback_gate_json_concurrent_overwrite.md) — 2026-09-03マージ化で修理済。deny時はまず指紋不一致を疑う
+- [gate.py --passは保存役が名乗らない](feedback_gate_pass_not_by_saver.md) — notion-saverがdeny復旧で自己承認。hookで遮断済み
 - [gate.pyの種別判定はファイル名だけ](feedback_gate_kind_of_by_filename.md) — Notion保管ページ本文は必ずblog誤判定。名前に「メモ」でinternal
 - [振り分け単体の🔖台帳はゲートで書けない](feedback_intake_ledger_blocked_by_gate.md) — 発信物が無い日は_intake_ledger.jsonlで代替
 - [ニュースダイジェストはgate.pyでブログ誤判定](feedback_news_digest_gate_blog_misdetect.md) — 本文は`.txt`で渡す。dedup追記も同手順
