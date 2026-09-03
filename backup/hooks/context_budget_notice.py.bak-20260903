@@ -20,8 +20,6 @@ STATE_DIR = os.path.expanduser("~/.claude/hooks/state")
 TAIL_BYTES = 300_000
 MAX_SCAN = 6_000_000        # usage が見つかるまで末尾から遡る上限
 CHECK_EVERY = 4             # 文脈の再計測はNツール呼び出しに1回（CPU節約）
-REPEAT_RED = 40             # 200K台では40呼び出しごとに鳴らし直す
-REPEAT_STOP = 15            # 300K超では15呼び出しごとに鳴らし直す
 BIG_RESULT_CHARS = 120_000  # 1回のツール結果がこれを超えたら警告（≒30Kトークン）
 
 
@@ -64,15 +62,14 @@ def last_context(path):
 
 
 def load_state(sf):
-    """{"level": 通知済み閾値, "n": 前回計測からの呼び出し数,
-        "since": 前回「実際に鳴らした」時からの呼び出し数} を返す。
+    """{"level": 通知済み閾値, "n": 前回計測からの呼び出し数} を返す。
 
     旧形式（閾値の整数だけを書いたファイル）も読めるようにしておく。
     """
     try:
         raw = open(sf).read().strip()
     except OSError:
-        return {"level": 0, "n": 0, "since": 0}
+        return {"level": 0, "n": 0}
     try:
         d = json.loads(raw)
     except ValueError:
@@ -80,21 +77,20 @@ def load_state(sf):
     # 旧形式は閾値の整数だけ（json.loads は int を返すので dict 判定が要る）
     if isinstance(d, dict):
         try:
-            return {"level": int(d.get("level", 0)), "n": int(d.get("n", 0)),
-                    "since": int(d.get("since", 0))}
+            return {"level": int(d.get("level", 0)), "n": int(d.get("n", 0))}
         except (TypeError, ValueError):
-            return {"level": 0, "n": 0, "since": 0}
+            return {"level": 0, "n": 0}
     try:
-        return {"level": int(raw), "n": 0, "since": 0}
+        return {"level": int(raw), "n": 0}
     except ValueError:
-        return {"level": 0, "n": 0, "since": 0}
+        return {"level": 0, "n": 0}
 
 
-def save_state(sf, level, n, since):
+def save_state(sf, level, n):
     os.makedirs(STATE_DIR, exist_ok=True)
     try:
         with open(sf, "w") as f:
-            json.dump({"level": level, "n": n, "since": since}, f)
+            json.dump({"level": level, "n": n}, f)
     except OSError:
         pass
 
@@ -158,38 +154,25 @@ def main():
 
     sid = inp.get("session_id") or "unknown"
     tpath = inp.get("transcript_path")
-    # サブエージェントの呼び出しでは何もしない。本体と同じ session_id を持つのに
-    # 通知は草川に見えないサブエージェント側へ入り、状態だけが進んで本体が
-    # 永久に沈黙する（2026-09-03 f1035c7e：332Kまで⛔が一度も出なかった真因）。
-    if tpath and os.path.basename(tpath).rsplit(".", 1)[0] != sid:
-        tpath = None
     if tpath:
         sf = os.path.join(STATE_DIR, f"{sid}.ctx")
         st = load_state(sf)
         n = st["n"] + 1
-        since = st["since"] + 1
         # 巨大結果が入った直後は必ず測る（そこが跳ねるポイントなので）
         if n >= CHECK_EVERY or st["level"] == 0 or big:
             ctx = last_context(tpath)
             if ctx:
                 crossed = [t for t in THRESHOLDS if ctx >= t]
                 level = max(crossed) if crossed else 0
-                # 閾値を跨いだ瞬間だけの一発通知にしない。1回でも配達に失敗すると
-                # そのセッションは以後ずっと無警告になるため、危険域では鳴らし直す。
-                repeat = (REPEAT_STOP if level >= 300_000 else
-                          REPEAT_RED if level >= 200_000 else None)
                 if level > st["level"]:
-                    save_state(sf, level, 0, 0)
-                    msgs.append(context_msg(ctx, level))
-                elif repeat and since >= repeat:
-                    save_state(sf, st["level"], 0, 0)
+                    save_state(sf, level, 0)
                     msgs.append(context_msg(ctx, level))
                 else:
-                    save_state(sf, st["level"], 0, since)
+                    save_state(sf, st["level"], 0)
             else:
-                save_state(sf, st["level"], 0, since)
+                save_state(sf, st["level"], 0)
         else:
-            save_state(sf, st["level"], n, since)
+            save_state(sf, st["level"], n)
 
     if not msgs:
         return
