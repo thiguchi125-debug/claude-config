@@ -90,6 +90,10 @@ def kind_and_reason(path, text=None):
     """(種別, 判定理由) を返す。理由も出すのは、誤判定に目で気づけるようにするため。"""
     b = os.path.basename(path)
     # 1) ファイル名の明示指定を最優先（従来互換）
+    # 内部資料ヒントを最初に見る。「動画メモ」「SNS台帳」のような内部資料が
+    # 発信物として判定されると、対外発信の規定（憲法5構成・字数）が当たって落ちるため。
+    if any(k in b for k in INTERNAL_NAME_HINTS):
+        return "internal", "ファイル名が内部資料"
     if "SNS" in b or "sns" in b:
         return "sns", "ファイル名に SNS"
     if "動画" in b or "video" in b:
@@ -102,8 +106,6 @@ def kind_and_reason(path, text=None):
     _pf = single_pf_of(path)
     if _pf:
         return "sns", f"ファイル名が単独PF（{_pf}）"
-    if any(k in b for k in INTERNAL_NAME_HINTS):
-        return "internal", "ファイル名が内部資料"
     # 2) ファイル名で決まらなければ中身を見る
     if text is None:
         try:
