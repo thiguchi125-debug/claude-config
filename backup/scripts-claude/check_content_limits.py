@@ -34,6 +34,8 @@ BLOG_STAGES = ["現場の声", "全国", "制度", "亀山", "締め"]  # 5段�
 VIDEO_MIN_SEC, VIDEO_MAX_SEC = 35, 45
 VIDEO_CHARS_PER_SEC = 7.0        # 日本語ナレの上限目安
 VIDEO_MAX_SENTENCE = 30          # 一文30字超はanti-pattern
+VIDEO_MAX_CUT_SEC = 3.0          # 1.5〜2秒ごとの刺激変化。3秒超のカットは離脱要因
+VIDEO_MAX_NUMBERS = 6            # 1動画＝1メッセージ。セリフ内の数値はこれ以下
 
 def n_chars(t):
     return len(re.sub(r"\s", "", t))
@@ -53,9 +55,17 @@ SNS_ALIASES = [   # 見出し表記のゆれ -> SNS_LIMITS のキー（長い名
 ]
 PF_HEAD_WORDS = ("Threads", "Instagram", "Facebook", "LINE", "YouTube", "TikTok",
                  "公式LINE", "X（旧Twitter）", "X (旧Twitter)")
+# 1PF=1ファイル保存（~/outputs/sns/<日付>_<テーマ>/threads.txt など）を SNS と判定するための
+# ファイル名マップ。これが無いと全部「既定＝ブログ」に落ちてSNSゲートが一度も走らない。
+PF_FILE_STEMS = {
+    "threads": "Threads", "x": "X", "instagram": "Instagram",
+    "facebook": "Facebook", "line": "LINE", "youtube": "YouTube",
+}
+
 INTERNAL_NAME_HINTS = ("メモ", "聞き取り", "様式", "memo", "hearing",
                        "作業記録", "引き継ぎ", "HANDOFF", "handoff",
-                       "台帳", "ファクトシート", "factsheet", "_notion_body")
+                       "台帳", "ファクトシート", "factsheet", "_notion_body",
+                       "ダイジェスト", "digest", "briefing", "ブリーフィング")
 
 def _norm_head(name):
     """見出しから飾りを剥がす。『## 【Threads】論点＝…』→『Threads 論点＝…』"""
@@ -71,6 +81,11 @@ def sns_key(name):
             return key
     return None
 
+def single_pf_of(path):
+    """ファイル名そのものがPF名なら、その表示名を返す（threads.txt -> "Threads"）。"""
+    stem = os.path.splitext(os.path.basename(path))[0].lower()
+    return PF_FILE_STEMS.get(stem)
+
 def kind_and_reason(path, text=None):
     """(種別, 判定理由) を返す。理由も出すのは、誤判定に目で気づけるようにするため。"""
     b = os.path.basename(path)
@@ -84,6 +99,9 @@ def kind_and_reason(path, text=None):
     bl = b.lower()
     if any(k in bl for k in ("tiktok", "shorts", "reels", "short_video", "short-video")) or "ショート" in b:
         return "video", "ファイル名にショート動画PF名"
+    _pf = single_pf_of(path)
+    if _pf:
+        return "sns", f"ファイル名が単独PF（{_pf}）"
     if any(k in b for k in INTERNAL_NAME_HINTS):
         return "internal", "ファイル名が内部資料"
     # 2) ファイル名で決まらなければ中身を見る
@@ -111,9 +129,12 @@ def kind_of(path, text=None):
 def is_normal_blog(path):
     return "ノーマル" in os.path.basename(path)
 
-def check_sns(text):
+def check_sns(text, single_pf=None):
     out = []
-    for sec in re.split(r"\n## ", text)[1:]:
+    src = text
+    if single_pf and not re.search(r"^##\s", text, flags=re.M):
+        src = f"\n## {single_pf}\n" + text   # 見出しの無い1PFファイルに仮見出しを与えて同じ検査に載せる
+    for sec in re.split(r"\n## ", src)[1:]:
         name = sec.split("\n")[0].strip()
         raw  = "\n".join(sec.split("\n")[1:])
         body = re.sub(r"^\s*\*\*\d/\d\*\*\s*$", "", raw, flags=re.M)  # スレッド番号除去（字数用）
@@ -145,6 +166,9 @@ def check_sns(text):
             out.append((False, f"{name}: LINEにハッシュタグ（規定=なし）"))
         if key == "X" and not has_tag:
             out.append((False, f"{name}: Xにハッシュタグなし（規定=必須）"))
+    if single_pf and not out:
+        # SNS_LIMITS に規定の無いPF（YouTube等）。無言でPASSに見せない。
+        out.append((True, f"{single_pf}: 字数・タグの規定なし（sns-content-creator.md に上限定義がPFに無い）"))
     if "<BLOG_URL>" in text:
         # 下書き保存の時点では正常。実URLへの差し替えが要るのは「投稿」の直前で、
         # 投稿は各PFで草川が手作業で行うためチェッカーからは強制できない。
@@ -205,29 +229,45 @@ def check_video(text):
                 "結びの決意（憲法・出荷拒否）"))
     out.append((("コメントで教えてください" in body), "コメント誘発CTA"))
     # --- 尺 ---
-    ends = [int(m[1]) for m in re.findall(r"0:(\d\d)-0:(\d\d)", body)]
-    if ends:
-        total = max(ends)
+    # 表記ゆれ（全角ダッシュ・小数秒・分表記）を吸収する。
+    # 旧実装は 0:(\d\d)-0:(\d\d) 固定で、"0:00.0–0:02.7" 形式を1件も拾えず
+    # 「違反0件」と黙って通した（2026-09-03 かめやま健康弁当60秒版の見逃し）。
+    tc = re.findall(r"(\d{1,2}):(\d{2}(?:\.\d+)?)\s*[-–—~〜]\s*(\d{1,2}):(\d{2}(?:\.\d+)?)", body)
+    spans = [((int(a)*60+float(b)), (int(c)*60+float(d))) for a,b,c,d in tc]
+    if spans:
+        total = max(e for _, e in spans)
+        label = f"尺 {total:.1f}秒"
         if VIDEO_MIN_SEC <= total <= VIDEO_MAX_SEC:
-            out.append((True, f"尺 {total}秒"))
+            out.append((True, label))
         elif "尺" in " ".join(exc):
-            out.append((True, f"尺 {total}秒 ⚠承認済み例外（規定 {VIDEO_MIN_SEC}〜{VIDEO_MAX_SEC}秒）"))
+            out.append((True, f"{label} ⚠承認済み例外（規定 {VIDEO_MIN_SEC}〜{VIDEO_MAX_SEC}秒）"))
         else:
-            out.append((False, f"尺 {total}秒（規定 {VIDEO_MIN_SEC}〜{VIDEO_MAX_SEC}秒）"))
-    # --- カット数 ---
-    cuts = len(re.findall(r"^\|\s*\d+\s*\|", body, flags=re.M))
-    if cuts:
-        need = 15
-        out.append((cuts >= need, f"カット数 {cuts}（60秒で{need}以上が基準）"))
+            out.append((False, f"{label}（規定 {VIDEO_MIN_SEC}〜{VIDEO_MAX_SEC}秒）"))
+        # --- 1.5〜2秒ごとの刺激変化 ---
+        longcuts = [(s0, e0) for s0, e0 in spans if e0 - s0 > VIDEO_MAX_CUT_SEC]
+        out.append((not longcuts,
+                    f"{VIDEO_MAX_CUT_SEC}秒超のカット {len(longcuts)}件"
+                    + (f"（最長 {max(e-s for s,e in longcuts):.1f}秒）" if longcuts else "")))
+        # --- カット数（尺に対する密度）---
+        need = int(total / 2.5)
+        out.append((len(spans) >= need, f"カット数 {len(spans)}（尺{total:.0f}秒なら{need}以上）"))
+    else:
+        # 黙って飛ばさない。判定できないこと自体を違反として出す。
+        out.append((False, "尺・カット数を判定できない（カット表の秒表記が 0:00.0-0:02.7 形式でない）"))
     # --- 一文30字超（セリフ節のみ・注記行は除外）---
     m = re.search(r"##\s*セリフ[^\n]*\n(.*?)(?=\n---|\n##\s)", body, flags=re.S)
     serifu = m.group(1) if m else ""
     lines = [l.strip() for l in serifu.split("\n")
-             if l.strip() and not l.strip().startswith(("**", ">", "※", "（", "#", "|", "-"))]
+             if l.strip() and not l.strip().startswith(("**", ">", "※", "（", "#", "|", "-", "【", "★"))]
     longs = [x.strip() for l in lines for x in re.split(r"(?<=。)", l)
              if x.strip() and n_chars(x) > VIDEO_MAX_SENTENCE]
     out.append((not longs, f"セリフの一文30字超 {len(longs)}件"
                 + (f" 例:「{longs[0][:34]}…」" if longs else "")))
+    # --- 1動画＝1メッセージ（数値羅列の機械近似）---
+    nums = re.findall(r"\d+(?:\.\d+)?\s*(?:g|mg|kcal|%|円|人|件|年|割)", serifu)
+    out.append((len(nums) <= VIDEO_MAX_NUMBERS,
+                f"セリフ中の数値 {len(nums)}個（1メッセージ基準 {VIDEO_MAX_NUMBERS}個以下）"
+                + (f" → {'/'.join(nums[:9])}" if len(nums) > VIDEO_MAX_NUMBERS else "")))
     return out
 
 def check_internal(text):
@@ -269,7 +309,7 @@ def main(argv):
         elif k == "internal":
             res = check_internal(text)
         else:
-            res = {"sns": check_sns, "video": check_video}[k](text)
+            res = check_sns(text, single_pf_of(f)) if k == "sns" else check_video(text)
         for ok, msg in res:
             print(("  ✅ " if ok else "  🚨 ") + msg)
             if not ok: fail += 1
