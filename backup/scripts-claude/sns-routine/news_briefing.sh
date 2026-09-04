@@ -34,7 +34,7 @@ RUN_OK=0
 for ATTEMPT in 1 2; do
   wait_net
   if "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
-      --model claude-sonnet-5 --max-turns 60 \
+      --model claude-sonnet-5 \
       --allowedTools "$ALLOWED_TOOLS" \
       >> "$LOG" 2>&1; then
     # rc=0でも「🚨中止」で終わるケース（Notion MCP本物の不在）を検出してstatusに反映

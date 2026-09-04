@@ -156,7 +156,6 @@ CLAUDE_OK=0
 for ATTEMPT in 1 2; do
   # caffeinate -i: 実行中のアイドルスリープを抑止（バッテリー駆動時の蓋閉じスリープまでは防げない）
   if /usr/bin/caffeinate -i "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
-      --max-turns 60 \
       --allowedTools "$ALLOWED_TOOLS" \
       >> "$LOG" 2>&1; then
     CLAUDE_OK=1
