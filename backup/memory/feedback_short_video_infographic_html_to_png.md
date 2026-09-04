@@ -15,7 +15,7 @@ metadata:
 - Gemini API の画像生成は**無料枠0（limit:0）**。「API無料で全自動」は誤案内。無料は手動（AI Studio/Geminiアプリ）、自動レンダは課金。
 
 **How to apply**:
-- **草川ブランドカラー必須**: ライム`#c7ff4a`（キーワードのハイライト下線=`box-shadow:inset 0 -0.26em 0 #c7ff4a`）／ディープグリーン`#1f5a3a`・`#0f3d27`／クリーム`#f3efe4`。初回にアンバー+ネイビーで作って差し戻された。ブランド色は毎回厳守（[[feedback_leaflet_design_principles]]）。
+- **草川ブランドカラー必須**: ライム`#c7ff4a`（キーワードのハイライト下線=`box-shadow:inset 0 -0.26em 0 #c7ff4a`）／ディープグリーン`#1f5a3a`・`#0f3d27`／クリーム`#f3efe4`。初回にアンバー+ネイビーで作って差し戻された。ブランド色は毎回厳守（正本＝design_system/templates/leaflet_trifold/README.md）。
 - **スタイル**: ニュースフリップ調＝kickerピル(深緑地+ライム点)→見出し[キーワードにライム下線]→中央ビジュアル(人型比率/マス目グリッド/アイコンカード/年齢チャート)→出典付きキャプション。
 - **サイズ1080×1920(9:16)**。レンダ: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1080,1920 --default-background-color=FFFFFFFF --screenshot=out.png "file://<html>"`。出力後 Read で目視→字割れ/はみ出し修正。HTMLソースも残す。
 - **雛形5枚**: `~/.claude/projects/-Users-kusakawatakuya/outputs/daily-content/2026-05-27/kodomo-iryouhi-18-musho/infographics/`（人型9+1比率／年齢の崖／3場面アイコンカード／29マスグリッド／強調ピン）。流用が最速。

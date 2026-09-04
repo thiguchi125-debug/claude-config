@@ -15,7 +15,7 @@ metadata:
 
 - `index.html` — メインHTML（A4両面、JSX prototype を静的化したもの）
 - `選挙リーフレット_v3.pdf` — Chrome headless で生成した編集確認用PDF（14MB級、A4 2ページ、ベクター）
-- **`選挙リーフレット_v3_rakusuru.pdf`** — **ラクスル入稿用PDF（裏面のみ400dpi JPEG ラスタライズ済み、5.9MB）**。基本的にラクスル入稿はこちらを使う（[[feedback-rakusuru-back-rasterize]]）
+- **`選挙リーフレット_v3_rakusuru.pdf`** — **ラクスル入稿用PDF（裏面のみ400dpi JPEG ラスタライズ済み、5.9MB）**。基本的にラクスル入稿はこちらを使う（手順＝`~/.claude/scripts/rakusuru_back_rasterize.py`）
 - `assets/` — 画像群（最適化済み）
   - `portrait.png` — 表面メイン portrait
   - `qr-line.png` — LINE QR
@@ -50,7 +50,7 @@ cd ~/.claude/agents/knowledge/kusagawa_archive/02_publications/leaflets/2026-05_
 
 ## ラクスル入稿用PDF生成コマンド（裏面ラスタライズ版）
 
-詳細手順は [[feedback-rakusuru-back-rasterize]] 参照。
+詳細手順は `~/.claude/scripts/rakusuru_back_rasterize.py` 冒頭のdocstring参照。
 
 ```bash
 cd ~/.claude/agents/knowledge/kusagawa_archive/02_publications/leaflets/2026-05_senkyo_leaflet_v3
