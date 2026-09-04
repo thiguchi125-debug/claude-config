@@ -94,6 +94,7 @@
 - [顔ぼかしは草川本人を除外・二段で潰す](feedback_face_blur_exclude_kusagawa_and_verify.md) — 検出器＋目視
 - [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出しはCSSライムバー/角マーカー/ピル
 - [原寸で破綻ゼロは合格の半分](feedback_original_size_pass_is_half_a_pass.md) — 確定前にfeed-visual-reviewer。400pxで読めない文字は装飾
+- [サムネは顔を寄せない・断罪コピーにしない](feedback_thumbnail_crop_and_tone.md) — 顔は画面高25〜35%／「◯◯がない」でなく「◯◯を」
 - 禁止表現 — [届かないを終わらせる](feedback_phrase_todokanai_owaraseru.md)／[届かなくても届く](feedback_phrase_todokanakutemo_todoku.md)／[距離比喩](feedback_metric_distance_metaphor_avoid.md)／[抽象・詩的比喩](feedback_no_abstract_poetic_phrases.md)／[つくり話冒頭](feedback_no_halfbaked_story_openings.md)／[空虚な問いかけ](feedback_no_hollow_rhetorical_questions.md)
 - [ゲートで削らせると未確認の情景で穴埋めされる](feedback_gate_deletion_refilled_with_invented_scenes.md) — 修正版は差分で洗う
 - [架空エピソード禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
