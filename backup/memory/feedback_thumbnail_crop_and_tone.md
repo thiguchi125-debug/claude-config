@@ -16,6 +16,6 @@ metadata:
 
 **How to apply:** 着手前に `design_system/references/thumbnail/_karte.md` 末尾「📌恒久ガードルール」を
 Read（切り取り手順・コピー型・16:9での機械チェックの当て方が入っている）。写真は
-`📷写真ストック/10_使える写真/01_人物単独` のファイル名タグを読んで選ぶ（[[feedback_thumbnail_ask_base_photo_first]]
+`📷写真ストック/10_使える写真/01_人物単独` のファイル名タグを読んで選ぶ（（2026-09-04に「着手前に聞く」旧ルールは廃止・削除済み）
 のとおり草川には聞かない）。縦位置の原本は寄らず**全幅で縦に長く取る**。
 関連 [[feedback_original_size_pass_is_half_a_pass]]／[[feedback_gate_kind_of_by_filename]]。

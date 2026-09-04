@@ -11,7 +11,7 @@ metadata:
 
 **変更点**:
 1. **ステップ2-0**: ブログモードを「毎回2択質問」→**素材からの自動判定→1行提案→承認**に変更（イベント告知/活動報告=ノーマル推奨、政策論=深掘り推奨、拮抗時はノーマル既定）。
-2. **新ステップ4「発信ビジュアル」**（条件付き=イベント告知/写真添付/明示指示時）: 4-A サムネ画像（1200×630 OGP・**着手前に元写真の有無を1回確認**[[feedback_thumbnail_ask_base_photo_first]]・HTML/CSS→Chrome→PNG・EYES-FIRST）／4-B ショート動画（9:16 Reels・写真autorotate正立化＋コンタクト自Read→透過テキストカード→ffmpeg軽量ズーム→BG実行）／4-C 安全ゲート（ブログ流用は継承可）／4-D 保存（~/outputs/thumbnails・~/outputs/short-video）。
+2. **新ステップ4「発信ビジュアル」**（条件付き=イベント告知/写真添付/明示指示時）: 4-A サムネ画像（**1600×900** OGP・元写真は photo-curator で自分で選び切る（2026-09-04に「先に聞く」旧ルールは廃止）・HTML/CSS→Chrome→PNG・EYES-FIRST）／4-B ショート動画（9:16 Reels・写真autorotate正立化＋コンタクト自Read→透過テキストカード→ffmpeg軽量ズーム→BG実行）／4-C 安全ゲート（ブログ流用は継承可）／4-D 保存（~/outputs/thumbnails・~/outputs/short-video）。
 3. **description更新**: サムネ・ショート動画・記事URL・写真トリガー追加。
 4. **新reference**: `~/.claude/skills/content-pipeline/references/visual-assets-playbook.md`（サムネ＆Reelの具体レシピ正本。ffmpegコマンド・落とし穴チェックリスト・zsh配列1始まり・BG実行・4Kズーム回避等）。
 

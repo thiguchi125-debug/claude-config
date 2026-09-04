@@ -19,4 +19,4 @@ metadata:
 - 台本の「草川判断の記録」に表記ルール（例：「50台」単独表記は避けA・Bの内訳を添える）があれば、**画像とサムネにも同じルールを適用**。台本本文だけ守って画像で破るのが最頻の抜け（同案件のサムネ初稿で実際に発生）。
 - SKILL.md（short-video-create）の Step 5・Mode R R-3・恒久ガードルールに実装済み（2026-07-30）。
 
-関連: [[feedback_short_video_infographic_html_to_png]] [[feedback_thumbnail_ask_base_photo_first]] [[feedback_system_closing_loops_rot]]
+関連: [[feedback_short_video_infographic_html_to_png]] [[feedback_system_closing_loops_rot]]

@@ -9,7 +9,9 @@
 やること:
   1. 種類に応じて機械チェックを全部回す
        .md   → check_content_limits.py
-       .html → check_image_design.py / check_overflow.py（+ 同名pngがあれば帯ゲート）
+       .html → 判型（9:16 / 16:9 / 1:1）を自動判定し、その判型の規範で
+               check_image_design.py / check_overflow.py を回す。
+               字幕セーフ帯ゲートは 9:16(1080x1920) のときだけ。
   2. 全通過したら、各ファイルの**本文の指紋**を _content_gate.json に記録する
      （記録があってはじめて content_safety_gate.py がNotion書き込みを通す）
 
