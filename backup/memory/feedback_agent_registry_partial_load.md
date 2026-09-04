@@ -57,4 +57,4 @@ metadata:
 
 **How to apply（更新）:** 偽agentを見かけたら手で直さず `python3 ~/.claude/scripts/consolidate_agent_memory.py` を1回叩く。レジストリは起動時に固まるので**効果は次セッションから**。夜間ジョブが動いていれば通常は不要。
 
-関連: [[reference_agent_triggers]] / [[feedback_content_pipeline_agent_registration]] / [[feedback_system_closing_loops_rot]]
+関連: [[reference_agent_triggers]] / feedback_content_pipeline_agent_registration / [[feedback_system_closing_loops_rot]]

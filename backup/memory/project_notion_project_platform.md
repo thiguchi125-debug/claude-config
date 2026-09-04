@@ -21,4 +21,4 @@ metadata:
 - **スマートインテーク（2026-06-14実装・CLAUDE.md最上位ルール）**: 草川がトピック情報を入力したら、保存先指定が無くても「①正規DB(市民意見/一般質問ネタ/政策候補/報告会)②本DBの該当PJページの📅経緯ログ③Todoist該当箱のタスク」の3面を判定→確認→一括保存する。詳細はCLAUDE.md「情報入力の自動振り分け保存」。
 - **既存ページリンク**: 各PJページの📂資料・リンクにmention-page形式で関連既存ページを貼付済（神辺→木下報告会DB／南部→楠平尾報告会＋フォロー／井田川→一般質問ネタ「新団地アクセス複合課題」／eスポーツ→協会2026年間計画）。[[feedback_notion_link_deeplink]]準拠。
 
-関連: [[project_todoist_task_migration]] [[feedback_shisei_houkokukai_voice_capture]] [[feedback_notion_link_deeplink]]
+関連: [[project_todoist_task_migration]] feedback_shisei_houkokukai_voice_capture [[feedback_notion_link_deeplink]]

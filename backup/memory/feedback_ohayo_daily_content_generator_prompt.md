@@ -31,4 +31,4 @@ metadata:
 
 将来D案に切替えたくなった場合は本v2.5-dの「発火条件」を曜日条件に置き換えるだけで対応可（拡張容易）。
 
-関連: [[feedback_ohayo_token_efficiency_v3]] / [[feedback_ohayo_v25_streamline]] / [[project_short_video_create_system]]
+関連: [[feedback_ohayo_token_efficiency_v3]] / [[feedback_ohayo_v25_streamline]] / project_short_video_create_system

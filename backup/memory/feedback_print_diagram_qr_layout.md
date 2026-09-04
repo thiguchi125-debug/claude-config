@@ -91,5 +91,5 @@ metadata:
 
 - 既存印刷物チェックリスト: [[feedback_print_publication_checklist]]
 - 案件別フォルダ運用: [[feedback_publications_binary_storage]]
-- 印刷物PDF自動open: [[feedback_auto_open_pdf_after_render]]
+- 印刷物PDF自動open: feedback_auto_open_pdf_after_render
 - 画像EXIF処理: [[feedback_image_exif_processing]]

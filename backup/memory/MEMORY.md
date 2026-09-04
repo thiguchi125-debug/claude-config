@@ -60,6 +60,12 @@
 
 ## 📌 常時効く横断ルール（タスク別は GUARDRAILS.md）
 
+- [団体名義の掲載同意は個人ブログへ持ち越さない](feedback_consent_scope_org_to_personal_blog.md) — 器が変われば同意を取り直す
+- [ご意見箱の声を引くとき属性を付けない](feedback_goikenbako_quote_no_attributes.md) — 年代・地域は書かない（利用目的文との整合）
+- [他地域災害の救助フェーズ中は亀山の防災論へ接続しない](feedback_disaster_rescue_phase_no_local_pivot.md) — 地元の話は別記事に分ける
+- [LINE後援会面で第三者団体の署名・動員を呼びかけない](feedback_line_koenkai_no_third_party_mobilization.md) — 免責文は逆流を担保しない
+- [正本文書が古いことがある](feedback_stale_authoritative_doc_vs_policy_change.md) — 制度変更は最新の事務連絡で上書き確認
+- [アーカイブgrepは草川の独自表現も並列で引く](feedback_archive_grep_keyword_expansion.md) — 話題語だけだと見落とす
 - [資産価値直結の手続相談は二層分離](feedback_shisan_kachi_tetsuzuki_gaikan_kanri.md) — 農振除外・農地転用。氏名は名簿区画1か所
 - [oyasumiのNotion本文denyは解消](feedback_oyasumi_blocked_by_content_gate.md) — 2026-08-26 EXEMPT_PARENTS追加。news側は未修理
 - [oyasumiの会議体マスタIDが古い](feedback_oyasumi_kaigitai_master_id_stale.md) — 46414643- は not found・会議体は毎回未紐付け
@@ -95,7 +101,7 @@
 - [「レポート」がスライドを指すことがある](feedback_report_vs_slides_wording.md) — 紙は必ず2ページ・ページ数で判別
 - [Notion保存も「発信」＝保存前に安全ゲート](feedback_safety_gates_before_notion_save.md) — 本文は手打ち禁止・draftからコピペ
 - [顔ぼかしは草川本人を除外・二段で潰す](feedback_face_blur_exclude_kusagawa_and_verify.md) — 検出器＋目視
-- [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出しはCSSライムバー/角マーカー/ピル
+- [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出しはCSSライムバー/角マーカー/ピル・スライドも含む
 - [原寸で破綻ゼロは合格の半分](feedback_original_size_pass_is_half_a_pass.md) — 確定前にfeed-visual-reviewer。400pxで読めない文字は装飾
 - [サムネは顔を寄せない・断罪コピーにしない](feedback_thumbnail_crop_and_tone.md) — 顔は画面高25〜35%／「◯◯がない」でなく「◯◯を」
 - 禁止表現 — [届かないを終わらせる](feedback_phrase_todokanai_owaraseru.md)／[届かなくても届く](feedback_phrase_todokanakutemo_todoku.md)／[距離比喩](feedback_metric_distance_metaphor_avoid.md)／[抽象・詩的比喩](feedback_no_abstract_poetic_phrases.md)／[つくり話冒頭](feedback_no_halfbaked_story_openings.md)／[空虚な問いかけ](feedback_no_hollow_rhetorical_questions.md)

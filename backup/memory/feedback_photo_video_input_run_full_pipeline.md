@@ -18,4 +18,4 @@ metadata:
 
 **併発ミス（別教訓）:** 複数写真の識別を推測で確定するな。ファイル名から中身を推測して「PXL_...517＝ヘリ」と誤認し、実際は体育館全景（顔写り込み＝掲載見送り対象）を動画に混入させかけた。**各写真は必ずRead（画素確認）してから素材採否・ラベル付けする**。特に肖像権NGと決めた写真を取り違えると事故になる。
 
-関連: [[project_photo_post_skill]] [[feedback_design_review_gate_no_skip]] [[feedback_no_emoji_ai_smell]]
+関連: [[project_photo_post_skill]] feedback_design_review_gate_no_skip [[feedback_no_emoji_ai_smell]]

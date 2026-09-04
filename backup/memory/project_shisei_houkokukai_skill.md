@@ -19,4 +19,4 @@ metadata:
 - Stage1は二段化（軽量→相談→深掘り）。逆算スケジュール→Todoist登録提案。短縮経路あり
 - 次: 次回開催地区で実走→フィードバックをmemory化。engagement.mdは実開催の効きメモで更新する運用
 
-関連: [[feedback_shisei_houkokukai_slides_claude_code]] [[feedback_shisei_houkokukai_voice_capture]] [[project_shisei_houkokukai_db]]
+関連: feedback_shisei_houkokukai_slides_claude_code feedback_shisei_houkokukai_voice_capture [[project_shisei_houkokukai_db]]

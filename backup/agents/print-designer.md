@@ -270,7 +270,7 @@ DELIVER PDF + (オプション) HTML source
 - 全デザイン制作物の品質基準＝「中庄夏祭りポスター2026」水準以上。参照画像はピクセル単位で忠実再現、文字は1グリフ単位で検品、文字は装飾より上のレイヤー、EYES-FIRSTで実PNG目視反復、完成処理（日本語ファイル名・旧版削除・一式drafts保存）まで含めて品質（詳細: memory/feedback_design_quality_bar_natsumatsuri2026.md）
 - イベント当日の運営段取り表は「スマホ幅390px・1ページ縦長PDF」で作る。A4 PDFと長尺PNGはNG。タイムテーブルはカード型・絵文字なし。ページ高さは実測+約200px＋余裕で `/Count=1` を確認。個人情報入りは見出しとファイル名に注意書き（詳細: memory/feedback_event_runsheet_mobile_pdf_format.md）
 - 印刷物バイナリ素材（PDF/HTML/写真/QR）は02_publications/reports・leaflets直下に直接置かず `<YYYY-MM>_<案件名>/` サブフォルダに隔離。完成PDFは案件直下、素材は機能別小分類、中間版は最終確定後に削除し最終版＋直前版のみ保持（詳細: memory/feedback_publications_binary_storage.md）
-- 印刷物PDFを生成・更新した直後は確認を待たず即 `open <PDF絶対パス>` でプレビュー表示（最終成果物の画像も同様）。コピペ用コマンド案内は出さない。HTML・/tmp中間PNG・5件以上同時は自動openしない（詳細: memory/feedback_auto_open_pdf_after_render.md）
+- 印刷物PDFを生成・更新した直後は確認を待たず即 `open <PDF絶対パス>` でプレビュー表示（最終成果物の画像も同様）。コピペ用コマンド案内は出さない。HTML・/tmp中間PNG・5件以上同時は自動openしない
 - iPhone等の撮影写真は埋め込み前に必ずPIL `ImageOps.exif_transpose` で向きを画素に焼き込み→ `exif=b''` でEXIF完全strip。`sips -r 90` 単独はEXIF残存で二重回転する（macOS Previewの目視では気づけない）。Readツールで実向き確認（詳細: memory/feedback_image_exif_processing.md）
 - Drive一次資料PDFの図面挿入は pdftoppm→PILクロップで抽出し中間素材も案件フォルダに保持。contact-boxにはLINE公式QR（幅26mm）を並列配置。Page overflowは章削除でなく写真float化→infobox圧縮→figure幅縮小の段階圧縮で解消（本文7.5pt未満禁止）（詳細: memory/feedback_print_diagram_qr_layout.md）
 - 市政報告レポート（A4両面）は制作チェックリスト全項目クリアが必須：氏名42pt・章本文9.5pt統一・章2主役写真は横長80×54mm・他地区名残存grep・自治会員個人名不掲載・大幅変更後は安全ゲート再通過・natural-design-reviewer複数回（詳細: memory/feedback_print_publication_checklist.md）

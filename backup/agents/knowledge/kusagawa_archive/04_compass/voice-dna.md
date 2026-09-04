@@ -74,7 +74,7 @@ https://www.threads.com/@kusagawatakuya?igshid=NTc4MTIwNjQ2YQ==
 
 ## § 2 NG表現（避ける表現リスト・推奨ガイド）
 
-> ※ 明示的な「禁止語」は現状ゼロ（feedback_forbidden_words.md／2026-05-01「悉皆」禁止解除済）。  
+> ※ 明示的な「禁止語」は現状ゼロ（2026-05-01「悉皆」禁止解除済）。  
 > 以下は voice-dna 整合のための推奨ガイドであり、絶対禁則ではない。  
 
 ### 2.1 政治家定型（中身がないので避ける）

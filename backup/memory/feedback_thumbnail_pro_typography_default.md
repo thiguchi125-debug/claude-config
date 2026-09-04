@@ -21,6 +21,6 @@ metadata:
 - 影: ソリッド背景の文字は text-shadow **削除**（濁るだけ）。写真の上に載る文字だけ `0 2px 10px rgba(0,0,0,.55)` 程度で締める。
 - 写真＋文字の縦型は、文字帯の下地グラデを `.78`前後まで沈めてライム文字の可読性を確保（緑ポロ×緑パネルは色が繋がり一体感が出る）。
 
-勝負所は [[project_design_studio]] の **design-director** に外科的リファイン指示書（before→afterのCSS値粒度）を出させてから実装すると速い。印刷物は design-studio / [[feedback_design_review_gate_no_skip]] の流れ。制作後は必ずPNGを自分でRead検証（EYES-FIRST）。
+勝負所は [[project_design_studio]] の **design-director** に外科的リファイン指示書（before→afterのCSS値粒度）を出させてから実装すると速い。印刷物は design-studio / feedback_design_review_gate_no_skip の流れ。制作後は必ずPNGを自分でRead検証（EYES-FIRST）。
 
 正規保存先: `~/outputs/thumbnails/`（[[reference_storage_map.md]] 準拠）。

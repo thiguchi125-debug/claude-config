@@ -153,7 +153,7 @@ CRITICAL検出 → 即停止し草川に通知
 
 ### Step 8: Notion保存
 
-**`feedback_video_script_save_destination.md` のテンプレ準拠**:
+**📣SNS投稿管理DB保存テンプレ（本agentが正本）**:
 
 DB: 📣SNS投稿管理DB（data_source_id: `1bd98deb-624f-402c-aeb3-bdaa4782b389`）
 
