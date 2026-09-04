@@ -208,12 +208,16 @@ def build_still(paths, out):
           f"  ＝ {sx1-sx0:.0f}×{sy1-sy0:.0f}px。主見出し・氏名・顔はこの内側に置く")
     print(f"  下端ノーテキスト帯 = y {H*(1-BOTTOM_NOTEXT):.0f}〜{H}（Xのカードでチップが重なる）")
     print("  左右の捨て代 = 各 {:.0f}px（1:1に切られると消える）".format(sx0))
-    bp = blank_pockets(src)
+    # 空きポケットは安全域の内側だけを見る。左右の捨て代は「1:1で切られるので
+    # 背景しか置けない」規格上の空白であって、意図のない大余白ではない
+    # （2026-09-04まで捨て代をそのまま拾い、横型サムネで毎回⚠が出ていた）。
+    bp = blank_pockets(src.crop((int(sx0), 0, int(sx1), H)))
     if bp:
         x0, y0, x1, y1, pct = bp
+        x0 += int(sx0); x1 += int(sx0)
         mark = "⚠" if pct >= 10 else "  "
-        print(f"{mark}最大の空きポケット = x{x0}〜{x1} / y{y0}〜{y1}"
-              f"（{x1-x0}×{y1-y0}px ＝ 画面の{pct:.0f}%）"
+        print(f"{mark}安全域内の最大の空きポケット = x{x0}〜{x1} / y{y0}〜{y1}"
+              f"（{x1-x0}×{y1-y0}px ＝ 安全域の{pct:.0f}%）"
               + ("　意図のない大余白は不合格。要素の再配分を指示すること" if pct >= 10 else ""))
     return sheet
 
