@@ -24,7 +24,18 @@ scrollWidth）を直接読む。
 import sys, os, json, re, subprocess, tempfile
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+# 既定は9:16のショート動画挿入画像。横型サムネ（1600x900・1200x630）等は
+# --canvas 1600x900 で上書きする。2026-09-04まで1080x1920固定だったため、
+# 横型ページを1080幅でレンダして「右端超過」を全要素に出す偽陽性が起きていた。
 W, H = 1080, 1920
+for _i, _a in enumerate(sys.argv):
+    if _a == "--canvas" and _i + 1 < len(sys.argv):
+        try:
+            W, H = (int(x) for x in sys.argv[_i + 1].lower().split("x"))
+        except ValueError:
+            sys.exit("--canvas は 1600x900 の形式で指定してください")
+        del sys.argv[_i:_i + 2]
+        break
 
 PROBE = """
 <script>
