@@ -57,44 +57,6 @@ def run(cmd):
     return r.returncode, (r.stdout or "") + (r.stderr or "")
 
 
-def canvas_of(html_path):
-    """画像HTMLのキャンバス実寸を (W, H) で返す。
-
-    2026-09-04まで判型を見ず、すべて 9:16（1080x1920・ショート動画の挿入画像）として
-    チェッカーを回していた。そのため 16:9 のアイキャッチに 1080幅でレンダした
-    「右端はみ出し」の偽陽性と、ショート動画専用の字幕セーフ帯ゲートが当たっていた。
-
-    判定の順序（確かな順）:
-      1. 同名 .png の実寸（レンダ結果そのもの）
-      2. HTML の html/body/.stage/.canvas/.frame に書かれた width/height の組
-      3. どちらも取れなければ 9:16 とみなす（従来の既定）
-    """
-    png = os.path.splitext(html_path)[0] + ".png"
-    if os.path.exists(png):
-        try:
-            from PIL import Image
-            return Image.open(png).size
-        except Exception:
-            pass
-    try:
-        css = open(html_path, encoding="utf-8").read()
-        css = css[:css.index("</style>")] if "</style>" in css else css
-    except Exception:
-        return (1080, 1920)
-    for sel in ("html, body", "html,body", "body", ".stage", ".canvas", ".frame", ".page"):
-        for rule in re.findall(re.escape(sel) + r"\s*\{([^}]*)\}", css):
-            w = re.search(r"\bwidth\s*:\s*(\d+)px", rule)
-            h = re.search(r"\bheight\s*:\s*(\d+)px", rule)
-            if w and h:
-                return (int(w.group(1)), int(h.group(1)))
-    return (1080, 1920)
-
-
-def fmt_of(w, h):
-    r = w / h if h else 1
-    return "16:9" if r > 1.25 else ("9:16" if r < 0.8 else "1:1")
-
-
 def main(argv):
     do_pass = "--pass" in argv
     files = [a for a in argv if not a.startswith("--")]
@@ -115,25 +77,14 @@ def main(argv):
         c, o = run(["python3", os.path.join(SC, "check_content_limits.py")] + mds)
         print(o); fail += (c != 0)
     if htmls:
-        # 判型ごとにまとめて回す（2026-09-04）。混在していても取り違えない。
-        groups = {}
-        for h in htmls:
-            w, ht = canvas_of(h)
-            groups.setdefault((w, ht), []).append(h)
-        for (w, ht), fs in sorted(groups.items()):
-            f9 = fmt_of(w, ht)
-            print(f"\n▼ 判型 {f9}（{w}x{ht}）: " + ", ".join(os.path.basename(x) for x in fs))
-            for script in ("check_image_design.py", "check_overflow.py"):
-                c, o = run(["python3", os.path.join(SC, script), "--canvas", f"{w}x{ht}"] + fs)
-                print(o); fail += (c != 0)
-            pngs = [os.path.splitext(x)[0] + ".png" for x in fs
-                    if os.path.exists(os.path.splitext(x)[0] + ".png")]
-            if pngs and os.path.exists(BAND):
-                if (w, ht) == (1080, 1920):
-                    c, o = run(["python3", BAND] + pngs)
-                    print(o); fail += (c != 0)
-                else:
-                    print("  ・字幕セーフ帯ゲートは 9:16(1080x1920) 専用のため回していません。")
+        for script in ("check_image_design.py", "check_overflow.py"):
+            c, o = run(["python3", os.path.join(SC, script)] + htmls)
+            print(o); fail += (c != 0)
+        pngs = [os.path.splitext(h)[0] + ".png" for h in htmls
+                if os.path.exists(os.path.splitext(h)[0] + ".png")]
+        if pngs and os.path.exists(BAND):
+            c, o = run(["python3", BAND] + pngs)
+            print(o); fail += (c != 0)
 
     # --- 禁止語スイープ ---
     # 「削除を決めた語が別ファイル・画像HTMLに残る」事故（2026-08-06 card_timeline）対策。

@@ -88,6 +88,7 @@
 - [ショート動画台本はvirality-architectが主担当](feedback_short_video_use_virality_architect_first.md) — 35〜45秒厳守。2026-09-03に仕様の60秒表記を是正＋保存時deny hook新設
 - [発信前に担当agent/SKILL定義をRead](feedback_read_agent_spec_before_writing.md) — 機械判定＝`check_content_limits.py`
 - [挿入画像の枠はみ出しはgate.pyだけが捕まえる](feedback_gate_py_bundles_overflow_check.md) — design/band/目視は全部通る
+- [ゲートFAILは要素の要否を先に疑う](feedback_gate_fail_question_the_element_not_the_zone.md) — 禁止帯を発明して通すと自作ルールが正本を上書きする。「前はこうならなかった」は過去ファイルを実測
 - [報告会スライドの増減はソースHTMLを直す](feedback_houkokukai_slide_edit_via_source.md) — PDF直切り禁止・地区間流用は4点セット
 - [「レポート」がスライドを指すことがある](feedback_report_vs_slides_wording.md) — 紙は必ず2ページ・ページ数で判別
 - [Notion保存も「発信」＝保存前に安全ゲート](feedback_safety_gates_before_notion_save.md) — 本文は手打ち禁止・draftからコピペ
