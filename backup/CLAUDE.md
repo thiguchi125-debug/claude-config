@@ -19,7 +19,7 @@
 - **同（Drive一次資料 v3）**: 高速grepは `_index/` の.txtキャッシュ。投函は `_INBOX_council/`／`_INBOX_daily/`。**詳細＝OPERATIONS.md【F】**
 
 ## 守ってほしいルール（恒久）
-- **言葉遣い**: 市民向けは平易な日本語（一般原則）。明示的な禁止語は現在なし（feedback_forbidden_words.md）。
+- **言葉遣い**: 市民向けは平易な日本語（一般原則）。明示的な禁止語は現在なし。
 - **ブログ冒頭**: 1行目は必ず「こんにちは、亀山市議会議員の草川たくやです。」で開始。
 - **カレンダーID**: `kusakawa.taku@gmail.com`（`kusagawa` は誤り）。
 - **声のDNA整合**: 発信物は voice-dna.md と照合。AI生成の定型句を真の声と誤認しない。
