@@ -21,3 +21,5 @@ metadata:
 **フェーズ2の入口**＝B（`SPECS`→`specs.json`）／A（発信系ルール全数棚卸し・正本一本化）／C（画像の制作順序を固定・nano-bananaルート削除）。
 
 関連: [[feedback_thumbnail_crop_and_tone]] [[feedback_gate_kind_of_by_filename]] [[feedback_rules_reside_in_agents]]
+
+**2026-09-05 追記**: 尺規定を「許容35〜50秒／目標45〜50秒」に統一（食い違い3種を解消）。フェーズ2のB完了＝規格値は `~/.claude/scripts/specs.json` が単一ソース（読み込み口 `specs.py`）。チェッカー4本（check_image_design／check_content_limits／check_overflow／gate）は数値を持たない。残＝A（発信系ルール棚卸し）・C（画像の順序固定・nano-bananaルート削除）・H（発信オーケストレーター＝未設計・草川の関心）。詳細は設計書§7。

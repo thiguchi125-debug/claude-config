@@ -27,7 +27,9 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 # 既定は9:16のショート動画挿入画像。横型サムネ（1600x900・1200x630）等は
 # --canvas 1600x900 で上書きする。2026-09-04まで1080x1920固定だったため、
 # 横型ページを1080幅でレンダして「右端超過」を全要素に出す偽陽性が起きていた。
-W, H = 1080, 1920
+import sys as _sys, os as _os; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import specs as _specs
+W, H = _specs.dims("9:16")   # 既定値の正本は specs.json
 for _i, _a in enumerate(sys.argv):
     if _a == "--canvas" and _i + 1 < len(sys.argv):
         try:

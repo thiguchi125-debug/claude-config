@@ -1,0 +1,42 @@
+{
+  "_meta": {
+    "purpose": "発信ビジュアルとショート動画の規格値の単一ソース。check_image_design.py / check_overflow.py / gate.py / check_content_limits.py はここだけを読む。文書側（agent/SKILL）は数値を持たず「規格は specs.json」と書く。",
+    "updated": "2026-09-05",
+    "sources": {
+      "9:16": "insert_image_v1/template_b_infocard.html 実測値",
+      "16:9": "design_system/references/thumbnail/_karte.md",
+      "figure": "visual-assets-playbook.md（本文級テキストがある時点で図版）",
+      "short_video": "草川決定 2026-09-05（許容35〜50秒／目標45〜50秒）"
+    }
+  },
+  "image": {
+    "9:16": {
+      "name": "ショート動画 挿入画像 1080x1920", "w": 1080, "h": 1920,
+      "h1_min": 100, "h1_want": 120, "big_min": 80, "support_min": 56, "note_min": 36,
+      "kicker_min": 48, "lh_head_min": 1.30, "lh_body_min": 1.45,
+      "band_from": 1200, "band_end": 1460, "darkgreen_max": 0.25
+    },
+    "16:9": {
+      "name": "アイキャッチ/OGP 1600x900", "w": 1600, "h": 900,
+      "h1_min": 100, "h1_want": 133, "big_min": 100, "support_min": 56, "note_min": 36,
+      "bottom_notext": 0.12, "darkgreen_max": null
+    },
+    "figure": {
+      "name": "本文挿入図版 1600x900", "w": 1600, "h": 900,
+      "h1_min": 40, "h1_want": 44, "big_min": 40, "support_min": 16, "note_min": 16,
+      "support_check": false, "lh_min": 1.20, "display_from": 60, "darkgreen_max": null,
+      "_note": "サムネと同寸だが用途が違う。HTML側の data-asset-kind=\"figure\" 宣言で切替。はみ出しは check_overflow.py が従来どおり見る"
+    },
+    "1:1": {
+      "name": "SNS正方形", "w": 1080, "h": 1080,
+      "h1_min": 100, "h1_want": 120, "big_min": 100, "support_min": 56, "note_min": 36,
+      "bottom_notext": 0.10, "darkgreen_max": null
+    }
+  },
+  "short_video": {
+    "min_sec": 35, "max_sec": 50, "target_sec": [45, 50],
+    "chars_per_sec": 6.0,
+    "max_sentence_chars": 30, "max_cut_sec": 3.0, "max_numbers": 6,
+    "_note": "1動画1メッセージ・1カット3.0秒以内・数値6個以下は据え置き（質を守るのはこの3つ。尺は代理指標）"
+  }
+}

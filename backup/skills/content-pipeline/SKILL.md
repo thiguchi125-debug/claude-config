@@ -22,7 +22,7 @@ description: コンテンツパイプライン。録音・文字起こし・テ�
 | `content-fact-checker` | Step 2.6 / 3.6 | **事実確認ゲート**（数値・固有名詞・法令を一次情報まで遡って検証） |
 | `content-risk-reviewer` | Step 2.7 / 3.7 | **リスクレビューゲート**（公選法・個人情報・名誉毀損等の8軸精査・草川への問いかけ生成） |
 | `sns-content-creator` | Step 3 | SNS投稿文生成（Threads/X/Instagram/Facebook/LINE/YouTube）※TikTok/Shorts台本は除く |
-| `short-video-virality-architect` | Step 3 | **ショート動画（TikTok/Shorts/Reels）の台本＝主担当**。35〜45秒厳守 |
+| `short-video-virality-architect` | Step 3 | **ショート動画（TikTok/Shorts/Reels）の台本＝主担当**。35〜50秒・目標45〜50秒厳守 |
 | `kusakawa-voice-analyst` | 初回起動・任意 | 過去の公開投稿から声のDNAを抽出し `references/voice-dna.md` に保存 |
 | `notion-saver` | Step 5 | Notionへの確実な保存（コンテンツページ＋ネタDB） |
 
@@ -355,13 +355,13 @@ Agent(subagent_type="content-risk-reviewer",
 ### ⛔ ショート動画台本は別委託（必須・skip禁止）
 
 7種のうち **TikTok/YouTubeショートの台本だけは `sns-content-creator` に書かせない**。
-必ず `short-video-virality-architect`（モード=SOLO）へ委譲する。草川基準＝**35〜45秒厳守・1動画1メッセージ・数値羅列禁止**。
+必ず `short-video-virality-architect`（モード=SOLO）へ委譲する。草川基準＝**35〜50秒・目標45〜50秒厳守・1動画1メッセージ・数値羅列禁止**。
 素朴生成の長尺（60秒級・数字詰め込み）は本人NGが確定している。
 詳細＝memory/feedback_short_video_use_virality_architect_first.md
 
 ```
 Agent(subagent_type="short-video-virality-architect",
-      prompt="モード=SOLO／テーマ・fact束・voice-dna／草川基準=35〜45秒厳守・1動画1メッセージ")
+      prompt="モード=SOLO／テーマ・fact束・voice-dna／草川基準=35〜50秒・目標45〜50秒厳守・1動画1メッセージ")
 ```
 
 **sns-content-creatorエージェントに委託する。** 必ず references/voice-dna.md を読み込ませ、媒体ごとの切り口差別化を指示する。

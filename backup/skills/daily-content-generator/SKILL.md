@@ -201,7 +201,7 @@ Agent(subagent_type="sns-content-creator",
 Agent(subagent_type="short-video-virality-architect",
   prompt="テーマ: {theme}
   ファクトシート: {facts.md}
-  尺: 45〜60秒
+  尺: 35〜50秒・目標45〜50秒
   出力: 3バリアント（A=フック最強/B=共感ストーリー/C=議論喚起）
   各バリアントcut-by-cut表、テロップ、B-roll指示、CTA含む。")
 ```

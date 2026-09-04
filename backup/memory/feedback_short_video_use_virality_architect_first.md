@@ -48,3 +48,8 @@ metadata:
 **教訓（横断）**: 同じ事故が3回とも「人が忘れた」ではなく **仕様の矛盾＋機械の見逃し**で起きている。
 ルール違反を見つけたら、まず**その経路の仕様ファイルが何と書いてあるか**と**機械判定がその項目を本当に見ているか**を確認する。markdownに注意書きを足すのは対策ではない。
 
+
+**2026-09-05 尺規定の見直し（草川決定）**: 35〜45秒の根拠を洗ったところ、実データでなく2026-05-27の1件のNG＋一般論だった。
+草川決定＝**許容35〜50秒／目標45〜50秒**（6字/秒→上限約300字）。同日、`check_content_limits.py`（VIDEO_MAX_SEC=50）・`short_video_limits_gate.py`・
+`short-video-virality-architect.md`・`sns-content-creator.md`・skills（short-video-create／ai-kusakawa／content-pipeline／daily-content-generator）・
+sns-routine legs を同時に書き換え、食い違い（60秒以内／45〜60秒／50秒以内）を解消。**1動画1メッセージ・1カット3.0秒以内・数値6個以下は据え置き**（質を守るのはこの3つ）。

@@ -1,6 +1,6 @@
 ---
 name: ai-kusakawa
-description: 草川たくや（亀山市議会議員）の公認AIキャラクター「AIくさかわ」が本人の声クローンで話すショート動画（9:16・60秒以内・字幕・AI明記付き）を、テキスト入力から投稿可能な完成mp4まで1パスで自動生成するスキル。「AIくさかわ」「AIくさかわで動画」「AI動画作って」「AIくさかわに話させて」「AIくさかわでショート」等で起動。台本生成（short-video-virality-architect）→安全ゲート（content-fact-checker→content-risk-reviewer必須）→ElevenLabs音声→口パク合成（ローカルffmpeg）→7PF投稿文→📣SNS投稿管理DB保存＋Drive📱動画素材ミラーまで実行。※実写ショート動画→short-video-create、写真投稿→photo-post、挿入イラスト単体→short-video-image-designerが正で本スキルは反応しない。
+description: 草川たくや（亀山市議会議員）の公認AIキャラクター「AIくさかわ」が本人の声クローンで話すショート動画（9:16・35〜50秒・目標45〜50秒・字幕・AI明記付き）を、テキスト入力から投稿可能な完成mp4まで1パスで自動生成するスキル。「AIくさかわ」「AIくさかわで動画」「AI動画作って」「AIくさかわに話させて」「AIくさかわでショート」等で起動。台本生成（short-video-virality-architect）→安全ゲート（content-fact-checker→content-risk-reviewer必須）→ElevenLabs音声→口パク合成（ローカルffmpeg）→7PF投稿文→📣SNS投稿管理DB保存＋Drive📱動画素材ミラーまで実行。※実写ショート動画→short-video-create、写真投稿→photo-post、挿入イラスト単体→short-video-image-designerが正で本スキルは反応しない。
 ---
 
 # AIくさかわ 動画生成スキル
@@ -23,7 +23,7 @@ description: 草川たくや（亀山市議会議員）の公認AIキャラク�
 ## 工程（1パス）
 
 ### Step 1: 台本の用意
-- **テーマだけ**渡された場合: short-video-virality-architect（SOLOモード・35〜45秒・
+- **テーマだけ**渡された場合: short-video-virality-architect（SOLOモード・35〜50秒・目標45〜50秒・
   冒頭名乗りは「AIくさかわです」に置換・voice-dna準拠）で台本生成。
 - **台本持ち込み**の場合: そのまま使用（60秒超過見込みなら短縮案を先に提示）。
 - 冒頭名乗りは実写と区別するため「こんにちは、AIくさかわです。」を標準とする。

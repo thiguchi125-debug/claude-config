@@ -18,58 +18,21 @@ check_subtitle_band.py が「字幕帯だけ」を見るのに対し、こちら
 """
 import sys, re, os
 
-# 正本テンプレ insert_image_v1/template_b_infocard.html の実測値を下限とする
-MIN_KICKER   = 48    # ライムチップの見出しラベル
-MIN_H1       = 100   # 見出し（memory仕様は120〜150／テンプレ実測100+nowrap）
-WANT_H1      = 120   # ここを下回ったら警告
-MIN_BIGNUM   = 80    # 主要情報（数値など）
-MIN_SUPPORT  = 56    # 補助文
-MIN_NOTE     = 36    # 注記・出典
-MIN_LH_HEAD  = 1.30  # 見出しの行間（テンプレ1.36）
-MIN_LH_BODY  = 1.45  # 本文の行間（テンプレ1.54）
-BAND_END     = 1460  # 字幕帯の下端。下部ゾーンはここ以降
-DARKGREEN_MAX = 0.25 # 暗緑ベタ面の許容面積比（「深緑は文字・アクセント限定」）
-
-# --- 判型ごとの規範（2026-09-04 追加）---------------------------------------
-# 2026-09-04まで全判型を 9:16（1080x1920・ショート動画の挿入画像）として判定していた。
-# そのため 16:9 のアイキャッチに、字幕セーフ帯（y1240-1460）と暗緑ベタ面25%という
-# ショート動画専用の規則が当たり、通らないか、通っても意味がない状態だった。
-# 16:9 の数値の出どころ＝サムネ正本 design_system/references/thumbnail/_karte.md
-#   「メイン1行 原寸で最低100px（1600×900では約133px以上を推奨）、副1行 最低56px」
-#   「下端12%に文字を置かない」「安全域＝中央800×800」
-# ※Phase2で specs.json に集約する。ここが暫定の単一ソース。
-SPECS = {
-    "9:16": dict(name="ショート動画 挿入画像 1080x1920",
-                 h1_min=MIN_H1, h1_want=WANT_H1, big_min=MIN_BIGNUM,
-                 support_min=MIN_SUPPORT, note_min=MIN_NOTE,
-                 band_end=BAND_END, band_from=1200,
-                 darkgreen_max=DARKGREEN_MAX),
-    "16:9": dict(name="アイキャッチ/OGP 1600x900",
-                 h1_min=100, h1_want=133, big_min=100,
-                 support_min=56, note_min=MIN_NOTE,
-                 bottom_notext=0.12,     # 下端12%に文字を置かない（_karte.md）
-                 darkgreen_max=None),    # ベタ面の制限はショート動画専用
-    # 本文挿入図版（2026-09-04 追加・草川承認）。
-    # 16:9 と同じ 1600x900 だが用途が違う。サムネ＝フィードで400pxに縮んで一瞬で読ませるもの、
-    # 図版＝ブログ本文中に幅700〜800pxで置き、読者が止まって読むもの。
-    # 正本 visual-assets-playbook.md が「本文級（20px前後）のテキストがある時点で、
-    # それはサムネではなく図版」と書いている。サムネ規範（主要100px/注記36px）を図版に当てると
-    # 出典・但し書き・実数ラベルが全部落ち、図が「大きい数字だけ」になる。
-    # 判定は寸法では付かない（同じ1600x900）ため、HTML側の data-asset-kind="figure" 宣言で切り替える。
-    # はみ出し・重なりは check_overflow.py が従来どおり見る（こちらは一切ゆるめない）。
-    "figure": dict(name="本文挿入図版 1600x900",
-                 h1_min=40, h1_want=44, big_min=40,
-                 support_min=16, note_min=16,
-                 support_check=False,   # 図版は字種が多いのが正（軸ラベル・凡例・出典）
-                 lh_min=1.20,           # 表示見出しの下限。本文級は従来どおり
-                 display_from=60,       # 60px以上は表示用数字とみなし行間を問わない
-                 darkgreen_max=None),
-    "1:1":  dict(name="SNS正方形",
-                 h1_min=100, h1_want=120, big_min=100,
-                 support_min=56, note_min=MIN_NOTE,
-                 bottom_notext=0.10,
-                 darkgreen_max=None),
-}
+# 規格値の正本は specs.json（2026-09-05 集約）。ここには数値を書かない。
+import sys as _sys, os as _os; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import specs as _specs
+SPECS = _specs.load()["image"]
+_S916 = SPECS["9:16"]
+MIN_KICKER   = _S916["kicker_min"]
+MIN_H1       = _S916["h1_min"]
+WANT_H1      = _S916["h1_want"]
+MIN_BIGNUM   = _S916["big_min"]
+MIN_SUPPORT  = _S916["support_min"]
+MIN_NOTE     = _S916["note_min"]
+MIN_LH_HEAD  = _S916["lh_head_min"]
+MIN_LH_BODY  = _S916["lh_body_min"]
+BAND_END     = _S916["band_end"]
+DARKGREEN_MAX = _S916["darkgreen_max"]
 
 
 def canvas_from_argv(argv):
@@ -97,7 +60,7 @@ def canvas_from_argv(argv):
     if fmt not in SPECS:
         sys.exit(f"未知の判型 {fmt}（{'/'.join(SPECS)} のいずれか）")
     if not (w and h):
-        w, h = (1080, 1920) if fmt == "9:16" else ((1600, 900) if fmt == "16:9" else (1080, 1080))
+        w, h = SPECS[fmt]["w"], SPECS[fmt]["h"]
     return fmt, w, h
 
 FIGURE_RE = re.compile(r'data-asset-kind\s*=\s*["\']figure["\']')

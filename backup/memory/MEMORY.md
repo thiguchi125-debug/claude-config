@@ -5,7 +5,7 @@
 
 ## 🔄 進行中プロジェクト
 
-- [発信フロー構造改善](project_hasshin_flow_phase1_2026-09-04.md) — フェーズ1完了。学びの置き場はフックで一本化・gate.pyは判型自動判定・サムネ既定1600×900
+- [発信フロー構造改善](project_hasshin_flow_phase1_2026-09-04.md) — フェーズ2のBまで完了（2026-09-05）。規格値は scripts/specs.json が正本・尺は35〜50秒(目標45〜50)。残＝A棚卸し・C画像順序・H発信オーケストレーター(未設計)
 - [小中学校体育館エアコン](project_taiikukan_aircon_action.md) — 9月議会で柱1本→選挙後に署名。整備完了年度に誤解あり・要確認
 - [ご意見箱フォーム夜間取込](project_form_intake_nightly.md) — **停止中**。草川手番＝`/mcp`再認証
 - [Drive直下を投函口にした自動振り分けv5](project_drive_root_intake_v5.md) — 滞留主因はファイル名のみ判定。スキャンPDFはOCR必須・議会語はSTRONG/WEAK分離
@@ -86,7 +86,7 @@
 - [圧縮すると但し書きだけ落ちる](feedback_compression_drops_safety_clauses.md) — 短尺版・PF別版は元版と同じ強度で再ゲート
 - [発信物は.txtでもgate.pyに通す](feedback_gate_kind_of_by_filename.md) — 2026-09-02まで.txtは機械チェック0件のまま--passで指紋記録されていた
 - [「だから、撮っています」は恒久禁止](feedback_no_totteimasu_line.md) — 憲法②「撮っている理由」ごと廃止。checkerは禁止検出に反転済み
-- [ショート動画台本はvirality-architectが主担当](feedback_short_video_use_virality_architect_first.md) — 35〜45秒厳守。2026-09-03に仕様の60秒表記を是正＋保存時deny hook新設
+- [ショート動画台本はvirality-architectが主担当](feedback_short_video_use_virality_architect_first.md) — 尺は許容35〜50秒・目標45〜50秒（2026-09-05統一）。保存時deny hookあり
 - [発信前に担当agent/SKILL定義をRead](feedback_read_agent_spec_before_writing.md) — 機械判定＝`check_content_limits.py`
 - [挿入画像の枠はみ出しはgate.pyだけが捕まえる](feedback_gate_py_bundles_overflow_check.md) — design/band/目視は全部通る
 - [ゲートFAILは要素の要否を先に疑う](feedback_gate_fail_question_the_element_not_the_zone.md) — 禁止帯を発明して通すと自作ルールが正本を上書きする。「前はこうならなかった」は過去ファイルを実測

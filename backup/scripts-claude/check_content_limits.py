@@ -9,7 +9,7 @@ check_subtitle_band.py（ショート動画の字幕帯ゲート）と同じ思�
 正本:
   ブログ  = ~/.claude/agents/blog-writer.md（1500-2500字・5段構成厳守）
   SNS     = ~/.claude/agents/sns-content-creator.md（PF別字数）
-  動画    = ~/.claude/skills/short-video-create/SKILL.md（35-45秒・憲法5構成）
+  動画    = ~/.claude/skills/short-video-create/SKILL.md（35-50秒(目標45-50秒)・憲法5構成）
             ~/.claude/agents/short-video-virality-architect.md
 
 使い方:
@@ -34,11 +34,14 @@ MAX_TAGS = {"X": 4, "Instagram": 5, "Instagramストーリー": 5}   # ハッシ
 BLOG_TIERS = [("標準", 1500, 2500), ("深掘り", 2500, 4500), ("徹底解説", 4500, 8000)]
 NORMAL_TIER = ("ノーマル", 800, 1500)  # blog-writer-normal.md（市民向け活動報告・5段構成の縛りなし）
 BLOG_STAGES = ["現場の声", "全国", "制度", "亀山", "締め"]  # 5段構成の手がかり
-VIDEO_MIN_SEC, VIDEO_MAX_SEC = 35, 45
-VIDEO_CHARS_PER_SEC = 7.0        # 日本語ナレの上限目安
-VIDEO_MAX_SENTENCE = 30          # 一文30字超はanti-pattern
-VIDEO_MAX_CUT_SEC = 3.0          # 1.5〜2秒ごとの刺激変化。3秒超のカットは離脱要因
-VIDEO_MAX_NUMBERS = 6            # 1動画＝1メッセージ。セリフ内の数値はこれ以下
+import sys as _sys, os as _os; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import specs as _specs
+_SV = _specs.load()["short_video"]           # 正本 specs.json（2026-09-05 集約）
+VIDEO_MIN_SEC, VIDEO_MAX_SEC = _SV["min_sec"], _SV["max_sec"]   # 許容35〜50秒（目標45〜50秒）
+VIDEO_CHARS_PER_SEC = _SV["chars_per_sec"]  # 日本語ナレ ≒ 6字/秒（文書側と統一）
+VIDEO_MAX_SENTENCE = _SV["max_sentence_chars"]  # 一文30字超はanti-pattern
+VIDEO_MAX_CUT_SEC = _SV["max_cut_sec"]      # 1.5〜2秒ごとの刺激変化。3秒超のカットは離脱要因
+VIDEO_MAX_NUMBERS = _SV["max_numbers"]      # 1動画＝1メッセージ。セリフ内の数値はこれ以下
 
 def n_chars(t):
     return len(re.sub(r"\s", "", t))

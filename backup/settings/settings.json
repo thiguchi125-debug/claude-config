@@ -166,5 +166,6 @@
       "**Org-specific CLIs**: None configured",
       "**Routine under /Users/kusakawatakuya/ prefix**: local file organization into the documented storage map (Drive intake folders, ~/outputs/, ~/publications/, ~/Archive/) as described in this directory's CLAUDE.md is routine personal file management, not deployment"
     ]
-  }
+  },
+  "model": "claude-fable-5-1[1m]"
 }

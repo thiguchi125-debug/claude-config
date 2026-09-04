@@ -26,6 +26,8 @@
   fact/riskの代わりにならない。
 """
 import sys, os, json, re, glob, hashlib, subprocess, time, unicodedata
+import sys as _sys, os as _os; _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import specs as _specs   # 規格値の正本 specs.json（2026-09-05）
 
 SC = os.path.expanduser("~/.claude/scripts")
 BAND = os.path.expanduser(
@@ -82,14 +84,14 @@ def canvas_of(html_path):
         css = open(html_path, encoding="utf-8").read()
         css = css[:css.index("</style>")] if "</style>" in css else css
     except Exception:
-        return (1080, 1920)
+        return _specs.dims("9:16")
     for sel in ("html, body", "html,body", "body", ".stage", ".canvas", ".frame", ".page"):
         for rule in re.findall(re.escape(sel) + r"\s*\{([^}]*)\}", css):
             w = re.search(r"\bwidth\s*:\s*(\d+)px", rule)
             h = re.search(r"\bheight\s*:\s*(\d+)px", rule)
             if w and h:
                 return (int(w.group(1)), int(h.group(1)))
-    return (1080, 1920)
+    return _specs.dims("9:16")
 
 
 def fmt_of(w, h):
@@ -131,7 +133,7 @@ def main(argv):
             pngs = [os.path.splitext(x)[0] + ".png" for x in fs
                     if os.path.exists(os.path.splitext(x)[0] + ".png")]
             if pngs and os.path.exists(BAND):
-                if (w, ht) == (1080, 1920):
+                if (w, ht) == _specs.dims("9:16"):
                     c, o = run(["python3", BAND] + pngs)
                     print(o); fail += (c != 0)
                 else:
