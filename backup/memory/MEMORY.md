@@ -101,6 +101,7 @@
 - [Xはハッシュタグ必須・Instagramは5つ](feedback_hashtag_policy_x_instagram.md) — LINEはタグなしが正
 - [アーカイブに他議員混在の通し会議録がある](feedback_kusagawa_archive_multimember_files.md) — 日付だけのファイルは全議員分。話者行を必ず確認
 - 他議員の誤帰属ガード — [対外発信に名前を載せない](feedback_no_other_council_members_names.md)／[子ども医療費](feedback_kodomo_iryohi_sns_misattribution.md)／[濁り水断水](feedback_fukami_water_distribution_misattribution.md)
+- [民間人のPR依頼は公表プロフィール以上に地域を絞らない](feedback_pr_request_no_local_tie_beyond_public_profile.md) — 同意範囲は拡散であって出身地の公表ではない
 - [議会・他議員への提言は対外発信で避ける](feedback_no_council_directed_proposals.md) — 提案宛先は執行部のみ
 - [一般質問は常に最新版から取る](feedback_ippan_shitsumon_always_latest_source.md) — 正本＝受付印付き提出版＋Notion会期ハブ。drafts/の日付名を信じない
 - [確認事項は1件1問の選択式](feedback_ask_one_by_one_choices.md) — AskUserQuestion・1回最大4問
