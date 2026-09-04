@@ -50,4 +50,4 @@ claude.ai/design のテンプレート群を「正本」とし、既存デザイ
 - leaflet_trifoldは名前と裏腹に実態A4両面1枚もの（842×1190px×2面・印刷scale 0.9426）
 - template.htmlはposter/flyer/leafletが元ディレクトリのassets/へ相対参照（reportのみbase64単体完結）→制作時は案件フォルダへassetsごと複製
 
-関連: [[feedback_design_quality_bar_natsumatsuri2026]] feedback_print_layout_architect_agent [[feedback_flyer_avoid_ai_saas_aesthetic]] [[feedback_no_emoji_ai_smell]] [[reference_senkyo_leaflet_v3_files]]
+関連: DESIGN_RULES.md §0（品質基準） feedback_print_layout_architect_agent DESIGN_RULES.md §1（AI製SaaS LP風NG） [[feedback_no_emoji_ai_smell]] [[reference_senkyo_leaflet_v3_files]]

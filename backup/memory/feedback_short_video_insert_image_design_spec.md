@@ -20,7 +20,7 @@ metadata:
 5. **孤立文字（折り返しで1文字ぶら下げ）ゼロ**: nowrap＋意味維持の字数調整で解消（例「匿名でOK・数分でこたえられる」→「匿名OK・数分で答えられる」）。
 6. **人物は親しみ絵本調**: 暗いシルエット＝怖いのでNG。明るい肌色＋簡単な笑顔＋髪＋カラフルな服。性別が分かる造形で**女の子も入れる**（ツインテール＋ピンクのワンピース等）。実在特定個人の顔は描かない（絵本調の非実在簡略顔はOK）。
 7. **可読性**: 明るい背景には濃い文字（深緑）で高コントラスト。ライム文字は明るい背景に溶けるので濃色縁取り or 濃色面に乗せる。白飛び・低コントラスト禁止。
-8. 既存ルール継承: 安っぽさ7信号クリア（明るくしてものっぺりにしない＝微グラデ/グレイン/陰影維持）[[feedback-short-video-subtitle-safe-zone]]、HTML/CSS→Chrome PNG・ブランド色 [[feedback-short-video-infographic-html-to-png]]、記号化/文字消失を潰す・EYES-FIRST採点 [[feedback-short-video-image-designer-agent]]、AI-SaaS美学回避 [[feedback-flyer-avoid-ai-saas-aesthetic]]、絵文字なし [[feedback-no-emoji-ai-smell]]、他議員名なし、端の見切れなし（左右マージン40-60px）、帯以外は画面を使い切る（中途半端な余白なし）。
+8. 既存ルール継承: 安っぽさ7信号クリア（明るくしてものっぺりにしない＝微グラデ/グレイン/陰影維持）[[feedback-short-video-subtitle-safe-zone]]、HTML/CSS→Chrome PNG・ブランド色 [[feedback-short-video-infographic-html-to-png]]、記号化/文字消失を潰す・EYES-FIRST採点 [[feedback-short-video-image-designer-agent]]、AI-SaaS美学回避 DESIGN_RULES.md §1、絵文字なし [[feedback-no-emoji-ai-smell]]、他議員名なし、端の見切れなし（左右マージン40-60px）、帯以外は画面を使い切る（中途半端な余白なし）。
 
 **運用（往復を減らす）:** ①生成→②コーディネーターが各PNGを自分でRead（自己採点を鵜呑みにしない・指摘箇所を狙って目視）→③**3枚を1枚にまとめたコンタクトシートで草川が一度に確認**（1枚ずつ往復しない）。エージェントのコンテキストは期限切れで再開不可になりがち＝本仕様を毎回指示文に入れる前提で（live transcript依存にしない）。
 

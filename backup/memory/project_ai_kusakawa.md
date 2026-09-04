@@ -25,4 +25,4 @@ metadata:
 
 **実装メモ**: このMacのffmpeg 8.1.1はass/subtitles/drawtextフィルタ非搭載→字幕は「Chrome headlessで透過PNGシート1回レンダ→ffmpeg crop＋overlay」方式（subtitles.py/compose.py）。口パクはRMS 2しきい値＋3フレーム中央値平滑。実キャラ投入時はconfig.pyのMOUTH_POS/MOUTH_SIZEだけ調整。
 
-関連: [[project-photo-post-skill]] [[feedback_flyer_bright_illustration_style]]
+関連: [[project-photo-post-skill]] DESIGN_RULES.md §1（明るいイラストチラシ）

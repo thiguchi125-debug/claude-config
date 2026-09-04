@@ -18,6 +18,6 @@ metadata:
 - 制作後は絵文字コードポイント（0x1F300〜0x1FAFF / 0x2600〜0x27BF / 0x25B6等）が残っていないかコードで検査してから確定
 - print-designer / blog-writer / sns-content-creator 等すべての発信経路に適用
 
-関連: [[feedback_flyer_avoid_ai_saas_aesthetic]]（AI製SaaS LP風NG）／[[feedback_no_abstract_poetic_phrases]]（情緒系メタファーNG）
+関連: DESIGN_RULES.md §1（AI製SaaS LP風NG）（AI製SaaS LP風NG）／[[feedback_no_abstract_poetic_phrases]]（情緒系メタファーNG）
 
 **スライド資料（市政報告会等）も対象。** チープに見えるため絵文字は一切使わない（2026-06-13草川指示。旧 feedback_no_emoji_in_slides を統合）。

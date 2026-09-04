@@ -15,7 +15,7 @@
 
 ## Part B: スタイル棚（foundations/styles/ 新設・5種）
 
-1. `style_bright_illustration.html` — 淡色水彩・明るいイラスト系（地域・子ども向け＝理想形 [[feedback_flyer_bright_illustration_style]]）
+1. `style_bright_illustration.html` — 淡色水彩・明るいイラスト系（地域・子ども向け＝理想形 DESIGN_RULES.md §1（明るいイラストチラシ））
 2. `style_dark_lime.html` — ダーク×ライム（既存ブランド・eスポーツ系）
 3. `style_ink_saving_report.html` — インク節約レポート系（木下v22系統）
 4. `style_photo_bold.html` — 写真大胆系（全面写真＋白帯タイポ・選挙/人物もの）
