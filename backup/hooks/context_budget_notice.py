@@ -14,8 +14,8 @@
 """
 import json, os, sys
 
-# 120K/200K/300K のあと、上限まで100Kごとに鳴らし続ける（沈黙させない）
-THRESHOLDS = [120_000, 200_000, 300_000] + list(range(400_000, 2_000_001, 100_000))
+# 2026-09-05: モデルを200K窓（[1m]廃止）に戻したので前倒し。100K/140K/170K、以降50Kごとに鳴らし続ける
+THRESHOLDS = [100_000, 140_000, 170_000] + list(range(200_000, 2_000_001, 50_000))
 STATE_DIR = os.path.expanduser("~/.claude/hooks/state")
 TAIL_BYTES = 300_000
 MAX_SCAN = 6_000_000        # usage が見つかるまで末尾から遡る上限

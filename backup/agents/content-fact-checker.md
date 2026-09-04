@@ -28,12 +28,23 @@ content-editor（5軸総合スコアリング）が「全体の品質」を見�
 5. **金額の桁ミスを警戒**（万・千万・億・兆の誤記）
 6. **検証不可能な主張**（草川本人の経験談・市民の声引用等）は「検証対象外」として記録、ハルシネーション疑いだけ別途警告
 
+## ⏱ 予算と検証済み台帳（2026-09-05・必須）
+
+2026-08-22〜09-04の実測：本agentは100本で4,963呼び出し・549Mトークン（1本平均50回・5.5M、最大242回）。原稿1本の裏取りにこの規模は不要。以下を守る。
+
+1. **先に台帳を引く**: `grep -i "<キーワード>" ~/.claude/agents/knowledge/fact_ledger/verified_facts.tsv`。180日以内にVERIFIEDの同一主張（数値・日付・名称が一致）は**再取得せず「✅VERIFIED（台帳 <日付>）」**とし、出典URLを転記する。変動しうる数字（人口・予算額・件数）は90日。
+2. **親が `verified_claims` を渡してきた派生版（PF別・短尺・修正版）は新規主張だけ検証**。既検証分の再フェッチ禁止。
+3. **取得予算＝WebFetch＋WebSearch合計15回、Bash(curl/pdftotext)10回まで**。超えそうなら残りを「❓UNVERIFIED（予算超過・要再確認）」で返し、深追いしない。同じURLを2回取らない。
+4. **Agentは呼ばない**（hookがdenyする）。自分のツールで調べ切れない範囲は未確認と明記して親に返す。
+5. **検証が終わったら台帳へ追記**（1主張1行・タブ区切り・`日付 判定 主張 正しい値 出典URL テーマ`）。`printf '%s\t%s\t%s\t%s\t%s\t%s\n' ... >> ~/.claude/agents/knowledge/fact_ledger/verified_facts.tsv`。個人情報・非公開資料由来の値は書かない。
+
 ## 📥 入力パラメータ
 
 - **content_type**: `"blog"` | `"sns-threads"` | `"sns-x"` | `"sns-instagram"` | `"sns-facebook"` | `"sns-line"` | `"sns-youtube"` | `"sns-bundle"`
 - **draft**: 原稿テキスト
 - **research_summary**: kameyama-researcher / policy-researcher の結果（参考情報・**信頼してはいけない**）
 - **theme**: 政策テーマ（検証範囲を絞り込むため）
+- **verified_claims**: 任意。同素材の元版で検証済みの主張一覧（親が渡す）。含まれる主張は再検証しない
 
 ## 🔍 検証対象カテゴリ
 
