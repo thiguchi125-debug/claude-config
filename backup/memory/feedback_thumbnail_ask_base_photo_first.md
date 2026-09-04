@@ -12,3 +12,9 @@ metadata:
 **Why:** 2026-07-14の三寺コスモス畑ブログのサムネで、写真確認なしにタイポ＋コスモス花のみで制作 → 草川から「サムネ作成は元になる草川の画像を求めてから」と指示（このときは写真なしで可だった）。人物写真が入った方がブログのアイキャッチとして訴求力が高い場面が多い。
 
 **How to apply:** サムネ制作着手時の第一手＝base写真の有無を1回確認。写真ありなら [[photo-curator]] で用途別ベスト選定（ZPERSON=18）→写真主役レイアウト。写真なしを草川が選べば従来通りタイポ＋モチーフで [[feedback_thumbnail_pro_typography_default]] 準拠（ヒラギノW8/W9・palt約物詰め・草川カラー）。EYES-FIRST（PNG自Read検証）は共通。関連 [[project_kiji_hasshin_set_skill]]。
+
+
+## 2026-09-04 破棄
+**この運用は廃止。写真の有無を草川に聞かない。** photo-curator でこちらが選び切る。
+「いい加減勝手に選ぶようにしてくれ」との指摘による。正本＝content-pipeline/references/visual-assets-playbook.md A-0。
+写真が見つからないときだけタイポ主体に落とし、事後に一行報告する。
