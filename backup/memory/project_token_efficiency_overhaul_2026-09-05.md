@@ -25,3 +25,8 @@ metadata:
 
 **Why:** 「大したことしていないのに上限」の正体は、長い文脈で毎回全量を払い直す構造と、ゲート1本が調査エージェント並みに動く構造だった。
 **How to apply:** 9/19頃に `python3 ~/.claude/scripts/token_report.py 14 09-05` で前後比較。fact-checkerの1本あたり呼出が20回以下、文脈>200Kの割合が0に近いことを確認。悪化していれば settings.json.bak から戻す。関連 [[project_token_reduction_2026-08-20]] [[feedback_token_report_blind_to_subagents]]
+
+## 追記（同日・第2弾）
+- superpowersプラグイン停止／`content-gate-lite`新設（短文SNS600字以下はfact＋risk1本・同強度）／risk・fact両agentのMEMORY.md索引を70字/行に圧縮（全文は `_MEMORY_full_2026-09-05.md`）
+- 夕方SNS便 `leg_evening_push.md` に予算節（合計40回・Notion4回・ゲートはlite1回）。バックアップ `.bak-20260905`
+- **SubagentStopフック `fact_ledger_autolog.py`**：fact-checker／gate-liteの報告の `### Cn: ✅/❌ 「…」` を台帳へ自動追記（agentの指示遵守に依存しない学習回収）。ログ `fact_ledger/_autolog.log`
