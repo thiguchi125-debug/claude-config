@@ -49,21 +49,6 @@ SPECS = {
                  support_min=56, note_min=MIN_NOTE,
                  bottom_notext=0.12,     # 下端12%に文字を置かない（_karte.md）
                  darkgreen_max=None),    # ベタ面の制限はショート動画専用
-    # 本文挿入図版（2026-09-04 追加・草川承認）。
-    # 16:9 と同じ 1600x900 だが用途が違う。サムネ＝フィードで400pxに縮んで一瞬で読ませるもの、
-    # 図版＝ブログ本文中に幅700〜800pxで置き、読者が止まって読むもの。
-    # 正本 visual-assets-playbook.md が「本文級（20px前後）のテキストがある時点で、
-    # それはサムネではなく図版」と書いている。サムネ規範（主要100px/注記36px）を図版に当てると
-    # 出典・但し書き・実数ラベルが全部落ち、図が「大きい数字だけ」になる。
-    # 判定は寸法では付かない（同じ1600x900）ため、HTML側の data-asset-kind="figure" 宣言で切り替える。
-    # はみ出し・重なりは check_overflow.py が従来どおり見る（こちらは一切ゆるめない）。
-    "figure": dict(name="本文挿入図版 1600x900",
-                 h1_min=40, h1_want=44, big_min=40,
-                 support_min=16, note_min=16,
-                 support_check=False,   # 図版は字種が多いのが正（軸ラベル・凡例・出典）
-                 lh_min=1.20,           # 表示見出しの下限。本文級は従来どおり
-                 display_from=60,       # 60px以上は表示用数字とみなし行間を問わない
-                 darkgreen_max=None),
     "1:1":  dict(name="SNS正方形",
                  h1_min=100, h1_want=120, big_min=100,
                  support_min=56, note_min=MIN_NOTE,
@@ -100,15 +85,6 @@ def canvas_from_argv(argv):
         w, h = (1080, 1920) if fmt == "9:16" else ((1600, 900) if fmt == "16:9" else (1080, 1080))
     return fmt, w, h
 
-FIGURE_RE = re.compile(r'data-asset-kind\s*=\s*["\']figure["\']')
-
-def declares_figure(path):
-    """HTML が data-asset-kind="figure" を宣言していれば本文挿入図版として扱う。"""
-    try:
-        return bool(FIGURE_RE.search(open(path, encoding="utf-8").read()))
-    except Exception:
-        return False
-
 def sizes(css, prop):
     return [float(x) for x in re.findall(prop + r"\s*:\s*([\d.]+)px", css)]
 
@@ -124,11 +100,8 @@ def check_html(path, spec, H):
     out.append((biggest >= spec["big_min"], f"最大文字 {biggest:.0f}px（主要情報の下限{spec['big_min']}px）"))
     out.append((smallest >= spec["note_min"], f"最小文字 {smallest:.0f}px（注記の下限{spec['note_min']}px）"))
     # 56px未満の本文級文字が何種類あるか（注記1〜2種は許容）
-    if spec.get("support_check", True):
-        small = [x for x in fs if spec["note_min"] <= x < spec["support_min"]]
-        out.append((len(small) <= 2, f"補助文{spec['support_min']}px未満の字種 {len(small)}種 {small if small else ''}"))
-    else:
-        out.append((True, f"字種チェックは非適用（{spec['name']}）"))
+    small = [x for x in fs if spec["note_min"] <= x < spec["support_min"]]
+    out.append((len(small) <= 2, f"補助文{spec['support_min']}px未満の字種 {len(small)}種 {small if small else ''}"))
     # 見出し
     h1 = sizes(css, "font-size")
     heads = [x for x in h1 if x >= spec["h1_min"]]
@@ -145,12 +118,9 @@ def check_html(path, spec, H):
     for r in rules:
         m = re.search(r"font-size\s*:\s*([\d.]+)px", r)
         l = re.search(r"line-height\s*:\s*([\d.]+)\s*[;}]?", r)
-        lh_min = spec.get("lh_min", MIN_LH_HEAD)
-        disp = spec.get("display_from", 80)
-        if m and l and 30 <= float(m.group(1)) < disp and float(l.group(1)) < lh_min:
+        if m and l and 30 <= float(m.group(1)) < 80 and float(l.group(1)) < MIN_LH_HEAD:
             tight.append(float(l.group(1)))
-    lh_min = spec.get("lh_min", MIN_LH_HEAD)
-    out.append((not tight, f"行間 {lh_min}未満 {len(tight)}件 {sorted(set(tight)) if tight else ''}"))
+    out.append((not tight, f"行間 {MIN_LH_HEAD}未満 {len(tight)}件 {sorted(set(tight)) if tight else ''}"))
     # 下部ゾーンの開始位置
     tops = [float(x) for x in re.findall(r"top\s*:\s*(\d+)px", css)]
     if "band_end" in spec:
@@ -201,10 +171,8 @@ def main(argv):
     fail = 0
     print(f"判型: {fmt}（{spec['name']} / {W}x{H}）")
     for f in argv:
-        # 同じ 1600x900 でもサムネと本文図版は用途が違う。HTML の宣言で1ファイル単位に切替える。
-        fspec = SPECS["figure"] if declares_figure(f) else spec
-        print(f"\n== {os.path.basename(f)} ==" + (f"  [{fspec['name']}]" if fspec is not spec else ""))
-        res = check_html(f, fspec, H) + check_png(os.path.splitext(f)[0] + ".png", fspec)
+        print(f"\n== {os.path.basename(f)} ==")
+        res = check_html(f, spec, H) + check_png(os.path.splitext(f)[0] + ".png", spec)
         for ok, msg in res:
             print(("  ✅ " if ok else "  🚨 ") + msg)
             if not ok: fail += 1
