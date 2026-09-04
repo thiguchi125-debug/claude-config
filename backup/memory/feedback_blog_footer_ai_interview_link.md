@@ -13,6 +13,6 @@ metadata:
 
 **Why:** 2026-07-14 草川指示「今後はブログ記事の最後のリンクにこのAIインタビューを追加して」。AIインタビュー（安野貴博氏depth interviewベース・[[project_ai_interview_config_designer]]）への導線を全ブログ記事に常設するため。
 
-リンク下には安野貴博氏／有賀啓介氏クレジット＋個人情報禁止の定型注意書き（正本＝[[feedback_ai_interview_disclaimer]]の一字一句固定文）を必ず入れる。
+リンク下には安野貴博氏／有賀啓介氏クレジット＋個人情報禁止の定型注意書き（正本＝正本＝agents/ai-interview-sns-poster.md 📌節の一字一句固定文）を必ず入れる。
 
 **How to apply:** 実装済み＝blog-writer.md／blog-writer-normal.md の「定型フッター（変更禁止）」ブロックにThreadsの後へ◆AIインタビュー段落＋リンク＋※注意書き2行を追記。CLAUDE.md D1のフッター記述も更新済。以後blog-writer系はこのフッターをそのまま出力するので手動追記不要。フッター漏れチェック（[[feedback_blog_blog_normal_footer]]系）でもこの4ブロック目を確認。安野貴博・有賀啓介・個人情報の3語が入っているか確認。

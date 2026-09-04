@@ -153,6 +153,7 @@ done
 - 範囲は**地区に絞る**。広域を写すとラベルが潰れる。
 
 ### 素材の再利用
+- Drive一次資料PDFの図面抽出・LINE QR並列配置・overflow段階圧縮の定型は `references/print_checklist.md` A〜C
 
 `profile.jpg` / `handwrite_note.png` / QR は直近の地区版から引き継ぐ。**QRは必ず中身をデコードして確認**してから使う（版によって宛先が違う）。
 
@@ -269,6 +270,7 @@ CRITICAL は即停止して草川に通知。HIGH は ASK_USER。
 
 ## 📌 恒久ガードルール
 
+- **着手前に `references/print_checklist.md` を1回Read。** 規格値は `~/.claude/scripts/specs.json`、保存前に `gate.py`
 - **地区の地理は一次資料で確定してから書く。** agent の地区比定を信用しない
 - **他地区版と突合してから書く。** 隣町に真逆のことを配らない
 - **地図は地理院タイル。Googleマップは個人情報が写る**

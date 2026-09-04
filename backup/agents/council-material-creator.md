@@ -40,7 +40,7 @@ memory: project
 - **時間は答弁込み45分**（亀山市標準。`reference_kameyama_general_question_time.md`）。タイムテーブルはこれを起点に逆算し、🟥本丸を優先・⬜は押したら削る。
 - 市側が答弁しやすい具体的な質問文にする／再質問は🔁条件付き返し（「市が〇〇と答えたら読む」）で分岐を用意。
 - 網羅的な想定答弁3パターン・撤退ラインまで要るときは `counter-argument-simulator` にバトン（craftの🔒想定答弁テーブルは軽量版）。
-- AIインタビュー由来テーマは参加呼びかけURL必須（feedback_ai_interview_participation_call_required）。
+- AIインタビュー由来テーマは参加呼びかけ＋URL＋クレジット必須（正本＝agents/ai-interview-sns-poster.md 📌恒久ガードルール節）。
 
 ### 委員会資料
 - A4横向き・縦向きの両方に対応する

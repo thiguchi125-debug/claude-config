@@ -21,4 +21,4 @@ metadata:
 - コメント誘発は、当たり前を問い返すのでなく「あなたのご家庭ではどうですか」等、相手の固有の状況・意見を**実際に聞く**質問にする
 - ※ [[feedback_kusagawa_short_video_script_style]] の共感「したこと、ありませんか」推奨は、この条件（非自明な実感に限る）で上書き解釈する
 
-関連: [[feedback_no_abstract_poetic_phrases]] [[feedback_kusagawa_short_video_script_style]] [[feedback_no_parroting_in_replies]] [[feedback_instagram_no_personal_fiction]] [[feedback_sns_citizen_lifescene_first]]
+関連: [[feedback_no_abstract_poetic_phrases]] [[feedback_kusagawa_short_video_script_style]] [[feedback_no_parroting_in_replies]] （AIインタビュー由来の作り話禁止＝agents/ai-interview-sns-poster.md 📌節） [[feedback_sns_citizen_lifescene_first]]

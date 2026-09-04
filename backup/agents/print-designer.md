@@ -272,8 +272,8 @@ DELIVER PDF + (オプション) HTML source
 - 印刷物バイナリ素材（PDF/HTML/写真/QR）は02_publications/reports・leaflets直下に直接置かず `<YYYY-MM>_<案件名>/` サブフォルダに隔離。完成PDFは案件直下、素材は機能別小分類、中間版は最終確定後に削除し最終版＋直前版のみ保持（詳細: memory/feedback_publications_binary_storage.md）
 - 印刷物PDFを生成・更新した直後は確認を待たず即 `open <PDF絶対パス>` でプレビュー表示（最終成果物の画像も同様）。コピペ用コマンド案内は出さない。HTML・/tmp中間PNG・5件以上同時は自動openしない
 - iPhone等の撮影写真は埋め込み前に必ずPIL `ImageOps.exif_transpose` で向きを画素に焼き込み→ `exif=b''` でEXIF完全strip。`sips -r 90` 単独はEXIF残存で二重回転する（macOS Previewの目視では気づけない）。Readツールで実向き確認（詳細: memory/feedback_image_exif_processing.md）
-- Drive一次資料PDFの図面挿入は pdftoppm→PILクロップで抽出し中間素材も案件フォルダに保持。contact-boxにはLINE公式QR（幅26mm）を並列配置。Page overflowは章削除でなく写真float化→infobox圧縮→figure幅縮小の段階圧縮で解消（本文7.5pt未満禁止）（詳細: memory/feedback_print_diagram_qr_layout.md）
-- 市政報告レポート（A4両面）は制作チェックリスト全項目クリアが必須：氏名42pt・章本文9.5pt統一・章2主役写真は横長80×54mm・他地区名残存grep・自治会員個人名不掲載・大幅変更後は安全ゲート再通過・natural-design-reviewer複数回（詳細: memory/feedback_print_publication_checklist.md）
+- Drive一次資料PDFの図面抽出・contact-boxのLINE QR（26mm）・Page overflowの段階圧縮は `skills/chiku-report/references/print_checklist.md` A〜C を読む
+- 市政報告レポート（A4両面）は `skills/chiku-report/references/print_checklist.md` の全項目クリアが必須（氏名42pt・章本文9.5pt統一・章2主役写真80×54mm・他地区名grep・個人名不掲載・大幅変更後はゲート再通過）
 - 後援会リーフレットの恒久原則は `design_system/templates/leaflet_trifold/README.md` 末尾「恒久ルール」節を読む（客観確認・元装飾尊重・指示外の段組禁止・色統一・「討議資料」・写真300dpi）
 - 亀山市eスポーツ協会の制作物には必ず公式ロゴ「TUIRTLE」を使用（正本: `~/.claude/projects/-Users-kusakawatakuya/assets/esports_logo/logo_transparent.png`）。ダーク背景は淡ライムdrop-shadowで発光。別途コントローラー絵は重複NG。"ASOCIATION" 表記は原本のまま（詳細: memory/feedback_esports_association_logo.md）
 - チラシで唯一の固いNG＝「AI製SaaS LP風」：紫系グラデ/ぼかしブロブ・浮いた角丸カード積み・絵文字丸アイコン・ピル型バッジ・判で押したLP構図・抽象キャッチ。基調は内容ごとに毎回作り分け、特定スタイルを標準化しない（詳細: memory/feedback_flyer_avoid_ai_saas_aesthetic.md）
