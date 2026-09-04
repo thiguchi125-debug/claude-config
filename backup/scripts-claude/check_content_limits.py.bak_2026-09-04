@@ -24,13 +24,10 @@ SNS_LIMITS = {  # 表示名の接頭辞 -> (下限, 上限)  ※上限Noneは字
     "X":              (None, None),   # X Premium課金済み＝字数上限なし（sns-content-creator.md準拠）
     "Threads":        (300, 500),
     "Instagram":      (600, 1000),
-    # 2026-09-04 追加: ストーリーはフィード投稿と別媒体。数語〜数行で成立するため字数下限を課さない。
-    # 枠が無かった頃はフィードの下限600字が当たり、131字のストーリーが必ず違反になっていた。
-    "Instagramストーリー": (None, None),
     "Facebook":       (500, 800),
     "LINE":           (200, 500),   # 2026-09-02 草川確認: 上限は500字（feedback_line_500chars_no_hashtag）
 }
-MAX_TAGS = {"X": 4, "Instagram": 5, "Instagramストーリー": 5}   # ハッシュタグ上限
+MAX_TAGS = {"X": 4, "Instagram": 5}   # ハッシュタグ上限
 BLOG_TIERS = [("標準", 1500, 2500), ("深掘り", 2500, 4500), ("徹底解説", 4500, 8000)]
 NORMAL_TIER = ("ノーマル", 800, 1500)  # blog-writer-normal.md（市民向け活動報告・5段構成の縛りなし）
 BLOG_STAGES = ["現場の声", "全国", "制度", "亀山", "締め"]  # 5段構成の手がかり
@@ -53,8 +50,6 @@ def n_chars(t):
 
 SNS_ALIASES = [   # 見出し表記のゆれ -> SNS_LIMITS のキー（長い名前を先に並べる）
     ("公式LINE", "LINE"), ("X（旧Twitter）", "X"), ("X (旧Twitter)", "X"),
-    ("Instagramストーリー", "Instagramストーリー"), ("IGストーリー", "Instagramストーリー"),
-    ("ストーリー", "Instagramストーリー"),
     ("Threads", "Threads"), ("Instagram", "Instagram"), ("Facebook", "Facebook"),
     ("LINE", "LINE"), ("X", "X"),
 ]
@@ -65,7 +60,6 @@ PF_HEAD_WORDS = ("Threads", "Instagram", "Facebook", "LINE", "YouTube", "TikTok"
 PF_FILE_STEMS = {
     "threads": "Threads", "x": "X", "instagram": "Instagram",
     "facebook": "Facebook", "line": "LINE", "youtube": "YouTube",
-    "instagram_story": "Instagramストーリー", "story": "Instagramストーリー",
 }
 
 INTERNAL_NAME_HINTS = ("メモ", "聞き取り", "様式", "memo", "hearing",
