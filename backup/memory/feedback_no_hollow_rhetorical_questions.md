@@ -19,6 +19,6 @@ metadata:
 - 事実・当たり前のこと → **断定文**で言い切る（例:「子どもの病院代を、初めて払うことになる。」）
 - 「〜したこと、ありませんか」型の共感フックは、**人によって割れる主観・言葉にしにくい実感**にだけ使う（=確実にYESではないもの）。明白な事実には使わない
 - コメント誘発は、当たり前を問い返すのでなく「あなたのご家庭ではどうですか」等、相手の固有の状況・意見を**実際に聞く**質問にする
-- ※ [[feedback_kusagawa_short_video_script_style]] の共感「したこと、ありませんか」推奨は、この条件（非自明な実感に限る）で上書き解釈する
+- ※ short-video-virality-architect.md 📌節「草川スクリプトスタイル13項目」の共感「したこと、ありませんか」推奨は、この条件（非自明な実感に限る）で上書き解釈する
 
-関連: [[feedback_no_abstract_poetic_phrases]] [[feedback_kusagawa_short_video_script_style]] [[feedback_no_parroting_in_replies]] （AIインタビュー由来の作り話禁止＝agents/ai-interview-sns-poster.md 📌節） [[feedback_sns_citizen_lifescene_first]]
+関連: [[feedback_no_abstract_poetic_phrases]] [[feedback_no_parroting_in_replies]] （AIインタビュー由来の作り話禁止＝agents/ai-interview-sns-poster.md 📌節）（生活シーン先行＝sns-content-creator.md 📌節）

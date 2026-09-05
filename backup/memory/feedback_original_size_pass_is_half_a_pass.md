@@ -15,4 +15,4 @@ metadata:
 - 9:16は**字幕セーフ帯とPF UI遮蔽ゾーンは別物**。UIが乗るのは 上部y0〜221／右x900〜1080×y900〜1700／下部y1520〜1840／最下部y1843〜。**出典をここに置かない**
 - テロップは**発話7字/秒・補助5字/秒**。出典・連絡先・免責は「掲示」で速度判定の対象外
 - ゾーン座標は目安。実機スクショで較正するまで暫定であり、閾値を無断で緩めない
-- 関連: [[feedback_thumbnail_pro_typography_default]]（原寸のタイポ規範。本メモはその先の配信面）／[[feedback_short_video_subtitle_safe_zone]]（字幕帯。別物）／[[feedback_gate_py_bundles_overflow_check]]
+- 関連: [[feedback_thumbnail_pro_typography_default]]（原寸のタイポ規範。本メモはその先の配信面）／字幕帯（agents/knowledge/design_system/short_video_templates/README.md §2。別物）／[[feedback_gate_py_bundles_overflow_check]]

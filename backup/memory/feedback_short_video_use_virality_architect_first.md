@@ -18,7 +18,7 @@ metadata:
 
 **Why**: ショート動画は完視聴率が命。長い＝即離脱＝アルゴリズム不利。専門エージェントは8軸自己診断（64/80でship）と retention curve 設計を持つ。
 
-**How to apply**: 「ショート動画作って」「動画の原稿」系の依頼、および short-video-create / daily-content-generator のショート動画工程では、セリフ生成の主担当を必ず short-video-virality-architect にする。素朴生成→後で短縮は二度手間（2026-05-27は v1長尺→ファクト精査多数→本人NG→作り直しで往復が膨らんだ）。関連: [[feedback_kusagawa_short_video_script_style]] project_short_video_create_system
+**How to apply**: 「ショート動画作って」「動画の原稿」系の依頼、および short-video-create / daily-content-generator のショート動画工程では、セリフ生成の主担当を必ず short-video-virality-architect にする。素朴生成→後で短縮は二度手間（2026-05-27は v1長尺→ファクト精査多数→本人NG→作り直しで往復が膨らんだ）。関連: short-video-virality-architect.md 📌節「草川スクリプトスタイル13項目」／project_short_video_create_system
 
 **2026-09-02 再発（周産期通院支援）**: SNS7種一括生成で `sns-content-creator` が7枠目のTikTok台本を自前生成し、58秒・数値羅列7種の原稿を納品。
 真因は「ルールを忘れた」ではなく **経路にルールが無かった**こと — 本ルールは short-video-virality-architect.md 末尾（＝呼ばれなかったagent）にしか無く、

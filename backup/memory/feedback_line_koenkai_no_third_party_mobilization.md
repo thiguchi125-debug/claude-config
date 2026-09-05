@@ -18,4 +18,4 @@ metadata:
 - **団体が「後援団体」に当たるかは名称でなく実態判断**。署名集めの場でお茶・菓子を出す、イベント形式で行う等の運用が出た時点で亀山市選管に事前照会する。
 - 議員個人の活動報告・市政報告・後援会行事の案内はLINEでよい。切り分けの軸は「主体が草川個人か、第三者団体か」。
 
-関連：[[feedback_sns_disclaimer_kills_hook]] [[feedback_urban_sports_not_skateboard_only]] [[feedback_consent_scope_org_to_personal_blog]]
+関連：sns-content-creator.md 📌節「1行目を免責文で埋めない」 [[feedback_urban_sports_not_skateboard_only]] [[feedback_consent_scope_org_to_personal_blog]]

@@ -45,7 +45,7 @@ grep -rl "<話題ワード>" ~/.claude/agents/knowledge/kusagawa_archive/{01_cou
 
 2〜3案を AskUserQuestion で提示する。各案に必ず添える：
 
-- **切り口の一言** — 市民生活のBefore/Afterシーン起点（事例・数字・固有名詞を冒頭に置かない＝[[feedback_sns_citizen_lifescene_first]]）
+- **切り口の一言** — 市民生活のBefore/Afterシーン起点（事例・数字・固有名詞を冒頭に置かない＝sns-content-creator.md 📌節）
 - **推奨フォーマット** — 種のサイズに合わせる：
   - 小さい種 → X長文単発 or Threads 1本
   - 育つ種 → ブログnormal（800〜1500字・市民向け）＋X 1本

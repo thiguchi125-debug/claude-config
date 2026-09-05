@@ -15,4 +15,4 @@ metadata:
 
 **燃費目標**: 切り口提案まで≤15K・保存込み30〜60K。重い調査エージェントは呼ばない（要調査級はcontent-pipeline委譲を提案）。
 
-**状態**: 本体＋CLAUDE.mdトリガー行追記済み。要セッション再起動で有効化。実運用での初回フィードバック待ち。関連: [[feedback_content_generation_default_flow]] [[feedback_sns_citizen_lifescene_first]]
+**状態**: 本体＋CLAUDE.mdトリガー行追記済み。要セッション再起動で有効化。実運用での初回フィードバック待ち。関連: [[feedback_content_generation_default_flow]]（生活シーン先行＝sns-content-creator.md 📌節）

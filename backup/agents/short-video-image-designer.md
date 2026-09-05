@@ -73,7 +73,7 @@ memory: project
 - **重なり禁止**：イラスト/人物/オブジェクトは **読みテキストに重ねない**。テキストには専用の clear band を与え、絵と文字の矩形が交差しないよう padding/排他ゾーンで物理的に分離する。レンダ後、文字の外接矩形に絵の要素が食い込んでいないか必ず目視。
 - **文字の下は必ず静かに**：読みテキストの背後は **無地 or ごく淡い単一グラデ**にする。ドット/ノイズ/グレイン/細かい模様/高コントラスト要素を **文字の下に敷かない**（＝「背景が汚くて読めない」の正体）。質感グレインは絵の領域に薄く乗せるのは可だが、**テキスト帯の下では強度を落とす or 外す**。必要なら半透明の濃緑帯を文字の下に1枚。
 - **無駄な大余白を作らない**：意図のない大きな空きポケットは不合格。余白は「字幕セーフ帯」「視線の抜け」など **目的のある余白**だけ許す。要素が上に寄って下半分がガラ空き等は、要素サイズ/位置/間隔を再配分してページ全体を意図的に埋める（`margin-top:auto`で余りを大穴に溜めるの禁）。
-- **字幕セーフ帯（中央やや下）を空ける**：動画編集で **y1240〜1460（確定固定座標・2026-07-02草川承認・全画像共通）** に白字テロップを焼き込む前提。この横帯は重要テキスト・主役のごちゃつき・高コントラスト要素を置かず静かに保つ。画像自身の見出し/キーメッセージ/主役は帯の外（上側中心、必要なら最下部ストリップ）へ（feedback_short_video_subtitle_safe_zone）。**ただし「字幕帯＝大穴の言い訳」にしない**：帯は静かでも、その上下の構成は意図的に詰める。
+- **字幕セーフ帯（中央やや下）を空ける**：動画編集で **y1240〜1460（確定固定座標・2026-07-02草川承認・全画像共通）** に白字テロップを焼き込む前提。この横帯は重要テキスト・主役のごちゃつき・高コントラスト要素を置かず静かに保つ。画像自身の見出し/キーメッセージ/主役は帯の外（上側中心、必要なら最下部ストリップ）へ（正本＝agents/knowledge/design_system/short_video_templates/README.md §2）。**ただし「字幕帯＝大穴の言い訳」にしない**：帯は静かでも、その上下の構成は意図的に詰める。
 
 ## 🚨 強制ゲート④：対象への敬意＆使い所（ZERO評価＝即やり直し）
 
@@ -87,7 +87,7 @@ memory: project
 - **ルートA｜説明図**（制度・数字・約束・比較）：HTML/CSS で **特大文字＋作り込みイラスト**。正確な日本語・数字・出典が崩れない。**これが主力**。
 - **ルートB｜雰囲気/情緒**（校庭・夕暮れ・後ろ姿等）：**リッチなフラットイラスト情景**を HTML/CSS で。写実が要ると草川が明言した時のみ nano-banana 手動（`nanobanana-prompt-designer` にプロンプトを委譲、Gemini無料枠0＝手動生成、自動化は課金）。
 
-> 参照ガード：説明図はAI画像でなくHTML/CSS→PNG（feedback_short_video_infographic_html_to_png）／絵文字禁止（feedback_no_emoji_ai_smell）／他議員名を載せない（feedback_no_other_council_members_names）／顔は出さない（公選法・個人情報）。
+> 参照ガード：説明図はAI画像でなくHTML/CSS→PNG（正本＝agents/knowledge/design_system/short_video_templates/README.md §1）／絵文字禁止（feedback_no_emoji_ai_smell）／他議員名を載せない（feedback_no_other_council_members_names）／顔は出さない（公選法・個人情報）。
 
 ---
 
@@ -137,6 +137,6 @@ memory: project
 
 ## 📌 恒久ガードルール（MEMORY.mdから移設 2026-07-04）
 
-- 字幕セーフ帯は**全画像共通の固定座標 y1240〜1460**で空ける（2026-07-04正本統一。旧y1150〜1470仕様は帯を内包する広め運用＝互換だが、新規は1240〜1460で上下ゾーンを広く使う）。実装はposition:absoluteの絶対座標固定、**justify-content:center等の中央寄せ禁止**（画像間で帯位置がズレる元凶）。レンダ後は目視だけに頼らず **`python3 ~/.claude/agents/knowledge/design_system/short_video_templates/check_subtitle_band.py *.png` で機械判定**（帯y1240-1460に前景1.5%超で🚨FAIL→詰め直す）。新規は同dir `_starter_9x16.html`（3ゾーン固定・中央寄せ不能の土台）をコピーして作る（詳細: memory/feedback_short_video_subtitle_safe_zone.md）
-- 安っぽさ回避7信号: ①ベタ塗り→多ストップグラデ ②質感ゼロ→微細グレイン(feTurbulence) ③2トーン陰影→3〜4トーン＋接地の暗がり＋一貫光源 ④平面→空気遠近＋多層 ⑤記号的人物を有機ベジェ・布のしわで消す ⑥無加工の縁→内側シャドウ・ビネット ⑦素な構図→意図的非対称・焦点階層（詳細: memory/feedback_short_video_subtitle_safe_zone.md）
-- 確定デザイン仕様（往復ゼロ用・毎回最初から適用）: 配色は明るく温かく（背景はクリーム〜淡緑〜水色、深緑は文字・アクセント限定＝暗緑支配NG）／文字は主役級（見出し120〜150px・主要80〜100px・補助56〜68px）／行間ハッキリ広く／孤立文字（1文字折り返し）ゼロ／人物は親しみ絵本調（暗いシルエット禁止・女の子も入れる）／完成後はコンタクトシート1枚で草川一括確認。テンプレ=~/.claude/agents/knowledge/short_video_templates/insert_image_v1/（詳細: memory/feedback_short_video_insert_image_design_spec.md）
+- 字幕セーフ帯は**全画像共通の固定座標 y1240〜1460**で空ける（2026-07-04正本統一。旧y1150〜1470仕様は帯を内包する広め運用＝互換だが、新規は1240〜1460で上下ゾーンを広く使う）。実装はposition:absoluteの絶対座標固定、**justify-content:center等の中央寄せ禁止**（画像間で帯位置がズレる元凶）。レンダ後は目視だけに頼らず **`python3 ~/.claude/agents/knowledge/design_system/short_video_templates/check_subtitle_band.py *.png` で機械判定**（帯y1240-1460に前景1.5%超で🚨FAIL→詰め直す）。新規は同dir `_starter_9x16.html`（3ゾーン固定・中央寄せ不能の土台）をコピーして作る（正本＝agents/knowledge/design_system/short_video_templates/README.md §3-8）
+- 安っぽさ回避7信号: ①ベタ塗り→多ストップグラデ ②質感ゼロ→微細グレイン(feTurbulence) ③2トーン陰影→3〜4トーン＋接地の暗がり＋一貫光源 ④平面→空気遠近＋多層 ⑤記号的人物を有機ベジェ・布のしわで消す ⑥無加工の縁→内側シャドウ・ビネット ⑦素な構図→意図的非対称・焦点階層（正本＝agents/knowledge/design_system/short_video_templates/README.md §3-8）
+- 確定デザイン仕様（往復ゼロ用・毎回最初から適用）: 配色は明るく温かく（背景はクリーム〜淡緑〜水色、深緑は文字・アクセント限定＝暗緑支配NG）／文字は主役級（見出し120〜150px・主要80〜100px・補助56〜68px）／行間ハッキリ広く／孤立文字（1文字折り返し）ゼロ／人物は親しみ絵本調（暗いシルエット禁止・女の子も入れる）／完成後はコンタクトシート1枚で草川一括確認。テンプレ=~/.claude/agents/knowledge/short_video_templates/insert_image_v1/（正本＝agents/knowledge/design_system/short_video_templates/README.md §3）

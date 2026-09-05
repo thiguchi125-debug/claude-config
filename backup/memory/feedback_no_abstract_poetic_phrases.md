@@ -19,7 +19,7 @@ metadata:
 **How to apply:**
 - 比喩を書きそうになったら「これを具体的な事実・行為・お金の動きに直すと？」と自問して書き換える
 - 例: 「家計の音が変わる」→「子どもの病院代が、また家計の負担に戻ってくる」「これまで無料だった病院代を、また払うようになる」
-- 生活シーン先行はOK（[[feedback_sns_citizen_lifescene_first]]）。ただしシーンも"具体的な行為・場面"で描き、抽象比喩で締めない
+- 生活シーン先行はOK（sns-content-creator.md 📌節「Before/Afterの日常シーンで始める」）。ただしシーンも"具体的な行為・場面"で描き、抽象比喩で締めない
 - sns-content-creator / blog-writer / short-video-virality-architect の出力に詩的メタファーが出たら、確定前に具体へ置換
 
-関連: [[feedback_phrase_todokanakutemo_todoku]] [[feedback_phrase_todokanai_owaraseru]] [[feedback_metric_distance_metaphor_avoid]] [[feedback_sns_citizen_lifescene_first]] [[feedback_no_fabricated_stories]]
+関連: [[feedback_phrase_todokanakutemo_todoku]] [[feedback_phrase_todokanai_owaraseru]] [[feedback_metric_distance_metaphor_avoid]] [[feedback_no_fabricated_stories]]

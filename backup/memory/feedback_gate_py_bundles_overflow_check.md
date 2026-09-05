@@ -16,6 +16,6 @@ metadata:
 
 **How to apply:**
 - 挿入画像・印刷物のHTMLは、**個別のチェッカーを単発で回さず `python3 ~/.claude/scripts/gate.py <html...> --pass` に集約する**。design / overflow / band を全部回したうえで指紋を記録してくれる
-- はみ出しが出たら、`.abs` の width を広げるのではなく**文言を短くする**。左右マージンを削ると [[feedback_short_video_insert_image_design_spec]] の「端の見切れなし（左右40-60px）」を破る
+- はみ出しが出たら、`.abs` の width を広げるのではなく**文言を短くする**。左右マージンを削ると agents/knowledge/design_system/short_video_templates/README.md §3-5 の「端の見切れなし（左右40-60px）」を破る
 - 日本語の実幅は「全角=font-size」の見積もりより広く出る。36pxの1行に26字入るつもりでも実測では入らないことがある。**字数で足りると判断せず、レンダして測る**
-- 関連：[[feedback_short_video_insert_image_design_spec]] [[feedback_kameyama_kanji_typo_guard]]
+- 関連：[[feedback_kameyama_kanji_typo_guard]]

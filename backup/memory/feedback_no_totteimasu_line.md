@@ -15,4 +15,4 @@ metadata:
 - 仕様も同日修正済み：`short-video-virality-architect.md`（憲法を4構成に・出荷拒否対象から除外）／`short-video-create/SKILL.md`。
 - **注意**：過去の台本には②が入っている。流用するときは必ず落とす。
 
-関連: [[feedback_short_video_use_virality_architect_first]] [[feedback_read_agent_spec_before_writing]] [[feedback_kusagawa_short_video_script_style]]
+関連: [[feedback_short_video_use_virality_architect_first]] [[feedback_read_agent_spec_before_writing]]（スタイル13項目＝short-video-virality-architect.md 📌節）

@@ -3,7 +3,7 @@
 ショート動画 挿入画像の確定デザイン仕様ゲート（機械可読）
 
 check_subtitle_band.py が「字幕帯だけ」を見るのに対し、こちらは
-[[feedback_short_video_insert_image_design_spec]]（2026-06-26 草川が6往復で確定）と
+agents/knowledge/design_system/short_video_templates/README.md §3（2026-06-26 草川が6往復で確定）と
 正本テンプレ ~/.claude/agents/knowledge/short_video_templates/insert_image_v1/
 の実測値に対する適合を判定する。
 
