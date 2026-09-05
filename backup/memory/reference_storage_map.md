@@ -26,6 +26,7 @@ CLAUDE.mdの「📂保存先マップ」の詳細版。散乱の3根本原因（
 - `~/.claude/projects/-Users-kusakawatakuya/drafts/` — AI下書き（ブログD1保管等）
 - `~/outputs/` — スキル生成物の唯一の出力先（daily-content/short-video/図解。**絶対パスで指定・cwd依存禁止**。旧 projects/outputs は2026-07-02統合済み）
 - `~/publications/<YYYY-MM_案件名>/` — 署名活動等のプロジェクト
+- `~/.claude/agents/knowledge/kusagawa_archive/02_publications/reports/`・`leaflets/` — **印刷物バイナリ素材（完成PDF・HTML源泉・写真・QR）は直下に置かず `<YYYY-MM>_<案件名>/` サブフォルダに隔離**（2026-05-14確立・旧 feedback_publications_binary_storage を統合）。直下は既存txt 700件超がフラットに並ぶgrep最適化レイヤーで、バイナリを直置きするとgrep結果が汚れ案件単位の参照性も崩れる。案件フォルダ内は自由（`HTML源泉/`・`写真素材/`・`画像/` 等の機能別小分類を推奨）、完成PDFは案件直下、中間版（v2〜v11等）は最終確定後に削除し最終版＋直前版1本のみ保持。学習素材（NotebookLM出力等）は `05_resources/notebooklm/<テーマ>_<R年度>/`。Desktopに散らかさず制作完了時にこの規約でarchive化。例: `2026-04_亀山建設労働組合_市政報告/`・`2026-05_木下版_市政報告/`・`2026-04_応援カード/`
 - `~/Archive/` — **iCloud外の長期保管庫（2026-07-02新設）**: 資料倉庫_2026以前(14GB・旧Documents/_archived_to_claude)／団体活動アーカイブ(JC・三重大応援団)／録音／GoogleTakeout／Downloads_old_30d／`_sweep/`(週次自動退避先)／`_trash_pending_<日付>/`(削除承認待ち)／`_要確認_<日付>/`(判定不能ファイル)／`_relocation_log_*.csv`(全移動記録・ロールバック用)
 - `~/Documents` — ほぼ空運用（ObsidianVault・kameyama-researchのみ。iCloud同期対象のため大容量禁止）
 - `~/Desktop`・`~/Downloads` — 一時作業場。恒久保管禁止。30日超は日曜夜スイープで`~/Archive/_sweep/YYYY-MM/`へ自動退避
@@ -44,4 +45,4 @@ CLAUDE.mdの「📂保存先マップ」の詳細版。散乱の3根本原因（
 - visibility_error: システム設定→プライバシーとセキュリティ→フルディスクアクセス→`kusagawa-pipeline-bash` がONか確認
 - 移動したファイルが見つからない: `~/Archive/_relocation_log_*.csv` をgrep（元パス→新パスの全記録）
 
-関連: [[feedback_system_closing_loops_rot]] / [[feedback_publications_binary_storage]] / [[reference_ippan_shitsumon_seisaku_drive]]
+関連: [[feedback_system_closing_loops_rot]] / [[reference_ippan_shitsumon_seisaku_drive]] / [[feedback_archive_grep_keyword_expansion]]

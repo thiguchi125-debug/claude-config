@@ -19,7 +19,7 @@
 - 章2主役写真は横長80×54mm（縦長48×64mmは脇役見えで却下済）。章1バス写真64×42mm。章3地図・工事写真75×50mm
 - 数字グリッドは flex:1 で残り幅フル展開（width固定は右に空欄）
 - キャプションは「▲タイトル」＋改行＋「※聞き取り内容をもとに草川が作成したイメージ図です」（イメージ図は注記必須）
-- iPhone写真は PIL exif_transpose で正規化→EXIF strip（memory/feedback_image_exif_processing）
+- iPhone写真は PIL exif_transpose で正規化→EXIF strip（design_system/foundations/rules.md §3）
 
 ## 4. 文章チェック
 - プロローグh2の主語が当該地区か（神辺共通プロローグを使う時も地区独自段落を1つ足す。「神辺地区は『選ばれる地域』」コピペ残存が致命事故）

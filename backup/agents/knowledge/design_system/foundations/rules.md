@@ -118,8 +118,23 @@ rep10 は**写真0枚で紙面の60%を図版が占める**（角丸カード6�
   3. 実写真が確保できない案件は、写真を薄く小さく入れて誤魔化さず**タイポグラフィを絵にする路線へ切り替える**（参照 brand01 / 様式 `style_ink_saving_report`）
   4. 例外はプレビュー・テンプレ共有物のみ（人物写真・個人情報を含めないため、プレースホルダー矩形で代替する）
 
-- 画像最適化：`sips -Z 1500 -s formatOptions 90 <img>`（A4で300dpi目安）。
-- EXIF：`PIL ImageOps.exif_transpose` で回転正規化＋EXIF strip（位置情報等の漏えい防止）。
+- **画像はレンダ前に必ずリサイズ（PDF肥大防止）**：Chrome `--print-to-pdf` には画像品質オプションがなく、4000px級・ICC profile付き画像は**非圧縮で埋め込まれる**（2026-05 選挙リーフレットv3で 4032×3024 が3枚それぞれ22〜27MB、PDF 80MB）。上限＝「実表示mm × 11.81px/mm × 2倍」。オリジナルは `assets/_orig/` に `cp -n` で退避してから `sips -s format jpeg -s formatOptions 90 -Z 1500 <img> --out <img>`。80MB→10〜15MB級になる
+  | 表示mm | 必要pixel(300dpi) | 推奨保存 |
+  |---|---|---|
+  | 50×30mm（実績サムネ） | 600×360 | 800×500 JPEG85 |
+  | 60×40mm（chip） | 720×480 | 1000×700 JPEG88 |
+  | 90×60mm（中型写真） | 1080×720 | 1500×900 JPEG90 |
+  | 150×100mm（メイン） | 1800×1200 | 2000×1400 JPEG92 |
+  | A4縦長メイン | 1500×2100 | 1500×2100 JPEG95 |
+- **EXIF（iPhone・一眼の撮影写真は埋め込み前に必ず）**：`ImageOps.exif_transpose` で向きを画素に焼き込み→ `exif=b''` で完全strip（位置情報の漏えい防止も兼ねる）
+  ```bash
+  python3 -c "
+  from PIL import Image, ImageOps
+  img = ImageOps.exif_transpose(Image.open('IMG_xxxx.jpeg'))
+  print(img.size); img.save('output.jpg', 'JPEG', quality=92, exif=b'')"
+  sips -g pixelHeight -g pixelWidth output.jpg   # 期待サイズか確認
+  ```
+  Why: 2026-05-15 太岡寺版v9で `sips -r 90` した写真が**二重回転**（sipsは画素だけ回してEXIFタグを残す→Chromeが再回転）。macOS Preview / Read tool は正規化して表示するので目視では気づけない。NG＝`sips -r 90` 単独／ImageMagick `mogrify` のEXIF strip忘れ／JPEG保存で `exif=b''` 忘れ／「Previewで正しく見える」だけで判定。Readツールは画素そのままの向きで表示するので、処理後の実向き確認に使える
 - バイナリ素材は案件別サブフォルダ `<YYYY-MM>_<案件名>/` に隔離。中間版は最終確定後に削除。
 - 写真は photo-curator（草川 ZPERSON=18）で選定。プレビュー/テンプレ共有物には人物写真・個人情報を含めない（プレースホルダー矩形で代替）。
 
@@ -140,6 +155,7 @@ rep10 は**写真0枚で紙面の60%を図版が占める**（角丸カード6�
 - **PDF生成後は `open <絶対パス>` を即実行**（草川が目視できる状態にする）。HTMLは自動openしない。
 - **ラクスル入稿の裏面ラスタライズ**：フォント・エフェクト起因の入稿エラーは裏面を `pdftoppm -r 400` ＋ PIL でJPEG化→表面PDFと再結合して回避。
 - 政治活動印刷物には**「討議資料」表記**を必ず入れる（公職選挙法対策。リーフレットv3 の `.f-discussion-mark` 参照）。
+- **PDF容量の検算**：`pdfimages -list <PDF> | awk '$1==2 && $3=="image"' | sort -k14 -n -r | head` で重い画像を見る。enc列が `jpeg` ならOK、`image`（非圧縮）なら元画像が大きすぎる兆候→§3のリサイズへ戻る。
 
 ## 6. 印刷物チェックリスト（配布前・回収不能）
 

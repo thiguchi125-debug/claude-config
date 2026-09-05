@@ -2,7 +2,7 @@
 
 > 対象: SKILL.md（shisei-houkokukai）の **Stage4 連動解説**（ノート＋山場フル台本）と **Stage5 前夜チェック**の差分再生成が参照する実装手順書。
 > 設計書 `/Users/kusakawatakuya/.claude/skills/shisei-houkokukai/design/2026-07-04-shisei-houkokukai-design.md` §6（Stage4）・§7-1（前夜の差分再生成）を実行可能な手順に落としたもの。
-> ベース技法: `[[feedback_event_runsheet_mobile_pdf_format]]`（イベント運営段取り表で確立した「スマホ縦スクロールPDF」手法）を市政報告会の解説カード向けに移植し、本タスクで実地検証して数値を確定した。
+> ベース技法: `design_system/templates/runsheet_mobile/README.md`（イベント運営段取り表で確立した「スマホ縦スクロールPDF」手法）を市政報告会の解説カード向けに移植し、本タスクで実地検証して数値を確定した。
 
 ## 0. 禁止事項（毎回必須）
 
@@ -70,7 +70,7 @@
 
 ## 2. PDF化手順（確定・実地検証済み）
 
-`[[feedback_event_runsheet_mobile_pdf_format]]` の確定手法をベースに、本タスクで実際に3カード分のサンプルを生成して数値を検証した。**+200pxは経験則上の「安全な探索の出発点」であって固定の正解値ではない**（本タスクの検証では最終的に+3px程度で足りた）。必ず実測してから決める。
+`design_system/templates/runsheet_mobile/README.md` の確定手法をベースに、本タスクで実際に3カード分のサンプルを生成して数値を検証した。**+200pxは経験則上の「安全な探索の出発点」であって固定の正解値ではない**（本タスクの検証では最終的に+3px程度で足りた）。必ず実測してから決める。
 
 ### 手順
 

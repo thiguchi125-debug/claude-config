@@ -40,4 +40,4 @@ Q14の申請へ、Q9で「運営を法人・団体に委託する場合は団体
 思想・信条の広告・宣伝に利用するもの」。制作物に議員名・肩書きを載せない現行運用は公選法対策であると同時に
 **任天堂側の要件でもある**。
 
-関連: [[project_esports_sponsor_logos]] [[project_kameyama_building_contest]] [[feedback_esports_association_logo]]
+関連: [[project_esports_sponsor_logos]]（協会ロゴTUIRTLEの規約もここ） [[project_kameyama_building_contest]]

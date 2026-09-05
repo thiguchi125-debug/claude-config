@@ -83,4 +83,4 @@ pdftoppm -png -r 150 選挙リーフレット_v3.pdf _review/preview
 - デザイン原則: [[feedback-leaflet-design-principles]]
 - 切れ字ルール: [[feedback-kirejiha-individual-nowrap]]
 - box-shadow下線: [[feedback-lime-underline-box-shadow]]
-- PDF画像最適化: [[feedback-pdf-image-optimization]]
+- PDF画像最適化: design_system/foundations/rules.md §3（画像リサイズ）

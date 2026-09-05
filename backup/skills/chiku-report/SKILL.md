@@ -255,7 +255,7 @@ CRITICAL は即停止して草川に通知。HIGH は ASK_USER。
 1. 表裏PDFを `pypdf` で結合 → `市政報告_<地区>版_<YYYY-MM>_v1.pdf`
 2. **`open` でPDFとフォルダを両方開く**（[[feedback_open_folder_after_generating_files]]）
 3. 草川承認 → Driveミラー（`ZZ_市政報告レポート/`）の可否を**1回だけ**確認して置く
-4. 家庭用プリンタで刷る回は**インク節約版を別途**作る（CSS配色だけ差替。[[feedback_home_printer_ink_saving_variant]]）
+4. 家庭用プリンタで刷る回は**インク節約版を別途**作る（CSS配色だけ差替。正本＝`skills/design-studio/SKILL.md` 📌節「インク節約版」）
 5. `_status.json` の stage2 を更新（gates の実施内容と未決事項を残す）
 
 ---

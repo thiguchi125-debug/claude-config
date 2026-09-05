@@ -5,7 +5,7 @@
 
 ## 正本
 - `template.html` = `drafts/2026-06_esports_smash/flyer_a2.html` のverbatimコピー（4案比較の最終採用版）
-- 選定理由: 公式TUIRTLEロゴ使用（feedback_esports_association_logo 準拠）／ピルバッジ不使用（flyer.html の丸バッジはAI-LP信号のため不採用）／最終PDF・PNGまで完成処理済み
+- 選定理由: 公式TUIRTLEロゴ使用（memory/project_esports_sponsor_logos.md 準拠）／ピルバッジ不使用（flyer.html の丸バッジはAI-LP信号のため不採用）／最終PDF・PNGまで完成処理済み
 - 画像参照: `logo_t.png`・`form_qr.png` は元ディレクトリ `~/.claude/projects/-Users-kusakawatakuya/drafts/2026-06_esports_smash/` に相対参照。単体レンダリング時は同階層に画像を置くこと
 
 ## サイズ・dpi
