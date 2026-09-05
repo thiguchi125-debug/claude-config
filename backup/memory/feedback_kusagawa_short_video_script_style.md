@@ -39,7 +39,7 @@ metadata:
 6. **自分の継続的取り組みの可視化（「ずっと言ってきた」の婉曲）**
    - 例：「継続的に議会でキャッシュレス導入を求めてきたら、市の方針は前向きになってきました」
    - 「私はずっと言ってきた」の直接表現は気持ち悪く見えがちなので、「継続的に求めてきたら〜なってきました」の結果連動型で表現
-   - 関連メモ：[[feedback-blog-self-quote-careful]]
+   - 関連メモ：agents/blog-writer.md 📌節（自己引用）
 
 7. **議場発言の引用は鍵かっこ＋『と求めました』『と提案しました』**
    - 例：「議場で追加要望しました。『〜』と求めました」
@@ -75,6 +75,6 @@ metadata:
     - 「実効性を高める」を「負担を減らす」に意味改変しない（議場発言の論旨保存）
     - 議員引用は議事録の鍵かっこ部分を尊重
 
-**関連メモ**: [[feedback-phrase-todokanai-owaraseru]] / [[feedback-blog-self-quote-careful]] / [[feedback-no-aggressive-pursuit-phrases]] / [[feedback-no-fabricated-stories]] / [[feedback-no-council-directed-proposals]] / [[feedback-kameyama-42pct-kaigo-not-childcare]] / [[feedback-kosodate-dx-delay-risky-frame]]
+**関連メモ**: [[feedback-phrase-todokanai-owaraseru]] / agents/blog-writer.md 📌節（自己引用） / [[feedback-no-aggressive-pursuit-phrases]] / [[feedback-no-fabricated-stories]] / [[feedback-no-council-directed-proposals]] / [[feedback-kameyama-42pct-kaigo-not-childcare]] / [[feedback-kosodate-dx-delay-risky-frame]]
 
 **事例**：2026-05-13 保育園キャッシュレス・口座振替動画原稿（[Notion保存ページ](https://www.notion.so/35ecf503a68f81368a77daded0c5e1af)）

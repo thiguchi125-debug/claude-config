@@ -11,7 +11,7 @@ SNS投稿（特にThreads/X/Instagram/Facebook/LINE/動画）は**事例・数�
 
 **Why**: 2026-05-13 「AI活用」ブログv6からのSNS化で、エストニア99.99%／源内10万人500業務／デジタル庁6,143億円／3指標140→400等の事例・数字を冒頭に並べたところ、草川本人から「SNS微妙。事例を前面に出されてもわかりにくい。読んだ市民の生活が実際にどう変わるかイメージしやすいものを」と直接フィードバック。
 
-事例・数字はブログ論考（depth mode）には適合するが、SNSスクロール環境では「自分には関係ない他人事の話」として読み流される。SNSの読者は「自分の生活がどう変わるか」を3秒で掴めなければ離脱する。これは feedback_blog_citizen_first.md（市民情報伝達モード vs 政策論考モードの分離）の SNS版。
+事例・数字はブログ論考（depth mode）には適合するが、SNSスクロール環境では「自分には関係ない他人事の話」として読み流される。SNSの読者は「自分の生活がどう変わるか」を3秒で掴めなければ離脱する。これは agents/blog-writer.md 📌節「モードA/B判定」（市民情報伝達モード vs 政策論考モードの分離）の SNS版。
 
 **How to apply**:
 - SNS（Threads/X/Instagram/Facebook/LINE/YouTube/TikTok）すべて、**冒頭は市民の日常シーン**で始める
@@ -29,4 +29,4 @@ SNS投稿（特にThreads/X/Instagram/Facebook/LINE/動画）は**事例・数�
 - ブログ／印刷物／街頭演説（市民向け）でも同じ原則を適用（街頭演説は feedback_street_speech_no_election_focus / one_theme_only / recent_base_archive_layer / topic_diversity と組合せ）
 - 議員向け配布資料・後援会内資料・庁内資料は**事例・数字先行で問題なし**（読み手の前提が違う）
 
-**関連メモ**: [[feedback-blog-citizen-first]] / [[feedback-blog-self-quote-careful]] / [[feedback-no-fabricated-stories]]（架空シーン禁止、ただし「こんな経験ありませんか」型の一般化された場面は実在性が担保されるためOK）
+**関連メモ**: agents/blog-writer.md 📌節（モードA/B判定・自己引用） / [[feedback-no-fabricated-stories]]（架空シーン禁止、ただし「こんな経験ありませんか」型の一般化された場面は実在性が担保されるためOK）

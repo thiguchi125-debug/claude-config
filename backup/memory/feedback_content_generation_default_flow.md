@@ -77,5 +77,5 @@ originSessionId: f9ce7d72-d2c5-4789-9818-7a14186adaf8
 ## 関連
 
 - CLAUDE.md「発信物の安全ゲート（必須）」 — fact-check + risk-review は明文必須
-- feedback_blog_citizen_first.md — モードA/B判定
+- agents/blog-writer.md 📌節「モードA/B判定」（旧 feedback_blog_citizen_first）
 - D1〜D5原則（CLAUDE.md「ブログ作成の省力フロー」） — 完全保管・承認後保存・タイトル50字・PDF扱い・スコープ厳守

@@ -179,7 +179,7 @@ https://www.threads.com/@kusagawatakuya?igshid=NTc4MTIwNjQ2YQ==
 ### 5.2 ブログ・ノーマル版（800〜1,500字／市民情報伝達モードA）
 - モードA（市民情報伝達）：「6月議会で問います」を主役にしない／市民が取る行動を主軸
 - モードB（政策論考）：標準長尺と同じ
-- どちらかを判定してから書き始める（feedback_blog_citizen_first.md）
+- どちらかを判定してから書き始める（正本＝agents/blog-writer.md 📌節「モードA/B判定」）
 
 ### 5.3 Threads（300〜500字）
 - 1スレッド単位で完結。改行多め。

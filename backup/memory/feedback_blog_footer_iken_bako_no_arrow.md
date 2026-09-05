@@ -15,4 +15,4 @@ metadata:
 
 **How to apply**: 正本は `~/.claude/agents/blog-writer.md` と `~/.claude/agents/blog-writer-normal.md` の2本（実例行とルール行の両方を2026-08-31に修正済み）。過去記事アーカイブ `02_publications/blog/` の旧表記は**公開済みの記録なので直さない**。なお本文中の `→「①」の見出しへ` のような矢印は対象外。
 
-関連 [[feedback_blog_footer_ai_interview_link]]／[[feedback_copypaste_draft_delivery]]
+関連 blog-writer(-normal).md 📌節（◆AIインタビュー常設）／[[feedback_copypaste_draft_delivery]]
