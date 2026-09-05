@@ -1397,7 +1397,7 @@
    },
    "todoist_task_id": null,
    "published": [],
-   "notes": "民間デリバリー早期導入の提言には教育長が「直ちに民間活用導入ということは難しい」と答弁。中学校給食は後に実施開始済（feedback_kameyama_chugakko_kyushoku_already_started）。"
+   "notes": "民間デリバリー早期導入の提言には教育長が「直ちに民間活用導入ということは難しい」と答弁。中学校給食は後に実施開始済（GUARDRAILS【8】／fact_ledger「中学校給食」）。"
   },
   {
    "id": "R0306-03",
@@ -2669,7 +2669,7 @@
    },
    "todoist_task_id": null,
    "published": [],
-   "notes": "中学校給食は既に実施開始済み（feedback_kameyama_chugakko_kyushoku_already_started参照）。発信時は過渡期フレーム禁止に留意。"
+   "notes": "中学校給食は既に実施開始済み（GUARDRAILS【8】／fact_ledger「中学校給食」参照）。発信時は過渡期フレーム禁止に留意。"
   },
   {
    "id": "R0509-05",

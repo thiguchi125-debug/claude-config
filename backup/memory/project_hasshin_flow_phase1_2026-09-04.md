@@ -23,3 +23,5 @@ metadata:
 関連: [[feedback_thumbnail_crop_and_tone]] [[feedback_gate_kind_of_by_filename]] [[feedback_rules_reside_in_agents]]
 
 **2026-09-05 追記**: 尺規定を「許容35〜50秒／目標45〜50秒」に統一（食い違い3種を解消）。フェーズ2のB完了＝規格値は `~/.claude/scripts/specs.json` が単一ソース（読み込み口 `specs.py`）。チェッカー4本（check_image_design／check_content_limits／check_overflow／gate）は数値を持たない。残＝A（発信系ルール棚卸し）・C（画像の順序固定・nano-bananaルート削除）・H（発信オーケストレーター＝未設計・草川の関心）。詳細は設計書§7。
+
+**2026-09-05 夜 追記**: フェーズ2のA完了＝A-1仕分け（昇格7／吸収53／破棄29／対象外81）→A-2吸収53/53。発信系ルールの正本＝各agent/SKILL末尾📌節＋design_system＋GUARDRAILS【1】【8】＋fact_ledger/verified_facts.tsv（事実14行）。旧メモ85件は `~/Archive/_trash_pending_2026-09-05/` に退避・未削除（草川承認後にrm）。進捗ログ＝`drafts/2026-09-05_A1_発信系ルール仕分け表.md` §6。残＝C（画像順序固定・nano-bananaルート削除）→H（発信オーケストレーター・未設計）。⚠字幕帯座標が specs.json image.9:16 band_from=1200 と check_subtitle_band.py 1240 で40px不一致＝草川判断待ち。
