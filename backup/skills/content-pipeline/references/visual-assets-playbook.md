@@ -55,7 +55,7 @@ content-pipeline ステップ4の実装レシピ。2026-07-14 三寺コスモス
 3. `max-image-preview:large` が無いと **Discoverの大画像は永久に出ない**。Wixは追加メタタグで入る
 4. `og:image:width/height` は実物と一致させる（Wixは2500×1330宣言／901×508実体で不一致）
 
-### A-2. デザイン規範（プロ級和文タイポ・[[feedback_thumbnail_pro_typography_default]]）
+### A-2. デザイン規範（プロ級和文タイポ・正本＝design_system/references/thumbnail/_karte.md「恒久の下限」）
 - フォント: `"Hiragino Sans"`、見出しは `font-weight:900`（W8/W9相当）。
 - `font-feature-settings:"palt" 1;`（約物半角詰め）を見出し・帯・数字に必ず付与。
 - 見出し `line-height:1.12〜1.16`、`letter-spacing:.01em`。

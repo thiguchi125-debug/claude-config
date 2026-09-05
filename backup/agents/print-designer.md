@@ -277,6 +277,6 @@ DELIVER PDF + (オプション) HTML source
 - 後援会リーフレットの恒久原則は `design_system/templates/leaflet_trifold/README.md` 末尾「恒久ルール」節を読む（客観確認・元装飾尊重・指示外の段組禁止・色統一・「討議資料」・写真300dpi）
 - 亀山市eスポーツ協会の制作物には必ず公式ロゴ「TUIRTLE」を使用（正本: `~/.claude/projects/-Users-kusakawatakuya/assets/esports_logo/logo_transparent.png`）。ダーク背景は淡ライムdrop-shadowで発光。別途コントローラー絵は重複NG。"ASOCIATION" 表記は原本のまま。スポンサー10社の掲載順も固定（詳細: memory/project_esports_sponsor_logos.md）
 - チラシで唯一の固いNG＝「AI製SaaS LP風」：紫系グラデ/ぼかしブロブ・浮いた角丸カード積み・絵文字丸アイコン・ピル型バッジ・判で押したLP構図・抽象キャッチ。基調は内容ごとに毎回作り分け、特定スタイルを標準化しない（正本＝design_system/DESIGN_RULES.md §1）
-- 切れ字対策は該当固有名詞だけ `<span style="white-space:nowrap">` で個別対応。親要素への汎用 `word-break:keep-all` 等のCSS変更は禁止（本文全体の改行が不自然になる）。行末調整は本文短縮かテキストボックス幅拡大が安全（詳細: memory/feedback_kirejiha_individual_nowrap.md）
-- 黒系文字下のlimeマーカー下線は `linear-gradient` のhard-stopでなく `box-shadow:inset 0 -0.28em 0 #c7ff4a`＋`box-decoration-break:clone` で実装（gradientはChrome PDF化で暗化しオリーブ色になる）（詳細: memory/feedback_lime_underline_box_shadow.md）
+- 切れ字対策は該当固有名詞だけ `<span style="white-space:nowrap">` で個別対応。親要素への汎用 `word-break:keep-all` 等のCSS変更は禁止（本文全体の改行が不自然になる）。行末調整は本文短縮かテキストボックス幅拡大が安全（正本: design_system/foundations/rules.md §2）
+- 黒系文字下のlimeマーカー下線は `linear-gradient` のhard-stopでなく `box-shadow:inset 0 -0.28em 0 #c7ff4a`＋`box-decoration-break:clone` で実装（gradientはChrome PDF化で暗化しオリーブ色になる）（正本: design_system/foundations/rules.md §2）
 - ラクスル入稿では裏面のみ「システムで問題が発生しました」エラーが出るため、入稿前に必ず裏面を400dpi JPEGにラスタライズし表面ベクターと再結合した `<案件名>_rakusuru.pdf` を生成してから入稿。ベクター版PDFの直接入稿は禁止。手順＝`~/.claude/scripts/rakusuru_back_rasterize.py`（説明は同スクリプト冒頭）

@@ -483,7 +483,7 @@ Agent(subagent_type="content-risk-reviewer",
 
 ### 4-A. サムネ画像（ブログのアイキャッチ / OGP / SNSカード）
 1. **草川に写真の有無を聞かない。** photo-curator（ZPERSON=18）を起動してこちらで選び切る。テーマに合う写真が無いときだけタイポ＋モチーフ主体に落とし、事後に一行で報告する（2026-09-04 改訂）。顔は画面高25〜35%。
-2. HTML/CSS→Chrome headless→PNG（**1600×900**・2倍版は3200×1800）。プロ級和文タイポ（ヒラギノW8/W9・`font-feature-settings:"palt"`・草川カラー #1f5a3a/#e0357a）。絵文字禁止（[[feedback_no_emoji_ai_smell]]・[[feedback_thumbnail_pro_typography_default]]）。
+2. HTML/CSS→Chrome headless→PNG（**1600×900**・2倍版は3200×1800）。プロ級和文タイポ（ヒラギノW8/W9・`font-feature-settings:"palt"`・草川カラー #1f5a3a/#e0357a）。絵文字禁止（[[feedback_no_emoji_ai_smell]]・タイポ規範＝design_system/references/thumbnail/_karte.md）。
 3. **EYES-FIRST**: レンダしたPNGを必ず自分でReadして破綻（見切れ・はみ出し・可読性）を確認→修正ループ。
 
 ### 4-B. ショート動画（Instagram Reels / TikTok / YouTube ショート）

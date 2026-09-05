@@ -50,7 +50,7 @@ open /絶対パス/leaflet.pdf
 - **指示外の段組・大幅レイアウト変更禁止**: 「●ごと改行」の指示に `columns:2` を足して差し戻された。指示の文言どおり最小変更
 - 内部メモ風の演出（filename・ファイルサイズ表示）は入れない
 
-### 切れ字（個別 nowrap・汎用 `word-break:keep-all` 禁止＝memory/feedback_kirejiha_individual_nowrap）
+### 切れ字（個別 nowrap・汎用 `word-break:keep-all` 禁止＝foundations/rules.md §2）
 - 「災害ケアマネジメント」「８０５０」「監督」「サーバー」「現・東京都知事」
 - 「一般社団法人 亀山青年会議所 監事」「三重パラ陸上競技協会 理事」「亀山飲食業組合 顧問」「亀山市eスポーツ協会 事務局長」
 - 「鈴鹿亀山道路ＩＣ周辺を大きく変える」（行末収め）

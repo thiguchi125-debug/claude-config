@@ -103,9 +103,9 @@ rep10 は**写真0枚で紙面の60%を図版が占める**（角丸カード6�
 
 ## 2. CSS実装の確定パターン
 
-- **lime下線は box-shadow inset 方式**：`box-shadow: inset 0 -0.28em 0 #c7ff4a;`
-  linear-gradient のハード・ストップ（`background:linear-gradient(transparent 60%, #c7ff4a 60%)`）は**PDF変換で暗化するため禁止**。
-- **切れ字（改行分断）対策は固有名詞だけ個別 `white-space:nowrap`**。汎用CSS（body全体 word-break 等）の変更は禁止。
+- **lime下線は box-shadow inset 方式**：`box-shadow: inset 0 -0.28em 0 #c7ff4a; background:none; padding:0 6px; -webkit-box-decoration-break:clone; box-decoration-break:clone;`（clone は複数行見出しで各行に下線を乗せるため必須）。
+  linear-gradient のハード・ストップ（`background:linear-gradient(transparent 60%, #c7ff4a 60%)`）は**Chrome PDF化で半透明帯として補間され、黒系テキストのアンチエイリアスと混色して暗化（オリーブ／グレー寄り）するため禁止**（2026-05 リーフレットv3で「色が黄緑ではない」と複数回指摘→natural-design-reviewer が描画レイヤー固有の問題と確定）。起きやすいのは「ベージュ背景＋黒文字＋純lime hard-stop」。薄い装飾の半透明 `rgba(199,255,74,.33)` や暗背景上の lime は gradient のままでよい。
+- **切れ字（改行分断）対策は固有名詞だけ個別 `<span style="white-space:nowrap">`**。親要素への汎用CSS（`word-break:keep-all` `line-break:strict` `overflow-wrap` `letter-spacing`）の変更は禁止（2026-05 リーフレットで `.b-pillar-text` 全体に keep-all を当て「下手な切れ字対策を元に戻して。固有名詞だけないようにして」と却下。本文全体の改行が不自然になる）。対象例＝災害ケアマネジメント／８０５０／現・東京都知事／「一般社団法人 亀山青年会議所 監事」のような団体名＋役職。複合語は「AI」と「サーバー」の間は改行可（サーバーだけ nowrap）。文末フレーズ全体を nowrap で行末に押し込むのも可だが、長すぎると box 幅超過で次行へ押し出される→行末調整は本文短縮かテキストボックス幅拡大が安全。
 - 印刷色再現：`-webkit-print-color-adjust: exact; print-color-adjust: exact;` を必ず入れる。
 - ブランドカラーは `foundations/colors.html` 参照（ライム #c7ff4a／濃緑 #1f5a3a／最濃緑 #0f3d27／生成り #f3efe4）。家庭用プリンタ配布物はインク節約パレット（#1f7a3a／#0e4d27／#c89211・ベタ塗り3%以下）。
 - 日本語はHTML/JSON内でも**直接書く**（unicode escape禁止）。「亀山」のtypo（亜山・亵山）絶対禁止 — JSON escape 由来の事故実績あり。

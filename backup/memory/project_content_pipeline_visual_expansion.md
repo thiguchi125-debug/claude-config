@@ -20,4 +20,4 @@ metadata:
 - サムネ: ~/outputs/thumbnails/2026-07-14_mitsudera_cosmos/thumb.png（1200×630）
 - Reel: ~/outputs/short-video/2026-07-14_mitsudera_cosmos/（6カット・約16.5秒・9:16・草川本人IMG_9600含む）
 
-関連: [[feedback_thumbnail_pro_typography_default]] [[feedback_no_emoji_ai_smell]] [[feedback_photo_video_input_run_full_pipeline]] [[project_nakasho_natsumatsuri_flyer]]（同・中庄町イベント系）
+関連: [[feedback_no_emoji_ai_smell]] [[feedback_photo_video_input_run_full_pipeline]] [[project_nakasho_natsumatsuri_flyer]]（同・中庄町イベント系）

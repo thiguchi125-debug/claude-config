@@ -4,12 +4,24 @@
 > 安全域＝中央800×800。**下端12%に文字を置かない。外周40px相当に主要要素・署名を置かない。**
 > 5軸の測り方は `../_types.md` のデジタル列。型は `../_types.md`。
 
-## 恒久の下限（`feed-visual-reviewer` A-1／`feedback_thumbnail_pro_typography_default` 由来）
+## 恒久の下限（`feed-visual-reviewer` A-1／旧 feedback_thumbnail_pro_typography_default を2026-09-05に本節へ吸収）
 
 - メイン1行 **原寸で最低100px**（1600×900では約133px以上を推奨）、副1行 **最低56px**
 - 文字ブロックは **4つまで**（ラベル・見出し・副見出し・署名で既に4）
 - `font-feature-settings:"palt" 1` 全体付与。ヒラギノW8/W9の実ウェイト。絵文字なし
 - 本文級（20px前後）が入った時点でサムネではなく図版 → 本文の図解へ逃がす
+
+### プロ級和文タイポの既定CSS（最初のレンダから入れる。「まず作る→後でプロ級に」の往復禁止＝2026-07-14 給水スポットサムネで草川「最初からそうして」）
+テンプレ／AI感の主因は①約物（「」、。×）の間延び ②締まりの緩さ（line-height過大・不要な影）。
+- フォント: `font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","YuGothic","Yu Gothic",sans-serif;` ＋ `-webkit-font-smoothing:antialiased`。Hiragino Sans はW3〜W9の実ウェイトを持つので 800→W8 Heavy／900→W9 Black が合成でなく本物の字面になる
+- **約物半角（最重要）**: `.canvas` に `font-feature-settings:"palt" 1;` を全体付与。「」、。× の余分な字間が詰まり「ワンワード」化する
+- **カギ括弧の左ぶら下げ**: 見出しに `text-indent:-.5em`（1行目の「だけ版面外へ）。1行目の実字と2行目頭のインク左端が一直線に揃う。レンダ後±0.05em目視調整
+- 見出し line-height: 2行大見出しは **1.16〜1.18**（1.28は緩い）。letter-spacing .03em
+- 氏名（表札）: `font-weight:900; letter-spacing:.10em;`。役職はW7・サイズ比2:1
+- × セパレータは語より格下げ: `font-weight:400; font-size:.78em; opacity:.6; margin:0 .3em; vertical-align:.06em`（paltで詰まった分をmarginで復元）
+- 影: ソリッド背景の文字は text-shadow **削除**（濁るだけ）。写真の上に載る文字だけ `0 2px 10px rgba(0,0,0,.55)` 程度
+- 写真＋文字の縦型は、文字帯の下地グラデを `.78` 前後まで沈めてライム文字の可読性を確保
+- 勝負所は design-director に before→after のCSS値粒度で外科的リファイン指示書を出させてから実装すると速い。制作後は必ずPNGを自分でRead（EYES-FIRST）。正規保存先 `~/outputs/thumbnails/`
 
 ## 観察まとめ（2026-08-31・政治/解説サムネ実物12点を採寸して判明したこと）
 
