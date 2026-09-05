@@ -70,10 +70,7 @@ trap 'rmdir "$LOCK" 2>/dev/null' EXIT
 # ToolSearch は必須: headless実行ではNotion/Gmail MCPがdeferredで起動するため、
 # ToolSearchでスキーマをロードしないと「未接続」と誤判定して納品が不発になる（2026-07-17修理）
 # v3追加: WebSearch/WebFetch=新風枠・一次記事の本文調査、Gmail MCP=iJAMPスキャン（規約適合ルート）
-# 2026-09-05修理: Agent/Task（安全ゲート agent の実起動を保証）＋ gate.py／check_content_limits.py の Bash 許可
-ALLOWED_TOOLS="Read,Write,Agent,Task,Bash(python3 $DIR/discord_api.py *),Bash(python3 $HOME/.claude/scripts/gate.py *),Bash(python3 $HOME/.claude/scripts/check_content_limits.py *),Bash(grep *),Bash(date *),ToolSearch,WebSearch,WebFetch,mcp__claude_ai_Notion__*,mcp__claude_ai_Gmail__*"
-# 壁時計の上限（秒）。9/4夕便は19:45→翌07:53、8/30は14時間＝Macが眠っていて DarkWake 45秒×毎時で這った実測
-MAX_WALL_SEC=5400
+ALLOWED_TOOLS="Read,Write,Bash(python3 $DIR/discord_api.py *),Bash(grep *),Bash(date *),ToolSearch,WebSearch,WebFetch,mcp__claude_ai_Notion__*,mcp__claude_ai_Gmail__*"
 
 echo "[$(TS)] ---- sns_leg ${LEG_ARG} start ----" >> "$LOG"
 
@@ -158,34 +155,13 @@ cd "$HOME"
 CLAUDE_OK=0
 for ATTEMPT in 1 2; do
   # caffeinate -i: 実行中のアイドルスリープを抑止（バッテリー駆動時の蓋閉じスリープまでは防げない）
-  # 2026-09-05修理: (1) --max-turns 60（燃費）(2) caffeinate -s＝AC給電時はメンテナンススリープを抑止して
-  # DarkWake の這い走行を防ぐ（バッテリー時は従来どおり）(3) 壁時計 MAX_WALL_SEC で打ち切り・打ち切りは再試行しない
-  echo "[$(TS)] power: $(pmset -g batt 2>/dev/null | head -1 | tr -d '\n')" >> "$LOG"
-  START_EPOCH=$(date +%s)
-  "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
-      --allowedTools "$ALLOWED_TOOLS" --max-turns 60 \
-      >> "$LOG" 2>&1 &
-  CPID=$!
-  /usr/bin/caffeinate -i -s -w "$CPID" &
-  TIMED_OUT=0
-  while kill -0 "$CPID" 2>/dev/null; do
-    sleep 30
-    if [ $(( $(date +%s) - START_EPOCH )) -ge "$MAX_WALL_SEC" ]; then
-      echo "[$(TS)] wall-clock limit ${MAX_WALL_SEC}s -> kill claude -p" >> "$LOG"
-      kill "$CPID" 2>/dev/null; sleep 5; kill -9 "$CPID" 2>/dev/null
-      TIMED_OUT=1
-    fi
-  done
-  wait "$CPID"; RC=$?
-  if [ "$TIMED_OUT" = "1" ]; then
-    python3 "$DIR/update_status.py" "$STATUS_KEY" error "${LABEL} 壁時計${MAX_WALL_SEC}秒で打ち切り（drafts分は有効・翌便が繰越）"
-    echo "[$(TS)] ---- sns_leg ${LEG_ARG} end (timeout) ----" >> "$LOG"
-    exit 1
-  fi
-  if [ "$RC" = "0" ]; then
+  if /usr/bin/caffeinate -i "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
+      --allowedTools "$ALLOWED_TOOLS" \
+      >> "$LOG" 2>&1; then
     CLAUDE_OK=1
     break
   fi
+  RC=$?
   echo "[$(TS)] claude -p failed (rc=$RC, attempt $ATTEMPT)" >> "$LOG"
   [ "$ATTEMPT" = "1" ] && { echo "[$(TS)] retrying in 15min" >> "$LOG"; sleep 900; wait_net; }
 done
