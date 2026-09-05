@@ -116,7 +116,7 @@ Google Slides または PowerPoint で開ける形式で、各スライドの:
 スライド生成後、配布資料が必要な場合は別途以下を参照:
 - A4両面の配布資料 → print-designer skill で実装
 - 写真・図表の自動選定 → photo-curator agent
-- 新規画像生成 → nanobanana-prompt-designer agent
+- 図表・挿入画像 → short-video-image-designer agent（HTML/CSS→PNG。AI画像生成ルートは2026-09-05廃止）
 
 ---
 

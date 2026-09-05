@@ -1,6 +1,6 @@
 ---
 name: daily-content-generator
-description: "当日の発信フルパッケージを1パスで生成する日次オーケストレーター。Notion各DBから当日テーマを棚卸し→4軸スコアリングで2〜3本選定→事実検証→ブログ＋7SNS＋ショート動画原稿＋画像プロンプトを一括生成→安全ゲート通過後に ~/outputs/daily-content/<日付>/ へ揃える。実装は既存agentへ全委譲。ohayoの朝3案→草川承認→本スキルでフル展開が標準。Triggers: 今日の発信/日次配信/daily content/今日のフルパッケージ/全チャネル回して/ブログとSNSと動画まとめて/daily-content-generator。NOT: 単発テーマ・録音/文字起こしから1記事→content-pipeline、議会資料→council-material-creator、当日の活動記録から抽出→nichijo、ショート動画1本→short-video-create"
+description: "当日の発信フルパッケージを1パスで生成する日次オーケストレーター。Notion各DBから当日テーマを棚卸し→4軸スコアリングで2〜3本選定→事実検証→ブログ＋7SNS＋ショート動画原稿＋挿入画像（HTML/CSS→PNG）を一括生成→安全ゲート通過後に ~/outputs/daily-content/<日付>/ へ揃える。実装は既存agentへ全委譲。ohayoの朝3案→草川承認→本スキルでフル展開が標準。Triggers: 今日の発信/日次配信/daily content/今日のフルパッケージ/全チャネル回して/ブログとSNSと動画まとめて/daily-content-generator。NOT: 単発テーマ・録音/文字起こしから1記事→content-pipeline、議会資料→council-material-creator、当日の活動記録から抽出→nichijo、ショート動画1本→short-video-create"
 ---
 
 # Daily Content Generator
@@ -31,7 +31,7 @@ Notion蓄積資産 → 当日テーマ2〜3本選定 → 全チャネル原稿�
 | ブログ市民向け | `blog-writer-normal` |
 | 7PF SNS生成 | `sns-content-creator` |
 | ショート動画原稿 | `short-video-virality-architect` |
-| 画像プロンプト | `nanobanana-prompt-designer` |
+| 挿入画像・サムネ | `short-video-image-designer`（HTML/CSS→PNG） |
 | 事実検証ゲート | `content-fact-checker`（**必須**） |
 | リスクレビューゲート | `content-risk-reviewer`（**必須**） |
 | Notion保存 | `notion-saver` |
@@ -206,22 +206,21 @@ Agent(subagent_type="short-video-virality-architect",
   各バリアントcut-by-cut表、テロップ、B-roll指示、CTA含む。")
 ```
 
-#### 4-8. 差し込み画像プロンプト
+#### 4-8. 差し込み画像・サムネ（HTML/CSS→PNG のみ・2026-09-05 改訂）
 
-`nanobanana-prompt-designer` に委譲（ショート動画原稿を入力として渡す）：
+AI画像生成（nanobanana-prompt-designer）のルートは廃止。`short-video-image-designer`（PAIR）に委譲し、固定順序＝採寸（specs.json）→写真（📷写真ストック/10_使える写真）→レンダ→機械採点→目視1回で作る：
 
 ```
-Agent(subagent_type="nanobanana-prompt-designer",
+Agent(subagent_type="short-video-image-designer",
   prompt="テーマ: {theme}
-  動画原稿: {short_video_script.md}
+  動画原稿（確定カット表）: {short_video_script.md}
   生成対象:
-  - ブログヘッダー画像（16:9）
-  - Instagram1枚目コピー画像（1:1、画像内テキスト指示込み）
-  - Instagramカルーセル用図解（必要枚数、データ可視化）
+  - ショート動画の差し込みカット（カット表が決める枚数・9:16）
   - ショート動画サムネ（9:16）
-  - 動画内差し込みカット2〜5枚（9:16）
-  固定方針: 草川本人画像はAI生成禁止（実写差し込み前提）。亀山ローカル背景活用。
-  著作権リスク回避。日本語フォント崩れ対策（英数字のみ or 事後別途乗せ前提）。")
+  - Instagram1枚目コピー画像（1:1）
+  ブログヘッダー画像（16:9）は content-pipeline 4-A の手順で別途。
+  固定方針: 草川本人画像はAI生成禁止（実写は写真ストックから）。顔・実在ロゴ・学校名・他議員は出さない。
+  数値・固有名詞を焼き込む画像は content-fact-checker 通過後の確定文言から機械的に取る。")
 ```
 
 ---

@@ -26,7 +26,7 @@ ToolSearch でロードした後、実際に notion-fetch を呼んでエラー�
 2. 各テーマについて、`~/.claude/skills/short-video-create/SKILL.md` の手順に従いフル制作する:
    - セリフ生成（テーマから・short-video-virality-architect相当の35〜50秒・目標45〜50秒・冒頭名乗り＋決意型）
    - content-fact-checker → content-risk-reviewer の安全ゲートを必ず通す（skip禁止）。CRITICAL判定が出た場合はその候補の制作を中止し、該当行を未処理のまま残す（`[x]`化しない）。
-   - 挿入画像（説明図はHTML/CSS→PNG・雰囲気イメージのみnano-banana、草川カラー準拠）
+   - 挿入画像（HTML/CSS→PNGのみ・雰囲気は写真ストック→フラットイラスト・草川カラー準拠。順序＝採寸→写真→レンダ→機械採点→目視1回）
    - 全7プラットフォーム投稿文生成（sns-content-creator相当）
    - 📣SNS投稿管理DB（data_source `1bd98deb-624f-402c-aeb3-bdaa4782b389`）へ1ページ保存（タイトル先頭🎬・各PFをセクション化）
    - 完成PNG等はDrive📱動画素材ミラーへ配置

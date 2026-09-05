@@ -482,9 +482,11 @@ Agent(subagent_type="content-risk-reviewer",
 該当時は**何を作るかを1行で確認**（例:「アイキャッチ用サムネ(1600×900)とインスタ用ショート動画(9:16)も作ります。よいですか？」）してから、`references/visual-assets-playbook.md` の手順で制作する。要点のみ再掲（詳細は必ず playbook を読む）:
 
 ### 4-A. サムネ画像（ブログのアイキャッチ / OGP / SNSカード）
+0. **採寸を先に確定**: `~/.claude/scripts/specs.json` の `image.16:9`（読み込み口 `specs.py`）から判型・セーフ域・最小級数を読み、見出し級数・写真の切り取り枠・要素座標を**着手前に書き出す**。HTMLはその数値で書く。
 1. **草川に写真の有無を聞かない。** photo-curator（ZPERSON=18）を起動してこちらで選び切る。テーマに合う写真が無いときだけタイポ＋モチーフ主体に落とし、事後に一行で報告する（2026-09-04 改訂）。顔は画面高25〜35%。
 2. HTML/CSS→Chrome headless→PNG（**1600×900**・2倍版は3200×1800）。プロ級和文タイポ（ヒラギノW8/W9・`font-feature-settings:"palt"`・草川カラー #1f5a3a/#e0357a）。絵文字禁止（[[feedback_no_emoji_ai_smell]]・タイポ規範＝design_system/references/thumbnail/_karte.md）。
-3. **EYES-FIRST**: レンダしたPNGを必ず自分でReadして破綻（見切れ・はみ出し・可読性）を確認→修正ループ。
+3. **機械採点が通るまで目視しない**: `python3 ~/.claude/scripts/check_overflow.py --canvas 1600x900 <html>` → `feed_preview.py still <png>`。FAILは数値を直して再レンダ。
+4. **目視は最後の1回**（PNGを自分でRead）。破綻（見切れ・はみ出し・可読性）があれば数値を直して再レンダ→再度3から。勝負所のみ 4-B2 の feed-visual-reviewer。
 
 ### 4-B. ショート動画（Instagram Reels / TikTok / YouTube ショート）
 1. 提供写真を ffmpeg autorotate で正立化 → コンタクトシート1枚を自Readして向き・内容をマッピング（縦写真は9:16フル、横写真は中央9:16クロップ）。人物・全景の取り違え防止に必ずRead（正本＝skills/photo-post/SKILL.md 📌節）。

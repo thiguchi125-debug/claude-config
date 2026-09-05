@@ -14,7 +14,7 @@
       "name": "ショート動画 挿入画像 1080x1920", "w": 1080, "h": 1920,
       "h1_min": 100, "h1_want": 120, "big_min": 80, "support_min": 56, "note_min": 36,
       "kicker_min": 48, "lh_head_min": 1.30, "lh_body_min": 1.45,
-      "band_from": 1200, "band_end": 1460, "darkgreen_max": 0.25
+      "band_from": 1240, "band_end": 1460, "darkgreen_max": 0.25
     },
     "16:9": {
       "name": "アイキャッチ/OGP 1600x900", "w": 1600, "h": 900,

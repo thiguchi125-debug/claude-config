@@ -37,17 +37,18 @@ description: 草川たくや（亀山市議会議員）の写真1〜3枚＋ひ�
 
 AskUserQuestion で提示: 切り口＋投稿文案＋デザイン3案（下帯型=王道・写真が主役／サイドバー型=情報整理・文字多め向き／座布団型=コピーが主役・写真は背景）＋動画要否（既定ON）。草川選択後に次へ。
 
-## Step 4: 画像合成（EYES-FIRST）
+## Step 4: 画像合成（固定順序＝採寸→写真→レンダ→機械採点→目視1回・2026-09-05）
 
+0. **採寸を先に確定**: `~/.claude/scripts/specs.json` の `image.1:1`／`image.9:16`（読み込み口 `specs.py`）からセーフ域・最小級数を読み、H1の級数・`{{FOCUS}}`（被写体位置・顔は画面高25〜35%）を**着手前に決めて書き出す**。
 1. 選択テンプレをコピーし `{{PHOTO}}`(file://絶対パス)/`{{H1A}}`/`{{H1B}}`/`{{SUB}}`/`{{TAG}}`/`{{FOCUS}}`(既定 `center 35%`・被写体位置に合わせ調整) を置換（sed可）。
 2. レンダ2枚:
    ```
    "$CHROME" --headless --disable-gpu --hide-scrollbars --screenshot=<out>_sq.png --window-size=1080,1080 file://<html>
    "$CHROME" --headless --disable-gpu --hide-scrollbars --screenshot=<out>_9x16.png --window-size=1080,1920 file://<html>
    ```
-3. **PNGを自分でReadして検品**（サブagent委譲禁止）: 文字切れ・重なり・被写体と帯の衝突・コントラスト。崩れは font-size/FOCUS を調整して再レンダ（最大3周）。可読性フロア: 最小フォント21px相当・9:16はSNS UIセーフゾーン（下240px/右150pxに重要要素を置かない）。
-4. **配信面ゲート（skip禁止）**: `python3 ~/.claude/scripts/feed_preview.py still <1:1画像>` ／ `short <9:16画像>` で縮小コンタクトシートを作り、**`feed-visual-reviewer`** を起動して `PASS` を取る。原寸で読めても実表示幅（400px/グリッド180px）で潰れていれば不合格。
-5. 自分の検品が通ったら**確定前に natural-design-reviewer を必ず通す**（2回目以降は新規指摘のみ）。写真上の文字が読みにくい指摘は対症療法せずテンプレ変更（座布団型等の構造分離）で解決。
+3. **機械採点が通るまで目視しない**: `python3 ~/.claude/scripts/check_overflow.py --canvas 1080x1080 <html>`／`--canvas 1080x1920`、`feed_preview.py still <1:1画像>`／`short <9:16画像>` で縮小コンタクトシートを作る。FAILは font-size/FOCUS の数値を直して再レンダ。可読性フロア: 最小フォント21px相当・9:16はSNS UIセーフゾーン（下240px/右150pxに重要要素を置かない）。
+4. **目視は最後の1回＝PNGを自分でRead**（サブagent委譲禁止）: 文字切れ・重なり・被写体と帯の衝突・コントラスト。崩れは数値を直して再レンダ→再度3から（最大3周）。
+5. **配信面ゲート（勝負所のみ・投稿画像は原則通す）**: 3のコンタクトシートを持って **`feed-visual-reviewer`** を起動し `PASS` を取る。原寸で読めても実表示幅（400px/グリッド180px）で潰れていれば不合格。写真上の文字が読みにくい指摘は対症療法せずテンプレ変更（座布団型等の構造分離）で解決。natural-design-reviewer は紙の物理破綻用なので投稿画像では呼ばない。
 
 ## Step 5: 動画生成（既定で続行・追加入力不要）
 
@@ -77,7 +78,7 @@ content-fact-checker（投稿文・コピー内の数値/固有名詞/計画名�
 
 ## やらないこと
 
-- 写真自体のAI生成改変（nano-banana等）。明示依頼時のみ nanobanana-prompt-designer のプロンプトカードをおまけ出力（手貼り用）し、改変画像の投稿は risk-reviewer 必須＋「AI加工」明示を条件とする。
+- 写真自体のAI生成改変（nano-banana等）はしない。AI画像生成ルートは 2026-09-05 に廃止（画像は HTML/CSS→Chrome→PNG のみ）。
 - 7PF一括生成（sns-content-creator）・セリフ型ショート動画（short-video-create）・印刷物（design-studio）。
 - BGM付与・本人ナレーション（スマホ編集の領分）。
 

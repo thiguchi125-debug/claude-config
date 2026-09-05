@@ -85,15 +85,15 @@ memory: project
 ## 🛣 2ルート（カットの役割で選ぶ）
 
 - **ルートA｜説明図**（制度・数字・約束・比較）：HTML/CSS で **特大文字＋作り込みイラスト**。正確な日本語・数字・出典が崩れない。**これが主力**。
-- **ルートB｜雰囲気/情緒**（校庭・夕暮れ・後ろ姿等）：**リッチなフラットイラスト情景**を HTML/CSS で。写実が要ると草川が明言した時のみ nano-banana 手動（`nanobanana-prompt-designer` にプロンプトを委譲、Gemini無料枠0＝手動生成、自動化は課金）。
+- **ルートB｜雰囲気/情緒**（校庭・夕暮れ・後ろ姿等）：まず `📷写真ストック/10_使える写真/` から引く（顔は画面高25〜35%）。合う写真が無ければ**リッチなフラットイラスト情景**を HTML/CSS で。AI画像生成（nano-banana等）のルートは 2026-09-05 に廃止。
 
 > 参照ガード：説明図はAI画像でなくHTML/CSS→PNG（正本＝agents/knowledge/design_system/short_video_templates/README.md §1）／絵文字禁止（feedback_no_emoji_ai_smell）／他議員名を載せない（feedback_no_other_council_members_names）／顔は出さない（公選法・個人情報）。
 
 ---
 
-## 🔁 制作ループ（EYES-FIRST・コードを信じない）
+## 🔁 制作ループ（固定順序＝採寸→写真→レンダ→機械採点→目視1回・コードを信じない）
 
-1. **設計**：カットの役割・1メッセージ・ルートA/B・配色ペア・安全ゾーンを決める。
+1. **設計＝採寸を先に確定**：カットの役割・1メッセージ・ルートA/B・配色ペアを決め、`~/.claude/scripts/specs.json` の `image.9:16`（読み込み口 `specs.py`）から級数・字幕帯・安全ゾーンを読んで、各画像の見出し級数・要素座標・写真の切り取り枠を**着手前に書き出す**。
 2. **実装**：HTML/CSS を書く。重要文字はHTMLレイヤーで特大。絵は作画規範で。
 3. **レンダリング**：
    ```bash
@@ -102,8 +102,9 @@ memory: project
      --default-background-color=FFFFFFFF --screenshot="<out.png>" "file://<html絶対パス>"
    ```
    `sips -g pixelWidth -g pixelHeight <out.png>` で 1080×1920 を確認。
-4. **自分の目で Read**：書き出したPNGを **自分で Read して画素を見る**。サブエージェントに見せない（寸法を幻覚し見落とす）。
-5. **採点（下記ルーブリック）**：ZERO項目（特に可読性）があれば必ず修正→3へ戻る。前回指摘の蒸し返しでなく、毎回新しい不具合も拾う。
+4. **機械採点が通るまで Read しない**：`python3 ~/.claude/agents/knowledge/design_system/short_video_templates/check_subtitle_band.py <png>`／`python3 ~/.claude/scripts/check_image_design.py <html>`／`check_overflow.py <html>`。FAILは数値を直して3へ戻る。
+5. **目視は最後の1回**：書き出したPNGを **自分で Read して画素を見る**。サブエージェントに見せない（寸法を幻覚し見落とす）。
+6. **採点（下記ルーブリック）**：ZERO項目（特に可読性）があれば必ず修正→3へ戻る。前回指摘の蒸し返しでなく、毎回新しい不具合も拾う。
 
 ### 出荷ルーブリック（各0〜2／合計16以上で出荷可・①③⑦⑧⑨のいずれかが0なら自動不合格）
 | # | 軸 | 0＝NG | 2＝合格 |

@@ -218,6 +218,6 @@ A〜Eで指示してください（複数可、例: A,D）。
 - 本スキルの肝は「**ソース束の質**」。NotebookLMはソースが命なので、ソース集めで手を抜くと出力品質が崩れる。
 - 「**1スライド1メッセージ**」原則をプロンプトで強制（NotebookLMがcompound化しないように）
 - 「**数字・固有名詞・人名・期日**」をプロンプトに必ず含める（抽象化しすぎ防止）
-- 写真・図表が必要な場合は別途 photo-curator / nanobanana-prompt-designer agent を呼ぶ
+- 写真・図表が必要な場合は別途 photo-curator（写真）／short-video-image-designer（図表・HTML/CSS→PNG）を呼ぶ
 - 配布資料化が必要な場合は print-designer agent に渡す
 - 章立てが「議会報告→政策→決意」の3部構成に偏らないよう、テーマや聴衆に応じて柔軟に変更

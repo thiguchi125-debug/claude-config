@@ -13,7 +13,7 @@
 説明図（内容理解を促すインフォグラフィック）は nano-banana 等のAI画像生成を使わず、HTML/CSS→Chrome headless→PNG で作る（print-designer と同じ）。
 - **Why（2026-06-02 子ども医療費18歳動画で確定）**: AI画像は日本語・数字を崩す／写真は雰囲気だけで情報量ゼロ。実写B-rollは「微妙」、純アイコン図は「何の画像か分からない」と本人NG。HTML→PNGなら正確な日本語＋数字＋出典が入り、微修正は即再レンダ
 - Gemini API の画像生成は**無料枠0**（「API無料で全自動」は誤案内。無料は AI Studio/Geminiアプリの手動）
-- 雰囲気B-roll・抽象イメージだけ nano-banana（手動・文字を焼かない・後乗せ）
+- 雰囲気B-roll・抽象イメージは 📷写真ストック/10_使える写真 → 無ければフラットイラスト情景（HTML/CSS）。nano-banana等のAI画像生成ルートは 2026-09-05 廃止（設計書D5）
 - レンダ: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1080,1920 --default-background-color=FFFFFFFF --screenshot=out.png "file://<html>"`。出力後は必ず自分でReadして字割れ・はみ出しを直す。HTMLソースも残す
 - スマホ編集前提 → 完成PNGを Drive `📱動画素材/<日付>_<テーマ>/` にコピー（スマホDrive→カメラロール→CapCut）
 
@@ -25,7 +25,7 @@
 - 実装は `position:absolute` の絶対座標固定（`.top height:<band_from>px` ＋ `.bottom top:<band_end>px`）。**`justify-content:center` 等の中央寄せ禁止**（画像ごとに帯位置がズレる元凶＝2026-07-02 京都直通で草川「位置は動かせないので徹底を」）
 - 帯幅は約220pxの狭めでよい（旧 y1080〜1500 の420pxは広すぎ）。**帯を「大穴の言い訳」にしない**＝上下ゾーンは意図的に詰め、中途半端な空白を残さない
 - 完成後は半透明赤帯オーバーレイのコンタクトシートと `check_subtitle_band.py` で一致確認
-- ※座標の履歴: 2026-07-02 京都直通で y1240〜1460 確定（旧 y1150〜1470 は互換）。**2026-09-05時点で specs.json は band_from=1200、check_subtitle_band.py は 1240＝40px食い違い**。JSONが正本の原則どおり整合させるまでは、両方を満たす（y1200〜1460を空ける）のが安全
+- ※座標の履歴: 2026-07-02 京都直通で y1240〜1460 確定（旧 y1150〜1470 は互換）。2026-09-05 夜に草川決定で **specs.json band_from を 1240 に修正**し、check_subtitle_band.py・本README・agent📌節と整合済み（正＝y1240〜1460）
 
 ## 3. 確定デザイン仕様（2026-06-26 6往復で確定。最初から全部渡せば往復ゼロ）
 1. **配色は明るく・あたたかく（最重要）**: 背景の主役はクリーム/オフホワイト `#f3efe4`〜淡ライトグリーン〜水色の空。深緑 `#0f3d27` `#1f5a3a` は文字・見出し・アクセント・アイコンに限定し暗いベタ面を作らない（面積上限＝specs `darkgreen_max`）。ライム `#c7ff4a` はハイライト（キーワード下線＝`box-shadow:inset 0 -0.26em 0 #c7ff4a`）。子ども・遊び場テーマは特に明るく。暗緑支配は却下された。初回にアンバー＋ネイビーで作って差し戻されたことがある＝ブランド色は毎回厳守（色の正本＝`design_system/templates/leaflet_trifold/README.md`）

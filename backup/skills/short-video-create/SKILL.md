@@ -10,7 +10,7 @@ description: "草川たくや（亀山市議会議員）のショート動画を
 1. セリフ生成（short-video-virality-architect 呼び出し）
 2. ファクトチェック（content-fact-checker）
 3. リスクレビュー（content-risk-reviewer）
-4. **nano-banana画像プロンプト生成（nanobanana-prompt-designer）** ← かつて毎回忘れていた
+4. **挿入ビジュアル制作（HTML/CSS→PNG・short-video-image-designer。固定順序＝採寸→写真→レンダ→機械採点→目視1回）**
 5. **全7プラットフォームSNS投稿文生成（sns-content-creator）** ← 新規追加 2026-05-21
 6. 📣SNS投稿管理DB保存（タイトル🎬・プロパティ整備・PF別セクション化）
 
@@ -124,6 +124,16 @@ elif 入力 == 既存パッケージのセリフ修正:
 
 挿入画像は用途で2ルートに分ける。**草川に「説明図メイン？／イメージメイン？」を1問確認**（または内容から自動推定）。**多くの政策ショートはルートA（説明図）が主役、ルートBは補助**。
 
+#### 制作の固定順序（2026-09-05・全ルート共通・skip禁止）
+
+破棄画像28件の原因＝〈作る→PNGを自分でRead→主観で直す〉。順序を次に固定する。
+1. **採寸を先に確定** — `~/.claude/scripts/specs.json` の `image.9:16`（読み込み口 `specs.py`）から級数・字幕帯・セーフ域を読み、各画像の見出し級数・要素座標・写真の切り取り枠を**着手前に書き出す**
+2. **写真を先に切る** — 実写が要る画は `📷写真ストック/10_使える写真/` を第一手にし、ファイル名の目利きタグを読む。顔は画面高 **25〜35%**（40%超は不合格）。縦位置の原本は寄らず全幅で縦に長く取る
+3. **レンダ**（HTML/CSS→Chrome→PNG のみ。AI画像生成ルートは無い）
+4. **機械採点** — `check_subtitle_band.py <png>`／`check_image_design.py <html>`／`check_overflow.py <html>`／`feed_preview.py short`。**ここを通るまで目視しない**
+5. **目視は最後の1回**（PNGを自分でRead）
+6. 勝負所のみ `feed-visual-reviewer`
+
 #### ルートA【推奨・データ/説明系】説明図インフォグラフィック（HTML/CSS → PNG）
 
 「全国9割」「23/29市町」「年齢の崖」「Before/After」など**数字・比較・構造を理解させる図**は、AI画像生成を使わず **HTML/CSSで設計して Chrome で PNG化**する（print-designer と同じ作り方）。
@@ -137,7 +147,7 @@ elif 入力 == 既存パッケージのセリフ修正:
     --hide-scrollbars --force-device-scale-factor=1 --window-size=1080,1920 \
     --default-background-color=FFFFFFFF --screenshot=out.png "file://<html絶対パス>"
   ```
-  出力後 `sips -g pixelWidth -g pixelHeight out.png` で 1080×1920 を確認し、Read で目視チェック→字割れ・はみ出しを修正。
+  出力後 `sips -g pixelWidth -g pixelHeight out.png` で 1080×1920 を確認。次に固定順序④の機械採点を通し、**通るまでReadしない**。通ったら⑤の目視を1回だけ行い、字割れ・はみ出しがあれば数値を直して再レンダ。
 - **HTMLソースも残す**（数字・文言の微修正→即再レンダリング可能・ガチャ不要）。
 - **雛形**: `~/outputs/daily-content/2026-05-27/kodomo-iryouhi-18-musho/infographics/` の既存5枚（人型比率／年齢の崖／3場面アイコンカード／29マスグリッド／強調ピン）を流用・改変するのが最速。
 
@@ -162,13 +172,9 @@ elif 入力 == 既存パッケージのセリフ修正:
 **①カバーがグリッド（幅180px）で読めるか ②PF UIの遮蔽ゾーン（上部ナビ・右アクション列・下部キャプション帯）に出典や数字が入っていないか ③テロップの秒数×文字数（日本語1秒6〜7字、ナレーション同時なら5字）**。
 字幕セーフ帯 y1240〜1460 と挿入画の原寸可読性は `short-video-image-designer` の担当なので二重に採点しない。
 
-#### ルートB【雰囲気/イメージ系】nano-banana画像プロンプト
+#### ルートB【雰囲気/イメージ系】写真ストック → フラットイラスト情景
 
-卒業式・病院待合など**雰囲気B-rollや抽象イメージ**は `nanobanana-prompt-designer`（PAIRモード）でプロンプト生成:
-- 入力: 確定したセリフ全文＋秒単位カット表 / パラメータ: num_images / aspect / tonal_arc
-- 出力: N枚の画像プロンプト（冒頭にサイズ指定必須）＋配置マップ＋使い方Tips
-- ⚠️ **Gemini API の画像生成は無料枠 0（`limit:0`）**。自動一括レンダリングは**課金必須**（1枚≈6円）。**無料でやるなら手動**＝AI Studio（aistudio.google.com）or Geminiアプリでプロンプトを1枚ずつ生成（スマホならGeminiアプリが楽だが9:16が出にくい→編集でトリミング）。「API無料で全自動」と案内しない。
-- プロンプト末尾に `CRITICAL: generate NO text, no kanji, no numbers`（文字は崩れるのでCapCut/Canva後乗せ）。公選法・個人情報ガード内蔵（顔なし・実在ロゴ/学校名なし・他議員なし）。
+卒業式・病院待合など**雰囲気B-rollや抽象イメージ**は、①`📷写真ストック/10_使える写真/` から引く（固定順序②）→②合う写真が無ければ `short-video-image-designer` の**リッチなフラットイラスト情景**（HTML/CSS→PNG）。AI画像生成（nano-banana等）のルートは **2026-09-05 に廃止**（設計書 D5＝画像は HTML/CSS→Chrome→PNG のみ）。顔・実在ロゴ・学校名・他議員は写真でもイラストでも出さない。
 
 #### 共通: スマホ編集前提なら完成画像をDriveへ
 
@@ -236,14 +242,11 @@ elif 入力 == 既存パッケージのセリフ修正:
 ## 🎤 セリフ・カット表
 （秒数 / ナレ / 画 / テロップ）
 
-## 📸 nano-banana画像プロンプト 3枚
-（Image 1 / Image 2 / Image 3 各々サイズ指定済み）
+## 🖼 挿入画像（PNG＋HTMLソース）
+（a1〜aN・カット表の秒と対応・機械採点PASS）
 
 ## 🎬 配置マップ
 | 秒 | ナレ | 画 |
-
-## 💡 nano-banana 使い方Tips
-（AI Studio URL / ガチャ対策 / 連続性）
 
 ## 📱 SNS投稿文セット（全7PF・コピペ運用）
 
@@ -284,8 +287,8 @@ elif 入力 == 既存パッケージのセリフ修正:
 1. メタ情報（テーマ・長さ・PF・voice-dna軸・採用バリアント）
 2. 安全ゲート判定（fact-checker / risk-reviewer 結果）
 3. **セリフ・カット表**（採用バージョン）
-4. **nano-banana画像プロンプト一式**（Image 1〜N、各々code blockで copy-and-paste 可能形式）
-5. nano-banana使い方Tipsフッター
+4. **挿入画像一覧**（a1〜aN のDriveパス＋使い所の秒）
+5. 機械採点の結果（check_subtitle_band／check_image_design PASS）
 6. 配置マップ
 7. タイトル案・サムネ案
 8. **📱 SNS投稿文セット（7PF）— 動画UP後のコピペ展開用**
@@ -388,7 +391,6 @@ Step 7で示すフルパッケージ＋Step 8でNotion保存後に保存先URL�
 
 - リサーチは並列・必要最小限（playbook全読みは agent 任せ）
 - fact-checker / risk-reviewer は順次直列（並列にすると修正が二重発生）
-- nanobanana-prompt-designer の出力は code block 必須（コピペ運用のため）
 - **sns-content-creator はセリフ確定後の単一呼出（PF別個別呼出は禁止・トークン3倍化する）**
 - **SNS再チェックは7PF分まとめて1回（個別チェックNG）**
 - Notion保存は1回だけ（途中保存禁止、承認後一発・7PF分のセクションを同時に書く）
@@ -401,7 +403,7 @@ Step 7で示すフルパッケージ＋Step 8でNotion保存後に保存先URL�
 | short-video-virality-architectが64点未満連発 | 草川に「テーマ角度を変えるか、別agentで素材集めるか」確認 |
 | fact-checkerでファクト崩壊 | 該当部分削除or修正→risk-reviewerに進む |
 | risk-reviewerでCRITICAL | 即停止・草川判断仰ぐ、Notion保存しない |
-| nanobanana-prompt-designerで人物顔含む | 自動的に手元・モノ・後ろ姿に書き換え |
+| 挿入画像に人物の顔が要りそう | 手元・モノ・後ろ姿に置き換える（顔は出さない） |
 | **sns-content-creator がX 140字超過** | 即圧縮（要点だけ残す）→再チェック、3回失敗で草川に「Xは手動短縮」依頼 |
 | **sns-content-creator がvoice-dna NG表現混入** | 該当箇所のみ書き直し（全文再生成NG・トークン無駄） |
 | **クロスポスト4PFで動画URL未確定** | プレースホルダ `<VIDEO_URL>` で保存・公開後タスクでURL差し替え注記 |
@@ -411,7 +413,7 @@ Step 7で示すフルパッケージ＋Step 8でNotion保存後に保存先URL�
 
 - `short-video-virality-architect` — セリフ生成（Solo / Polish・35〜50秒・目標45〜50秒・名乗り＋決意型）
 - **説明図インフォグラフィック** — HTML/CSS→Chrome→PNG（草川カラー・print-designer流）。ルートA・主役
-- `nanobanana-prompt-designer` — 雰囲気イメージのプロンプト生成（ルートB・補助・手動レンダ）
+- `short-video-image-designer` — 挿入画像の実装（説明図・フラットイラスト情景・機械採点ループ）
 - `sns-content-creator` — 7PF SNS投稿文生成（video-aware モード）
 - `content-fact-checker` — 一次情報遡及
 - `content-risk-reviewer` — 8軸リスクスキャン
@@ -423,7 +425,7 @@ Step 7で示すフルパッケージ＋Step 8でNotion保存後に保存先URL�
 
 このスキル運用で発見した改善点は `feedback_short_video_create.md` に追記し、本SKILL.mdに反映。
 特に以下の指標を月1で確認:
-- nano-banana画像プロンプトのサイズ指定忘れ件数（目標: 0件/月）
+- 機械採点を通す前に目視した件数（目標: 0件/月）
 - Notion保存先迷子件数（目標: 0件/月）
 - 草川の途中差し戻し件数（目標: 月3件以下）
 - **SNS投稿文の追加修正発生率（目標: 月10%以下 = 7PFのうち平均0.7PF未満修正）**
@@ -435,6 +437,12 @@ Step 7で示すフルパッケージ＋Step 8でNotion保存後に保存先URL�
 SNS投稿文生成（Step 6 新規）を追加し、7ステップ → 8ステップに拡張。
 従来は動画完成後に手動で各SNSの投稿文を考えていた → 平均 30〜60分の作業を構造化排除。
 動画ホスト3PF（TikTok/Shorts/Reels）はキャプション、クロスポスト4PF（X/Threads/Facebook/LINE）は動画URL付きティーザーとして自動分岐。
+
+## 🆕 2026-09-05 更新メモ（発信フロー構造改善 フェーズ2 C）
+
+- Step5 に**制作の固定順序**（採寸→写真→レンダ→機械採点→目視1回→勝負所のみreviewer）を追加。目視は機械採点が通ってから1回。
+- ルートB の nano-banana（AI画像生成）ルートを廃止。雰囲気カットは写真ストック→フラットイラスト情景。`nanobanana-prompt-designer` は退避（`~/Archive/_trash_pending_2026-09-05/`）。
+- 字幕帯座標は specs.json を 1240 に修正し検査器・README・agent節と整合。
 
 ## 🆕 2026-06-02 更新メモ（子ども医療費18歳ショート動画の制作から）
 

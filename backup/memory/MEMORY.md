@@ -7,7 +7,7 @@
 
 - [市民要望管理台帳(Googleシート)](project_yobo_sheet_citizen_requests.md) — 市役所対応の市民要望はTodoistでなく台帳へ(9/5)。**草川手番＝ネイティブ化＋Apps Script→config→close_todoist.sh**
 - [トークン燃費改善2026-09-05](project_token_efficiency_overhaul_2026-09-05.md) — [1m]廃止・fact-checker予算＋台帳・自動ジョブmax-turns。9/19に前後比較
-- [発信フロー構造改善](project_hasshin_flow_phase1_2026-09-04.md) — フェーズ2のA・B完了(9/5)。旧メモ85件は退避未削除。残＝C画像順序・H(未設計)
+- [発信フロー構造改善](project_hasshin_flow_phase1_2026-09-04.md) — フェーズ2のA・B・C完了(9/5)。旧メモ85件＋nano agentは退避未削除。残＝H発信オーケストレーター(未設計・要ブレスト)
 - [小中学校体育館エアコン](project_taiikukan_aircon_action.md) — 9月議会で柱1本→選挙後に署名。整備完了年度に誤解あり・要確認
 - [ご意見箱フォーム夜間取込](project_form_intake_nightly.md) — **停止中**。草川手番＝`/mcp`再認証
 - [Drive直下を投函口にした自動振り分けv5](project_drive_root_intake_v5.md) — 滞留主因はファイル名のみ判定。スキャンPDFはOCR必須・議会語はSTRONG/WEAK分離

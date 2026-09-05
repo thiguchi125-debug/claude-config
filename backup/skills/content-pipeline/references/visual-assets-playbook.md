@@ -64,7 +64,8 @@ content-pipeline ステップ4の実装レシピ。2026-07-14 三寺コスモス
 - 絵文字は使わない。装飾はCSS（ピル/角マーカー/破線ボーダー/花SVG）で。
 - 余白と情報階層: 上=募集/無料などのピル、中=主見出し、下=日付大数字＋補足、最下=申込条件。フレーム（内側ボーダー）で締める。
 
-### A-3. 手順
+### A-3. 手順（固定順序＝採寸→写真→レンダ→機械採点→目視1回・2026-09-05）
+0. **採寸を先に確定**: `~/.claude/scripts/specs.json` の `image.16:9`（読み込み口 `specs.py`）から判型・セーフ域・最小級数を読み、見出し級数・写真の切り取り枠（A-0で選んだ写真・顔は画面高25〜35%）・要素座標を**着手前に書き出す**。
 1. HTMLを Write（`~/outputs/thumbnails/<日付>_<テーマ>/thumb.html`）。`<body>` を `width:1200px;height:630px;overflow:hidden` に固定。装飾の花などは inline SVG（`<use href="#…">` で再利用、**円弁のデイジー型が確実に花に見える**。細い楕円弁は鳥/矢印に見えやすいので避ける）。
 2. レンダ:
 ```
@@ -72,8 +73,9 @@ content-pipeline ステップ4の実装レシピ。2026-07-14 三寺コスモス
   --hide-scrollbars --force-device-scale-factor=2 --window-size=1200,630 \
   --screenshot=thumb.png "file://$PWD/thumb.html"
 ```
-3. **PNGを自分でRead**。よくある破綻＝(a)コンテンツが630pxを超えて下段が枠外に消える（`margin-top:auto`＋詰め過ぎが原因→フォント/余白を圧縮）、(b)装飾が意図通りに見えない、(c)可読性不足。修正して再レンダ→再Read、破綻ゼロまで。
-4. 完成PNGを `open`。良ければ保存先マップ準拠で保管。
+3. **機械採点が通るまで目視しない**: `python3 ~/.claude/scripts/check_overflow.py --canvas 1200x630 thumb.html`（版に合わせて --canvas を変える）→ `feed_preview.py still thumb.png`。FAILは数値を直して再レンダ。
+4. **目視は最後の1回＝PNGを自分でRead**。よくある破綻＝(a)コンテンツが630pxを超えて下段が枠外に消える（`margin-top:auto`＋詰め過ぎが原因→フォント/余白を圧縮）、(b)装飾が意図通りに見えない、(c)可読性不足。修正して再レンダ→再度3から、破綻ゼロまで。
+5. 完成PNGを `open`。良ければ保存先マップ準拠で保管。
 
 ### A-4. 配信面ゲート（必須・skip禁止）
 
