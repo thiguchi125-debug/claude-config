@@ -32,7 +32,6 @@ description: 草川たくや（亀山市議会議員）の公認AIキャラク�
 1. content-fact-checker — 数値・固有名詞・計画名を一次情報まで検証
 2. content-risk-reviewer — 8軸スキャン。**災害・選挙期間・他者言及を含む台本は一律HIGH扱い**
    → ASK_USERで草川判断。CRITICALは即停止。
-   指示文に `ledger: <この動画の保存先>/_ledger.json` を1行入れる（テーマ内台帳）。後段の7PF投稿文は content-gate-lite 派生モード1回に束ねる
 3. ゲート通過後の台本を草川に提示→**承認を得てから**生成に進む。
 
 ### Step 3: 動画生成

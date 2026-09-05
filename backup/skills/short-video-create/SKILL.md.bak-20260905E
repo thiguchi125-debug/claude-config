@@ -107,7 +107,7 @@ elif 入力 == 既存パッケージのセリフ修正:
 
 ### Step 3: ファクトチェック
 
-`content-fact-checker` を起動（指示文に `ledger: ~/outputs/short-video/<slug>/_ledger.json` を1行入れる＝テーマ内台帳。フックが自動生成し Step 6 の派生ゲートが継承する）:
+`content-fact-checker` を起動:
 - セリフ内の数値・固有名詞・法令・統計を一次情報まで遡及
 - 修正必要箇所があれば草川に提示→承認後に修正
 
@@ -220,8 +220,9 @@ elif 入力 == 既存パッケージのセリフ修正:
 - 公選法配慮（投票依頼・寄附該当表現含めず）
 
 **ライト再チェック**:
-- セリフから抜き出した範囲はテーマ内台帳 `~/outputs/short-video/<slug>/_ledger.json` から継承（再取得しない）
-- 7PF文を **content-gate-lite 派生モードに束ねて1回**通す（`mode: derivative`＋`ledger:` を渡す。新規に足した情報と圧縮で落ちた但し書きだけ精読）。content-fact-checker／content-risk-reviewer の個別起動はしない（2026-09-05 設計書§3-E）
+- セリフから抜き出した範囲は再check不要（既に通過済）
+- SNS文で**新規に追加した情報**（ハッシュタグの誤字・統計の付け足し等）のみ content-fact-checker でスポット確認
+- 各PF文を content-risk-reviewer に**まとめて1回**通す（個別では非効率）
 
 ### Step 7: 統合パッケージ提示
 
@@ -324,7 +325,7 @@ elif 入力 == 既存パッケージのセリフ修正:
 
 ### R-2. 安全ゲート再実行（skip禁止）
 
-`content-fact-checker` → `content-risk-reviewer` を**必ず両方**通す。**変更していない箇所も再検証する**。指示文に `ledger:` を渡し、台帳の VERIFIED 主張は転記でよいが、下記4類型は台帳にあっても毎回ゼロから検算する。
+`content-fact-checker` → `content-risk-reviewer` を**必ず両方**通す。**変更していない箇所も再検証する**。
 
 過去版を通過した記述でも、以下は毎回ゼロから検算する：
 

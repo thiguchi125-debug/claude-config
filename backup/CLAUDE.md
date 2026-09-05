@@ -80,7 +80,7 @@
 ## トークン節約（2026-09-05 実測更新・詳細＝OPERATIONS.md【G】）
 コスト＝文脈サイズ×呼び出し回数。8/22〜9/4の実測4.9Gトークンの内訳：**文脈20万超の呼び出しが本体消費の51%**／サブエージェント44%（content-fact-checkerが1本平均50回・5.5M）／夕方SNS便＋ニュース便の自動ジョブが12%。
 - **モデルは200K窓の `claude-fable-5-1`（`[1m]` は使わない）**。フックが100K/140K/170Kで鳴る。**140Kを超えたら `/kugiri`**（起動固定費76Kなので100K未満では切らない）。
-- **サブエージェントは本数と予算で管理**: 安全ゲートは1原稿1回。派生版（PF別・短尺・修正版）は親が `verified_claims` を渡して新規主張だけ検証。fact-checkerは取得15回上限＋`fact_ledger/verified_facts.tsv` を先に引く。孫Agentはhookがdeny。
+- **サブエージェントは本数と予算で管理**: 安全ゲートは1原稿1回。元版は2段、派生版（PF別・短尺・サムネ文言・テロップ）は `_ledger.json`（テーマ内台帳・指示文に `ledger:` 1行でフックが自動生成）を渡して **content-gate-lite 派生モード1回**に束ねる（1テーマ3起動が目安）。fact-checkerは取得15回上限＋`fact_ledger/verified_facts.tsv` を先に引く。孫Agentはhookがdeny。
 - **巨大なツール結果を本体に入れない**（Notion fetchは1回60〜95K）。探索はBash（grep/sed -n）、画像は再Readしない、画像を伴う反復はサブへ隔離。
 - **別件は新セッション**。効果測定＝`python3 ~/.claude/scripts/token_report.py 14`。
 

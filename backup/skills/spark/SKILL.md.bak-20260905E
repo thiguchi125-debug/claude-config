@@ -87,7 +87,7 @@ grep -rl "<話題ワード>" ~/.claude/agents/knowledge/kusagawa_archive/{01_cou
 
 ## Step 5: 安全ゲート→保存（skip禁止）
 
-1. 元版（ブログ or 最初の1原稿）は **content-fact-checker** → **content-risk-reviewer** の2段。指示文に `ledger: ~/outputs/<日付>_<テーマ>/_ledger.json` を1行入れる。PF別の派生版は **content-gate-lite 派生モード1回**（`mode: derivative`＋同じ `ledger:`）で束ねる。HIGH以上は草川に問いかけ、CRITICAL は即停止
+1. **content-fact-checker** → **content-risk-reviewer** を順に通す。HIGH以上は草川に問いかけ、CRITICAL は即停止
 2. 生成物を `~/.claude/projects/-Users-kusakawatakuya/drafts/<日付>_<テーマ>_v1.md` に**一字一句そのまま** Write（D1。フッター省略禁止）
 3. 指摘の反映と草川承認を済ませてから**1回で** Notion 保存（D2。「とりあえず保存→後で上書き」禁止）：
    - ブログ → ブログDB（notion-saver 経由・保存後 fetch で漢字化け検証）

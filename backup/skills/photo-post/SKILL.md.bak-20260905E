@@ -64,7 +64,7 @@ AskUserQuestion で提示: 切り口＋投稿文案＋デザイン3案（下帯�
 
 ## Step 6: 安全ゲート（skip禁止・まとめて1回）
 
-content-fact-checker（投稿文・コピー内の数値/固有名詞/計画名）→ content-risk-reviewer（8軸＋**写真固有軸**: 第三者の顔・子どもの顔・車ナンバー・個人宅特定・位置情報・公選法文書図画）。指示文に「画像PNG・動画フレームも確認対象」と `ledger: <このテーマの保存先>/_ledger.json` の1行を明記（テーマ内台帳）。画像・動画に焼く文言が投稿文と同一なら別起動せず台帳から継承する。HIGH以上はASK_USER・CRITICAL即停止。
+content-fact-checker（投稿文・コピー内の数値/固有名詞/計画名）→ content-risk-reviewer（8軸＋**写真固有軸**: 第三者の顔・子どもの顔・車ナンバー・個人宅特定・位置情報・公選法文書図画）。指示文に「画像PNG・動画フレームも確認対象」と明記。HIGH以上はASK_USER・CRITICAL即停止。
 
 ## Step 7: ✋確認2回目（最終）→保存
 

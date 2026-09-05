@@ -227,35 +227,34 @@ Agent(subagent_type="short-video-image-designer",
 
 ### Step 5: 安全ゲート通過（CLAUDE.md必須）
 
-**5-1. content-fact-checker** を**元版（blog.md）**に起動（テーマごと1回）
+**5-1. content-fact-checker** を全原稿に対して順次起動
 
 ```
 Agent(subagent_type="content-fact-checker",
-  prompt="以下の元版の数値・固有名詞・法令・統計を一次情報まで遡って検証:
+  prompt="以下の原稿群の数値・固有名詞・法令・統計を一次情報まで遡って検証:
   - blog.md
-  ledger: ~/outputs/daily-content/<日付>/<テーマslug>/_ledger.json
+  - x_single.txt / x_thread.txt
+  - threads.txt / instagram.md / facebook.txt / line.txt
+  - short_video_script.md
   ファクトシート: {facts.md}
   検証不可・不確実な箇所は『未確認』マークで返す。")
 ```
 
-**5-2. content-risk-reviewer** を**元版（blog.md）**に起動
+**5-2. content-risk-reviewer** を全原稿に対して順次起動
 
 ```
 Agent(subagent_type="content-risk-reviewer",
-  prompt="以下の元版を8軸スキャン:
+  prompt="以下の原稿群を8軸スキャン:
   個人情報／機密／公選法／名誉毀損／差別／利益相反／品位／物議
-  対象: blog.md
-  ledger: ~/outputs/daily-content/<日付>/<テーマslug>/_ledger.json
+  対象: blog.md / 各SNS / short_video_script.md / image_prompts.md
   HIGH以上は草川へのASK_USER問いかけ文を含めて返す。
   CRITICALは即停止。")
 ```
 
-**5-2b. 派生ゲート（1テーマ1回）**: 各SNS／short_video_script.md／画像に焼く文言は **content-gate-lite 派生モード**に束ねて1回（`mode: derivative`＋同じ `ledger:`）。元版と同一の事実・表現は台帳から継承し、新規主張と圧縮で落ちた但し書きだけ精読（2026-09-05 設計書§3-E）
-
 **5-3. 結果反映**
 
 - APPROVE → そのまま Step 6 へ
-- REVISE → 指摘箇所を修正して該当ゲートを再実行
+- REVISE → 指摘箇所を修正して 5-1 再実行
 - ASK_USER → 草川に問いかけて判断を仰ぐ
 - REJECT → 該当テーマを当日リストから外す
 

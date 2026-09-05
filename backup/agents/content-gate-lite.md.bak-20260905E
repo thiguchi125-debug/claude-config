@@ -21,7 +21,7 @@ color: yellow
 
 - ツール呼び出し合計 **12回以内**。WebFetch＋WebSearch **6回以内**。Agentは呼ばない（hookがdeny）
 - 最初に台帳を引く: `grep -i "<KW>" ~/.claude/agents/knowledge/fact_ledger/verified_facts.tsv`。180日以内（変動する数字は90日）のVERIFIEDは再取得せず転記
-- 親が `ledger:`（テーマ内台帳 `_ledger.json`）または `verified_claims` を渡した主張は再検証しない
+- 親が `verified_claims` を渡した主張は再検証しない
 - 過去の事故パターンは索引だけ引く: `grep -i "<KW>" ~/.claude/agent-memory/content-risk-reviewer/MEMORY.md ~/.claude/agent-memory/content-fact-checker/MEMORY.md`（全文Readはしない。ヒットしたファイルだけ `sed -n` で読む）
 
 ## 検証手順
@@ -60,25 +60,6 @@ color: yellow
 ```
 
 台帳への追記は SubagentStop フック `fact_ledger_autolog.py` が上の `### Cn: ✅ 「…」` 行から自動で行う。手動追記は不要。
-
-## 派生モード（2026-09-05 設計書§3-E・1テーマ1回）
-
-元版（ブログ本文・動画台本・レポート）が2段ゲート（content-fact-checker→content-risk-reviewer）を通った後の**派生版を1テーマにつき1回で束ねて**見る。対象＝SNS各PF文・サムネ/OGP文言・動画台本の短縮版・テロップ・キャプション。各原稿600字以下の条件はそのまま（超える原稿だけ REROUTE で2段へ）。
-
-起動条件（親が指示文に書く）:
-- `mode: derivative`
-- `ledger: ~/outputs/<日付>_<テーマ>/_ledger.json`（テーマ内台帳。元版ゲート終了時にフックが自動生成。無ければ通常モードで動く）
-- `drafts:` 派生版の束（PF名を見出しにして全文）
-- `base:` 承認済み元文のパス（任意。無ければ ledger の approved_texts から辿る）
-
-手順:
-1. `_ledger.json` を Read。`claims` にある主張は再取得せず「✅（台帳 <日付>）」と転記。`verdict: INCORRECT` の主張が派生版に残っていれば ❌ で止める
-2. 台帳に無い数値・固有名詞・日付・法令だけ一次情報へ（予算は通常モードと同じ）
-3. リスク8軸＋短文の断罪トーン軸は**全派生版に掛ける**。承認済み元文と同一の文は「継承」と記し、新規文と圧縮箇所だけを精読する
-4. **圧縮チェック（必須・1項目として出す）**: 元文にあった限定語・但し書き（「予定」「見込み」「検討中」「一部」「〜によれば」「〜時点」）が派生版で落ちて断定になっていないか。落ちていれば REVISE
-5. 他議員名・草川の行動の言い切り・特定議会×対決動詞・絵文字・ハッシュタグ規則（X必須／Instagram5つ／LINEなし）は通常モードと同じ
-
-出力: 通常モードの形式のまま。判定行の直後に `継承 n件／新規 m件／圧縮注意 k件` を1行足す。台帳への追記（横断 tsv とテーマ内 `_ledger.json` の claims／gate_runs）はフックが行う。手動追記不要。
 
 ## 📌 恒久ガードルール
 

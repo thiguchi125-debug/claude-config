@@ -138,7 +138,6 @@ template.html を案件フォルダへ複製し、print-layout-architect に委�
 ### Step 5: 安全ゲート（対外配布物は必須・skip禁止）
 1. content-fact-checker — 日付・場所・数値・固有名詞・主催表記（例: 親子で米づくり=亀山JC主催）を一次情報照合
 2. content-risk-reviewer — 公選法（政治活動物は「討議資料」表記）・個人情報・他議員氏名不掲載 等8軸
-- 指示文に `ledger: <案件フォルダ>/_ledger.json` を1行入れる（テーマ内台帳。SNS告知など派生版は content-gate-lite 派生モードで継承）
 - HIGH以上はASK_USER、CRITICALは即停止
 - 内部資料・私的用途のみの場合は草川に確認の上で省略可
 - **規格値の正本は `~/.claude/scripts/specs.json`。発信物として保存する前に `~/.claude/scripts/gate.py` を通す**（2026-09-05追記・監査で発信系スキル0/9が未記載だった）

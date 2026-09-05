@@ -309,7 +309,6 @@ Agent(subagent_type="content-fact-checker",
   draft: {blog_content_after_quality_review}
   research_summary: {policy_researcher_result + kameyama_researcher_result}
   theme: {theme}
-  ledger: ~/outputs/{日付}_{テーマ}/_ledger.json
   
   必ずWebFetch等で公式ソース（亀山市公式・e-Gov法令検索・各省庁等）を直接確認すること。
   research_summary の数字をそのまま信じてはいけない。
@@ -336,7 +335,6 @@ Agent(subagent_type="content-risk-reviewer",
   content_type: blog
   draft: {blog_content_after_fact_check}
   theme: {theme}
-  ledger: ~/outputs/{日付}_{テーマ}/_ledger.json
   context: {通常期 / 選挙期間中 / 議会会期中 等}
   fact_check_result: {ステップ2.6の結果}
   
@@ -421,33 +419,59 @@ Agent(subagent_type="content-editor",
 
 ---
 
-## ステップ 3.6: 派生ゲート（SNS7本・必須・1テーマ1回）
+## ステップ 3.6: SNS投稿文の事実確認（必須）
 
-ブログ（元版）は 2.6→2.7 の2段ゲートを通っている。SNS7媒体は**派生版**なので、content-fact-checker と content-risk-reviewer を別々に起動せず、**content-gate-lite の派生モード1回**で束ねる（2026-09-05 設計書§3-E）。ステップ4（サムネ・動画）が発動する場合は、**ステップ4の生成物が出揃ってから**サムネ文言・動画台本も同じ束に入れて1回にする（4-C参照）。発動しない場合はここで走らせる。
+**content-fact-checkerエージェントに委託する。** 7媒体セットすべての事実主張を検証する。
 
 ```
-Agent(subagent_type="content-gate-lite",
-  prompt="派生モードで、以下の派生版を1回で束ねて検証してください。agents/content-gate-lite.md の『派生モード』節に従う。
-  mode: derivative
-  ledger: ~/outputs/{日付}_{テーマ}/_ledger.json
-  base: {ブログ確定稿のパス}
+Agent(subagent_type="content-fact-checker",
+  prompt="以下のSNS投稿文セット（7媒体）について、各媒体の事実主張を一次情報まで遡って検証してください。
+  agents/content-fact-checker.md の手順に従う。
+  
   content_type: sns-bundle
+  draft: {sns_content_after_quality_review}
+  research_summary: {policy_researcher_result + kameyama_researcher_result}
   theme: {theme}
-  drafts:
-  {sns_content_after_quality_review（媒体名を見出しに全文）}
-  {サムネ文言・動画台本があれば続けて}
+  
+  注意: ブログ（ステップ2.6で検証済）と同じ数値・固有名詞を流用しているSNS投稿は、
+  そのまま継承可とする（重複検証スキップ）。SNS独自の主張のみ重点検証。
+  
+  判定: APPROVE / REVISE / REJECT")
+```
+
+**判定に応じた分岐**:
+- **APPROVE** → ステップ 3.7 に進む
+- **REVISE** → sns-content-creator に修正指示を渡して該当媒体のみ再生成→再走行
+- **REJECT** → 人間レビュー必要フラグ。3.7に進む（草川判断）
+
+---
+
+## ステップ 3.7: SNS投稿文のリスクレビュー（必須）
+
+**content-risk-reviewerエージェントに委託する。** 7媒体セットを多軸で精査する。
+
+```
+Agent(subagent_type="content-risk-reviewer",
+  prompt="以下のSNS投稿文セット（7媒体）について、議員発信物としての物議・問題化リスクを8軸で評価してください。
+  agents/content-risk-reviewer.md の手順に従う。
+  
+  content_type: sns-bundle
+  draft: {sns_content_after_fact_check}
+  theme: {theme}
+  context: {通常期 / 選挙期間中 / 議会会期中 等}
+  fact_check_result: {ステップ3.6の結果}
+  
+  特にX（短文の断定）・Threads（カジュアルな表現）でリスクが顕在化しやすい。
+  各媒体個別に評価し、最もリスクの高い媒体を全体判定の基準とする。
+  
   判定: APPROVE / REVISE / ASK_USER / REJECT")
 ```
 
-600字を超える媒体（長文Facebook等）は REROUTE が返る→その媒体だけ 2.6/2.7 と同じ2段に回す。
-
 **判定に応じた分岐**:
 - **APPROVE** → ステップ 5 に進む
-- **REVISE** → sns-content-creator に修正指示を渡して該当媒体のみ再生成→同じ派生モードで再走行（差分のみ）
+- **REVISE（MEDIUMのみ）** → sns-content-creator に修正案を渡して該当媒体のみ修正→再走行
 - **ASK_USER（HIGH検出）** → **草川に問いかけて判断を仰ぐ**。ユーザー応答後に次ステップ進行を決定
 - **REJECT（CRITICAL検出）** → **即停止**。保存進めず、該当媒体を差し戻し or 削除
-
-`_ledger.json` は 2.6/2.7 の終了時に SubagentStop フック `fact_ledger_autolog.py` が自動生成する。そのために **2.6/2.7 の指示文に `ledger: ~/outputs/{日付}_{テーマ}/_ledger.json` の1行を入れる**（親が書くのはこの1行だけ）。
 
 ---
 
@@ -481,7 +505,7 @@ python3 ~/.claude/scripts/feed_preview.py short <カバー.png> ...  # 9:16
 → 出た1枚を持って **`feed-visual-reviewer`** を起動し `PASS` を取る。`FIX`／`REBUILD` なら直して再度通す。詳細＝`references/visual-assets-playbook.md` A-4。
 
 ### 4-C. 安全ゲート（サムネ・動画とも）
-- 画像・動画に載る**文言**は別起動せず、**ステップ3.6の派生ゲート（content-gate-lite 派生モード）に束ねて1回**で通す（`ledger: ~/outputs/{日付}_{テーマ}/_ledger.json` を渡す。ブログと同一事実・同一表現は台帳から継承し、圧縮で但し書きが落ちていないかを必ず見る）。動画/画像独自の新規主張・人物写真の写り込み（他者の顔・実名のぼり以外の第三者）のみ重点確認。公選法の寄附/おもてなし表現・他議員名なしを最終確認。
+- 画像・動画に載る**文言**は content-fact-checker → content-risk-reviewer を通す。ただしブログ（2.6/2.7）と**同一事実・同一表現の流用は継承可**（重複検証スキップ）。動画/画像独自の新規主張・人物写真の写り込み（他者の顔・実名のぼり以外の第三者）のみ重点確認。公選法の寄附/おもてなし表現・他議員名なしを最終確認。
 
 ### 4-D. 保存
 - サムネPNG: `~/outputs/thumbnails/<日付>_<テーマ>/`

@@ -45,7 +45,6 @@ content-editor（5軸総合スコアリング）が「全体の品質」を見�
 - **research_summary**: kameyama-researcher / policy-researcher の結果（参考情報・**信頼してはいけない**）
 - **theme**: 政策テーマ（検証範囲を絞り込むため）
 - **verified_claims**: 任意。同素材の元版で検証済みの主張一覧（親が渡す）。含まれる主張は再検証しない
-- **ledger**: 任意。テーマ内台帳 `~/outputs/<日付>_<テーマ>/_ledger.json` のパス。`claims` は verified_claims と同じ扱い。親が指示文にこの1行を書けば、終了時にフック `fact_ledger_autolog.py` が同ファイルへ結果を自動追記する（無ければ作る）
 
 ## 🔍 検証対象カテゴリ
 
