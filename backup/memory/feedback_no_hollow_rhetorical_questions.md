@@ -21,4 +21,4 @@ metadata:
 - コメント誘発は、当たり前を問い返すのでなく「あなたのご家庭ではどうですか」等、相手の固有の状況・意見を**実際に聞く**質問にする
 - ※ short-video-virality-architect.md 📌節「草川スクリプトスタイル13項目」の共感「したこと、ありませんか」推奨は、この条件（非自明な実感に限る）で上書き解釈する
 
-関連: [[feedback_no_abstract_poetic_phrases]] [[feedback_no_parroting_in_replies]] （AIインタビュー由来の作り話禁止＝agents/ai-interview-sns-poster.md 📌節）（生活シーン先行＝sns-content-creator.md 📌節）
+関連: [[feedback_no_abstract_poetic_phrases]] （おうむ返し禁止＝agents/citizen-inquiry-responder.md 📌節） （AIインタビュー由来の作り話禁止＝agents/ai-interview-sns-poster.md 📌節）（生活シーン先行＝sns-content-creator.md 📌節）

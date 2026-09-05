@@ -100,7 +100,7 @@ python3 ~/.claude/scripts/feed_preview.py still <画像.png>   # 400px/200px の
 ### B-1. 写真の正立化とマッピング（必須・Read）
 iPhone写真はEXIF回転を持つことがある。**ffmpegはデフォルトでautorotate ON**なので、ffmpeg経由なら正立化される（sipsのorientation照会は`<nil>`でも実際は回っていることがある＝信用しない）。
 1. 全写真を作業dirにコピー。
-2. 3×2などの**コンタクトシートを1枚生成して自Read**し、ファイル名→内容→縦横を確定（人物/全景/のぼり等の取り違え防止・[[feedback_photo_video_input_run_full_pipeline]]）。
+2. 3×2などの**コンタクトシートを1枚生成して自Read**し、ファイル名→内容→縦横を確定（人物/全景/のぼり等の取り違え防止・正本＝skills/photo-post/SKILL.md 📌節）。
    ```
    ffmpeg -y -i A.jpg -i B.jpg ... -filter_complex \
      "[0:v]scale=600:450:force_original_aspect_ratio=decrease,pad=600:450:(ow-iw)/2:(oh-ih)/2:color=gray[a]; …; [a][b][c]hstack=3[t];[d][e][f]hstack=3[b2];[t][b2]vstack=2[out]" -map "[out]" contact.png

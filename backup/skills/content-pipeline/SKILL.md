@@ -487,7 +487,7 @@ Agent(subagent_type="content-risk-reviewer",
 3. **EYES-FIRST**: レンダしたPNGを必ず自分でReadして破綻（見切れ・はみ出し・可読性）を確認→修正ループ。
 
 ### 4-B. ショート動画（Instagram Reels / TikTok / YouTube ショート）
-1. 提供写真を ffmpeg autorotate で正立化 → コンタクトシート1枚を自Readして向き・内容をマッピング（縦写真は9:16フル、横写真は中央9:16クロップ）。人物・全景の取り違え防止に必ずRead（[[feedback_photo_video_input_run_full_pipeline]]）。
+1. 提供写真を ffmpeg autorotate で正立化 → コンタクトシート1枚を自Readして向き・内容をマッピング（縦写真は9:16フル、横写真は中央9:16クロップ）。人物・全景の取り違え防止に必ずRead（正本＝skills/photo-post/SKILL.md 📌節）。
 2. テキストカードは透過PNG（1080×1920・Chrome headless・スクリム付き・ヒラギノ・Reels安全域=上下UI帯を避ける）。写真に overlay。
 3. ffmpeg で各セグメント（≈2.8秒・ゆるやかKen Burnsズーム）→ concat →前後フェード。重い4Kズームは避け `-preset veryfast` で。合成フレームのコンタクトを自Readして可読性確認（EYES-FIRST）。
 4. 音声は付けない（IGアプリ内で音楽追加を推奨と添える）。
