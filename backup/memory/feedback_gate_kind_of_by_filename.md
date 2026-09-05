@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 69108199-791d-491f-80b8-e569d04d9554
-  modified: 2026-08-26T11:53:42.614Z
+  modified: 2026-09-05T22:14:36.175Z
 ---
 
 `check_content_limits.py` の `kind_of()` は**ファイル名の部分文字列だけ**で種別を決める。中身は一切見ない。
@@ -30,5 +30,7 @@ metadata:
 **2026-09-03 追記（ショート動画の取りこぼし）**: `tiktok_shorts.txt` は「動画」を含まないため **blog判定**になり、35〜45秒ゲートが一度も走らなかった（走らせても無関係なブログ指摘4件が出るだけ）。`kind_and_reason()` に PF名ヒント（tiktok/shorts/reels/short_video/ショート）と本文ヒント（`【台本 NN秒】`）を追加して解消。
 **同日修理済**: 1PF=1ファイル保存（`facebook.txt` `x.txt` `threads.txt` `line.txt` `instagram.txt` `youtube.txt`）も同じ理由で**全部blog判定**＝SNS字数・ハッシュタグゲートが一度も走っていなかった。`PF_FILE_STEMS` ＋ `single_pf_of()` を追加し、`check_sns()` が見出しの無い1PFファイルに仮見出しを与えて検査できるようにした。規定の無いPF（YouTube）は無言PASSにせず明示行を出す。
 **発覚した実害**: 2026-09-02の周産期SNS7種は「全7本ゲート通過済」と記録されていたが、実際はSNS規定が一度も当たっておらず、修理後の再検査で**4本が字数超過**（Threads 633/500・Instagram 1123/1000・Facebook 1700/800・LINE 775/500）。
+
+**2026-09-06 追記（口頭原稿）**: 事務所開き挨拶の `_挨拶_v2.txt` もblog判定＝「名乗り・フッター欠落」で `--pass` 記録不可。`INTERNAL_NAME_HINTS` に「挨拶原稿／演説原稿／スピーチ」を足す修正は自動モードの分類器が拒否（安全ゲート本体の編集）。**草川の手番で追加**するまで、口頭原稿は gate.py 記録なし・fact-checker→risk-reviewer の2段だけで納品する。
 
 **判定順序（2026-09-03 に是正）**: 種別ヒントは `internal → SNS → 動画/video → ショート動画PF名 → 単独PF名 → 本文` の順で見る。**内部資料ヒントが最初**。以前は「動画」判定が先にあったため、`動画メモ.md` や `_tiktok_shorts_未作成メモ.txt` のような内部資料が video 判定になり、憲法5構成・尺の規定が当たって永久に落ちる状態だった。内部資料はファイル名に「メモ」等を入れれば必ず internal になる、という文書化済みの契約を判定器の順序でも守らせた。
