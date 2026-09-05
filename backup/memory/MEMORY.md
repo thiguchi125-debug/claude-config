@@ -5,7 +5,7 @@
 
 ## 🔄 進行中プロジェクト
 
-- [市民要望管理台帳(Googleシート)](project_yobo_sheet_citizen_requests.md) — 市役所対応の市民要望はTodoistでなく台帳へ(9/5)。**草川手番＝ネイティブ化＋Apps Script→config→close_todoist.sh**
+- [市民要望管理台帳(Googleシート)](project_yobo_sheet_citizen_requests.md) — **稼働中(9/5)**。市役所対応の市民要望はTodoistでなく`yobo.py add`。残＝ohayo連携・T列書式
 - [トークン燃費改善2026-09-05](project_token_efficiency_overhaul_2026-09-05.md) — [1m]廃止・fact-checker予算＋台帳・自動ジョブmax-turns。9/19に前後比較
 - [発信フロー構造改善](project_hasshin_flow_phase1_2026-09-04.md) — フェーズ2のA・B・C完了(9/5)。退避86件は未削除。残＝H発信オーケストレーター(未設計・要ブレスト)
 - [小中学校体育館エアコン](project_taiikukan_aircon_action.md) — 9月議会で柱1本→選挙後に署名。整備完了年度に誤解あり・要確認

@@ -10,8 +10,10 @@ metadata:
 - 作成済: `~/outputs/yobo-sheet/市民要望管理台帳_v1.xlsx`（67案件・Todoist 75件分・台帳/相手先マスタ/集計/使い方の4タブ・入力規則・色分け・滞留日数と要対応⚠の数式）→ Drive `草川たくや 議会質問アーカイブ/日常資料アーカイブ/00_名簿・個人情報/` に配置
 - 作成済: `~/outputs/yobo-sheet/yobo_webapp.gs`（doPost add/update/list＋onEdit最終更新）・`SETUP_AppsScript.md`（草川手順書）・`~/.claude/scripts/yobo/yobo.py`（CLI）・`close_todoist.sh`（移行76件の完了処理）・`build_sheet.py`/`migration_rows.py`（再生成用）
 - ルール反映済: CLAUDE.md／OPERATIONS.md【B】例外節／GUARDRAILS【6】／iken／citizen-inquiry-responder／smart-intake 7b／task-add
-- **草川手番**: ①xlsxを「Googleスプレッドシートとして保存」②Apps Script貼付→ウェブアプリデプロイ③URLと合言葉をClaudeへ → `~/.config/yobo/config.json` に保存 → `yobo.py list --alert` で疎通 → `bash close_todoist.sh`
-- 未着手: ohayo朝ブリーフで台帳の⚠一覧を読む（yobo.py稼働後）／Todoist「〇〇地区 市民相談」PJ7本の空箱をアーカイブ／台帳の「相手先（要確認）」3件の課名確認
+- **稼働開始 2026-09-05 17:15**: ネイティブ台帳 https://docs.google.com/spreadsheets/d/1-qocheanDQRcyUqsixp9EU3Qz6BltTPTbGzfl83cOJ8/edit ／Apps Script（スタンドアロン・`yobo_standalone_READY.gs`・Drive APIサービスv3有効・setup()でxlsx→Sheets変換＋onEditStampトリガー設置） https://script.google.com/home/projects/199z75WAAzo5wT8Pl9BumQxmKIm-xTZ1JZfxFnOKo-3y34c-DuaPrvD2I/edit ／Web App URLと合言葉は `~/.config/yobo/config.json`。`yobo.py list` 67件疎通OK・Todoist 76件は完了処理済（close_todoist.sh）。
+- **Chromeの罠**: Google Sheets画面はclaude-in-chromeの computer/screenshot/javascript が「Cannot access a chrome-extension:// URL of different extension」で全滅（別拡張のiframe）。Apps Scriptエディタ・example.comは動く。Sheets操作はApps Script経由で行う。サブエージェントからのブラウザ操作は権限分類器でdeny→本体で実行
+- 既知の表示不具合: 台帳T列「滞留日数」が日付書式で表示される（数値は正しい・⚠判定は正常）。Apps Scriptで setNumberFormat("0") を当てれば直る
+- 未着手: ohayo朝ブリーフで台帳の⚠一覧を読む（`yobo.py list --alert`）／Todoist「〇〇地区 市民相談」PJ7本の空箱をアーカイブ／台帳の「相手先（要確認）」3件の課名確認
 
 **Why:** Todoistは担当課・回答・報告日を持てず、案件の全体像と滞留が見えない。相談者への報告漏れ防止が目的。
 **How to apply:** 相談者がいて市（県・警察・自治会）と動く案件は `yobo.py add`。Todoistは草川自身の議会・政策・イベント・選挙のみ。関連 [[feedback_spreadsheet_deliverable_must_be_native_and_functional]] [[feedback_citizen_inquiry_task_registration]] [[project_todoist_task_migration]]
