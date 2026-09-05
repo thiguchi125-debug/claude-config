@@ -16,7 +16,6 @@ APIは必ず /api/v1/。token は ~/.config/todoist/token。
                     [--project 議員活動] [--priority 1-4(4最高)] [--label 結果待ち] [--desc "メモ"]
   td.py done <task_id>     完了
   td.py rm <task_id>       削除
-  td.py mv <task_id> <PROJECT名>   タスクを別プロジェクトへ移動（Inbox棚卸し用・期限は触らない）
 出力はトークン節約のため簡潔。JSONが欲しい時は末尾に --json。
 """
 import sys, os, json, urllib.request, urllib.parse, datetime
@@ -317,13 +316,6 @@ def cmd_rm(tid):
     req("DELETE", f"/tasks/{tid}")
     print(f"🗑 削除: #{tid}")
 
-def cmd_mv(tid, proj):
-    pid = resolve_project(proj)
-    if not pid:
-        print(f"[エラー] プロジェクト '{proj}' 不明（td.py projects で確認）", file=sys.stderr); sys.exit(1)
-    req("POST", f"/tasks/{tid}/move", body={"project_id": pid})
-    print(f"📦 移動: #{tid} → {proj}")
-
 def main():
     a = sys.argv[1:]
     if not a:
@@ -337,7 +329,6 @@ def main():
     elif c == "add": cmd_add(a[1:])
     elif c == "done": cmd_done(a[1])
     elif c == "rm": cmd_rm(a[1])
-    elif c == "mv": cmd_mv(a[1], " ".join(a[2:]))
     else: print(__doc__)
 
 if __name__ == "__main__":

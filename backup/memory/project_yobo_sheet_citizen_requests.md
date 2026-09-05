@@ -1,6 +1,6 @@
 ---
 name: project-yobo-sheet-citizen-requests
-description: 市役所対応の市民要望はGoogleスプレッドシート「市民要望管理台帳」（yobo.py add/update/alert/flush）。2026-09-05稼働・ohayo §9b連携済。残＝T列書式(fix_format.gs)・相手先要確認3件
+description: 市役所対応の市民要望はGoogleスプレッドシート「市民要望管理台帳」（yobo.py）。2026-09-05稼働・ohayo §9b＋§5 Inbox棚卸し連携・Todoist13本再編済。残＝実物FB・相手先要確認3件
 metadata:
   type: project
 ---
@@ -24,3 +24,5 @@ metadata:
 **How to apply:** 相談者がいて市（県・警察・自治会）と動く案件は `yobo.py add`。Todoistは草川自身の議会・政策・イベント・選挙のみ。関連 [[feedback_spreadsheet_deliverable_must_be_native_and_functional]] [[feedback_citizen_inquiry_task_registration]] [[project_todoist_task_migration]]
 
 - 2026-09-05: Apps Script未デプロイ中の `yobo.py add` は `~/outputs/yobo-sheet/_pending.jsonl` に退避する仕様に修正（従来はtraceback）。同日夕方にURL設定済みで書込可を確認（KY-068転校手続き・KY-069健康弁当）。キューは空。以後は台帳直書き
+
+- **2026-09-05 夜（Todoist使い分け再編・完了）**: 草川の問い②に回答。Todoist 35本→**親8本＋子5本＝13本**（新設📝議会（会期別）・空箱22本アーカイブ・中身あり子3本は🎪直下へ）。教訓＝REST `POST /projects/{id}` は parent_id を受けない→**移動は Sync API `project_move`**。親をarchiveすると子も畳まれる（unarchiveで復旧・タスク75件は無傷）。`td.py mv <id> <PJ名>` 新設（bak-20260905あり）。判定1問「終わったら誰かに報告するか？→はい＝台帳」＋一次保存先＝Todoist Inbox＋ohayo §5「Inbox棚卸し」（台帳へ／箱へ／捨てる／残す）を CLAUDE.md・OPERATIONS【B】・task-add・smart-intake 7/7b に反映。Inboxの6件は翌朝ohayoで初回棚卸し。問い③（独自アプリ可否）は未回答＝実物FBの後
