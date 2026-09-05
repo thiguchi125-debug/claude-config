@@ -13,8 +13,15 @@ def cfg():
     if not os.path.exists(CFG):
         sys.exit("未設定: Apps Script が未デプロイです。手順書 ~/outputs/yobo-sheet/SETUP_AppsScript.md を草川に案内し、URLと合言葉を受け取って ~/.config/yobo/config.json に保存してください。")
     return json.load(open(CFG))
+PENDING = os.path.expanduser("~/outputs/yobo-sheet/_pending.jsonl")
 def call(body):
     c = cfg(); body["token"] = c["token"]
+    if not c.get("url"):
+        if body.get("action") == "add":
+            body["queued_at"] = datetime.datetime.now().isoformat(timespec="seconds")
+            with open(PENDING, "a") as f: f.write(json.dumps({k:v for k,v in body.items() if k!="token"}, ensure_ascii=False)+"\n")
+            print(f"未設定: Apps Script のURLが空です。この案件は {PENDING} に退避しました（デプロイ後に再投入）。")
+        sys.exit("手順書 ~/outputs/yobo-sheet/SETUP_AppsScript.md に従い、URLと合言葉を ~/.config/yobo/config.json に保存してください。")
     req = urllib.request.Request(c["url"], data=json.dumps(body, ensure_ascii=False).encode(), headers={"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=60) as r: return json.loads(r.read().decode())
 F = {"t":"要望内容（件名）","k":"地区","r":"経路","d":"詳細・経緯","s":"相談者","c":"連絡手段","b":"分類","a":"相手先（担当課など）","l":"TEL",
