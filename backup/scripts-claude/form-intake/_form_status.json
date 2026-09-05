@@ -1,6 +1,18 @@
 {
-  "date": "2026-09-05",
-  "new_count": 0,
-  "items": [],
+  "date": "2026-09-06",
+  "new_count": 1,
+  "items": [
+    {
+      "row_id": "S2-214",
+      "date": "2026/09/05",
+      "district": "未記入",
+      "domain": "dx_administrative",
+      "urgency": "中",
+      "summary": "市役所を移動しないでほしい（新庁舎移転で遠くなる）・匿名40代・連絡先なし",
+      "notion_url": "https://app.notion.com/p/3d2cf503a68f819083d6fffb7dac4ab6?pvs=204",
+      "skipped": false,
+      "urgent": false
+    }
+  ],
   "errors": []
 }
