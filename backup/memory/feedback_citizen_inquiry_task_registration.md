@@ -15,3 +15,6 @@ citizen-inquiry-responderは「返信案3パターン＋Notion意見保存＋現
 - 提示時はタスク番号付きで列挙し「yes / 番号指定 / no」で選択可能に
 - 登録後は市民意見リストページを `mcp__claude_ai_Notion__notion-update-page` で `対応状況: 関係課確認中` に更新
 - 議会アクション深掘りはSTEP 6にずらす（任意のまま）
+
+
+**2026-09-05更新:** 市役所対応の市民要望案件の登録先は Todoist ではなく Googleスプレッドシート「市民要望管理台帳」（`yobo.py add`・1案件1行）。Todoist登録は草川自身の議会・政策作業のみ。→ [[project_yobo_sheet_citizen_requests]]
