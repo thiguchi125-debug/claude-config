@@ -5,6 +5,7 @@
 
 ## 🔄 進行中プロジェクト
 
+- [Obsidian導入・vault運用](project_obsidian_vault_workflow.md) — 2026-09-06。議会文書の正本はvault・注記は`#注記`・開いてるファイルは上書きせず新版
 - [Todoist総整理2026-09-06](project_task_audit_2026-09-06.md) — 超過16→0・期限なし11→4・台帳移管4(KY-070〜073相談者未記録)。9/9に9件集中＝翌朝振り直し
 - [市民要望管理台帳(Googleシート)](project_yobo_sheet_citizen_requests.md) — 稼働中。9/6ステータス案A適用済(69件)。**次＝草川手番＝69件の一気棚卸し→「棚卸し終わった」**
 - [トークン燃費改善2026-09-05](project_token_efficiency_overhaul_2026-09-05.md) — [1m]廃止・fact-checker予算＋台帳・自動ジョブmax-turns。9/19に前後比較
