@@ -1,6 +1,6 @@
 ---
 name: project-discord-channel-split
-description: Discord Bot DMを用途別3チャンネル（投げ込み／納品／ログ）に分離。2026-08-11に開通・運用中
+description: Discord Bot運用の経緯。2026-09-06に夜間intakeを停止しTodoist Inboxへ一本化（Bot・チャンネル・スクリプトは温存）
 metadata: 
   node_type: memory
   type: project
@@ -48,3 +48,21 @@ Bot現在の権限（2026-08-11実測・67584＋@everyone）= VIEW_CHANNEL／SEN
 - 戻すときは `INBOX_ONLY = False`。バックアップ＝`discord_api.py.bak_20260826`。
 
 関連: [[project_sns_routine_v2]]
+
+
+---
+
+## 2026-09-06 夜間intake停止・Todoist Inboxへ一本化（草川指示・現在の運用）
+
+**草川「discordが死んでる」→ 診断:** Bot・REST・3:10ジョブは全部正常。死んで見えた原因は①返事が翌3:10まで来ない（朝投げると19h無反応）②投げ込みの役目がTodoist Inboxに移っていた（CLAUDE.md）③草川の投稿は8/16で途絶（累計 草川29通：Bot103通）。
+唯一残る価値＝「外出先から動いているClaudeと会話する口」（`claude --channels plugin:discord@claude-plugins-official` の常駐セッションが必要）を提示したが、草川「常駐は現実的ではないのでなし」。
+
+**やったこと:**
+- `launchctl bootout`＋`disable` で `com.kusagawa.discord-intake` を停止。plistは `~/Library/LaunchAgents/_disabled_2026-09-06/` へ退避（戻すときは元の場所へmvして `launchctl bootstrap gui/501 <plist>`）。
+- ohayo SKILL.md の「Discord投げ込み監視」節を停止告知に置換（🚨死活判定を出さない）。Notion退避キューflushは残す（夕便が使う）。
+- GUARDRAILS.md「日中メモの捕捉面」行と feedback_daily_capture_discord_dm.md をTodoist Inboxへ更新。
+
+**温存したもの（削除していない）:** Bot本体・3チャンネル・`discord_api.py`・`nightly_intake.sh`・プラグイン設定・`~/.claude/channels/discord/`。夕便 `sns_leg.sh` の `discord_api.py read` は0件で素通り（壊れない）。
+`_pending_tasks.jsonl` は残件0（9/6 intakeログ）。`_notion_queue.jsonl` の9/4夕便1件はDiscordと無関係で、ohayo flush待ちのまま。
+
+**将来もし復活させるなら:** 用途は「通知専用（市民の声到着・返事が要る問い・納品完了の3種、1日3通・140字以内）」だけ。長文配信は二度としない。

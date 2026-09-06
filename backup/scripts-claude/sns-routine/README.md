@@ -1,3 +1,5 @@
+> **2026-09-06: `com.kusagawa.discord-intake`（夜間3:10 triage）は停止。** plistは `~/Library/LaunchAgents/_disabled_2026-09-06/`。日中メモはTodoist Inbox一本。Bot・スクリプトは温存。
+
 # sns-routine — Discord投げ込み夜間自動振り分け＋候補パック生成＋動画夜間フル制作＋SNS便4本（SNSルーティン**v3**）
 
 2026-07-14構築（v2）→ **2026-07-23 v3化（完成原稿直接納品）**。詳細は memory `project_sns_routine_v2.md`、仕様書 v3=`~/.claude/projects/-Users-kusakawatakuya/specs/2026-07-23-sns-routine-v3-design.md`／v2=`2026-07-14-sns-routine-v2-design.md` を参照。

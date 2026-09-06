@@ -17,7 +17,7 @@
 - [content-pipeline発信ビジュアル統合](project_content_pipeline_visual_expansion.md) — 記事URL＋写真→1パス
 - [後援会入会フォーム](project_koenkai_intake_form.md) — 告示後(10/18)の拡散停止テーブルあり
 - [後援会名簿は2系統](project_koenkai_roster_two_systems.md) — Notion 94件とDrive 60名が氏名ゼロ重複。管理CSVは00_名簿・個人情報/
-- [Discordは投げ込み専用](project_discord_channel_split.md) — 2026-08-26縮小。配信は全廃（INBOX_ONLY）・原稿はdrafts＋📣DB
+- [Discord夜間intake停止](project_discord_channel_split.md) — 2026-09-06停止・Todoist Inbox一本化。Botは温存。復活は通知専用のみ
 - [SNS発信ルーティン](project_sns_routine_v2.md) — 2026-08-26簡素化。夕19:30の1本のみ・差し替え禁止。Phase4は着手しない
 - [発信候補パック夜間ジョブがゲートでdeny](project_hakushin_pack_gate_deny.md) — 未修理
 - [newsダイジェスト更新がゲートでdeny](project_news_briefing_digest_gate_deny.md) — 2026-09-03に分類器側は解消（internal判定）。残＝実運用での再確認

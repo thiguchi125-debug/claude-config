@@ -19,3 +19,10 @@ metadata:
 - 会話中でKeep貼り付けを促す・待つ動きはしない。日次ログ関連の案内はDiscord DM投げ込みを正とする
 
 関連: [[project_sns_routine_v2]] / smart-intake / nichijo
+
+
+---
+
+## 2026-09-06 更新：捕捉面はTodoist Inboxへ移行・Discord夜間triageは停止
+
+草川「常駐は現実的ではないのでなし」。Discordの投げ込みは8/16以降ゼロで、返事が翌3:10まで来ない片道通信になっていた（草川29通：Bot103通）。日中メモの一次保存先は **Todoist Inbox**（翌朝ohayo §5で振り分け）。詳細は [[project-discord-channel-split]]。
