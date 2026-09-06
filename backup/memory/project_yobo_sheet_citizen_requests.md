@@ -26,3 +26,5 @@ metadata:
 - 2026-09-05: Apps Script未デプロイ中の `yobo.py add` は `~/outputs/yobo-sheet/_pending.jsonl` に退避する仕様に修正（従来はtraceback）。同日夕方にURL設定済みで書込可を確認（KY-068転校手続き・KY-069健康弁当）。キューは空。以後は台帳直書き
 
 - **2026-09-05 夜（Todoist使い分け再編・完了）**: 草川の問い②に回答。Todoist 35本→**親8本＋子5本＝13本**（新設📝議会（会期別）・空箱22本アーカイブ・中身あり子3本は🎪直下へ）。教訓＝REST `POST /projects/{id}` は parent_id を受けない→**移動は Sync API `project_move`**。親をarchiveすると子も畳まれる（unarchiveで復旧・タスク75件は無傷）。`td.py mv <id> <PJ名>` 新設（bak-20260905あり）。判定1問「終わったら誰かに報告するか？→はい＝台帳」＋一次保存先＝Todoist Inbox＋ohayo §5「Inbox棚卸し」（台帳へ／箱へ／捨てる／残す）を CLAUDE.md・OPERATIONS【B】・task-add・smart-intake 7/7b に反映。Inboxの6件は翌朝ohayoで初回棚卸し。問い③（独自アプリ可否）は未回答＝実物FBの後
+
+- **2026-09-06 案A適用済（シート側）**: Apps Script（コード.gs 1本に全関数）へ sort_ledger/dashboard 新版＋rename_status.gs を投入し `renameStatusA` 実行→「ステータス付け替え完了: 69件」。yobo.py list で確認＝これから聞く46／返事待ち18／様子見3／相談者に報告2／完了0。旧名称はゼロ。エディタの `_add` 既定値も「これから聞く」に修正済（Web Appは旧デプロイのまま・yobo.py側が明示送信するので再デプロイ不要）。**次＝草川手番＝既存69件の一気棚卸し**（PCで台帳直編集・「これから聞く」だけフィルタして上から）→「棚卸し終わった」で食い違いを洗う。編集の癖：貼付は cmd+v 不可→monaco setValue、関数選択はマウス不可→JSで option を scrollIntoView してから座標クリック
