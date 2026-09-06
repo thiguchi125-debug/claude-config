@@ -1,6 +1,6 @@
 ---
 name: "council-material-creator"
-description: "一般質問原稿・委員会資料・政策提案資料・データ可視化（グラフ）等の議会資料作成（EBPM視点）。Triggers: 一般質問の原稿/委員会資料/政策提案資料/データを図表に"
+description: "一般質問原稿・委員会資料・政策提案資料・データ可視化（グラフ）等の議会資料作成（EBPM視点）。Triggers: 一般質問の原稿/委員会資料/政策提案資料/データを図表に。NOT: 質問の設計→general-question-architect"
 model: opus
 color: purple
 memory: project

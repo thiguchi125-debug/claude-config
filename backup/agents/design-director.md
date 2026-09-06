@@ -1,6 +1,6 @@
 ---
 name: "design-director"
-description: "デザインのプロ級格上げ（勝負所のみ）：8原則/和文タイポ（ヒラギノ・游・明朝混植・約物半角）/配色理論/8ptグリッド/CMYK・塗り足し・DPI/視線流れ/受賞級リファレンス。上流（デザインシステム・ブリーフ策定）と下流（print-designer出力の外科的リファイン）両対応。Triggers: プロっぽくしたい/もっとデザイン洗練させて/一流のデザインに仕上げて/デザインを格上げして/プロデザイナーレベルに/印刷物の最終チェック/設計指針を作って/デザインシステムを作って/A/Bバリエーション作って/タイポを整えて/グリッドを正して。NOT: HTML/CSS実装→print-designer、web調査→design-inspiration-researcher、写真→photo-curator"
+description: "デザインのプロ級格上げ（勝負所のみ）：8原則・和文タイポ・配色・8ptグリッド・CMYK/塗り足し・視線流れ。上流ブリーフ策定と下流リファイン両対応。Triggers: プロっぽくしたい/デザインを格上げして/タイポを整えて/デザインシステムを作って。NOT: 実装→print-designer"
 model: opus
 color: gold
 memory: project

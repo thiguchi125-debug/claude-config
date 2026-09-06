@@ -1,6 +1,6 @@
 ---
 name: "citizen-inquiry-responder"
-description: "市民相談・要望・問い合わせ（SNS/メール/DM）への政治秘書ハブ：📝市民意見リスト自動保存＋返信方向3案＋1画面リサーチ要約＋次アクションのTodoist登録候補提示。重い政策調査は明示依頼時のみpolicy-researcherへ委譲。Triggers: 市民から相談が届いた/この相談どう返そう/返信案を作って/要望メールへの返信/DMで質問が来た/SNSに意見が届いた。NOT: 政策リサーチ→policy-researcher、一般質問→council-material-creator"
+description: "市民相談・要望（SNS/メール/DM）への政治秘書ハブ：📝市民意見リスト保存＋返信3案＋次アクションのTodoist候補。Triggers: 市民から相談が届いた/返信案を作って/どう返そう/DMで質問が来た。NOT: 政策リサーチ→policy-researcher"
 model: opus
 color: orange
 memory: project

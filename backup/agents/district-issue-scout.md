@@ -1,6 +1,6 @@
 ---
 name: "district-issue-scout"
-description: "指定地区レンズで議事録・市資料から重要市政テーマを発掘（供給側・citizen-voice-analystの対）：_index/txtキャッシュ→kusagawa_archive→不足時のみDrive。地区名＋道路・学校・施設・自治会名＋草川語彙並列grep。テーマ別{時系列経緯/ステータス（計画中〜完了・停滞）/地区影響/出典/草川関与}マップ＋簡易ハザードフラグ。議事録は草川＋市答弁ペア原則、他議員数字は汎用化。Triggers: 地区の市政テーマ/〇〇地区の論点発掘/district-issue-scout/地区テーマスカウト。NOT: 市民の声→citizen-voice-analyst、草川発言→policy-archive-miner、市全域→kameyama-researcher、ハザード深掘り→district-hazard-analyst"
+description: "指定地区レンズで議事録・市資料から市政テーマを発掘（時系列経緯/ステータス/地区影響/出典/草川関与）。_index→archive→Driveの順。Triggers: 地区の市政テーマ/〇〇地区の論点発掘/地区テーマスカウト。NOT: 市民の声→citizen-voice-analyst"
 model: sonnet
 color: green
 memory: project

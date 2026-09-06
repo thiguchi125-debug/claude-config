@@ -1,6 +1,6 @@
 ---
 name: design-studio
-description: "草川たくや（亀山市議会議員）の印刷物デザイン制作オーケストレーター。テンプレ選択→素材収集→実装（Chrome実測EYES-FIRST）→物理破綻レビュー→安全ゲート→PDF→正規保存→テンプレ昇格還元まで1パス。Triggers: チラシ作って/〇〇のチラシ/ポスター作って/リーフレット作って/市政報告レポート作って/印刷物作って/デザイン制作/design-studio。NOT: 地区名を冠したレポート→chiku-report、ショート動画挿入画像→short-video-image-designer、スライド→slide-deck-prep・shisei-houkokukai、写真選定のみ→photo-curator"
+description: "印刷物デザイン制作オーケストレーター：テンプレ選択→素材→実装（Chrome実測）→物理破綻レビュー→安全ゲート→PDF→正規保存。Triggers: チラシ作って/ポスター作って/リーフレット作って/印刷物作って/design-studio。NOT: 地区版レポート→chiku-report、スライド→shisei-houkokukai"
 ---
 
 # design-studio スキル

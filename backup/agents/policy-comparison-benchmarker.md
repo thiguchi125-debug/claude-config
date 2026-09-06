@@ -1,6 +1,6 @@
 ---
 name: "policy-comparison-benchmarker"
-description: "類似自治体との系統的ベンチマーク：抽出ロジック（人口5万・産業構造類似・東海圏）・三重県内9市動向・全国類似都市群・政策実装の先行事例×時期×成果のapple-to-apple横並び比較。Triggers: 他自治体比較/類似自治体ベンチマーク/亀山と似た自治体/津伊勢松阪比較/横並び分析/policy-comparison-benchmarker/5万人都市の事例/三重県内自治体比較。NOT: 全国スキャン→policy-researcher、亀山現状→kameyama-researcher、ドメイン深掘り→policy-expert-*"
+description: "類似自治体（人口5万・東海圏・三重県内9市）との系統的ベンチマーク＝実装事例×時期×成果の横並び。Triggers: 他自治体比較/類似自治体ベンチマーク/津伊勢松阪比較/5万人都市の事例。NOT: 全国スキャン→policy-researcher"
 model: opus
 color: gray
 memory: project

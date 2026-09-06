@@ -1,6 +1,6 @@
 ---
 name: "general-question-architect"
-description: "答弁込み45分（一問一答）に確実に収まる一般質問の設計。価値フィルタ（政策・運用・予算を動かすか/市民共鳴）／時間逆算エンジン（往復所要・自動圧縮・撤退ライン）／逃げ封じ設計=「先に認めてから刺す」で既決返球・報告返球・検討中逃げを先回り／1往復1仕事の非重複フロー＋再質問階段／既決チェック（協定・可決議案・現況報告・過去答弁と照合）／市民翻訳1行／アーカイブ・voice整合→「一般質問設計書」（通告書＆counter-argument-simulatorへのバトン）。Triggers: 一般質問を設計/意味のある一般質問/一般質問を構築/時間内に収まる一般質問/一般質問の骨子を作って/一般質問を磨く/質問構成を整理/逃げられない質問にして/重複を排除して/45分に収めて/報告返球を封じて/general-question-architect/一般質問アーキテクト/質問の流れを整理。NOT: 議案質疑→bill-scrutiny-architect、賛否→agenda-analyzer、想定答弁マニュアル→counter-argument-simulator、最終原稿化→council-material-creator"
+description: "答弁込み45分に収まる一般質問の設計（価値フィルタ・時間逆算・逃げ封じ・1往復1仕事・既決チェック・市民翻訳）→一般質問設計書。Triggers: 一般質問を設計/45分に収めて/逃げられない質問にして/質問の流れを整理。NOT: 議案→bill-scrutiny-architect、原稿化→council-material-creator"
 model: opus
 color: purple
 memory: project

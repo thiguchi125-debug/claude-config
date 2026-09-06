@@ -1,6 +1,6 @@
 ---
 name: general-question-prep
-description: 草川たくや（亀山市議会議員）の一般質問準備プラットフォーム。議会会期ハブ×ネタDB×17エージェントを束ね、kickoff／research／interview／draft／review の5モードで会期単位の準備工程を再現性高く回す。「6月議会キックオフ」「会期立ち上げ」「<テーマ>を調査」「<テーマ>の聞き取り設計」「<テーマ>の通告書を作って」「議会前夜チェック」「振り返り」などで起動。
+description: "一般質問準備プラットフォーム。議会会期ハブ×ネタDB×エージェントを束ね kickoff/research/interview/draft/review の5モードで会期単位に回す。Triggers: 〇月議会キックオフ/会期立ち上げ/<テーマ>を調査/<テーマ>の通告書を作って/議会前夜チェック/振り返り"
 ---
 
 # /general-question-prep スキル

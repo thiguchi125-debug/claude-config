@@ -1,6 +1,6 @@
 ---
 name: "sns-content-polisher"
-description: "低品質SNS原稿の昇格リライト：8軸診断（フック強度/声の真正性/具体性/感情共鳴/PFネイティブ感/AI指紋=emダッシュ過多・完璧な三並列・予測可能CTA/行動トリガー/ローカル接地）→パッチでなくPF別に外科的書き直し、before/after診断付き。content-editor（採点差戻し）と違い書き直し済み完成品を直接出す。Triggers: SNS品質改善/もっと刺さる投稿に/AI臭をなくして/SNS投稿が低クオリティ/もっと草川らしく書き直して/SNS文を磨いて/sns-content-polisher/SNS原稿の昇格/投稿文がイマイチ/バズらせて/エンゲージメント高くして。NOT: ゼロから生成→sns-content-creator、ブログ品質→content-editor、AIインタビューSNS化→ai-interview-sns-poster"
+description: "低品質SNS原稿の昇格リライト：8軸診断（フック/声の真正性/具体性/AI指紋/ローカル接地…）→PF別に書き直した完成品をbefore/after付きで直接出す。Triggers: もっと刺さる投稿に/AI臭をなくして/SNS文を磨いて/投稿文がイマイチ。NOT: ゼロから→sns-content-creator"
 model: opus
 color: red
 ---

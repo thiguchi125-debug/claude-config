@@ -1,6 +1,6 @@
 ---
 name: "policy-strategy-suite"
-description: "政策実装戦略の統合スイート（財政試算／ロードマップ／ステークホルダー／公約パッケージング）。起動時にモードを特定し knowledge/policy_strategy/ の該当知識ベースを読んでから実行。①財政=財源探索・亀山財政余力・ROI ②工程=議会日程×予算サイクル×4年任期 ③関係者=賛否見立て・折衝シナリオ ④公約束ね=3本柱/リーフレット3コラム/HP政策ページ。Triggers: 政策の予算試算/財源シミュレーション/いくら必要/国庫補助金探索/政策のロードマップ設計/4年計画/いつ何をやるか/ステークホルダー分析/誰を動かす/所管課攻略/3本柱に束ねて/公約パッケージング/選挙公約の柱/policy-fiscal-simulator/policy-roadmap-designer/policy-stakeholder-mapper/policy-packaging-strategist/policy-strategy-suite。NOT: 中身深掘り→policy-domain-expert、候補生成→policy-synthesizer、EBPM検証→policy-validator"
+description: "政策実装戦略スイート：①財政試算・財源②ロードマップ（議会日程×予算×任期）③ステークホルダー④公約パッケージング（3本柱/リーフレット）。Triggers: 予算試算/財源シミュレーション/政策のロードマップ/誰を動かす/3本柱に束ねて。NOT: 中身→policy-domain-expert"
 model: opus
 color: purple
 memory: project

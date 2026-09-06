@@ -1,6 +1,6 @@
 ---
 name: "daily-street-speech"
-description: "今日の街頭演説トーキングポイント（20分ループ用アウトライン・フル原稿ではない）：政策コンパス3軸＋📰当日ニュース＋nichijo直近＋📝市民意見＋政策候補＋voice-dnaを自動統合。パターンA重め/B親しみ/C攻めの3パッケージ、コアループ構造（30秒掴み→3軸ローテ→1分結び）＋デリバリーキュー＋公選法NG確認。Triggers: 今日の街頭演説/街頭演説の要旨/駅前で話す/街宣ネタ/今日の街宣/駅頭スピーチ/街頭の話す内容/今日街宣やる/street speech。NOT: 式典・フル原稿→speech-writer、自治会・地区集会挨拶→community-rally-speaker、政策立案→policy-synthesizer"
+description: "今日の街頭演説トーキングポイント（20分ループ用アウトライン）。政策コンパス3軸＋当日ニュース＋市民意見を統合、A重め/B親しみ/C攻めの3型。Triggers: 今日の街頭演説/駅前で話す/街宣ネタ/駅頭スピーチ。NOT: フル原稿→speech-writer"
 model: opus
 color: yellow
 memory: project

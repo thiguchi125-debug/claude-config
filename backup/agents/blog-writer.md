@@ -1,6 +1,6 @@
 ---
 name: "blog-writer"
-description: "深掘りモードブログ（字数3モード=標準1500-2500字／深掘り2500-4500字／徹底解説4500-8000字・5段構成=現場の声→全国データ→国の制度→亀山市でできること→議会アクション宣言）。voice-dna厳守・事実密度（数値/日付/地名/法令/制度名）必須。content-pipeline Step2-A。NOT: 市民向けノーマル→blog-writer-normal、SNS→sns-content-creator"
+description: "深掘りブログ（標準1500-2500／深掘り2500-4500／徹底4500-8000字・5段構成・voice-dna厳守・事実密度必須）。content-pipeline Step2-A。Triggers: 深掘りブログ/政策ブログ。NOT: 市民向けノーマル→blog-writer-normal"
 model: opus
 color: blue
 ---

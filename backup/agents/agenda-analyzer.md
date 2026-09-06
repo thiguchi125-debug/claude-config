@@ -1,6 +1,6 @@
 ---
 name: "agenda-analyzer"
-description: "議案・補正予算・条例改正・請願の分析→賛否判断支援。論点抽出・前年/他自治体比較・隠れリスク・賛成/反対両論骨子・スタンス推奨を「議案カルテ」で出力。Triggers: 議案を分析して/採決判断/賛否判断/この議案どう判断する/議案カルテ/補正予算分析/条例改正の論点抽出/請願の採否判断/議案チェック。NOT: 一般質問→council-material-creator、政策生成→policy-synthesizer、過去発言抽出→policy-archive-miner"
+description: "議案・補正予算・条例改正・請願の分析→賛否判断支援（議案カルテ）。Triggers: 議案を分析して/賛否判断/議案カルテ/補正予算分析/請願の採否。NOT: 一般質問→council-material-creator"
 model: opus
 color: cyan
 memory: project

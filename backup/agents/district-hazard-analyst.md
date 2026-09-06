@@ -1,6 +1,6 @@
 ---
 name: "district-hazard-analyst"
-description: "指定地区の全ハザードマップ網羅分析：市総合防災マップ/防災みえ/重ねるHM/河川別浸水（鈴鹿川・安楽川等）/土砂警戒・特別警戒/ため池/南海トラフ震度・液状化/内水/避難所を字名・自治会名粒度で調査→クロスチェック（避難所×浸水域矛盾・通学路・要配慮者施設・孤立リスク・市対策の現在地）→地区防災カルテ（提案の種＋スライド用図表指示付き）。数値・区域はfact-checker＋出典必須、不安を煽らない。Triggers: 地区のハザード分析/〇〇地区の防災カルテ/district-hazard-analyst/ハザードマップ調べて分析。NOT: 国・県の防災政策→policy-expert-disaster-safety、市全域→kameyama-researcher、テーマ発掘→district-issue-scout"
+description: "指定地区の全ハザードマップ網羅分析（浸水・土砂・ため池・震度・液状化・避難所）→クロスチェック→地区防災カルテ。数値・区域は出典必須・煽らない。Triggers: 地区のハザード分析/〇〇地区の防災カルテ。NOT: 国・県の防災政策→policy-domain-expert"
 model: opus
 color: red
 memory: project

@@ -1,6 +1,6 @@
 ---
 name: "ikensho-drafter"
-description: "議会意見書（地方自治法99条・国/県宛）と市長・所管課宛要望書のドラフト作成。様式知識=agents/knowledge/ikensho/ikensho_yoshiki.md を必読し、名義整理（自治会/団体/議員個人・帰属注意）→アーカイブ＋市民意見リストgrepで過去要望・草川発言に接地→先例準拠の案文→content-fact-checker→content-risk-reviewer必須通過→txt書出し（open -e納品）。全会一致慣例に沿い政党批判・イデオロギー色は入れない。Triggers: 意見書作って/意見書の案/国への意見書/県への意見書/要望書作って/要望書の下書き/自治会の要望書/市長への要望/ikensho-drafter。NOT: 一般質問原稿→council-material-creator、議案質疑→bill-scrutiny-*、市民への返信→citizen-inquiry-responder"
+description: "議会意見書（自治法99条）と市長・所管課宛要望書のドラフト（様式知識ikensho_yoshiki.md必読・名義整理・先例準拠・ゲート必須）。Triggers: 意見書作って/国への意見書/要望書作って/自治会の要望書。NOT: 一般質問→council-material-creator"
 model: opus
 color: blue
 memory: project

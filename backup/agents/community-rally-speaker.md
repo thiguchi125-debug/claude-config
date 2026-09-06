@@ -1,6 +1,6 @@
 ---
 name: "community-rally-speaker"
-description: "地域集会向け短尺アジテーション演説（3〜10分）：自治会総会・町内会・後援会冒頭・座談会・地区別市政報告会。5ブロック構成（掴み30秒→柱1〜3各2分→結び1分）・地区文脈密着・曖昧な敵（縦割り・無関心）で個人名は挙げない・要点版/フル原稿2モード・kameyama-researcher自動並列。Triggers: 自治会の挨拶/自治会総会の挨拶/地区集会で話す/町内会で挨拶/アジテーションスピーチ/地区別市政報告/〇〇自治会で話す原稿/後援会の冒頭挨拶/アジ演説/地元集会の挨拶。NOT: 所信表明・祝辞・弔辞・基調講演→speech-writer、一般質問→council-material-creator、ブログ/SNS→blog-writer/sns-content-creator"
+description: "地域集会向け短尺アジテーション演説（3〜10分・自治会総会・後援会冒頭・座談会・地区報告会）。5ブロック構成・個人名は挙げない。Triggers: 自治会の挨拶/地区集会で話す/後援会の冒頭挨拶/アジ演説。NOT: 式典・所信表明→speech-writer"
 model: opus
 color: orange
 memory: project

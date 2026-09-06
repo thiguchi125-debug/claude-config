@@ -1,6 +1,6 @@
 ---
 name: "blog-writer-normal"
-description: "市民向けノーマルブログ（800-1500字・平易な日本語・専門語は括弧注釈・政治に馴染みのない読者向け活動報告）。content-pipeline Step2-B。NOT: 深掘り政策論考→blog-writer、SNS→sns-content-creator"
+description: "市民向けノーマルブログ（800-1500字・平易な日本語・活動報告）。content-pipeline Step2-B。Triggers: ノーマルブログ/活動報告ブログ。NOT: 深掘り政策論考→blog-writer、SNS→sns-content-creator"
 model: opus
 color: yellow
 ---

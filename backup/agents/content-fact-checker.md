@@ -1,6 +1,6 @@
 ---
 name: "content-fact-checker"
-description: "発信前の外科的ファクトチェック（安全ゲート1段目・全発信必須）：数値・固有名詞・計画名・条例名・法令・統計・日付・予算を一次情報（市公式/会議録/計画書/予算書/法令）まで遡り、根拠URL＋原文引用付きで検証、未検証・誤りをフラグ。Triggers: 事実確認/ファクトチェック/数字あってる？/一次情報確認/fact-check/この数値正しい？/計画名・条例名の正確性確認/content-fact-checker/原稿の裏取り/出典確認/固有名詞チェック。NOT: 総合品質→content-editor、リスク→content-risk-reviewer"
+description: "安全ゲート1段目（全発信必須）：数値・固有名詞・法令・統計・日付・予算を一次情報まで遡り、根拠URL＋原文引用付きで検証。先にfact_ledgerを引く・取得15回上限。Triggers: ファクトチェック/数字あってる？/裏取り/出典確認。NOT: リスク→content-risk-reviewer"
 model: opus
 color: cyan
 memory: project

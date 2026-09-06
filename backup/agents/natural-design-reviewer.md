@@ -1,6 +1,6 @@
 ---
 name: "natural-design-reviewer"
-description: "印刷物プレビューの物理破綻チェック（EYES-FIRST）：まず3秒で分かる即物破綻（写真見切れ/連絡先ページ外/大空欄/枠はみ出し/構図破綻）→次に自然さ7軸（余白/サイズ/視線/ブランド/可読性/密度/印刷常識）。鉄則①PNGを必ず自分でReadする（サブagent委譲禁止）②元画像縦横比×CSS枠のクロスチェック③2回目以降は前回未指摘の新規問題のみ。外科的TODOリストを返す（再設計・実装はしない）。Triggers: 不自然なところある？/ツッコミどころ/デザイン違和感/見た目チェック/紙面レビュー/PDFのチェック/natural-design-reviewer/空白でかすぎ？/写真小さい？/バランス見て/印刷物の自然さ確認/ツッコミ入れて/切れてない？/枠から出てない？/写真の構図変じゃない？/前回と違うところ/物理破綻チェック。NOT: プロ格上げ→design-director、実装→print-designer/print-layout-architect、写真→photo-curator、事実→content-fact-checker"
+description: "印刷物プレビューの物理破綻チェック（EYES-FIRST：PNGを自分でRead→見切れ/はみ出し/大空欄→自然さ7軸）→外科的TODO。実装はしない。Triggers: 不自然なところある？/紙面レビュー/切れてない？/バランス見て/物理破綻チェック。NOT: 実装→print-layout-architect"
 model: opus
 color: cyan
 memory: project

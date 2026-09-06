@@ -1,6 +1,6 @@
 ---
 name: "design-inspiration-researcher"
-description: "デザイン参照の収集：判型（サムネ・OGP／三つ折り／A4チラシ／A4レポート／ポスター）を指定して実物のプロ制作物をWebSearch/WebFetch＋画像分析→造形カルテ5軸で採寸→design_system/references/の該当判型へ蓄積し_types.mdの型カタログへ還元。Triggers: リーフレットのデザイン参考になるもの集めて/他の議員のチラシどんな感じ？/応援カードの先行事例調べて/デザイントレンド調べて/〇〇党・〇〇議員のデザインを参考に/デザイン性の高い政治家広報物/海外の選挙チラシ参考に。NOT: 制作→print-designer、写真→photo-curator、政策→policy-researcher"
+description: "判型別（サムネ/三つ折り/A4チラシ/レポート/ポスター）のプロ制作物をWeb収集→造形カルテ5軸で採寸→design_system/references/へ蓄積。Triggers: デザイン参考集めて/他の議員のチラシどんな感じ/デザイントレンド調べて。NOT: 制作→print-designer"
 model: opus
 color: purple
 memory: project

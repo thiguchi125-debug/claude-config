@@ -1,6 +1,6 @@
 ---
 name: ai-kusakawa
-description: 草川たくや（亀山市議会議員）の公認AIキャラクター「AIくさかわ」が本人の声クローンで話すショート動画（9:16・35〜50秒・目標45〜50秒・字幕・AI明記付き）を、テキスト入力から投稿可能な完成mp4まで1パスで自動生成するスキル。「AIくさかわ」「AIくさかわで動画」「AI動画作って」「AIくさかわに話させて」「AIくさかわでショート」等で起動。台本生成（short-video-virality-architect）→安全ゲート（content-fact-checker→content-risk-reviewer必須）→ElevenLabs音声→口パク合成（ローカルffmpeg）→7PF投稿文→📣SNS投稿管理DB保存＋Drive📱動画素材ミラーまで実行。※実写ショート動画→short-video-create、写真投稿→photo-post、挿入イラスト単体→short-video-image-designerが正で本スキルは反応しない。
+description: "公認AIキャラ「AIくさかわ」（本人の声クローン）のショート動画を、台本→安全ゲート→ElevenLabs音声→口パク合成→7PF投稿文→📣DB保存まで1パス生成。Triggers: AIくさかわ/AIくさかわで動画/AI動画作って。NOT: 実写→short-video-create、写真→photo-post"
 ---
 
 # AIくさかわ 動画生成スキル

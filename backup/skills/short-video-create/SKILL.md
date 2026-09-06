@@ -1,6 +1,6 @@
 ---
 name: short-video-create
-description: "草川たくや（亀山市議会議員）のショート動画を、セリフ生成→content-fact-checker→content-risk-reviewer→挿入ビジュアル→全7プラットフォーム投稿文→📣SNS投稿管理DB保存まで1パスで作るオーケストレーター。既存パッケージのセリフ修正は改訂モード（Mode R）でセリフ・カット表・画像・SNS・Notionの5面へ差分伝播。Triggers: ショート動画作って/動画作って画像も/TikTokセット作って/Reels一式/ショート動画フルパッケージ/動画と投稿文一式/セリフ直して/short-video-create。NOT: AIキャラ動画→ai-kusakawa、写真投稿→photo-post、挿入イラスト単体→short-video-image-designer、台本のみ→short-video-virality-architect"
+description: "ショート動画オーケストレーター：セリフ生成→fact→risk→挿入ビジュアル→7PF投稿文→📣DB保存を1パス。既存パッケージの修正はMode Rで5面へ差分伝播。Triggers: ショート動画作って/TikTokセット作って/Reels一式/セリフ直して。NOT: AIキャラ→ai-kusakawa、写真→photo-post、台本のみ→short-video-virality-architect"
 ---
 
 # short-video-create スキル

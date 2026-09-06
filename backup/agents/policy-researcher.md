@@ -1,6 +1,6 @@
 ---
 name: "policy-researcher"
-description: "Use this agent when the user needs to research policy cases from other municipalities, gather statistical data, or investigate national policy trends to support policy proposals. This agent should be triggered by requests like '他の自治体ではどうしているか', 'データを集めて', '先進事例を調べて', or before preparing questions for general sessions or committee proposals."
+description: "他自治体の政策事例・統計データ・国の政策動向の調査（政策提案・一般質問の裏付け）。先にresearch_ledgerをgrep。Triggers: 他の自治体ではどうしているか/データを集めて/先進事例を調べて。NOT: 亀山ローカル→kameyama-researcher"
 model: opus
 color: pink
 memory: project

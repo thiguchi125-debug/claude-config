@@ -1,6 +1,6 @@
 ---
 name: chiku-report
-description: 草川たくや（亀山市議会議員）の「地区版 市政報告レポート」（A4両面・訪問時の手渡し／ポスティング配布・地区名を冠した版）を、地区の実体確定→他地区版との矛盾突合→草川の土地勘ヒアリング→図表計画→print-layout-architect実装→機械実測→安全ゲート→PDF→保存まで、事故をハードゲートで潰しながら1パスで作るスキル。「〇〇地区版の市政報告レポート作って」「地区版レポート」「〇〇版の市政報告」「報告会の案内レポート作って」「chiku-report」等で起動。shisei-houkokukai の Stage2 と design-studio が「地区版市政報告レポート」を作るときは必ず本スキルへ委譲する。既存の川合町版・和田町版・けんろう版・北東地区版が正本テンプレ系列。※スライド→shisei-houkokukai Stage3、地区を冠さない一般チラシ／ポスター→design-studio、ブログ・SNS→content-pipeline が正で本スキルは反応しない。
+description: "地区名を冠した「地区版 市政報告レポート」（A4両面・手渡し/ポスティング）を、地区の実体確定→矛盾突合→図表計画→print-layout-architect→安全ゲート→PDFまで1パス。Triggers: 〇〇地区版の市政報告レポート/地区版レポート/報告会の案内レポート作って。NOT: スライド→shisei-houkokukai、一般チラシ→design-studio"
 ---
 
 # chiku-report スキル（地区版 市政報告レポート）

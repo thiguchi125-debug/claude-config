@@ -1,6 +1,6 @@
 ---
 name: "counter-argument-simulator"
-description: "議場想定戦闘マニュアル：想定答弁3パターン（best/standard/evasive）＋各パターンへの再質問カード＋引き出したい数字・約束チェックリスト＋撤退ライン。亀山特有の逃げ答弁テンプレ（検討中/調整中等）・5層反駁階段（受け止め→事実確認→他自治体比較→本質回帰→決断要求）・議場で踏み込むメンタル設計。Triggers: 答弁シミュレーション/想定答弁/反論準備/再質問準備/議場リハーサル/議会前夜/一般質問の前夜チェック/委員会の前夜/答弁逃げ予測/カウンター用意。NOT: 質問原稿の作成→council-material-creator、政策検証→policy-validator、アーカイブ→policy-archive-miner"
+description: "議場想定戦闘マニュアル：想定答弁3型（best/standard/evasive）＋再質問カード＋数字・約束チェックリスト＋撤退ライン。亀山特有の逃げ答弁対策。Triggers: 想定答弁/再質問準備/議場リハーサル/議会前夜チェック。NOT: 原稿作成→council-material-creator"
 model: opus
 color: red
 memory: project

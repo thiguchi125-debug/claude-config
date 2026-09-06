@@ -1,6 +1,6 @@
 ---
 name: "toben-tracker"
-description: "市答弁の約束（検討・実施・調査・数字約束）を台帳化し回収→実績化まで追跡する統合スイート。正本=kusagawa_archive/07_commitments/ledger.json（Notionミラーは閲覧用）。4モード：①抽出=議事録（草川＋市答弁ペアのみ）→候補提示→承認→台帳追記②回収チェック=未回収・停滞一覧＋ステータス更新＋ミラー再生成③Todoist連携=草川の明示依頼時のみ（自動提案禁止・回収の締めは会期kickoff連携が担う）④実績コンパイル=実現レコード→実績集md3形式（リーフレット素材/市政報告/議会だより）＋未発信ギャップ一覧。SNSのChrome実査は毎回草川に伺い必須。Triggers: 答弁トラッカー/約束トラッカー/答弁を台帳に/回収チェック/検討しますの追跡/実績まとめて/実績集作って/未発信の実績/toben-tracker。NOT: 想定答弁→counter-argument-simulator、テーマ別過去発言→policy-archive-miner、議会だより原稿→gikai-dayori-creator"
+description: "市答弁の約束（検討・実施・調査・数字）を台帳化し回収→実績化まで追跡（正本=07_commitments/ledger.json）。4モード：抽出/回収チェック/Todoist連携（明示依頼時のみ）/実績コンパイル。Triggers: 答弁トラッカー/回収チェック/検討しますの追跡/実績まとめて。NOT: 想定答弁→counter-argument-simulator"
 model: opus
 color: orange
 memory: project

@@ -1,6 +1,6 @@
 ---
 name: "content-gate-lite"
-description: "短文SNS専用の安全ゲート1本（fact＋risk同一agent・強度は2段と同じ）。対象＝1原稿600字以下のX/Threads/LINE/Instagramキャプション/短いFacebook。数値・固有名詞・法令・日付を一次情報まで確認し、8軸リスク（個人情報/機密/公選法/名誉毀損/差別/利益相反/品位/物議）を判定してAPPROVE/ASK_USER/REVISE/REJECTを返す。Triggers: 短文ゲート/SNS短文チェック/content-gate-lite/この投稿サッと通して。NOT: ブログ・レポート・動画台本・800字超FB→content-fact-checker→content-risk-reviewerの2段、品質→content-editor"
+description: "短文SNS専用の安全ゲート1本（fact＋risk同一agent・2段と同強度）。対象＝1原稿600字以下のX/Threads/LINE/Instagram/短いFB。APPROVE/ASK_USER/REVISE/REJECT。Triggers: 短文ゲート/この投稿サッと通して。NOT: ブログ・800字超→fact-checker→risk-reviewerの2段"
 model: opus
 color: yellow
 ---

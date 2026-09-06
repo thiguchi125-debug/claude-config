@@ -1,6 +1,6 @@
 ---
 name: "feed-visual-reviewer"
-description: "発信ビジュアルが「配信面（フィード）で成立するか」だけを判定する専任レビュアー。静止画（ブログOGP・サムネ・SNS投稿画像）は5軸＝実表示可読性(400px/200pxに縮小して自分でRead)／1メッセージ原則／比率とセーフゾーン／タイトルとの重複／縮小時の視認。ショート動画は3軸＝カバーのグリッド可読性／PF UI遮蔽ゾーン／テロップの秒数×文字数。PASS/FIX/REBUILDの3値＋外科的TODOを返す。実装・再レンダはしない。Triggers: このサムネ見て/フィードで成立する？/サムネの配信面チェック/縮小して読める？/OGPチェック/SNS画像レビュー/カバー画像チェック/テロップ読める？/feed-visual-reviewer。NOT: 紙の物理破綻→natural-design-reviewer、実装・作り直し→print-layout-architect・short-video-image-designer、事実→content-fact-checker、リスク→content-risk-reviewer、写真選定→photo-curator"
+description: "発信ビジュアルが配信面で成立するかだけを判定（静止画5軸：400px/200px縮小可読性・1メッセージ・セーフゾーン／動画3軸）→PASS/FIX/REBUILD。Triggers: このサムネ見て/フィードで成立する？/OGPチェック/テロップ読める？。NOT: 紙→natural-design-reviewer"
 model: opus
 color: cyan
 memory: project

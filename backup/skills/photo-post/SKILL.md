@@ -1,6 +1,6 @@
 ---
 name: photo-post
-description: 草川たくや（亀山市議会議員）の写真1〜3枚＋ひとことから、投稿文→SNS投稿画像（1:1＋9:16・実写無加工のデザイン合成）→ショート動画（10〜20秒9:16）まで統合1パスで自動生成するスキル。「この写真で投稿作って」「写真を投稿用にして」「投稿画像にして」「写真から動画も」「photo-post」で起動。写真＋ひとことの同時投入も起動候補として提案。確認は切り口・デザイン選択と投稿前最終の2回のみ。安全ゲート（content-fact-checker→content-risk-reviewer＋写真固有軸）skip禁止。※「記録」を含む→nichijo、「メモ:」「保存して」→smart-intake、セリフ型ショート動画→short-video-create、イラスト挿入画→short-video-image-designer、投稿文のみ→sparkが正。
+description: "写真1〜3枚＋ひとこと→投稿文→SNS投稿画像（1:1＋9:16・実写無加工合成）→10〜20秒ショート動画まで1パス。確認は切り口選択と投稿前の2回。ゲートskip禁止。Triggers: この写真で投稿作って/写真を投稿用にして/投稿画像にして/写真から動画も。NOT: 「記録」→nichijo、セリフ型動画→short-video-create"
 ---
 
 # photo-post — 写真＋ひとこと → 投稿文・画像・動画の統合1パス

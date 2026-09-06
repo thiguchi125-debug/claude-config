@@ -1,6 +1,6 @@
 ---
 name: "short-video-image-designer"
-description: "ショート動画の挿入画像（9:16 1080×1920 PNG）を完成品まで実装。2大失敗（記号化＝ピクトグラム化／文字消失＝小文字・低コントラスト）をハードゲートで殺し、レンダ→PNG自Read→採点→修正ループを回す。草川カラー・絵文字なし・他議員名なし・fact/risk通過。説明図=HTML/CSS、雰囲気=フラットイラスト。Triggers: ショート動画の画像作って/挿入画像をデザインして/動画の差し込み画像を作り直して/記号っぽい絵を直して/文字が見えない画像を直して/インサート画を作画して/short-video-image-designer。NOT: 台本→short-video-virality-architect、SNS本文→sns-content-creator、印刷→print-designer・print-layout-architect、写真→photo-curator"
+description: "ショート動画の挿入画像（9:16 1080×1920 PNG）を完成まで実装。記号化・文字消失をハードゲートで排除、レンダ→自Read→修正ループ。Triggers: ショート動画の画像作って/挿入画像をデザインして/文字が見えない画像を直して。NOT: 台本→short-video-virality-architect"
 model: opus
 color: lime
 memory: project

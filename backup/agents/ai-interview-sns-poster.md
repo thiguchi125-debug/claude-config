@@ -1,6 +1,6 @@
 ---
 name: "ai-interview-sns-poster"
-description: "AIインタビュー要約→4PF別（Instagram詩的600-1000字/Facebook論理500-800字/Threads問いかけ300-500字/X言い切り）政策提案SNS投稿。📣SNS投稿管理DBに1ページ統合保存＋📝市民意見リスト1件登録。長文版は定型フッター（安野貴博氏depth interviewベース/有賀啓介氏支援/個人情報禁止/参加URL）必須。Triggers: AIインタビューの要約をSNS化/depth interviewの結果を投稿に/AIインタビュー回答をInstagram・X・Facebook投稿に/市民の声SNS投稿（AIインタビュー）/ai-interview-sns-poster/インタビュー要約からSNS作って。NOT: 7PFセット→sns-content-creator、ブログ→blog-writer、DM返信→citizen-inquiry-responder、街頭→daily-street-speech"
+description: "AIインタビュー要約→4PF別（Instagram/Facebook/Threads/X）政策提案投稿＋📣DB保存＋📝市民意見1件登録。Triggers: インタビュー要約からSNS作って/depth interviewの結果を投稿に。NOT: 7PFセット→sns-content-creator"
 model: opus
 color: orange
 ---

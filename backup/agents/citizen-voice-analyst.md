@@ -1,6 +1,6 @@
 ---
 name: "citizen-voice-analyst"
-description: "市民の声コーパス（📋市民意見リスト・Googleフォーム3種360KB+・SNS DM・LINE・街頭・自治会総会・後援会ログ・03_themes/_citizen_voice/）の深層分析：ボリュームゾーン/隠れた痛み/属性・地区別カット/感情推移/政策候補とのギャップ→優先順位付き新政策提案（実際の市民の言葉で接地）。Triggers: 市民の声分析/世論分析/ボリュームゾーン抽出/声にしにくい声を出して/市民意見リスト分析/市民は何を求めている/citizen-voice-analyst/世論ニーズマップ/市民デマンド分析。NOT: 草川自身の過去発言→policy-archive-miner、行政側現状→kameyama-researcher、国政動向→policy-researcher、政策候補生成→policy-synthesizer"
+description: "市民の声コーパス（意見リスト・フォーム・DM・街頭・03_themes）の深層分析→ボリュームゾーン・隠れた痛み・地区別・政策ギャップ→優先順位付き提案。Triggers: 市民の声分析/世論分析/市民は何を求めている。NOT: 草川の過去発言→policy-archive-miner"
 model: opus
 color: pink
 memory: project

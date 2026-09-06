@@ -1,6 +1,6 @@
 ---
 name: "notion-saver"
-description: "長文ブログ・SNSセット・メタデータのNotion DB確実保存（長文直接MCP呼び出しのJSONバリデーションエラー回避）。content-pipeline Step5（5-Aブログ/5-B SNS/ネタDB）専用。NOT: 一般Notionクエリ→MCP直接、市民意見登録→citizen-inquiry-responder、日次ログ→nichijoスキル"
+description: "長文ブログ・SNSセット・メタデータのNotion DB確実保存（JSONバリデーションエラー回避）。content-pipeline Step5専用。notion-fetchは最大1回。Triggers: Notionに保存（ブログ/SNS）。NOT: 一般Notionクエリ→MCP直接"
 model: sonnet
 color: gray
 ---

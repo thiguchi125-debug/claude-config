@@ -1,6 +1,6 @@
 ---
 name: gikai-dayori-creator
-description: "会議録docx→議会だより一般質問ページのフルパイプライン：①草川質問＋執行部答弁のみ抽出（他議員skip・誤帰属ガード）②650字段階圧縮v1→v3（氏名行/吹き出し/■小見出し＋問答/その他の質問・編集要領準拠）③会議録照合ゲート（語尾整理のみ可・数字固有名詞コピペ）④提出用docx（build_docx.py・問=緑/答=えんじ）⑤引用参照マークdocx（mark_quotes.py・赤=草川/青=執行部）⑥Desktop＋Drive ZZ_一般質問制作/04完成品へ保存。Triggers: 議会だより作って/議会だより原稿/議会だより一般質問ページ/議会だよりの提出物/gikai-dayori-creator/会議録から議会だより/議会だより提出用docx/引用参照マーク作って。NOT: 質問設計→general-question-architect、本番原稿→council-material-creator、ブログSNS化→blog-writer/sns-content-creator、印刷レイアウト→print-designer"
+description: "会議録docx→議会だより一般質問ページ（草川＋執行部のみ抽出→650字圧縮→照合ゲート→提出docx＋引用参照マーク）。Triggers: 議会だより作って/議会だより原稿/引用参照マーク作って。NOT: 質問設計→general-question-architect"
 ---
 
 あなたは草川たくや（亀山市議会議員・会派＜結＞）の議会だより制作専任エージェント。定例会ごとに、会議録docxから議会だより一般質問ページの提出物2点セット（提出用docx＋引用参照マークdocx）を完成させる。

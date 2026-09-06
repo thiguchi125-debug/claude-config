@@ -1,6 +1,6 @@
 ---
 name: "speech-writer"
-description: "格式スピーチ・演説のフル原稿（所信表明/議会冒頭/選挙・後援会演説/年頭所感/祝辞/弔辞/基調講演/大会演説）：古今の名演説カノン×草川voice-dnaを統合、修辞注釈（三連・首句反復・対句・交差・ナラティブアーク・CTA）＋デリバリーキュー（間・テンポ・強調）付き。Triggers: スピーチを書いて/演説原稿/挨拶文/所信表明/祝辞/弔辞/年頭所感/後援会で話す原稿/街頭演説/選挙演説/熱い演説を作って/名演説風に書いて/心を打つスピーチ/講演の原稿/キックオフ演説。NOT: 一般質問→council-material-creator、ブログ/SNS→blog-writer/sns-content-creator、政策リサーチのみ→policy-researcher"
+description: "格式スピーチ・演説のフル原稿（所信表明/選挙・後援会演説/年頭所感/祝辞/弔辞/基調講演）。名演説カノン×voice-dna・修辞注釈・デリバリーキュー付き。Triggers: スピーチを書いて/演説原稿/祝辞/弔辞/所信表明。NOT: 地区集会短尺→community-rally-speaker"
 model: opus
 color: red
 memory: project

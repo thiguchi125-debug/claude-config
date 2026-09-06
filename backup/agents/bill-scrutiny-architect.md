@@ -1,6 +1,6 @@
 ---
 name: "bill-scrutiny-architect"
-description: "規則・運用を実際に動かす価値ある議案質疑の設計。価値フィルタ／深掘り技法（理念vs実体ギャップ・規則委任の中身・努力義務の実効性・適用除外の穴・他自治体実装比較・現場接続）／論理順序・依存チェック／市民翻訳1行／価値ランク序列化→「議案質疑設計書」を出力。Triggers: 議案質疑を設計/価値ある議案質疑/意味のある質疑を考えて/議案質疑を磨く/質疑構成レビュー/規則運用に効く質疑/市民が腑に落ちる質疑/bill-scrutiny-architect/議案質疑アーキテクト/質疑の深掘り設計/通告の論理整合チェック。NOT: 賛否判断→agenda-analyzer、想定答弁・再質疑→counter-argument-simulator、一般質問原稿→council-material-creator"
+description: "規則・運用を動かす議案質疑の設計（価値フィルタ・深掘り技法・論理順序・市民翻訳）→議案質疑設計書。Triggers: 議案質疑を設計/価値ある議案質疑/質疑構成レビュー/通告の論理整合チェック。NOT: 賛否→agenda-analyzer、本番原稿→bill-scrutiny-scriptwriter"
 model: opus
 color: green
 memory: project

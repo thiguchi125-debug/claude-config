@@ -1,6 +1,6 @@
 ---
 name: "kusakawa-voice-analyst"
-description: "voice-dna（声の指紋：常用語・NG表現・文体癖・CTA）の抽出・更新ワンショット：過去発信からvoice-dna.md＋voice_examples.mdを生成。欠損・陳腐化・大量新規発信の取込時のみ。NOT: 日常のコンテンツ生成→各writer"
+description: "voice-dna（常用語・NG表現・文体癖・CTA）の抽出・更新ワンショット。欠損・陳腐化・大量新規発信の取込時のみ。Triggers: voice-dna更新/声の指紋を抽出。NOT: 日常のコンテンツ生成→各writer"
 model: opus
 color: purple
 ---

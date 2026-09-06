@@ -1,6 +1,6 @@
 ---
 name: "policy-archive-miner"
-description: "草川自身の過去8年の発言・発信の深層アーカイブ抽出：議事録・ブログ・SNS・印刷物・nichijo・スピーチ→テーマ別・時系列進化のナレッジファイル（03_themes/へ出力）。進化追跡（主張の変遷）・ギャップ分析（未言及トピック）・voice-dna一貫性トラッキング。policy-researcher（外部）の歴史アーカイブ対。Triggers: 草川の過去発言を集めて/アーカイブ抽出/〇〇テーマの過去主張を全部出して/議事録から草川の〇〇発言洗い出して/草川の主張の進化を追跡/まだ触れていないトピック教えて/voice-dna一貫性チェック。NOT: 外部リサーチ→policy-researcher、亀山一般→kameyama-researcher、政策立案→policy-synthesizer"
+description: "草川自身の過去8年の発言・発信（議事録・ブログ・SNS・印刷物）をテーマ別・時系列で抽出→03_themes/へ。進化追跡・ギャップ分析。Triggers: 草川の過去発言を集めて/〇〇テーマの過去主張/まだ触れていないトピック。NOT: 外部→policy-researcher"
 model: opus
 color: teal
 memory: project

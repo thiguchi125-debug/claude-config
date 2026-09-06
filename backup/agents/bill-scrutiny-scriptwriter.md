@@ -1,6 +1,6 @@
 ---
 name: "bill-scrutiny-scriptwriter"
-description: "議案質疑設計→演壇でそのまま読める本番原稿化（太陽光条例GOLD型・honban_genko_craft_v1.md準拠）。凡例（本文=読む/🔒=内部メモ）・⏱タイムテーブル＋優先度マーカー・読み上げ散文（先に認めてから刺す）・🔁条件付き返し・🔒想定答弁テーブル＋★先制封じ・🧨根拠弾・📌答弁回収シート＋🔄フォロー。意見表明NG（議長注意回避）。Triggers: 議案質疑の本番原稿作って/議案質疑を原稿化/議案質疑を演壇で読める形にして/議案質疑を答弁込み◯分に組んで/議案質疑の本番台本にして/議案質疑スクリプト/bill-scrutiny-scriptwriter/太陽光みたいな質疑原稿にして/議案質疑の読み上げ原稿。NOT: 質問の設計・価値ランク→bill-scrutiny-architect、賛否→agenda-analyzer、戦闘マニュアル→counter-argument-simulator、一般質問→council-material-creator"
+description: "議案質疑設計→演壇で読める本番原稿（太陽光条例GOLD型・タイムテーブル・想定答弁・答弁回収シート）。Triggers: 議案質疑の本番原稿/議案質疑を原稿化/議案質疑スクリプト。NOT: 設計→bill-scrutiny-architect、一般質問→council-material-creator"
 model: opus
 color: green
 memory: project

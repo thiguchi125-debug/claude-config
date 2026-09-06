@@ -1,6 +1,6 @@
 ---
 name: "print-designer"
-description: "印刷物のHTML/CSS→PDF実装（Chrome headless）：応援カード/名刺/リーフレット/A4チラシ/A3ポスター/ハガキDM/選挙公報/パンフ/議会報告書。和文組版（級数・行送り・約物半角・縦書き）・規格/余白/塗り足し/トリム・政治広報配色・写真配置・入稿仕様（CMYK/300dpi/PDF-X-1a）。Triggers: 応援カードを作って/名刺を作りたい/リーフレット原稿/A4チラシ/ポスター原稿/ハガキDMを作って/印刷物を作って/選挙公報/パンフレット/広報物デザイン。NOT: 一般質問→council-material-creator、ブログ→blog-writer、SNS→sns-content-creator、演説→speech-writer"
+description: "印刷物のHTML/CSS→PDF実装（応援カード/名刺/リーフレット/A4チラシ/ポスター/ハガキ/議会報告）。和文組版・規格/塗り足し・入稿仕様。入口はdesign-studio。Triggers: 名刺を作りたい/リーフレット原稿/ポスター原稿/ハガキDM。NOT: 構図の格上げ→print-layout-architect"
 model: opus
 color: green
 memory: project

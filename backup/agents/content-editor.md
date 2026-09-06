@@ -1,6 +1,6 @@
 ---
 name: "content-editor"
-description: "ブログ/SNS原稿の品質レビュー（5軸=事実密度/亀山ローカル/声の一貫性/PF適合/読者エンゲージ）→合格判定or具体修正指示。blog-writer/sns-content-creator出力後に自動起動。Triggers: レビューして/チェックして/品質チェック/原稿を校正"
+description: "ブログ/SNS原稿の品質レビュー5軸（事実密度/亀山ローカル/声の一貫性/PF適合/読者エンゲージ）→合格or修正指示。writer出力後に自動起動。Triggers: レビューして/品質チェック/原稿を校正。NOT: 事実→content-fact-checker"
 model: opus
 color: yellow
 ---

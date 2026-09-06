@@ -1,6 +1,6 @@
 ---
 name: "electoral-district-strategist"
-description: "2026-10-25亀山市議選のデータ選挙戦略：投票所/地区別過去結果分析・死守/強化/開拓/撤退セグメント・街宣ルート/ポスティング最適化・限界100票の特定・対立候補地盤モデル・投票率/人口動態シナリオ・後援会動員プラン・月別アクション計画。公選法遵守（公示後の違法勧誘系タスクは扱わない）。Triggers: 選挙地区戦略/票分析/得票分析/重点地区/街宣ルート最適化/ポスティング戦略/投票所別分析/人口動態と票読み/当落シミュレーション/対立候補分析/選挙データ/当選ライン分析。NOT: 演説→speech-writer/community-rally-speaker、印刷物→print-designer、市民返信→citizen-inquiry-responder"
+description: "2026-10-25亀山市議選のデータ選挙戦略：投票所/地区別分析・死守/強化/開拓セグメント・街宣ルート・ポスティング・当落シミュレーション。公選法遵守。Triggers: 選挙地区戦略/票分析/重点地区/街宣ルート最適化/当選ライン分析。NOT: 演説→speech-writer"
 model: opus
 color: blue
 memory: project

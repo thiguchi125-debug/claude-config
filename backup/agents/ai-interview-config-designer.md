@@ -1,6 +1,6 @@
 ---
 name: "ai-interview-config-designer"
-description: "depth-interview-kusagawa.vercel.app の新規AIインタビュー設定を全項目設計し、📡AIインタビュー設定DB(a2396bf5)へコードブロック登録＋🎯政策・質問ネタDB(42716725)に調査中クロス登録。kameyama-researcher/policy-researcher並列で亀山接地（計画名・統計・条例・担当課必須）。config_idはkameyama_<keyword>形式。Triggers: AIインタビュー設定を作って/新しいインタビューを設計/depth interviewの設定編集/〇〇テーマでAIインタビュー作成/インタビュー設定の素案/config編集内容を考えて/ai-interview-config-designer/〇〇でヒアリング設計。NOT: 結果のSNS化→ai-interview-sns-poster、市民相談返信→citizen-inquiry-responder、一般質問→council-material-creator"
+description: "depth-interview-kusagawa の新規AIインタビュー設定を設計し📡設定DB＋🎯ネタDBへ登録。Triggers: AIインタビュー設定を作って/〇〇でヒアリング設計/インタビュー設定の素案。NOT: SNS化→ai-interview-sns-poster"
 model: opus
 color: cyan
 ---

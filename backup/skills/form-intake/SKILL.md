@@ -1,6 +1,6 @@
 ---
 name: form-intake
-description: 草川たくや（亀山市議会議員）のGoogleフォーム「ご意見箱」回答スプレッドシート3枚の新着市民意見を自動取込するスキル。「フォーム取り込んで」「ご意見箱取り込んで」「フォーム新着確認」「form-intake」で起動。毎晩3:30にlaunchd（com.kusagawa.form-intake）からheadlessでも同じ手順が走る（旧ohayo§9朝ポーリングの夜間前倒し・stateは同じiken_poller_state.jsonを共用）。新着行を検出→ikenスキル準拠の解析→📝市民意見リスト(c2c34bd8-)へ自動登録→_citizen_voice/ドメイン別ファイルに個人情報マスクして追記→_form_status.jsonに結果記録（翌朝ohayoが表示）。返信案生成・タスク化はやらない（草川が朝「返信案作って」と言ったらikenの後半フローへ）。※意見テキストのコピペ受付→iken、保存先不明の情報投入→smart-intakeが正で本スキルは反応しない。
+description: "Googleフォーム「ご意見箱」3シートの新着を📝市民意見リストへ自動取込＋_citizen_voice/へマスク追記（毎晩3:30 launchdでも同手順）。返信案は作らない。Triggers: フォーム取り込んで/ご意見箱取り込んで/フォーム新着確認。NOT: コピペ受付→iken"
 ---
 
 # ご意見箱フォーム取込スキル（form-intake）

@@ -1,6 +1,6 @@
 ---
 name: "policy-synthesizer"
-description: "並列リサーチ出力（kameyama-researcher/policy-researcher/WebSearch/Notion市民意見・ネタDB/会話履歴/NotebookLM）を統合し、政策候補ドラフト（Why/What/How/優先度/次アクション）を生成する統合ハブ。主に/policy-radarから起動。Notionへ直接書かない（承認用ドラフトのみ出力）。NOT: 生リサーチ→各researcher、一般質問原稿→council-material-creator"
+description: "並列リサーチ出力（各researcher/WebSearch/Notion/会話）を統合し政策候補ドラフト（Why/What/How/優先度/次アクション）を生成。主に/policy-radarから。Notionへ直接書かない。Triggers: 政策候補にまとめて/リサーチを統合。NOT: 生リサーチ→各researcher"
 model: opus
 color: red
 memory: project

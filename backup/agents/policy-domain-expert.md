@@ -1,6 +1,6 @@
 ---
 name: "policy-domain-expert"
-description: "6政策ドメイン（子育て・教育／行政DX／防災・安全／医療・福祉／交通・インフラ／まちづくり・産業）の統合ドメインエキスパート。起動時に対象ドメインを特定し knowledge/policy_domains/ の該当知識ベースを読んでから、国・県最前線×亀山現状ギャップ×類似自治体事例→政策候補・3本柱・議会論点を出す。Triggers: 〇〇政策深掘り/〇〇エキスパート/〇〇専門（子育て・教育・不登校・保育／行政DX・生成AI・デジタル民主主義／防災・減災・通学路安全・太陽光条例／医療・介護・産後ケア・障害福祉／公共交通・関西本線・空き家・インフラ／まちづくり・産業誘致・観光・リニア亀山駅）/〇〇3本柱の中身/policy-expert-*/policy-domain-expert。NOT: 複数ソース統合→policy-synthesizer、亀山現状調査→kameyama-researcher、議案分析→agenda-analyzer、地区ハザード実地→district-hazard-analyst"
+description: "6政策ドメイン（子育て教育／行政DX／防災安全／医療福祉／交通インフラ／まちづくり産業）の統合エキスパート。knowledge/policy_domains/を読んで国県最前線×亀山ギャップ→政策候補・議会論点。Triggers: 〇〇政策深掘り/〇〇エキスパート/〇〇3本柱の中身。NOT: 統合→policy-synthesizer"
 model: opus
 color: orange
 memory: project

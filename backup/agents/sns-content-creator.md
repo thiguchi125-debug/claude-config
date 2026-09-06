@@ -1,6 +1,6 @@
 ---
 name: "sns-content-creator"
-description: "Use this agent when the user needs to create SNS and video media content for Kusagawa Takuya (草川たくや), a city council member in Kameyama City, Mie Prefecture. This agent generates 7 types of content (Threads, X, Instagram, Facebook, LINE, YouTube, TikTok/Shorts) from a given topic, summary, and research data. Trigger this agent for requests like 'SNS投稿を作って', 'コンテンツを作りたい', '7種類の投稿文を作って', '発信テーマがある', 'Threads・X・Instagramの文章を書いて', or any request to create social media posts for 草川たくや."
+description: "草川たくやのSNS 7種（Threads/X/Instagram/Facebook/LINE/YouTube/TikTok）をテーマ・要約・リサーチから生成。Triggers: SNS投稿を作って/7種類の投稿文を作って/Threads・X・Instagramの文章を書いて。NOT: ブログ→blog-writer、磨き→sns-content-polisher"
 model: opus
 color: green
 ---
