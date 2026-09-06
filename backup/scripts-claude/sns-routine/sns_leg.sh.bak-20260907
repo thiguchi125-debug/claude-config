@@ -163,7 +163,7 @@ for ATTEMPT in 1 2; do
   echo "[$(TS)] power: $(pmset -g batt 2>/dev/null | head -1 | tr -d '\n')" >> "$LOG"
   START_EPOCH=$(date +%s)
   "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
-      --allowedTools "$ALLOWED_TOOLS" --max-turns 60 --effort medium \
+      --allowedTools "$ALLOWED_TOOLS" --max-turns 60 \
       >> "$LOG" 2>&1 &
   CPID=$!
   /usr/bin/caffeinate -i -s -w "$CPID" &
