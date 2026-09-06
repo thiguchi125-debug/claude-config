@@ -1,0 +1,27 @@
+---
+name: project-claude-usage-audit-2026-09-06
+description: 2026-09-06 Claude Code活用棚卸し。実測（14日5.1G・改修3日で41%・ohayo4回）→ 1行通知・週1改修枠・休眠スキル凍結・skill_router を導入。残＝news_briefing.shの通知行（分類器deny）
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: f1d30a5a-6234-41b6-83cf-d8368330529f
+  modified: 2026-09-06T10:54:46.013Z
+---
+
+## 実測（8/23〜9/6）
+199セッション（自動約90・手動約110）／5.1G／サブ44%／起動固定費中央値78.6K／kugiri 38回／ohayo 4回。
+改修3日（9/2〜9/4）で2.1G＝41%。夕便は週5日稼働（9/1スリープ見送り・9/2 API失敗）。
+
+## 診断
+①提案の出口が無い（ohayo開かれず・Discord納品は8/26廃止）②改修が本業を食う③自動ジョブがMac電源に依存④草川手番待ちで止まる自動化⑤休眠スキルが固定費⑥担当スキル/agentが自然な言い回しで起動されない（本体が直接答える）。
+
+## 2026-09-06 に入れたもの
+- `discord_api.py notify`（200字・#納品・INBOX_ONLYの唯一の例外）＋ `sns_leg.sh` 夕便完了の1行通知。**`news_briefing.sh` 側は分類器denyで未適用**（同じ3行を end (ok) の直後に足すだけ）
+- `content_safety_gate.py` EXEMPT_PAGES に📰ダイジェスト／dedupの2ページ（草川承認）
+- CLAUDE.md トークン節約節に週1改修枠（[[feedback_maintenance_weekly_window]]）
+- 休眠スキル4本を `~/.claude/skills_dormant/` へ（[[project_dormant_skills]]）
+- `hooks/skill_router.py`（UserPromptSubmit・言い回し→担当の案内のみ・強制なし）。settings.json に登録
+- 9/4夕便のNotion未保存1件を📣DBへ保存（キュー消込は次項）
+
+## 残（次の日曜改修枠）
+news_briefing.sh 通知行／`_notion_queue.jsonl` の9/4行を `_notion_queue_done.jsonl` へ移す／エージェント48本の同じ棚卸し／ohayoに「昨夜の夕便を投稿した？」1問／10/18告示のゲート自動厳格化／9月議会答弁のtoben-tracker予約。関連: [[project_sns_routine_v2]] [[project_hasshin_flow_phase1_2026-09-04]]

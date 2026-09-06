@@ -5,6 +5,8 @@
 
 ## 🔄 進行中プロジェクト
 
+- [Claude Code活用棚卸し2026-09-06](project_claude_usage_audit_2026-09-06.md) — 1行通知(夕便済/ニュース便は承認待ち)・週1改修枠・休眠スキル4本凍結・skill_router導入
+- [休眠スキル退避](project_dormant_skills.md) — slide-deck-prep/aisatsu-prep/daily-content-generator/drive-intake。「〇〇戻して」でmv
 - [9月議会 一般質問2026-09](project_ippan_shitsumon_2026-09.md) — 本番9/10・11。v6/v7凍結→議場カード6枚＋裏取り1枚。9/7裏取り・9/8音読実測・9/9前夜のみ
 - [Obsidian導入・vault運用](project_obsidian_vault_workflow.md) — 2026-09-06。議会文書の正本はvault・注記は`#注記`・開いてるファイルは上書きせず新版
 - [Todoist総整理2026-09-06](project_task_audit_2026-09-06.md) — 2R完了:子PJ1＋セクション12・台帳KY-070〜074相談者未記録。残＝9/9の11件振り直し・図解は必要な箱だけ
@@ -12,7 +14,7 @@
 - [トークン燃費改善2026-09-05](project_token_efficiency_overhaul_2026-09-05.md) — [1m]廃止・fact-checker予算＋台帳・自動ジョブmax-turns。9/19に前後比較
 - [発信フロー構造改善](project_hasshin_flow_phase1_2026-09-04.md) — A・B・C・E完了(9/6実運用でgate_runs=3達成・フック4点修理)。残＝H③単一入口・④司令塔
 - [小中学校体育館エアコン](project_taiikukan_aircon_action.md) — 9月議会で柱1本→選挙後に署名。整備完了年度に誤解あり・要確認
-- [ご意見箱フォーム夜間取込](project_form_intake_nightly.md) — **停止中**。草川手番＝`/mcp`再認証
+- [ご意見箱フォーム夜間取込](project_form_intake_nightly.md) — 稼働中（9/6 03:32 ok・毎晩3:30）。8月の停止は解消済み
 - [Drive直下を投函口にした自動振り分けv5](project_drive_root_intake_v5.md) — 滞留主因はファイル名のみ判定。スキャンPDFはOCR必須・議会語はSTRONG/WEAK分離
 - [ファイル管理監査](project_file_audit_2026-07-22.md) — 残＝v4承認・Time Machine・trash_pending承認
 - [市政報告レポート川合町版](project_shisei_report_kawaicho_complete_form.md) — チラシ完成形の勝ちパターン
@@ -22,8 +24,8 @@
 - [Discord夜間intake停止](project_discord_channel_split.md) — 2026-09-06停止・Todoist Inbox一本化。Botは温存。復活は通知専用のみ
 - [SNS発信ルーティン](project_sns_routine_v2.md) — 2026-08-26簡素化。夕19:30の1本のみ・差し替え禁止。Phase4は着手しない
 - [発信候補パック夜間ジョブがゲートでdeny](project_hakushin_pack_gate_deny.md) — 未修理
-- [newsダイジェスト更新がゲートでdeny](project_news_briefing_digest_gate_deny.md) — 2026-09-03に分類器側は解消（internal判定）。残＝実運用での再確認
-- [夜間ジョブにAgent/Taskが無く安全ゲートを実起動できない](project_nightly_jobs_missing_agent_tool.md) — キュー滞留の真因・**未修理**
+- [newsダイジェスト更新がゲートでdeny](project_news_briefing_digest_gate_deny.md) — 2026-09-06 EXEMPT_PAGESに2ページ追加（草川承認）。9/7朝に--pass回避が消えるか確認
+- [夜間ジョブにAgent/Taskが無く安全ゲートを実起動できない](project_nightly_jobs_missing_agent_tool.md) — 修理済(sns_leg.sh:74にAgent/Task)。9/3〜9/5夕便はゲート実起動で完走
 - [AIくさかわ](project_ai_kusakawa.md) — 実装済。**草川手番待ち**＝ElevenLabs登録・キャラ生成
 - [gyakusanスキル](project_gyakusan_skill.md) — 初回実運用待ち
 - [答弁トラッカー＋実績コンパイラー](project_toben_tracker.md) — SNS実査は毎回伺い必須
@@ -65,6 +67,7 @@
 
 ## 📌 常時効く横断ルール（タスク別は GUARDRAILS.md）
 
+- [仕組みの改修は日曜1セッションに閉じる](feedback_maintenance_weekly_window.md) — 平日は手動で凌ぎ「@日曜改修」へ積む。例外は「今直して」
 - [団体名義の掲載同意は個人ブログへ持ち越さない](feedback_consent_scope_org_to_personal_blog.md) — 器が変われば同意を取り直す
 - [ご意見箱の声を引くとき属性を付けない](feedback_goikenbako_quote_no_attributes.md) — 年代・地域は書かない（利用目的文との整合）
 - [他地域災害の救助フェーズ中は亀山の防災論へ接続しない](feedback_disaster_rescue_phase_no_local_pivot.md) — 地元の話は別記事に分ける

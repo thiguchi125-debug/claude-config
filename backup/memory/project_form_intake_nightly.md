@@ -1,6 +1,6 @@
 ---
 name: project_form_intake_nightly
-description: ご意見箱Googleフォーム3シートの夜間自動取込システム（form-intakeスキル＋launchd 3:30）。旧ohayo§9朝ポーリングの夜間前倒し。2026-07-25構築。
+description: 【2026-09-06追記＝稼働中・毎晩3:30・9/6 03:32 ok。8/15-16のOAuth停止は解消済み】 ご意見箱Googleフォーム3シートの夜間自動取込システム（form-intakeスキル＋launchd 3:30）。旧ohayo§9朝ポーリングの夜間前倒し。2026-07-25構築。
 metadata: 
   node_type: memory
   type: project
