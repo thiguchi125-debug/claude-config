@@ -16,12 +16,12 @@ metadata:
 ①提案の出口が無い（ohayo開かれず・Discord納品は8/26廃止）②改修が本業を食う③自動ジョブがMac電源に依存④草川手番待ちで止まる自動化⑤休眠スキルが固定費⑥担当スキル/agentが自然な言い回しで起動されない（本体が直接答える）。
 
 ## 2026-09-06 に入れたもの
-- `discord_api.py notify`（200字・#納品・INBOX_ONLYの唯一の例外）＋ `sns_leg.sh` 夕便完了の1行通知。**`news_briefing.sh` 側は分類器denyで未適用**（同じ3行を end (ok) の直後に足すだけ）
+- `discord_api.py notify`（200字・#納品・INBOX_ONLYの唯一の例外）＋ `sns_leg.sh` 夕便完了の1行通知。`news_briefing.sh` 側も2026-09-07 00:30に適用済み（初回は9/7 6:05便）
 - `content_safety_gate.py` EXEMPT_PAGES に📰ダイジェスト／dedupの2ページ（草川承認）
 - CLAUDE.md トークン節約節に週1改修枠（[[feedback_maintenance_weekly_window]]）
 - 休眠スキル4本を `~/.claude/skills_dormant/` へ（[[project_dormant_skills]]）
 - `hooks/skill_router.py`（UserPromptSubmit・言い回し→担当の案内のみ・強制なし）。settings.json に登録
-- 9/4夕便のNotion未保存1件を📣DBへ保存（キュー消込は次項）
+- 9/4夕便のNotion未保存1件を📣DBへ保存・`_notion_queue.jsonl` 消込済み（done側へ移動）
 
 ## 残（次の日曜改修枠）
-news_briefing.sh 通知行／`_notion_queue.jsonl` の9/4行を `_notion_queue_done.jsonl` へ移す／エージェント48本の同じ棚卸し／ohayoに「昨夜の夕便を投稿した？」1問／10/18告示のゲート自動厳格化／9月議会答弁のtoben-tracker予約。関連: [[project_sns_routine_v2]] [[project_hasshin_flow_phase1_2026-09-04]]
+エージェント48本の同じ棚卸し／ohayoに「昨夜の夕便を投稿した？」1問／10/18告示のゲート自動厳格化／9月議会答弁のtoben-tracker予約。関連: [[project_sns_routine_v2]] [[project_hasshin_flow_phase1_2026-09-04]]

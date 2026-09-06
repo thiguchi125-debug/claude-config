@@ -62,6 +62,9 @@ done
 if [ "$RUN_OK" = "1" ]; then
   python3 "$DIR/update_status.py" news_briefing ok "ニュース収集 6:05 完了"
   echo "[$(TS)] ---- news_briefing end (ok) ----" >> "$LOG"
+  # 1行通知（2026-09-06）: 件数だけ #納品 へ
+  SUMMARY=$(grep -oE "新規登録[0-9]+件|続報[0-9]+件" "$LOG" | tail -2 | tr '\n' '・' | sed 's/・$//')
+  python3 "$DIR/discord_api.py" notify "ニュース便 $(date +%-m/%-d) 完了：${SUMMARY:-件数不明}（📰ニュースDB／おはようで表示）" >> "$LOG" 2>&1 || true
 else
   python3 "$DIR/update_status.py" news_briefing error "ニュース収集 6:05 失敗（2回試行・ログ確認・朝便はアーカイブ由来で継続）"
   echo "[$(TS)] ---- news_briefing end (error) ----" >> "$LOG"
