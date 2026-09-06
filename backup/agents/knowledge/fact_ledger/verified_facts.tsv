@@ -32,3 +32,11 @@
 2026-09-06	MINOR_DIFF	名阪国道の当該URLは「交通規制」情報	正式名は「名阪国道 通行障害・工事規制情報（週間工程情報）」（国交省中部地方整備局 北勢国道事務所）。工事規制は毎週金曜更新で、大雨時の実況通行止めの一次窓口ではない	https://www.cbr.mlit.go.jp/hokusei/traffic/meihan_kisei/	亀山市/防災リンク
 2026-09-06	INCORRECT	本日6日10時41分、三重県を対象に		https://www.data.jma.go.jp/developer/xml/data/20260906014524_0_VPFJ50_240000.xml	
 2026-09-06	INCORRECT	5月29日から、警報の名前にレベルの数字が入るようになりました			
+2026-09-06	VERIFIED	気象庁（津地方気象台）は本日6日10時45分、三重県について線状降水帯の半日前予測を発表		https://www.data.jma.go.jp/developer/xml/data/20260906014524_0_VPFJ50_240000.xml	
+2026-09-06	VERIFIED	今夜のはじめ頃から明日7日朝にかけて		https://www.data.jma.go.jp/developer/xml/data/20260906014524_0_VPFJ50_240000.xml	
+2026-09-06	VERIFIED	5月29日から、気象庁の大雨・土砂災害・河川の氾濫・高潮の警報は、名前にレベルの数字が入るようになりました		https://www.jma.go.jp/jma/kishou/know/bosai/keiho-update2026/index.html	
+2026-09-06	VERIFIED	レベル3＝大雨警報／氾濫警報／土砂災害警報＝避難に時間を要する人は早めに避難、避難の準備等／レベル4＝各危険警報＝危険な場所から全員避難／レベル5＝各特別警報＝命の危険 直ちに安全確保		https://www.jma.go.jp/jma/kishou/know/bosai/warning.html	
+2026-09-06	VERIFIED	亀山市は9月4日、『レベル5大雨特別警報発表時の行動指針について』の啓発チラシを市公式サイトに掲載		https://www.city.kameyama.mie.jp/docs/2026090100046	
+2026-09-06	VERIFIED	停電情報＝中部電力パワーグリッド 鈴鹿営業所（亀山市を含む）		https://teiden.powergrid.chuden.co.jp/p/office/342.html	
+2026-09-06	VERIFIED	名阪国道 通行障害・工事規制情報（北勢国道事務所）		https://www.cbr.mlit.go.jp/hokusei/traffic/meihan_kisei/	
+2026-09-06	VERIFIED	亀山市には防災行政無線があり、市の情報伝達手段のひとつである		https://www.city.kameyama.mie.jp/docs/2024060700012/	

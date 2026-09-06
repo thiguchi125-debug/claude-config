@@ -21,7 +21,7 @@ HEAD = re.compile(r"^###\s*C?\d*[:：]?\s*(✅|❌|❓)\s*「([^」]{3,200})」"
 URL = re.compile(r"https?://[^\s)>」]+")
 LEDGER_HINT = re.compile(r"ledger\s*[:：=]\s*[`'\"]?([^\s`'\"）)]+_ledger\.json)")
 OUTPUTS_DIR = re.compile(r"((?:~|/[^\s`'\"）)]*?))/outputs/([^/\s`'\"）)]+)/")
-VERDICT = re.compile(r"\*\*判定(?:\*\*)?\s*[:：]\s*[^\n]*?(APPROVE|ASK_USER|REVISE|REJECT|REROUTE)")
+VERDICT = re.compile(r"(?:\*\*)?判定(?:\*\*)?\s*[:：]\s*[^\n]*?(APPROVE|ASK_USER|REVISE|REJECT|REROUTE)")
 CTYPE = re.compile(r"content_type\s*[:：=]\s*[`'\"]?([A-Za-z0-9_-]+)")
 DRAFT_PATH = re.compile(r"((?:~|/Users/[^/\s]+)/[^\s`'\"）)]+\.(?:md|txt|html))")
 
