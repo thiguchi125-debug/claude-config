@@ -101,7 +101,7 @@ def parse_claims(text):
                 url = ms.group(1).strip()
         correct = ""
         if mark == "❌":
-            mc = re.search(r"(?:正|正しく|正確に)[:：は]\s*([^\n]{1,80})", body)
+            mc = re.search(r"(?:\*\*)?(?:修正案|正|正しく|正確に)(?:\*\*)?[:：は]?\s*[「`]?([^\n」`]{1,80})", body)
             if mc:
                 correct = mc.group(1).strip()
         verdict = {"✅": "VERIFIED", "❌": "INCORRECT", "❓": "UNVERIFIED"}[mark]
@@ -168,6 +168,8 @@ def update_theme_ledger(path, agent, claims, verdict, prompt, theme, tpath):
             "kind": mc.group(1) if mc else "",
             "path": md.group(1) if md else "",
             "by": agent, "at": now})
+    # 同一サブエージェントの途中停止で複数回鳴るため、同じtranscriptの行は最新1件に畳む（2026-09-06実測）
+    d["gate_runs"] = [r for r in d["gate_runs"] if r.get("transcript") != os.path.basename(tpath)]
     d["gate_runs"].append({"agent": agent, "verdict": verdict or "",
                            "kind": mc.group(1) if mc else "", "at": now,
                            "transcript": os.path.basename(tpath)})
