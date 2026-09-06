@@ -5,9 +5,9 @@
 
 ## 🔄 進行中プロジェクト
 
-- [Claude Code活用棚卸し2026-09-06](project_claude_usage_audit_2026-09-06.md) — 1行通知(夕便済/ニュース便は承認待ち)・週1改修枠・休眠スキル4本凍結・skill_router導入
+- [Claude Code活用棚卸し2026-09-06](project_claude_usage_audit_2026-09-06.md) — 9/7終了。残＝案1・2・5・6はTodoist@日曜改修／9/7夕便の#納品1行を確認
 - [休眠スキル退避](project_dormant_skills.md) — slide-deck-prep/aisatsu-prep/daily-content-generator/drive-intake。「〇〇戻して」でmv
-- [9月議会 一般質問2026-09](project_ippan_shitsumon_2026-09.md) — 本番9/10・11。v6/v7凍結→議場カード6枚＋裏取り1枚。9/7裏取り・9/8音読実測・9/9前夜のみ
+- [9月議会 一般質問2026-09](project_ippan_shitsumon_2026-09.md) — 本番9/10・11。議場カードv3＝件名3のみ改版(妊婦DM反映・同意待ち)。件名1・2・4-6の#注記は未反映
 - [Obsidian導入・vault運用](project_obsidian_vault_workflow.md) — 2026-09-06。議会文書の正本はvault・注記は`#注記`・開いてるファイルは上書きせず新版
 - [Todoist総整理2026-09-06](project_task_audit_2026-09-06.md) — 2R完了:子PJ1＋セクション12・台帳KY-070〜074相談者未記録。残＝9/9の11件振り直し・図解は必要な箱だけ
 - [市民要望管理台帳(Googleシート)](project_yobo_sheet_citizen_requests.md) — 稼働中。9/6ステータス案A適用済(69件)。**次＝草川手番＝69件の一気棚卸し→「棚卸し終わった」**
