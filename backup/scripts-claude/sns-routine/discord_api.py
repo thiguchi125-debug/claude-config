@@ -394,6 +394,8 @@ if __name__ == "__main__":
         read(sys.argv[2] if len(sys.argv) > 2 else None)
     elif cmd == "react":
         react(sys.argv[2], sys.argv[3])
+    elif cmd == "notify":
+        notify(" ".join(sys.argv[2:]))
     elif cmd == "post":
         args, kind, reply_to = sys.argv[2:], "log", None
         rest = []

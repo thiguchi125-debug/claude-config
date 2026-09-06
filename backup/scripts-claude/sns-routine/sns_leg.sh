@@ -193,6 +193,12 @@ done
 if [ "$CLAUDE_OK" = "1" ]; then
   python3 "$DIR/update_status.py" "$STATUS_KEY" ok "${LABEL} 実行完了"
   echo "[$(TS)] ---- sns_leg ${LEG_ARG} end (ok) ----" >> "$LOG"
+  # 1行通知（2026-09-06）: 原稿は送らず「出来た事実」だけ #納品 へ
+  if [ "$LEG_ARG" = "evening_push" ]; then
+    THEME=$(grep "^テーマ:" "$LOG" | tail -1 | sed 's/^テーマ: *//' | cut -c1-100)
+    if grep "^Notion:" "$LOG" | tail -1 | grep -q "保存済"; then NSAVE="📣投稿管理DB保存済"; else NSAVE="Notion未保存・キュー退避"; fi
+    python3 "$DIR/discord_api.py" notify "夕便 $(date +%-m/%-d) 完了：${THEME}（${NSAVE}／drafts）" >> "$LOG" 2>&1 || true
+  fi
 else
   python3 "$DIR/update_status.py" "$STATUS_KEY" error "${LABEL} 失敗（2回試行・ログ確認・翌便が繰越処理）"
   echo "[$(TS)] ---- sns_leg ${LEG_ARG} end (error) ----" >> "$LOG"
