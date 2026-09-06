@@ -190,8 +190,8 @@ python3 ~/.claude/scripts/todoist/td.py list 2>/dev/null | grep -n "要期限"
 市役所対応の市民要望はTodoistでなくGoogleスプレッドシート「市民要望管理台帳」で管理している（[[project_yobo_sheet_citizen_requests]]・OPERATIONS.md【B】例外節）。朝は⚠だけ読む：
 
 1. `python3 ~/.claude/scripts/yobo/yobo.py alert` を1回実行（Apps Script経由・数秒）。
-2. 出力をそのまま貼る（先頭行＝件数のステータス別内訳／■回答済・相談者へ未報告 → ■期限超過 → ■滞留14日以上 の順）。**「回答済・相談者へ未報告」は報告漏れ直結なので最上段で目立たせる**。⚠が20件を超えるときは各■の先頭5件＋「…他N件（`yobo.py list --alert`）」に畳む。
-3. 進捗の更新は草川が言った分だけ `yobo.py update KY-xxx --st 照会中 --asked today`／`--reported today`／`yobo.py done KY-xxx`。**勝手にステータスを動かさない**。
+2. 出力をそのまま貼る（先頭行＝件数のステータス別内訳／■相談者に報告 → ■期限超過 → ■滞留14日以上 の順）。**「相談者に報告」（答えは来ている）は報告漏れ直結なので最上段で目立たせる**。⚠が20件を超えるときは各■の先頭5件＋「…他N件（`yobo.py list --alert`）」に畳む。
+3. 進捗の更新は草川が言った分だけ `yobo.py update KY-xxx --st 返事待ち --asked today`／`--reported today`／`yobo.py done KY-xxx`。**勝手にステータスを動かさない**。
 4. 通信エラー・`bad token` のときは「⊘ 台帳に接続できず（config.json／Web App URL確認）」1行で先へ進む（リトライ1回まで）。
 5. 台帳の案件を Todoist に複製しない（二重管理の再発防止）。相談者名は台帳側にだけあるので、チャットには**No＋件名＋相手先**までにとどめる。
 
