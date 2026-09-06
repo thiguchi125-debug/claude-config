@@ -7,7 +7,7 @@
 
 - [9月議会 一般質問2026-09](project_ippan_shitsumon_2026-09.md) — 本番9/10・11。v6/v7凍結→議場カード6枚＋裏取り1枚。9/7裏取り・9/8音読実測・9/9前夜のみ
 - [Obsidian導入・vault運用](project_obsidian_vault_workflow.md) — 2026-09-06。議会文書の正本はvault・注記は`#注記`・開いてるファイルは上書きせず新版
-- [Todoist総整理2026-09-06](project_task_audit_2026-09-06.md) — 超過16→0・期限なし11→4・台帳移管4(KY-070〜073相談者未記録)。9/9に9件集中＝翌朝振り直し
+- [Todoist総整理2026-09-06](project_task_audit_2026-09-06.md) — 2R完了:子PJ1＋セクション12・台帳KY-070〜074相談者未記録。残＝9/9の11件振り直し・図解は必要な箱だけ
 - [市民要望管理台帳(Googleシート)](project_yobo_sheet_citizen_requests.md) — 稼働中。9/6ステータス案A適用済(69件)。**次＝草川手番＝69件の一気棚卸し→「棚卸し終わった」**
 - [トークン燃費改善2026-09-05](project_token_efficiency_overhaul_2026-09-05.md) — [1m]廃止・fact-checker予算＋台帳・自動ジョブmax-turns。9/19に前後比較
 - [発信フロー構造改善](project_hasshin_flow_phase1_2026-09-04.md) — A・B・C・E完了(9/6実運用でgate_runs=3達成・フック4点修理)。残＝H③単一入口・④司令塔

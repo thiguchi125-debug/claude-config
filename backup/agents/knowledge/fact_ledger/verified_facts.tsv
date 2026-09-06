@@ -74,3 +74,5 @@
 2026-09-06	VERIFIED	亀山市風水害ハザードマップの想定浸水深の区分	0.5m未満／0.5〜3m／3〜5m／5〜10m／10m以上の5区分（凡例名「想定される風水害」・床下浸水50cm/1階天井3m/2階天井5m/3階相当10mの注記付き）	https://www.city.kameyama.mie.jp/docs/2021033000025/file_contents/zenniki.pdf	防災
 2026-09-06	VERIFIED	重ねるハザードマップは住所を入れるだけでその場所の危険度を地図に重ねて見られる	住所検索欄あり。原文「住所を入力することで、その地点の災害リスクを調べることができます」（placeholder「例：茨城県つくば市北郷１／国土地理院」）	https://disaportal.gsi.go.jp/maps/	防災
 2026-09-06	VERIFIED	重ねるハザードマップの運営主体表記「国土交通省 ハザードマップポータルサイト」	ページに国土交通省ロゴ(mlit.go.jp)と国土地理院ロゴ(gsi.go.jp)を併載。サイト名＝ハザードマップポータルサイト、その中の一機能が重ねるハザードマップ	https://disaportal.gsi.go.jp/maps/	防災
+2026-09-06	VERIFIED	標識・標示で最高速度が指定されている道路はその速度が最高速度		https://www.city.kameyama.mie.jp/docs/2026090100077/	
+2026-09-06	VERIFIED	令和8年3月の本会議で川合28号線について指摘		`~/.claude/agents/knowledge/kusagawa_archive/01_council/2026-03_R0803_本会議3月10日_k	
