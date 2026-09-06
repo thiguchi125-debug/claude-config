@@ -287,12 +287,23 @@ INBOX_ONLY = True
 POST_ALLOWED = ("inbox",)
 
 
-def post(text, kind="log", reply_to=None):
+def notify(text):
+    """1行通知（200字以内）を #納品 へ。INBOX_ONLY の唯一の例外（2026-09-06 草川承認）。
+    完成原稿・解説・ゲート報告は送らない。送るのは「何が出来た／どこにある」の1行だけ。"""
+    text = " ".join(str(text).split())
+    if not text:
+        raise SystemExit("notify: 本文がありません")
+    if len(text) > 200:
+        raise SystemExit("notify: 1行通知は200字以内（%d字）" % len(text))
+    return post(text, kind="delivery", _notify=True)
+
+
+def post(text, kind="log", reply_to=None, _notify=False):
     """kind= inbox（投げ込みへの受領レシート）のみ。
     reply_to を渡すと元メッセージへの返信として送る（何への返事か迷わせないため）。"""
     if kind not in KINDS:
         raise SystemExit("post: kind は %s のいずれか（指定=%r）" % ("/".join(KINDS), kind))
-    if INBOX_ONLY and kind not in POST_ALLOWED:
+    if INBOX_ONLY and kind not in POST_ALLOWED and not _notify:
         raise SystemExit(
             "post: Discordは投げ込み専用です（--to %s は送れません）。\n"
             "  完成原稿・解説・ゲート報告・稼働ログはDiscordに流さず、\n"
