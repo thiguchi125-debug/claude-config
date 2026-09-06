@@ -31,3 +31,5 @@ metadata:
 - 2026-09-05 夜（再開セッション）: C再検証＝字幕帯 specs.json／check_subtitle_band.py とも y1240-1460 で一致確認。short-video-image-designer 説明文の nanobanana-prompt-designer 参照を削除（残参照0）。退避86件は「まだ置いておく」を草川選択（削除は後日1問で再確認）。
 
 **2026-09-05 夜 追記（E実装）**: Hは並行セッションで4件に分解済（①夜間便修理／②検証台帳E／③単一入口spark拡張／④司令塔＝候補パック再設計含む）。②を案A（派生版は1テーマ1回の派生ゲート）で実装＝フック `fact_ledger_autolog.py` がテーマ内台帳 `_ledger.json`（claims/approved_texts/gate_runs）を自動生成、content-gate-lite に派生モード節、呼び出し側8本に `ledger:` 配線。詳細＝設計書§7「E 実装」。**実運用未**＝次の発信1本で gate_runs≤3 を確認。残＝③④（未設計・要ブレスト）。
+
+**2026-09-06 追記（E実運用・達成）**: 線状降水帯SNS（X元版＋LINE/Threads派生）で gate_runs=3 を確認しE受入達成。フックの本番バグ4点を修理（親transcript誤読／重複記録／判定regex／checkerのURL誤カウント）。詳細＝設計書§7-E追記。残＝approved_textsがREVISE経由で空のまま／H③④は未設計。
