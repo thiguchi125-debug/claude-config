@@ -23,3 +23,12 @@
 2026-09-06	VERIFIED	小中学校体育館の指定避難所数	指定避難所としている小・中学校体育館は12ヶ所（R6.12.11 市答弁・設置率/確保率/断熱室数は全て0%）	kusagawa_archive/01_council/2024-12_R0612_本会議議事録_kusagawa.txt L659,677	体育館空調
 2026-09-06	VERIFIED	JR下庄駅前 R4.12議会の市答弁	笠井政策部長「まずはその実情を十分調査した上で関係部署等とも協議をしながら検討してまいりたい」（ledger id R0412-06・答弁者は市長でなく政策部長）	kusagawa_archive/07_commitments/ledger.json R0412-06	下庄駅前
 2026-09-06	VERIFIED	市道下庄1号線 R8年度予算	2,315万円・社会資本整備総合交付金活用・用地買収など／和賀白川線・川合9号線・下庄1号線の3路線に資源集中	kusagawa_archive/02_publications/reports/gdoc_市政報告下庄.txt（2026-04-09発行）	下庄1号線
+2026-09-06	INCORRECT	気象庁は2026-09-06 10時41分に三重県を対象に線状降水帯半日前予測を発表	三重県気象解説情報（線状降水帯半日前予測）のReportDateTimeは2026-09-06T10:45:00+09:00＝10時45分。10時41分は東海地方気象解説情報（静岡・愛知・三重）の発表時刻	https://www.data.jma.go.jp/developer/xml/data/20260906014524_0_VPFJ50_240000.xml	線状降水帯/防災
+2026-09-06	VERIFIED	三重県の線状降水帯予測期間は6日夜のはじめ頃から7日朝にかけて	原文「三重県　６日夜のはじめ頃から７日朝にかけて」	https://www.data.jma.go.jp/developer/xml/data/20260906014524_0_VPFJ50_240000.xml	線状降水帯/防災
+2026-09-06	VERIFIED	新防災気象情報のレベル3/4/5の情報名ととるべき行動（大雨・氾濫・土砂災害）	L3=氾濫警報/大雨警報/土砂災害警報→避難に時間を要する人は早めに避難、避難の準備等／L4=氾濫危険警報/大雨危険警報/土砂災害危険警報→危険な場所から全員避難／L5=各特別警報→命の危険　直ちに安全確保！	https://www.jma.go.jp/jma/kishou/know/bosai/warning.html	防災気象情報2026
+2026-09-06	VERIFIED	気象庁bosaiの area_code=2421000 は亀山市	class20s 2421000 = 亀山市（かめやまし・parent 240012）	https://www.jma.go.jp/bosai/common/const/area.json	亀山市/防災リンク
+2026-09-06	INCORRECT	停電情報URL teiden.powergrid.chuden.co.jp/p/office/342.html は「中部電力パワーグリッド 亀山」	同ページは鈴鹿営業所。掲載地域は亀山市／鈴鹿市の一部／津市旧安芸郡芸濃町。「亀山営業所」は存在しない	https://teiden.powergrid.chuden.co.jp/p/office/342.html	亀山市/防災リンク
+2026-09-06	VERIFIED	防災みえ.jp selectedArea=suzuka（鈴鹿地域）に亀山市が含まれる	水位表に「亀山市／鈴鹿川／新所」観測所が掲載	https://www.bosaimie.jp/X_MIE_PUB_VF_kk512?selectedArea=suzuka	亀山市/防災リンク
+2026-09-06	MINOR_DIFF	名阪国道の当該URLは「交通規制」情報	正式名は「名阪国道 通行障害・工事規制情報（週間工程情報）」（国交省中部地方整備局 北勢国道事務所）。工事規制は毎週金曜更新で、大雨時の実況通行止めの一次窓口ではない	https://www.cbr.mlit.go.jp/hokusei/traffic/meihan_kisei/	亀山市/防災リンク
+2026-09-06	INCORRECT	本日6日10時41分、三重県を対象に		https://www.data.jma.go.jp/developer/xml/data/20260906014524_0_VPFJ50_240000.xml	
+2026-09-06	INCORRECT	5月29日から、警報の名前にレベルの数字が入るようになりました			

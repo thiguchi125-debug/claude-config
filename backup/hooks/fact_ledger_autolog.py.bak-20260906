@@ -12,8 +12,7 @@ content-risk-reviewer）の最終報告から検証結果を拾い、2つの台�
 
 親（スキル）は派生版のゲート時に _ledger.json のパスを渡すだけでよい。
 """
-import json
-import time, os, re, sys, datetime
+import json, os, re, sys, datetime
 
 LEDGER = os.path.expanduser("~/.claude/agents/knowledge/fact_ledger/verified_facts.tsv")
 LOG = os.path.expanduser("~/.claude/agents/knowledge/fact_ledger/_autolog.log")
@@ -21,7 +20,7 @@ HEAD = re.compile(r"^###\s*C?\d*[:：]?\s*(✅|❌|❓)\s*「([^」]{3,200})」"
 URL = re.compile(r"https?://[^\s)>」]+")
 LEDGER_HINT = re.compile(r"ledger\s*[:：=]\s*[`'\"]?([^\s`'\"）)]+_ledger\.json)")
 OUTPUTS_DIR = re.compile(r"((?:~|/[^\s`'\"）)]*?))/outputs/([^/\s`'\"）)]+)/")
-VERDICT = re.compile(r"\*\*判定(?:\*\*)?\s*[:：]\s*[^\n]*?(APPROVE|ASK_USER|REVISE|REJECT|REROUTE)")
+VERDICT = re.compile(r"\*\*判定\*\*\s*[:：]\s*[^\n]*?(APPROVE|ASK_USER|REVISE|REJECT|REROUTE)")
 CTYPE = re.compile(r"content_type\s*[:：=]\s*[`'\"]?([A-Za-z0-9_-]+)")
 DRAFT_PATH = re.compile(r"((?:~|/Users/[^/\s]+)/[^\s`'\"）)]+\.(?:md|txt|html))")
 
@@ -178,44 +177,14 @@ def update_theme_ledger(path, agent, claims, verdict, prompt, theme, tpath):
     os.replace(tmp, path)
 
 
-def resolve_subagent_transcript(inp):
-    """SubagentStop の transcript_path は親セッションの記録。サブ本体は
-    <親の親dir>/<session_id>/subagents/agent-<agent_id>.jsonl に別置き（2026-09-06実測）。"""
-    for k in ("agent_transcript_path", "subagent_transcript_path"):
-        p = inp.get(k) or ""
-        if p and os.path.exists(p):
-            return p
-    parent = inp.get("transcript_path") or ""
-    sid = inp.get("session_id") or (os.path.basename(parent)[:-6] if parent.endswith(".jsonl") else "")
-    sdir = os.path.join(os.path.dirname(parent), sid, "subagents") if parent and sid else ""
-    aid = inp.get("agent_id") or inp.get("agentId") or ""
-    if sdir and aid:
-        p = os.path.join(sdir, f"agent-{aid}.jsonl")
-        if os.path.exists(p):
-            return p
-    if sdir and os.path.isdir(sdir):
-        cands = [os.path.join(sdir, f) for f in os.listdir(sdir)
-                 if f.startswith("agent-") and f.endswith(".jsonl")]
-        cands = [c for c in cands if time.time() - os.path.getmtime(c) < 300]
-        if cands:
-            return max(cands, key=os.path.getmtime)
-    return parent if parent and os.path.exists(parent) else ""
-
-
 def main():
     try:
         inp = json.load(sys.stdin)
     except ValueError:
         return
-    tpath = resolve_subagent_transcript(inp)
-    if not tpath:
+    tpath = inp.get("transcript_path") or ""
+    if not tpath or not os.path.exists(tpath):
         return
-    if not inp.get("agent_type"):
-        try:
-            with open(tpath[:-6] + ".meta.json", encoding="utf-8") as f:
-                inp["agent_type"] = json.load(f).get("agentType", "")
-        except (OSError, ValueError):
-            pass
     prompt, text = read_transcript(tpath)
     agent = detect_agent(inp, text)
     if agent not in ("content-fact-checker", "content-gate-lite", "content-risk-reviewer"):
@@ -235,8 +204,7 @@ def main():
     try:
         with open(LOG, "a", encoding="utf-8") as f:
             f.write(f"{datetime.datetime.now():%Y-%m-%d %H:%M} {agent} +{n}行 "
-                    f"{'theme=' + lp if lp else 'theme=-'} from {os.path.basename(tpath)} "
-                    f"keys={','.join(sorted(k for k in inp if k != 'agent_type'))}\n")
+                    f"{'theme=' + lp if lp else 'theme=-'} from {os.path.basename(tpath)}\n")
     except OSError:
         pass
 
