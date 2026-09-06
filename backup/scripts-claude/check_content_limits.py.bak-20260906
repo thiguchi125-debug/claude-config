@@ -153,9 +153,6 @@ def check_sns(text, single_pf=None):
     for sec in re.split(r"\n## ", src)[1:]:
         name = sec.split("\n")[0].strip()
         raw  = "\n".join(sec.split("\n")[1:])
-        # 2026-09-06: URLは本文でもタグでもない（気象庁URLの "#pro&disp=" をハッシュタグと数え、
-        # 約400字のURLを本文字数に含めていた）。字数・タグ判定の前に落とす
-        raw  = re.sub(r"https?://\S+", "", raw)
         body = re.sub(r"^\s*\*\*\d/\d\*\*\s*$", "", raw, flags=re.M)  # スレッド番号除去（字数用）
         n = n_chars(body)
         key = sns_key(name)   # 『## 【Threads】論点＝…』のような飾り付き見出しも拾う
