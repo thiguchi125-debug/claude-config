@@ -102,6 +102,7 @@
 - [「レポート」がスライドを指すことがある](feedback_report_vs_slides_wording.md) — 紙は必ず2ページ・ページ数で判別
 - [Notion保存も「発信」＝保存前に安全ゲート](feedback_safety_gates_before_notion_save.md) — 本文は手打ち禁止・draftからコピペ
 - [顔ぼかしは草川本人を除外・二段で潰す](feedback_face_blur_exclude_kusagawa_and_verify.md) — 検出器＋目視
+- [ブログはサムネ要否を必ず尋ねる](feedback_always_ask_thumbnail_for_blog.md) — 2026-09-06草川指示。本文承認と同時に1問
 - [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出しはCSSライムバー/角マーカー/ピル・スライドも含む
 - [原寸で破綻ゼロは合格の半分](feedback_original_size_pass_is_half_a_pass.md) — 確定前にfeed-visual-reviewer。400pxで読めない文字は装飾
 - [サムネは顔を寄せない・断罪コピーにしない](feedback_thumbnail_crop_and_tone.md) — 顔は画面高25〜35%／「◯◯がない」でなく「◯◯を」
