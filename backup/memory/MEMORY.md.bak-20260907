@@ -25,6 +25,7 @@
 - [SNS発信ルーティン](project_sns_routine_v2.md) — 2026-08-26簡素化。夕19:30の1本のみ・差し替え禁止。Phase4は着手しない
 - [発信候補パック夜間ジョブがゲートでdeny](project_hakushin_pack_gate_deny.md) — 未修理
 - [newsダイジェスト更新がゲートでdeny](project_news_briefing_digest_gate_deny.md) — 2026-09-06 EXEMPT_PAGESに2ページ追加（草川承認）。9/7朝に--pass回避が消えるか確認
+- [夜間ジョブにAgent/Taskが無く安全ゲートを実起動できない](project_nightly_jobs_missing_agent_tool.md) — 修理済(sns_leg.sh:74にAgent/Task)。9/3〜9/5夕便はゲート実起動で完走
 - [AIくさかわ](project_ai_kusakawa.md) — 実装済。**草川手番待ち**＝ElevenLabs登録・キャラ生成
 - [gyakusanスキル](project_gyakusan_skill.md) — 初回実運用待ち
 - [答弁トラッカー＋実績コンパイラー](project_toben_tracker.md) — SNS実査は毎回伺い必須
@@ -40,7 +41,10 @@
 - [sparkスキル](project_spark_skill.md)／[photo-postスキル](project_photo_post_skill.md) — 初回FB待ち
 - [AI作業環境マップNotion埋込](project_ai_env_map_notion_embed.md) — 「作業環境マップ更新して」で再デプロイ
 - [Notion全体整理](project_notion_reorg_2026-07-05.md) — **政策×質問DB＝🎯42716725が唯一の書込先**
+- [Notion大改修＋ohayo/news v3](project_notion_ohayo_news_v3_renewal.md) — 完了
+- [議会だより制作エージェント](project_gikai_dayori_creator.md) — 完了
 - [Notionプロジェクト基盤](project_notion_project_platform.md) — Todoist=実行/Notion=蓄積
+- [Todoist移行](project_todoist_task_migration.md) — 完了。Notion✅/🗂️は参照のみ
 - [成果物の実物を見てから作業枠を置く](feedback_check_artifacts_before_scheduling_work.md) — _status.json を信じない
 - [Todoist「今日」ビューは4列](feedback_todoist_today_view_three_columns.md) — **削除前にidと件名を突合**
 - [実行窓ラベル＋バッチ枠](project_task_window_labels.md) — @役所/@現地/@夜電話/@机上
@@ -52,6 +56,7 @@
 - [熊本地震JC支援物資](project_jc_kumamoto_shien_busshi.md) — **地震は2026-07-28発生**（素の知識に無い）
 - [三寺コスモス畑の再生](project_mitsudera_cosmos_saisei.md) — 10/17まつり。代表＝草川
 - [kugiri「終了」モード](project_kugiri_shuryo_mode.md) — 未実装。区切り/再開/終了の3語・_done退避・同一案件は最新1本・30日で自動削除
+- [区切り運用の仕組み化](project_kugiri_session_split.md) — 「区切り」→/clear→「再開」の3語。LAST.md廃止(9/5)・並行区切りは再開時に案件を1問で選ぶ
 - [トークン削減2026-08-20](project_token_reduction_2026-08-20.md) — 真因①印刷物の画像積み上げ(25枚deny hook)②34hセッション×並行×キャッシュ失効で上限到達
 - [止まっていた自動化の復活](project_stalled_automation_revival_2026-08-20.md) — oyasumi毎晩23:30・gyakusan月曜6:30をlaunchd化
 
@@ -70,9 +75,13 @@
 - [正本文書が古いことがある](feedback_stale_authoritative_doc_vs_policy_change.md) — 制度変更は最新の事務連絡で上書き確認
 - [アーカイブgrepは草川の独自表現も並列で引く](feedback_archive_grep_keyword_expansion.md) — 話題語だけだと見落とす
 - [資産価値直結の手続相談は二層分離](feedback_shisan_kachi_tetsuzuki_gaikan_kanri.md) — 農振除外・農地転用。氏名は名簿区画1か所
+- [oyasumiのNotion本文denyは解消](feedback_oyasumi_blocked_by_content_gate.md) — 2026-08-26 EXEMPT_PARENTS追加。news側は未修理
 - [oyasumiの会議体マスタIDが古い](feedback_oyasumi_kaigitai_master_id_stale.md) — 46414643- は not found・会議体は毎回未紐付け
 - [市民意見リストDBに「対応状況」は無い](feedback_iken_db_no_taio_status.md) — 未対応集計は「未完了（要対応）」ビュー
 - [トークン実測はサブエージェントを数えていなかった](feedback_token_report_blind_to_subagents.md) — 消費の68%が不可視。主因はAgentのfan-out
+- [区切り警告の一発通知は永久沈黙する](feedback_ctx_notice_oneshot_silence.md) — 2026-09-03修理。サブエージェント側で鳴ると本体が黙る
+- [gate.pyは並行セッションで承認記録を消し合う](feedback_gate_json_concurrent_overwrite.md) — 2026-09-03マージ化で修理済。deny時はまず指紋不一致を疑う
+- [gate.py --passは保存役が名乗らない](feedback_gate_pass_not_by_saver.md) — notion-saverがdeny復旧で自己承認。hookで遮断済み
 - [gate.pyの種別判定はファイル名だけ](feedback_gate_kind_of_by_filename.md) — Notion保管ページ本文は必ずblog誤判定。名前に「メモ」でinternal
 - [振り分け単体の🔖台帳はゲートで書けない](feedback_intake_ledger_blocked_by_gate.md) — 発信物が無い日は_intake_ledger.jsonlで代替
 - [ニュースダイジェストはgate.pyでブログ誤判定](feedback_news_digest_gate_blog_misdetect.md) — 本文は`.txt`で渡す。dedup追記も同手順

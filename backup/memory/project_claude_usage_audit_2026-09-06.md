@@ -25,3 +25,9 @@ metadata:
 
 ## 残（次の日曜改修枠）
 エージェント48本の同じ棚卸し／ohayoに「昨夜の夕便を投稿した？」1問／10/18告示のゲート自動厳格化／9月議会答弁のtoben-tracker予約。関連: [[project_sns_routine_v2]] [[project_hasshin_flow_phase1_2026-09-04]]
+
+## 2026-09-07 起動固定費削減（案3・案4を「今直して」で実施）
+- 案3: MEMORY.md から完了・修理済み9行を `_backup_2026-09-07/MEMORY_retired_lines_2026-09-07.md` へ退避（26,008→24,662バイト）。個別ファイルは残置
+- 案4: 入れ子 `.claude` 6か所（全て空・consolidate済み）を `~/Archive/_trash_pending_2026-09-07/nested_claude/` へ。偽エージェント4本の元.mdはディスクに無く、起動スナップショットの残骸＝次セッションで消える
+- 発見: `consolidate_agent_memory.py` の夜間常設化が launchd/scripts/settings のどこにも登録されていない（memoryの記述と食い違い）→ 日曜枠で確認
+- 案1・2・5・6 は Todoist #6hRFvqvcFPQwP9Rg（@日曜改修）に積んだ
