@@ -7,7 +7,7 @@
 
 - [Claude Code活用棚卸し2026-09-06](project_claude_usage_audit_2026-09-06.md) — 9/7終了。残＝案1・2・5・6はTodoist@日曜改修／9/7夕便の#納品1行を確認
 - [休眠スキル退避](project_dormant_skills.md) — slide-deck-prep/aisatsu-prep/daily-content-generator/drive-intake。「〇〇戻して」でmv
-- [9月議会 一般質問2026-09](project_ippan_shitsumon_2026-09.md) — 本番9/10・11。議場カードv5＝分割7枚（表紙＋1件名1枚）が正。通告は各カード先頭。未確定＝資料4未作成・事務局確認
+- [9月議会 一般質問2026-09](project_ippan_shitsumon_2026-09.md) — 本番9/10・11。会期フォルダ5種構成へ再編（正本=README.md）。次＝聞き取り/設計カード→議場カード薄い版
 - [Obsidian導入・vault運用](project_obsidian_vault_workflow.md) — 2026-09-06。議会文書の正本はvault・注記は`#注記`・開いてるファイルは上書きせず新版
 - [Todoist総整理2026-09-06](project_task_audit_2026-09-06.md) — 2R完了:子PJ1＋セクション12・台帳KY-070〜074相談者未記録。残＝9/9の11件振り直し・図解は必要な箱だけ
 - [市民要望管理台帳(Googleシート)](project_yobo_sheet_citizen_requests.md) — 稼働中。9/7〜Todoistミラー(yobo_mirror.py・期限3日窓)でTodoist「今日」が唯一の入口。残＝報告3件の回答メモ(9/9)
@@ -62,6 +62,7 @@
 
 ## 📌 常時効く横断ルール（タスク別は GUARDRAILS.md）
 
+- [一般質問準備は1会期1フォルダ・文書5種類](feedback_ippan_shitsumon_5docs_one_folder.md) — 通告/設計/聞き取り/議場/資料。細分化だけ・全文改版は禁止
 - [仕組みの改修は日曜1セッションに閉じる](feedback_maintenance_weekly_window.md) — 平日は手動で凌ぎ「@日曜改修」へ積む。例外は「今直して」
 - [団体名義の掲載同意は個人ブログへ持ち越さない](feedback_consent_scope_org_to_personal_blog.md) — 器が変われば同意を取り直す
 - [ご意見箱の声を引くとき属性を付けない](feedback_goikenbako_quote_no_attributes.md) — 年代・地域は書かない（利用目的文との整合）
