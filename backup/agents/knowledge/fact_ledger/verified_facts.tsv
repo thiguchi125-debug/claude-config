@@ -196,3 +196,4 @@
 2026-09-08	VERIFIED	JR東海線とJR西日本線にまたがる普通運賃は通算計算(打ち切りではない)	JR東海旅客営業規則第77条ただし書は北海道・東日本・四国・九州のみを除外。西日本は除外されず発着区間の営業キロを通算して計算。第84条も同じ	https://railway.jr-central.co.jp/ticket-rule/cjr-regulation/_pdf/000044978.pdf	JR亀山ICまたぎ
 2026-09-08	VERIFIED	亀山で分割した場合(名古屋→亀山+亀山→関)は通し運賃より高い	990+190=1,180円 vs 通し1,170円=+10円。亀山〜関が6.1kmなら+20円。いずれにせよ分割は安くならない	https://railway.jr-central.co.jp/ticket-rule/cjr-regulation/_pdf/000044978.pdf	JR亀山ICまたぎ
 2026-09-08	VERIFIED	関西本線の区間別営業キロ(三重県公式)	全線174.9km／名古屋〜亀山59.9km／亀山〜加茂61.0km／加茂〜JR難波54.0km(更新2012-10-11)	https://www.pref.mie.lg.jp/KOTSU/HP/kansaihonsen/74408045363.htm	JR亀山ICまたぎ
+2026-09-08	VERIFIED	またげるのは定期券だけ（定期券区間内の利用を除きエリアまたぎ不可）		https://toica.jr-central.co.jp/howto/sharing/	
