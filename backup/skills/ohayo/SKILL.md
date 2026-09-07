@@ -191,6 +191,7 @@ python3 ~/.claude/scripts/todoist/td.py list 2>/dev/null | grep -n "要期限"
 市役所対応の市民要望はTodoistでなくGoogleスプレッドシート「市民要望管理台帳」で管理している（[[project_yobo_sheet_citizen_requests]]・OPERATIONS.md【B】例外節）。朝は⚠だけ読む：
 
 1. `python3 ~/.claude/scripts/yobo/yobo.py alert` を1回実行（Apps Script経由・数秒）。
+   続けて `python3 ~/.claude/scripts/yobo/yobo_mirror.py` を1回実行（2026-09-07〜・台帳の期限3日以内＋期限超過＋「相談者に報告」をTodoist 🏛議員活動/🗂台帳フォロー（自動）へ写す。Todoist「今日」が唯一の入口。KY-タスクの完了は台帳に戻らないので、草川が「KY-xxx 終わった/報告した」と言ったら `yobo.py update/done` で台帳を更新＝ミラーは自動で閉じる）。
 2. 出力をそのまま貼る（先頭行＝件数のステータス別内訳／■相談者に報告 → ■期限超過 → ■滞留14日以上 の順）。**「相談者に報告」（答えは来ている）は報告漏れ直結なので最上段で目立たせる**。⚠が20件を超えるときは各■の先頭5件＋「…他N件（`yobo.py list --alert`）」に畳む。
 3. 進捗の更新は草川が言った分だけ `yobo.py update KY-xxx --st 返事待ち --asked today`／`--reported today`／`yobo.py done KY-xxx`。**勝手にステータスを動かさない**。
 4. 通信エラー・`bad token` のときは「⊘ 台帳に接続できず（config.json／Web App URL確認）」1行で先へ進む（リトライ1回まで）。

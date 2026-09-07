@@ -10,7 +10,7 @@
 - [9月議会 一般質問2026-09](project_ippan_shitsumon_2026-09.md) — 本番9/10・11。議場カードv5＝分割7枚（表紙＋1件名1枚）が正。通告は各カード先頭。未確定＝資料4未作成・事務局確認
 - [Obsidian導入・vault運用](project_obsidian_vault_workflow.md) — 2026-09-06。議会文書の正本はvault・注記は`#注記`・開いてるファイルは上書きせず新版
 - [Todoist総整理2026-09-06](project_task_audit_2026-09-06.md) — 2R完了:子PJ1＋セクション12・台帳KY-070〜074相談者未記録。残＝9/9の11件振り直し・図解は必要な箱だけ
-- [市民要望管理台帳(Googleシート)](project_yobo_sheet_citizen_requests.md) — 稼働中・81件。期限一括整理は「変更なし」で決着(9/7)。残＝草川手番＝報告3件の回答メモ(9/9)・相手先要確認13件
+- [市民要望管理台帳(Googleシート)](project_yobo_sheet_citizen_requests.md) — 稼働中。9/7〜Todoistミラー(yobo_mirror.py・期限3日窓)でTodoist「今日」が唯一の入口。残＝報告3件の回答メモ(9/9)
 - [トークン燃費改善2026-09-05](project_token_efficiency_overhaul_2026-09-05.md) — [1m]廃止・fact-checker予算＋台帳・自動ジョブmax-turns。9/19に前後比較
 - [発信フロー構造改善](project_hasshin_flow_phase1_2026-09-04.md) — A・B・C・E完了(9/6実運用でgate_runs=3達成・フック4点修理)。残＝H③単一入口・④司令塔
 - [小中学校体育館エアコン](project_taiikukan_aircon_action.md) — 9月議会で柱1本→選挙後に署名。整備完了年度に誤解あり・要確認

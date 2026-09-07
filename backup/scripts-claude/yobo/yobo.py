@@ -93,4 +93,8 @@ def main():
         res = call({"action":"update","no":a.no,"fields":fields})
     else: sys.exit(__doc__)
     print(json.dumps(res, ensure_ascii=False))
+    # 2026-09-07: 台帳→Todoistミラー（Todoist「今日」を唯一の入口にする）。失敗しても台帳の書込は成立済み
+    try:
+        import subprocess; subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "yobo_mirror.py")], timeout=60)
+    except Exception as e: print("（ミラー未実行: %s）" % e)
 if __name__ == "__main__": main()
