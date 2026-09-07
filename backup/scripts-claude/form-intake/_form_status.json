@@ -1,7 +1,44 @@
 {
-  "date": "2026-09-07",
-  "new_count": 0,
-  "items": [],
+  "date": "2026-09-08",
+  "new_count": 3,
+  "items": [
+    {
+      "row_id": "S1-54",
+      "date": "2026/09/08",
+      "district": "昼生",
+      "domain": "healthcare_welfare",
+      "urgency": "中",
+      "summary": "子宮がん検診の個別検診が市内の産婦人科1医院のみ・市外（鈴鹿/津）や女性医師を選べない",
+      "notion_url": "https://app.notion.com/p/3d4cf503a68f81f88564d6655cf60cf0",
+      "skipped": false,
+      "urgent": false,
+      "note": "連絡先なし＝個別返信不可。原文に特定医院への否定的評価あり・対外発信への引用は不可"
+    },
+    {
+      "row_id": "S2-215",
+      "date": "2026/09/08",
+      "district": "未記入",
+      "domain": "childcare_education",
+      "urgency": "中",
+      "summary": "産前産後の通院・移動の負担軽減（送迎休暇助成/はじめてボックス/おむつ助成）と産後ケア拡充、地域の子育てサポーター制度の提案。マタニティ・サポート119への感謝",
+      "notion_url": "https://app.notion.com/p/3d4cf503a68f81fc9704dbc7511c90bd",
+      "skipped": false,
+      "urgent": false,
+      "note": "連絡先なし＝個別返信不可。KY-082（産前産後の保育必要量）と同テーマ"
+    },
+    {
+      "row_id": "S2-216",
+      "date": "2026/09/08",
+      "district": "未記入",
+      "domain": "dx_administrative",
+      "urgency": "中",
+      "summary": "Kカードの電子ポイント対応（おむつ助成等への活用）と図書館の学習スペース利用ルール見直し",
+      "notion_url": "https://app.notion.com/p/3d4cf503a68f812db099f179f801029f",
+      "skipped": false,
+      "urgent": false,
+      "note": "S2-215と同一投稿者の追記。連絡先なし＝個別返信不可"
+    }
+  ],
   "errors": [],
-  "note": "手動実行（夜間launchd 3:30/4:00はclaude -p session limitで不発）。S1=53/S2=214/S3=150行＝すべて処理済。9/5着のS2-214は9/6登録済みで重複なし。"
+  "note": "S1=54/S2=216/S3=150行。S3は新着なし。3件とも連絡先の記入がないため個別返信は不可＝発信や議会での取り上げ方で応じるか要判断。"
 }
