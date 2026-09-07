@@ -190,3 +190,9 @@
 2026-09-07	UNVERIFIED	亀山で分割乗車した場合の運賃が通し運賃と同額か否か	一次情報で運賃比較を確認できず。分割で高くなる/安くなるいずれも断定不可。市民に案内する記述には使えない		JR亀山ICまたぎ
 2026-09-07	VERIFIED	亀山駅の所在地ときっぷうりば営業時間(JR東海公式)	三重県亀山市御幸町198／きっぷうりば6:00〜21:00 ※一部閉鎖時間帯あり／路線=関西本線・紀勢本線／接続=西日本旅客鉄道	https://railway.jr-central.co.jp/station-guide/tokai/kameyama/	JR亀山ICまたぎ
 2026-09-07	VERIFIED	柘植駅は乗換時タッチ不要だが亀山駅には同旨の注記がない	別紙:柘植「※草津線と関西本線を乗り換えてご利用される場合、タッチはご不要です」。亀山にはこの注記なし(入場/出場のみ記載)	https://www.westjr.co.jp/press/article/items/210119_00_ICareakakudai.pdf	JR亀山ICまたぎ
+2026-09-08	VERIFIED	名古屋→関(三重・関西本線)の通し片道普通運賃	1,170円。JR東海旅客営業規則第77条 幹線第1地帯16円20銭/km+消費税10%、61〜70km区分は65kmを適用→65×16.20=1053→切上1060→税110→1170円。傍証:Yahoo路線情報も1,170円	https://railway.jr-central.co.jp/ticket-rule/cjr-regulation/_pdf/000044978.pdf	JR亀山ICまたぎ
+2026-09-08	VERIFIED	名古屋→亀山の片道普通運賃	990円。営業キロ59.9km→51〜60km区分→55km適用→55×16.20=891→切上900→税90→990円	https://railway.jr-central.co.jp/ticket-rule/cjr-regulation/_pdf/000044978.pdf	JR亀山ICまたぎ
+2026-09-08	MINOR_DIFF	亀山→関の片道普通運賃と営業キロ	190円(営業キロ5.7km→4〜6km区分・JR東海旅客営業規則第84条(1)ロ 幹線190円)。5.7kmの出典はYahoo路線情報のみで公式未確認。仮に6.1kmなら200円	https://railway.jr-central.co.jp/ticket-rule/cjr-regulation/_pdf/000044978.pdf	JR亀山ICまたぎ
+2026-09-08	VERIFIED	JR東海線とJR西日本線にまたがる普通運賃は通算計算(打ち切りではない)	JR東海旅客営業規則第77条ただし書は北海道・東日本・四国・九州のみを除外。西日本は除外されず発着区間の営業キロを通算して計算。第84条も同じ	https://railway.jr-central.co.jp/ticket-rule/cjr-regulation/_pdf/000044978.pdf	JR亀山ICまたぎ
+2026-09-08	VERIFIED	亀山で分割した場合(名古屋→亀山+亀山→関)は通し運賃より高い	990+190=1,180円 vs 通し1,170円=+10円。亀山〜関が6.1kmなら+20円。いずれにせよ分割は安くならない	https://railway.jr-central.co.jp/ticket-rule/cjr-regulation/_pdf/000044978.pdf	JR亀山ICまたぎ
+2026-09-08	VERIFIED	関西本線の区間別営業キロ(三重県公式)	全線174.9km／名古屋〜亀山59.9km／亀山〜加茂61.0km／加茂〜JR難波54.0km(更新2012-10-11)	https://www.pref.mie.lg.jp/KOTSU/HP/kansaihonsen/74408045363.htm	JR亀山ICまたぎ
