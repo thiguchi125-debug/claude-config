@@ -183,3 +183,10 @@
 2026-09-07	VERIFIED	Suica・PASMO相互利用（首都圏ICカード相互利用サービス）の開始日は2007年3月18日	PASMO公式沿革=2007年3月18日 PASMOサービス開始（当初、鉄道23事業者、バス31事業者で開始、以降順次拡大）／首都圏ICカード相互利用サービス開始	https://www.pasmo.co.jp/corporate/history/	JR亀山ICまたぎ
 2026-09-07	VERIFIED	同一会社（JR東日本）内でもSuicaのエリアまたぎ乗車はできない＝またぎ不可の原因は会社の違いでなくIC利用エリアの境界	JR東日本FAQ原文=東京から仙台や新潟等、他Suicaエリアまで在来線経由でご乗車いただく場合については、Suicaはそれぞれのエリア内完結となる場合にご利用いただけますので、エリアをまたがってご乗車いただく事はできません。	https://jreastfaq.jreast.co.jp/faq/show/1053?category_id=28&site_domain=default	JR亀山ICまたぎ
 2026-09-07	INCORRECT	セリフ「東京ではJRと私鉄をまたげた／亀山駅はまだなんです」	誤った因果。東京の事例は同一IC利用エリア内での事業者またぎ、亀山はエリア境界。JR東日本内でもエリアまたぎは不可のため「会社が違うからできない」は成立しない。加えて亀山駅自体はIC乗降可（またぎ乗車のみ不可）なので「亀山駅はまだ」も不正確	https://jreastfaq.jreast.co.jp/faq/show/1053?category_id=28&site_domain=default	JR亀山ICまたぎ
+2026-09-07	VERIFIED	亀山駅の改札設備(JR西日本別紙)	【入場時】駅改札口設置の基本型自動改札機／【出場時】ICOCAエリアから乗車し亀山駅で出場する場合は改札窓口設置のIC処理機にタッチ。自動改札機は存在する	https://www.westjr.co.jp/press/article/items/210119_00_ICareakakudai.pdf	JR亀山ICまたぎ
+2026-09-07	VERIFIED	エリアまたぎ時にJR西が案内する正しい方法	「エリアをまたがってご乗車される場合は、あらかじめ全乗車区間のきっぷをご乗車前にご購入いただくか、券売機のない駅は車内で整理券を受け取り、降りられる駅で運賃をお支払いください」	https://www.westjr.co.jp/press/article/items/210119_00_ICareakakudai.pdf	JR亀山ICまたぎ
+2026-09-07	VERIFIED	エリアまたぎ時にJR東海が案内する正しい方法	「異なるエリアにまたがるご乗車にはご利用になれません。券売機などであらかじめ全乗車区間のきっぷをご購入ください」	https://toica.jr-central.co.jp/howto/sharing/	JR亀山ICまたぎ
+2026-09-07	UNVERIFIED	亀山で一度改札を出て入り直す方法がJR公式に認められた扱いか	JR東海TOICA公式・JR西日本2021/1/19別紙のいずれにも出場→再入場の案内は一切なし。両社の案内は通しのきっぷ購入のみ。公式に案内された方法ではない(便法)	https://toica.jr-central.co.jp/howto/sharing/	JR亀山ICまたぎ
+2026-09-07	UNVERIFIED	亀山で分割乗車した場合の運賃が通し運賃と同額か否か	一次情報で運賃比較を確認できず。分割で高くなる/安くなるいずれも断定不可。市民に案内する記述には使えない		JR亀山ICまたぎ
+2026-09-07	VERIFIED	亀山駅の所在地ときっぷうりば営業時間(JR東海公式)	三重県亀山市御幸町198／きっぷうりば6:00〜21:00 ※一部閉鎖時間帯あり／路線=関西本線・紀勢本線／接続=西日本旅客鉄道	https://railway.jr-central.co.jp/station-guide/tokai/kameyama/	JR亀山ICまたぎ
+2026-09-07	VERIFIED	柘植駅は乗換時タッチ不要だが亀山駅には同旨の注記がない	別紙:柘植「※草津線と関西本線を乗り換えてご利用される場合、タッチはご不要です」。亀山にはこの注記なし(入場/出場のみ記載)	https://www.westjr.co.jp/press/article/items/210119_00_ICareakakudai.pdf	JR亀山ICまたぎ
