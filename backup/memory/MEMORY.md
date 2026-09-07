@@ -91,6 +91,7 @@
 - [photo-curatorの申し送りは実測で検算](feedback_photo_curator_output_needs_verification.md) — EXIF未補正・構図の説明違い。議場の写真が1枚も無い
 - [正本を読まず過去作を模倣しない](feedback_read_playbook_not_past_output.md) — サムネの正本は2本＝visual-assets-playbook.md(規格)＋_types.md/thumbnail/_karte.md(型と採寸)
 - [キャプションは型判定に枠が無い](feedback_gate_no_slot_for_caption_files.md) — 2026-09-04に追加。見出しがPF名でないと実質ノーチェック
+- [配信面ゲートの尺延長はgate.pyの3秒ルールに触れる](feedback_feed_reviewer_extension_vs_gate_3sec.md) — 時間を足さずカットを割る（無ナレのホールド）
 - [圧縮すると但し書きだけ落ちる](feedback_compression_drops_safety_clauses.md) — 短尺版・PF別版は元版と同じ強度で再ゲート
 - [発信物は.txtでもgate.pyに通す](feedback_gate_kind_of_by_filename.md) — 2026-09-02まで.txtは機械チェック0件のまま--passで指紋記録されていた
 - [「だから、撮っています」は恒久禁止](feedback_no_totteimasu_line.md) — 憲法②「撮っている理由」ごと廃止。checkerは禁止検出に反転済み
