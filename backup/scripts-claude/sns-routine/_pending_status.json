@@ -1,33 +1,7 @@
 {
- "updated": "2026-09-05T08:04:14",
+ "updated": "2026-09-07T09:18:39",
  "waiting": [],
- "retired": [
-  {
-   "id": "2026-07-24-01",
-   "label": "①",
-   "content": "亀山市にも同じ制度がスタートしていることをPRするSNS投稿文を作成（対象制度は元記事要確認）",
-   "project": "🏛 議員活動",
-   "due_proposed": "2026-07-27",
-   "priority": "通常",
-   "age_days": 43,
-   "status": "retired_no_reply"
-  },
-  {
-   "id": "2026-07-24-02",
-   "label": "②",
-   "content": "熱中症対策の亀山市の取組・できることのネタ収集（街頭演説・ブログ用）",
-   "project": "🏛 議員活動",
-   "due_proposed": "2026-07-27",
-   "priority": "通常",
-   "age_days": 43,
-   "status": "retired_no_reply"
-  }
- ],
- "queue_stuck": [
-  {
-   "dest": "sns_delivery",
-   "title": ""
-  }
- ],
- "text": "🗑 無応答で退避された分 2件（内容を見て復活させるか判断）\n  ・43日前の提案 亀山市にも同じ制度がスタートしていることをPRするSNS投稿文を作成（対象制度は元記事要確認）（🏛 議員活動）\n  ・43日前の提案 熱中症対策の亀山市の取組・できることのネタ収集（街頭演説・ブログ用）（🏛 議員活動）\n📦 Notion書込待ちキュー 1件（_notion_queue.jsonl・flush要）\n  ・sns_delivery: \n→ 「①OK」「①は期限来週で」「②不要」で処理。期限を付けるものは task-add（カレンダー突合）を通します。"
+ "retired": [],
+ "queue_stuck": [],
+ "text": "clean"
 }
