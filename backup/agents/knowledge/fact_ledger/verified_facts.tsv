@@ -179,3 +179,7 @@
 2026-09-07	VERIFIED	同じICなのに		https://www.city.kameyama.mie.jp/docs/2025061100023/	
 2026-09-07	VERIFIED	※令和8年6月15日 本会議 市長答弁の要旨		http://www.kensakusystem.jp/kameyama-s/sapphire.html	
 2026-09-07	INCORRECT	関西本線と草津線の連携は難しさもある	線名を出さずに「連携には難しさもある	JR東海／JR西日本 公式案内」 → 「出典：JR東海TOICA公式／JR西日本 2021年1月19日プレス」（任意。JR西側の根拠はプレスリリースで「案内」で	
+2026-09-07	VERIFIED	首都圏でJRと私鉄・地下鉄をICでまたげるのは首都圏ICカード相互利用（Suica・PASMO）による	JR東日本FAQ原文=首都圏ICカード相互利用とは、Suicaを利用できるJR東日本、東京モノレール、東京臨海高速鉄道、埼玉新都市交通、伊豆急行、富士山麓電気鉄道、仙台空港鉄道と、PASMOを利用できる私鉄・地下鉄、路線バスを、Suica・PASMO一方のICカードで利用できるようにすること	https://jreastfaq.jreast.co.jp/faq/show/1138?category_id=30&site_domain=default	JR亀山ICまたぎ
+2026-09-07	VERIFIED	Suica・PASMO相互利用（首都圏ICカード相互利用サービス）の開始日は2007年3月18日	PASMO公式沿革=2007年3月18日 PASMOサービス開始（当初、鉄道23事業者、バス31事業者で開始、以降順次拡大）／首都圏ICカード相互利用サービス開始	https://www.pasmo.co.jp/corporate/history/	JR亀山ICまたぎ
+2026-09-07	VERIFIED	同一会社（JR東日本）内でもSuicaのエリアまたぎ乗車はできない＝またぎ不可の原因は会社の違いでなくIC利用エリアの境界	JR東日本FAQ原文=東京から仙台や新潟等、他Suicaエリアまで在来線経由でご乗車いただく場合については、Suicaはそれぞれのエリア内完結となる場合にご利用いただけますので、エリアをまたがってご乗車いただく事はできません。	https://jreastfaq.jreast.co.jp/faq/show/1053?category_id=28&site_domain=default	JR亀山ICまたぎ
+2026-09-07	INCORRECT	セリフ「東京ではJRと私鉄をまたげた／亀山駅はまだなんです」	誤った因果。東京の事例は同一IC利用エリア内での事業者またぎ、亀山はエリア境界。JR東日本内でもエリアまたぎは不可のため「会社が違うからできない」は成立しない。加えて亀山駅自体はIC乗降可（またぎ乗車のみ不可）なので「亀山駅はまだ」も不正確	https://jreastfaq.jreast.co.jp/faq/show/1053?category_id=28&site_domain=default	JR亀山ICまたぎ
