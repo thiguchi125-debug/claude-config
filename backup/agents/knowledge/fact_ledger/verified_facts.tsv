@@ -161,3 +161,13 @@
 2026-09-07	INCORRECT	亀山市コミュニティバスは全路線で交通系ICが使える	現行の市公式は全路線と書かず、ジャンボタクシーではICカードはご利用いただけませんと明示（更新日2026年6月10日）。全路線は回数券の記述	https://www.city.kameyama.mie.jp/docs/2025061100023/	JR亀山ICまたぎ
 2026-09-07	UNVERIFIED	令和8年6月15日 櫻井市長答弁の逐語	亀山市議会会議録検索システムに令和8年6月定例会は第1日(5月29日)のみ収録。6月15日本会議は2026-09-07時点で未公開のため逐語照合不能。鉤括弧引用は不可	http://www.kensakusystem.jp/kameyama-s/sapphire.html	JR亀山ICまたぎ
 2026-09-07	UNVERIFIED	TOICAエリアが関西本線 名古屋〜亀山であること	亀山がTOICAエリア端であることは整合的だが、亀山市の告知ページは現在404・JR東海プレスも取得不能。区間断定で図解に焼く前に要一次確認	https://toica.jr-central.co.jp/area/index.html	JR亀山ICまたぎ
+2026-09-07	VERIFIED	亀山駅はJR東海とJR西日本の境界駅		https://www.city.kameyama.mie.jp/docs/2023033000128/sawayaka.html	
+2026-09-07	VERIFIED	名古屋方面はTOICA、加茂方面はICOCA。亀山駅ではどちらも乗降に使える		https://www.westjr.co.jp/press/article/items/210119_00_ICareakakudai.pdf	
+2026-09-07	VERIFIED	チャージ残高では亀山をまたぐ乗車ができない		https://www.westjr.co.jp/press/article/items/210119_00_ICareakakudai.pdf	
+2026-09-07	VERIFIED	亀山をまたぐICOCA定期券は2021年3月13日から購入できる		https://www.westjr.co.jp/press/article/items/210119_00_ICareakakudai.pdf	
+2026-09-07	VERIFIED	JR東海TOICA公式＝定期券区間内の利用を除き、異なるエリアをまたがっての利用はできない		https://toica.jr-central.co.jp/howto/sharing/	
+2026-09-07	VERIFIED	関西本線 加茂〜亀山のICOCAエリア拡大＝2021年3月13日開始／発表2021年1月19日		https://www.westjr.co.jp/press/article/items/210119_00_ICareakakudai.pdf	
+2026-09-07	VERIFIED	JR東海 名古屋〜亀山59.9km／JR西日本 亀山〜JR難波115.0km		https://www.city.kameyama.mie.jp/docs/2023033000128/sawayaka.html	
+2026-09-07	VERIFIED	令和8年6月議会で草津線直通（京都まで乗り換えなし）を求めた／市長答弁は要旨形式		http://www.kensakusystem.jp/kameyama-s/sapphire.html	
+2026-09-07	INCORRECT	市のコミュニティバスではICが使えるようになった今	亀山市公式（更新2026年6月10日）は「ジャンボタクシーではICカードはご利用いただけません	https://www.city.kameyama.mie.jp/docs/2025061100023/	
+2026-09-07	INCORRECT	市のコミュニティバスでは、ICカードが使えます。	同上。ジャンボタクシー除外・「2026年6月時点	https://www.city.kameyama.mie.jp/docs/2025061100023/	
