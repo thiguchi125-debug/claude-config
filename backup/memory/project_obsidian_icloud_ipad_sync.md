@@ -1,6 +1,6 @@
 ---
 name: project-obsidian-icloud-ipad-sync
-description: ObsidianVaultをiPadへiCloud同期する計画。退避対策は完了、vault移動は9月議会本番後に保留中
+description: ObsidianVaultをObsidian専用iCloudコンテナへ移動済(2026-09-09)。残りはiPad側の設定のみ
 metadata:
   type: project
 ---
@@ -12,15 +12,21 @@ metadata:
 - **公式Obsidian Sync Standard（$4/月）は1ファイル5MB上限で使えない**。`議場カード_全7枚_v3.pdf` が6.7MBあり、超過分は静かにスキップされる。課金するならPlus（$8/月・200MB上限）一択。商用ライセンスは現在「任意」なので議員活動でも追加費用なし。
 - macOS 26.4.1 Tahoe の「Macストレージを最適化」は システム設定 → アカウント名 → iCloud → **Drive** → の中。iCloudのトップ画面には無い。`一般 → ストレージ` の「ストレージを最適化」は別物（映画・メール添付が対象）。
 
-**済み**
+**済み（2026-09-09に移動まで完了）**
+- vaultを `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianVault` へ移動（175ファイル/82MB・件数照合一致）。旧パス `~/Documents/ObsidianVault` は互換symlink。旧実体は `~/Archive/_trash_pending_20260909_ObsidianVault_old`
+- `obs_open.sh` の `VAULT_DIR` を新パスへ更新（旧パス指定も受ける）／`OPERATIONS.md` L114 更新
 - 「Macストレージを最適化」OFF（2026-09-09・`defaults read com.apple.bird optimize-storage` = 0）
 - `~/.claude/scripts/vault_guard.sh` … 退避検知→`brctl download`で引き戻し→`~/Archive/_vault_backup/`へ控え。手動実行
 - `~/.claude/scripts/vault_to_icloud_obsidian.sh` … 移動用。**未実行**。Obsidian起動中なら自分で止まる
 
 **次の一手**
-1. 9/10・11の一般質問本番後に `vault_to_icloud_obsidian.sh` を実行（Obsidian終了が前提）。移動後に「フォルダをVaultとして開く」で新パスを指定し旧エントリを削除。旧パスには互換symlinkが張られる
+1. Obsidianで「フォルダをVaultとして開く」→ 新パスを指定 → 旧エントリを一覧から削除（未了なら）
 2. `vault_guard.sh` のlaunchd毎日実行は「@日曜改修」枠で（[[feedback-maintenance-weekly-window]]）
 3. iPad側：Obsidianインストール → 「Store in iCloud」で ObsidianVault を選択
+
+**macOS 26で判明した罠**
+- **`brctl` コマンドは機能しない**。`brctl status` は標準のCloudDocsコンテナでも `Client zone not found` を返す。同期の可否とは無関係なので、このエラーを故障と誤読しないこと。退避ファイルの引き戻しは実ファイルを `cat` して FileProvider に materialize させる方式に変更済（`vault_guard.sh`）
+- PyObjCが入っていないため、アップロード完了のCLI確認もできない。最終確認はiPad実機
 
 **注意**
 - vaultには `40_市民対応/` の相談者氏名が入る。iPadに乗せる以上パスコード／Face IDと「探す」は必須

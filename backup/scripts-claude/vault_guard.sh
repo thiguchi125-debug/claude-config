@@ -23,7 +23,12 @@ N=$(find "$VAULT" -name '.*.icloud' 2>/dev/null | wc -l | tr -d ' ')
 if [ "$N" != "0" ]; then
   echo "⚠️  退避中 $N 件 → 引き戻します"
   find "$VAULT" -name '.*.icloud' -print 2>/dev/null | head -20
-  brctl download "$VAULT" 2>/dev/null
+  # macOS 26 では brctl が機能しない。実ファイルを読んでFileProviderに materialize させる
+  find "$VAULT" -name '.*.icloud' -print0 2>/dev/null | while IFS= read -r -d '' ph; do
+    d=$(dirname "$ph"); b=$(basename "$ph"); real="${b#.}"; real="${real%.icloud}"
+    cat "$d/$real" > /dev/null 2>&1 &
+  done
+  wait
   sleep 5
   N2=$(find "$VAULT" -name '.*.icloud' 2>/dev/null | wc -l | tr -d ' ')
   echo "引き戻し後の退避: $N2 件"
