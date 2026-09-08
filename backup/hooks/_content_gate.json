@@ -1,36 +1,12 @@
 {
- "generated_at": "2026-09-08T06:08:09",
+ "generated_at": "2026-09-08T12:04:00",
  "ttl_minutes": 120,
  "approved": [
   {
-   "file": "zokuho1_digest.txt",
-   "fp": "65ddab96f5eeb2e1",
-   "text": "---続報(2026-09-08)三重県が集団かぜ・インフルエンザ発生予防の第3報を発表(9/8)。9/1第1報・9/2第2報に続く注意喚起の継続。→元記事:https://www.pref.mie.lg.jp/YAKUMUS/index.htm",
-   "at": "2026-09-08T06:07:23",
-   "ttl_minutes": 120,
-   "session": ""
-  },
-  {
-   "file": "zokuho2_digest.txt",
-   "fp": "c370eb56ca2e63d5",
-   "text": "---続報(2026-09-08)県民アンケートの外国人採用設問(国籍要件)をめぐる訴訟で、津地裁の初弁論があり三重県側は全面的に争う姿勢(9/7・iJAMP官庁速報)。→元記事:iJAMP夕方便2026-09-07配信(内部確認済・一般紙未確認)",
-   "at": "2026-09-08T06:07:23",
-   "ttl_minutes": 120,
-   "session": ""
-  },
-  {
-   "file": "digest.txt",
-   "fp": "152edd60efd58cd4",
-   "text": "毎朝6時のニュース収集(v4-local)が本日分を全置換する固定ページ。ohayoが毎朝この1ページだけを読む(DBクエリ不要)。手動編集禁止。2026-09-08(火)✅新規0件・続報2件・除外多数A.亀山・三重/B.フォーカス(教育・深掘り)本日は新規のTier1該当なし。48時間以内フレッシュネス条件を満たす亀山・教育関連の新規記事は見つからず(水増し禁止のため見送り)。C.国政・地方自治/D.政策ドメイン/E.県政・県内他市/F.選挙・世論(超圧縮)本日は新規のTier2該当なし。G.iJAMP(🔒内部専用)該当なし(市政コーナー圏内の新規事例なし)。続報(既存ページに追記済み)-集団かぜ学校閉鎖:三重県が第3報(9/8)を発表、注意喚起継続→[Notion](https://app.notion.com/p/3cecf503a68f818aa1dac9f8fe96f30b)-県民アンケート設問:国籍要件アンケートを巡る訴訟で津地裁初弁論、県は全面的に争う姿勢(9/7)→[Notion](https://app.notion.com/p/3b6cf503a68f8130ba69d74bf9dc2f36)[dedup判定ログ]-亀山市大雨特別警報行動指針/生活道路法定速度引下げ:Layer1(URL一致・既存登録済)→除外-集団かぜ第3報:Layer2(同テーマの新事実)→既存ページに続報追記-県民アンケート国籍要件・初弁論:Layer2(継続テーマの新事実)→既存ページに続報追記-三重県教育関連新着(教育改革推進会議・秋期選抜志願状況・みえの未来の先生相談会・高校生フェスティバル):いずれも公開日が9/3〜9/4でフレッシュネス条件(48時間以内)を満たさず→新規登録見送り-三重県9月補正予算:Layer3(継続案件)→既に9/4・9/6で登録済み、新事実なし→追記なし",
-   "at": "2026-09-08T06:07:47",
-   "ttl_minutes": 120,
-   "session": ""
-  },
-  {
-   "file": "digest_dedup_append.txt",
-   "fp": "89e20bef965777d0",
-   "text": "-2026-09-08(続報)三重県が集団かぜ・インフルエンザ発生予防の第3報を発表集団かぜ学校閉鎖https://www.pref.mie.lg.jp/YAKUMUS/index.htmhttps://app.notion.com/p/3cecf503a68f818aa1dac9f8fe96f30b-2026-09-08(続報)国籍要件アンケート訴訟で津地裁初弁論、三重県は全面的に争う姿勢県民アンケート設問(iJAMP内部配信・URL共有不可)https://app.notion.com/p/3b6cf503a68f8130ba69d74bf9dc2f36",
-   "at": "2026-09-08T06:08:09",
+   "file": "2026-09-08_SNS_線状降水帯_コピペ用.md",
+   "fp": "10ad9cf0e420805d",
+   "text": "線状降水帯注意喚起SNS(コピペ用・ゲート通過版v4)X(1投稿・Premium)気象庁が三重県に「線状降水帯半日前予測」。8日昼過ぎから9日朝にかけて、大雨災害の危険度が急激に高まる可能性があります。県単位の予測です。亀山が対象外という意味ではありません。発生場所は直前まで分かりません。明るいうちに、ハザードマップと避難所・避難経路の確認を。避難情報は亀山市と気象庁の発表を最優先で。亀山市の気象情報(気象庁)https://www.jma.go.jp/bosai/pro&disp=forecaster_comment,probability,panel,warning_timeline!all,radar!hrpns,level_landslide,level_flood,level_inundation,kaikotan!rasrf,forecast_table,weather_map!now,typhoon,information,flood,floodindex,total_rain,earthquake,jishin_kaisetsu,nteq,tsunami&col=6r6r6r6p6r6r6r6p6q6r6q6r6s6q6q6q6q6r6r6q&row=b4b4b4b4b4&area_type=class20s&area_code=2421000川の防災情報(国土交通省)https://www.river.go.jp/kawabou/mb?zm=14&clat=34.84871671469693&clon=136.4636565755092&fld=0&mapType=0&viewGrpStg=0&viewRd=1&viewRW=1&viewRl=1&viewRn=1&viewPoint=1&ext=0防災みえ(三重県防災・避難情報/亀山市)https://www.bosaimie.jp/X_MIE_PUB_VF_kk512?selectedArea=suzuka停電情報(中部電力パワーグリッド鈴鹿営業所/亀山市を含む)https://teiden.powergrid.chuden.co.jp/p/office/342.html名阪国道工事規制情報(週間・国交省北勢国道事務所)https://www.cbr.mlit.go.jp/hokusei/traffic/meihan_kisei/亀山市三重県大雨線状降水帯---Threads気象庁が三重県に「線状降水帯半日前予測」を出しました。きょう8日の昼過ぎから9日朝にかけてです。気になるのは、これが「三重県」単位の情報だということ。三重は南北に長くて、同じ日でも県内で降り方が分かれることがあります。県の情報だけ見ていると、自分の町がどうなのかが分かりません。気象庁のページは亀山市だけに絞って、今の雨雲・警報・危険度分布を並べて見られます。ただしこれは「今どうか」を見るためのもので、県単位の予測が出ている以上、亀山が対象外ということではありません。そのうえで、線状降水帯がどこで発生するかは直前まで分かりません。「今は大したことない」が数時間で変わるのが、この雨の怖さです。明るいうちに、ハザードマップと避難所・避難経路の確認を。亀山市の気象情報(気象庁)https://www.jma.go.jp/bosai/pro&disp=forecaster_comment,probability,panel,warning_timeline!all,radar!hrpns,level_landslide,level_flood,level_inundation,kaikotan!rasrf,forecast_table,weather_map!now,typhoon,information,flood,floodindex,total_rain,earthquake,jishin_kaisetsu,nteq,tsunami&col=6r6r6r6p6r6r6r6p6q6r6q6r6s6q6q6q6q6r6r6q&row=b4b4b4b4b4&area_type=class20s&area_code=2421000川の防災情報https://www.river.go.jp/kawabou/mb?zm=14&clat=34.84871671469693&clon=136.4636565755092&fld=0&mapType=0&viewGrpStg=0&viewRd=1&viewRW=1&viewRl=1&viewRn=1&viewPoint=1&ext=0---Facebook気象庁が三重県に「線状降水帯半日前予測」を発表しました。きょう8日の昼過ぎから9日朝にかけて、線状降水帯が発生して大雨災害発生の危険度が急激に高まる可能性がある、という内容です。ここで一つ、押さえておきたいことがあります。この予測は「三重県」という単位で出ています。三重は南北に長い県で、同じ日でも県内で降り方が分かれることがあります。県単位の情報だけでは、亀山の状況までは分かりません。だから、市単位まで絞って見てください。気象庁のページは亀山市を指定すれば、雨雲レーダー・警報・土砂災害や洪水の危険度分布を一画面に並べられます。これは「今どうか」を確かめるための情報です。県単位で予測が出ている以上、亀山が対象から外れているという意味ではありません。そのうえで、もう一つ。線状降水帯がどこで発生するかは、直前まで分かりません。「今のところ静かだ」が数時間で変わるのが、この雨のいちばん怖いところです。明るいうちにお願いしたいのは3つです。・ハザードマップで自宅の浸水・土砂の想定を見る・いちばん近い避難所と、そこまでの経路を決めておく・スマホの充電と、夜間に備えた明かりの確保避難情報は、亀山市と気象庁の発表を最優先でご確認ください。亀山市の気象情報(気象庁)https://www.jma.go.jp/bosai/pro&disp=forecaster_comment,probability,panel,warning_timeline!all,radar!hrpns,level_landslide,level_flood,level_inundation,kaikotan!rasrf,forecast_table,weather_map!now,typhoon,information,flood,floodindex,total_rain,earthquake,jishin_kaisetsu,nteq,tsunami&col=6r6r6r6p6r6r6r6p6q6r6q6r6s6q6q6q6q6r6r6q&row=b4b4b4b4b4&area_type=class20s&area_code=2421000川の防災情報(国土交通省)https://www.river.go.jp/kawabou/mb?zm=14&clat=34.84871671469693&clon=136.4636565755092&fld=0&mapType=0&viewGrpStg=0&viewRd=1&viewRW=1&viewRl=1&viewRn=1&viewPoint=1&ext=0防災みえ(三重県防災・避難情報/亀山市)https://www.bosaimie.jp/X_MIE_PUB_VF_kk512?selectedArea=suzuka停電情報(中部電力パワーグリッド鈴鹿営業所/亀山市を含む)https://teiden.powergrid.chuden.co.jp/p/office/342.html名阪国道工事規制情報(週間・国交省北勢国道事務所)https://www.cbr.mlit.go.jp/hokusei/traffic/meihan_kisei/---LINEこんにちは、亀山市議会議員の草川たくやです。気象庁が三重県に「線状降水帯半日前予測」を発表しました。きょう8日の昼過ぎから9日朝にかけて、大雨災害の危険度が急激に高まる可能性があります。ただ、この予測は「三重県」という広い単位で出ています。三重は南北に長く、同じ日でも県内で降り方が分かれることがあります。ご自身の地域の情報を、市単位で見てください。ただ、県単位で予測が出ている以上、亀山が対象外ということではありません。明るいうちに、次の3つをお願いします。・ハザードマップで自宅の浸水・土砂の想定を確認する・いちばん近い避難所と、そこまでの経路を決めておく・スマホの充電と、夜間の明かりを用意する線状降水帯がどこで発生するかは直前まで分かりません。静かなうちに、動けることを済ませておいてください。【亀山市の気象情報(気象庁)】https://www.jma.go.jp/bosai/pro&disp=forecaster_comment,probability,panel,warning_timeline!all,radar!hrpns,level_landslide,level_flood,level_inundation,kaikotan!rasrf,forecast_table,weather_map!now,typhoon,information,flood,floodindex,total_rain,earthquake,jishin_kaisetsu,nteq,tsunami&col=6r6r6r6p6r6r6r6p6q6r6q6r6s6q6q6q6q6r6r6q&row=b4b4b4b4b4&area_type=class20s&area_code=2421000【川の防災情報(国土交通省)】https://www.river.go.jp/kawabou/mb?zm=14&clat=34.84871671469693&clon=136.4636565755092&fld=0&mapType=0&viewGrpStg=0&viewRd=1&viewRW=1&viewRl=1&viewRn=1&viewPoint=1&ext=0【防災みえ(三重県防災・避難情報/亀山市)】https://www.bosaimie.jp/X_MIE_PUB_VF_kk512?selectedArea=suzuka【停電情報(中部電力パワーグリッド鈴鹿営業所/亀山市を含む)】https://teiden.powergrid.chuden.co.jp/p/office/342.html【名阪国道工事規制情報(週間・国交省北勢国道事務所)】https://www.cbr.mlit.go.jp/hokusei/traffic/meihan_kisei/避難情報や気象情報は、亀山市と気象庁の発表を最優先でご確認ください。---Instagram気象庁が三重県に「線状降水帯半日前予測」を出しました。きょう8日の昼過ぎから9日朝にかけて、大雨災害の危険度が急激に高まるおそれがあります。ただ、これは「三重県」単位の情報です。三重は南北に長く、同じ日でも県内で降り方が分かれることがあります。県の情報だけでは、亀山の状況までは分かりません。気象庁の防災情報ページは亀山市に絞って、今の雨雲・警報・危険度分布を見られます。「気象庁防災情報」で検索して、地域を亀山市に指定してください。県単位の予測が出ている以上、亀山が対象外ということではありません。そのうえで、線状降水帯がどこで発生するかは直前まで分かりません。「今のところ静かだ」が数時間で変わるのが、この雨のいちばん怖いところです。そして暗くなってからの移動は、それ自体が危険になります。明るいうちにお願いしたいのは3つです。・ハザードマップで、自宅の浸水と土砂災害の想定を確認する・いちばん近い避難所と、そこまでの経路を決めておく・スマホの充電と、夜間の明かりを用意するとくに、ご高齢の方や小さなお子さんがいるご家庭は、移動そのものに時間がかかります。判断は早いほうが安全です。浸水想定の区域に入っていない場所でも、用水路や側溝があふれる形の被害は起こります。自宅の周りで水がたまりやすい場所を思い出しておくだけでも、判断が早くなります。避難情報や気象情報は、亀山市と気象庁の発表を最優先でご確認ください。亀山市三重県線状降水帯大雨警戒ハザードマップ---配信時の注記(本文ではない)-LINEを17時以降に配信する場合、冒頭を「こんばんは、亀山市議会議員の草川たくやです。」に差し替える。-Instagramはプロフィールのリンク未更新のため、URLではなく検索誘導にしてある。",
+   "at": "2026-09-08T12:04:00",
    "ttl_minutes": 120,
    "session": ""
   }
