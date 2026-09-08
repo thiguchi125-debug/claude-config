@@ -1,6 +1,6 @@
 ---
 name: project-obsidian-icloud-ipad-sync
-description: ObsidianVaultをObsidian専用iCloudコンテナへ移動済(2026-09-09)。残りはiPad側の設定のみ
+description: ObsidianVaultのiPad同期は2026-09-09に完了・iPadで実機確認済。旧実体の削除承認だけ未了
 metadata:
   type: project
 ---
@@ -19,10 +19,13 @@ metadata:
 - `~/.claude/scripts/vault_guard.sh` … 退避検知→`brctl download`で引き戻し→`~/Archive/_vault_backup/`へ控え。手動実行
 - `~/.claude/scripts/vault_to_icloud_obsidian.sh` … 移動用。**未実行**。Obsidian起動中なら自分で止まる
 
+**2026-09-09 完了**
+- Obsidianの登録パスを実パスへ書き換え（`obsidian.json`・bakあり）。再起動後も定着
+- iPadにObsidian導入→「Store in iCloud」でvault読込成功。`議場カード_全7枚_v3.pdf`（6.7MB）を実機で開けることを草川が確認
+
 **次の一手**
-1. Obsidianで「フォルダをVaultとして開く」→ 新パスを指定 → 旧エントリを一覧から削除（未了なら）
+1. 旧実体 `~/Archive/_trash_pending_20260909_ObsidianVault_old`（180ファイル）の削除承認待ち
 2. `vault_guard.sh` のlaunchd毎日実行は「@日曜改修」枠で（[[feedback-maintenance-weekly-window]]）
-3. iPad側：Obsidianインストール → 「Store in iCloud」で ObsidianVault を選択
 
 **macOS 26で判明した罠**
 - **`brctl` コマンドは機能しない**。`brctl status` は標準のCloudDocsコンテナでも `Client zone not found` を返す。同期の可否とは無関係なので、このエラーを故障と誤読しないこと。退避ファイルの引き戻しは実ファイルを `cat` して FileProvider に materialize させる方式に変更済（`vault_guard.sh`）
