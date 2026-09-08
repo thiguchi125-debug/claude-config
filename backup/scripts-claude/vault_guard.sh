@@ -36,8 +36,22 @@ else
   echo "✅ 退避ファイル 0 件（全ファイルがMac上に実体あり）"
 fi
 
-# 3) iCloud外へローカル控え（世代は当日1本・上書き）
-DEST="$HOME/Archive/_vault_backup/ObsidianVault_$(date +%Y%m%d)"
+# 2.5) iCloud競合ファイルの検知
+CONF=$(find "$VAULT" \( -name '* 2.*' -o -name '* 3.*' -o -name '*conflicted*' -o -name '*競合*' \) ! -path '*/.git/*' 2>/dev/null)
+if [ -n "$CONF" ]; then
+  echo "🚨 競合の疑いあるファイル:"
+  echo "$CONF" | sed 's|^|   |'
+  echo "   → 中身を見比べて、正しい方を残すこと（自動では消しません）"
+else
+  echo "✅ 競合ファイルなし"
+fi
+
+# 3) iCloud外へローカル控え（--snapshot で時刻付き＝上書きしない）
+if [ "${1:-}" = "--snapshot" ]; then
+  DEST="$HOME/Archive/_vault_backup/ObsidianVault_$(date +%Y%m%d_%H%M)"
+else
+  DEST="$HOME/Archive/_vault_backup/ObsidianVault_$(date +%Y%m%d)"
+fi
 mkdir -p "$HOME/Archive/_vault_backup"
 rsync -a --exclude '.DS_Store' "$VAULT/" "$DEST/" 2>/dev/null
 echo "✅ 控え: $DEST  ($(find "$DEST" -type f | wc -l | tr -d ' ') files / $(du -sh "$DEST" | cut -f1))"
