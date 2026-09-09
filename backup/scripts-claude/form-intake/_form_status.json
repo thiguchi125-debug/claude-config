@@ -1,7 +1,6 @@
 {
-  "date": "2026-09-09",
+  "date": "2026-09-10",
   "new_count": 0,
   "items": [],
-  "errors": [],
-  "note": "S1=54/S2=216/S3=150行＝いずれも処理済（各シート最終行のタイムスタンプがstateのlast_processed_timestampと一致、etl_last_rowも現行行数と一致）。新着0件のためNotion・ETLファイルは未更新・stateも据え置き。"
+  "errors": []
 }
