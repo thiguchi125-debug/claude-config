@@ -44,7 +44,7 @@ for f in files:
 def prune(X):
     out=[]
     for i,L in enumerate(X):
-        if L.startswith('## '):
+        if L.startswith('## ') and not L.startswith('## ⏱'):
             j=i+1; empty=True
             while j<len(X) and not X[j].startswith(('## ','# ','---')):
                 if X[j].strip(): empty=False; break
