@@ -144,6 +144,8 @@
 - [カレンダー終日枠＝Todoist同期](reference_todoist_gcal_sync_allday.md) — 時間の正本は【作業】ブロック側
 - [農振除外は5要件でなく6要件](reference_noshin_jogai_6yoken.md) — 号がずれた。受付は例年2月末・8月末
 - 亀山の確定事実 — [半導体R8.6.15議場](reference_r8615_handotai_floor_facts.md)／[新庁舎開庁](reference_shincho_kaicho_r18.md)／[次期ごみ処理施設](reference_jiki_gomi_shori_shisetsu.md)／[太岡寺自治会要望書](reference_taikoji_yobosho_taiyoko.md)
+- [体育館空調 国の目標と交付金期限](reference_taiikukan_kucho_kokuno_mokuhyo.md) — 目標は令和13年度中（8/27決定・7/31は指示のみ）／交付金の対象期間は令和15年度のまま
+- [第3次総合計画の空調記述と指標](reference_dai3ji_sogokeikaku_kucho_shihyo.md) — 特別教室と体育館を同じ一文に書きながら指標は特別教室57%▶100%だけ
 - [亀山の陸上競技環境](reference_kameyama_rikujo_kankyo.md) — 公認競技場も400mトラックも無い。西野公園の路面材質だけ未確認
 - [かめやまマタニティ・サポート119と産科の確定事実](reference_kameyama_maternity_support_119.md) — 正式表記はひらがな＋中黒。妊婦健診は市内でも可
 - [亀山市の道路の所管課](reference_kameyama_doro_shokan_ka.md) — 「道路河川課」は存在しない。既存道路の草刈り・支障木は建設管理課 道路保全グループ
