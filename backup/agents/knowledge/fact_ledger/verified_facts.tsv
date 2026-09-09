@@ -254,3 +254,9 @@
 2026-09-09	VERIFIED	第3次亀山市総合計画 前期基本計画＝令和8〜11年度／後期基本計画＝令和12〜15年度	原文「前期基本計画、令和12年度から令和15年度までを後期基本計画の期間とします」「前期基本計画（計画期間 令和8年度〜令和11年度）」。交付金期限の令和15年度は後期基本計画の最終年度	kusagawa_archive/05_resources/第3次亀山市総合計画(基本構想、前期基本計画)案.txt L157,L1355	総合計画
 2026-09-09	MINOR_DIFF	第3次総合計画 教育側「安全・安心で快適な学校環境の整備」の関連指標は特別教室空調設置率57%▶100%の一つだけ	関連指標は2つ＝「小中学校特別教室の空調設備設置率 57%▶100%」と「学校評価アンケートにおける満足度（教育環境） ー▶80%」。正しくは「空調に関する指標は特別教室だけ」と限定して言う	kusagawa_archive/05_resources/第3次亀山市総合計画(基本構想、前期基本計画)案.txt L2919-2928	総合計画
 2026-09-09	INCORRECT	学校体育館空調の設置目標は「2年」前倒しされた	令和17年度中→令和13年度中＝【4年】の前倒し（令和8年8月27日 総理決定）。なお交付金の対象期間は令和15年度のままで、目標年度は補助期限より2年手前になる	https://www.mext.go.jp/a_menu/shotou/zyosei/mext_00943.html	体育館空調
+2026-09-09	VERIFIED	JR東海｜JR西日本（亀山駅は両社の境界）		https://www.city.kameyama.mie.jp/docs/2023033000128/sawayaka.html	
+2026-09-09	VERIFIED	亀山でICエリアの境界と社境界が一致する（名古屋方面TOICA／加茂方面ICOCA）		https://www.westjr.co.jp/press/article/items/210119_00_ICareakakudai.pdf	
+2026-09-09	VERIFIED	またげるのは、いまは定期だけ		https://www.westjr.co.jp/press/article/items/210119_00_ICareakakudai.pdf	
+2026-09-09	INCORRECT	JR東海｜JR西日本	壁は「会社		
+2026-09-09	VERIFIED	亀山はエリアの端		https://www.westjr.co.jp/press/article/items/210119_00_ICareakakudai.pdf	
+2026-09-09	VERIFIED	またぎの壁を、とりはらいたい		https://toica.jr-central.co.jp/howto/sharing/	
