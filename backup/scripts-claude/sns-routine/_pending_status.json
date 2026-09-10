@@ -1,12 +1,16 @@
 {
- "updated": "2026-09-09T07:22:26",
+ "updated": "2026-09-10T13:57:46",
  "waiting": [],
  "retired": [],
  "queue_stuck": [
   {
    "dest": "sns_delivery",
    "title": ""
+  },
+  {
+   "dest": "sns_delivery",
+   "title": ""
   }
  ],
- "text": "📦 Notion書込待ちキュー 1件（_notion_queue.jsonl・flush要）\n  ・sns_delivery: \n→ 「①OK」「①は期限来週で」「②不要」で処理。期限を付けるものは task-add（カレンダー突合）を通します。"
+ "text": "📦 Notion書込待ちキュー 2件（_notion_queue.jsonl・flush要）\n  ・sns_delivery: \n  ・sns_delivery: \n→ 「①OK」「①は期限来週で」「②不要」で処理。期限を付けるものは task-add（カレンダー突合）を通します。"
 }
