@@ -1,6 +1,18 @@
 {
-  "date": "2026-09-10",
-  "new_count": 0,
-  "items": [],
+  "date": "2026-09-11",
+  "new_count": 1,
+  "items": [
+    {
+      "row_id": "S2-217",
+      "date": "2026/09/10",
+      "district": "神辺地区（太岡寺町）",
+      "domain": "disaster_safety",
+      "urgency": "高",
+      "summary": "太岡寺町・ホテルルートイン近くの信号（国道25号×県道565号）で逆走車をよく見かけ事故しそうになる。夜は注意看板が草で見えず車線も消えている。ライトアップやポール設置を要望（匿名30代・連絡先メールあり）",
+      "notion_url": "https://app.notion.com/p/3d7cf503a68f810aa36af4d8c38658df",
+      "skipped": false,
+      "urgent": true
+    }
+  ],
   "errors": []
 }
