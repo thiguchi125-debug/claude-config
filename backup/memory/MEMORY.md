@@ -102,10 +102,12 @@
 - [ゲートFAILは要素の要否を先に疑う](feedback_gate_fail_question_the_element_not_the_zone.md) — 禁止帯を発明して通すと自作ルールが正本を上書きする。「前はこうならなかった」は過去ファイルを実測
 - [報告会スライドの増減はソースHTMLを直す](feedback_houkokukai_slide_edit_via_source.md) — PDF直切り禁止・地区間流用は4点セット
 - [「レポート」がスライドを指すことがある](feedback_report_vs_slides_wording.md) — 紙は必ず2ページ・ページ数で判別
+- [Notionに「📝ブログDB」は無い](feedback_no_dedicated_blog_db_in_notion.md) — ブログも📣投稿管理DB `78f40f33`／ds `1bd98deb` にプラットフォーム＝ブログで入れる
 - [Notion保存も「発信」＝保存前に安全ゲート](feedback_safety_gates_before_notion_save.md) — 本文は手打ち禁止・draftからコピペ
 - [Notionにブログ専用DBは無い](feedback_no_dedicated_blog_db_in_notion.md) — ブログは📣投稿管理DB(ds 1bd98deb)にプラットフォーム＝ブログで入れる
 - [notion-saverの「保存した」を信じない](feedback_notion_saver_reports_unverified_success.md) — 親なし・プロパティ空で出来る。fetchでancestor-pathを実体確認
 - [顔ぼかしは草川本人を除外・二段で潰す](feedback_face_blur_exclude_kusagawa_and_verify.md) — 検出器＋目視
+- [挿入画像・図解に人物を描かない](feedback_no_human_figures_in_illustrations.md) — 情景型（モノと配置）で組む。カット表が人物を指定していても従わない
 - [ブログはサムネ要否を必ず尋ねる](feedback_always_ask_thumbnail_for_blog.md) — 2026-09-06草川指示。本文承認と同時に1問
 - [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出しはCSSライムバー/角マーカー/ピル・スライドも含む
 - [原寸で破綻ゼロは合格の半分](feedback_original_size_pass_is_half_a_pass.md) — 確定前にfeed-visual-reviewer。400pxで読めない文字は装飾
