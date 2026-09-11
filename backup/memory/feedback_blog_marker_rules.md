@@ -20,4 +20,6 @@ metadata:
 
 **Why**: 箇所の選定に規則がないと塗る場所がちぐはぐになり、草川に「箇所にセンスがない」と却下される。文字単位diffで塗るのは論外（[[feedback_no_diff_marking_html]]）。
 
-**How to apply**: ブログ貼り付け用HTMLを `~/outputs/blog-marking/` に生成して `open` し、案内枠の下から選択コピー→ブログ編集画面に貼る（見出しh3・太字strong・マーカーがそのまま入る）。フッターは [[feedback_blog_footer_iken_bako_no_arrow]]。
+**貼り付け元はNotionではない（2026-09-11）**: Notionページの緑ハイライトをコピーしてブログ編集画面に貼ると、**マーカーだけが落ちる**（Notionのクリップボードは独自形式で、ブログ側が背景色を捨てる）。Notionは保管用。貼り付け元は必ず下記の貼り付け用HTML。
+
+**How to apply**: ブログ貼り付け用HTMLを `~/outputs/blog-marking/<日付>_<テーマ>_blog_paste.html` に生成して `open` し、案内枠の下から選択コピー→ブログ編集画面に貼る（見出しh3・太字strong・マーカーがそのまま入る）。生成元は drafts/ の正本md（`==文==`＝マーカー、`**語句**`＝太字）。フッターは [[feedback_blog_footer_iken_bako_no_arrow]]。
