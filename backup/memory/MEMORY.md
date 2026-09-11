@@ -120,6 +120,7 @@
 - [民間人のPR依頼は公表プロフィール以上に地域を絞らない](feedback_pr_request_no_local_tie_beyond_public_profile.md) — 同意範囲は拡散であって出身地の公表ではない
 - [議会・他議員への提言は対外発信で避ける](feedback_no_council_directed_proposals.md) — 提案宛先は執行部のみ
 - [一般質問は常に最新版から取る](feedback_ippan_shitsumon_always_latest_source.md) — 正本＝受付印付き提出版＋Notion会期ハブ。drafts/の日付名を信じない
+- [Inbox棚卸しは移動だけで終えず期限まで付ける](feedback_inbox_sweep_must_set_deadline.md) — td.py mv だけだと不可視化。既存タスクは_verified.json→update-tasks
 - [確認事項は1件1問の選択式](feedback_ask_one_by_one_choices.md) — AskUserQuestion・1回最大4問
 - [確認は最初に1回束ねる](feedback_ask_bundling_and_upfront_reflection.md) — 入力にある情報は最初から反映
 - [コピペ前提原稿はObsidian 1ファイルで](feedback_copypaste_draft_delivery.md) — vault `40_市民対応/`・複数案は見出し分け・obs_open.sh。TextEdit複数窓は禁止
