@@ -246,6 +246,8 @@ https://www.threads.com/@kusagawatakuya?igshid=NTc4MTIwNjQ2YQ==
 
 ## ⚠️ 出力後の必須3ゲート（単発呼び出し時も skip 禁止）
 
+**ゲートを回す時期（2026-09-15改定）**: 完成後ではなく「素案→草川の注記1回目」の後。指摘は原稿の該当箇所直下に `> [!check]` 囲み枠で書き込み→草川が注記で採否→「完成」時は変わった文・新規事実だけ再確認。正本＝OPERATIONS.md【C】D6／vault `50_発信/ブログ/README.md`。
+
 content-pipeline 経由なら自動で順序実行されるが、**単発呼び出し（「市民向けブログ書いて」等）の場合も呼び出し元（メイン Claude）に対して以下を必ずチェーンするよう明示する**：
 
 1. **content-editor**（5軸品質スコア・`mode: normal` 指定で読みやすさ重視採点）→ pass
