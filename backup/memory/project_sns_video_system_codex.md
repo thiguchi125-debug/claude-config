@@ -13,4 +13,4 @@ Codexが2026-09-12〜14に構築した「SNS動画制作システム」（Python
 2026-09-14にClaude Code対応：`~/.claude/skills/sns-video-system/SKILL.md`（読み替え表）／本体に `CLAUDE.md` 追加（未コミット）／skill_router.py に1行／ホームCLAUDE.mdトリガー表に1行。手順の正本はCodexと共有の `.agents/skills/sns-video-system/references/`。
 
 **Why:** Codex版は `bin/sns-video --root .` 前提・知識正本が `~/.codex`・尺45〜60秒で、Claude側ルール（尺35〜50秒・`~/.claude` 正本）とずれていた。
-**How to apply:** 入口は必ず `skill-intent`。「ショート動画作って」単体は not_applicable→[[feedback_short_video_use_virality_architect_first]]の short-video-create。未整備＝faster-whisper未導入（撮影後の編集が実素材で完走しない）・CapCut公式連携未認証。
+**How to apply:** 入口は必ず `skill-intent`。「ショート動画作って」単体は not_applicable→[[feedback_short_video_use_virality_architect_first]]の short-video-create。9/14 faster-whisper導入＋長さずれ修正で finish 実走OK（全243テスト合格）。残＝字幕の固有名詞誤り（台本ヒント方式は編集判定が壊れ不採用）・字幕の語中改行・CapCut公式連携未認証・修正は未コミット。

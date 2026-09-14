@@ -48,6 +48,8 @@ $ROOT/bin/sns-video --root $ROOT --json skill-intent --request "<草川の依頼
 
 ## 4. 既知の未整備（2026-09-14時点）
 
-- **ローカル文字起こし `faster-whisper` が未インストール** → この状態では `finishing` が実素材で完走しない。導入は `cd $ROOT && python3 -m pip install --user "faster-whisper>=1.1,<2"`（初回実行時にモデルをダウンロード）
+- faster-whisper 1.2.1 導入済・smallモデル取得済（2026-09-14）。音声入り動画で `finish` → `capcut_ready` まで実走確認。同日、動画と音声の長さの数msずれで止まる不具合を修正（`transcribe.py` 許容0.25秒・未コミット）
+- **字幕は文字起こしの字面そのまま**：smallモデルは「草川宅屋」「カメヤマシギカイ」「大育館」と誤る。完成後に `output/final/captions.srt` の固有名詞を必ず目視→直すならCapCut側で。台本文をinitial_prompt／hotwordsで渡す改善は、言い直し・フィラーの検出が壊れ `Render provenance scene coverage timing mismatch` で止まったため**不採用**
+- 字幕の区切りが語の途中で割れる（「実は大／切です」「未／来」）。投稿前にCapCutで整える前提
 - OpenAI文字起こしは設計上CLIから使えない（ファイル単位同意の仕組みが未実装）
 - CapCut公式プラグイン連携は未認証。ローカルのCapCutパッケージ作成までで完了扱いでよい
