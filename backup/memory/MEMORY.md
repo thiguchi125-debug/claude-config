@@ -65,6 +65,7 @@
 
 - [一般質問準備は1会期1フォルダ・文書5種類](feedback_ippan_shitsumon_5docs_one_folder.md) — 通告/設計/聞き取り/議場/資料。細分化だけ・全文改版は禁止
 - [仕組みの改修は日曜1セッションに閉じる](feedback_maintenance_weekly_window.md) — 平日は手動で凌ぎ「@日曜改修」へ積む。例外は「今直して」
+- [@日曜改修は構想バックログに集め日曜に済/未を報告](feedback_nichiyou_kaishu_report_not_todo.md) — 期限なし・Todayに出さない。9/14草川「達成されたか確認しようがない」
 - [団体名義の掲載同意は個人ブログへ持ち越さない](feedback_consent_scope_org_to_personal_blog.md) — 器が変われば同意を取り直す
 - [ご意見箱の声を引くとき属性を付けない](feedback_goikenbako_quote_no_attributes.md) — 年代・地域は書かない（利用目的文との整合）
 - [他地域災害の救助フェーズ中は亀山の防災論へ接続しない](feedback_disaster_rescue_phase_no_local_pivot.md) — 地元の話は別記事に分ける
