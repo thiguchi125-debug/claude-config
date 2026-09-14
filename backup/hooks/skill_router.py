@@ -26,6 +26,7 @@ RULES = [
     (r"発信ネタ|ひらめき|ネタにして|発信できる|この記事", "spark", "小さな種→発信"),
     (r"ブログ", "content-pipeline／blog-writer(-normal)", "ブログ。冒頭定型＋安全ゲート2段＋サムネ要否を1問"),
     (r"一式|フル展開|全部作って|ブログもSNSも", "content-pipeline", "発信一式"),
+    (r"いつもの動画|について.{0,6}(ショート)?動画を?(作りたい|撮りたい)", "sns-video-system", "実写の撮影準備／撮影後の自動編集。先にskill-intentで判定"),
     (r"ショート動画|TikTok|Reels|動画(を)?作って", "short-video-create", "台本→ゲート→画像→7PF"),
     (r"街頭|街宣|駅前で話す|駅頭", "daily-street-speech（agent）", "トーキングポイント3型"),
     (r"挨拶|懇親会|総会で|集会で話す", "community-rally-speaker（agent）", "地域集会向け短尺演説（aisatsu-prepは凍結中）"),

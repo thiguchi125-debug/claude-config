@@ -56,6 +56,7 @@
 | 〜から記事/投稿作って | content-pipeline |
 | ドライブ資料取り込んで / 取り込んで | drive-intake |
 | ショート動画作って / TikTokセット | short-video-create |
+| 〇〇についてショート動画を作りたい（実写を撮る）/ いつもの動画にして | sns-video-system（Codex製CLI・skill-intentで判定） |
 | 写真ストック整理して / 写真回収して | 📷写真ストック月次整理（正本=Drive `📷写真ストック/README.md`） |
 | 節約で〜 / 燃費よく / lean | lean-mode |
 | フォーム取り込んで / ご意見箱取り込んで | form-intake |
