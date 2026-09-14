@@ -122,6 +122,7 @@
 - [「次の議会で追及」型を軽々に使わない](feedback_no_aggressive_pursuit_phrases.md) — 特定議会×対決動詞禁止
 - [Xはハッシュタグ必須・Instagramは5つ](feedback_hashtag_policy_x_instagram.md) — LINEはタグなしが正
 - [アーカイブに他議員混在の通し会議録がある](feedback_kusagawa_archive_multimember_files.md) — 日付だけのファイルは全議員分。話者行を必ず確認
+- [他議員の質問で出た答弁を発信の前面に出さない](feedback_no_foreground_other_members_answers.md) — 帰属を明記しても苦情。軸は草川質問＋その後の市の動き
 - 他議員の誤帰属ガード — [対外発信に名前を載せない](feedback_no_other_council_members_names.md)／[子ども医療費](feedback_kodomo_iryohi_sns_misattribution.md)／[濁り水断水](feedback_fukami_water_distribution_misattribution.md)
 - [民間人のPR依頼は公表プロフィール以上に地域を絞らない](feedback_pr_request_no_local_tie_beyond_public_profile.md) — 同意範囲は拡散であって出身地の公表ではない
 - [議会・他議員への提言は対外発信で避ける](feedback_no_council_directed_proposals.md) — 提案宛先は執行部のみ
