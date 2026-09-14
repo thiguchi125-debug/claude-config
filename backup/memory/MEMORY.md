@@ -130,6 +130,7 @@
 - [確認は最初に1回束ねる](feedback_ask_bundling_and_upfront_reflection.md) — 入力にある情報は最初から反映
 - [コピペ前提原稿はObsidian 1ファイルで](feedback_copypaste_draft_delivery.md) — vault `40_市民対応/`・複数案は見出し分け・obs_open.sh。TextEdit複数窓は禁止
 - [差分の蛍光マーカーHTMLを作らない](feedback_no_diff_marking_html.md) — 文字単位diffは塗る箇所が無意味・変更点は散文で数点に絞る
+- [ブログ本文末の署名行は付けない](feedback_blog_no_closing_signature.md) — 冒頭の名乗り・フッターは残す。2026-09-14草川「今後も不要」
 - [フッターの【ご意見箱】は矢印なし＋半角スペース](feedback_blog_footer_iken_bako_no_arrow.md) — `【ご意見箱】 https://…`。正本＝blog-writer(-normal).md
 - [ブログの蛍光マーカー規則](feedback_blog_marker_rules.md) — 明るい緑1色・1章1本・全7本・「判断が変わる一文」だけ。太字は語句で役割分離
 - [ブログはObsidianで注記・Notionは完成版だけ](feedback_blog_obsidian_annotate_notion_final_only.md) — vault `50_発信/ブログ/`・「注記入れた」で次版・「完成」後にゲート→HTML→Notion1回
