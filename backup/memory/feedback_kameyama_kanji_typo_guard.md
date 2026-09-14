@@ -73,3 +73,9 @@ task-auditで選挙補完PJ4本＋SKfeelBalletタスクを create_pages 時、�
   手で打ち直すと escape 事故が復活する
 - deny の「承認済み原稿に無い文言」に見慣れない字が混ざっていたら、まず文字化けを疑う（原稿の差分ではない）
 - 関連：[[feedback_safety_gates_before_notion_save]] [[feedback_gate_kind_of_by_filename]]
+
+## 2026-09-14 追加事例：AskUserQuestionのescapeで「妊婦」→「妖婦」を2回連続
+
+がん検診ブログのゲート後、AskUserQuestionの質問文・選択肢をunicode escapeで書き「妊」(U+598A)を「妖」(U+5996)にした。
+1回目で草川に指摘されても、次の質問でまたescapeを使い再発。草川「誤記を改めろ」。
+**How to apply:** AskUserQuestionは質問文・選択肢・説明すべてリテラルの日本語で書く。escapeは一度も使わない（指摘後に同じ書き方を続けるのが最悪）。
