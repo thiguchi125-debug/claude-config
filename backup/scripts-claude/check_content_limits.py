@@ -223,7 +223,12 @@ def check_blog(text, normal_mode=False):
             out.append((False, f"本文 {n}字（{lo0}〜{hi0}字の範囲外）"))
         heads = re.findall(r"^(?:##\s*|■\s*)(.+)$", body, flags=re.M)
         out.append((len(heads) >= 4, f"見出し {len(heads)}本（5段構成の骨格が要る）"))
-    first = body.strip().split("\n")
+    # 2026-09-15 Obsidian正本は先頭にYAML frontmatter（---〜---）や注記・囲み枠が付く。
+    # 旧実装は先頭4行を生で見ていたため、frontmatterだけで4行埋まり名乗りありでもFAILしていた。
+    head = re.sub(r"\A\s*---\n.*?\n---\n", "", body, flags=re.S)
+    head = re.sub(r"<!--.*?-->", "", head, flags=re.S)
+    first = [l for l in head.split("\n")
+             if l.strip() and not l.lstrip().startswith(">") and not l.strip().startswith("#注記")]
     named = any("草川たくやです" in l for l in first[:4])
     out.append((named, "冒頭の名乗り"))
     if "【ご意見箱】" not in text or "AIインタビュー" not in text:
