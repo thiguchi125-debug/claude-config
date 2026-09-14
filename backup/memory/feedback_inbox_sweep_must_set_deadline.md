@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: a68bc720-07c3-4354-a565-bc86eaf1aee5
-  modified: 2026-09-11T00:52:25.928Z
+  modified: 2026-09-14T21:46:48.143Z
 ---
 
 ohayo §5 の Inbox棚卸しで「箱へ」を選んだ項目は、`td.py mv` で終わらせず**必ず同じパスの中で期限まで確定させる**。移動だけだと期限なしタスクの山に積み増すだけで、3ブロック表示（期限超過／本日／今週中）に構造的に出てこなくなる。台帳へ移す場合も `yobo.py update --due` まで通す。
@@ -17,5 +17,7 @@ ohayo §5 の Inbox棚卸しで「箱へ」を選んだ項目は、`td.py mv` �
 2. 期限案を ✅/⚠️/🚫 付きで提示し承認を取る（`td.py mv` は期限を触らないので別操作が要る）
 3. 既存タスクへの期限付けは `~/.claude/skills/task-add/_verified.json` に content と due を書いてから Todoist MCP `update-tasks` の `dueString` で設定する（`td.py` に update は無い／`_verified.json` が無いと `todoist_calendar_guard.py` が deny）
 4. 「期限なしでいい」も選択肢として出してよいが、期限なしタスクの現在件数を添えて選ばせる
+
+**2026-09-15 聞き方を変更（草川「今後もこのような聞き方をするように仕組みを更新」）:** 振り分け先だけを1件1問の選択式で聞いたら草川が止めて「期限の指定はどうなっている」と聞いた。そこで各件の現在の期限を示し、`Inbox｜振り分け先｜期限案` の表を1枚出したところ、草川は「〇〇は今日確認」「想定雨量等は質問メモにも」と自由文で行ごとに返し、1往復で8件が決まった。Inbox棚卸しはこの表方式が正で、[[feedback_ask_one_by_one_choices]] より優先する。正本＝ohayo SKILL.md §5。
 
 関連: [[feedback_ohayo_deadline_null_blindspot]] / [[feedback_ask_destination_and_deadline_before_register]] / [[project_task_add_calendar_gate]]
