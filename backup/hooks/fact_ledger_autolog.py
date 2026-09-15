@@ -85,27 +85,108 @@ def existing_claims():
     return s
 
 
+# ── 判定の読み取り（2026-09-15改）
+# 旧版は「### Cn: ✅ 「主張」」の1形式しか読めず、実際のゲート出力（記号なし見出し・表・
+# 「1. … → **VERIFIED**」・「**N6 ✅ 「…」**」）ではclaimsが空のままだった。
+MARK_V = {"✅": "VERIFIED", "❌": "INCORRECT", "🚫": "INCORRECT", "❓": "UNVERIFIED", "⚠": "MINOR_DIFF"}
+KW_RE = re.compile(r"(?<![A-Z_])(UNVERIFIED|VERIFIED|INCORRECT|WRONG|HALLUCINATION|MINOR_DIFF|MINOR)(?![A-Z])")
+KW_V = {"UNVERIFIED": "UNVERIFIED", "VERIFIED": "VERIFIED", "INCORRECT": "INCORRECT", "WRONG": "INCORRECT",
+        "HALLUCINATION": "INCORRECT", "MINOR_DIFF": "MINOR_DIFF", "MINOR": "MINOR_DIFF"}
+MARK_CHARS = "✅❌🚫❓⚠"
+SECTION_RE = re.compile(r"^##\s+(?!#)(.*)$")
+HEAD_LINE = re.compile(r"^(?:#{2,4}\s*|\*\*\s*)(?:[CNMV]?\d+[a-z]?\s*[:：]?\s*)?([" + MARK_CHARS + r"])?\uFE0F?\s*「([^」]{3,200})」(.*)$")
+LIST_LINE = re.compile(r"^\s*(?:\d+[.)．]|[-*])\s+(.{3,200}?)\s*(?:→|⇒|->)\s*(.*)$")
+
+
+def _verdict_in(s):
+    s = (s or "").replace("*", "").strip()
+    for ch, v in MARK_V.items():
+        if s.startswith(ch):
+            return v
+    m = KW_RE.search(s)
+    if m:
+        return KW_V[m.group(1)]
+    return ""
+
+
+def _lead_verdict(s):
+    """文字列の先頭（記号・太字を除いて20字以内）に判定語があるときだけ返す"""
+    t = (s or "").replace("*", "").strip()
+    for ch, v in MARK_V.items():
+        if t.startswith(ch):
+            return v
+    m = KW_RE.search(t[:20])
+    return KW_V[m.group(1)] if m else ""
+
+
+def _claim_text(cell):
+    c = cell.replace("**", "").strip()
+    c = re.sub(r"^(?:[CNMV]?\d+[a-z]?)(?:[\s:：.、]+|(?=「))", "", c).strip()
+    m = re.match(r"^[" + MARK_CHARS + r"]?\uFE0F?\s*「([^」]{3,200})」", c)
+    return (m.group(1) if m else c)[:200].strip()
+
+
+def _source_of(body):
+    mu = URL.search(body)
+    if mu:
+        return mu.group(0)
+    ml = re.search(r"URL[:：]\s*(local:[^\s|]{1,160})", body)
+    if ml:
+        return ml.group(1).strip()
+    ms = re.search(r"出典[:：]\s*([^\n|]{1,80})", body)
+    return ms.group(1).strip() if ms else ""
+
+
 def parse_claims(text):
-    heads = list(HEAD.finditer(text))
+    lines = text.splitlines()
+    starts = []  # (行番号, verdict, claim, kind)
+    section_v = ""
+    for i, ln in enumerate(lines):
+        msec = SECTION_RE.match(ln)
+        if msec and "「" not in msec.group(1):
+            section_v = _verdict_in(msec.group(1))
+            starts.append((i, "", "", "section"))
+            continue
+        mh = HEAD_LINE.match(ln)
+        if mh:
+            mark, claim, rest = mh.group(1), mh.group(2).strip(), mh.group(3)
+            v = MARK_V.get(mark, "") if mark else (_lead_verdict(rest) or section_v)
+            starts.append((i, v, claim, "head"))
+            continue
+        if ln.lstrip().startswith("|"):
+            cells = [c.strip() for c in ln.strip().strip("|").split("|")]
+            for j in range(1, len(cells)):
+                # 判定セルは判定語・記号で始まるものだけ（「OK」「3件」等の集計表は拾わない）
+                t = cells[j].replace("*", "").strip()
+                v = MARK_V.get(t[:1], "") or (KW_V[KW_RE.match(t).group(1)] if KW_RE.match(t) else "")
+                if v:
+                    claim = _claim_text(cells[j - 1])
+                    if len(claim) >= 3 and not re.fullmatch(r"[-:\s]+", claim):
+                        starts.append((i, v, claim, "row"))
+                    break
+            continue
+        ml = LIST_LINE.match(ln)
+        if ml:
+            v = _lead_verdict(ml.group(2))
+            if v:
+                starts.append((i, v, _claim_text(ml.group(1)), "list"))
     out = []
-    for i, h in enumerate(heads):
-        mark, claim = h.group(1), h.group(2).strip()
-        body = text[h.end(): heads[i + 1].start() if i + 1 < len(heads) else len(text)]
-        url = ""
-        mu = URL.search(body)
-        if mu:
-            url = mu.group(0)
+    seen = set()
+    for k, (i, v, claim, kind) in enumerate(starts):
+        if kind == "section" or not v or not claim or claim in seen:
+            continue
+        if kind == "row":
+            body = lines[i]
         else:
-            ms = re.search(r"出典[:：]\s*([^\n]{1,80})", body)
-            if ms:
-                url = ms.group(1).strip()
+            nxt = starts[k + 1][0] if k + 1 < len(starts) else len(lines)
+            body = "\n".join(lines[i:nxt])
         correct = ""
-        if mark == "❌":
-            mc = re.search(r"(?:\*\*)?(?:修正案|正|正しく|正確に)(?:\*\*)?[:：は]?\s*[「`]?([^\n」`]{1,80})", body)
+        if v == "INCORRECT":
+            mc = re.search(r"(?:\*\*)?(?:修正案|正しい値|正|正しく|正確に)(?:\*\*)?[:：は]?\s*(?:\*\*)?[「`]?([^\n」`]{1,80})", body)
             if mc:
                 correct = mc.group(1).strip()
-        verdict = {"✅": "VERIFIED", "❌": "INCORRECT", "❓": "UNVERIFIED"}[mark]
-        out.append({"claim": claim, "verdict": verdict, "correct": correct, "source": url})
+        seen.add(claim)
+        out.append({"claim": claim, "verdict": v, "correct": correct, "source": _source_of(body)})
     return out
 
 
@@ -114,8 +195,8 @@ def append_global(claims, theme, tpath):
     today = datetime.date.today().isoformat()
     rows = []
     for c in claims:
-        if c["verdict"] == "UNVERIFIED":
-            continue
+        if c["verdict"] not in ("VERIFIED", "INCORRECT"):
+            continue  # UNVERIFIED・MINOR_DIFF は横断台帳に入れない（テーマ内台帳のみ）
         if c["claim"] in known or (c["verdict"] == "VERIFIED" and not c["source"]):
             continue  # 既知、または出典の無いVERIFIEDは台帳に入れない
         rows.append([today, c["verdict"], c["claim"].replace("\t", " "),
@@ -219,6 +300,12 @@ def main():
         except (OSError, ValueError):
             pass
     prompt, text = read_transcript(tpath)
+    # フック入力の last_assistant_message は停止時点の最終報告そのもの。transcriptへの
+    # 書き出しが間に合っていないことがあるため、読める主張が多い方を採る
+    lam = inp.get("last_assistant_message") or ""
+    if isinstance(lam, str) and lam.strip() and lam.strip() != text.strip():
+        if not text or len(parse_claims(lam)) >= len(parse_claims(text)):
+            text = lam
     agent = detect_agent(inp, text)
     if agent not in ("content-fact-checker", "content-gate-lite", "content-risk-reviewer"):
         return

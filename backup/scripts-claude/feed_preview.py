@@ -214,7 +214,8 @@ def build_still(paths, out):
     # 縦も同じ：安全域の上（y0〜sy0）と下端ノーテキスト帯は規格上の空白なので数えない
     # （2026-09-15まで y=0 から測り、要素が下寄りだと上端に偽の⚠が出ていた）。
     py0, py1 = int(sy0), int(min(sy1, H * (1 - BOTTOM_NOTEXT)))
-    bp = blank_pockets(src.crop((int(sx0), py0, int(sx1), py1)))
+    # 升目は1600px幅基準の50px。@2x画像で50px固定だと升目が半分になり割合がずれて⚠が出ていた（2026-09-15）
+    bp = blank_pockets(src.crop((int(sx0), py0, int(sx1), py1)), cell=max(50, round(50 * W / 1600)))
     if bp:
         x0, y0, x1, y1, pct = bp
         x0 += int(sx0); x1 += int(sx0); y0 += py0; y1 += py0

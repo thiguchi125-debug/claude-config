@@ -32,10 +32,6 @@ def load():
     return m
 
 def is_video_path(p):
-    # agent/skill/hook/script の定義ファイルは台本ではない。名前だけで拾いEditをdenyしていた（2026-09-15）
-    ap = os.path.abspath(os.path.expanduser(p or ""))
-    if any(ap.startswith(os.path.expanduser(d)) for d in ("~/.claude/agents/", "~/.claude/skills/", "~/.claude/hooks/", "~/.claude/scripts/")):
-        return False
     b = os.path.basename(p or "").lower()
     return any(k in b for k in VIDEOISH)
 
