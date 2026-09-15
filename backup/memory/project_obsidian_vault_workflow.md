@@ -14,3 +14,5 @@ Obsidianを2026-09-06に導入（`brew install --cask obsidian`）。vault＝`~/
 
 **Why:** TextEditでmdが読みにくい・書きにくい。Notionを正本にすると1回150K。
 **How to apply:** 開いているファイルは上書きせず新版（v8…）で出す。草川が「注記入れた」と言ってから読む。Obsidianで直した発信物も安全ゲート再通過。関連 [[ippan-shitsumon-2026-09]]
+
+- **2026-09-15 置き場の整理**: vault・Notion・Drive・ローカルの役割を4問で固定＝[[feedback_okiba_4tsu_tsukaiwake]]。`50_発信/` はテーマ別フォルダに再編、`00_Inbox` は「Inbox見て」でsmart-intake。方針文 `Obsidian活用方針_2026-09-06.md` の「フォルダ」「保留」節は古い（冒頭に注記済み）

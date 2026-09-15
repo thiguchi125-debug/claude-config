@@ -46,3 +46,6 @@ CLAUDE.mdの「📂保存先マップ」の詳細版。散乱の3根本原因（
 - 移動したファイルが見つからない: `~/Archive/_relocation_log_*.csv` をgrep（元パス→新パスの全記録）
 
 関連: [[feedback_system_closing_loops_rot]] / [[reference_ippan_shitsumon_seisaku_drive]] / [[feedback_archive_grep_keyword_expansion]]
+
+## 2026-09-15 追記：4つの置き場
+Drive（渡す・スマホで使う完成品と原本）／Notion（状況を追う一覧・本文はリンク）／Obsidian vault（草川が #注記 する文章・発信は `50_発信/<日付>_<テーマ>/`）／ローカル（Claudeの作業台）。drafts は「AI内部の下書き」に縮小。正本＝vault `10_ClaudeCode/設定/置き場の使い分け.md`・[[feedback_okiba_4tsu_tsukaiwake]]

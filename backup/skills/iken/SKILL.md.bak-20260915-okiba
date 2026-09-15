@@ -283,7 +283,7 @@ body: <返信案本文 + 署名>
 
 ## Step 6: 最終出力フォーマット
 
-**返信案本文の納品（2026-09-15・聞かずに実行）**: 返信案A/B/Cは `~/Documents/ObsidianVault/40_市民対応/<YYYY-MM-DD>_<案件>_返信案.md` の**1ファイル**に書き（**vaultはiCloudでiPadに同期されるため、相談者の氏名は書かない**＝宛名は「〇〇様」の空欄のまま、メタ行は受付ID・台帳番号で指す。氏名は台帳とNotion 📝市民意見リストにだけ・2026-09-15）（冒頭にメタ行＝受付ID/Notionリンク・経路・送信前の確認点、その下に `## A 共感・寄り添い型`／`## B 行動宣言型`／`## C 簡潔・コンパクト型` を区切り線で並べる。案ごとに独立した完全な本文）、`bash ~/.claude/scripts/obs_open.sh <path>` で開く。**TextEdit（`open -e`）や1案1txtで出さない・窓を複数開かない**。チャットには下の枠の要点とファイルパスだけを出し、本文の再掲は不要（正本＝memory/feedback_copypaste_draft_delivery.md）。
+**返信案本文の納品（2026-09-15・聞かずに実行）**: 返信案A/B/Cは `~/Documents/ObsidianVault/40_市民対応/<YYYY-MM-DD>_<案件>_返信案.md` の**1ファイル**に書き（冒頭にメタ行＝受付ID/Notionリンク・経路・送信前の確認点、その下に `## A 共感・寄り添い型`／`## B 行動宣言型`／`## C 簡潔・コンパクト型` を区切り線で並べる。案ごとに独立した完全な本文）、`bash ~/.claude/scripts/obs_open.sh <path>` で開く。**TextEdit（`open -e`）や1案1txtで出さない・窓を複数開かない**。チャットには下の枠の要点とファイルパスだけを出し、本文の再掲は不要（正本＝memory/feedback_copypaste_draft_delivery.md）。
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━

@@ -17,4 +17,4 @@ Mac の .md 既定アプリは Notion。`open <file>.md` は Notion で開いて
 
 - **2026-09-07 追記**: URIの `newpane=true` は効かず現在タブを上書きした（実害あり）。別タブは必ず osascript Cmd+T→obs_open.sh の順。URIパラメータで代用しない。
 
-- **2026-09-15 追記（vault外は開けない）**: 草川「SNS投稿文の.mdがObsidianで読み込めない」。原因＝Obsidianは vault 内しか表示できず、SNS投稿文・動画台本が drafts/（隠しフォルダ）や ~/outputs/ に保存されていた。対策＝OPERATIONS.md【C】D7：SNSは vault `50_発信/SNS/<日付>_<テーマ>_SNS7PF_v<n>.md`、動画台本は `50_発信/ショート動画/<日付>_<テーマ>_ショート動画台本_v<n>.md`（名前の「SNS」「ショート動画」は種別判定に必須）。content-pipeline 3.7／spark Step5-2／short-video-create Step7・R-0 に反映済。**案件フォルダを ~/outputs に集約するときも、読む本文は vault にコピーを置く**。
+- **2026-09-15 追記（vault外は開けない）**: 草川「SNS投稿文の.mdがObsidianで読み込めない」。原因＝Obsidianは vault 内しか表示できず、SNS投稿文・動画台本が drafts/（隠しフォルダ）や ~/outputs/ に保存されていた。対策＝OPERATIONS.md【C】D7：SNSは vault `50_発信/<日付>_<テーマ>/<日付>_<テーマ>_SNS7PF_v<n>.md`、動画台本は同フォルダの `<日付>_<テーマ>_ショート動画台本_v<n>.md`（9/15テーマ別フォルダ化）（名前の「SNS」「ショート動画」は種別判定に必須）。content-pipeline 3.7／spark Step5-2／short-video-create Step7・R-0 に反映済。**案件フォルダを ~/outputs に集約するときも、読む本文は vault にコピーを置く**。

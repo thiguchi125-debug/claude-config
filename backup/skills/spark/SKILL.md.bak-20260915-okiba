@@ -88,7 +88,7 @@ grep -rl "<話題ワード>" ~/.claude/agents/knowledge/kusagawa_archive/{01_cou
 ## Step 5: 安全ゲート→保存（skip禁止）
 
 1. 元版（ブログ or 最初の1原稿）は **content-fact-checker** → **content-risk-reviewer** の2段。指示文に `ledger: ~/outputs/<日付>_<テーマ>/_ledger.json` を1行入れる。PF別の派生版は **content-gate-lite 派生モード1回**（`mode: derivative`＋同じ `ledger:`）で束ねる。HIGH以上は草川に問いかけ、CRITICAL は即停止
-2. 生成物を Obsidian vault に**一字一句そのまま** Write（D1。フッター省略禁止）→ `bash ~/.claude/scripts/obs_open.sh <パス>` で開く。置き場＝ブログ `~/Documents/ObsidianVault/50_発信/<日付>_<テーマ>/<日付>_<テーマ>_v1.md`／SNS `50_発信/<日付>_<テーマ>/<日付>_<テーマ>_SNS7PF_v1.md`／ショート動画 `50_発信/<日付>_<テーマ>/<日付>_<テーマ>_ショート動画台本_v1.md`（ファイル名の「SNS」「ショート動画」は種別判定に使うので外さない。drafts/ はObsidianで読めない＝OPERATIONS.md【C】D7）
+2. 生成物を Obsidian vault に**一字一句そのまま** Write（D1。フッター省略禁止）→ `bash ~/.claude/scripts/obs_open.sh <パス>` で開く。置き場＝ブログ `~/Documents/ObsidianVault/50_発信/ブログ/<日付>_<テーマ>_v1.md`／SNS `50_発信/SNS/<日付>_<テーマ>_SNS7PF_v1.md`／ショート動画 `50_発信/ショート動画/<日付>_<テーマ>_ショート動画台本_v1.md`（ファイル名の「SNS」「ショート動画」は種別判定に使うので外さない。drafts/ はObsidianで読めない＝OPERATIONS.md【C】D7）
 3. 指摘の反映と草川承認を済ませてから**1回で** Notion 保存（D2。「とりあえず保存→後で上書き」禁止）：
    - ブログ → ブログDB（notion-saver 経由・保存後 fetch で漢字化け検証）
    - SNS → 📣SNS投稿管理DB（ds `1bd98deb-`）

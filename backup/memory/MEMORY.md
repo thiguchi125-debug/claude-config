@@ -9,7 +9,7 @@
 - [SNS動画制作システム(Codex製CLI)](project_sns_video_system_codex.md) — 9/14 Claude Code対応・文字起こし導入で完走確認。残＝字幕の固有名詞誤り・未コミット
 - [休眠スキル退避](project_dormant_skills.md) — slide-deck-prep/aisatsu-prep/daily-content-generator/drive-intake。「〇〇戻して」でmv
 - [9月議会 一般質問2026-09](project_ippan_shitsumon_2026-09.md) — 本番9/10・11。会期フォルダ5種構成へ再編（正本=README.md）。次＝聞き取り/設計カード→議場カード薄い版
-- [Obsidian導入・vault運用](project_obsidian_vault_workflow.md) — 2026-09-06。議会文書の正本はvault・注記は`#注記`・開いてるファイルは上書きせず新版
+- [Obsidian導入・vault運用](project_obsidian_vault_workflow.md) — 2026-09-06。議会文書の正本はvault・注記は`#注記`・開いてるファイルは上書きせず新版。9/15置き場4つに整理
 - [ObsidianのiPad同期(iCloud)](project_obsidian_icloud_ipad_sync.md) — 2026-09-09完了・iPad実機確認済。残＝旧実体の削除承認。macOS26でbrctlは死んでいる
 - [Todoist総整理2026-09-06](project_task_audit_2026-09-06.md) — 2R完了:子PJ1＋セクション12・台帳KY-070〜074相談者未記録。残＝9/9の11件振り直し・図解は必要な箱だけ
 - [市民要望管理台帳(Googleシート)](project_yobo_sheet_citizen_requests.md) — 稼働中。9/7〜Todoistミラー(yobo_mirror.py・期限3日窓)でTodoist「今日」が唯一の入口。残＝報告3件の回答メモ(9/9)
@@ -64,7 +64,8 @@
 
 ## 📌 常時効く横断ルール（タスク別は GUARDRAILS.md）
 
-- [発信本文はvault `50_発信/`に書く](feedback_open_md_in_obsidian_not_notion.md) — Obsidianはvault外を表示不可。SNS/動画台本もD7。開くのはobs_open.sh
+- [置き場4つの使い分け](feedback_okiba_4tsu_tsukaiwake.md) — 渡す物→Drive／状況の一覧→Notion／注記する文章→Obsidian／他→ローカル。発信は50_発信/<日付>_<テーマ>/
+- [vaultのmdはobs_open.shで開く](feedback_open_md_in_obsidian_not_notion.md) — Obsidianはvault外を表示不可。`open`だとNotionで開く事故あり
 - [デザインは参照1本＋5軸採点から入る（全ビジュアル）](feedback_design_reference_library_first.md) — 2026-09-15草川「全てに応用」。スライド・サムネ・動画画像も対象
 - [仕組みの不具合は見つけたらその場で直す](feedback_maintenance_weekly_window.md) — 9/15日曜枠廃止。1件だけ直して確認・Todoistに積まない。大改修は提案
 - [正本文書が古いことがある](feedback_stale_authoritative_doc_vs_policy_change.md) — 制度変更は最新の事務連絡で上書き確認

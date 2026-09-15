@@ -455,7 +455,7 @@ Agent(subagent_type="content-gate-lite",
 
 ## ステップ 3.7: SNS投稿文をObsidianに書いて開く（必須・2026-09-15）
 
-ゲート反映後のSNS7種を `~/Documents/ObsidianVault/50_発信/<日付>_<テーマ>/<日付>_<テーマ>_SNS7PF_v1.md` に**一字一句そのまま** Write（媒体名を `##` 見出し）→ `bash ~/.claude/scripts/obs_open.sh <パス>` で開く。drafts/・~/outputs/ に置くと草川がObsidianで読めない（OPERATIONS.md【C】D7）。ファイル名の「SNS」は外さない（gate.pyの種別判定）。
+ゲート反映後のSNS7種を `~/Documents/ObsidianVault/50_発信/SNS/<日付>_<テーマ>_SNS7PF_v1.md` に**一字一句そのまま** Write（媒体名を `##` 見出し）→ `bash ~/.claude/scripts/obs_open.sh <パス>` で開く。drafts/・~/outputs/ に置くと草川がObsidianで読めない（OPERATIONS.md【C】D7）。ファイル名の「SNS」は外さない（gate.pyの種別判定）。
 
 ---
 
@@ -493,7 +493,7 @@ python3 ~/.claude/scripts/feed_preview.py short <カバー.png> ...  # 9:16
 
 ### 4-D. 保存
 - サムネPNG: `~/outputs/thumbnails/<日付>_<テーマ>/`
-- ショート動画の台本（カット表・7PF投稿文込み）: `~/Documents/ObsidianVault/50_発信/<日付>_<テーマ>/<日付>_<テーマ>_ショート動画台本_v<n>.md`（OPERATIONS.md【C】D7・obs_open.shで開く）
+- ショート動画の台本（カット表・7PF投稿文込み）: `~/Documents/ObsidianVault/50_発信/ショート動画/<日付>_<テーマ>_ショート動画台本_v<n>.md`（OPERATIONS.md【C】D7・obs_open.shで開く）
 - ショート動画一式（画像・ledger・mp4）: `~/outputs/short-video/<日付>_<テーマ>/`（完成mp4はスマホ編集用に Drive `📱動画素材` ミラーも検討）
 - いずれも絶対パス（cwd依存禁止）。完成物は `open` で草川に提示。
 
