@@ -88,7 +88,7 @@ def main() -> int:
         os.path.expanduser("~/outputs/blog-marking"),
         os.path.basename(a.draft).rsplit(".", 1)[0] + "_blog_paste.html",
     )
-    os.makedirs(os.path.dirname(out), exist_ok=True)
+    os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
 
     img_note = (
         f'<br>本文中に<b style="color:#c0392b">赤い破線の枠が{img_slots}か所</b>あります。'
