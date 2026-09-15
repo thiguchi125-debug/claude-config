@@ -5,15 +5,16 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 2c42d7c8-a508-4a28-b2ac-74f05c7fb4bb
-  modified: 2026-09-15T01:53:15.387Z
+  modified: 2026-09-15T02:01:16.081Z
 ---
 
 **2026-09-15 草川指示で適用範囲を「ビジュアル制作物すべて」に拡大**：「デザインの改善は今後も全てに応用して反映すること」。
 三寺町版レポート（参照＝a4_report/rep10・5軸目標を数値で渡す→G6.5採点）で紙面が急に良くなったのを受けた指示。
 対象＝印刷物に限らず、報告会スライド・サムネ・SNS投稿画像・ショート動画の挿入画像・議会資料の図解・AIくさかわ等。
 判型に参照が無ければ、作る前に「参照なしで作る」と明示し、design-inspiration-researcher で1本足してから入る。
-2026-09-15時点で参照起点＋5軸採点が**定義に入っていない経路**＝shisei-houkokukai Stage3／short-video-image-designer／
-photo-post／short-video-create／council-material-creator／ai-kusakawa／print-designer。定義への反映が済むまでは、
+**反映済み（2026-09-15）**＝shisei-houkokukai Stage3（参照と5軸目標＋品質ループ3模写採点）／short-video-image-designer（参照1本＋5軸目標・制作ループ7）／
+photo-post（Step4 4-R＋4-S-5模写採点）。3経路とも16:9スライド・9:16・1:1の参照は未整備→各定義に未整備時の手順を明記。
+参照起点＋5軸採点が**定義に入っていない経路（残り）**＝short-video-create／council-material-creator／ai-kusakawa／print-designer。定義への反映が済むまでは、
 これらを起動するときに依頼文へ「参照1本＋5軸目標値＋完成後の採点」を本体が書き足す。
 
 印刷物制作は `design_system/templates/` からでなく **`design_system/references/`（参照ライブラリ）から入る**。
