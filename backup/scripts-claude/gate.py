@@ -39,7 +39,8 @@ def norm(t):
     # 全角/半角ゆれ＋markdownの装飾記号を両側で同じように落とす
     t = unicodedata.normalize("NFKC", t or "")
     t = re.sub(r"<[^>]+>", "", t)
-    t = re.sub(r"[*`>#|]", "", t)
+    # = はObsidianの ==蛍光マーカー== 。付け外しで指紋が変わりdenyされていた（2026-09-15）
+    t = re.sub(r"[*`>#|=]", "", t)
     return re.sub(r"[\s　]+", "", t)
 
 

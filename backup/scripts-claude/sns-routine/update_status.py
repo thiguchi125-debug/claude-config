@@ -8,8 +8,21 @@ PATH = os.environ.get("PIPELINE_STATUS_PATH") or os.path.expanduser(
 key, status, msg = sys.argv[1], sys.argv[2], sys.argv[3]
 data = {}
 if os.path.exists(PATH):
-    with open(PATH) as f:
-        data = json.load(f)
+    try:
+        with open(PATH) as f:
+            data = json.load(f)
+        if not isinstance(data, dict):
+            raise ValueError("top-level is not an object")
+    except Exception as e:
+        # 壊れたJSONで落ちると死活記録が全停止する。退避して作り直す
+        bak = "%s.corrupt_%s.bak" % (PATH, datetime.datetime.now().strftime("%Y-%m-%d_%H%M%S"))
+        try:
+            import shutil
+            shutil.copy2(PATH, bak)
+        except Exception:
+            pass
+        print("WARN: %s が壊れていたので %s に退避して作り直します（%s）" % (PATH, bak, e), file=sys.stderr)
+        data = {}
 data[key] = {
     "status": status,
     "message": msg,

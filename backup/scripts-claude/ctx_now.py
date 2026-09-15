@@ -10,7 +10,8 @@ import glob, json, os, sys, time
 
 PROJ = os.path.expanduser("~/.claude/projects/-Users-kusakawatakuya")
 STARTUP_COST = 73_200   # 起動時文脈の実測中央値（token_report.py より）
-CUT_LINE = 300_000      # これを超えたら切ったほうが必ず得
+CUT_LINE = 140_000      # CLAUDE.md「140Kを超えたら /kugiri」に合わせる（2026-09-15・旧300K）
+WARN_LINE = 100_000     # context_budget_notice.py の最初の鐘と同じ
 TAIL = 400_000
 
 
@@ -78,7 +79,7 @@ def main():
         print(f"⛔ 区切りどき。切れば次は 73K から始まり、"
               f"同じ100回で約 {saved}M 節約になる。")
         print("   Step 1（成果物の保存）→ Step 2（引き継ぎメモ）→ /clear へ進む。")
-    elif ctx >= 200_000:
+    elif ctx >= WARN_LINE:
         print("🔴 そろそろ。いま一区切りつく作業なら、ここで切るのが得。")
         print("   別件を始めるなら必ず切る。")
     else:

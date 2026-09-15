@@ -211,13 +211,10 @@ def build_still(paths, out):
     # 空きポケットは安全域の内側だけを見る。左右の捨て代は「1:1で切られるので
     # 背景しか置けない」規格上の空白であって、意図のない大余白ではない
     # （2026-09-04まで捨て代をそのまま拾い、横型サムネで毎回⚠が出ていた）。
-    # 縦も同じ：安全域の上（y0〜sy0）と下端ノーテキスト帯は規格上の空白なので数えない
-    # （2026-09-15まで y=0 から測り、要素が下寄りだと上端に偽の⚠が出ていた）。
-    py0, py1 = int(sy0), int(min(sy1, H * (1 - BOTTOM_NOTEXT)))
-    bp = blank_pockets(src.crop((int(sx0), py0, int(sx1), py1)))
+    bp = blank_pockets(src.crop((int(sx0), 0, int(sx1), H)))
     if bp:
         x0, y0, x1, y1, pct = bp
-        x0 += int(sx0); x1 += int(sx0); y0 += py0; y1 += py0
+        x0 += int(sx0); x1 += int(sx0)
         mark = "⚠" if pct >= 10 else "  "
         print(f"{mark}安全域内の最大の空きポケット = x{x0}〜{x1} / y{y0}〜{y1}"
               f"（{x1-x0}×{y1-y0}px ＝ 安全域の{pct:.0f}%）"
