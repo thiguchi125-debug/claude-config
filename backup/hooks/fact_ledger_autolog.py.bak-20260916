@@ -27,10 +27,8 @@ DRAFT_PATH = re.compile(r"((?:~|/Users/[^/\s]+)/[^\s`'\"）)]+\.(?:md|txt|html))
 
 
 def read_transcript(path):
-    """(最初のuser本文, 最終報告) を返す。
-    2026-09-16: サブの最終報告は SubagentHandback(tool_use) の input.message に入り、
-    最後のassistantテキストは「report sent」等の定型1行になる。ハンドバックがあればそれを優先"""
-    first_user, last_assistant, handback = "", "", ""
+    """(最初のuser本文, 最後のassistant本文) を返す"""
+    first_user, last_assistant = "", ""
     try:
         with open(path, encoding="utf-8", errors="ignore") as f:
             for line in f:
@@ -43,13 +41,6 @@ def read_transcript(path):
                     continue
                 m = o.get("message") or {}
                 c = m.get("content")
-                if t == "assistant" and isinstance(c, list):
-                    for b in c:
-                        if isinstance(b, dict) and b.get("type") == "tool_use" \
-                                and b.get("name") == "SubagentHandback":
-                            hm = (b.get("input") or {}).get("message")
-                            if isinstance(hm, str) and hm.strip():
-                                handback = hm
                 if isinstance(c, str):
                     parts = [c]
                 else:
@@ -64,7 +55,7 @@ def read_transcript(path):
                     last_assistant = text
     except OSError:
         pass
-    return first_user, (handback or last_assistant), bool(handback)
+    return first_user, last_assistant
 
 
 def detect_agent(inp, text):
@@ -341,11 +332,11 @@ def main():
                 inp["agent_type"] = json.load(f).get("agentType", "")
         except (OSError, ValueError):
             pass
-    prompt, text, has_handback = read_transcript(tpath)
+    prompt, text = read_transcript(tpath)
     # フック入力の last_assistant_message は停止時点の最終報告そのもの。transcriptへの
     # 書き出しが間に合っていないことがあるため、読める主張が多い方を採る
     lam = inp.get("last_assistant_message") or ""
-    if not has_handback and isinstance(lam, str) and lam.strip() and lam.strip() != text.strip():
+    if isinstance(lam, str) and lam.strip() and lam.strip() != text.strip():
         if not text or len(parse_claims(lam)) >= len(parse_claims(text)):
             text = lam
     agent = detect_agent(inp, text)
