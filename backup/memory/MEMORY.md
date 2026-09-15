@@ -5,7 +5,7 @@
 
 ## 🔄 進行中プロジェクト
 
-- [Claude Code活用棚卸し2026-09-06](project_claude_usage_audit_2026-09-06.md) — 9/7終了。残＝案1・2・5・6はTodoist@日曜改修／9/7夕便の#納品1行を確認
+- [Claude Code活用棚卸し2026-09-06](project_claude_usage_audit_2026-09-06.md) — 9/15に案1・2・5実施（約5〜6Kトークン減）。残＝案6(Todoist MCP切断)は草川判断待ち
 - [SNS動画制作システム(Codex製CLI)](project_sns_video_system_codex.md) — 9/14 Claude Code対応・文字起こし導入で完走確認。残＝字幕の固有名詞誤り・未コミット
 - [休眠スキル退避](project_dormant_skills.md) — slide-deck-prep/aisatsu-prep/daily-content-generator/drive-intake。「〇〇戻して」でmv
 - [9月議会 一般質問2026-09](project_ippan_shitsumon_2026-09.md) — 本番9/10・11。会期フォルダ5種構成へ再編（正本=README.md）。次＝聞き取り/設計カード→議場カード薄い版

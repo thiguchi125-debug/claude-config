@@ -94,8 +94,14 @@ KW_V = {"UNVERIFIED": "UNVERIFIED", "VERIFIED": "VERIFIED", "INCORRECT": "INCORR
         "HALLUCINATION": "INCORRECT", "MINOR_DIFF": "MINOR_DIFF", "MINOR": "MINOR_DIFF"}
 MARK_CHARS = "✅❌🚫❓⚠"
 SECTION_RE = re.compile(r"^##\s+(?!#)(.*)$")
-HEAD_LINE = re.compile(r"^(?:#{2,4}\s*|\*\*\s*)(?:[CNMV]?\d+[a-z]?\s*[:：]?\s*)?([" + MARK_CHARS + r"])?\uFE0F?\s*「([^」]{3,200})」(.*)$")
+ITEM_RE = re.compile(r"^(?:#{3,4}\s+(.+)|\*\*([^*\n]{0,20}?[" + MARK_CHARS + r"]️?\s*「[^」\n]{3,200}」[^\n]*))$")
+ID_RE = re.compile(r"^(?:項目\s*\d+|[A-Za-z]{0,4}[-‐]?\d+[a-z]?(?:[-/][A-Za-z0-9-]+)*)(?:[\s　:：.、]+|(?=[「" + MARK_CHARS + r"]))")
 LIST_LINE = re.compile(r"^\s*(?:\d+[.)．]|[-*])\s+(.{3,200}?)\s*(?:→|⇒|->)\s*(.*)$")
+# 見出しに判定語が無いときの日本語の節名（上から順に判定。「要修正（誤りではない）」を誤りにしないため順序が意味を持つ）
+SECTION_JA = [("UNVERIFIED", ("未検証", "出典不明", "出典未確認", "出典なし", "確認不能", "出典が民間")),
+              ("MINOR_DIFF", ("軽微", "要修正", "修正推奨", "任意修正")),
+              ("INCORRECT", ("修正必須", "必須修正", "誤り", "直す必要")),
+              ("VERIFIED", ("検証OK", "確定", "確認できた", "完全一致"))]
 
 
 def _verdict_in(s):
@@ -104,8 +110,16 @@ def _verdict_in(s):
         if s.startswith(ch):
             return v
     m = KW_RE.search(s)
-    if m:
-        return KW_V[m.group(1)]
+    return KW_V[m.group(1)] if m else ""
+
+
+def _section_verdict(s):
+    v = _verdict_in(s)
+    if v:
+        return v
+    for vv, words in SECTION_JA:
+        if any(w in s for w in words):
+            return vv
     return ""
 
 
@@ -121,9 +135,15 @@ def _lead_verdict(s):
 
 def _claim_text(cell):
     c = cell.replace("**", "").strip()
-    c = re.sub(r"^(?:[CNMV]?\d+[a-z]?)(?:[\s:：.、]+|(?=「))", "", c).strip()
-    m = re.match(r"^[" + MARK_CHARS + r"]?\uFE0F?\s*「([^」]{3,200})」", c)
-    return (m.group(1) if m else c)[:200].strip()
+    c = ID_RE.sub("", c, count=1).strip()
+    c = re.sub(r"^[" + MARK_CHARS + r"]️?\s*", "", c)
+    c = KW_RE.sub("", c, count=1) if KW_RE.match(c) else c
+    c = c.strip()
+    m = re.match(r"^(?:[^「」]{0,6}?)「([^」]{3,200})」", c)
+    if m:
+        return m.group(1).strip()
+    c = re.split(r"\s*(?:→|⇒|->|—|――)\s*", c, maxsplit=1)[0]
+    return c[:200].strip()
 
 
 def _source_of(body):
@@ -143,27 +163,35 @@ def parse_claims(text):
     section_v = ""
     for i, ln in enumerate(lines):
         msec = SECTION_RE.match(ln)
-        if msec and "「" not in msec.group(1):
-            section_v = _verdict_in(msec.group(1))
+        if msec:
+            section_v = _section_verdict(msec.group(1))
             starts.append((i, "", "", "section"))
             continue
-        mh = HEAD_LINE.match(ln)
-        if mh:
-            mark, claim, rest = mh.group(1), mh.group(2).strip(), mh.group(3)
-            v = MARK_V.get(mark, "") if mark else (_lead_verdict(rest) or section_v)
-            starts.append((i, v, claim, "head"))
+        mi = ITEM_RE.match(ln)
+        if mi:
+            h = (mi.group(1) or mi.group(2) or "").replace("**", "").strip()
+            rest = ID_RE.sub("", h, count=1).strip()
+            v = _lead_verdict(rest) or section_v
+            starts.append((i, v, _claim_text(rest), "head"))
             continue
         if ln.lstrip().startswith("|"):
             cells = [c.strip() for c in ln.strip().strip("|").split("|")]
+            hit = False
             for j in range(1, len(cells)):
                 # 判定セルは判定語・記号で始まるものだけ（「OK」「3件」等の集計表は拾わない）
                 t = cells[j].replace("*", "").strip()
                 v = MARK_V.get(t[:1], "") or (KW_V[KW_RE.match(t).group(1)] if KW_RE.match(t) else "")
                 if v:
                     claim = _claim_text(cells[j - 1])
-                    if len(claim) >= 3 and not re.fullmatch(r"[-:\s]+", claim):
+                    if len(claim) >= 3:
                         starts.append((i, v, claim, "row"))
+                    hit = True
                     break
+            # 判定列の無い表（「## ✅ 検証OK」節の | C1 | 主張 | 一次情報 |）は節の判定を使う
+            if not hit and section_v and len(cells) >= 3 and ID_RE.match(cells[0] + " "):
+                claim = _claim_text(cells[1])
+                if len(claim) >= 3:
+                    starts.append((i, section_v, claim, "row"))
             continue
         ml = LIST_LINE.match(ln)
         if ml:
@@ -173,7 +201,7 @@ def parse_claims(text):
     out = []
     seen = set()
     for k, (i, v, claim, kind) in enumerate(starts):
-        if kind == "section" or not v or not claim or claim in seen:
+        if kind == "section" or not v or len(claim) < 3 or claim in seen:
             continue
         if kind == "row":
             body = lines[i]

@@ -31,3 +31,12 @@ metadata:
 - 案4: 入れ子 `.claude` 6か所（全て空・consolidate済み）を `~/Archive/_trash_pending_2026-09-07/nested_claude/` へ。偽エージェント4本の元.mdはディスクに無く、起動スナップショットの残骸＝次セッションで消える
 - 発見: `consolidate_agent_memory.py` の夜間常設化が launchd/scripts/settings のどこにも登録されていない（memoryの記述と食い違い）→ 日曜枠で確認
 - 案1・2・5・6 は Todoist #6hRFvqvcFPQwP9Rg（@日曜改修）に積んだ
+
+## 2026-09-15 実施（案1・2・5）
+- バックアップ＝`~/.claude/_backup_2026-09-15_startup/`（agents/47本・MEMORY.md・GUARDRAILS.md・CLAUDE.md・本ファイル）
+- 案1: agents/*.md 47本の description を全て120字以内に（Triggers/NOT維持・本文不変）。14,942→11,189バイト。見積18Kのうち大半を占めた想定は外れ＝既に圧縮済みだった
+- 案2: MEMORY.md「📌常時効く横断ルール」83行→13行＋案内1行。65行を GUARDRAILS.md【1】〜【7】と新設【9】タスク登録・日程へ移設、5行は既存行と同一リンクで統合。GUARDRAILSの素のリンクは `~/.claude/projects/-Users-kusakawatakuya/memory/` 付きに統一。MEMORY.md 28,223→16,157バイト
+- 案5: CLAUDE.md トリガー早見表をスキル外2本＋休眠スキルの案内1行に置換、GUARDRAILS読込行に【9】追記。14,147→12,831バイト
+- 合計 約16.8KB減＝推定5〜6Kトークン減（見積18Kに届かず）
+- 案6（Todoist MCP切断）は草川判断待ち・未実施。deferred読込なら固定費はツール名約50件＋サーバ説明で推定1.5〜2K
+- consolidate_agent_memory.py: plist `com.kusagawa.consolidate-agent-memory` はロード済み（毎日2:50・直近終了コード0・9/15 02:50に実行ログあり）。9/7の「未登録」は9/7 02:38作成のplistで解消済み
