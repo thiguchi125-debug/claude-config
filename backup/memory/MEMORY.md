@@ -64,6 +64,7 @@
 
 ## 📌 常時効く横断ルール（タスク別は GUARDRAILS.md）
 
+- [発信本文はvault `50_発信/`に書く](feedback_open_md_in_obsidian_not_notion.md) — Obsidianはvault外を表示不可。SNS/動画台本もD7。開くのはobs_open.sh
 - [デザインは参照1本＋5軸採点から入る（全ビジュアル）](feedback_design_reference_library_first.md) — 2026-09-15草川「全てに応用」。スライド・サムネ・動画画像も対象
 - [仕組みの不具合は見つけたらその場で直す](feedback_maintenance_weekly_window.md) — 9/15日曜枠廃止。1件だけ直して確認・Todoistに積まない。大改修は提案
 - [正本文書が古いことがある](feedback_stale_authoritative_doc_vs_policy_change.md) — 制度変更は最新の事務連絡で上書き確認
