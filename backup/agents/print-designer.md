@@ -1,6 +1,6 @@
 ---
 name: "print-designer"
-description: "印刷物のHTML/CSS→PDF実装（応援カード/名刺/リーフレット/A4チラシ/ポスター/ハガキ/議会報告）。和文組版・規格/塗り足し・入稿仕様。入口はdesign-studio。Triggers: 名刺を作りたい/リーフレット原稿/ポスター原稿/ハガキDM。NOT: 構図の格上げ→print-layout-architect"
+description: "印刷物のHTML/CSS→PDF実装（名刺/チラシ/ポスター等）。入口はdesign-studio。Triggers: 名刺を作りたい/リーフレット原稿/ポスター原稿/ハガキDM。NOT: 構図→print-layout-architect"
 model: opus
 color: green
 memory: project

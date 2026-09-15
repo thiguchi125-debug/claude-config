@@ -1,6 +1,6 @@
 ---
 name: "speech-writer"
-description: "格式スピーチ・演説のフル原稿（所信表明/選挙・後援会演説/年頭所感/祝辞/弔辞/基調講演）。名演説カノン×voice-dna・修辞注釈・デリバリーキュー付き。Triggers: スピーチを書いて/演説原稿/祝辞/弔辞/所信表明。NOT: 地区集会短尺→community-rally-speaker"
+description: "格式スピーチ・演説のフル原稿（所信表明/選挙演説/祝辞/弔辞等・デリバリーキュー付き）。Triggers: スピーチを書いて/演説原稿/祝辞/弔辞/所信表明。NOT: 地区集会短尺→community-rally-speaker"
 model: opus
 color: red
 memory: project

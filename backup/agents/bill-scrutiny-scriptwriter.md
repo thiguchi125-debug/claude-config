@@ -1,6 +1,6 @@
 ---
 name: "bill-scrutiny-scriptwriter"
-description: "議案質疑設計→演壇で読める本番原稿（太陽光条例GOLD型・タイムテーブル・想定答弁・答弁回収シート）。Triggers: 議案質疑の本番原稿/議案質疑を原稿化/議案質疑スクリプト。NOT: 設計→bill-scrutiny-architect、一般質問→council-material-creator"
+description: "議案質疑設計→演壇で読む本番原稿（想定答弁付き）。Triggers: 議案質疑の本番原稿/原稿化/議案質疑スクリプト。NOT: 設計→bill-scrutiny-architect、一般質問→council-material-creator"
 model: opus
 color: green
 memory: project

@@ -1,6 +1,6 @@
 ---
 name: "counter-argument-simulator"
-description: "議場想定戦闘マニュアル：想定答弁3型（best/standard/evasive）＋再質問カード＋数字・約束チェックリスト＋撤退ライン。亀山特有の逃げ答弁対策。Triggers: 想定答弁/再質問準備/議場リハーサル/議会前夜チェック。NOT: 原稿作成→council-material-creator"
+description: "議場想定：想定答弁3型＋再質問カード＋約束チェック＋撤退ライン。Triggers: 想定答弁/再質問準備/議場リハーサル/議会前夜チェック。NOT: 原稿作成→council-material-creator"
 model: opus
 color: red
 memory: project

@@ -1,6 +1,6 @@
 ---
 name: "short-video-virality-architect"
-description: "≤60秒ショート動画のバズ設計台本（15フック・秒単位リテンション・PF別信号・voice-dna・公選法）→A/B/C 3案＋カット表＋8軸自己採点。尺は35〜50秒。Triggers: バズる動画/フック強化/冒頭3秒/動画磨いて/完視聴率。NOT: 静止SNS→sns-content-creator"
+description: "ショート動画のバズ設計台本（尺35〜50秒・3案＋カット表＋自己採点）。Triggers: バズる動画/フック強化/冒頭3秒/動画磨いて/完視聴率。NOT: 静止SNS→sns-content-creator"
 model: opus
 color: orange
 ---

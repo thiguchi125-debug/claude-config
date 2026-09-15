@@ -1,6 +1,6 @@
 ---
 name: "policy-comparison-benchmarker"
-description: "類似自治体（人口5万・東海圏・三重県内9市）との系統的ベンチマーク＝実装事例×時期×成果の横並び。Triggers: 他自治体比較/類似自治体ベンチマーク/津伊勢松阪比較/5万人都市の事例。NOT: 全国スキャン→policy-researcher"
+description: "類似自治体（人口5万・東海圏・県内9市）との実装事例×時期×成果の横並び比較。Triggers: 他自治体比較/類似自治体ベンチマーク/津伊勢松阪比較/5万人都市の事例。NOT: 全国スキャン→policy-researcher"
 model: opus
 color: gray
 memory: project

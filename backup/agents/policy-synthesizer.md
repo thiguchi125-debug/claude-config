@@ -1,6 +1,6 @@
 ---
 name: "policy-synthesizer"
-description: "並列リサーチ出力（各researcher/WebSearch/Notion/会話）を統合し政策候補ドラフト（Why/What/How/優先度/次アクション）を生成。主に/policy-radarから。Notionへ直接書かない。Triggers: 政策候補にまとめて/リサーチを統合。NOT: 生リサーチ→各researcher"
+description: "並列リサーチ出力を統合し政策候補ドラフトを生成（主に/policy-radarから・Notion直書きなし）。Triggers: 政策候補にまとめて/リサーチを統合。NOT: 生リサーチ→各researcher"
 model: opus
 color: red
 memory: project

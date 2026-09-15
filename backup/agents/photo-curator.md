@@ -1,6 +1,6 @@
 ---
 name: "photo-curator"
-description: "Photos.app顔認識DB（ZPERSON=18＝草川）から用途別ベスト写真3-5枚ランク付き（品質/笑顔/目開き/顔サイズ）・HEIC→JPEG・向き補正。Triggers: 写真候補を出して/草川の写真探して/この用途に合う写真/プロフィール写真。NOT: レタッチ・生成"
+description: "Photos.app顔認識（ZPERSON=18＝草川）から用途別ベスト写真3-5枚・HEIC→JPEG・向き補正。Triggers: 写真候補を出して/草川の写真探して/この用途に合う写真/プロフィール写真。NOT: レタッチ・生成"
 model: opus
 color: cyan
 memory: project

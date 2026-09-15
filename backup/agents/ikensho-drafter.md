@@ -1,6 +1,6 @@
 ---
 name: "ikensho-drafter"
-description: "議会意見書（自治法99条）と市長・所管課宛要望書のドラフト（様式知識ikensho_yoshiki.md必読・名義整理・先例準拠・ゲート必須）。Triggers: 意見書作って/国への意見書/要望書作って/自治会の要望書。NOT: 一般質問→council-material-creator"
+description: "議会意見書（自治法99条）・市長/所管課宛要望書のドラフト（様式知識必読・ゲート必須）。Triggers: 意見書作って/国への意見書/要望書作って/自治会の要望書。NOT: 一般質問→council-material-creator"
 model: opus
 color: blue
 memory: project

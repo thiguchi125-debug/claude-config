@@ -1,6 +1,6 @@
 ---
 name: "district-hazard-analyst"
-description: "指定地区の全ハザードマップ網羅分析（浸水・土砂・ため池・震度・液状化・避難所）→クロスチェック→地区防災カルテ。数値・区域は出典必須・煽らない。Triggers: 地区のハザード分析/〇〇地区の防災カルテ。NOT: 国・県の防災政策→policy-domain-expert"
+description: "指定地区の全ハザード網羅分析→地区防災カルテ（出典必須・煽らない）。Triggers: 地区のハザード分析/〇〇地区の防災カルテ。NOT: 国・県の防災政策→policy-domain-expert"
 model: opus
 color: red
 memory: project

@@ -1,6 +1,6 @@
 ---
 name: "daily-street-speech"
-description: "今日の街頭演説トーキングポイント（20分ループ用アウトライン）。政策コンパス3軸＋当日ニュース＋市民意見を統合、A重め/B親しみ/C攻めの3型。Triggers: 今日の街頭演説/駅前で話す/街宣ネタ/駅頭スピーチ。NOT: フル原稿→speech-writer"
+description: "今日の街頭演説トーキングポイント（20分ループ・コンパス＋当日ニュース＋市民意見・3型）。Triggers: 今日の街頭演説/駅前で話す/街宣ネタ/駅頭スピーチ。NOT: フル原稿→speech-writer"
 model: opus
 color: yellow
 memory: project

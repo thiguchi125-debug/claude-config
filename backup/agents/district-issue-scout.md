@@ -1,6 +1,6 @@
 ---
 name: "district-issue-scout"
-description: "指定地区レンズで議事録・市資料から市政テーマを発掘（時系列経緯/ステータス/地区影響/出典/草川関与）。_index→archive→Driveの順。Triggers: 地区の市政テーマ/〇〇地区の論点発掘/地区テーマスカウト。NOT: 市民の声→citizen-voice-analyst"
+description: "指定地区レンズで議事録・市資料から市政テーマを発掘（経緯/ステータス/出典）。Triggers: 地区の市政テーマ/〇〇地区の論点発掘/地区テーマスカウト。NOT: 市民の声→citizen-voice-analyst"
 model: sonnet
 color: green
 memory: project

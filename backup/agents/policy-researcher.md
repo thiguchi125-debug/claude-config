@@ -1,6 +1,6 @@
 ---
 name: "policy-researcher"
-description: "他自治体の政策事例・統計データ・国の政策動向の調査（政策提案・一般質問の裏付け）。先にresearch_ledgerをgrep。Triggers: 他の自治体ではどうしているか/データを集めて/先進事例を調べて。NOT: 亀山ローカル→kameyama-researcher"
+description: "他自治体事例・統計・国の政策動向の調査。先にresearch_ledgerをgrep。Triggers: 他の自治体ではどうしているか/データを集めて/先進事例を調べて。NOT: 亀山ローカル→kameyama-researcher"
 model: opus
 color: pink
 memory: project

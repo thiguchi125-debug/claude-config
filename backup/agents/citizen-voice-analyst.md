@@ -1,6 +1,6 @@
 ---
 name: "citizen-voice-analyst"
-description: "市民の声コーパス（意見リスト・フォーム・DM・街頭・03_themes）の深層分析→ボリュームゾーン・隠れた痛み・地区別・政策ギャップ→優先順位付き提案。Triggers: 市民の声分析/世論分析/市民は何を求めている。NOT: 草川の過去発言→policy-archive-miner"
+description: "市民の声コーパスの深層分析→隠れた痛み・地区別・政策ギャップ→優先順位付き提案。Triggers: 市民の声分析/世論分析/市民は何を求めている。NOT: 草川の過去発言→policy-archive-miner"
 model: opus
 color: pink
 memory: project

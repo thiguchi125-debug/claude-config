@@ -1,6 +1,6 @@
 ---
 name: "policy-domain-expert"
-description: "6政策ドメイン（子育て教育／行政DX／防災安全／医療福祉／交通インフラ／まちづくり産業）の統合エキスパート。knowledge/policy_domains/を読んで国県最前線×亀山ギャップ→政策候補・議会論点。Triggers: 〇〇政策深掘り/〇〇エキスパート/〇〇3本柱の中身。NOT: 統合→policy-synthesizer"
+description: "6政策ドメインの統合エキスパート：国県最前線×亀山ギャップ→政策候補・議会論点。Triggers: 〇〇政策深掘り/〇〇エキスパート/〇〇3本柱の中身。NOT: 統合→policy-synthesizer"
 model: opus
 color: orange
 memory: project

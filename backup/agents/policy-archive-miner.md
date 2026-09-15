@@ -1,6 +1,6 @@
 ---
 name: "policy-archive-miner"
-description: "草川自身の過去8年の発言・発信（議事録・ブログ・SNS・印刷物）をテーマ別・時系列で抽出→03_themes/へ。進化追跡・ギャップ分析。Triggers: 草川の過去発言を集めて/〇〇テーマの過去主張/まだ触れていないトピック。NOT: 外部→policy-researcher"
+description: "草川自身の過去発言・発信をテーマ別・時系列で抽出→03_themes/へ。Triggers: 草川の過去発言を集めて/〇〇テーマの過去主張/まだ触れていないトピック。NOT: 外部→policy-researcher"
 model: opus
 color: teal
 memory: project

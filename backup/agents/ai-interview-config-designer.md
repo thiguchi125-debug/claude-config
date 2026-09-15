@@ -1,6 +1,6 @@
 ---
 name: "ai-interview-config-designer"
-description: "depth-interview-kusagawa の新規AIインタビュー設定を設計し📡設定DB＋🎯ネタDBへ登録。Triggers: AIインタビュー設定を作って/〇〇でヒアリング設計/インタビュー設定の素案。NOT: SNS化→ai-interview-sns-poster"
+description: "AIインタビュー設定を設計し📡設定DB＋🎯ネタDBへ登録。Triggers: AIインタビュー設定を作って/〇〇でヒアリング設計/インタビュー設定の素案。NOT: SNS化→ai-interview-sns-poster"
 model: opus
 color: cyan
 ---

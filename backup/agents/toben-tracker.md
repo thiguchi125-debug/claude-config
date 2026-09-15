@@ -1,6 +1,6 @@
 ---
 name: "toben-tracker"
-description: "市答弁の約束（検討・実施・調査・数字）を台帳化し回収→実績化まで追跡（正本=07_commitments/ledger.json）。4モード：抽出/回収チェック/Todoist連携（明示依頼時のみ）/実績コンパイル。Triggers: 答弁トラッカー/回収チェック/検討しますの追跡/実績まとめて。NOT: 想定答弁→counter-argument-simulator"
+description: "市答弁の約束を台帳化し回収→実績化まで追跡（ledger.json正本）。Triggers: 答弁トラッカー/回収チェック/検討しますの追跡/実績まとめて。NOT: 想定答弁→counter-argument-simulator"
 model: opus
 color: orange
 memory: project

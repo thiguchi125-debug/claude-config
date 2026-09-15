@@ -15,7 +15,10 @@ description: "朝のブリーフィング。「おはよう/おはよ/morning/�
 3. **リトライ規律**: Notion書込がtimeoutしても即リトライ禁止（適用済みの可能性大）。fetch確認→未適用の場合のみ1回だけ再試行。
 4. ルーティンページ（`34acf503-`「📅毎日のルーティン（改訂版）」）には**一切書き込まない**（リセット処理は2026-05-08廃止済み）。
 5. 日付・曜日は `date '+%Y-%m-%d (%a)'` で実確認してから使う（7/3を木曜と誤記した事故対策・全セクションで同一値を使う）。
-6. **`notion-query-data-sources`（SQLモード）は使用禁止**。Businessプラン限定機能でブロックされる（2026-07-03実測）。使ってよいのは notion-fetch / notion-search / notion-query-database-view（view URL必須）のみ。ブロックに遭ったら「プラン制約」と騒がず、このルール違反を疑うこと。
+6. **Notion読み取りツール（2026-09-15改定）**: `notion-query-database-view` は **MCPから削除済み＝呼ぶと必ず⊘**。使うのは notion-fetch / notion-search / **notion-query-data-sources**（スキーマは起動時に ToolSearch `select:mcp__claude_ai_Notion__notion-fetch,mcp__claude_ai_Notion__notion-query-data-sources` で読み込む）。
+   - **SQLモードは §8・§10・ご無沙汰アラートの定型クエリ4本だけ許可**（本文にSQL全文あり・列を絞りLIMIT付き）。Business未満はワークスペース共有の利用枠があるため、**それ以外の探索的SQLは禁止**（7/3の「全面ブロック」は9/15実測で解消・4本とも応答1〜3K字）。
+   - **view mode（`{"mode":"view","view_url":…}`）と view URLの notion-fetch は朝の定型取得に使わない**（9/15実測: ネタDB view=100行で63K字＋has_more／後援会員view=約100行・全列＋個人情報で数万字／自治会view=50行超で約3万字。view URLのfetchは行を返さずスキーマだけ＝ネタDB 1.3万字・後援会員 1.6万字・自治会 2.4万字）。
+   - SQLが枠切れ・エラーのときのフォールバックは各節に記載（rows mode＋filter＋limit小）。それも失敗なら ⊘ 1行で先へ進む（リトライ1回まで）。
 
 ## §0 実行チェックリスト（起動直後に内部初期化・全14項目）
 
@@ -187,7 +190,15 @@ python3 ~/.claude/scripts/todoist/td.py list 2>/dev/null | grep -n "要期限"
 ## §8 発信テーマ提案（毎朝常時・Notion 2call）
 
 [[feedback_ohayo_content_proposal_always_show]]（毎朝必出力・トリガー型化禁止）を継承しつつ軽量化：
-1. 材料 = §6のニュース＋grep結果＋📝一般質問ネタDB（view `https://www.notion.so/cb47d25e30b14b61b39f56254bf9432a?v=2d912401-3794-484a-8252-04ade354fbd2`・調査中上位）1クエリ。
+1. 材料 = §6のニュース＋grep結果＋🎯政策・質問ネタDB（ds `collection://42716725-fece-497f-9782-705076539de4`・調査中上位）1クエリ。**notion-query-data-sources SQLモード**（応答約3K字・2026-09-15実測）:
+   ```
+   data_source_urls: ["collection://42716725-fece-497f-9782-705076539de4"]
+   SELECT "ネタ名","分野","優先度","状況","時間軸", substr("次アクション",1,60) AS next_action, date("更新日") AS updated
+   FROM "collection://42716725-fece-497f-9782-705076539de4"
+   WHERE "状況" IN ('調査中','質問案','提出/通告')
+   ORDER BY CASE "優先度" WHEN '高' THEN 0 WHEN '中' THEN 1 ELSE 2 END, "更新日" DESC LIMIT 8
+   ```
+   フォールバック（SQL枠切れ・エラー時）: rows mode `{"mode":"rows","data_source_url":"collection://42716725-…","filter":{"type":"group","operator":"or","filters":[{"type":"property","property":"状況","propertyType":"status","operator":"status_is","value":[{"type":"is_option","value":"調査中"},{"type":"is_option","value":"質問案"},{"type":"is_option","value":"提出/通告"}]}]},"sort":[{"property":"更新日","direction":"descending"}],"limit":8}`（全列が返る＝約7K字。**limitは10以下厳守**・100にすると8.6万字）。旧view `?v=2d912401-…` は「受け付け（未整理）」ビュー（収集/未整理）で調査中ではないので使わない。
 2. **重複除外**: 📣SNS投稿管理DBを notion-search（data_source_url=`collection://1bd98deb-624f-402c-aeb3-bdaa4782b389`・直近テーマ語で1回）で突合（SNS DBはviewが無いためviewクエリ不可・SQLは禁止） → 既発信テーマは除外 or 新規角度のみ（[[feedback_ohayo_duplication_check]]）。
 3. 出力: 🎤街頭演説3案（A深掘り/B共感/C攻め・テーマ単位・本文は生成しない）＋📝ブログ・SNSテーマ2〜3本（レーン付き）。分野は5ドメイン分散・選挙文脈は引っ込める（[[feedback_street_speech_topic_diversity]]他）。
 4. トリガー条件成立時のみ末尾に「💫 今日はフルパッケージ作る？（daily-content-generator）」を1行（自動連結禁止・[[feedback_ohayo_daily_content_generator_prompt]]）。
@@ -214,7 +225,9 @@ python3 ~/.claude/scripts/todoist/td.py list 2>/dev/null | grep -n "要期限"
 
 ## §10 シグナル欄（軽量・各1call以内）
 
-- **📡 policy-radar**: 📝ネタDBはview（`https://www.notion.so/cb47d25e30b14b61b39f56254bf9432a?v=2d912401-3794-484a-8252-04ade354fbd2`）をquery-database-viewで1回→ローカルで🆕/🔄・調査中を数える。🎯政策候補DBはnotion-search（data_source_url指定・「承認待ち」）1回。取得不能なら「⊘ radar件数取得不可（月曜はGmail下書き【週次policy-radar】で代替確認）」1行 → 件数のみ（月曜=weekly実行後・毎月2日=monthly実行後の文言は従来通り。Routine: weekly `trig_01MyKkdatWADfmAdUgB3UDu7`／monthly `trig_019LPFjUFu9anWC53UFJCavK`）。0件なら1行。
+- **📡 policy-radar**: 🎯政策・質問ネタDBは **notion-query-data-sources SQLモードの集計1回**（応答約250字・2026-09-15実測）で状況別件数と🆕/🔄（ネタ名の先頭絵文字）を数える:
+  `SELECT "状況" AS s, COUNT(*) AS n, SUM(CASE WHEN "ネタ名" LIKE '🆕%' THEN 1 ELSE 0 END) AS new_n, SUM(CASE WHEN "ネタ名" LIKE '🔄%' THEN 1 ELSE 0 END) AS upd_n FROM "collection://42716725-fece-497f-9782-705076539de4" GROUP BY "状況"`
+  （data_source_urls=`["collection://42716725-fece-497f-9782-705076539de4"]`。9/15時点: 収集77/未整理48/調査中139（🆕60・🔄7）/質問案34）。**行を取って手元で数える方式は禁止**（調査中だけで100行超・rows/viewとも6〜9万字でhas_more）。SQLが枠切れ・エラーなら件数は出さず下記の⊘行へ。🎯政策候補DBはnotion-search（data_source_url指定・「承認待ち」）1回。取得不能なら「⊘ radar件数取得不可（月曜はGmail下書き【週次policy-radar】で代替確認）」1行 → 件数のみ（月曜=weekly実行後・毎月2日=monthly実行後の文言は従来通り。Routine: weekly `trig_01MyKkdatWADfmAdUgB3UDu7`／monthly `trig_019LPFjUFu9anWC53UFJCavK`）。0件なら1行。
 - **📥 未分類インテーク**: notion-fetch `391cf503-a68f-8191-b218-e80fdc7aedeb` → 未チェック行数を「📥未分類 N件」表示。3件以上で「棚卸ししよ」を添える（smart-intakeの締めループ）。
 - **📂 Drive新規資料**: §2で読んだ昨夜のまとめの「Drive新規N件」をそのまま転記（**追加クエリしない**。サマリに無い場合のみ「⊘ oyasumi未実行のため不明」1行）。
 - **🌐 全体地図チェック（毎月1〜3日のみ）**: 「🌐Notion全体地図」の last_edited が60日超なら「地図が古い→月次棚卸し推奨」1行。
@@ -281,12 +294,29 @@ python3 ~/.claude/scripts/todoist/td.py list 2>/dev/null | grep -n "要期限"
 
 ## 📌 ご無沙汰アラート（2026-07-05新設・毎朝必須）
 ブリーフィングに「🔔 ご無沙汰アラート」節を設け、**人と地域の両方**について「最近会えていない・行けていない先」を今日の空き時間とセットで提案する：
-1. **人**: 👥後援会員DBの専用ビューを取得
-   `notion-query-database-view` view_url=`https://www.notion.so/15deb49eddc24e30a89185a932d16ac5?v=394cf503a68f81e581fd000c12be9b4d`（🔔ご無沙汰順・最終接触日昇順）
-   → 重要度S/A・再訪要✔を優先し、最終接触日が30日超（or 空欄）の上位3名を候補に。
-2. **地域**: 🏘️自治会別訪問管理DBの専用ビューを取得
-   `notion-query-database-view` view_url=`https://www.notion.so/561a63da2724464e90de5132e24f4907?v=394cf503a68f8130a124000c2146ac66`（🔔ご無沙汰地域順・更新日昇順）
-   → 更新が最も古い自治会の上位3件（市外・対応外は除外）を候補に。
+（2026-09-15改定: `notion-query-database-view` 廃止に伴い **notion-query-data-sources SQLモード**へ。ビュー自体＝後援会員DB `15deb49eddc24e30a89185a932d16ac5?v=394cf503a68f81e581fd000c12be9b4d`「🔔ご無沙汰順」／自治会DB `561a63da2724464e90de5132e24f4907?v=394cf503a68f8130a124000c2146ac66`「🔔ご無沙汰地域順」はNotion上の目視用に残すが、**ohayoからview mode・fetchで取らない**＝全列＋住所等の個人情報ごと数万字が返るため。SQLは必要列だけ・約1K字）
+1. **人**: 👥後援会員DB（ds `collection://04cc3a1c-f59a-409d-8406-ff4de19eea45`）をSQL 1回（応答約1.3K字）:
+   ```
+   SELECT "氏名","地区","重要度","再訪要","date:最終接触日:start" AS last_contact, url
+   FROM "collection://04cc3a1c-f59a-409d-8406-ff4de19eea45"
+   WHERE ("重要度" IN ('S','A') OR "再訪要"='__YES__')
+     AND COALESCE("打診ステータス",'') NOT IN ('離任','辞退') AND "氏名" NOT LIKE '【統合済%'
+     AND ("date:最終接触日:start" IS NULL OR date("date:最終接触日:start") < date('now','-30 day'))
+   ORDER BY CASE "重要度" WHEN 'S' THEN 0 WHEN 'A' THEN 1 ELSE 2 END, CASE WHEN "再訪要"='__YES__' THEN 0 ELSE 1 END, COALESCE("date:最終接触日:start",'0000')
+   LIMIT 10
+   ```
+   → 上位3名を候補に（前日提案済みはスキップして次点）。**住所・電話・メール・接触履歴の列はSELECTしない**。チャットには氏名＋地区＋最終接触日だけ。
+   フォールバック（SQL枠切れ・エラー時）: rows mode `data_source_url`=同上・filter=`重要度 enum_is [S,A]`・sort=`最終接触日 ascending`・`limit:10`（全列が返るので10を超えない）。
+2. **地域**: 🏘️自治会別訪問管理DB（ds `collection://996b1d15-2454-4667-9702-05d6d0faa75c`）をSQL 1回（応答約0.6K字）:
+   ```
+   SELECT "自治会名","地区","更新日","date:訪問完了日:start" AS visited,"市政報告会開催済" AS held,"関係性温度"
+   FROM "collection://996b1d15-2454-4667-9702-05d6d0faa75c"
+   WHERE COALESCE("地区",'') NOT IN ('市外') AND COALESCE("訪問予定月",'') <> '対応外'
+   ORDER BY "更新日" ASC LIMIT 5
+   ```
+   → 更新が最も古い自治会の上位3件を候補に。
+   フォールバック: rows mode・filter=`訪問予定月 enum_is_not 対応外`・sort=`更新日 ascending`・`limit:5`。
+   どちらも失敗したら「⊘ ご無沙汰アラート取得不可（SQL枠/接続）」1行で先へ進む。
 3. **空き時間マッチング**: 当日のGoogle Calendarの空き枠（60分以上）を特定し、候補の地区と移動距離感を踏まえて
    「🔔 最近◯◯さん（△△地区・最終接触M/D）と会えていません。今日の14:00-15:30が空いています——お茶がてら顔を出しては？」
    「🔔 □□自治会はM/D以来触れていません。18:00の街頭演説の前に立ち寄り候補です」

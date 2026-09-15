@@ -1,6 +1,6 @@
 ---
 name: "design-inspiration-researcher"
-description: "判型別（サムネ/三つ折り/A4チラシ/レポート/ポスター）のプロ制作物をWeb収集→造形カルテ5軸で採寸→design_system/references/へ蓄積。Triggers: デザイン参考集めて/他の議員のチラシどんな感じ/デザイントレンド調べて。NOT: 制作→print-designer"
+description: "判型別のプロ制作物をWeb収集→カルテ5軸で採寸→design_system/references/へ。Triggers: デザイン参考集めて/他の議員のチラシどんな感じ/デザイントレンド調べて。NOT: 制作→print-designer"
 model: opus
 color: purple
 memory: project

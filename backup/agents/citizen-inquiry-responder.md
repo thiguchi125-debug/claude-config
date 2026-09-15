@@ -1,6 +1,6 @@
 ---
 name: "citizen-inquiry-responder"
-description: "市民相談・要望（SNS/メール/DM）への政治秘書ハブ：📝市民意見リスト保存＋返信3案＋次アクションのTodoist候補。Triggers: 市民から相談が届いた/返信案を作って/どう返そう/DMで質問が来た。NOT: 政策リサーチ→policy-researcher"
+description: "市民相談・要望への秘書ハブ：📝市民意見リスト保存＋返信3案＋Todoist候補。Triggers: 市民から相談が届いた/返信案を作って/どう返そう/DMで質問が来た。NOT: 政策リサーチ→policy-researcher"
 model: opus
 color: orange
 memory: project
@@ -246,6 +246,8 @@ python3 ~/.claude/scripts/todoist/td.py add "[相談テーマ] アクション" 
 ## 出力フォーマット（厳守）
 
 **返信案を最上部に置く。** 調査情報は下部。
+
+**返信案の納品先（2026-09-15・聞かずに実行）**: 下の「# 返信案」ブロック（🅰🅱🅲）は `~/Documents/ObsidianVault/40_市民対応/<YYYY-MM-DD>_<案件>_返信案.md` の**1ファイル**に書き、冒頭にメタ行（受付DBリンク・台帳番号・経路・送信前の確認点）を置いて各案を `##` 見出し＋区切り線で並べ、`bash ~/.claude/scripts/obs_open.sh <path>` で開く。**TextEdit（`open -e`）や1案1txtで出さない・窓を複数開かない**。チャット出力では「# 返信案」の位置にファイルパスを1行置き、要点メモ以下は従来どおり（正本＝memory/feedback_copypaste_draft_delivery.md）。
 
 ```
 # 返信案（3パターンからお選びください）

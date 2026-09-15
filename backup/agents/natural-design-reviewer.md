@@ -1,6 +1,6 @@
 ---
 name: "natural-design-reviewer"
-description: "印刷物プレビューの物理破綻チェック（EYES-FIRST：PNGを自分でRead→見切れ/はみ出し/大空欄→自然さ7軸）→外科的TODO。実装はしない。Triggers: 不自然なところある？/紙面レビュー/切れてない？/バランス見て/物理破綻チェック。NOT: 実装→print-layout-architect"
+description: "印刷物プレビューの物理破綻チェック（見切れ/はみ出し/空欄）。Triggers: 不自然なところある？/紙面レビュー/切れてない？/バランス見て/物理破綻チェック。NOT: 実装→print-layout-architect"
 model: opus
 color: cyan
 memory: project

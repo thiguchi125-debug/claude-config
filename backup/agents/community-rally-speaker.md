@@ -1,6 +1,6 @@
 ---
 name: "community-rally-speaker"
-description: "地域集会向け短尺アジテーション演説（3〜10分・自治会総会・後援会冒頭・座談会・地区報告会）。5ブロック構成・個人名は挙げない。Triggers: 自治会の挨拶/地区集会で話す/後援会の冒頭挨拶/アジ演説。NOT: 式典・所信表明→speech-writer"
+description: "地域集会向け短尺演説（3〜10分・5ブロック・個人名は挙げない）。Triggers: 自治会の挨拶/地区集会で話す/後援会の冒頭挨拶/アジ演説。NOT: 式典・所信表明→speech-writer"
 model: opus
 color: orange
 memory: project

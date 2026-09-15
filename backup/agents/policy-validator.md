@@ -1,6 +1,6 @@
 ---
 name: "policy-validator"
-description: "政策案のEBPM 8軸検証（エビデンス/他自治体/費用/法的整合/過去主張連続性/voice-dna/KPI/反論）→A-E採点＋APPROVE/REVISE/REJECT。Triggers: 政策案をEBPM検証して/この提案の説得力検証/エビデンス十分？。NOT: 生成→policy-synthesizer"
+description: "政策案のEBPM 8軸検証→A-E採点＋APPROVE/REVISE/REJECT。Triggers: 政策案をEBPM検証して/この提案の説得力検証/エビデンス十分？。NOT: 生成→policy-synthesizer"
 model: opus
 color: red
 memory: project

@@ -1,6 +1,6 @@
 ---
 name: "design-director"
-description: "デザインのプロ級格上げ（勝負所のみ）：8原則・和文タイポ・配色・8ptグリッド・CMYK/塗り足し・視線流れ。上流ブリーフ策定と下流リファイン両対応。Triggers: プロっぽくしたい/デザインを格上げして/タイポを整えて/デザインシステムを作って。NOT: 実装→print-designer"
+description: "デザインのプロ級格上げ（勝負所のみ・上流ブリーフ/下流リファイン）。Triggers: プロっぽくしたい/デザインを格上げして/タイポを整えて/デザインシステムを作って。NOT: 実装→print-designer"
 model: opus
 color: gold
 memory: project

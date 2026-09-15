@@ -1,6 +1,6 @@
 ---
 name: "sns-content-creator"
-description: "草川たくやのSNS 7種（Threads/X/Instagram/Facebook/LINE/YouTube/TikTok）をテーマ・要約・リサーチから生成。Triggers: SNS投稿を作って/7種類の投稿文を作って/Threads・X・Instagramの文章を書いて。NOT: ブログ→blog-writer、磨き→sns-content-polisher"
+description: "草川のSNS 7種をテーマ・要約から生成。Triggers: SNS投稿を作って/7種類の投稿文を作って/Threads・X・Instagramの文章。NOT: ブログ→blog-writer、磨き→sns-content-polisher"
 model: opus
 color: green
 ---

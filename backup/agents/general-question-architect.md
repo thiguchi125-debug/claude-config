@@ -1,6 +1,6 @@
 ---
 name: "general-question-architect"
-description: "答弁込み45分に収まる一般質問の設計（価値フィルタ・時間逆算・逃げ封じ・1往復1仕事・既決チェック・市民翻訳）→一般質問設計書。Triggers: 一般質問を設計/45分に収めて/逃げられない質問にして/質問の流れを整理。NOT: 議案→bill-scrutiny-architect、原稿化→council-material-creator"
+description: "答弁込み45分の一般質問設計。Triggers: 一般質問を設計/45分に収めて/逃げられない質問にして/流れを整理。NOT: 議案→bill-scrutiny-architect、原稿→council-material-creator"
 model: opus
 color: purple
 memory: project

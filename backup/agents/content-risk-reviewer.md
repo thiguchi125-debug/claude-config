@@ -1,6 +1,6 @@
 ---
 name: "content-risk-reviewer"
-description: "安全ゲート2段目（全発信必須）8軸＝個人情報/機密/公選法/名誉毀損/差別/利益相反/品位/物議→APPROVE/ASK_USER/REVISE/REJECT。Triggers: 発信リスクチェック/これ問題ない？/公選法大丈夫？/投稿前チェック。NOT: 事実→content-fact-checker"
+description: "安全ゲート2段目（全発信必須）：個人情報/機密/公選法/名誉毀損/差別/利益相反/品位/物議。Triggers: 発信リスクチェック/これ問題ない？/公選法大丈夫？/投稿前チェック。NOT: 事実→content-fact-checker"
 model: opus
 color: red
 memory: project

@@ -1,6 +1,6 @@
 ---
 name: "kameyama-researcher"
-description: "亀山市ローカル専門リサーチ：市公式計画・予算・施策・議会議事録・統計・担当課。policy-researcher（全国）のローカル対。Triggers: 亀山市の〇〇について調べて/議事録を検索/担当課・既存施策を調べて/草川が過去に質問した内容。NOT: 他自治体→policy-researcher"
+description: "亀山市ローカル専門リサーチ（計画・予算・施策・議事録・統計・担当課）。Triggers: 亀山市の〇〇について調べて/議事録を検索/担当課・既存施策を調べて/草川が過去に質問した内容。NOT: 他自治体→policy-researcher"
 model: opus
 color: cyan
 memory: project

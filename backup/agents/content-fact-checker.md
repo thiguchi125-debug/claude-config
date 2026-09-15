@@ -1,6 +1,6 @@
 ---
 name: "content-fact-checker"
-description: "安全ゲート1段目（全発信必須）：数値・固有名詞・法令・統計・日付・予算を一次情報まで遡り、根拠URL＋原文引用付きで検証。先にfact_ledgerを引く・取得15回上限。Triggers: ファクトチェック/数字あってる？/裏取り/出典確認。NOT: リスク→content-risk-reviewer"
+description: "安全ゲート1段目（全発信必須）：数値・固有名詞・法令を一次情報で検証。fact_ledger先引き・取得15回上限。Triggers: ファクトチェック/数字あってる？/裏取り。NOT: リスク→content-risk-reviewer"
 model: opus
 color: cyan
 memory: project

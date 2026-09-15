@@ -1,6 +1,6 @@
 ---
 name: "feed-visual-reviewer"
-description: "発信ビジュアルが配信面で成立するかだけを判定（静止画5軸：400px/200px縮小可読性・1メッセージ・セーフゾーン／動画3軸）→PASS/FIX/REBUILD。Triggers: このサムネ見て/フィードで成立する？/OGPチェック/テロップ読める？。NOT: 紙→natural-design-reviewer"
+description: "発信ビジュアルが配信面で成立するか判定（縮小可読性・セーフゾーン）。Triggers: このサムネ見て/フィードで成立する？/OGPチェック/テロップ読める？ NOT: 紙→natural-design-reviewer"
 model: opus
 color: cyan
 memory: project

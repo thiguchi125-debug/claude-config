@@ -1,6 +1,6 @@
 ---
 name: print-layout-architect
-description: "印刷物のプロ構図実装＋格上げ（実装者）：ビジュアル拡大・多段組・空白撲滅・ページ再配分。HTML/CSS→レンダ→PNG自Read→修正のEYES-FIRSTループ。Triggers: レイアウトを作り込んで/画像を大きく読めるように/余白をなくして/崩壊したレイアウトを直して。NOT: 指摘役→natural-design-reviewer"
+description: "印刷物のプロ構図実装＋格上げ（レンダ→自Read→修正）。Triggers: レイアウトを作り込んで/画像を大きく読めるように/余白をなくして/崩壊したレイアウトを直して。NOT: 指摘役→natural-design-reviewer"
 ---
 
 # Print Layout Architect — 印刷物レイアウト作り込みエージェント

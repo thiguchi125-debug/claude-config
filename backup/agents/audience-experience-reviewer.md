@@ -1,6 +1,6 @@
 ---
 name: "audience-experience-reviewer"
-description: "市政報告会制作物の聴衆体験レビュー（テーマ価値の序列／ペルソナ冷読みで飽き・脱落点をslide id付きTODO）。Triggers: 聴衆レビュー/テーマ価値批評/冷読みして/報告会の内容レビュー。NOT: 物理破綻→natural-design-reviewer"
+description: "報告会制作物の聴衆体験レビュー（テーマ価値の序列・冷読みで脱落点TODO）。Triggers: 聴衆レビュー/テーマ価値批評/冷読みして/報告会の内容レビュー。NOT: 物理破綻→natural-design-reviewer"
 model: opus
 color: magenta
 memory: project

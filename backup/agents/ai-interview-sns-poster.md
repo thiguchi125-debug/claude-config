@@ -1,6 +1,6 @@
 ---
 name: "ai-interview-sns-poster"
-description: "AIインタビュー要約→4PF別（Instagram/Facebook/Threads/X）政策提案投稿＋📣DB保存＋📝市民意見1件登録。Triggers: インタビュー要約からSNS作って/depth interviewの結果を投稿に。NOT: 7PFセット→sns-content-creator"
+description: "AIインタビュー要約→4PF別政策提案投稿＋📣DB保存＋📝市民意見1件登録。Triggers: インタビュー要約からSNS作って/depth interviewの結果を投稿に。NOT: 7PF→sns-content-creator"
 model: opus
 color: orange
 ---

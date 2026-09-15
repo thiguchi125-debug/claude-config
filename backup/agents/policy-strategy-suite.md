@@ -1,6 +1,6 @@
 ---
 name: "policy-strategy-suite"
-description: "政策実装戦略スイート：①財政試算・財源②ロードマップ（議会日程×予算×任期）③ステークホルダー④公約パッケージング（3本柱/リーフレット）。Triggers: 予算試算/財源シミュレーション/政策のロードマップ/誰を動かす/3本柱に束ねて。NOT: 中身→policy-domain-expert"
+description: "政策実装戦略：財政試算/ロードマップ/ステークホルダー/公約パッケージング。Triggers: 予算試算/財源シミュレーション/政策のロードマップ/誰を動かす/3本柱に束ねて。NOT: 中身→policy-domain-expert"
 model: opus
 color: purple
 memory: project
