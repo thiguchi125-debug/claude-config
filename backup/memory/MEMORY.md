@@ -26,6 +26,7 @@
 - [Discord夜間intake停止](project_discord_channel_split.md) — 2026-09-06停止・Todoist Inbox一本化。Botは温存。復活は通知専用のみ
 - [SNS発信ルーティン](project_sns_routine_v2.md) — 2026-08-26簡素化。夕19:30の1本のみ・差し替え禁止。Phase4は着手しない
 - [発信候補パック夜間ジョブがゲートでdeny](project_hakushin_pack_gate_deny.md) — 未修理
+- [Notion保存フックの「=」正規化ずれ](project_content_gate_hook_equals_mismatch.md) — ゲート通過済みブログが誤deny。2026-09-16草川「後で判断」・未修理
 - [newsダイジェスト更新がゲートでdeny](project_news_briefing_digest_gate_deny.md) — 2026-09-06 EXEMPT_PAGESに2ページ追加（草川承認）。9/7朝に--pass回避が消えるか確認
 - [AIくさかわ](project_ai_kusakawa.md) — 実装済。**草川手番待ち**＝ElevenLabs登録・キャラ生成
 - [gyakusanスキル](project_gyakusan_skill.md) — 初回実運用待ち
