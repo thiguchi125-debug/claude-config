@@ -99,7 +99,7 @@ def norm(t):
     # 全角/半角ゆれ＋markdownの装飾記号を両側で同じように落とす
     t = unicodedata.normalize("NFKC", t or "")
     t = re.sub(r"<[^>]+>", "", t)
-    t = re.sub(r"[*`>#|=]", "", t)  # 2026-09-16: gate.py:43 と揃える（==蛍光マーカー==・URL末尾の== で誤deny）
+    t = re.sub(r"[*`>#|]", "", t)
     return re.sub(r"[\s　]+", "", t)
 
 
