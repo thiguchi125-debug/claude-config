@@ -139,7 +139,7 @@ def _claim_text(cell):
     c = re.sub(r"^[" + MARK_CHARS + r"]️?\s*", "", c)
     c = KW_RE.sub("", c, count=1) if KW_RE.match(c) else c
     c = c.strip()
-    m = re.match(r"^(?:[^「」]{0,6}?)「([^」]{3,200})」", c)
+    m = re.match(r"^(?:[^「」]{0,12}?)「([^」]{3,200})」", c)
     if m:
         return m.group(1).strip()
     c = re.split(r"\s*(?:→|⇒|->|—|――)\s*", c, maxsplit=1)[0]
@@ -163,6 +163,10 @@ def parse_claims(text):
     section_v = ""
     for i, ln in enumerate(lines):
         msec = SECTION_RE.match(ln)
+        if msec and ID_RE.match(msec.group(1)) and \
+                re.match(r"^[" + MARK_CHARS + r"]", ID_RE.sub("", msec.group(1), count=1).replace("*", "").strip()):
+            msec = None  # 「## C1 ❌ 「…」」のように##で書かれた項目は節でなく主張として読む
+            ln = "### " + ln.lstrip("#").strip()
         if msec:
             section_v = _section_verdict(msec.group(1))
             starts.append((i, "", "", "section"))
@@ -210,7 +214,8 @@ def parse_claims(text):
             body = "\n".join(lines[i:nxt])
         correct = ""
         if v == "INCORRECT":
-            mc = re.search(r"(?:\*\*)?(?:修正案|正しい値|正|正しく|正確に)(?:\*\*)?[:：は]?\s*(?:\*\*)?[「`]?([^\n」`]{1,80})", body)
+            mc = re.search(r"(?:\*\*)?(?:修正案|正しい値|正しくは|正確には|正)(?:\*\*)?\s*[:：]\s*(?:\*\*)?[「`]?([^\n」`]{1,80})", body) \
+                or re.search(r"(?:正しくは|正確には)\s*[「`]?([^\n」`]{1,80})", body)
             if mc:
                 correct = mc.group(1).strip()
         seen.add(claim)

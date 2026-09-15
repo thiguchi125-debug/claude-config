@@ -64,6 +64,7 @@
 
 ## 📌 常時効く横断ルール（タスク別は GUARDRAILS.md）
 
+- [デザインは参照1本＋5軸採点から入る（全ビジュアル）](feedback_design_reference_library_first.md) — 2026-09-15草川「全てに応用」。スライド・サムネ・動画画像も対象
 - [仕組みの不具合は見つけたらその場で直す](feedback_maintenance_weekly_window.md) — 9/15日曜枠廃止。1件だけ直して確認・Todoistに積まない。大改修は提案
 - [正本文書が古いことがある](feedback_stale_authoritative_doc_vs_policy_change.md) — 制度変更は最新の事務連絡で上書き確認
 - [AskUserQuestionのpreviewは自由記述欄を消す](feedback_askuserquestion_preview_hides_freetext.md) — 判断だけの質問にpreviewを付けない
