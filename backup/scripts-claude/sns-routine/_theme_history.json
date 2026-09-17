@@ -154,5 +154,18 @@
    "Facebook"
   ],
   "note": "content-gate-lite がこのセッションのAgent一覧に無く起動不可（agents/content-gate-lite.mdは存在）→2段。fact REVISE（リフォーム補助率が段階制・市内業者条件）反映、risk REVISE（MEDIUM1＝引用文言の版間差→地の文化、LOW3反映）。gate.py --pass 成功。📣DB https://app.notion.com/p/3ddcf503a68f81799ce6d3faa46c0341 。SNS便ステータスpageは未更新。"
+ },
+ {
+  "date": "2026-09-17",
+  "leg": "evening",
+  "theme": "休日の部活動の地域展開——亀山市地域クラブ活動基本方針（令和8年8月）：R8年10月めど団体募集・12月めど認定／R9年度初め申込・秋以降順次移行／会費原則受益者負担・低廉化は検討",
+  "domain": "教育（部活動の地域展開）",
+  "source": "亀山市 部活動地域展開について（9/17掲載）＋基本方針PDF × 02_publications/blog/2026-04-15 休日の部活は令和9年夏に地域移行へ",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "FB 700字超のため2段。fact REVISE（お聞きしました→募集しました・仮認定の条件補足）、risk REVISE（MEDIUM1＝しっかり確かめたい→確かめたい、LOW：まだ・このブログ・FB末尾導線）反映。12月議会の同テーマ質問は他議員（今岡氏）のため不使用。gate.py --pass 成功。📣DB https://app.notion.com/p/3decf503a68f8148913fffa3654b8d08"
  }
 ]
