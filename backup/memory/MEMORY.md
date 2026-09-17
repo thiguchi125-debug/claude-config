@@ -82,6 +82,7 @@
 - [入力の固有名詞は音声入力の誤変換を疑う](feedback_input_proper_noun_dictation_check.md) — 施設名・地名は書く前にmemoryへgrep突合
 - [更新日は提供開始日ではない](feedback_koushinbi_is_not_start_date.md) — 案内ページの更新日で開始時期を代用しない（合成エラー）
 - [草川 役職・所属委員会マスタ](feedback_kusagawa_role_committee_master.md) — 教育民生委員会の委員
+- [まちのミライ亀山は草川が役員](reference_machi_no_mirai_kameyama_yakuin.md) — 氏名冠発信は公選法199条の3。「役員を務める」と明示・物品配布は不可
 - **タスク別ルールは `~/.claude/GUARDRAILS.md` 各節**（2026-09-15に本節から65行を移設・5行は既存行に統合。発信【1】ゲート【2】印刷物・動画【3】Notion【4】議会【5】市民対応【6】基盤【7】タスク・日程【9】）
 
 ## 🔗 外部参照ポインタ
