@@ -31,7 +31,12 @@ ToolSearchで `mcp__claude_ai_Google_Drive__download_file_content, mcp__claude_a
 1. `iken_poller_state.json` をRead。
 2. 各シートを **`mcp__claude_ai_Google_Drive__download_file_content` で取得しbase64デコード**して読む。
    **⚠️ `read_file_content` は古いキャッシュを返すため使用禁止**（state内noteに記録済みの実事故）。
-   大きいシートはデコード結果をファイルに保存し、Bashの `wc -l`/`tail` で末尾の新着行だけ読む（全文をコンテキストに載せない）。
+   大きいシートはデコード結果をファイルに保存し、Bashで末尾の新着行だけ読む（全文をコンテキストに載せない）。
+   **⚠️ 行数は `wc -l` で数えない**。意見本文にセル内改行が多数あり物理行数が実データ行数の4〜6倍になる（2026-09-18実測 S2=物理1080行／実217行）。
+   必ず `python3 -c "import csv;print(len(list(csv.reader(open('<path>'))))-1)"` のcsvモジュールで数える。
+   **⚠️ `download_file_content` の戻り値はサイズ超過で本文が返らず `~/.claude/projects/-Users-kusakawatakuya/<session>/tool-results/*.txt` へ自動退避されることがある**（2026-09-18に3枚とも該当）。
+   その場合はheredocでbase64を貼れないので、退避JSONから `python3` で `content` を取り出してデコード保存する。
+   処理後、`/tmp` 等に置いたデコード済みCSVは個人情報を含むため必ず削除する。
 3. 各シートで2種類の差分を取る：
    - **Notion新着** = `タイムスタンプ > last_processed_timestamp` の行
    - **ETL新着** = データ行番号（ヘッダ除く） > `etl_last_row` の行（行IDは `S<n>-<行番号>`・既存ETL資産と同じ採番）
