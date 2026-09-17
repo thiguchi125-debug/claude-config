@@ -8,6 +8,7 @@
 - [Claude Code活用棚卸し2026-09-06](project_claude_usage_audit_2026-09-06.md) — 9/15に案1・2・5実施（約5〜6Kトークン減）。残＝案6(Todoist MCP切断)は草川判断待ち
 - [SNS動画制作システム(Codex製CLI)](project_sns_video_system_codex.md) — 9/14 Claude Code対応・文字起こし導入で完走確認。残＝字幕の固有名詞誤り・未コミット
 - [休眠スキル退避](project_dormant_skills.md) — slide-deck-prep/aisatsu-prep/daily-content-generator/drive-intake。「〇〇戻して」でmv
+- [私立保育園への支援は他市より少ないか](project_shiritsu_hoikuen_shien_hikaku.md) — 差は金額でなく階層。執行率72.5%・市単独要綱4本。残＝未照会4件を子ども政策課へ
 - [9月議会 一般質問2026-09](project_ippan_shitsumon_2026-09.md) — 本番9/10・11。会期フォルダ5種構成へ再編（正本=README.md）。次＝聞き取り/設計カード→議場カード薄い版
 - [Obsidian導入・vault運用](project_obsidian_vault_workflow.md) — 2026-09-06。議会文書の正本はvault・注記は`#注記`・開いてるファイルは上書きせず新版。9/15置き場4つに整理
 - [ObsidianのiPad同期(iCloud)](project_obsidian_icloud_ipad_sync.md) — 2026-09-09完了・iPad実機確認済。残＝旧実体の削除承認。macOS26でbrctlは死んでいる
