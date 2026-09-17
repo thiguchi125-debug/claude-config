@@ -1,6 +1,6 @@
 ---
 name: project_kugiri_shuryo_mode
-description: kugiriに「終了」モードが無く、終わった案件のメモが24時間再開候補に出続ける。設計案3点は合意済み・未実装
+description: kugiriに「終了」モードが無く、終わった案件のメモが24時間再開候補に出続ける。2026-09-17に①②実装済み・③自動削除は保留
 metadata:
   type: project
 ---
@@ -15,3 +15,5 @@ metadata:
 
 **Why:** 終わった案件が再開候補に出続けると毎朝の1問確認にノイズが混ざる。
 **How to apply:** 草川が「直して」「終了モード作って」と言ったら上記3点を実装。関連 [[project_kugiri_session_split]]
+
+**実装 2026-09-17**: ①SKILL.md「終了モード」E1記録提示(承認1回)→E2 `scripts/handoff_done.py <KW> --apply`で_done/へ移動→E3完了通知 ②handoff_notice.pyで同一案件名は最新1本だけ注入（ダミーdirで確認済）。③30日超の自動削除は即rm禁止ルールと衝突するため未実装・草川判断待ち。バックアップ=*.bak-20260917
