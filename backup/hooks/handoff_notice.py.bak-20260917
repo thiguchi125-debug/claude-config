@@ -50,14 +50,7 @@ def main():
     if not items:
         return
     items.sort()
-    # 同じ案件名は最新1本だけ（2026-09-17: あそぼうさい薪割りの新旧2本が3枠中2枠を占めた）
-    seen, uniq = set(), []
-    for it in items:
-        t = title_of(it[1])
-        if t not in seen:
-            seen.add(t)
-            uniq.append(it)
-    items = uniq[:MAX_FILES]
+    items = items[:MAX_FILES]
 
     if len(items) == 1:
         age_h, p, body = items[0]
