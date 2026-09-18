@@ -129,3 +129,4 @@
 - AIインタビュー: project_ai_interview_config_db.md / project_ai_interview_config_designer.md / project_ai_interview_sns_poster.md
 - 亀山の地震防災4軸データ: project_kameyama_bosai_jishin_local.md（agent-memory/kameyama-researcher/）
 - エージェント本体: ~/.claude/agents/ 配下48本
+- [Mac音声入力が起動しない＝coreaudiod不調](reference_mac_dictation_coreaudiod.md) — 音声認識の再起動では直らない。`sudo killall coreaudiod`
