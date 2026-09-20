@@ -71,6 +71,7 @@
 - [デザインは参照1本＋5軸採点から入る（全ビジュアル）](feedback_design_reference_library_first.md) — 2026-09-15草川「全てに応用」。スライド・サムネ・動画画像も対象
 - [仕組みの不具合は見つけたらその場で直す](feedback_maintenance_weekly_window.md) — 9/15日曜枠廃止。1件だけ直して確認・Todoistに積まない。大改修は提案
 - [正本文書が古いことがある](feedback_stale_authoritative_doc_vs_policy_change.md) — 制度変更は最新の事務連絡で上書き確認
+- [Notion AI要約は答弁台帳の一次資料にならない](feedback_notion_ai_summary_not_ledger_source.md) — 発言者も逐語も残らない。委員会で役職と逐語をメモ
 - [AskUserQuestionのpreviewは自由記述欄を消す](feedback_askuserquestion_preview_hides_freetext.md) — 判断だけの質問にpreviewを付けない
 - [成果物は古い版を閉じて新版だけ開く](feedback_open_folder_after_generating_files.md) — `~/.claude/scripts/show_latest.sh`
 - [動画の投稿セットはDrive 📱動画素材/の1フォルダに一本化](feedback_video_package_single_drive_folder.md) — mp4・カバー・SNS7PF・台本・README。Obsidianに重複を置かない
