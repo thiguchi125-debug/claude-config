@@ -31,7 +31,7 @@
 - [newsダイジェスト更新がゲートでdeny](project_news_briefing_digest_gate_deny.md) — 2026-09-06 EXEMPT_PAGESに2ページ追加（草川承認）。9/7朝に--pass回避が消えるか確認
 - [AIくさかわ](project_ai_kusakawa.md) — 実装済。**草川手番待ち**＝ElevenLabs登録・キャラ生成
 - [gyakusanスキル](project_gyakusan_skill.md) — 初回実運用待ち
-- [答弁トラッカー＋実績コンパイラー](project_toben_tracker.md) — SNS実査は毎回伺い必須
+- [答弁トラッカー＋実績コンパイラー](project_toben_tracker.md) — SNS実査は毎回伺い必須。9/16教育民生委員会分は候補7件どまり・ledger未編集
 - [📷写真ストック](project_photo_stock_system.md) — **草川手番＝アルバム作成が未**
 - [デザインスタジオ](project_design_studio.md) — 残＝素材庫20枚生成
 - [デザイン力の根本改善](project_design_capability_uplift_2026-08-25.md) — 様式の判断規則化・写真ゲート完了。残＝5軸採寸／ポスター参照

@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: a7b8d821-7fc1-4265-bff8-9f4453960fc6
+  modified: 2026-09-20T21:24:05.442Z
 ---
 
 2026-07-08構築。設計書=~/claude-config/docs/specs/2026-07-08-toben-tracker-ikensho-design.md（同日commit済）。
@@ -20,5 +21,7 @@ metadata:
 **kickoff連携**: general-question-prep SKILL.mdにStep 4.5追加（ledger.jsonから今会期の回収候補を自動提示）。
 
 バックフィル: kusagawa_only議事録30本（8年分）から並列抽出→草川一括承認→台帳投入。**ローカル欠落会期=2023-12（R05-12）・2024-03/06/09（R06-03/06/09）**——Driveから取得すれば追補可能。
+
+**2026-09-16 教育民生委員会分＝候補どまり（2026-09-21時点）**: 追加候補7件（R0809-01〜07。がん検診市外／歴博DB化5万点／歴博の方針R8年度中策定／親子ワークショップ／既設空調の計画的更新／行燈126基／私立保育園の処遇改善）を作成したが、**ledger.json は未編集（160件・最終更新2026-08-11）**。一次資料がNotion AI自動要約で発言者も逐語も無いため、respondentは`（要確認）`・引用は「メモ要約」付きの暫定。既存statusの更新候補は0件。候補の全文＝`drafts/2026-09-16_教育民生委員会_答弁台帳候補_未登録.md`。**未了＝西野公園プールの付添ルール（質問はしたが市の答弁内容が未確認）**＝[[feedback_notion_ai_summary_not_ledger_source]]
 
 関連: [[feedback_system_closing_loops_rot]] [[feedback_giji_kusagawa_response_only]] [[feedback_no_other_council_members_names]]
