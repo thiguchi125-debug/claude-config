@@ -40,9 +40,6 @@ def main() -> int:
     marks = []
     if a.marks:
         marks = [l.rstrip("\n") for l in io.open(a.marks, encoding="utf-8") if l.strip()]
-    # Obsidian の ==…== 表記はマーカー対象として拾い、記号は本文から外す
-    marks += [m for m in re.findall(r"==(.+?)==", md) if m not in marks]
-    md = re.sub(r"==(.+?)==", r"\1", md)
 
     title, body, img_slots, n_head = "", [], 0, 0
     for block in re.split(r"\n\s*\n", md.strip()):
