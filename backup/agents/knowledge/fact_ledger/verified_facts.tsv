@@ -576,3 +576,10 @@
 2026-09-21	VERIFIED	フォームURL（1FAIpQLSe1ABf6mhOcDMFQGPR9VviZSEpstd87mu6MqOzoCOvzzTFdgQ/viewform）		https://docs.google.com/forms/d/e/1FAIpQLSe1ABf6mhOcDMFQGPR9VviZSEpstd87mu6MqOzoCOvzzTFdgQ/viewform	
 2026-09-21	VERIFIED	入会金・会費などのお願いはありません		フォーム冒頭の説明文（承認済み・2026-07-14の文言v1）「入会金・会費はありません」	
 2026-09-21	VERIFIED	ご記入は1〜2分で完了します		同じ冒頭説明文に同じ言い回しがある。設問は①〜⑧に協力内容と年齢（任意）を足して約10問、必須は6問なので妥当	
+2026-09-21	VERIFIED	亀山市65歳以上13,506人・総人口48,822人（R8.9.1）	年齢別人口PDF 65歳以上計13,506／合計48,822＝27.7%	https://www.city.kameyama.mie.jp/shisei/2014112308662/file_contents/age_0809.pdf	高齢者
+2026-09-21	VERIFIED	高齢者等世帯粗大ごみ軒先収集制度の要件	世帯員全員が70歳以上/障がい者手帳所持者/要介護(要支援)認定者のいずれか。市内に直系2親等以内の親族がいる世帯・入院中・施設入居者を除く。無料訪問収集。R7.4.1受付分から要件変更	https://www.city.kameyama.mie.jp/docs/2014112304947/nokisaki.html	ごみ出し支援
+2026-09-21	VERIFIED	藤沢市一声ふれあい収集 H13開始・原則週1回・R8.5末1,040世帯	安否確認は「異常時には」と記載（ごみ未排出時とは書いていない）	https://www.city.fujisawa.kanagawa.jp/kankyo-j/kurashi/gomi/shushu/hitokoe.html	ごみ出し支援
+2026-09-21	MINOR_DIFF	ごみ出し支援導入 市区町村34.8%（令和2年度）	環境省R2年度アンケート・回答した地方公共団体の34.8%（417団体・R3.1現在）。H30は23.5%（387）	https://www.env.go.jp/content/900534141.pdf	ごみ出し支援
+2026-09-21	VERIFIED	ごみ出し支援の特別交付税措置率0.5・令和元年度から	令和元年度特別交付税3月分算定から創設・所定の経費に措置率0.5	https://www.env.go.jp/content/900534141.pdf	ごみ出し支援
+2026-09-21	VERIFIED	第3次亀山市総合計画前期基本計画のごみ出し支援文言	「日常のごみ出しが困難な高齢者等の世帯におけるごみの適正処理に向け、関係機関等と連携し、必要な支援制度を構築します。」	kusagawa_archive/05_resources/mydrive_18_第3次亀山市総合計画_前期基本計画.pdf_XqZXG0.txt L2523-2525	ごみ出し支援
+2026-09-21	INCORRECT	Threadsの総合計画の引用（要約なのに「」に入っている）			
