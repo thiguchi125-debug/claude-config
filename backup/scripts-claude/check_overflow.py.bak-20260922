@@ -59,24 +59,6 @@ window.addEventListener('load', function(){
     if (e.scrollWidth > e.clientWidth + 1 && e.clientWidth > 0)
       out.push({t:'overflow-x', el:tag, txt:txt, need:e.scrollWidth, have:e.clientWidth});
   });
-  // 横型キャンバスは LINE DIGEST の4:3中央クロップで文字の頭が欠けないか（2026-09-22 追加。
-  // 機械チェック全通過→feed-visual-reviewerで毎回差し戻し、を止める）。文字のインク幅で測る
-  if (W > H) {
-    var c43 = (W - H*4/3)/2, M = 10;
-    els.forEach(function(e){
-      Array.from(e.childNodes).forEach(function(n){
-        if (n.nodeType!==3 || !n.textContent.trim()) return;
-        var rg=document.createRange(); rg.selectNodeContents(n);
-        Array.from(rg.getClientRects()).forEach(function(r){
-          if (r.width<1) return;
-          if (r.left < c43+M || r.right > W-c43-M)
-            out.push({t:'crop43', el:(e.className||e.tagName), txt:n.textContent.trim().slice(0,12),
-                      left:Math.round(r.left), right:Math.round(r.right),
-                      band:Math.round(c43+M)+'-'+Math.round(W-c43-M)});
-        });
-      });
-    });
-  }
   // 絶対配置ブロック同士の重なり
   var abs = els.filter(function(e){ return getComputedStyle(e).position==='absolute'; });
   for (var i=0;i<abs.length;i++) for (var j=i+1;j<abs.length;j++){
@@ -124,7 +106,6 @@ LABEL = {
     "overflow-x": "枠より文字が広い",
     "overlap": "要素どうしが重なっている",
     "orphan": "孤立行（最終行が短すぎる）",
-    "crop43": "LINE(4:3)で切られると文字が欠ける",
 }
 
 def probe(path):
