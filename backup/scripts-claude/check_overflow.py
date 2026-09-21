@@ -157,9 +157,13 @@ def main(argv):
         if not res:
             print("  ✅ はみ出し・重なり・孤立行なし"); continue
         for x in res:
-            fail += 1
+            # crop43は参考表示のみ（2026-09-22改定）。採用済みの成功例（周産期通院支援）も
+            # 左端88pxの文字で4:3帯を外れる。違反扱いにすると文字を中央へ押し込み写真を細切れにする
+            info = x['t'] == 'crop43'
+            if not info:
+                fail += 1
             detail = " ".join(f"{k}={v}" for k, v in x.items() if k not in ("t", "el", "txt"))
-            print(f"  🚨 {LABEL.get(x['t'], x['t'])}: {x['el']}"
+            print(f"  {'ℹ️ 参考' if info else '🚨'} {LABEL.get(x['t'], x['t'])}: {x['el']}"
                   + (f" 「{x['txt']}」" if x.get('txt') else "") + f"  {detail}")
     print(f"\n-- 違反 {fail}件 --")
     return 1 if fail else 0
