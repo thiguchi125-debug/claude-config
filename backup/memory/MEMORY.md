@@ -68,6 +68,7 @@
 
 - [置き場4つの使い分け](feedback_okiba_4tsu_tsukaiwake.md) — 渡す物→Drive／状況の一覧→Notion／注記する文章→Obsidian／他→ローカル。発信は50_発信/<日付>_<テーマ>/
 - [vaultのmdはobs_open.shで開く](feedback_open_md_in_obsidian_not_notion.md) — Obsidianはvault外を表示不可。`open`だとNotionで開く事故あり
+- [ブログサムネの目標形＝西野公園プール型](feedback_thumbnail_model_nishino_pool.md) — 左に現場写真・中央深緑に黄の核心語・右に本人。現場写真なしは周産期2分割
 - [デザインは参照1本＋5軸採点から入る（全ビジュアル）](feedback_design_reference_library_first.md) — 2026-09-15草川「全てに応用」。スライド・サムネ・動画画像も対象
 - [仕組みの不具合は見つけたらその場で直す](feedback_maintenance_weekly_window.md) — 9/15日曜枠廃止。1件だけ直して確認・Todoistに積まない。大改修は提案
 - [正本文書が古いことがある](feedback_stale_authoritative_doc_vs_policy_change.md) — 制度変更は最新の事務連絡で上書き確認
