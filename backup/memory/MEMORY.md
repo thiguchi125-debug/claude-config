@@ -5,6 +5,7 @@
 
 ## 🔄 進行中プロジェクト
 
+- [大雨・危険箇所マップ](project_kameyama_ooame_kiken_map.md) — 9/22企画。1段目マイマップ→2段目投稿型。常に「presented by 亀山市議会議員 草川たくや」を表示
 - [Claude Code活用棚卸し2026-09-06](project_claude_usage_audit_2026-09-06.md) — 9/15に案1・2・5実施（約5〜6Kトークン減）。残＝案6(Todoist MCP切断)は草川判断待ち
 - [SNS動画制作システム(Codex製CLI)](project_sns_video_system_codex.md) — 9/14 Claude Code対応・文字起こし導入で完走確認。残＝字幕の固有名詞誤り・未コミット
 - [休眠スキル退避](project_dormant_skills.md) — slide-deck-prep/aisatsu-prep/daily-content-generator/drive-intake。「〇〇戻して」でmv
