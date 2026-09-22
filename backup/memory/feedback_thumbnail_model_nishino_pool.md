@@ -11,4 +11,4 @@ metadata:
 
 **Why:** 2026-09-22 草川「このサムネが成功例 学習して今後はこの形を目指すように」。同日に成功例から外れた版が「最悪最低 成功例でやれ」で差し戻されている。
 
-**How to apply:** 採寸値・着手手順は `design_system/references/thumbnail/_karte.md` 末尾「【最上位】西野公園プール型」節。正本画像は同フォルダ `model_kusakawa_nishino_pool_2026-09-14.jpg`（元HTMLは残っていない）。顔の大きさ・コピー型は [[feedback_thumbnail_crop_and_tone]] も併用。
+**How to apply:** 採寸値・着手手順は `design_system/references/thumbnail/_karte.md` 末尾「【最上位】西野公園プール型」節。制作は `design_system/digital_templates/thumb_16x9_3split/make_thumb.py`（文言4つ＋現場写真で1コマンド）。顔の大きさ・コピー型は [[feedback_thumbnail_crop_and_tone]] も併用。

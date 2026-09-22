@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>thumb 16x9 3split（西野公園プール型）</title>
 <!-- 目標形＝references/thumbnail/model_kusakawa_nishino_pool_2026-09-14.jpg。座標は同画像の採寸値。
-     {{…}} は make_thumb.py が差し替える。直接いじるのは写真の位置（--site-pos／--me-x）だけにする -->
+     {{…}} は make_thumb.py が差し替える。直接いじるのは写真の位置と大きさ（--site-*／--me-*）だけにする -->
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body { width:1600px; height:900px; overflow:hidden; background:#1f5a3a; }
@@ -18,26 +18,26 @@
   /* 左：現場写真（無加工・暗幕なし）。右辺は右下がりの斜め 335→395 */
   .site {
     position:absolute; left:0; top:0; width:400px; height:900px;
-    background:url("{{SITE_PHOTO}}") {{SITE_POS}} / cover no-repeat;
+    background:url("{{SITE_PHOTO}}") {{SITE_POS}} / {{SITE_SIZE}} no-repeat;
     clip-path:polygon(0 0, 335px 0, 395px 900px, 0 900px);
   }
   /* 右：本人写真の平行四辺形。左辺945→1005／右辺1395→1450。右端は緑を残す */
   .me {
     position:absolute; left:0; top:0; width:1600px; height:900px;
-    background:url("{{ME_PHOTO}}") {{ME_X}}px 0 / 630px 900px no-repeat;
+    background:url("{{ME_PHOTO}}") {{ME_X}}px {{ME_Y}}px / {{ME_W}}px auto no-repeat;
     clip-path:polygon(945px 0, 1395px 0, 1450px 900px, 1005px 900px);
   }
 
-  .tx { position:absolute; left:432px; top:75px; width:500px; }
+  .tx { position:absolute; left:432px; top:79px; width:500px; }
 
   .place {
     display:inline-block; border:4px solid #fff; border-radius:48px;
-    padding:12px 30px 14px; font-size:54px; font-weight:900; line-height:1.2;
+    padding:8px 30px 9px; font-size:54px; font-weight:900; line-height:1.2;
     letter-spacing:.02em; color:#fff; white-space:nowrap;
   }
-  .l1  { margin-top:40px; font-size:{{L1_PX}}px; font-weight:900; line-height:1.0;
+  .l1  { margin-top:46px; font-size:{{L1_PX}}px; font-weight:900; line-height:1.0;
          letter-spacing:.01em; color:#fff; white-space:nowrap; }
-  .key { margin-top:22px; font-size:{{KEY_PX}}px; font-weight:900; line-height:1.0;
+  .key { margin-top:18px; font-size:{{KEY_PX}}px; font-weight:900; line-height:1.0;
          letter-spacing:-.01em; color:#fad64d; white-space:nowrap; }
   .ask {
     display:inline-block; margin-top:44px; background:#fff; border-radius:8px;
@@ -45,7 +45,7 @@
     letter-spacing:.02em; color:#1f5a3a; white-space:nowrap;
   }
   .role { margin-top:38px; font-size:58px; font-weight:800; line-height:1.1; letter-spacing:.01em; color:#fff; }
-  .name { margin-top:12px; font-size:71px; font-weight:900; line-height:1.1; letter-spacing:.02em; color:#fff; }
+  .name { margin-top:4px; font-size:74px; font-weight:900; line-height:1.1; letter-spacing:.02em; color:#fff; }
 </style>
 </head>
 <body>
