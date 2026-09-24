@@ -82,7 +82,7 @@
 # Step 5: 機械チェック（安全ゲートより先）
 
 1. 3本を1ファイルにまとめ、drafts に**仮ファイル**として書く
-   （`~/.claude/projects/-Users-kusakawatakuya/drafts/_wip_夕便_YYYY-MM-DD.md`）。
+   （`~/.claude/projects/-Users-kusakawatakuya/drafts/_wip_夕便SNS_YYYY-MM-DD.md`）。
 2. `python3 ~/.claude/scripts/check_content_limits.py <仮ファイル>` を実行。
 3. **FAILが出たら字数を直してから次へ進む。** ここを通してから安全ゲートに入るのが順序。
    （逆順にすると、ゲート通過後に字数で弾かれて書き直し＝差し替えが発生する）
@@ -101,7 +101,7 @@
 
 # Step 7: 保存（確定版を1回だけ）
 
-1. **drafts 確定版**: `~/.claude/projects/-Users-kusakawatakuya/drafts/YYYY-MM-DD_夕便_〈テーマ短名〉.md`
+1. **drafts 確定版**: `~/.claude/projects/-Users-kusakawatakuya/drafts/YYYY-MM-DD_夕便SNS_〈テーマ短名〉.md`
    に書き出し、Step 5 の仮ファイルを削除する。中身は【X】【Threads】【Facebook】の3節と、
    末尾に「落とした要素」1〜3行だけ。解説は書かない。
 2. **📣投稿管理DBに1ページ**（投稿タイトル=テーマ／ステータス=未着手／プラットフォーム=[X,Threads,Facebook]／
@@ -115,7 +115,7 @@
 ```
 夕便 完了 YYYY-MM-DD
 テーマ: 〈1行〉（由来: 投げ込み／当日ニュース）
-確定版: ~/.claude/projects/-Users-kusakawatakuya/drafts/YYYY-MM-DD_夕便_〈短名〉.md
+確定版: ~/.claude/projects/-Users-kusakawatakuya/drafts/YYYY-MM-DD_夕便SNS_〈短名〉.md
 ゲート: fact=〈PASS/REVISE n件反映〉 risk=〈CRITICAL 0・落とした要素 n件〉
 Notion: 📣DB 保存済 ／ 未保存（queue退避）
 ```
