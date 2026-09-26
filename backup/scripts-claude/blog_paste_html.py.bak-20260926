@@ -59,21 +59,6 @@ def main() -> int:
         if re.fullmatch(r"-{3,}", block):
             body.append("<hr>")
             continue
-        m_img = re.fullmatch(r"!\[(.*?)\]\((.+?)\)", block, re.S)
-        if m_img:
-            # Obsidian記法の図（![alt](path)）も【画像n】と同じ差し替え枠にする
-            # （2026-09-26：変換されず生のmarkdownがブログ本文に入っていた）
-            img_slots += 1
-            alt, path = m_img.group(1).strip(), m_img.group(2).strip()
-            body.append(
-                '<div style="border:2px dashed #c0392b;border-radius:6px;padding:14px 16px;'
-                'margin:1.6em 0;background:#fff8f7">'
-                f'<p style="margin:0 0 .5em;color:#c0392b;font-weight:700">【画像{img_slots}】'
-                f'{inline(os.path.basename(path))}'
-                '　← ここにブログ編集画面で画像をアップロードして差し替える</p>'
-                f'<p style="margin:0;font-size:.94em">代替テキスト（alt）：{inline(alt)}</p></div>'
-            )
-            continue
         if block.startswith("【画像"):
             # 画像行＋直後のキャプションは、差し替え位置が一目で分かる枠にする
             lines = block.split("\n")
