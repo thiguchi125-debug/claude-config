@@ -5,6 +5,7 @@
 
 ## 🔄 進行中プロジェクト
 
+- [政策3本柱v2(2026市議選)](project_seisaku_3hashira_v2_2026-09.md) — 豊かさ/子育て/いのち。全体「亀山に住むことが、いちばんの贅沢」。**2027県議選挑戦を念頭**
 - [大雨・危険箇所マップ](project_kameyama_ooame_kiken_map.md) — 9/22企画。1段目マイマップ→2段目投稿型。常に「presented by 亀山市議会議員 草川たくや」を表示
 - [Claude Code活用棚卸し2026-09-06](project_claude_usage_audit_2026-09-06.md) — 9/15に案1・2・5実施（約5〜6Kトークン減）。残＝案6(Todoist MCP切断)は草川判断待ち
 - [SNS動画制作システム(Codex製CLI)](project_sns_video_system_codex.md) — 9/14 Claude Code対応・文字起こし導入で完走確認。残＝字幕の固有名詞誤り・未コミット
