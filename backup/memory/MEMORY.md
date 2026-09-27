@@ -67,6 +67,7 @@
 
 ## 📌 常時効く横断ルール（タスク別は GUARDRAILS.md）
 
+- [発信物はNotionに保存せずObsidianで完結](feedback_hasshin_obsidian_kanketsu_no_notion.md) — 9/27〜。50_発信/<日付>_<テーマ>/README.mdで完了・gate.pyは--passなし
 - [置き場4つの使い分け](feedback_okiba_4tsu_tsukaiwake.md) — 渡す物→Drive／状況の一覧→Notion／注記する文章→Obsidian／他→ローカル。発信は50_発信/<日付>_<テーマ>/
 - [vaultのmdはobs_open.shで開く](feedback_open_md_in_obsidian_not_notion.md) — Obsidianはvault外を表示不可。`open`だとNotionで開く事故あり
 - [ブログサムネの目標形＝西野公園プール型](feedback_thumbnail_model_nishino_pool.md) — 左に現場写真・中央深緑に黄の核心語・右に本人。現場写真なしは周産期2分割

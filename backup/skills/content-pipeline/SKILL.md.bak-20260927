@@ -1,6 +1,6 @@
 ---
 name: content-pipeline
-description: "任意の素材（録音/文字起こし/テキスト/記事URL/写真）からブログ＋SNS7種＋条件でサムネ・Reelsを一括生成し、安全ゲート後にObsidian vault・outputsへ保存（Notion保存は2026-09-27廃止）。Triggers: 発信一式/発信セット/一式作って/フル展開して/記事から発信/ブログもSNSも/サムネ作って/コンテンツパイプライン/録音をアップした。NOT: 種1つ→spark"
+description: "任意の素材（録音/文字起こし/テキスト/記事URL/写真）からブログ＋SNS7種＋条件でサムネ・Reelsを一括生成し、安全ゲート後にNotion・outputsへ保存。Triggers: 発信一式/発信セット/一式作って/フル展開して/記事から発信/ブログもSNSも/サムネ作って/コンテンツパイプライン/録音をアップした。NOT: 種1つ→spark"
 ---
 
 # コンテンツパイプライン
@@ -24,7 +24,7 @@ description: "任意の素材（録音/文字起こし/テキスト/記事URL/�
 | `sns-content-creator` | Step 3 | SNS投稿文生成（Threads/X/Instagram/Facebook/LINE/YouTube）※TikTok/Shorts台本は除く |
 | `short-video-virality-architect` | Step 3 | **ショート動画（TikTok/Shorts/Reels）の台本＝主担当**。35〜50秒・目標45〜50秒厳守 |
 | `kusakawa-voice-analyst` | 初回起動・任意 | 過去の公開投稿から声のDNAを抽出し `references/voice-dna.md` に保存 |
-| （廃止）`notion-saver` | — | 2026-09-27からStep 5はObsidianで完結。起動しない |
+| `notion-saver` | Step 5 | Notionへの確実な保存（コンテンツページ＋ネタDB） |
 
 **重要な参照ファイル**:
 - `references/voice-dna.md` — 草川たくやの声の指紋（常用語・NG表現・文体癖・CTAレパートリー）。blog-writer / sns-content-creator / content-editor が**必ず読み込んでから作業する**
@@ -298,7 +298,7 @@ Agent(subagent_type="content-editor",
 
 ## ステップ 2.6: ブログ記事の事実確認（必須）
 
-> **時期（2026-09-15改定）**: 2.6→2.7 は草川がObsidianで注記1回目を入れた後に回す。結果は原稿の該当箇所直下に `> [!check]`／`> [!warning]` 囲み枠で書き込んだ次版として返し、本文は削らない→草川が注記で採否→「完成」時は変わった文・新規事実だけ再確認→HTML→README（Notion保存は2026-09-27廃止）。正本＝OPERATIONS.md【C】D6。
+> **時期（2026-09-15改定）**: 2.6→2.7 は草川がObsidianで注記1回目を入れた後に回す。結果は原稿の該当箇所直下に `> [!check]`／`> [!warning]` 囲み枠で書き込んだ次版として返し、本文は削らない→草川が注記で採否→「完成」時は変わった文・新規事実だけ再確認→gate.py→HTML→Notion1回。正本＝OPERATIONS.md【C】D6。
 
 **content-fact-checkerエージェントに委託する。** 一次情報まで遡って数値・固有名詞・法令等を検証する。
 
@@ -499,16 +499,44 @@ python3 ~/.claude/scripts/feed_preview.py short <カバー.png> ...  # 9:16
 
 ---
 
-## ステップ 5: Obsidianで完結（Notion保存は廃止・2026-09-27）
+## ステップ 5: Notionへの保存
 
-草川指示「notionに保存はやめる。obsidianで完結できるようにして」（2026-09-27）。承認の期限切れや原稿修正のたびにNotion保存が止まり、何度もやり直しになったため。**notion-saverは起動しない。📝ブログDB・📣SNS投稿管理DB・🎯ネタDBへの書き込みもしない。**
+⚠️**締めガード（必須）**: 生成した発信物は**チャット提示で終わらせず必ずNotion保存まで完了**させる。ブログ→📝ブログ/投稿管理DB、**SNS7種→📣SNS投稿管理DB（ds `1bd98deb-624f-402c-aeb3-bdaa4782b389`）へ1ページ**。手動オーケストレーション時も同様。ブログだけ保存してSNSを保存し忘れる事故があった（2026-07-14）。保存漏れゼロを最終確認してから完了報告する。
 
-完了条件は次の3つ（すべて vault `50_発信/<日付>_<テーマ>/` 内か、そこからリンクされていること）:
-1. 最終版のブログ `_ブログ_v<n>.md` と SNS `_SNS7PF_v<n>.md`（fact→riskの安全ゲートは従来どおり必須。gate.py は `--pass` なしで機械チェックだけ回す。承認の記録はNotion保存のための手順だったので不要）
-2. 貼り付け用HTML `~/outputs/blog-marking/<日付>_<テーマ>_ブログ_v<n>_blog_paste.html`（最終版から作り直す）
-3. フォルダ直下の `README.md` に、最終版のファイル名・ゲート結果（fact/riskの判定と件数）・貼り付けHTML・サムネ・図のパス・公開URL（公開後に追記）・未了事項を書く
+**notion-saverエージェントに委託する。** 品質レビューの結果（合否・スコア・強み）もメモ欄に記録する。
 
-最後は `obs_open.sh` で README を開いて提示し、終わりとする。
+```
+Agent(subagent_type="notion-saver",
+  prompt="以下のコンテンツをNotionに保存してください。
+  agents/notion-saver.md の手順に従ってください。
+  
+  theme: {テーマ30字以内}
+  source: {タイトル・URL・日付}
+  field: {分野}
+  priority: {優先度}
+  department: {担当課（想定）}
+  next_actions: {①②③形式の次アクション}
+  target_session: {対象定例会}
+  memo: {メモ・根拠 + 品質レビュースコア + ブログモード（深掘り or ノーマル）}
+  
+  blog_content:
+  {ブログ記事全文}
+  
+  blog_review:
+  {content-editor判定: pass/score/strengths}
+  
+  sns_content:
+  {SNS投稿文7種全文}
+  
+  sns_review:
+  {content-editor判定: pass/score/strengths}
+  
+  human_review_needed: {true/false}")
+```
+
+notion-saverから返されたURLを最終出力に含める。
+
+**human_review_needed=true の場合**、Notion保存時にタイトル先頭に ⚠️ プレフィクスを付け、メモ欄に revision_requests を記載する。
 
 ---
 
@@ -544,8 +572,9 @@ python3 ~/.claude/scripts/feed_preview.py short <カバー.png> ...  # 9:16
 
 ---
 
-## 保存先（Obsidian）
-**フォルダ**: vault `50_発信/<日付>_<テーマ>/`（README.md が入口）
+## Notion保存
+**5-A) コンテンツページ**: [notion-saverから返されたURL]
+**5-B) 一般質問ネタDB**: [notion-saverから返されたURL]
 
 [human_review_needed=true の場合のみ]
 ⚠️ **人間レビュー必要**: 2周の自動リトライでも品質基準を満たせませんでした。以下の課題を確認してください:
