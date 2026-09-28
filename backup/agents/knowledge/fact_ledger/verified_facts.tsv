@@ -750,3 +750,7 @@
 2026-09-27	VERIFIED	令和7年6月の定例会で、図書館・商業施設・文化会館の周辺まで人の流れを生み出すと発言		local:kusagawa_archive/01_council/kaigiroku0706_kusagawa_only.txt	
 2026-09-27	INCORRECT	駅周辺の整備をきっかけに〜人の流れを生み出せないかと提案	提案したのは「JR亀山駅と直結の新庁舎	local:kusagawa_archive/01_council/kaigiroku0706_kusagawa_only.txt	
 2026-09-27	INCORRECT	主催は亀山ジャズフェスティバル実行委員会	記事の表記は「実行委員会	https://www.isenp.co.jp/2026/09/26/153640/	
+2026-09-28	VERIFIED	2026年10月4日は日曜日	日曜	python datetime計算	二本松懇談会
+2026-09-28	VERIFIED	二本松地区の会場表記「二本松公民館」	草川後援会の過去案内(R1.8.11・R2.2月)と延期のお知らせで同表記。市公式の地区コミセン一覧には載らない自治会の公民館	Dropbox/選挙/市政報告会/2021/開催案内/二本松.docx ほか	二本松懇談会
+2026-09-28	VERIFIED	草川の配布物の連絡先 電話090-1099-2458・メールt.higuchi125@gmail.com	02_publications内で電話185件・メール152件。thiguchi9@gmailはPDFのメタ情報で印字された連絡先ではない	kusagawa_archive/02_publications/reports/2026-05_二本松版_市政報告	二本松懇談会
+2026-09-28	VERIFIED	二本松公民館		https://www.city.kameyama.mie.jp/docs/2014112302493/chikucomu.html	
