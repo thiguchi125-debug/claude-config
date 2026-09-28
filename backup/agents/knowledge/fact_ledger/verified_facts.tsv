@@ -754,3 +754,9 @@
 2026-09-28	VERIFIED	二本松地区の会場表記「二本松公民館」	草川後援会の過去案内(R1.8.11・R2.2月)と延期のお知らせで同表記。市公式の地区コミセン一覧には載らない自治会の公民館	Dropbox/選挙/市政報告会/2021/開催案内/二本松.docx ほか	二本松懇談会
 2026-09-28	VERIFIED	草川の配布物の連絡先 電話090-1099-2458・メールt.higuchi125@gmail.com	02_publications内で電話185件・メール152件。thiguchi9@gmailはPDFのメタ情報で印字された連絡先ではない	kusagawa_archive/02_publications/reports/2026-05_二本松版_市政報告	二本松懇談会
 2026-09-28	VERIFIED	二本松公民館		https://www.city.kameyama.mie.jp/docs/2014112302493/chikucomu.html	
+2026-09-28	VERIFIED	亀山市は子どものインフルエンザ予防接種（任意）を助成している	対象1歳～就学前・1回目1,200円/2回目800円・R8.10.1〜R9.3.31・市内は申請不要	https://www.city.kameyama.mie.jp/docs/2024091300090/infuruenza.html	子育て5つのゼロ
+2026-09-28	INCORRECT	草川は現在も鈴鹿亀山地区広域連合議会議員	R7.11.14現在の広域連合議員は深水・福沢・森・櫻井清蔵の4名。草川は1期目に所属（過去形なら可）	https://www.city.kameyama.mie.jp/gikai/giin/2014122800842/file_contents/koiki071114.pdf	草川プロフィール
+2026-09-28	INCORRECT	リーフレットv3の5つのゼロの5つ目は子どもインフルワクチン無料	v3のNO.05はアナログ行政手続き。インフルワクチン無料は防災・福祉欄の本文	local:kusagawa_archive/02_publications/leaflets/2026-05_senkyo_leaflet_v3/index.html L557-638	子育て5つのゼロ
+2026-09-28	MINOR_DIFF	市道地元要望 R5 155件・R6 103件はともに他議員への答弁	155件はR7.3.6草川代表質問への建設部長答弁／103件(R7.2末)と提出順はR7.3.11深水議員への答弁	local:kusagawa_archive/01_council/2025-03_R070306_本会議3月6日_草川.txt L115／2025-03_R070306_3月11日議事録.txt L895-915	通学路・道路
+2026-09-28	VERIFIED	R8.9.10市長 妊産婦タクシー助成の創設は現状考えていない・鈴鹿市への通院が7割	反訳のみ(逐語引用不可)。部長:産婦健診277人中鈴鹿198人。市長は移動支援の必要はないと考えるが必要に応じ検討	local:_index/議会資料アーカイブ/R08 (2026)/09_定例会/議事録/R8.9.10*.txt L399-437	周産期交通
+2026-09-28	VERIFIED	第2子以降保育料無償化の市試算	年約3,500万円（R5.3 健康福祉部次長・草川質問）	local:kusagawa_archive/01_council/2023-03_R0503_本会議議事録_kusagawa.txt L247-251	子育て5つのゼロ
