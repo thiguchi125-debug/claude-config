@@ -1,1 +1,0 @@
-- [関西本線の一次情報の在りか](reference_kansai_line_sources.md) — JR西の線区開示・三重県会議PDF・はなあかりは草津線経由でない
