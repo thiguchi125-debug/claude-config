@@ -141,5 +141,18 @@
    "Facebook"
   ],
   "note": "lite1回 REVISE4件（R7.6発言の要約を新庁舎提案の文脈に修正／主催名を実行委員会に／『たった』削除）全反映。gate.py --pass。📣DB https://app.notion.com/p/3e8cf503a68f813b9030da1927582f96"
+ },
+ {
+  "date": "2026-09-28",
+  "leg": "evening",
+  "theme": "亀山市環境展（11/14・青少年研修センター・入場無料・コンポスト無料配布／生ごみ削減紹介）× 草川R4.9議会 ごみ処理費用への答弁（水分を含むごみの削減と再資源化が最も効果的）",
+  "domain": "環境（ごみ減量）",
+  "source": "亀山市 環境展（9/28更新）× 01_council/0409kaigiroku_kusagawa_only.txt L60-100",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "lite1回 REVISE6件（一般質問→議案質疑の可能性で『一般質問』削除／答弁引用を逐語化／『家庭で』帰属ずれ／最上級削除／鈴鹿高校で『市内の』削除）全反映。gate.py --pass。📣DB https://app.notion.com/p/3e9cf503a68f81a9af2efa7d22de6949 。Notion予算4回到達でSNS便ステータスpage未更新。"
  }
 ]
