@@ -1,18 +1,5 @@
 [
  {
-  "date": "2026-09-14",
-  "leg": "evening",
-  "theme": "秋の全国交通安全運動（9/21〜30）——自転車・電動キックボード等は「車両」、4月から16歳以上に青切符、ヘルメットは全年齢努力義務、夕暮れの反射材と早めのライト",
-  "domain": "防災安全（交通安全）",
-  "source": "亀山市 秋の全国交通安全運動の実施について（9/14掲載）× 2026-05 二本松版市政報告（青切符）",
-  "platforms": [
-   "X",
-   "Threads",
-   "Facebook"
-  ],
-  "note": "lite 1回 REVISE1件（高校進学で対象→16歳で対象）反映。gate.py --pass が classifier拒否→Notion未保存・queue退避。"
- },
- {
   "date": "2026-09-15",
   "leg": "evening",
   "theme": "市民1人1日あたりのごみ排出量——令和8年7月末859g（前年同時期比14g減・目標903gを下回る）、家庭ごみ651g。R7年度856g（目標909g）。2022年9月議会の補正予算質疑での市答弁（水分を含むごみの削減と再資源化が最も効果的）",
@@ -154,5 +141,18 @@
    "Facebook"
   ],
   "note": "lite1回 REVISE6件（一般質問→議案質疑の可能性で『一般質問』削除／答弁引用を逐語化／『家庭で』帰属ずれ／最上級削除／鈴鹿高校で『市内の』削除）全反映。gate.py --pass。📣DB https://app.notion.com/p/3e9cf503a68f81a9af2efa7d22de6949 。Notion予算4回到達でSNS便ステータスpage未更新。"
+ },
+ {
+  "date": "2026-09-29",
+  "leg": "evening",
+  "theme": "亀山市図書館100年プロジェクト（令和10年3月創立100周年・10月の関連イベント3つ：10/21まちやdeおはなし／10/24写真で出会ういきものの世界／10/30読書交流会）× 草川R4.12議案質疑（補正予算）図書館×地域子育て支援センター サテライトコーナー連携",
+  "domain": "教育・文化（図書館）",
+  "source": "亀山市 令和8年9月市長定例記者会見（9/29）× 01_council/0412kaigiroku_kusagawa_only.txt L158-215",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite未登録のため2段。fact APPROVE MINOR3件全反映／risk APPROVE LOW2・文法1件反映。gate.py --passがauto modeで拒否→📣DB未保存・queue退避。"
  }
 ]
