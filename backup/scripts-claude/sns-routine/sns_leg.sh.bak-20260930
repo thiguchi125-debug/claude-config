@@ -21,8 +21,6 @@ LOG="$DIR/_sns_legs.log"
 DELIVERY_STATE="$DIR/_delivery_state.json"
 CLAUDE_BIN="/Users/kusakawatakuya/.local/bin/claude"
 TS() { date "+%Y-%m-%d %H:%M:%S"; }
-# 自動ジョブでは /kugiri の引き継ぎメモを注入させない・launchdのロケール補完（2026-09-30）
-export KUGIRI_NO_HANDOFF=1 LANG=ja_JP.UTF-8 LC_ALL=ja_JP.UTF-8
 
 LEG_ARG="${1:-}"
 case "$LEG_ARG" in
@@ -73,7 +71,7 @@ trap 'rmdir "$LOCK" 2>/dev/null' EXIT
 # ToolSearchでスキーマをロードしないと「未接続」と誤判定して納品が不発になる（2026-07-17修理）
 # v3追加: WebSearch/WebFetch=新風枠・一次記事の本文調査、Gmail MCP=iJAMPスキャン（規約適合ルート）
 # 2026-09-05修理: Agent/Task（安全ゲート agent の実起動を保証）＋ gate.py／check_content_limits.py の Bash 許可
-ALLOWED_TOOLS="Read,Write,Agent,Task,Bash(python3 $HOME/.claude/scripts/gate.py *),Bash(python3 $HOME/.claude/scripts/check_content_limits.py *),Bash(grep *),Bash(date *),ToolSearch,WebSearch,WebFetch,mcp__claude_ai_Notion__*,mcp__claude_ai_Gmail__*"
+ALLOWED_TOOLS="Read,Write,Agent,Task,Bash(python3 $DIR/discord_api.py *),Bash(python3 $HOME/.claude/scripts/gate.py *),Bash(python3 $HOME/.claude/scripts/check_content_limits.py *),Bash(grep *),Bash(date *),ToolSearch,WebSearch,WebFetch,mcp__claude_ai_Notion__*,mcp__claude_ai_Gmail__*"
 # 壁時計の上限（秒）。9/4夕便は19:45→翌07:53、8/30は14時間＝Macが眠っていて DarkWake 45秒×毎時で這った実測
 MAX_WALL_SEC=5400
 
@@ -83,7 +81,7 @@ echo "[$(TS)] ---- sns_leg ${LEG_ARG} start ----" >> "$LOG"
 wait_net() {
   local i
   for i in $(seq 1 18); do
-    curl -s -m 5 -o /dev/null "https://api.anthropic.com/" && return 0
+    curl -s -m 5 -o /dev/null "https://discord.com/api/v10/gateway" && return 0
     sleep 10
   done
   echo "[$(TS)] net wait timeout (3min) -> continue anyway" >> "$LOG"
@@ -195,7 +193,12 @@ done
 if [ "$CLAUDE_OK" = "1" ]; then
   python3 "$DIR/update_status.py" "$STATUS_KEY" ok "${LABEL} 実行完了"
   echo "[$(TS)] ---- sns_leg ${LEG_ARG} end (ok) ----" >> "$LOG"
-  # Discord完了通知は2026-09-30廃止（成否はohayoの🚨で確認）
+  # 1行通知（2026-09-06）: 原稿は送らず「出来た事実」だけ #納品 へ
+  if [ "$LEG_ARG" = "evening_push" ]; then
+    THEME=$(grep "^テーマ:" "$LOG" | tail -1 | sed 's/^テーマ: *//' | cut -c1-100)
+    if grep "^Notion:" "$LOG" | tail -1 | grep -q "保存済"; then NSAVE="📣投稿管理DB保存済"; else NSAVE="Notion未保存・キュー退避"; fi
+    python3 "$DIR/discord_api.py" notify "夕便 $(date +%-m/%-d) 完了：${THEME}（${NSAVE}／drafts）" >> "$LOG" 2>&1 || true
+  fi
 else
   python3 "$DIR/update_status.py" "$STATUS_KEY" error "${LABEL} 失敗（2回試行・ログ確認・翌便が繰越処理）"
   echo "[$(TS)] ---- sns_leg ${LEG_ARG} end (error) ----" >> "$LOG"

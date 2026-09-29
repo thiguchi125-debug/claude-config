@@ -7,8 +7,6 @@ LOG="$DIR/_intake.log"
 CLAUDE_BIN="/Users/kusakawatakuya/.local/bin/claude"
 UPDATE_STATUS="$HOME/.claude/scripts/sns-routine/update_status.py"
 TS() { date "+%Y-%m-%d %H:%M:%S"; }
-# 自動ジョブでは /kugiri の引き継ぎメモを注入させない・launchdのロケール補完（2026-09-30）
-export KUGIRI_NO_HANDOFF=1 LANG=ja_JP.UTF-8 LC_ALL=ja_JP.UTF-8
 echo "[$(TS)] ---- form_intake start ----" >> "$LOG"
 
 # ネットワーク疎通待ち（スリープ復帰直後のWi-Fi未接続対策・最大3分）

@@ -28,7 +28,7 @@ data[key] = {
     "message": msg,
     "updated": datetime.datetime.now().isoformat(timespec="seconds"),
 }
-tmp = "%s.%d.tmp" % (PATH, os.getpid())  # 同時実行で.tmpを奪い合って落ちていた（2026-09-30）
+tmp = PATH + ".tmp"
 with open(tmp, "w") as f:
     json.dump(data, f, ensure_ascii=False, indent=1)
 os.replace(tmp, PATH)

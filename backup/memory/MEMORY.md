@@ -26,11 +26,11 @@
 - [content-pipeline発信ビジュアル統合](project_content_pipeline_visual_expansion.md) — 記事URL＋写真→1パス
 - [後援会入会フォーム](project_koenkai_intake_form.md) — 告示後(10/18)の拡散停止テーブルあり
 - [後援会名簿は2系統](project_koenkai_roster_two_systems.md) — Notion 94件とDrive 60名が氏名ゼロ重複。管理CSVは00_名簿・個人情報/
-- [Discord夜間intake停止](project_discord_channel_split.md) — 2026-09-06停止・Todoist Inbox一本化。Botは温存。復活は通知専用のみ
+- [Discord完全停止](project_discord_channel_split.md) — 9/6 intake停止→9/30通知も廃止・プラグイン無効化。Botは温存
 - [SNS発信ルーティン](project_sns_routine_v2.md) — 2026-08-26簡素化。夕19:30の1本のみ・差し替え禁止。Phase4は着手しない
 - [発信候補パック夜間ジョブがゲートでdeny](project_hakushin_pack_gate_deny.md) — 未修理
 - [Notion保存フックの「=」正規化ずれ](project_content_gate_hook_equals_mismatch.md) — 2026-09-16修理済。norm()はgate.pyとフックの2箇所に別実装＝片方直したら両方
-- [ニュース便が引き継ぎ注入で乗っ取られ収集ゼロ](project_news_briefing_handoff_hijack.md) — 9/30修理。他のclaude -p自動ジョブ5本は未対応・草川判断
+- [ニュース便が引き継ぎ注入で乗っ取られ収集ゼロ](project_news_briefing_handoff_hijack.md) — 9/30修理。全claude -pジョブにKUGIRI_NO_HANDOFF=1・新ジョブも必須
 - [newsダイジェスト更新がゲートでdeny](project_news_briefing_digest_gate_deny.md) — 2026-09-06 EXEMPT_PAGESに2ページ追加（草川承認）。9/7朝に--pass回避が消えるか確認
 - [AIくさかわ](project_ai_kusakawa.md) — 実装済。**草川手番待ち**＝ElevenLabs登録・キャラ生成
 - [gyakusanスキル](project_gyakusan_skill.md) — 初回実運用待ち

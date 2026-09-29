@@ -9,4 +9,4 @@ metadata:
 修理: ①handoff_notice.py は `KUGIRI_NO_HANDOFF=1` なら何も出さない ②news_briefing.sh がそれと LANG=ja_JP.UTF-8 をexport ③最終行に「news-briefing v4-local 完了」が無ければ失敗扱いで再試行 ④件数抽出を完了行から取る。バックアップ `*.bak-20260930`。
 
 **Why:** 終了コードだけで成否を見ると「別の話をして終わった」を検出できない。
-**How to apply:** 他の claude -p 自動ジョブ（sns_leg / nightly_intake / oyasumi / gyakusan / form_intake）も同じ注入を受けうる。未対応＝各shに `export KUGIRI_NO_HANDOFF=1` を足すかは草川判断。関連 [[project_news_briefing_system]] [[project_kugiri_shuryo_mode]]
+**How to apply:** 9/30に稼働中の claude -p ジョブ全部（news_briefing / sns_leg / oyasumi / gyakusan / form_intake）へ `export KUGIRI_NO_HANDOFF=1 LANG=ja_JP.UTF-8` を追加済み。新しい自動ジョブを作るときも必ず入れる。同日 update_status.py の .tmp 奪い合い（同時実行でFileNotFoundError）もPID付きtmpで修理。関連 [[project_news_briefing_system]] [[project_kugiri_shuryo_mode]]

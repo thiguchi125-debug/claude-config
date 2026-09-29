@@ -153,7 +153,7 @@
     "claude-md-management@claude-plugins-official": false,
     "superpowers@claude-plugins-official": false,
     "security-guidance@claude-plugins-official": true,
-    "discord@claude-plugins-official": true,
+    "discord@claude-plugins-official": false,
     "swift-lsp@claude-plugins-official": false,
     "productivity@synced": false
   },
