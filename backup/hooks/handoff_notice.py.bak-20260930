@@ -32,10 +32,6 @@ def when(h):
 
 
 def main():
-    # 自動ジョブ（launchd の claude -p）には注入しない（2026-09-30）。
-    # ニュース便が引き継ぎメモに返事をして収集せずに終わる事故が9/25・26・29・30に発生した。
-    if os.environ.get("KUGIRI_NO_HANDOFF") == "1":
-        return
     now = time.time()
     items = []
     for p in glob.glob(os.path.join(DIR, "*.md")):

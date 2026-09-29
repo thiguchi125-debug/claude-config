@@ -9,11 +9,6 @@ DIR="$HOME/.claude/scripts/sns-routine"
 LOG="$DIR/_news_briefing.log"
 CLAUDE_BIN="/Users/kusakawatakuya/.local/bin/claude"
 TS() { date "+%Y-%m-%d %H:%M:%S"; }
-# 自動ジョブでは /kugiri の引き継ぎメモを注入させない（2026-09-30: 注入されると
-# 引き継ぎへの返事だけ書いて rc=0 で終わり、収集ゼロのまま ok 扱いになっていた）
-export KUGIRI_NO_HANDOFF=1
-# launchd はロケール未設定。日本語の加工で文字化け→Discord通知が毎日落ちていた（2026-09-30）
-export LANG=ja_JP.UTF-8 LC_ALL=ja_JP.UTF-8
 
 PROMPT_FILE="$DIR/leg_news_briefing.md"
 # ToolSearch は必須: headless実行ではNotion/Gmail MCPがdeferredで起動するため、
@@ -44,12 +39,6 @@ for ATTEMPT in 1 2; do
       >> "$LOG" 2>&1; then
     # rc=0でも「🚨中止」で終わるケース（Notion MCP本物の不在）を検出してstatusに反映
     # 認証系の不在はリトライでは直らないため、ここでは再試行せず即中止する
-    # rc=0でも完了行が無ければ収集していない（別の話題に返事して終わった等）→失敗扱いで再試行
-    if ! tail -15 "$LOG" | grep -qE '(✅ )?news-briefing v4-local 完了|🚨 news-briefing'; then
-      echo "[$(TS)] 完了行なし＝収集していない (attempt $ATTEMPT)" >> "$LOG"
-      [ "$ATTEMPT" = "1" ] && { echo "[$(TS)] retrying in 10min" >> "$LOG"; sleep 600; }
-      continue
-    fi
     if tail -5 "$LOG" | grep -q '🚨 news-briefing'; then
       python3 "$DIR/update_status.py" news_briefing error "ニュース収集 6:05 中止（Notion MCP不在等・ログ確認）"
       echo "[$(TS)] ---- news_briefing end (aborted) ----" >> "$LOG"
@@ -74,7 +63,7 @@ if [ "$RUN_OK" = "1" ]; then
   python3 "$DIR/update_status.py" news_briefing ok "ニュース収集 6:05 完了"
   echo "[$(TS)] ---- news_briefing end (ok) ----" >> "$LOG"
   # 1行通知（2026-09-06）: 件数だけ #納品 へ
-  SUMMARY=$(grep -E "news-briefing v4-local 完了" "$LOG" | tail -1 | grep -oE "新規[0-9]+|続報[0-9]+" | paste -sd '/' -)
+  SUMMARY=$(grep -oE "新規登録[0-9]+件|続報[0-9]+件" "$LOG" | tail -2 | tr '\n' '・' | sed 's/・$//')
   python3 "$DIR/discord_api.py" notify "ニュース便 $(date +%-m/%-d) 完了：${SUMMARY:-件数不明}（📰ニュースDB／おはようで表示）" >> "$LOG" 2>&1 || true
 else
   python3 "$DIR/update_status.py" news_briefing error "ニュース収集 6:05 失敗（2回試行・ログ確認・朝便はアーカイブ由来で継続）"
