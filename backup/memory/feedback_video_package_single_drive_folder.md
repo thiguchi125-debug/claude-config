@@ -16,3 +16,4 @@ metadata:
 - READMEには中身の表・今の状態（ゲート結果・NotionのURL）・投稿手順・注意（直前期の再審査日・告示後の運用）・作り直し先（outputsの制作フォルダ）を書く。
 - 投稿文をObsidianに一時的に置いた場合は、Driveへまとめた時点で `~/Archive/_trash_pending_<日付>/` へ移す（草川の `#注記` が無いか確認してから）。
 - 修正版はDrive上で上書きせず別名（v3…）で置く＝[[feedback_never_overwrite_delivered_drive_file]]。関連 [[feedback_copypaste_draft_delivery]]
+- 2026-09-30 拡張：ブログと動画を同じテーマで出すシリーズ（3本柱シリーズ）は、ブログ本文・貼り付け用HTML・サムネも同じ回フォルダに入れる（草川「動画とブログに必要な素材は全て一つのフォルダに」）。1回＝1フォルダ `📱動画素材/<YYYY-MM>_<シリーズ>/第NN回_<看板>/`。撮影の元動画・作業ファイルは sns-video プロジェクトに残す
