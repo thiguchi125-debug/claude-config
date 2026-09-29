@@ -109,6 +109,7 @@
 - [かめやまマタニティ・サポート119と産科の確定事実](reference_kameyama_maternity_support_119.md) — 正式表記はひらがな＋中黒。妊婦健診は市内でも可
 - [亀山市の道路の所管課](reference_kameyama_doro_shokan_ka.md) — 「道路河川課」は存在しない。既存道路の草刈り・支障木は建設管理課 道路保全グループ
 - [通学路交通安全プログラムの対象範囲](reference_tsugakuro_program_scope.md) — 事故りやすい3点あり・着手前に必読
+- [後援会事務所開き9/6の確定事実](reference_jimusho_biraki_2026-09-06.md) — 近隣中心に約80名（SNS案の約70名は誤り）・建設労組が組合として来場
 - [防災発信の定番リンク集5本](reference_bosai_link_collection.md) — 気象庁/川の防災/防災みえ/名阪/中電
 - [議会質問アーカイブv3構造](reference_drive_archive_kusagawa.md) — 学習層1088件・grep対象6フォルダ
 - [ルーティン運行表](reference_routine_unkohyo.md) — 日次ルーティン1枚。「運行表更新して」で再デプロイ
