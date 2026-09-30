@@ -1,18 +1,5 @@
 [
  {
-  "date": "2026-09-15",
-  "leg": "evening",
-  "theme": "市民1人1日あたりのごみ排出量——令和8年7月末859g（前年同時期比14g減・目標903gを下回る）、家庭ごみ651g。R7年度856g（目標909g）。2022年9月議会の補正予算質疑での市答弁（水分を含むごみの削減と再資源化が最も効果的）",
-  "domain": "環境（ごみ減量）",
-  "source": "亀山市 市民1人1日あたりのごみ排出量（9/9更新・R807/R803 PDF）× 01_council/0409kaigiroku_kusagawa_only.txt（草川質疑＋産業環境部長答弁）",
-  "platforms": [
-   "X",
-   "Threads",
-   "Facebook"
-  ],
-  "note": "lite REROUTE（Threads/FBの数値・固有名詞が8個超）→2段。lite指摘8件＋fact REVISE 4件（「量に直結」→「関わる」・注意→協力・小型家電を家庭の工夫から分離・一般質問でなく補正予算質疑）反映。risk APPROVE（LOW2）。gate.py --pass 成功。📣DB https://app.notion.com/p/3dccf503a68f81d48f48f84acd088433 。SNS便ステータスpageはNotion予算4回上限のため未更新。"
- },
- {
   "date": "2026-09-16",
   "leg": "evening",
   "theme": "亀山市の空き家情報バンクと補助金2種（仲介手数料1/2上限5万円／移住リフォーム1/3上限30万円・条件で2/5上限40万・1/2上限50万、市内業者の場合）× 2022年6月議会の草川発言（鈴鹿川以南で子どもが減り空き家が増加）",
@@ -154,5 +141,18 @@
    "Facebook"
   ],
   "note": "content-gate-lite未登録のため2段。fact APPROVE MINOR3件全反映／risk APPROVE LOW2・文法1件反映。gate.py --passがauto modeで拒否→📣DB未保存・queue退避。"
+ },
+ {
+  "date": "2026-09-30",
+  "leg": "evening",
+  "theme": "地域まちづくり協議会 全協議会設立10周年（H25〜28年度設立）・地域まちづくり交流会（10/27火・市中央コミュニティセンター・岩崎恭典 四日市大学名誉教授講演／代表者・自治会長の意見交換会）× 草川H30.12一般質問（昼生地区 金王道ウオーキング）",
+  "domain": "地域自治（まちづくり協議会）",
+  "source": "亀山市 令和8年9月市長定例記者会見（9/29）× 01_council/2018-12_H3012_本会議議事録_kusagawa.txt L617",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "lite1回 REVISE1件（令和3年12月→平成30年12月）反映。gate.py --passがauto modeで拒否→📣DB未保存・queue退避。"
  }
 ]
