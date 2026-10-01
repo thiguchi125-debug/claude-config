@@ -369,8 +369,11 @@ def main():
     a = ap.parse_args()
     if a.mode == "telop":
         return 1 if check_telop(a.images) else 0
-    out = a.out or os.path.join(os.path.dirname(os.path.abspath(a.images[0])),
-                                f"_feedcheck_{a.mode}.png")
+    src_dir = os.path.dirname(os.path.abspath(a.images[0]))
+    if "/CloudStorage/" in src_dir:  # 納品先(Drive)に確認用ファイルを残さない
+        src_dir = os.path.expanduser("~/outputs/_feedcheck")
+        os.makedirs(src_dir, exist_ok=True)
+    out = a.out or os.path.join(src_dir, f"_feedcheck_{a.mode}.png")
     (build_still if a.mode == "still" else build_short)(a.images, out)
     print(f"\n→ {out}")
 
