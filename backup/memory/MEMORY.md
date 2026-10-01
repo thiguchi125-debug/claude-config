@@ -81,7 +81,7 @@
 - [成果物は古い版を閉じて新版だけ開く](feedback_open_folder_after_generating_files.md) — `~/.claude/scripts/show_latest.sh`
 - [動画の投稿セットはDrive 📱動画素材/の1フォルダに一本化](feedback_video_package_single_drive_folder.md) — mp4・カバー・SNS7PF・台本・README。Obsidianに重複を置かない
 - [渡したDriveファイルをcp上書きしない](feedback_never_overwrite_delivered_drive_file.md) — 草川のクラウド側編集が黙って消える。直すなら別名
-- [ショート動画は台本確定→画像・SNSの順](feedback_short_video_script_review_before_assets.md) — Obsidianで草川が確定するまで下流を作らない（9/22作り直し）
+- [注記はブログ1本→台本・SNSは派生更新](feedback_short_video_script_review_before_assets.md) — 10/1改定。台本は画像前に一読OKだけ・下流は本文確定後
 - [ご意見箱の件数は発信に使わない](feedback_no_iken_bako_counts_in_hasshin.md) — 9/30草川「中途半端で参考にならない」。声は件数なしで。市の公表件数は可
 - [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出しはCSSライムバー/角マーカー/ピル・スライドも含む
 - [架空エピソード禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
