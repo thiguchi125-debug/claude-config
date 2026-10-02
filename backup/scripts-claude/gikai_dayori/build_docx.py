@@ -24,6 +24,7 @@ config.json の形式:
      "a": "関西本線と草津線の連携は、…"},
     ...
   ],
+  "show_count": true,   # 末尾に字数を明記（既定true）
   "others": ["部活動の地域展開について", "中学校給食について", ...]
 }
 """
@@ -74,12 +75,21 @@ def main():
         for o in cfg["others"]:
             add_para(doc, o, 10.5, style="List Bullet")
 
-    doc.save(cfg["out"])
-
     # 字数カウント（タイトル＋見出し＋Q&A。吹き出し・氏名・その他はカウント外）
     count = 0
+    parts = []
     for sec in cfg["sections"]:
-        count += len(sec["head"].lstrip("■● ").strip()) + len(sec["q"]) + len(sec["a"])
+        n = len(sec["head"].lstrip("■● ").strip()) + len(sec["q"]) + len(sec["a"])
+        count += n
+        parts.append("%s %d字" % (sec["head"].lstrip("■● ").strip(), n))
+    # 提出書類の末尾に字数を明記（2026-10-02 草川指示。"show_count": false で省略）
+    if cfg.get("show_count", True):
+        limit = cfg.get("limit", 650)
+        add_para(doc, "", 9)
+        add_para(doc, "字数：%d字／上限%d字（見出し＋問答。吹き出し・その他の質問は除く）" % (count, limit), 9)
+        add_para(doc, "内訳：" + "／".join(parts), 9)
+
+    doc.save(cfg["out"])
     print("saved:", cfg["out"])
     print("見出し＋Q&A字数（吹き出し・その他カウント外）: 約%d字" % count)
 
