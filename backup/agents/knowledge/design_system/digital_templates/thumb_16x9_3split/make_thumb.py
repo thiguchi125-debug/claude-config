@@ -32,7 +32,9 @@ def main():
     out = pathlib.Path(o.out).expanduser(); (out / "assets").mkdir(parents=True, exist_ok=True)
     site = out / "assets" / ("site" + pathlib.Path(o.site).suffix.lower())
     me = out / "assets" / pathlib.Path(o.me).name
-    shutil.copy(pathlib.Path(o.site).expanduser(), site); shutil.copy(pathlib.Path(o.me).expanduser(), me)
+    for src, dst in ((pathlib.Path(o.site).expanduser(), site), (pathlib.Path(o.me).expanduser(), me)):
+        if src.resolve() != dst.resolve():  # 出力先assets/に既にある写真を渡しても止まらない
+            shutil.copy(src, dst)
 
     rep = {"{{PLACE}}": o.place, "{{LINE1}}": o.line1, "{{KEY}}": o.key, "{{ASK}}": o.ask,
            "{{SITE_PHOTO}}": f"assets/{site.name}", "{{ME_PHOTO}}": f"assets/{me.name}",
