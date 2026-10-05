@@ -154,5 +154,18 @@
    "Facebook"
   ],
   "note": "content-gate-lite未登録のため2段。fact APPROVE MINOR1件（棚田百選の帰属）・risk APPROVE LOW1件（「放置」表現）反映。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-05",
+  "leg": "evening",
+  "theme": "廃止代替路線バス2路線（亀山みずほ台線・亀山椋本線）の運賃改定案に市が意見募集（10/5〜19・初乗200→210円）× 草川R6.12一般質問（南部地域の公共交通・椋本線利用コロナ前5割強）",
+  "domain": "公共交通",
+  "source": "亀山市公式 docs/2026100100035 × 01_council/2024-12_R0612_本会議議事録_kusagawa.txt L911-953",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite未登録のため2段。fact REVISE4件（申請主体・委託運行・答弁文言・年度）全反映、risk APPROVE LOW2件。9/27方針により📣DB未保存。"
  }
 ]
