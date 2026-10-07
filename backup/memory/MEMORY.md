@@ -142,3 +142,4 @@
 - 亀山の地震防災4軸データ: project_kameyama_bosai_jishin_local.md（agent-memory/kameyama-researcher/）
 - エージェント本体: ~/.claude/agents/ 配下48本
 - [Mac音声入力が起動しない＝coreaudiod不調](reference_mac_dictation_coreaudiod.md) — 音声認識の再起動では直らない。`sudo killall coreaudiod`
+- [工場が来る前に備える は却下](feedback_kojo_kuru_mae_rejected.md) — 10/8草川「市民に響かない」。政策集v9.2から削除。行政手続き寄りの切り口は調査前に1問確認
