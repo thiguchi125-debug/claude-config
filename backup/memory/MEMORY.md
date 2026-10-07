@@ -84,6 +84,7 @@
 - [注記はブログ1本→台本・SNSは派生更新](feedback_short_video_script_review_before_assets.md) — 10/1改定。台本は画像前に一読OKだけ・下流は本文確定後
 - [ご意見箱の件数は発信に使わない](feedback_no_iken_bako_counts_in_hasshin.md) — 9/30草川「中途半端で参考にならない」。声は件数なしで。市の公表件数は可
 - [家庭用プリンタのチラシはベタ帯なし・切り取り線は横一本](feedback_home_printer_flyer_no_solid_band_cutline.md) — 2026-09-28二本松懇談会。連絡先は切り取り線の上
+- [PDFにぼかし影を入れない](feedback_pdf_box_shadow_gray_box_preview.md) — macOSプレビューで写真の周りに灰色の四角。検品はqlmanageでも
 - [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出しはCSSライムバー/角マーカー/ピル・スライドも含む
 - [架空エピソード禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
 - [確認事項は1件1問の選択式](feedback_ask_one_by_one_choices.md) — AskUserQuestion・1回最大4問
