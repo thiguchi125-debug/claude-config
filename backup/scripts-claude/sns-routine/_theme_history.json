@@ -1,18 +1,5 @@
 [
  {
-  "date": "2026-09-22",
-  "leg": "evening",
-  "theme": "野登地区3地区（辺法寺・池山・安楽）のかんこ踊り初の共演祭（9/19夜・野登小・約500人・主催 野登地区まちづくり協議会）× 草川R7.9一般質問「地域伝統芸能の継承支援」（保存会4団体ヒアリング・認定制度/協議会/CF型ふるさと納税の提案）",
-  "domain": "文化（地域伝統芸能の継承）",
-  "source": "伊勢新聞 2026-09-21 × 01_council/kaigirokur0709_kusagawa_only.txt L875-1000",
-  "platforms": [
-   "X",
-   "Threads",
-   "Facebook"
-  ],
-  "note": "FB600字超で2段。fact REVISE2件（答弁要約を認定制度・CFの2点に限定／初めての共演祭で一堂に）、risk REVISE（X MEDIUM1＝出典・主催を明記し『訴えた点』を削除）全反映。gate.py --pass。📣DB https://app.notion.com/p/3e3cf503a68f817ba915ff2580599f60"
- },
- {
   "date": "2026-09-23",
   "leg": "evening",
   "theme": "亀山7座トレイル——三重県観光連盟「観光三重」特集掲載・市の登山イベント4回（10/18受付終了・11/8・11/29講習・R9.1/17、各定員10人）× 草川2020年3月議会「7座トレイルと関宿の連携・週末亀山人」質問",
@@ -167,5 +154,18 @@
    "Facebook"
   ],
   "note": "content-gate-lite未登録のため2段。fact REVISE2件（65歳以上の種目・当時の後期基本計画）反映、risk APPROVE LOW2件。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-07",
+  "leg": "evening",
+  "theme": "亀山市立図書館 講演会「図書館は、誰かの『困った』から始まる」（11/3・定員40人）× 草川R5.6一般質問（図書館駐車場と駅前のにぎわい）",
+  "domain": "図書館・駅前まちづくり",
+  "source": "亀山市公式 library/article/2026093000015 × 01_council/R0506kaigiroku_kusagawa_only.txt L530-565",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回。REVISE軽微2件＋任意1件（主催の帰属・表記）全反映、risk LOW。9/27方針により📣DB未保存。"
  }
 ]
