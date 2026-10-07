@@ -94,6 +94,7 @@
 - [更新日は提供開始日ではない](feedback_koushinbi_is_not_start_date.md) — 案内ページの更新日で開始時期を代用しない（合成エラー）
 - [通告の項目名ずれに忠告しない](feedback_tsukoku_kohumeiban_no_more_warnings.md) — 2026-09-23草川「今後一切忠告を入れるな」。聞く範囲は本人判断
 - [草川 役職・所属委員会マスタ](feedback_kusagawa_role_committee_master.md) — 教育民生委員会の委員
+- [つむぐ会の正式名称](reference_tsumugu_seishiki_meisho.md) — 「亀山親なきあとを考える会つむぐ」。城北杯は10/4・まち協主催・謝礼あり
 - [まちのミライ亀山は草川が役員](reference_machi_no_mirai_kameyama_yakuin.md) — 氏名冠発信は公選法199条の3。「役員を務める」と明示・物品配布は不可
 - **タスク別ルールは `~/.claude/GUARDRAILS.md` 各節**（2026-09-15に本節から65行を移設・5行は既存行に統合。発信【1】ゲート【2】印刷物・動画【3】Notion【4】議会【5】市民対応【6】基盤【7】タスク・日程【9】）
 
@@ -142,4 +143,4 @@
 - 亀山の地震防災4軸データ: project_kameyama_bosai_jishin_local.md（agent-memory/kameyama-researcher/）
 - エージェント本体: ~/.claude/agents/ 配下48本
 - [Mac音声入力が起動しない＝coreaudiod不調](reference_mac_dictation_coreaudiod.md) — 音声認識の再起動では直らない。`sudo killall coreaudiod`
-- [工場が来る前に備える は却下](feedback_kojo_kuru_mae_rejected.md) — 10/8草川「市民に響かない」。政策集v9.2から削除。行政手続き寄りの切り口は調査前に1問確認
+- [誘致は柱のまま・事前準備の前面化は却下](feedback_kojo_kuru_mae_rejected.md) — 10/8。看板1-1は誘致を前面に、水・人・通勤は裏付けへ
