@@ -86,6 +86,7 @@
 - [家庭用プリンタのチラシはベタ帯なし・切り取り線は横一本](feedback_home_printer_flyer_no_solid_band_cutline.md) — 2026-09-28二本松懇談会。連絡先は切り取り線の上
 - [PDFにぼかし影を入れない](feedback_pdf_box_shadow_gray_box_preview.md) — macOSプレビューで写真の周りに灰色の四角。検品はqlmanageでも
 - [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出しはCSSライムバー/角マーカー/ピル・スライドも含む
+- [プロフィールの秘書歴は小池百合子の名前入り](feedback_profile_koike_yuriko_hisho.md) — 「衆議院議員秘書」は不可。草川「絶対に外すな」
 - [架空エピソード禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
 - [確認事項は1件1問の選択式](feedback_ask_one_by_one_choices.md) — AskUserQuestion・1回最大4問
 - [確認は最初に1回束ねる](feedback_ask_bundling_and_upfront_reflection.md) — 入力にある情報は最初から反映
