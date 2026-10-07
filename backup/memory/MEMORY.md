@@ -97,7 +97,7 @@
 - [通告の項目名ずれに忠告しない](feedback_tsukoku_kohumeiban_no_more_warnings.md) — 2026-09-23草川「今後一切忠告を入れるな」。聞く範囲は本人判断
 - [草川 役職・所属委員会マスタ](feedback_kusagawa_role_committee_master.md) — 教育民生委員会の委員
 - [つむぐ会の正式名称](reference_tsumugu_seishiki_meisho.md) — 「亀山親なきあとを考える会つむぐ」。城北杯は10/4・まち協主催・謝礼あり
-- [JC議案監査は確認番号の「確認中」を指摘しない](feedback_jc_kansa_kakunin_bango.md) — 10/8草川指示。コンプラ・公益確認番号は外す
+- [JC議案監査は確認番号の「確認中」を指摘しない](feedback_jc_kansa_kakunin_bango.md) — 10/8草川指示。コンプラ・公益確認番号と按分率など委員会独自の処理は外す
 - [まちのミライ亀山は草川が役員](reference_machi_no_mirai_kameyama_yakuin.md) — 氏名冠発信は公選法199条の3。「役員を務める」と明示・物品配布は不可
 - **タスク別ルールは `~/.claude/GUARDRAILS.md` 各節**（2026-09-15に本節から65行を移設・5行は既存行に統合。発信【1】ゲート【2】印刷物・動画【3】Notion【4】議会【5】市民対応【6】基盤【7】タスク・日程【9】）
 
