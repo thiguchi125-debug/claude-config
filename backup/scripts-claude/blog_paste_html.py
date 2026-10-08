@@ -45,6 +45,10 @@ def main() -> int:
     md = re.sub(r"==(.+?)==", r"\1", md)
     # 制作メモ（<!-- … -->）は本文に出さない（2026-10-08：版・ゲート記録が貼り付け範囲に出ていた）
     md = re.sub(r"<!--.*?-->", "", md, flags=re.S)
+    # タイトル行より前（「公開時に消す」引用ブロック等の版メモ）は本文に出さない
+    m_t = re.search(r"^# ", md, flags=re.M)
+    if m_t:
+        md = md[m_t.start():]
 
     title, body, img_slots, n_head = "", [], 0, 0
     for block in re.split(r"\n\s*\n", md.strip()):
