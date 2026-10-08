@@ -1,5 +1,18 @@
 [
  {
+  "date": "2026-09-23",
+  "leg": "evening",
+  "theme": "亀山7座トレイル——三重県観光連盟「観光三重」特集掲載・市の登山イベント4回（10/18受付終了・11/8・11/29講習・R9.1/17、各定員10人）× 草川2020年3月議会「7座トレイルと関宿の連携・週末亀山人」質問",
+  "domain": "観光・まちづくり（アウトドア）",
+  "source": "亀山市 7座トレイル最新情報（9/17更新）× 01_council/r2_3t_kaigiroku_kusagawa_only.txt L880-940 × 2022-02-13ブログ",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "全本600字以下でcontent-gate-lite1回。REVISE6件（運営主体＝三重県観光連盟／10/18受付終了／受付期間／答弁語尾）全反映・CRITICAL/HIGH 0。gate.py --pass。📣DB https://app.notion.com/p/3e4cf503a68f811a8de3d07490f0b586 。Notion予算4回到達のためSNS便ステータスpageは未更新。"
+ },
+ {
   "date": "2026-09-24",
   "leg": "evening",
   "theme": "バレエ『ロミオとジュリエット』亀山公演（9/20・市文化会館大ホール・約650人・SK feel Ballet 村田周平さん／中尾公美さん・総勢33人）× 2025年亀山JC忍山神社バレエ奉納公演",
@@ -154,18 +167,5 @@
    "Facebook"
   ],
   "note": "content-gate-lite 1回。REVISE軽微2件＋任意1件（主催の帰属・表記）全反映、risk LOW。9/27方針により📣DB未保存。"
- },
- {
-  "date": "2026-10-08",
-  "leg": "evening",
-  "theme": "第39回東海道関宿街道まつり（11/1日・宿場大行列テーマ「亀山ゆかりの時代行列」・9-16時歩行者専用）× 草川R2.3一般質問（関宿×7座トレイルのまちづくり観光）",
-  "domain": "観光・歴史まちづくり",
-  "source": "亀山市公式 docs/2024061900015 × 01_council/r2_3t_kaigiroku_kusagawa_only.txt L878-913",
-  "platforms": [
-   "X",
-   "Threads",
-   "Facebook"
-  ],
-  "note": "content-gate-lite 1回。APPROVE・任意修正1件反映、risk LOW。9/27方針により📣DB未保存。"
  }
 ]
