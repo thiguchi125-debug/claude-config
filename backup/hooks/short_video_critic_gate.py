@@ -40,7 +40,8 @@ def pending():
                 head = "".join(f.readline() for _ in range(20))
         except Exception:
             continue
-        if "NO-CRITIC" in head or not PASSED.search(head):
+        # 冒頭に「未通過」があれば台本自身は未通過（他ファイルの「通過済み」への言及に釣られない）
+        if "NO-CRITIC" in head or "未通過" in head or not PASSED.search(head):
             continue
         out.append(p)
     # 同じフォルダでは最新版（更新が新しいもの）だけを見る。旧版を審査させない
