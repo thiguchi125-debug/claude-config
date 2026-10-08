@@ -24,3 +24,5 @@ open <出力先>
 - 草川への案内は「上部の枠の下から末尾までを選択してコピー」。**Notionから取らない**ことを毎回添える
 
 関連: [[feedback_blog_marker_rules]] [[feedback_no_dedicated_blog_db_in_notion]] [[feedback_safety_gates_before_notion_save]] [[feedback_open_folder_after_generating_files]]
+
+**再表示の依頼でも同じ（2026-10-08）**: 「ブログ再表示して コピペできる形で」に、ターミナルへmarkdownを全文出して返してしまった（`**`が生で入る）。過去のブログを出し直すときも、確定版mdから `blog_paste_html.py` で作り直して `open` する。同日、表（`|`記法）の`<table>`化と、`<!-- -->`制作メモの除外をスクリプトに追加した。

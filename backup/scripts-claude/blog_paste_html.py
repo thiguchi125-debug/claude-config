@@ -43,6 +43,8 @@ def main() -> int:
     # Obsidian の ==…== 表記はマーカー対象として拾い、記号は本文から外す
     marks += [m for m in re.findall(r"==(.+?)==", md) if m not in marks]
     md = re.sub(r"==(.+?)==", r"\1", md)
+    # 制作メモ（<!-- … -->）は本文に出さない（2026-10-08：版・ゲート記録が貼り付け範囲に出ていた）
+    md = re.sub(r"<!--.*?-->", "", md, flags=re.S)
 
     title, body, img_slots, n_head = "", [], 0, 0
     for block in re.split(r"\n\s*\n", md.strip()):
@@ -73,6 +75,17 @@ def main() -> int:
                 '　← ここにブログ編集画面で画像をアップロードして差し替える</p>'
                 f'<p style="margin:0;font-size:.94em">代替テキスト（alt）：{inline(alt)}</p></div>'
             )
+            continue
+        rows = block.split("\n")
+        if len(rows) >= 2 and all(r.strip().startswith("|") for r in rows) \
+                and re.fullmatch(r"\|?[\s:|-]+\|?", rows[1].strip()):
+            # markdownの表は<table>にする（2026-10-08：記号の並びのまま本文に入っていた）
+            cells = lambda r: [c.strip() for c in r.strip().strip("|").split("|")]
+            td = 'style="border:1px solid #999;padding:6px 8px;vertical-align:top"'
+            th = "<tr>" + "".join(f'<th {td}>{inline(c)}</th>' for c in cells(rows[0])) + "</tr>"
+            trs = "".join("<tr>" + "".join(f'<td {td}>{inline(c)}</td>' for c in cells(r)) + "</tr>"
+                          for r in rows[2:])
+            body.append(f'<table style="border-collapse:collapse;margin:1em 0">{th}{trs}</table>')
             continue
         if block.startswith("【画像"):
             # 画像行＋直後のキャプションは、差し替え位置が一目で分かる枠にする
