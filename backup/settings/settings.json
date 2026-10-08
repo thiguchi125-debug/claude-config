@@ -24,6 +24,10 @@
           {
             "type": "command",
             "command": "$HOME/claude-config/scripts/sync-to-git.sh >/dev/null 2>&1 &"
+          },
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/hooks/short_video_critic_gate.py"
           }
         ]
       }
