@@ -1,18 +1,1 @@
-{
- "date": "2026-10-09",
- "new_count": 1,
- "items": [
-  {
-   "row_id": "S2-218",
-   "date": "2026/10/08",
-   "district": "",
-   "domain": "disaster_safety",
-   "urgency": "中",
-   "summary": "芋笑付近の交差点が橋のフェンスの草で見通し不良・小中学生のヒヤリハット・ミラー設置要望（匿名・連絡先なし）",
-   "notion_url": "https://app.notion.com/p/3f3cf503a68f81a8b6a6fed91f0c381b",
-   "skipped": false,
-   "urgent": false
-  }
- ],
- "errors": []
-}
+{"date": "2026-10-10", "new_count": 0}
