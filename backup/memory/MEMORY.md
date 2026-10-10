@@ -63,6 +63,8 @@
 - [トークン削減2026-08-20](project_token_reduction_2026-08-20.md) — 真因①印刷物の画像積み上げ(25枚deny hook)②34hセッション×並行×キャッシュ失効で上限到達
 - [止まっていた自動化の復活](project_stalled_automation_revival_2026-08-20.md) — oyasumi毎晩23:30・gyakusan月曜6:30をlaunchd化
 
+- [神向谷 市政懇談会2026-10-10](project_kamimukaidani_kondankai_2026-10-10.md) — 完了。v16最終・アンケ15枚。残＝日曜バス・中学生バス時刻を「お返し」・アプリ説明会依頼
+
 ## 📦 移設済みルール束（詳細は各agent/SKILL末尾「📌恒久ガードルール」節）
 
 - [運用規約：タスク特化ルールは担当agent/SKILL常駐](feedback_rules_reside_in_agents.md) — 横断ルールだけ個別行
@@ -86,6 +88,7 @@
 - [ご意見箱の件数は発信に使わない](feedback_no_iken_bako_counts_in_hasshin.md) — 9/30草川「中途半端で参考にならない」。声は件数なしで。市の公表件数は可
 - [家庭用プリンタのチラシはベタ帯なし・切り取り線は横一本](feedback_home_printer_flyer_no_solid_band_cutline.md) — 2026-09-28二本松懇談会。連絡先は切り取り線の上
 - [PDFにぼかし影を入れない](feedback_pdf_box_shadow_gray_box_preview.md) — macOSプレビューで写真の周りに灰色の四角。検品はqlmanageでも
+- [手書きアンケートは画像で判定・チェックだけの分野も入れる](feedback_survey_analysis_checkbox_only_and_ocr.md) — OCRは✓を拾えない（12枚中10枚取りこぼし）
 - [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出しはCSSライムバー/角マーカー/ピル・スライドも含む
 - [プロフィールの秘書歴は小池百合子の名前入り](feedback_profile_koike_yuriko_hisho.md) — 「衆議院議員秘書」は不可。草川「絶対に外すな」
 - [架空エピソード禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
