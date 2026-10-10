@@ -64,6 +64,7 @@
 - [止まっていた自動化の復活](project_stalled_automation_revival_2026-08-20.md) — oyasumi毎晩23:30・gyakusan月曜6:30をlaunchd化
 
 - [神向谷 市政懇談会2026-10-10](project_kamimukaidani_kondankai_2026-10-10.md) — 完了。v16最終・アンケ15枚。残＝日曜バス・中学生バス時刻を「お返し」・アプリ説明会依頼
+- [亀中の下校×バスは水曜だけが問題](project_kamechu_gekou_bus_suiyou.md) — 他曜日は間に合う。神向谷スライドp.46の16:45/18:15すき間は使わない
 
 ## 📦 移設済みルール束（詳細は各agent/SKILL末尾「📌恒久ガードルール」節）
 
