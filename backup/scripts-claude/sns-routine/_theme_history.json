@@ -1,31 +1,5 @@
 [
  {
-  "date": "2026-09-24",
-  "leg": "evening",
-  "theme": "バレエ『ロミオとジュリエット』亀山公演（9/20・市文化会館大ホール・約650人・SK feel Ballet 村田周平さん／中尾公美さん・総勢33人）× 2025年亀山JC忍山神社バレエ奉納公演",
-  "domain": "文化（地域の舞台芸術）",
-  "source": "伊勢新聞 2026-09-22（Yahoo!）× 02_publications/reports/【1222】市政報告レポート61.txt",
-  "platforms": [
-   "X",
-   "Threads",
-   "Facebook"
-  ],
-  "note": "全本600字以下でlite1回 REVISE4件（市外に出なければ観られなかった→続けて観られる／33人の出自／観覧前提の一文削除／Xハッシュタグ）＋任意1件反映。gate.py --pass。📣DB https://app.notion.com/p/3e5cf503a68f8146bd22e22174e22f2b 。ネタ元selectは未設定。wipファイル名に「SNS」が無いとcheck_content_limitsがブログ判定になる→_wip_夕便SNS_で回避。"
- },
- {
-  "date": "2026-09-25",
-  "leg": "evening",
-  "theme": "ぷらっとカフェ15（市民活動・ボランティアセンターぷらっと主催・毎月15日・次回10/15(木)19時・テーマ『活動を続けるモチベーションとその維持方法』・定員30人）× 草川R3.12中間支援組織の提案／R4.6検討状況質問（市『極めて重要』）",
-  "domain": "市民協働（中間支援・市民活動）",
-  "source": "亀山市 ぷらっとカフェ15参加者募集（9/24更新）× 01_council/2022-06_R0406_本会議議事録_kusagawa.txt L1036-1057 × R7.9/R7.12現況報告",
-  "platforms": [
-   "X",
-   "Threads",
-   "Facebook"
-  ],
-  "note": "lite1回 REVISE1件（FB答弁引用を言い換え）反映。FB640字→確認済み2文削除で574字（lite対象内）。R7.12一般質問は他議員のため数値不使用。gate.py --pass。📣DB https://app.notion.com/p/3e6cf503a68f81e9b118e6e5afe99f38"
- },
- {
   "date": "2026-09-27",
   "leg": "evening",
   "theme": "亀山ジャズフェスティバル（9/26・27・市内8会場・2回目・参加団体は昨年の倍近い約120）× 草川R7.6定例会『駅周辺整備で図書館・文化会館周辺まで人の流れ』",
@@ -167,5 +141,18 @@
    "Facebook"
   ],
   "note": "content-gate-lite 1回。APPROVE・任意修正1件反映、risk LOW。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-10",
+  "leg": "evening",
+  "theme": "神向谷 市政懇談会（10/10・神向谷公民館）事前アンケートの声＋防災アプリの自治会送信テストと説明会再開催の提案 × 草川R8.3予算決算委員会質問（防災アプリ）",
+  "domain": "防災・地域",
+  "source": "~/outputs/houkokukai/2026-10-10_神向谷/03_slides/_text_for_review.txt × 01_council/R8.3.23予算決算委員会_20260323172950_kusagawa_only.txt L150-159",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite未登録のため2段。fact APPROVE（任意1件反映）・risk HIGH1件（実績アピール文）削除＋MEDIUM1件言い換え。9/27方針により📣DB未保存。"
  }
 ]
