@@ -22,7 +22,7 @@
 - [ご意見箱フォーム夜間取込](project_form_intake_nightly.md) — 稼働中（9/6 03:32 ok・毎晩3:30）。8月の停止は解消済み
 - [Drive直下を投函口にした自動振り分けv5](project_drive_root_intake_v5.md) — 滞留主因はファイル名のみ判定。スキャンPDFはOCR必須・議会語はSTRONG/WEAK分離
 - [ファイル管理監査](project_file_audit_2026-07-22.md) — 残＝v4承認・Time Machine・trash_pending承認
-- [新聞折込 市政報告2026-10](project_shinbun_orikomi_2026-10.md) — 10,600枚＝亀山欄10,200＋鈴峰350＋椋本50。10/16折込推奨・折込会社の受託可否が未確認
+- [新聞折込 市政報告2026-10](project_shinbun_orikomi_2026-10.md) — 10,600枚＝亀山欄10,200＋鈴峰350＋椋本50。印刷済(10/10)・10/16折込推奨・折込会社の受託可否が未確認
 - [市政報告レポート川合町版](project_shisei_report_kawaicho_complete_form.md) — チラシ完成形の勝ちパターン
 - [content-pipeline発信ビジュアル統合](project_content_pipeline_visual_expansion.md) — 記事URL＋写真→1パス
 - [後援会入会フォーム](project_koenkai_intake_form.md) — 告示後(10/18)の拡散停止テーブルあり
