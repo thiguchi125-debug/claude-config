@@ -126,6 +126,7 @@
 - [claude-configバックアップ](reference_claude_config_backup.md)／[Discordチャンネル起動フラグ](reference_discord_channel_launch_flag.md)
 - [スキルトリガー一覧](reference_skill_triggers.md)／[エージェントトリガー一覧](reference_agent_triggers.md) — Notion早見表
 - [市民の声3シート＋分類済資産](reference_市民の声情報源.md) — 2021/06〜359件・6ドメイン
+- [みずほ台線・椋本線はコミバスでない](reference_kameyama_combus_vs_rosen_bus.md) — 市外へ行く路線バス。コミバスの市外乗り入れの根拠にしない
 - [コミバス運賃](reference_kameyama_combus_fare.md)／[コミバス収支](reference_kameyama_combus_revenue.md)
 - [小中高生コミバス無料キャンペーン2026](reference_kameyama_kombus_muryo_campaign_2026.md) — 市実施7/21〜9/30・全7路線。8/26時点900名弱は伝聞・未確認
 - [✅タスクDB クイック登録](reference_task_db_quick_create.md) — 参照のみ（新規登録はTodoist）
