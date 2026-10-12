@@ -58,7 +58,7 @@
 - [クラウドRoutine棚卸し](project_routine_cleanup_2026-07.md) — 停止4・修理1・現役4
 - [亀山JC親子で米づくり体験](project_jc_oyako_komezukuri.md) — 収穫米配布は書かない(199条の3)・農家代表者名は表記割れ・理事長名は市職員と同名
 - [熊本地震JC支援物資](project_jc_kumamoto_shien_busshi.md) — **地震は2026-07-28発生**（素の知識に無い）
-- [三寺コスモス畑の再生](project_mitsudera_cosmos_saisei.md) — 10/17まつり。代表＝草川
+- [三寺コスモス畑の再生](project_mitsudera_cosmos_saisei.md) — 10/17まつり。草川は役員・実行委員長の一人。西村代表の実名は未了解→屋号のみ
 - [kugiri「終了」モード](project_kugiri_shuryo_mode.md) — 9/17実装。「〇〇終了」で記録提示→承認→メモを_done/へ。残＝30日自動削除は草川判断待ち
 - [トークン削減2026-08-20](project_token_reduction_2026-08-20.md) — 真因①印刷物の画像積み上げ(25枚deny hook)②34hセッション×並行×キャッシュ失効で上限到達
 - [止まっていた自動化の復活](project_stalled_automation_revival_2026-08-20.md) — oyasumi毎晩23:30・gyakusan月曜6:30をlaunchd化
