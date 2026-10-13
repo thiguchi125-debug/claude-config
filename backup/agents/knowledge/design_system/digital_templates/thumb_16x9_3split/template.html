@@ -23,9 +23,10 @@
   }
   /* 右：本人写真の平行四辺形。左辺945→1005／右辺1395→1450。右端は緑を残す */
   .me {
-    position:absolute; left:0; top:0; width:1600px; height:900px;
-    background:url("{{ME_PHOTO}}") {{ME_X}}px {{ME_Y}}px / {{ME_W}}px auto no-repeat;
-    clip-path:polygon(945px 0, 1395px 0, 1450px 900px, 1005px 900px);
+    /* 箱は斜辺の外接矩形（x945〜1450）だけにする＝check_overflowの重なり誤検知を出さない。見た目は旧版と同一 */
+    position:absolute; left:945px; top:0; width:505px; height:900px;
+    background:url("{{ME_PHOTO}}") calc({{ME_X}}px - 945px) {{ME_Y}}px / {{ME_W}}px auto no-repeat;
+    clip-path:polygon(0 0, 450px 0, 505px 900px, 60px 900px);
   }
 
   .tx { position:absolute; left:432px; top:79px; width:500px; }
