@@ -153,4 +153,5 @@
 - エージェント本体: ~/.claude/agents/ 配下48本
 - [Mac音声入力が起動しない＝coreaudiod不調](reference_mac_dictation_coreaudiod.md) — 音声認識の再起動では直らない。`sudo killall coreaudiod`
 - [誘致は柱のまま・事前準備の前面化は却下](feedback_kojo_kuru_mae_rejected.md) — 10/8。看板1-1は誘致を前面に、水・人・通勤は裏付けへ
+- [発信は夢・ワクワクを軸に](feedback_hasshin_yume_wakuwaku.md) — 10/13第05回差し戻し。指摘を背骨にしない・冒頭で未来の絵・制度用語は作業メモへ
 - [行事参加動画は本人一瞬・冒頭は行事名・顔はモザイク](feedback_event_video_kusakawa_brief_faces_mosaic.md) — 2026-10-13阿野田かんこ踊り。投稿文は無難で終えず主張を1つ
