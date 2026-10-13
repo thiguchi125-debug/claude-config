@@ -84,6 +84,7 @@
 - [Notion AI要約は答弁台帳の一次資料にならない](feedback_notion_ai_summary_not_ledger_source.md) — 発言者も逐語も残らない。委員会で役職と逐語をメモ
 - [AskUserQuestionのpreviewは自由記述欄を消す](feedback_askuserquestion_preview_hides_freetext.md) — 判断だけの質問にpreviewを付けない
 - [成果物は古い版を閉じて新版だけ開く](feedback_open_folder_after_generating_files.md) — `~/.claude/scripts/show_latest.sh`
+- [発信の完成品はDrive直下「<日付>_<テーマ>_発信一式」にまとめて開く](feedback_hasshin_kansei_drive_matome.md) — 本文・貼付HTML・SNS・サムネ・画像・README。原本は残す
 - [動画の投稿セットはDrive 📱動画素材/の1フォルダに一本化](feedback_video_package_single_drive_folder.md) — mp4・カバー・SNS7PF・台本・README。Obsidianに重複を置かない
 - [渡したDriveファイルをcp上書きしない](feedback_never_overwrite_delivered_drive_file.md) — 草川のクラウド側編集が黙って消える。直すなら別名
 - [注記はブログ1本→台本・SNSは派生更新](feedback_short_video_script_review_before_assets.md) — 10/1改定。台本は画像前に一読OKだけ・下流は本文確定後

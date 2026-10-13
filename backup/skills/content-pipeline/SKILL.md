@@ -492,6 +492,7 @@ python3 ~/.claude/scripts/feed_preview.py short <カバー.png> ...  # 9:16
 - 画像・動画に載る**文言**は別起動せず、**ステップ3.6の派生ゲート（content-gate-lite 派生モード）に束ねて1回**で通す（`ledger: ~/outputs/{日付}_{テーマ}/_ledger.json` を渡す。ブログと同一事実・同一表現は台帳から継承し、圧縮で但し書きが落ちていないかを必ず見る）。動画/画像独自の新規主張・人物写真の写り込み（他者の顔・実名のぼり以外の第三者）のみ重点確認。公選法の寄附/おもてなし表現・他議員名なしを最終確認。
 
 ### 4-D. 保存
+- **完成時は必ずDriveへ一式まとめ（2026-10-13草川指示）**: ゲート通過後、`マイドライブ/<日付>_<テーマ>_発信一式/` に 01本文／02貼り付けHTML／03SNS7種／04サムネ／本文画像/／README.txt をcpし `open` で表示（正本＝memory feedback_hasshin_kansei_drive_matome）。
 - サムネPNG: `~/outputs/thumbnails/<日付>_<テーマ>/`
 - ショート動画の台本（カット表・7PF投稿文込み）: `~/Documents/ObsidianVault/50_発信/<日付>_<テーマ>/<日付>_<テーマ>_ショート動画台本_v<n>.md`（OPERATIONS.md【C】D7・obs_open.shで開く）
 - ショート動画一式（画像・ledger・mp4）: `~/outputs/short-video/<日付>_<テーマ>/`（完成mp4はスマホ編集用に Drive `📱動画素材` ミラーも検討）
