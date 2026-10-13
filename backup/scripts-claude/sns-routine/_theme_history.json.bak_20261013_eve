@@ -1,0 +1,158 @@
+[
+ {
+  "date": "2026-09-28",
+  "leg": "evening",
+  "theme": "亀山市環境展（11/14・青少年研修センター・入場無料・コンポスト無料配布／生ごみ削減紹介）× 草川R4.9議会 ごみ処理費用への答弁（水分を含むごみの削減と再資源化が最も効果的）",
+  "domain": "環境（ごみ減量）",
+  "source": "亀山市 環境展（9/28更新）× 01_council/0409kaigiroku_kusagawa_only.txt L60-100",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "lite1回 REVISE6件（一般質問→議案質疑の可能性で『一般質問』削除／答弁引用を逐語化／『家庭で』帰属ずれ／最上級削除／鈴鹿高校で『市内の』削除）全反映。gate.py --pass。📣DB https://app.notion.com/p/3e9cf503a68f81a9af2efa7d22de6949 。Notion予算4回到達でSNS便ステータスpage未更新。"
+ },
+ {
+  "date": "2026-09-29",
+  "leg": "evening",
+  "theme": "亀山市図書館100年プロジェクト（令和10年3月創立100周年・10月の関連イベント3つ：10/21まちやdeおはなし／10/24写真で出会ういきものの世界／10/30読書交流会）× 草川R4.12議案質疑（補正予算）図書館×地域子育て支援センター サテライトコーナー連携",
+  "domain": "教育・文化（図書館）",
+  "source": "亀山市 令和8年9月市長定例記者会見（9/29）× 01_council/0412kaigiroku_kusagawa_only.txt L158-215",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite未登録のため2段。fact APPROVE MINOR3件全反映／risk APPROVE LOW2・文法1件反映。gate.py --passがauto modeで拒否→📣DB未保存・queue退避。"
+ },
+ {
+  "date": "2026-09-30",
+  "leg": "evening",
+  "theme": "地域まちづくり協議会 全協議会設立10周年（H25〜28年度設立）・地域まちづくり交流会（10/27火・市中央コミュニティセンター・岩崎恭典 四日市大学名誉教授講演／代表者・自治会長の意見交換会）× 草川H30.12一般質問（昼生地区 金王道ウオーキング）",
+  "domain": "地域自治（まちづくり協議会）",
+  "source": "亀山市 令和8年9月市長定例記者会見（9/29）× 01_council/2018-12_H3012_本会議議事録_kusagawa.txt L617",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "lite1回 REVISE1件（令和3年12月→平成30年12月）反映。gate.py --passがauto modeで拒否→📣DB未保存・queue退避。"
+ },
+ {
+  "date": "2026-10-01",
+  "leg": "evening",
+  "theme": "東海道五十七次フェスタin枚方（10/3土・大阪府枚方市・亀山市が物販・観光PRブース出展／亀山宿・関宿・坂下宿＋亀山ブランド認定品）× 草川R4.6 東海道街道環境整備事業（舗装美装化）補正予算への質疑",
+  "domain": "観光・歴史街道",
+  "source": "亀山市 令和8年9月市長定例記者会見（9/29）× 01_council/2022-06_R0406_本会議議事録_kusagawa.txt L502-565",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "lite1回 REVISE3件（五十七次の経路／協議会出展の位置づけ／舗装は『予定』答弁）全反映。9/27方針（発信物はNotionに保存しない）により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-03",
+  "leg": "evening",
+  "theme": "部活動の移動の安全——三重県教委が県立高などに移動安全対策を通知（10/1知事会見：貸切バス書面契約・緑ナンバー確認・教職員原則同乗ほか）× 亀山の休日部活動の地域展開（令和9年秋以降・12月末めど制度設計）",
+  "domain": "教育（部活動）",
+  "source": "伊勢新聞2026-10-02 × 01_council/R8.6.15一般質問_草川_kusagawa_only.txt 中項目1",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "lite1回 REVISE2件（『原則』『受け皿になる方向』）反映。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-04",
+  "leg": "evening",
+  "theme": "坂本地区の未収穫ハッサクを集め果肉入りかき氷に（獣害の原因を特産品に）× 草川R7.6一般質問（獣害対策DX・出没情報の共有）",
+  "domain": "農林・獣害対策",
+  "source": "中日新聞2026-10-01 × 01_council/kaigiroku0706_kusagawa_only.txt L627-645",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite未登録のため2段。fact APPROVE MINOR1件（棚田百選の帰属）・risk APPROVE LOW1件（「放置」表現）反映。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-05",
+  "leg": "evening",
+  "theme": "廃止代替路線バス2路線（亀山みずほ台線・亀山椋本線）の運賃改定案に市が意見募集（10/5〜19・初乗200→210円）× 草川R6.12一般質問（南部地域の公共交通・椋本線利用コロナ前5割強）",
+  "domain": "公共交通",
+  "source": "亀山市公式 docs/2026100100035 × 01_council/2024-12_R0612_本会議議事録_kusagawa.txt L911-953",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite未登録のため2段。fact REVISE4件（申請主体・委託運行・答弁文言・年度）全反映、risk APPROVE LOW2件。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-06",
+  "leg": "evening",
+  "theme": "スポーツの日（10/12）市運動施設の無料開放＋西野公園体育館で市民体力テスト（申込不要・無料）× 草川R5.6一般質問（東野公園の今後・健康づくり）",
+  "domain": "スポーツ・健康づくり",
+  "source": "亀山市公式 docs/2020062500049・docs/2022060200020 × 01_council/R0506kaigiroku_kusagawa_only.txt L15-30,L56-70",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite未登録のため2段。fact REVISE2件（65歳以上の種目・当時の後期基本計画）反映、risk APPROVE LOW2件。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-07",
+  "leg": "evening",
+  "theme": "亀山市立図書館 講演会「図書館は、誰かの『困った』から始まる」（11/3・定員40人）× 草川R5.6一般質問（図書館駐車場と駅前のにぎわい）",
+  "domain": "図書館・駅前まちづくり",
+  "source": "亀山市公式 library/article/2026093000015 × 01_council/R0506kaigiroku_kusagawa_only.txt L530-565",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回。REVISE軽微2件＋任意1件（主催の帰属・表記）全反映、risk LOW。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-08",
+  "leg": "evening",
+  "theme": "第39回東海道関宿街道まつり（11/1日・宿場大行列テーマ「亀山ゆかりの時代行列」・9-16時歩行者専用）× 草川R2.3一般質問（関宿×7座トレイルのまちづくり観光）",
+  "domain": "観光・歴史まちづくり",
+  "source": "亀山市公式 docs/2024061900015 × 01_council/r2_3t_kaigiroku_kusagawa_only.txt L878-913",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回。APPROVE・任意修正1件反映、risk LOW。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-10",
+  "leg": "evening",
+  "theme": "神向谷 市政懇談会（10/10・神向谷公民館）事前アンケートの声＋防災アプリの自治会送信テストと説明会再開催の提案 × 草川R8.3予算決算委員会質問（防災アプリ）",
+  "domain": "防災・地域",
+  "source": "~/outputs/houkokukai/2026-10-10_神向谷/03_slides/_text_for_review.txt × 01_council/R8.3.23予算決算委員会_20260323172950_kusagawa_only.txt L150-159",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite未登録のため2段。fact APPROVE（任意1件反映）・risk HIGH1件（実績アピール文）削除＋MEDIUM1件言い換え。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-12",
+  "leg": "evening",
+  "theme": "防火フェア2026（11/7土・市文化会館・無料・消防団入団促進コーナーほか）× 草川R4.3定例会 議案質疑（消防団条例改正・処遇改善）",
+  "domain": "消防・防火",
+  "source": "亀山市消防本部 shobo/article/2026083100022 × 01_council/r0403kaigiroku_kusagawa_only.txt L124-160,L209-217",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回。APPROVE・任意1件（根拠なし一般論）削除、risk LOW。9/27方針により📣DB未保存。"
+ }
+]
