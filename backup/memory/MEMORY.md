@@ -66,7 +66,7 @@
 - [神向谷 市政懇談会2026-10-10](project_kamimukaidani_kondankai_2026-10-10.md) — 完了。v16最終・アンケ15枚。残＝日曜バス・中学生バス時刻を「お返し」・アプリ説明会依頼
 - [号外みずきが丘 緑地駐車場2026-10](project_gogai_mizukigaoka_ryokuchi_chushajo_2026-10.md) — 完成v5。10/17配布完了厳守・料金非掲載・lit.linkは選挙リンク入りで載せない
 - [亀中の下校×バスは水曜だけが問題](project_kamechu_gekou_bus_suiyou.md) — 他曜日は間に合う。神向谷スライドp.46の16:45/18:15すき間は使わない
-- [HP政策集(公開10/17)](project_hp_seisakushu_2026-10.md) — 正本＝6枠版v6(10/15ゲート通過・約5,250字)。v5→v6修正一覧はGoogleドキュメント。残＝AIインタビューURL
+- [HP政策集(公開10/17)](project_hp_seisakushu_2026-10.md) — 正本＝6枠版v7(10/16ゲート通過・約6,600字)。残＝AIインタビューURL・Kカード利害確認・修正一覧v6→v7
 
 ## 📦 移設済みルール束（詳細は各agent/SKILL末尾「📌恒久ガードルール」節）
 
