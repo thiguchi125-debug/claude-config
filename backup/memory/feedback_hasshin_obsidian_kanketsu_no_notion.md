@@ -9,3 +9,5 @@ metadata:
 **Why:** 2026-09-27、草川「もういい notionに保存はやめる obsidianで完結できるようにして」。承認は有効2時間で切れ、承認後に原稿を直すたびに保存が拒否された。そのうえ `--pass` は草川が手で実行するしかなく、決算総括質疑ブログで何度もやり直しになった。
 
 **How to apply:** content-pipeline のステップ5、OPERATIONS.md【C】D6、vault の `50_発信/ブログの進め方.md` は書き換え済み。spark、photo-post、short-video-create、sns-content-creator など📣DBに保存する他の経路はまだ手を付けていない。そこに当たったら、草川に1問確認してから同じように揃える。[[feedback_okiba_4tsu_tsukaiwake]]
+
+- 2026-10-15 photo-post のStep7をDrive📱動画素材一本化に書き換え済（草川OK）。残＝spark・short-video-create・sns-content-creator

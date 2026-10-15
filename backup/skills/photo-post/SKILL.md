@@ -85,10 +85,11 @@ content-fact-checker（投稿文・コピー内の数値/固有名詞/計画名�
 
 1. 完成セット（投稿文＋画像2枚＋動画）を提示→草川OK後に**1回で**保存（D2原則）。
 2. 保存:
-   - `~/outputs/photo-post/<日付>_<テーマ>/` に全ファイル
-   - Drive `~/Library/CloudStorage/GoogleDrive-t.higuchi125@gmail.com/マイドライブ/📱動画素材/` へ画像・動画を cp ミラー
-   - 📣SNS投稿管理DB（ds `1bd98deb-`）に1ページ（タイトル先頭📸・投稿文全文＋画像/動画のDriveパス記載・ステータス=未着手）
-3. nichijo日次ログに🔖台帳1行: `🔖 HH:MM 〈テーマ15字〉→photo-post → <mention-page url="...">ページ名</mention-page>`
+   - `~/outputs/photo-post/<日付>_<テーマ>/` に作業ファイル一式（作り直し用）
+   - **納品はDrive `マイドライブ/📱動画素材/<日付>_<テーマ>/` の1フォルダに一本化**：完成mp4・画像・`SNS投稿文_vN.md`・`README.md`（中身・ゲート状態・投稿期限・注意・作り直し先）。修正版は上書きせず別名（_v2…）
+   - **Notion📣DBには保存しない・Obsidianに投稿文の重複を置かない**（2026-10-15草川OK・memory feedback_video_package_single_drive_folder／feedback_hasshin_obsidian_kanketsu_no_notion）。途中でvaultに置いた投稿文はDriveへまとめた時点で `~/Archive/_trash_pending_<日付>/` へ（`#注記` 確認後）
+   - gate.py は `--pass` を付けず機械チェックだけ回す
+3. 保存後 `open` でDriveフォルダを表示
 4. 出来が良いレイアウトが生まれたら design_system への「SNSカード」テンプレ昇格を提案（強制しない）。
 
 ## やらないこと
