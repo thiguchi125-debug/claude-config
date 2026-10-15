@@ -43,10 +43,23 @@ NS_MEDIA = "http://search.yahoo.com/mrss/"
 # ユーティリティ
 # ──────────────────────────────────────────────────────────
 
-def fetch(url: str, timeout: int = 15) -> str:
+def fetch(url: str, timeout: int = 15, retries: int = 3) -> str:
+    # 2026-10-15: YouTube RSSが一時的にHTTP 500を返し errors 1 になっていた（再試行で取得可）。
+    # 5xx・通信エラーは間隔を空けて最大3回まで再試行する。4xxは即失敗。
+    import time
+    import urllib.error
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "ja"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read().decode("utf-8", errors="replace")
+    for attempt in range(retries):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read().decode("utf-8", errors="replace")
+        except urllib.error.HTTPError as e:
+            if e.code < 500 or attempt == retries - 1:
+                raise
+        except (urllib.error.URLError, TimeoutError):
+            if attempt == retries - 1:
+                raise
+        time.sleep(3 * (attempt + 1))
 
 
 def strip_html(html: str) -> str:
