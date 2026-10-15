@@ -31,7 +31,8 @@
 │   └── 通告書・原稿・議事録（市議会・政策/政治活動から取込分）
 │
 ├── 02_publications/          公開発信物（306件、2.8MB）
-│   ├── blog/                 ブログ全文53件（2021-10〜2026-05）
+│   ├── blog/                 公開済ブログ99件（<日付>_<postid>_題）＋公開前完成稿 *_draft.txt（毎晩3:10 publications_sync.py）
+│   ├── sns/                  SNS投稿文・動画台本の完成稿（2026-10-15新設・同スクリプト）
 │   ├── reports/              市政報告レポート143件（38〜62号＋地区版＋Creative Cloud取込分）
 │   └── leaflets/             印刷物110件（応援カード・チラシ・市政報告レポート1〜39号）
 │
@@ -119,7 +120,7 @@ cat ~/.claude/agents/knowledge/kusagawa_archive/04_compass/policy_compass.md
 | ニーズ | 参照先 | 特徴 |
 |---|---|---|
 | 過去の議場発言を引用 | `01_council/*.txt` | 一次資料（議事録・原稿・通告書）、`*_kusagawa.txt` は草川パート抽出済 |
-| 同テーマの過去ブログを引用 | `02_publications/blog/*.txt` | 公開済全文（2021-10〜2026-05全期間53件） |
+| 同テーマの過去ブログを引用 | `02_publications/blog/*.txt` | 公開済全文（postid付き）。`_draft`は公開前完成稿＝公開版があれば公開版優先 |
 | 市政報告レポートの文言継承 | `02_publications/reports/*.txt` | 38〜62号＋地区版42件 |
 | 印刷物の文言継承 | `02_publications/leaflets/*.txt` | 応援カード・チラシ・市政報告レポート1〜39号107件 |
 | テーマ別観点まとめ | `03_themes/*.md` | policy-archive-miner蒸留結果12件 |

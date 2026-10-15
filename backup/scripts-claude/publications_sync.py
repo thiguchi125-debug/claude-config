@@ -53,7 +53,8 @@ SKIP_NAME_RE = re.compile(r"(README|gate_|辛口審査|marks|_banned|_MOVED|指�
 SKIP_PATH_RE = re.compile(r"(00_名簿|個人情報|後援会名簿)")
 TEXT_EXT = {".md", ".txt"}
 
-SNS_RE = re.compile(r"(SNS|7PF|7種|4PF|4種|投稿文|^(threads|instagram|facebook|line|x|youtube|tiktok)(_.*)?$)", re.I)
+# PF別の単体ファイル（facebook.txt等）は 7PF まとめ版と重複するので拾わない
+SNS_RE = re.compile(r"(SNS|7PF|7種|4PF|4種|投稿文)", re.I)
 SCRIPT_RE = re.compile(r"(台本|daihon|serifu|セリフ)")
 BLOG_NAME_RE = re.compile(r"(ブログ|blog|完成)", re.I)
 
@@ -139,7 +140,7 @@ def classify(name: str, text: str):
 
 def theme_parts(rel: Path):
     """テーマフォルダ名から日付とテーマを決める。"""
-    parts = [p for p in rel.parent.parts if not re.match(r"^\d{2}_(完成|SNS|ショート|ブログ)", p)]
+    parts = [p for p in rel.parent.parts if not re.match(r"^(\d{2}_|sns$)", p)]
     top = parts[0] if parts else rel.stem
     m = DATE_RE.search(top)
     d = ""
@@ -191,10 +192,13 @@ def load_published_index():
     return idx
 
 
-def shingles(t: str, n: int = 8):
-    t = re.sub(r"\s+", "", t)
+def shingles(t: str, n: int = 10):
+    """冒頭あいさつ以降3000字の10文字連の集合（全位置）。共通フッターの影響を避ける。"""
+    i = t.find(OPENER)
+    t = t[i + len(OPENER) + 2:] if i >= 0 else t
+    t = re.sub(r"\s+", "", t[:3000])
     t = re.sub(r"[#*>`\-|【】\[\]（）()]", "", t)
-    return {t[i:i + n] for i in range(0, max(0, len(t) - n), 3)}
+    return {t[i:i + n] for i in range(max(0, len(t) - n))}
 
 
 def match_published(body: str, d: str, pub_idx):
@@ -213,7 +217,7 @@ def match_published(body: str, d: str, pub_idx):
         c = len(sh & psh) / len(sh)
         if c > score:
             best, score = fname, c
-    return best if score >= 0.25 else None
+    return best if score >= 0.5 else None  # 実測: 一致0.78〜0.98／不一致0.33以下
 
 
 def sync_drafts(manifest: dict, dry: bool):
@@ -228,7 +232,16 @@ def sync_drafts(manifest: dict, dry: bool):
         kind = classify(str(rel), raw)
         if not kind:
             continue
-        key = (label, str(rel.parent), kind, group_stem(p.stem))
+        gdir = "/".join(x for x in rel.parent.parts if not re.match(r"^(\d{2}_|sns$)", x))
+        _, theme = theme_parts(rel)
+        gs = group_stem(p.stem)
+        for t in theme.split("_"):
+            if len(t) >= 2:
+                gs = gs.replace(t, "")
+        if kind == "blog":
+            gs = re.sub(r"(ブログ本文|ブログ|blog|ノーマル|完成|本文)", "", gs, flags=re.I)
+        gs = re.sub(r"_+", "_", gs).strip("_ -") or "本文"
+        key = (label, gdir, kind, gs)
         groups.setdefault(key, []).append((version_key(p.stem), p.stat().st_mtime, rel, p, raw))
 
     pub_idx = load_published_index()
@@ -255,11 +268,11 @@ def sync_drafts(manifest: dict, dry: bool):
             pub = match_published(body, d, pub_idx)
             if pub:
                 header.append(f"published_version: blog/{pub}（公開版あり＝学習は公開版を優先）")
-            fname = f"{d}_{sanitize(theme, 40)}" + (f"_{sanitize(gstem, 15)}" if gstem not in ("本文", "ブログ", "blog", "完成") else "") + "_draft.txt"
+            fname = f"{d}_{sanitize(theme, 40)}" + (f"_{sanitize(gstem, 15)}" if gstem != "本文" else "") + "_draft.txt"
             out = BLOG_DIR / fname
         else:
             tag = "台本" if kind == "script" else "SNS"
-            fname = f"{d}_{sanitize(theme, 40)}_{tag}_{sanitize(gstem, 20)}.txt"
+            fname = f"{d}_{sanitize(theme, 40)}_{tag}" + (f"_{sanitize(gstem, 20)}" if gstem not in ("本文", "台本", "SNS") else "") + ".txt"
             out = SNS_DIR / fname
         # 同名衝突（別グループ）は source のハッシュで区別
         gk = "|".join(key)

@@ -75,3 +75,9 @@ originSessionId: 24951467-1863-4b41-b983-d35481e730af
 - Threadsが0件 → HTML構造変化のため正規表現要更新（`scrape_threads`関数のpost_pattern）
 - Notion登録失敗 → 本文1900字制限超過・特殊文字エスケープ
 - voice-analystが起動しない → 抽出済=false件数が5件未満（閾値設定）
+
+## 2026-10-15 学習素材の供給経路を修理
+- 新スクリプト `~/.claude/scripts/publications_sync.py`：vault `50_発信/`・Drive `*_発信一式/`・`📱動画素材/` から各フォルダ最新版（final＞最大vN）だけを `02_publications/blog/*_draft.txt`（ブログ）と**新設 `02_publications/sns/`**（SNS投稿文・台本）へ。冒頭に `source:`/`kind: draft-final`。公開版と本文一致（10文字連の包含率≥0.5）なら `published_version:` を付記＝公開版優先。ハッシュ台帳 `02_publications/_sync_manifest.json`。
+- `--published` で go2senkyo の公開済ブログも収録。投稿一覧は JS 描画なので API `https://api.go2senkyo.com/api/posts/168135/year/Y/month/M?num=50&p=1` で列挙（RSSは10件のみ）。連続取得で HTTP 202＋空本文が返るので再試行・2秒間隔。
+- 毎晩 **3:10** launchd `com.kusagawa.publications-sync`（新規plist・`run.sh`・ログ `scripts/publications-sync/sync.log`）。
+- scrape.py の errors 1 は YouTube RSS の一時的な HTTP 500。fetch に5xx再試行（最大3回）を追加。Threads は0件でもエラーを出さない（ログイン壁で取れていない）＝未解決。
