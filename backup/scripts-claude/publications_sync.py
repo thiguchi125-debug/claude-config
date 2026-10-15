@@ -282,14 +282,19 @@ API = "https://api.go2senkyo.com/api/posts/168135/year/{y}/month/{m}?num=50&p={p
 
 def http_get(url, retries=3):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "ja"})
+    # go2senkyoは連続取得が続くと HTTP 202・本文0バイト（混雑・ボット対策）を返す。空応答も再試行対象。
     for a in range(retries):
         try:
             with urllib.request.urlopen(req, timeout=20) as r:
-                return r.read().decode("utf-8", errors="replace")
+                body = r.read().decode("utf-8", errors="replace")
+            if body.strip():
+                return body
+            if a == retries - 1:
+                raise ValueError(f"empty response (HTTP {r.status})")
         except Exception:
             if a == retries - 1:
                 raise
-            time.sleep(3 * (a + 1))
+        time.sleep(15 * (a + 1))
 
 
 def months_from(since: str):
@@ -337,7 +342,7 @@ def sync_published(manifest: dict, dry: bool, since_month: str):
                     existing.add(pid)
                     stats["new"] += 1
                     print(f"  [published] blog/{fname}")
-                    time.sleep(0.5)
+                    time.sleep(2)
                 except Exception as e:
                     stats["err"] += 1
                     print(f"  [published-err] {pid}: {e}", file=sys.stderr)
