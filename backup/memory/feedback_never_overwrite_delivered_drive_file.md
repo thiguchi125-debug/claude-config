@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: a8a4c6b6-7f0f-49d2-ac05-764d02aae063
-  modified: 2026-08-26T14:24:59.658Z
+  modified: 2026-10-15T14:10:37.051Z
 ---
 
 **一度リンクを渡した成果物を、Drive同期フォルダ上で `cp` 上書きしてはいけない。**
@@ -25,6 +25,7 @@ metadata:
 - 作業前に `modifiedTime`（Drive）とローカル mtime を突き合わせ、
   自分の最後のコピーより新しければ草川の編集が入っている＝上書き禁止。
 - 直す予定があるうちは、そもそもリンクを渡さない。完成してから1回で渡す。
+- **追記は禁止ではない（2026-10-15）**: mdに節を足す依頼で「上書き禁止」を理由に書き足さず、草川に「なぜ更新しないの？」と言われた。直前に読んだときとサイズ・mtimeが同じなら、`>>` での末尾追記はそのままやってよい。禁止なのは丸ごと差し替えだけ。
 
 関連: [[feedback_spreadsheet_deliverable_must_be_native_and_functional]]
 [[feedback_open_folder_after_generating_files]] [[project_koenkai_roster_two_systems]]
