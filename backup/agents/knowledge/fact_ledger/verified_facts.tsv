@@ -1179,3 +1179,12 @@
 2026-10-16	VERIFIED	いただいた声は政策づくりに使い、お名前などは公表しません		https://www.kusakawa-ouen.info/	
 2026-10-16	VERIFIED	寄せられた声をもとに、よりよいアイデアを取り入れ、何度でもアップデートしていく		https://www.kusakawa-ouen.info/	
 2026-10-16	INCORRECT	目指す亀山の一日	HPにこの見出しは無い。地の文で「私が目指す、これからの亀山の一日です。	https://www.kusakawa-ouen.info/	
+2026-10-16	VERIFIED	R3通学路要望一覧 アイリス町地内・アイリス２号線『横断歩道の塗りなおし、横断歩道の新規設置』△（場所は町内とのみ記載・中央公園の明記なし）。同年に市道亀田川合線のカーブミラー・停止線・横断歩道の設置×も別にあり	同左	https://www.city.kameyama.mie.jp/kyouiku/article/2016050200039/file_contents/r3tugakuroyobo.pdf	アイリス町横断歩道
+2026-10-16	VERIFIED	R4通学路要望箇所一覧（10頁・全頁テキスト層あり）にアイリス町の記載なし	同左（R4はローカルPDFのみ・市HP URL未記録）	outputs/seigan_iris/refs/R4_要望箇所一覧.pdf	アイリス町横断歩道
+2026-10-16	VERIFIED	R5 No.7 アイリス町21番地の中央公園付近 市道アイリス２号線 横断歩道の設置 『新規』×	同左（過去要望欄は継続でなく新規）	https://www.city.kameyama.mie.jp/kyouiku/article/2016050200039/file_contents/R5youbouitirann.pdf	アイリス町横断歩道
+2026-10-16	VERIFIED	R6 No.4（21番地から10番地への交差点）・No.5（メガソーラーから中央公園へのT字路）とも市道アイリス2号線 横断歩道の設置×	同左	https://www.city.kameyama.mie.jp/kyouiku/article/2016050200039/file_contents/6youboukasyo.pdf	アイリス町横断歩道
+2026-10-16	VERIFIED	R7 No.10 アイリス町 市道アイリス2号線 制限速度の設定/制限速度等の標識の設置/（横断歩道の新設）過去要望＝継続R6.4 △	同左（継続元はR6のNo.4）	https://www.city.kameyama.mie.jp/kyouiku/article/2016050200039/file_contents/7youboukasyo.pdf	アイリス町横断歩道
+2026-10-16	VERIFIED	R5〜R7一覧の凡例 △：改善予定あり ×：改善不可能。表頭の×＝ハード対策が困難な個所であり危険周知等ソフト対策を実施する箇所。R3・R4には『改善予定あり/改善不可能』の文言なし	同左	https://www.city.kameyama.mie.jp/kyouiku/article/2016050200039/file_contents/7youboukasyo.pdf	通学路要望一覧
+2026-10-16	VERIFIED	道路交通法38条1項後段 横断しようとする歩行者等があるときは横断歩道等の直前で一時停止しその通行を妨げない義務	同左	https://laws.e-gov.go.jp/law/335AC0000000105	道路交通法
+2026-10-16	VERIFIED	横断歩道の設置は道交法4条1項・施行令1条の2第3項により都道府県公安委員会	同左	https://laws.e-gov.go.jp/law/335CO0000000270	道路交通法
+2026-10-16	VERIFIED	横断歩道の塗り直し・新規設置｜△		r3tugakuroyobo.pdf	
