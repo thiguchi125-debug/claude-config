@@ -66,7 +66,7 @@
 - [神向谷 市政懇談会2026-10-10](project_kamimukaidani_kondankai_2026-10-10.md) — 完了。v16最終・アンケ15枚。残＝日曜バス・中学生バス時刻を「お返し」・アプリ説明会依頼
 - [号外みずきが丘 緑地駐車場2026-10](project_gogai_mizukigaoka_ryokuchi_chushajo_2026-10.md) — 完成v5。10/17配布完了厳守・料金非掲載・lit.linkは選挙リンク入りで載せない
 - [亀中の下校×バスは水曜だけが問題](project_kamechu_gekou_bus_suiyou.md) — 他曜日は間に合う。神向谷スライドp.46の16:45/18:15すき間は使わない
-- [HP政策集(公開10/17)](project_hp_seisakushu_2026-10.md) — 正本＝6枠版v7(10/16ゲート通過・約6,600字)。残＝AIインタビューURL・Kカード利害確認・修正一覧v6→v7
+- [HP政策集(公開10/17)](project_hp_seisakushu_2026-10.md) — 正本＝6枠版v7。AIインタビューkameyama_seisakuはvaultの設定v3が正本(Notion登録なし)・10/24夜停止は草川
 
 ## 📦 移設済みルール束（詳細は各agent/SKILL末尾「📌恒久ガードルール」節）
 
@@ -76,6 +76,7 @@
 ## 📌 常時効く横断ルール（タスク別は GUARDRAILS.md）
 
 - [発信物はNotionに保存せずObsidianで完結](feedback_hasshin_obsidian_kanketsu_no_notion.md) — 9/27〜。50_発信/<日付>_<テーマ>/README.mdで完了・gate.pyは--passなし
+- [Obsidian中心へ移行(10/16)](project_obsidian_chushin_iko.md) — 新規の文章はvault正本・Notion登録しない。全体移行案は10/26以降
 - [置き場4つの使い分け](feedback_okiba_4tsu_tsukaiwake.md) — 渡す物→Drive／状況の一覧→Notion／注記する文章→Obsidian／他→ローカル。発信は50_発信/<日付>_<テーマ>/
 - [vaultのmdはobs_open.shで開く](feedback_open_md_in_obsidian_not_notion.md) — Obsidianはvault外を表示不可。`open`だとNotionで開く事故あり
 - [ブログサムネの目標形＝西野公園プール型](feedback_thumbnail_model_nishino_pool.md) — 左に現場写真・中央深緑に黄の核心語・右に本人。現場写真なしは周産期2分割
