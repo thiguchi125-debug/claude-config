@@ -17,3 +17,5 @@ metadata:
 **なぜMCP経由か**：Pythonから使えるGoogle API認証がこのMacに無い（yoboはApps Script・Sheet専用、googleapiclient未導入、rclone未設定）。完全自動化するならOAuthクライアント作成かApps Script WebAppの新設が必要＝草川判断。
 **検証済み**：HTMLの inline font-size はDocsで保持される（ODTエクスポートで本文16pt・見出し19/22ptを確認）。見出し・太字・番号リスト・改行も崩れない。
 使い方メモ＝vault `10_ClaudeCode/設定/演説原稿をスマホへ送る手順.md`。
+
+**2026-10-18 改定**：草川「スマホだと死ぬほど読みにくいし修正しにくい」→ 既定を**読み上げ専用の薄い版**（【要旨】【本文】だけの普通の文字・text/plainで送る）に変更。見出し・太字付きの旧形式は `--rich`。直しはスマホでせず、会話に貼ってもらう。
