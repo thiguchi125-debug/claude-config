@@ -86,17 +86,41 @@ def style_html(h):
     return h
 
 
-def build(md_path, include_all):
+def plain(text):
+    """読み上げ専用の薄い版（2026-10-18草川「スマホだと死ぬほど読みにくいし修正しにくい」）。
+    要旨と読み上げ原稿の節だけ。見出し記号・太字・表・（間）などの演出指示を落とした普通の文字。"""
+    _, secs = split_sections(text)
+    picked = [s for s in secs if "要旨" in s[0]] + [s for s in secs if "読み上げ" in s[0] or "本文" in s[0]]
+    out = []
+    for head, c in picked:
+        out.append("【要旨】" if "要旨" in head else "【本文】")
+        for l in c.splitlines()[1:]:
+            l = l.strip()
+            if re.fullmatch(r"-{3,}|（[^（）]*）|\|.*", l) or l.startswith("太字"):
+                continue
+            l = re.sub(r"\*\*|__|^#+\s*", "", l)
+            if l or (out and out[-1]):
+                out.append(l)
+        out.append("")
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(out)).strip() + "\n"
+
+
+def build(md_path, include_all, rich=False):
     text = open(md_path, encoding="utf-8").read()
     key, title_base, ver = parse_name(md_path)
     title = f"{title_base} v{ver}"
-    body = markdown.markdown(reorder(text, include_all), extensions=["tables", "nl2br", "sane_lists"])
-    doc = (f"<html><head><meta charset='utf-8'><title>{html.escape(title)}</title></head>"
-           f'<body style="font-size:{BODY_PT}pt;">'
-           f"{style_html(body)}</body></html>")
     os.makedirs(OUTDIR, exist_ok=True)
-    out = os.path.join(OUTDIR, re.sub(r"[\\/:\s]+", "_", title) + ".html")
+    if rich:
+        body = markdown.markdown(reorder(text, include_all), extensions=["tables", "nl2br", "sane_lists"])
+        doc = (f"<html><head><meta charset='utf-8'><title>{html.escape(title)}</title></head>"
+               f'<body style="font-size:{BODY_PT}pt;">'
+               f"{style_html(body)}</body></html>")
+        out = os.path.join(OUTDIR, re.sub(r"[\\/:\s]+", "_", title) + ".html")
+    else:
+        doc = plain(text)
+        out = os.path.join(OUTDIR, re.sub(r"[\\/:\s]+", "_", title) + ".txt")
     open(out, "w", encoding="utf-8").write(doc)
+    mime = "text/html" if rich else "text/plain"
     led = load()
     prev = [e for e in led.get(key, []) if e.get("state") == "current"]
     same = [e for e in led.get(key, []) if e["title"] == title]
@@ -106,7 +130,8 @@ def build(md_path, include_all):
         "move_to_old": [{"fileId": e["id"], "title": e["title"]} for e in prev],
         "warning": (f"同じ名前 {title} が既にある（{same[0]['url']}）。草川の編集が入っている可能性"
                     "＝上書き・削除しない。版を上げるか、題に「_再送」を付けて別名で作る") if same else None,
-        "next": "Drive MCP create_file(title, textContent=<html_pathの中身>, contentMimeType='text/html', parentId) "
+        "contentMimeType": mime,
+        "next": f"Drive MCP create_file(title, textContent=<html_pathの中身>, contentMimeType='{mime}', parentId) "
                 "→ move_to_old を update_file(parentId=old_folder_id) → record --id",
     }, ensure_ascii=False, indent=1))
 
@@ -139,6 +164,7 @@ def main():
     ap.add_argument("md", nargs="?")
     ap.add_argument("--id")
     ap.add_argument("--all", action="store_true")
+    ap.add_argument("--rich", action="store_true", help="見出し・太字付きの旧形式（既定は読み上げ専用の薄い版）")
     a = ap.parse_args()
     if a.cmd == "list":
         for k, es in load().items():
@@ -149,7 +175,7 @@ def main():
     if not a.md or not os.path.isfile(a.md):
         sys.exit("mdのパスを指定してください")
     if a.cmd == "build":
-        build(a.md, a.all)
+        build(a.md, a.all, a.rich)
     else:
         if not a.id:
             sys.exit("--id <fileId> が必要")
