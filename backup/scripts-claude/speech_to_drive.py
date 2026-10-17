@@ -91,9 +91,15 @@ def plain(text):
     要旨と読み上げ原稿の節だけ。見出し記号・太字・表・（間）などの演出指示を落とした普通の文字。"""
     _, secs = split_sections(text)
     picked = [s for s in secs if "要旨" in s[0]] + [s for s in secs if "読み上げ" in s[0] or "本文" in s[0]]
+    if not picked:
+        # 会場別など「## 会場名 > ### 読み上げ版」の入れ子構成（2026-10-18 地区演説v3で空になった）
+        for head, c in secs:
+            for sub in re.split(r"(?m)^(?=### )", c)[1:]:
+                if "読み上げ" in sub.splitlines()[0] or "本文" in sub.splitlines()[0]:
+                    picked.append(("【" + head + "】", sub))
     out = []
     for head, c in picked:
-        out.append("【要旨】" if "要旨" in head else "【本文】")
+        out.append(head if head.startswith("【") else ("【要旨】" if "要旨" in head else "【本文】"))
         for l in c.splitlines()[1:]:
             l = l.strip()
             if re.fullmatch(r"-{3,}|（[^（）]*）|\|.*", l) or l.startswith("太字"):
