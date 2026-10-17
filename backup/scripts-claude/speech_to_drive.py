@@ -121,6 +121,14 @@ def build(md_path, include_all, rich=False):
         out = os.path.join(OUTDIR, re.sub(r"[\\/:\s]+", "_", title) + ".txt")
     open(out, "w", encoding="utf-8").write(doc)
     mime = "text/html" if rich else "text/plain"
+    vault_copy = None
+    if not rich:
+        # 同じ薄い版をvaultの原稿の隣にも置く（Obsidianで #注記 を入れられるように・2026-10-18草川「注記はobsidianも」）
+        stem = os.path.splitext(os.path.abspath(md_path))[0]
+        vault_copy = stem + "_読み上げ.md"
+        if not os.path.exists(vault_copy):
+            open(vault_copy, "w", encoding="utf-8").write(
+                f"# {title}（読み上げ版）\n\n直したい行の後ろに #注記 を書く。正本は {os.path.basename(md_path)}\n\n" + doc)
     led = load()
     prev = [e for e in led.get(key, []) if e.get("state") == "current"]
     same = [e for e in led.get(key, []) if e["title"] == title]
@@ -131,6 +139,7 @@ def build(md_path, include_all, rich=False):
         "warning": (f"同じ名前 {title} が既にある（{same[0]['url']}）。草川の編集が入っている可能性"
                     "＝上書き・削除しない。版を上げるか、題に「_再送」を付けて別名で作る") if same else None,
         "contentMimeType": mime,
+        "vault_copy": vault_copy,
         "next": f"Drive MCP create_file(title, textContent=<html_pathの中身>, contentMimeType='{mime}', parentId) "
                 "→ move_to_old を update_file(parentId=old_folder_id) → record --id",
     }, ensure_ascii=False, indent=1))
