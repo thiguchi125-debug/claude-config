@@ -111,6 +111,7 @@
 
 ## 🔗 外部参照ポインタ
 
+- [演説原稿をスマホへ](reference_speech_to_drive_smartphone.md) — 「スマホに送って」でvault md→Docs。Drive「2026選挙_演説原稿（スマホ用）」・旧版は移動
 - [育休退園は変更が2段階](reference_ikukyu_taien_r8_8gatsu_jimurenraku.md) — R8.8.1事務連絡が利用案内Q34を上書き。Q34だけ引くと誤り
 - [景観保全作物の種子配付／廃止年度](reference_keikan_hozen_seed_haishi.md) — 要件を誤ると利益相反の説明が崩れる
 - [ファイル管理v4 保存先マップ](reference_storage_map.md) — 用途→正規置き場の正本
