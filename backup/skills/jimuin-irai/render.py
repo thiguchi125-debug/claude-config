@@ -107,6 +107,8 @@ def check(day):
         nxt = d + dt.timedelta(days=1)
         if f"{nxt.month}月{nxt.day}日" not in day["spots"].get("label", ""):
             warns.append(f"{day['date']}: 告知の見出しに翌日の日付（{nxt.month}月{nxt.day}日）が無い")
+    if KOJI <= d < TOHYO and not any(re.search(r"(投稿|予約)", unicodedata.normalize("NFKC", t.get("text", ""))) for t in day.get("todos", [])):
+        errs.append(f"{day['date']}: 動画投稿のお願いがない（1日1本以上・19:30ごろ目安）。todos に投稿の作業を入れる")
     if not day.get("hours"):
         warns.append(f"{day['date']}: 勤務時間が空")
     return errs, warns
@@ -180,6 +182,8 @@ FLOW = """
   <section>
     <h2>毎日の流れ</h2>
     <ul class="plain">
+      <li><span class="first">毎日</span>動画は1日に最低1本、投稿します。投稿の目安は夜19:30ごろ（よく見られる時間帯）です</li>
+      <li>その日の1本目は、帰る30分前までに投稿できる形に仕上げてください。草川が確認したら、19:30ごろの予約投稿にしてください</li>
       <li>各地の演説動画は、編集ができ次第、できるだけ早く投稿の準備をお願いします</li>
       <li>次の日の演説の場所と時間を知らせる画像は、前の日の夜に作ってください</li>
       <li>細かいお願いは、このページで毎日お知らせします</li>
