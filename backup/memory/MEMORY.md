@@ -111,7 +111,7 @@
 
 ## 🔗 外部参照ポインタ
 
-- [演説原稿をスマホへ](reference_speech_to_drive_smartphone.md) — 「スマホに送って」でvault md→Docs。Drive「2026選挙_演説原稿（スマホ用）」・旧版は移動
+- [演説原稿をスマホへ](reference_speech_to_drive_smartphone.md) — 「スマホに送って」でvault md→Docs。Drive「🗳2026選挙/01_演説原稿」・旧版は移動
 - [育休退園は変更が2段階](reference_ikukyu_taien_r8_8gatsu_jimurenraku.md) — R8.8.1事務連絡が利用案内Q34を上書き。Q34だけ引くと誤り
 - [景観保全作物の種子配付／廃止年度](reference_keikan_hozen_seed_haishi.md) — 要件を誤ると利益相反の説明が崩れる
 - [ファイル管理v4 保存先マップ](reference_storage_map.md) — 用途→正規置き場の正本
@@ -161,4 +161,5 @@
 - [行事参加動画は本人一瞬・冒頭は行事名・顔はモザイク](feedback_event_video_kusakawa_brief_faces_mosaic.md) — 2026-10-13阿野田かんこ踊り。投稿文は無難で終えず主張を1つ
 - [猟友会役員の肩書きは誤り](feedback_ryouyukai_yakuin_profile_error.md) — 10/15草川「退任済み・記載が誤り」。旧レポート10・12・16・17に残る。新規印刷物に書かない
 - [事務員 櫻井さんのお願いページ](project_jimuin_irai_sakurai.md) — 10/18〜24。jimuin-iraiで日ごと生成・公選法NGチェック。選管届出・日当は草川確認待ち
+- [選挙期間の素材は🗳2026選挙に集約](project_senkyo_hub_drive_2026.md) — 10/18。演説・写真・動画・ブログSNS・印刷物完成版。個人情報は入れない・共有アルバム未回収
 - [草川は亀山生まれ](reference_kusagawa_birthplace_kameyama.md) — 10/18本人確認。「地元で生まれ」は事実として使える

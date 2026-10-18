@@ -6,7 +6,7 @@ metadata:
 ---
 2026-10-17 構築。呼び方＝「〇〇をスマホに送って」。
 
-**置き場**：マイドライブ直下「2026選挙_演説原稿（スマホ用）」id `1Rm_mIT3ieiCn8c4zoSlBmbkZuLF0VvP3`／同「旧版」id `17zVZK_X2_2HYbYxVL7_tU2qzdRoBznqH`。`_root_intake.py` の PROTECTED_DIRS に追加済み（そもそも直下のフォルダは動かさない実装）。
+**置き場**：マイドライブ「🗳2026選挙/01_演説原稿」（2026-10-18に旧「2026選挙_演説原稿（スマホ用）」を移設・名前変更、IDは同じ）id `1Rm_mIT3ieiCn8c4zoSlBmbkZuLF0VvP3`／同「旧版」id `17zVZK_X2_2HYbYxVL7_tU2qzdRoBznqH`。`_root_intake.py` の PROTECTED_DIRS は「🗳2026選挙」で保護（そもそも直下のフォルダは動かさない実装）。
 
 **手順（Claudeが行う）**
 1. `python3 ~/.claude/scripts/speech_to_drive.py build <vaultのmd>` → タイトル（例「10-18 出陣式挨拶 v2」）・HTMLパス・move_to_old をJSONで出す。要旨節を先頭へ・裏方節（出典/切り出し/講演由来/動画/つながり等）と「状態:」行を除外。`--all` で全部入り。
