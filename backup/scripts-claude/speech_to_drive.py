@@ -19,7 +19,7 @@ import argparse, datetime, html, json, os, re, sys
 
 import markdown
 
-FOLDER_ID = "1Rm_mIT3ieiCn8c4zoSlBmbkZuLF0VvP3"       # マイドライブ/2026選挙_演説原稿（スマホ用）
+FOLDER_ID = "1Rm_mIT3ieiCn8c4zoSlBmbkZuLF0VvP3"       # マイドライブ/🗳2026選挙/01_演説原稿（旧名 2026選挙_演説原稿（スマホ用）・IDは同じ）
 OLD_FOLDER_ID = "17zVZK_X2_2HYbYxVL7_tU2qzdRoBznqH"   # 同/旧版
 FOLDER_URL = "https://drive.google.com/drive/folders/" + FOLDER_ID
 LEDGER = os.path.expanduser("~/.claude/scripts/speech_to_drive_ledger.json")
