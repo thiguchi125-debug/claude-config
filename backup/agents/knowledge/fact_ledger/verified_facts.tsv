@@ -1274,3 +1274,5 @@
 2026-10-19	VERIFIED	子育ての負担、5つのゼロへ／18歳までの医療費／中学校の給食費／第2子からの保育料 ほか		カードの表（ゼロ1〜3）、カードのストーリー1、days.json の day1 title_lines・sub_lines（継承。語順も同じ）	
 2026-10-19	VERIFIED	コメントで質問をどうぞ／名前を出したくない方はAIインタビューへ／先に声を聞かせてください		カードの0節・ストーリー1・ストーリー2、days.json の common.cta（継承）	
 2026-10-19	VERIFIED	https://depth-interview-kusagawa.vercel.app/interview/kameyama_seisaku		https://depth-interview-kusagawa.vercel.app/interview/kameyama_seisaku	
+2026-10-19	VERIFIED	約20年前の計画に南部丘陵地区『エコシティ亀山』構想（昼生小学校の裏手・自然と調和した住宅団地）	正式表記は『エコシティ亀山』構想	kusagawa_archive/02_publications/reports/草川たくやの 昼生ニュース.txt・南部ニュース.txt	都市マス
+2026-10-19	MINOR_DIFF	現行都市マスで亀山駅・井田川駅・関駅周辺以外は位置づけがほとんどない	拠点（中心・副次）は3駅周辺に限られるが、全域に土地利用ゾーン（既存集落・田園共生等）の位置づけはある。沿道拠点（菅内）は次期案で追加	骨子案L1655-1680／https://cms.city.kameyama.mie.jp/docs/2014112306118/file_contents/46shiryo02.pdf	都市マス
