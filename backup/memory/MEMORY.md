@@ -161,3 +161,4 @@
 - [行事参加動画は本人一瞬・冒頭は行事名・顔はモザイク](feedback_event_video_kusakawa_brief_faces_mosaic.md) — 2026-10-13阿野田かんこ踊り。投稿文は無難で終えず主張を1つ
 - [猟友会役員の肩書きは誤り](feedback_ryouyukai_yakuin_profile_error.md) — 10/15草川「退任済み・記載が誤り」。旧レポート10・12・16・17に残る。新規印刷物に書かない
 - [事務員 櫻井さんのお願いページ](project_jimuin_irai_sakurai.md) — 10/18〜24。jimuin-iraiで日ごと生成・公選法NGチェック。選管届出・日当は草川確認待ち
+- [草川は亀山生まれ](reference_kusagawa_birthplace_kameyama.md) — 10/18本人確認。「地元で生まれ」は事実として使える
