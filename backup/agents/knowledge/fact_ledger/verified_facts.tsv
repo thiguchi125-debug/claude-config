@@ -1270,3 +1270,7 @@
 2026-10-19	VERIFIED	これは地域にとって災害だと訴えました		出陣式の音声（work/speech_full_segs.txt 921-936秒「この地域にとっては災害なんだと…訴えた」）と、R7.12.10の一般質問会議	
 2026-10-19	VERIFIED	10月18日 出陣式より		テロップ「2026.10.18 SUN」と一致	
 2026-10-19	VERIFIED	字幕（エールが返ってきた／全力応援／設計図／地域の皆さんと一緒に）		speech_full_segs.txt 730-760秒・1167-1287秒と同じ趣旨。「被災地」の語は字幕から外されている	
+2026-10-19	VERIFIED	今夜21:00 インスタライブ／6日間、政策を1本ずつ／初日は子育て		進行カード v4 の2〜3行目と0節、days.json の common.time・series（継承）	
+2026-10-19	VERIFIED	子育ての負担、5つのゼロへ／18歳までの医療費／中学校の給食費／第2子からの保育料 ほか		カードの表（ゼロ1〜3）、カードのストーリー1、days.json の day1 title_lines・sub_lines（継承。語順も同じ）	
+2026-10-19	VERIFIED	コメントで質問をどうぞ／名前を出したくない方はAIインタビューへ／先に声を聞かせてください		カードの0節・ストーリー1・ストーリー2、days.json の common.cta（継承）	
+2026-10-19	VERIFIED	https://depth-interview-kusagawa.vercel.app/interview/kameyama_seisaku		https://depth-interview-kusagawa.vercel.app/interview/kameyama_seisaku	
