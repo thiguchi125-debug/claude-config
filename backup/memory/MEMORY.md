@@ -163,3 +163,4 @@
 - [事務員 櫻井さんのお願いページ](project_jimuin_irai_sakurai.md) — 10/18〜24。jimuin-iraiで日ごと生成・公選法NGチェック。選管届出・日当は草川確認待ち
 - [選挙期間の素材は🗳2026選挙に集約](project_senkyo_hub_drive_2026.md) — 10/18。演説・写真・動画・ブログSNS・印刷物完成版。個人情報は入れない・共有アルバム未回収
 - [草川は亀山生まれ](reference_kusagawa_birthplace_kameyama.md) — 10/18本人確認。「地元で生まれ」は事実として使える
+- [インスタライブ6夜(10/19〜24)](project_insta_live_6ya_2026-10.md) — 21時・柱1本ずつ・AIインタビュー連動。正本=vault 50_発信/2026-10-19_インスタライブ6夜/README.md。柱1完成
