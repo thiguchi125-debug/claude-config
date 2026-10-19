@@ -1291,3 +1291,8 @@
 2026-10-20	VERIFIED	亀山市かわまちづくり協議会が立ち上がっている／対象は鈴鹿川		local:kusagawa_archive/01_council/令和８年３月10日_kusagawa_only.txt	
 2026-10-20	INCORRECT	国の制度を使って市でも協議会が立ち上がり	国土交通省が令和8年8月7日に発表したかわまちづくり新規登録11か所に、亀山市は入っていません。今は「国の制度を使っている	https://www.mlit.go.jp/report/press/content/002015646.pdf（台帳	
 2026-10-20	INCORRECT	亀山駅周辺は浸水想定区域の外	区域外なのは北口側（駅前広場・ロータリー）だけです。南口ができる線路の南側は、最大規模の想定では約64m先から区域に入ります。		
+2026-10-20	VERIFIED	6日間、政策を1本ずつ		https://（ローカル）/Users/kusakawatakuya/outputs/2026-10-19_インスタライブ柱1/days.json	
+2026-10-20	VERIFIED	10/20（火）		https://（暦計算）	
+2026-10-20	VERIFIED	2日目「仕事が来る、人が動く		https://（ローカル）/Users/kusakawatakuya/.claude/projects/-Users-kusakawatakuya/drafts/2026-10-13_HP政策集/HP政策集_6枠版_v7.md	
+2026-10-20	VERIFIED	新しい産業団地／コミュニティバス ほか		https://（ローカル）/Users/kusakawatakuya/.claude/projects/-Users-kusakawatakuya/drafts/2026-10-13_HP政策集/HP政策集_6枠版_v7.md	
+2026-10-20	INCORRECT	京都直通	今は直通の列車がありません。v7 では「京都直通の実現へ	https://（ローカル）/Users/kusakawatakuya/.claude/agents/knowledge/fact_ledger/verified_facts.tsv	
