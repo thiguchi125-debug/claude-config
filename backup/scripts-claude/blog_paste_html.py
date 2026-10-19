@@ -65,7 +65,8 @@ def main() -> int:
         if re.fullmatch(r"-{3,}", block):
             body.append("<hr>")
             continue
-        m_img = re.fullmatch(r"!\[(.*?)\]\((.+?)\)", block, re.S)
+        # 画像行の直下にキャプション行が続く形も拾う（2026-10-19：枠にならず生のmarkdownが残った）
+        m_img = re.fullmatch(r"!\[(.*?)\]\((.+?)\)[ \t]*(?:\n(.+))?", block, re.S)
         if m_img:
             # Obsidian記法の図（![alt](path)）も【画像n】と同じ差し替え枠にする
             # （2026-09-26：変換されず生のmarkdownがブログ本文に入っていた）
@@ -79,6 +80,8 @@ def main() -> int:
                 '　← ここにブログ編集画面で画像をアップロードして差し替える</p>'
                 f'<p style="margin:0;font-size:.94em">代替テキスト（alt）：{inline(alt)}</p></div>'
             )
+            if m_img.group(3):
+                body.append(f'<p>{inline(m_img.group(3).strip())}</p>')
             continue
         rows = block.split("\n")
         if len(rows) >= 2 and all(r.strip().startswith("|") for r in rows) \
