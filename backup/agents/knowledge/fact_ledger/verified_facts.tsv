@@ -1285,3 +1285,9 @@
 2026-10-19	VERIFIED	全員で食べる中学校給食を2020年9月の一般質問から繰り返し取り上げ…2026年度から亀山中学校・中部中学校でも		base v4 5節（但し書きが1つ落ちています。圧縮注意1を参照）	
 2026-10-19	VERIFIED	2025年9月の一般質問で提案した妊婦さんの救急搬送の支援…2026年4月から『かめやまマタニティ・サポート119』		fact_ledger 2026-10-18 VERIFIED。正式な表記とも一致しています。	
 2026-10-19	VERIFIED	医療費・給食費・保育料など5つの負担		base v4 3節	
+2026-10-20	VERIFIED	亀山駅周辺、ロータリー、駅前広場。ここは浸水想定区域にはなっていません		https://disaportal.gsi.go.jp/data/raster/01_flood_l2_shinsuishin_data/17/	
+2026-10-20	VERIFIED	南口の先には鈴鹿川		local:kusagawa_archive/01_council/kaigiroku0706_kusagawa_only.txt	
+2026-10-20	VERIFIED	南口は草川の構想		local:kusagawa_archive/01_council/令和８年３月10日_kusagawa_only.txt	
+2026-10-20	VERIFIED	亀山市かわまちづくり協議会が立ち上がっている／対象は鈴鹿川		local:kusagawa_archive/01_council/令和８年３月10日_kusagawa_only.txt	
+2026-10-20	INCORRECT	国の制度を使って市でも協議会が立ち上がり	国土交通省が令和8年8月7日に発表したかわまちづくり新規登録11か所に、亀山市は入っていません。今は「国の制度を使っている	https://www.mlit.go.jp/report/press/content/002015646.pdf（台帳	
+2026-10-20	INCORRECT	亀山駅周辺は浸水想定区域の外	区域外なのは北口側（駅前広場・ロータリー）だけです。南口ができる線路の南側は、最大規模の想定では約64m先から区域に入ります。		
