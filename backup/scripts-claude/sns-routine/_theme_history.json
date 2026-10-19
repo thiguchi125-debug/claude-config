@@ -1,18 +1,5 @@
 [
  {
-  "date": "2026-10-04",
-  "leg": "evening",
-  "theme": "坂本地区の未収穫ハッサクを集め果肉入りかき氷に（獣害の原因を特産品に）× 草川R7.6一般質問（獣害対策DX・出没情報の共有）",
-  "domain": "農林・獣害対策",
-  "source": "中日新聞2026-10-01 × 01_council/kaigiroku0706_kusagawa_only.txt L627-645",
-  "platforms": [
-   "X",
-   "Threads",
-   "Facebook"
-  ],
-  "note": "content-gate-lite未登録のため2段。fact APPROVE MINOR1件（棚田百選の帰属）・risk APPROVE LOW1件（「放置」表現）反映。9/27方針により📣DB未保存。"
- },
- {
   "date": "2026-10-05",
   "leg": "evening",
   "theme": "廃止代替路線バス2路線（亀山みずほ台線・亀山椋本線）の運賃改定案に市が意見募集（10/5〜19・初乗200→210円）× 草川R6.12一般質問（南部地域の公共交通・椋本線利用コロナ前5割強）",
@@ -128,5 +115,18 @@
    "Facebook"
   ],
   "note": "content-gate-lite未登録のため2段。fact APPROVE（任意3件反映）・risk HIGH1件（告示後の運用確認＝プロフィール連絡先表示・10/25予約なし→drafts末尾に留意として記載）・MEDIUM1件反映。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-19",
+  "leg": "evening",
+  "theme": "今夜21時インスタライブ6夜・柱1「子育ての負担、5つのゼロへ」告知（X/Threads/FB向け）",
+  "domain": "子育て",
+  "source": "vault 50_発信/2026-10-19_インスタライブ柱1/進行カードv4（ゲート通過済）× fact_ledger 2026-10-18",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回（派生モード）。REVISE必須3件（Xハッシュタグ・選択制給食の但し書き・マタサポ因果表現）＋任意1件反映、risk LOW。9/27方針により📣DB未保存。"
  }
 ]

@@ -1276,3 +1276,12 @@
 2026-10-19	VERIFIED	https://depth-interview-kusagawa.vercel.app/interview/kameyama_seisaku		https://depth-interview-kusagawa.vercel.app/interview/kameyama_seisaku	
 2026-10-19	VERIFIED	約20年前の計画に南部丘陵地区『エコシティ亀山』構想（昼生小学校の裏手・自然と調和した住宅団地）	正式表記は『エコシティ亀山』構想	kusagawa_archive/02_publications/reports/草川たくやの 昼生ニュース.txt・南部ニュース.txt	都市マス
 2026-10-19	MINOR_DIFF	現行都市マスで亀山駅・井田川駅・関駅周辺以外は位置づけがほとんどない	拠点（中心・副次）は3駅周辺に限られるが、全域に土地利用ゾーン（既存集落・田園共生等）の位置づけはある。沿道拠点（菅内）は次期案で追加	骨子案L1655-1680／https://cms.city.kameyama.mie.jp/docs/2014112306118/file_contents/46shiryo02.pdf	都市マス
+2026-10-19	VERIFIED	今夜21時から、Instagramでライブ配信をします。6夜連続で、政策を1本ずつ		base v4 の冒頭と0節（「本番 21:00〜」「今夜から6日間」）。※base の時刻には「（時刻は仮）」と付いていますが、同じ base のストーリー2	
+2026-10-19	VERIFIED	25分ほど		base v4（「約25分」）	
+2026-10-19	VERIFIED	子育ての負担、5つのゼロへ		base v4 1節	
+2026-10-19	VERIFIED	三重県内では、29市町のうち23市町が、すでに18歳まで子どもの医療費を助成（2026年4月1日時点）		fact_ledger 2026-10-18 VERIFIED（HP政策集 v7・_ledger.json）。時点の但し書きも残っています。	
+2026-10-19	VERIFIED	所得制限なしで15歳まで早くから広げてきました		base v4 2節（文言は同じ）	
+2026-10-19	VERIFIED	窓口での支払いが要らない形も、2024年9月から中学生まで		base v4 2節	
+2026-10-19	VERIFIED	全員で食べる中学校給食を2020年9月の一般質問から繰り返し取り上げ…2026年度から亀山中学校・中部中学校でも		base v4 5節（但し書きが1つ落ちています。圧縮注意1を参照）	
+2026-10-19	VERIFIED	2025年9月の一般質問で提案した妊婦さんの救急搬送の支援…2026年4月から『かめやまマタニティ・サポート119』		fact_ledger 2026-10-18 VERIFIED。正式な表記とも一致しています。	
+2026-10-19	VERIFIED	医療費・給食費・保育料など5つの負担		base v4 3節	
