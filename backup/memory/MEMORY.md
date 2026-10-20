@@ -164,6 +164,7 @@
 - [選挙期間の素材は🗳2026選挙に集約](project_senkyo_hub_drive_2026.md) — 10/18。演説・写真・動画・ブログSNS・印刷物完成版。個人情報は入れない・共有アルバム未回収
 - [草川は亀山生まれ](reference_kusagawa_birthplace_kameyama.md) — 10/18本人確認。「地元で生まれ」は事実として使える
 - [インスタライブ6夜(10/19〜24)](project_insta_live_6ya_2026-10.md) — 10/20〜21:30・柱1本ずつ・AIインタビュー連動。正本=vault 50_発信/2026-10-19_インスタライブ6夜/README.md。柱1完成
+- [インスタライブのカードは数字シート必須](feedback_insta_live_card_suuji_sheet.md) — 10/20草川「毎回これ以上」。転記だけ不可。数字表・声3件・数字入り問答が最低ライン
 - [動画は全コマ目視してから渡す](feedback_no_unverified_video_delivery.md) — 10/19差し戻し。画像上限で見られないなら納品せず区切る。筋→台本確認→音声1系統
 - [目を瞑った写真・写りの悪い写真は使わない](feedback_no_closed_eyes_bad_photos.md) — 10/20草川指示。素材は1枚ずつ目視で選別し、外した理由を報告
 - [選挙戦振り返り動画](project_senkyo_furikaeri_video_2026-10.md) — 10/20夕＝前半戦振り返り・10/23＝全体振り返り。出陣式の素材＋撮り溜める動画。v3.1は出さない
