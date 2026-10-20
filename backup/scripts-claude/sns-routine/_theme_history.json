@@ -1,18 +1,5 @@
 [
  {
-  "date": "2026-10-05",
-  "leg": "evening",
-  "theme": "廃止代替路線バス2路線（亀山みずほ台線・亀山椋本線）の運賃改定案に市が意見募集（10/5〜19・初乗200→210円）× 草川R6.12一般質問（南部地域の公共交通・椋本線利用コロナ前5割強）",
-  "domain": "公共交通",
-  "source": "亀山市公式 docs/2026100100035 × 01_council/2024-12_R0612_本会議議事録_kusagawa.txt L911-953",
-  "platforms": [
-   "X",
-   "Threads",
-   "Facebook"
-  ],
-  "note": "content-gate-lite未登録のため2段。fact REVISE4件（申請主体・委託運行・答弁文言・年度）全反映、risk APPROVE LOW2件。9/27方針により📣DB未保存。"
- },
- {
   "date": "2026-10-06",
   "leg": "evening",
   "theme": "スポーツの日（10/12）市運動施設の無料開放＋西野公園体育館で市民体力テスト（申込不要・無料）× 草川R5.6一般質問（東野公園の今後・健康づくり）",
@@ -128,5 +115,18 @@
    "Facebook"
   ],
   "note": "content-gate-lite 1回（派生モード）。REVISE必須3件（Xハッシュタグ・選択制給食の但し書き・マタサポ因果表現）＋任意1件反映、risk LOW。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-20",
+  "leg": "evening",
+  "theme": "今夜21:30インスタライブ6夜・柱2「仕事が来る、人が動く」告知（X/Threads/FB向け）",
+  "domain": "産業・交通",
+  "source": "vault 50_発信/2026-10-13_HP政策集/HP政策集_6枠版_v7.md §2 × fact_ledger 2026-10-20 × 接地 01_council/R8.6.15一般質問_草川_kusagawa_only.txt L69-71",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回（派生モード）。APPROVE・修正0件、risk LOW（有料広告不可）。9/27方針により📣DB未保存。"
  }
 ]
