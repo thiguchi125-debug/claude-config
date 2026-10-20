@@ -1,18 +1,1 @@
-{
-  "date": "2026-10-20",
-  "new_count": 1,
-  "items": [
-    {
-      "row_id": "S1-56",
-      "date": "2026/10/19",
-      "district": "関",
-      "domain": "healthcare_welfare",
-      "urgency": "中",
-      "summary": "関町に内科が1件もなく、車のない高齢者が受診・健診に行けない。対策を考えてほしい（元関町住民・現津市在住・連絡先メールあり）",
-      "notion_url": "https://app.notion.com/p/3fecf503a68f81879934fe0c668177e4",
-      "skipped": false,
-      "urgent": false
-    }
-  ],
-  "errors": []
-}
+{"date": "2026-10-21", "new_count": 0}
