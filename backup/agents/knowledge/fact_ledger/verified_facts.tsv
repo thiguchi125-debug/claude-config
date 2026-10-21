@@ -1342,3 +1342,21 @@
 2026-10-21	UNVERIFIED	10/20夜みずきが丘で体育館空調について話した	みずきが丘交差点と言っているのはv3のみでv3に体育館の言及なし。体育館空調はv4（場所の言及なし）	local:~/outputs/short-video/2026-10-20_senkyo-day3/work/v3_segs.txt L7・v4_segs.txt	選挙戦3日目
 2026-10-21	MINOR_DIFF	2023年3月議会で18歳年度末までの無償化と窓口無料を求めた	草川の発言は18歳までの医療費（無償化）を優先して実現をと要望＋必要予算を質問。窓口無料化18歳までの試算は市答弁側（約2,000万円）。草川自身が窓口無料を求めた逐語はなし	local:kusagawa_archive/01_council/2023-03_R0503_本会議議事録_kusagawa.txt L212-237,L300-311	子ども医療費
 2026-10-21	VERIFIED	10/20昼演説 草刈機を持ち山に慣れた農作業の方が多い地区はまち協中心に獣害対策・新興住宅地は難しい・市の新たな課題	原文は「私が住んでいる亀山地区であれば…みんな草刈機持ってますし山の中に入るのもある程度慣れてる農作業をされている方もたくさん…まちづくり協議会の中心に…新興住宅地も含めて…難しい」	local:~/outputs/short-video/2026-10-20_senkyo-day3/work/v1_segs.txt 186-220s	獣害
+2026-10-21	VERIFIED	R3 63／R4 60／R5 87／R6 90／R7 45件、R7は〇1・△36・×8（R7.9末）		https://www.city.kameyama.mie.jp/kyouiku/article/2016050200039/file_contents/7youboukasyo.pdf	
+2026-10-21	VERIFIED	R7学校別 西小11・東小11・亀山中5・神辺小4・井田川小3、野登小・関中0		https://www.city.kameyama.mie.jp/kyouiku/article/2016050200039/seijinshiki.html	
+2026-10-21	VERIFIED	提出期限6月中旬に前倒し・この機会でのみの受付・合同点検は連絡会判断の箇所・自治会長とPTA会長の署名捺印		https://www.city.kameyama.mie.jp/kyouiku/article/2016050200039/file_contents/nagare.pdf	
+2026-10-21	VERIFIED	施設整備費 当初 R元2,250万→R7・R8 993万、R8全額一般財源、R元→R7 55.9%減		https://www.city.kameyama.mie.jp/shisei/2014112309522/file_contents/R8_yosansho.pdf	
+2026-10-21	VERIFIED	決算 工事請負費 R4 2,218万9,813円→R7 967万688円／市単独3工事合計36.1%減／建設部長『すべてがそうとは言い切れない』		local:kusagawa_archive/02_publications/blog/2026-10-11_1531822_毎日の道を、安全に——通学路は「要望の一覧」から「直す計画」.txt	
+2026-10-21	VERIFIED	人身事故 R7 77件（+14）、県全体は減少		https://www.police.pref.mie.jp/info/toukei/03_toukei/16koutuujiko.pdf	
+2026-10-21	VERIFIED	ゾーン30プラス 県内6地区（四日市1・桑名2・菰野3）、亀山0		https://www.mlit.go.jp/road/road/traffic/sesaku/syokai-jirei-chubu.html	
+2026-10-21	VERIFIED	国の一斉点検 道路管理者分39,010か所はすべて対策に着手（R8.3末）、三重県708か所		local:research_ledger/2026-09-30_通学路安全_県内比較と先進例.md	
+2026-10-21	VERIFIED	R8.9.1から、中央線などがない一般道路の法定速度は30km		https://www.npa.go.jp/bureau/traffic/seikatsudouro/seikatsudoro.html	
+2026-10-21	VERIFIED	浜松市R8.4改正 事故72→65件／対策実施率76.5→80%／見守り2,174→2,600人（R6→R11）、保育園・こども園も対象		https://www.city.hamamatsu.shizuoka.jp/documents/9596/tuugakuropuro.pdf	
+2026-10-21	VERIFIED	名張市は×の理由（例『民地のため対応不可』）と対応年度を記載。伊賀・志摩も理由を文章で。伊勢・鈴鹿・四日市は一覧か地図を公開		https://www.city.nabari.lg.jp/s057/040/020/tsugakuroproglam/20150410164537.html	
+2026-10-21	VERIFIED	地元要望 R1 205／R2 241／R3 264／R4 156／R5 155件（R7.3.6 草川代表質問への建設部長答弁）		local:kusagawa_archive/01_council/2025-03_R070306_本会議3月6日_草川.txt	
+2026-10-21	VERIFIED	R7受付128・未着手67、累計1,270のうち完了1,128、6年手つかず4か所（R8.9.24決算総括・草川）		local:~/.claude/projects/-Users-kusakawatakuya/memory/reference_tsugakuro_program_scope.md	
+2026-10-21	VERIFIED	キッズ・ゾーン（保育所等の周囲、原則半径500m）、R6.6事務連絡（点検するのは各園）、亀山での設定状況は未確認		local:~/.claude/projects/-Users-kusakawatakuya/memory/reference_tsugakuro_program_scope.md	
+2026-10-21	VERIFIED	第3次総計前期の新設件数の目標16件／第2次後期の実績 R4 17・R6 34件		https://www.city.kameyama.mie.jp/docs/2025041000152/file_contents/dai3zi_zenki_taikou5.pdf	
+2026-10-21	INCORRECT	R7から変わった受付ルール	fact_ledger 2026-09-30 によると、×の再提出条件と△の提出不要には「今年度から		
+2026-10-21	INCORRECT	その後の報告書から記述が消えた	確認済みなのはR5・R6の成果報告書だけで、R7は未確認です（fact_ledger 2026-09-30 MINOR_DIFF）。		
+2026-10-21	INCORRECT	市が令和7年度に作った浸水想定区域図	元文は「令和7年度に作成に取りかかった		
