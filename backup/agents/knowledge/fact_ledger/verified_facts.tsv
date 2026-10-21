@@ -1360,3 +1360,8 @@
 2026-10-21	INCORRECT	R7から変わった受付ルール	fact_ledger 2026-09-30 によると、×の再提出条件と△の提出不要には「今年度から		
 2026-10-21	INCORRECT	その後の報告書から記述が消えた	確認済みなのはR5・R6の成果報告書だけで、R7は未確認です（fact_ledger 2026-09-30 MINOR_DIFF）。		
 2026-10-21	INCORRECT	市が令和7年度に作った浸水想定区域図	元文は「令和7年度に作成に取りかかった		
+2026-10-21	VERIFIED	井田川駅前の浸水は、6月の議会で対策を求めました		local:kusagawa_archive/01_council/R8.6.15一般質問_草川_kusagawa_only.txt	
+2026-10-21	VERIFIED	市は今年度に測量・設計、来年度以降の工事を目指す		local:kusagawa_archive/01_council/R8.6.15一般質問_草川_kusagawa_only.txt	
+2026-10-21	VERIFIED	新しい児童センター		https://www.city.kameyama.mie.jp/mayor/2026062300016	
+2026-10-21	VERIFIED	できたらいいもの		https://www.city.kameyama.mie.jp/mayor/2026062300016	
+2026-10-21	INCORRECT	子どもたちの一番の願いは『友達と過ごす場所』でした	調査は市の「亀山児童センター移転に関するアンケート	https://www.city.kameyama.mie.jp/mayor/2026062300016	
