@@ -1,18 +1,1 @@
-{
-  "date": "2026-10-22",
-  "new_count": 1,
-  "items": [
-    {
-      "row_id": "S2-221",
-      "date": "2026/10/21",
-      "district": "未記入",
-      "domain": "childcare_education",
-      "urgency": "中",
-      "summary": "体育館の空調・高校生医療費無償化が他市より格段に遅れている、改善を（匿名40代・連絡先なし）",
-      "notion_url": "https://app.notion.com/p/400cf503a68f81eb8306e1b0b30cdb80",
-      "skipped": false,
-      "urgent": false
-    }
-  ],
-  "errors": []
-}
+{"date": "2026-10-23", "new_count": 0, "items": [], "errors": []}
