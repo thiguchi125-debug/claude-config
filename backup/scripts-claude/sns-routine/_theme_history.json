@@ -1,18 +1,5 @@
 [
  {
-  "date": "2026-10-08",
-  "leg": "evening",
-  "theme": "第39回東海道関宿街道まつり（11/1日・宿場大行列テーマ「亀山ゆかりの時代行列」・9-16時歩行者専用）× 草川R2.3一般質問（関宿×7座トレイルのまちづくり観光）",
-  "domain": "観光・歴史まちづくり",
-  "source": "亀山市公式 docs/2024061900015 × 01_council/r2_3t_kaigiroku_kusagawa_only.txt L878-913",
-  "platforms": [
-   "X",
-   "Threads",
-   "Facebook"
-  ],
-  "note": "content-gate-lite 1回。APPROVE・任意修正1件反映、risk LOW。9/27方針により📣DB未保存。"
- },
- {
   "date": "2026-10-10",
   "leg": "evening",
   "theme": "神向谷 市政懇談会（10/10・神向谷公民館）事前アンケートの声＋防災アプリの自治会送信テストと説明会再開催の提案 × 草川R8.3予算決算委員会質問（防災アプリ）",
@@ -115,5 +102,18 @@
    "Facebook"
   ],
   "note": "content-gate-lite 1回（派生モード）。REVISE（FB：博物館答弁と伝承師答弁の混同1件修正＋字数圧縮2件）、risk LOW（有料広告不可）。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-23",
+  "leg": "evening",
+  "theme": "今夜21:30インスタライブ6夜・柱5「スポーツで、人もまちも元気に」告知（X/Threads/FB向け）",
+  "domain": "スポーツ・まちづくり",
+  "source": "vault 50_発信/2026-10-13_HP政策集/HP政策集_6枠版_v7.md §5 × 接地 01_council/2026-03_R0803_本会議3月10日_kusagawa.txt L60-61",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回（派生モード）。APPROVE・必須0件・任意1件反映、risk LOW。9/27方針により📣DB未保存。"
  }
 ]
