@@ -115,5 +115,18 @@
    "Facebook"
   ],
   "note": "content-gate-lite 1回（派生モード）。APPROVE・必須0件・任意1件反映、risk LOW。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-24",
+  "leg": "evening",
+  "theme": "今夜21:30インスタライブ6夜・最終日 柱6「あなたの声が、政策になる」告知（X/Threads/FB向け）",
+  "domain": "市民参加・DX",
+  "source": "vault 50_発信/2026-10-13_HP政策集/HP政策集_6枠版_v7.md §6 × 接地 01_council/2020-12_R021127_DX一般質問資料.txt（プッシュ型）",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回（派生モード）。REVISE（Threads/FBに「提案」2か所復元）、risk LOW。9/27方針により📣DB未保存。"
  }
 ]
