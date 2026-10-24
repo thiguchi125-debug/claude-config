@@ -1,1 +1,18 @@
-{"date": "2026-10-24", "new_count": 0}
+{
+  "date": "2026-10-25",
+  "new_count": 1,
+  "items": [
+    {
+      "row_id": "S2-222",
+      "date": "2026/10/24",
+      "district": "未記入（アイリス町）",
+      "domain": "disaster_safety",
+      "urgency": "高",
+      "summary": "アイリス町の交差点が高い壁で見通し不良・数ヶ月前に事故・カーブミラー設置と現地確認の要望（森本様・連絡先メールあり）",
+      "notion_url": "https://app.notion.com/p/403cf503a68f811bbe32f68413deb5fa",
+      "skipped": false,
+      "urgent": true
+    }
+  ],
+  "errors": []
+}
