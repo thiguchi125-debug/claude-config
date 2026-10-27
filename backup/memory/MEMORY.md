@@ -97,6 +97,7 @@
 - [手書きアンケートは画像で判定・チェックだけの分野も入れる](feedback_survey_analysis_checkbox_only_and_ocr.md) — OCRは✓を拾えない（12枚中10枚取りこぼし）
 - [発信物で絵文字を使わない](feedback_no_emoji_ai_smell.md) — 見出しはCSSライムバー/角マーカー/ピル・スライドも含む
 - [プロフィールの秘書歴は小池百合子の名前入り](feedback_profile_koike_yuriko_hisho.md) — 「衆議院議員秘書」は不可。草川「絶対に外すな」
+- [個人返信の口調](feedback_personal_reply_tone.md) — 10/27草川の送信版から。方言を真似ない・です/ます混じり・説明文と家族の代弁は削る・短く
 - [架空エピソード禁止](feedback_no_fabricated_stories.md) — 実体験/一次情報/公式データのみ
 - [確認事項は1件1問の選択式](feedback_ask_one_by_one_choices.md) — AskUserQuestion・1回最大4問
 - [確認は最初に1回束ねる](feedback_ask_bundling_and_upfront_reflection.md) — 入力にある情報は最初から反映
