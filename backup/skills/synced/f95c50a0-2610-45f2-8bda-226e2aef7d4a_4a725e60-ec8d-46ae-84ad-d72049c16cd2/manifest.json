@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1793167382486,
+  "lastUpdated": 1793222473163,
   "skills": [
     {
       "skillId": "import-memory",
@@ -30,7 +30,7 @@
       "name": "skill-creator",
       "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
       "source": "anthropic-example",
-      "updatedAt": "2026-10-21T20:47:56.610025Z"
+      "updatedAt": "2026-10-28T17:00:24.127636Z"
     },
     {
       "skillId": "xlsx",
@@ -86,7 +86,7 @@
       "name": "computer-use",
       "description": "Read this skill before the first step of any request to do something in an app on the person's own computer (Notes, Finder, System Settings, any desktop app), to look at their screen, or for \"computer use\". Computer use (desktop control) lets Claude take screenshots of the person's desktop and control it with clicks, typing and scrolling through the Claude desktop app; its tools are named mcp__computer-use__* when the session runs in the desktop app and mcp__remote-devices__computer_* when a cloud session is linked to the person's computer; before computer use is turned on for a conversation there may be no such tools, only an enable__mcp__remote-devices__computer tool, which turns it on. It covers turning it on, picking the right tool, the access flow, and the safety rules for tiered apps, links and financial actions. It is not for websites, which go through Claude in Chrome or the built-in browser and their own skills.",
       "source": "anthropic-example",
-      "updatedAt": "2026-10-28T06:00:22.561400Z"
+      "updatedAt": "2026-10-28T18:00:31.869646Z"
     },
     {
       "skillId": "deep-research",
@@ -97,6 +97,16 @@
     }
   ],
   "pendingClaims": [
+    "68478:Sat Oct 24 14:49:56 2026/skill-creator",
+    "54400:Sun Oct 25 16:57:15 2026/skill-creator",
+    "43860:Thu Oct 22 21:15:20 2026/skill-creator",
+    "99937:Mon Oct 26 07:20:23 2026/skill-creator",
+    "76172:Fri Oct 23 15:17:16 2026/skill-creator",
+    "12014:Sun Oct 25 13:19:45 2026/skill-creator",
+    "56091:Wed Oct 28 15:04:14 2026/skill-creator",
+    "99992:Fri Oct 23 22:03:36 2026/skill-creator",
+    "22996:Thu Oct 22 03:33:47 2026/skill-creator",
+    "77015:Fri Oct 23 15:27:05 2026/skill-creator",
     "43860:Thu Oct 22 21:15:20 2026/pptx"
   ]
 }
