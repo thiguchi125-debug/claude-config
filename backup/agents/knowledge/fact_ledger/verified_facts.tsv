@@ -1465,3 +1465,10 @@
 2026-10-29	VERIFIED	すぐ動けることは、すぐやる…最後まで見届ける		local:50_発信/2026-10-25_当選御礼/ブログ_当選御礼_v2.md	
 2026-10-29	VERIFIED	次の12月議会		local:50_発信/2026-10-30_インスタライブ当選御礼/進行カード_v1.md	
 2026-10-29	INCORRECT	10/30（木）	2026年10月30日は金曜日（date コマンドで確認。投票日の10/25が日曜なので10/30は金曜）	local:date	
+2026-10-29	VERIFIED	市は旧図書館への移転を検討し令和9年度の施設整備に向けて動いている	施政方針R8「令和9年度での施設整備に向け」・R8.6.23会見は令和10年度移転を検討＝開館年度未公表	https://www.city.kameyama.mie.jp/mayor/2026062300016	児童センター
+2026-10-29	VERIFIED	移転アンケート 保護者など170人1位 室内で体を動かせる142件・子ども1,260人の約6割が知らない・卓球ボール遊び上位	市公表済(10/29草川確認)・結果報告PDF p.1/2/15	research_ledger/2026-10-04_児童センター移転アンケート結果.md	児童センター移転アンケート
+2026-10-29	VERIFIED	コミバスは無料キャンペーン結果公表→検証→継続→全員無料、その先AI配車の乗合・ライドシェア・自動運転	政策集v7 L45と一致	local:ObsidianVault/50_発信/2026-10-13_HP政策集/HP政策集_6枠版_v7.md	移動
+2026-10-29	VERIFIED	令和9年度の施設整備に向けて検討（施政方針R8）		https://www.city.kameyama.mie.jp/gikai/katsudo/2026021700109/	
+2026-10-29	VERIFIED	延床300㎡・1980年築／旧図書館905㎡で約3倍（公共施設白書）		https://www.city.kameyama.mie.jp/shisei/2017033000035/file_contents/kokyoshisetsu_hakusyo.pdf	
+2026-10-29	VERIFIED	雨の日や暑い日でも遊べる場所がほしい		https://www.city.kameyama.mie.jp/docs/2026042700041/file_contents/kodomokeikaku.pdf	
+2026-10-29	VERIFIED	国の後押し（児童館の機能強化をこども計画に位置づけると交付金の対象、整備例に「体格等に適した運動スペース」）		https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/8f03ee44-b4a9-4206-a613-e0ecf72b380c/6b00aee4/20241206_policies_kosodateshien_jidoukan_15.pdf	
