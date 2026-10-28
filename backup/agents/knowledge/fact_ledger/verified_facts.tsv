@@ -1478,3 +1478,5 @@
 2026-10-29	VERIFIED	鈴鹿の高校生は、窓口で払わない		https://www.mie.med.or.jp/hp/ippan/iryouhi/3.pdf	
 2026-10-29	VERIFIED	選挙中のAIインタビュー。一番多かったのは、子育ての声でした		親セッションで管理画面を確認済み（有効17件のうち子育て・教育が11件）。こちらでは再確認していない（verified_claims扱い）。件数を言っていないの	
 2026-10-29	INCORRECT	県内29市町のうち23市町は、もう18歳までです	23はR8.4.1の数字で、それ自体は正しい。ただし9月に鳥羽市と菰野町がどちらも拡大した。菰野町は広報こもの（2026年7・8・9月の号）と町の移住サイトに「	https://www2.town.komono.mie.jp/uploaded/attachment/6474.pdf	
+2026-10-29	VERIFIED	選挙中のAIインタビュー。いちばん多かったのは、子育ての声でした		テーマ台帳 2026-10-29（親が管理画面で確認：有効17件中「子育て・教育」11件で1位。verified_claims扱いで再確認はしていない）	
+2026-10-29	VERIFIED	亀山の高校生は、払う／亀山 15歳年度末まで		https://www.mie.med.or.jp/hp/ippan/iryouhi/3.pdf	
