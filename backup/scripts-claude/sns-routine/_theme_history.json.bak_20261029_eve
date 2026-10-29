@@ -1,0 +1,132 @@
+[
+ {
+  "date": "2026-10-10",
+  "leg": "evening",
+  "theme": "神向谷 市政懇談会（10/10・神向谷公民館）事前アンケートの声＋防災アプリの自治会送信テストと説明会再開催の提案 × 草川R8.3予算決算委員会質問（防災アプリ）",
+  "domain": "防災・地域",
+  "source": "~/outputs/houkokukai/2026-10-10_神向谷/03_slides/_text_for_review.txt × 01_council/R8.3.23予算決算委員会_20260323172950_kusagawa_only.txt L150-159",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite未登録のため2段。fact APPROVE（任意1件反映）・risk HIGH1件（実績アピール文）削除＋MEDIUM1件言い換え。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-12",
+  "leg": "evening",
+  "theme": "防火フェア2026（11/7土・市文化会館・無料・消防団入団促進コーナーほか）× 草川R4.3定例会 議案質疑（消防団条例改正・処遇改善）",
+  "domain": "消防・防火",
+  "source": "亀山市消防本部 shobo/article/2026083100022 × 01_council/r0403kaigiroku_kusagawa_only.txt L124-160,L209-217",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回。APPROVE・任意1件（根拠なし一般論）削除、risk LOW。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-13",
+  "leg": "evening",
+  "theme": "亀山みずほ台線・亀山椋本線の運賃改定案（初乗り200→210円）への意見募集（10/19まで） × 草川R6.12一般質問（南部地域の公共交通・椋本線R5利用者コロナ前5割強の答弁）",
+  "domain": "公共交通",
+  "source": "亀山市公式 docs/2026100100035 × 01_council/草川議員一般質問R6.12.11.txt L238-241",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回。REVISE必須2件（Xハッシュタグ・R5年度明示）＋任意1件反映、risk LOW。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-16",
+  "leg": "evening",
+  "theme": "第22回亀山市社会福祉大会（11/26木・市中央コミュニティセンター・記念講演「地域で取り組む不登校対策」）× 草川R2.12一般質問（不登校支援・自宅学習の出席扱い答弁）",
+  "domain": "福祉・教育（不登校）",
+  "source": "亀山市公式 docs/2023110200014 × 01_council/r2_12t_kaigiroku_kusagawa_only.txt L983-1031",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite未登録のため2段。fact APPROVE（任意2件反映）・risk LOW（結び2文削除・表現1件言い換え）。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-18",
+  "leg": "evening",
+  "theme": "亀山市職員カスタマーハラスメント対策基本方針（10/9公開・組織対応・警告/退去命令/警察連携）× 三重県議会 罰則付きカスハラ防止条例成立（10/16・報道）",
+  "domain": "行政運営・職員",
+  "source": "亀山市公式 shisei/2026100200025 × NHK nd-20261016de60358 × 接地確認 01_council/3012_kusagawa_only.txt（教職員の負担軽減）",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite未登録のため2段。fact APPROVE（任意3件反映）・risk HIGH1件（告示後の運用確認＝プロフィール連絡先表示・10/25予約なし→drafts末尾に留意として記載）・MEDIUM1件反映。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-19",
+  "leg": "evening",
+  "theme": "今夜21時インスタライブ6夜・柱1「子育ての負担、5つのゼロへ」告知（X/Threads/FB向け）",
+  "domain": "子育て",
+  "source": "vault 50_発信/2026-10-19_インスタライブ柱1/進行カードv4（ゲート通過済）× fact_ledger 2026-10-18",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回（派生モード）。REVISE必須3件（Xハッシュタグ・選択制給食の但し書き・マタサポ因果表現）＋任意1件反映、risk LOW。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-20",
+  "leg": "evening",
+  "theme": "今夜21:30インスタライブ6夜・柱2「仕事が来る、人が動く」告知（X/Threads/FB向け）",
+  "domain": "産業・交通",
+  "source": "vault 50_発信/2026-10-13_HP政策集/HP政策集_6枠版_v7.md §2 × fact_ledger 2026-10-20 × 接地 01_council/R8.6.15一般質問_草川_kusagawa_only.txt L69-71",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回（派生モード）。APPROVE・修正0件、risk LOW（有料広告不可）。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-22",
+  "leg": "evening",
+  "theme": "今夜21:30インスタライブ6夜・柱4「子どもの可能性を、全力で応援」告知（X/Threads/FB向け）",
+  "domain": "子育て・教育",
+  "source": "vault 50_発信/2026-10-13_HP政策集/HP政策集_6枠版_v7.md §4 × 接地 01_council/2025-09_R0709_本会議議事録_kusagawa.txt（伝承師）",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回（派生モード）。REVISE（FB：博物館答弁と伝承師答弁の混同1件修正＋字数圧縮2件）、risk LOW（有料広告不可）。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-23",
+  "leg": "evening",
+  "theme": "今夜21:30インスタライブ6夜・柱5「スポーツで、人もまちも元気に」告知（X/Threads/FB向け）",
+  "domain": "スポーツ・まちづくり",
+  "source": "vault 50_発信/2026-10-13_HP政策集/HP政策集_6枠版_v7.md §5 × 接地 01_council/2026-03_R0803_本会議3月10日_kusagawa.txt L60-61",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回（派生モード）。APPROVE・必須0件・任意1件反映、risk LOW。9/27方針により📣DB未保存。"
+ },
+ {
+  "date": "2026-10-24",
+  "leg": "evening",
+  "theme": "今夜21:30インスタライブ6夜・最終日 柱6「あなたの声が、政策になる」告知（X/Threads/FB向け）",
+  "domain": "市民参加・DX",
+  "source": "vault 50_発信/2026-10-13_HP政策集/HP政策集_6枠版_v7.md §6 × 接地 01_council/2020-12_R021127_DX一般質問資料.txt（プッシュ型）",
+  "platforms": [
+   "X",
+   "Threads",
+   "Facebook"
+  ],
+  "note": "content-gate-lite 1回（派生モード）。REVISE（Threads/FBに「提案」2か所復元）、risk LOW。9/27方針により📣DB未保存。"
+ }
+]
