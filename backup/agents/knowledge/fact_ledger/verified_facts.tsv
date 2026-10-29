@@ -1481,3 +1481,7 @@
 2026-10-29	VERIFIED	選挙中のAIインタビュー。いちばん多かったのは、子育ての声でした		テーマ台帳 2026-10-29（親が管理画面で確認：有効17件中「子育て・教育」11件で1位。verified_claims扱いで再確認はしていない）	
 2026-10-29	VERIFIED	亀山の高校生は、払う／亀山 15歳年度末まで		https://www.mie.med.or.jp/hp/ippan/iryouhi/3.pdf	
 2026-10-29	VERIFIED	亀山は中学生まで		https://www.mie.med.or.jp/hp/ippan/iryouhi/3.pdf	
+2026-10-29	MINOR_DIFF	（11月発行物）県内29市町のうち23市町が18歳まで助成（2026年4月1日時点）	時点付きなら誤りではないが古い。R8.9.1から鳥羽・菰野が拡大し25市町（残り名張・亀山・朝日・明和）	research_ledger/2026-09-30_子ども医療費18歳_三重県内比較.md ; https://www.city.toba.mie.jp/soshiki/hoken_nenkin/gyomu/iryo_kenok/1/2657.html	子ども医療費
+2026-10-29	MINOR_DIFF	免許を返したあともバスで通院や買い物ができると、市内で暮らしが続けられる、という声	元の声は現在形の感謝『通院や買い物ができて、市内で暮らしが完結するのはありがたい』。仮定形に変えると要望に読める	local:50_発信/2026-10-30_インスタライブ当選御礼/進行カード_v2.md §7 声6	AIインタビュー
+2026-10-29	VERIFIED	AIインタビュー常設版URL kameyama_shisei_zenpan が生きている	HTTP200・タイトル『【亀山市】市政全般についてのヒアリング（くらしの声・これからの亀山）』	https://depth-interview-kusagawa.vercel.app/interview/kameyama_shisei_zenpan	AIインタビュー
+2026-10-29	UNVERIFIED	AIインタビューは名前を書かずに答えられます	公開ページはJS描画で確認できず・vault/台帳に根拠なし。管理画面か設定で要確認	https://depth-interview-kusagawa.vercel.app/interview/kameyama_shisei_zenpan	AIインタビュー
