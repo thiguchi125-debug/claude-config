@@ -1,18 +1,1 @@
-{
-  "date": "2026-10-26",
-  "new_count": 1,
-  "items": [
-    {
-      "row_id": "S2-223",
-      "date": "2026/10/25",
-      "district": "未記入",
-      "domain": "_other",
-      "urgency": "低",
-      "summary": "市内にリサイクルショップがない・市連携のジモティースポットを亀山エコー内に作る提案（匿名30代・連絡先なし）",
-      "notion_url": "https://app.notion.com/p/404cf503a68f81a284b7de38595301f9",
-      "skipped": false,
-      "urgent": false
-    }
-  ],
-  "errors": []
-}
+{"date": "2026-10-30", "new_count": null, "items": [], "errors": ["MCP不通: ToolSearch後もGoogle Drive/Notion MCPツールが存在せず新着確認できず（state未更新・翌夜再処理）"]}
