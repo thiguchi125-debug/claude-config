@@ -286,6 +286,7 @@ RATE_SUPPL  = 5.0   # 字/秒: 発話と別内容の補助テロップ（読ま�
 NOTICE_PAT = re.compile(r"出典|ご確認ください|ご相談|お問い合わせ|問い合わせ|個別の可否")
 
 _TIME = re.compile(r"(\d+(?:\.\d+)?)\s*[–\-—~〜]\s*(\d+(?:\.\d+)?)")
+_MD_TIME = re.compile(r"^\|\s*(\d+):(\d+(?:\.\d+)?)\s*[–\-—~〜]\s*(\d+):(\d+(?:\.\d+)?)\s*\|")
 
 
 def _count_ja(text):
@@ -314,9 +315,29 @@ def check_telop(paths):
             if "挿入画の位置" in ln or ln.startswith("────"):
                 break
             lines.append(ln)
+        # 台本mdはカット表の行だけを見る（本文の日付・「15〜19歳」を秒数と誤読するため）
+        if any(_MD_TIME.match(ln) for ln in lines):
+            lines = [ln for ln in lines if _MD_TIME.match(ln)]
         i = 0
         while i < len(lines):
             ln = lines[i]
+            # 3) 台本mdのカット表 `| 0:05.8-0:08.5 | 画 | ナレ | テロップ |` → 最終列がテロップ
+            tm = _MD_TIME.match(ln)
+            if tm:
+                t0 = int(tm.group(1)) * 60 + float(tm.group(2))
+                t1 = int(tm.group(3)) * 60 + float(tm.group(4))
+                dur = max(0.1, t1 - t0)
+                body = [c.strip() for c in ln.strip().strip("|").split("|")][-1]
+                i += 1
+                if body:
+                    n = _count_ja(body)
+                    notice = bool(NOTICE_PAT.search(body))
+                    allowed = dur * RATE_SPOKEN
+                    over = (n > allowed) and not notice
+                    bad += over
+                    rows.append((os.path.basename(path), t0, t1, dur, n, allowed,
+                                 "掲示" if notice else "発話", over, body))
+                continue
             m = _TIME.search(ln)
             if not m:
                 i += 1
