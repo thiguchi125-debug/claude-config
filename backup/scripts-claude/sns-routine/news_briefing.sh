@@ -51,6 +51,10 @@ for ATTEMPT in 1 2; do
       continue
     fi
     if tail -5 "$LOG" | grep -q '🚨 news-briefing'; then
+      # 2026-10-30: Notion MCPが「接続中」のまま起動して不在判定→中止が10回。1回目は2分待って再試行
+      if [ "$ATTEMPT" = "1" ]; then
+        echo "[$(TS)] MCP不在で中止＝接続待ち不足の可能性。retrying in 2min" >> "$LOG"; sleep 120; continue
+      fi
       python3 "$DIR/update_status.py" news_briefing error "ニュース収集 6:05 中止（Notion MCP不在等・ログ確認）"
       echo "[$(TS)] ---- news_briefing end (aborted) ----" >> "$LOG"
       exit 1
