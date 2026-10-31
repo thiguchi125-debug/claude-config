@@ -171,3 +171,4 @@
 - [目を瞑った写真・写りの悪い写真は使わない](feedback_no_closed_eyes_bad_photos.md) — 10/20草川指示。素材は1枚ずつ目視で選別し、外した理由を報告
 - [選挙カー看板の顔をモザイクの本人と取り違えない](feedback_mosaic_campaign_sign_face.md) — 10/24 v4で本人の顔を潰した。対象は目視で決める・看板の中の顔は除外
 - [選挙戦振り返り動画](project_senkyo_furikaeri_video_2026-10.md) — 10/20夕＝前半戦振り返り・10/23＝全体振り返り。出陣式の素材＋撮り溜める動画。v3.1は出さない
+- [夜間oyasumiでMCPが読めない](project_oyasumi_headless_mcp_missing.md) — 10/29・10/30分。サマリ・週次未作成。/mcpで接続確認が必要
